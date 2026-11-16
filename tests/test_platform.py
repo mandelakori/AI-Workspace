@@ -9,6 +9,7 @@ from threading import Timer
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import replace
 from pathlib import Path
+from time import monotonic, sleep
 from unittest.mock import patch
 
 from aiwork.benchmark import aggregate
@@ -106,6 +107,42 @@ argv = {check}
         (root / "attempt-001").mkdir()
         self.controller.resume(job, interrupted=True)
         self.assertEqual(self.controller.work(job)["status"], "verified")
+        self.assertTrue((root / "attempt-002/evidence.json").is_file())
+
+    def test_worker_kill_releases_claim_without_overwriting_partial_artifacts(self):
+        task = self.task(kind="direct", check='["{python}", "-c", "print(1)"]')
+        job = self.controller.submit(task, True)
+        root = self.root / "state" / "runs" / job
+        script = """
+from pathlib import Path
+from sys import argv
+from time import sleep
+from aiwork.controller import Controller
+from aiwork.schema import Config
+def hold(self, row, root):
+    attempt = root / "attempt-001"
+    attempt.mkdir()
+    (attempt / "partial.txt").write_text("preserve this attempt")
+    sleep(60)
+Controller._work = hold
+Controller(Config(Path(argv[1]), ())).work(argv[2])
+"""
+        child = subprocess.Popen([sys.executable, "-c", script, str(self.root / "state"), job])
+        partial = root / "attempt-001" / "partial.txt"
+        try:
+            deadline = monotonic() + 10
+            while not partial.exists() and child.poll() is None and monotonic() < deadline:
+                sleep(0.05)
+            self.assertTrue(partial.is_file())
+            with self.assertRaises(TimeoutError):
+                self.controller.resume(job, interrupted=True)
+        finally:
+            if child.poll() is None:
+                child.kill()
+            child.wait(timeout=10)
+        self.controller.resume(job, interrupted=True)
+        self.assertEqual(self.controller.work(job)["status"], "verified")
+        self.assertEqual(partial.read_text(), "preserve this attempt")
         self.assertTrue((root / "attempt-002/evidence.json").is_file())
 
     def test_paths_and_override(self):

@@ -5,6 +5,7 @@ import shutil
 import signal
 import subprocess
 import sys
+from tempfile import TemporaryFile
 from dataclasses import dataclass
 from pathlib import Path
 from threading import Thread
@@ -67,12 +68,22 @@ def kill_tree(proc: subprocess.Popen) -> None:
 
 
 def run(argv: list[str] | str, cwd: Path, timeout: float, env: dict[str, str],
-        stop: Path | None = None, *, decode_errors: str = "replace") -> Result:
+        stop: Path | None = None, *, decode_errors: str = "replace",
+        stdin: bytes | None = None) -> Result:
     started = monotonic()
-    proc = subprocess.Popen(argv, cwd=cwd, env=env, stdin=subprocess.DEVNULL,
-                            stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                            start_new_session=os.name != "nt",
-                            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if os.name == "nt" else 0)
+    source = TemporaryFile() if stdin is not None else None
+    try:
+        if source is not None:
+            source.write(stdin)
+            source.seek(0)
+        proc = subprocess.Popen(argv, cwd=cwd, env=env,
+                                stdin=source if source is not None else subprocess.DEVNULL,
+                                stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                start_new_session=os.name != "nt",
+                                creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if os.name == "nt" else 0)
+    finally:
+        if source is not None:
+            source.close()
 
     def drain(stream, buffer: bytearray) -> None:
         with stream:

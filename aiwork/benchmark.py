@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import tomllib
 from dataclasses import asdict
 from math import ceil
 from pathlib import Path
@@ -17,7 +18,7 @@ def benchmark(controller: Controller, manifest: Path, profiles: list[str],
               repeats: int, trusted: bool) -> dict:
     bounded("repeats", repeats, 1, 20)
     configured = {profile.id for profile in controller.config.profiles}
-    if len(set(profiles)) != len(profiles) or not set(profiles) <= configured:
+    if not profiles or len(set(profiles)) != len(profiles) or not set(profiles) <= configured:
         raise ValueError("benchmark requires distinct configured profiles")
     if Task.load(manifest).kind != "agent":
         raise ValueError("model comparison requires an agent fixture")
@@ -50,16 +51,58 @@ def benchmark(controller: Controller, manifest: Path, profiles: list[str],
             started = monotonic()
             result = controller.run_submitted(job)
             attempts = controller.state.attempts(job)
+            evidence = [json.loads(record["evidence"]) for record in attempts]
             report["samples"].append({
                 "repeat": repeat + 1, "profile": profile, "job": job,
                 "status": result["status"],
                 "elapsed": round(monotonic() - started, 3),
                 "attempts": len(attempts),
                 "first_pass": bool(attempts and attempts[0]["status"] == "verified"),
-                "agent": [json.loads(record["evidence"]).get("agent") for record in attempts],
+                "agent": [record.get("agent") for record in evidence],
+                "failure_categories": [failure(record) for record in evidence if record["status"] != "verified"],
             })
             report["comparisons"] = aggregate(report["samples"])
             write_json(directory / "report.json", report)
+    return report
+
+
+def failure(record: dict) -> str:
+    if record.get("classification"):
+        return record["classification"]
+    text = record.get("detail", "").lower()
+    for name, indicators in (
+        ("endpoint", ("remote model", "connection", "inventory", "ssh forwarding")),
+        ("context_or_harness", ("harness", "compaction")),
+        ("queue_or_timeout", ("timeout", "timed out", "deadline", "stop")),
+        ("scope", ("outside write_roots", "no edits", "invalid agent changes")),
+    ):
+        if any(indicator in text for indicator in indicators):
+            return name
+    return record["status"]
+
+
+def suite(controller: Controller, source: Path, profiles: list[str], repeats: int, trusted: bool) -> dict:
+    data = tomllib.loads(source.read_text(encoding="utf-8"))
+    fixtures = data.get("fixtures")
+    if not isinstance(fixtures, list) or not 1 <= len(fixtures) <= 12:
+        raise ValueError("suite requires 1–12 relative fixture paths")
+    directory = controller.config.state / "suites" / uuid4().hex
+    directory.mkdir(parents=True)
+    report = {"suite": str(source.resolve()), "results": [], "samples": [],
+              "report": str(directory / "report.json")}
+    write_json(directory / "report.json", report)
+    from .schema import relative
+    for fixture in fixtures:
+        if (controller.config.state / "STOP").exists():
+            break
+        path = (source.parent / relative(fixture)).resolve(strict=True)
+        if not path.is_relative_to(source.parent.resolve()):
+            raise ValueError("suite fixture escaped its directory")
+        result = benchmark(controller, path, profiles, repeats, trusted)
+        report["results"].append({"fixture": fixture, "report": result["report"]})
+        report["samples"].extend({**sample, "fixture": fixture} for sample in result["samples"])
+        report["comparisons"] = aggregate(report["samples"])
+        write_json(directory / "report.json", report)
     return report
 
 

@@ -135,6 +135,8 @@ class QwenCode:
                       "samplingParams": {"max_tokens": profile.output_tokens}, "maxRetries": 1}
         if extra := request_options(profile):
             generation["extra_body"] = extra
+        editable = (task.deliverables if task.mode == "restricted" else tuple(
+            expression for root in task.write_roots for expression in (root, root + "/**")))
         config = {
             "security": {"auth": {"selectedType": "openai"}},
             "model": {"name": profile.model, "maxSessionTurns": 12},
@@ -150,7 +152,7 @@ class QwenCode:
                              "record_artifact", "get_goal", "update_goal", "report_findings"],
             },
             "permissions": {
-                "allow": [f"Edit(./{name})" for name in task.deliverables],
+                "allow": [f"Edit(./{name})" for name in editable],
                 "deny": ["Bash", "WebFetch", "WebSearch", "Agent", "skill", "send_message"],
             },
             "skills": {"disabledLevels": ["project", "user", "extension", "bundled"]},
@@ -161,6 +163,8 @@ class QwenCode:
             tool = tool_command(tool_spec)
             config["mcpServers"] = {"checks": {"command": tool[0], "args": tool[1:]}}
             config["permissions"]["allow"].append("mcp__checks__check")
+            if task.mode == "engineering":
+                config["permissions"]["allow"].append("mcp__checks__diff")
         config_path = artifacts / "qwen-settings.json"
         config_path.write_text(json.dumps(config), encoding="utf-8")
         env.update({

@@ -1,0 +1,26 @@
+{
+  "steps": [
+    {
+      "id": "units",
+      "objective": "Add rounded_kib to units.py using ceiling division by 1024. Run the unit checks.",
+      "needs": [],
+      "write_roots": [
+        "units.py"
+      ],
+      "commands": [
+        0
+      ]
+    },
+    {
+      "id": "report",
+      "objective": "In report.py use 'from units import rounded_kib' and format the returned integer with ' KiB'. Do not duplicate the implementation. Run the report checks.",
+      "needs": [],
+      "write_roots": [
+        "report.py"
+      ],
+      "commands": [
+        1
+      ]
+    }
+  ]
+}

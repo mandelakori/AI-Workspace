@@ -1,0 +1,8 @@
+{"name":"development-1","stdin":"0 0 0\n"}
+{"name":"development-2","stdin":"35 2 1\n"}
+{"name":"development-3","stdin":"36 2 1\n"}
+{"name":"development-4","stdin":"60 4 1\n"}
+{"name":"development-5","stdin":"120 0 0\n"}
+{"name":"development-6","stdin":"137 4 0\n"}
+{"name":"development-7","stdin":"-1 2 1\n"}
+{"name":"development-8","stdin":"abc\n"}

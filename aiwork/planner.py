@@ -220,12 +220,16 @@ def assemble(controller: Controller, baseline: Path, destination: Path, steps: l
 
 def planned(controller: Controller, source: Path, workflow_id: str, workers: int, trusted: bool,
             planner_id: str = "", plan_only: bool = False, max_steps: int = 8,
-            cover_commands: bool = False, min_steps: int = 1) -> dict:
+            cover_commands: bool = False, min_steps: int = 1, *, reviewed: Path | None = None,
+            supersedes: str = "", pause_after: int = 0) -> dict:
     bounded("workers", workers, 1, 8)
     bounded("max_steps", max_steps, 1, 8)
     bounded("min_steps", min_steps, 1, max_steps)
+    bounded("pause_after", pause_after, 0, max_steps)
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,62}", workflow_id):
         raise ValueError("invalid plan ID")
+    if supersedes and (supersedes == workflow_id or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,62}", supersedes)):
+        raise ValueError("invalid previous plan ID")
     task = Task.load(source)
     if task.mode != "engineering" or not task.commands:
         raise ValueError("planning requires an engineering task with approved public commands")
@@ -256,6 +260,7 @@ def planned(controller: Controller, source: Path, workflow_id: str, workers: int
                 snapshot(task.verification_dir, private, ())
             status = {"id": workflow_id, "status": "staged", "manifest_sha256": fingerprint,
                       "trusted": trusted, "baseline": str(stage), "private": str(private or ""),
+                      "runner": controller.config.verification_image,
                       "jobs": {}, "artifacts": str(root)}
             write_json(journal, status)
         baseline = Path(status["baseline"])
@@ -263,8 +268,12 @@ def planned(controller: Controller, source: Path, workflow_id: str, workers: int
                          verification_dir=Path(status["private"]) if status["private"] else None)
         plan_file = root / "plan.json"
         if not plan_file.exists():
-            write_json(plan_file, propose(controller, frozen, root, planner_id, max_steps, cover_commands,
-                                          min_steps))
+            proposal = (json.loads(reviewed.read_bytes()) if reviewed else
+                        propose(controller, frozen, root, planner_id, max_steps, cover_commands, min_steps))
+            validate_plan(proposal, frozen, max_steps, cover_commands, min_steps)
+            write_json(plan_file, proposal)
+        elif reviewed and json.loads(reviewed.read_bytes()) != json.loads(plan_file.read_bytes()):
+            raise ValueError("reviewed graph differs from the saved plan; use a new ID")
         plan_hash = hashlib.sha256(plan_file.read_bytes()).hexdigest()
         if status.get("plan_sha256", plan_hash) != plan_hash:
             raise ValueError("persisted plan changed; use a new plan ID")
@@ -278,14 +287,42 @@ def planned(controller: Controller, source: Path, workflow_id: str, workers: int
             status["max_steps"] = max_steps
             status["min_steps"] = min_steps
             status["cover_commands"] = cover_commands
+            if supersedes:
+                inherit(controller, status, frozen, steps, supersedes)
             write_json(journal, status)
+        elif supersedes and status.get("supersedes") != supersedes:
+            raise ValueError("cannot change the predecessor of an existing plan")
         if plan_only or status["status"] == "verified":
             return status
-        return execute_plan(controller, frozen, steps, root, journal, status, workers)
+        return execute_plan(controller, frozen, steps, root, journal, status, workers, pause_after)
+
+
+def inherit(controller: Controller, status: dict, task: Task, steps: list[Step], old_id: str) -> None:
+    root = controller.config.state / "plans" / old_id
+    old = json.loads((root / "result.json").read_bytes())
+    plan_file = root / "plan.json"
+    if hashlib.sha256(plan_file.read_bytes()).hexdigest() != old.get("plan_sha256"):
+        raise ValueError("predecessor plan evidence is inconsistent")
+    if (old["manifest_sha256"] != status["manifest_sha256"] or old["trusted"] != status["trusted"]
+        or old.get("runner") != status["runner"]
+        or inventory(Path(old["baseline"])) != inventory(task.workspace)
+        or bool(old["private"]) != bool(task.verification_dir)
+        or (task.verification_dir and inventory(Path(old["private"])) != inventory(task.verification_dir))):
+        raise ValueError("cannot reuse steps across changed source, checks, runner or authority")
+    previous = {step.id: step for step in validate_plan(json.loads(plan_file.read_bytes()), task)}
+    reused = status["jobs"]
+    for step in steps:
+        if step != previous.get(step.id) or any(dep not in reused for dep in step.needs):
+            continue
+        job = old["jobs"].get(step.id)
+        if job and controller.state.jobs(job)[0]["status"] == "verified":
+            reused[step.id] = job
+    status["supersedes"] = old_id
+    status["reused_steps"] = sorted(reused)
 
 
 def execute_plan(controller: Controller, task: Task, steps: list[Step], root: Path,
-                 journal: Path, status: dict, workers: int) -> dict:
+                 journal: Path, status: dict, workers: int, pause_after: int = 0) -> dict:
     jobs = status["jobs"]
     namespace = f"aiwork-plan:{status['id']}"
     step_ids = {step.id for step in steps}
@@ -300,13 +337,25 @@ def execute_plan(controller: Controller, task: Task, steps: list[Step], root: Pa
     def verdict(job: str) -> str:
         return controller.state.jobs(job)[0]["status"]
 
+    dispatched = 0
     with ThreadPoolExecutor(max_workers=workers) as pool:
         while not (controller.config.state / "STOP").exists():
+            if pause_after and dispatched >= pause_after:
+                break
+            queued = sum(step.id in jobs and verdict(jobs[step.id]) == "queued" for step in steps)
+            room = pause_after - dispatched - queued if pause_after else len(steps)
             for step in steps:
+                if room <= 0:
+                    break
                 if step.id in jobs or any(dep not in jobs or verdict(jobs[dep]) != "verified" for dep in step.needs):
                     continue
                 stage = root / f"stage-{uuid4().hex}"
-                assemble(controller, task.workspace, stage, steps, jobs, histories[step.id])
+                try:
+                    assemble(controller, task.workspace, stage, steps, jobs, histories[step.id])
+                except ValueError as exc:
+                    status.update(status="partial", integration_error=str(exc), failed_step=step.id)
+                    write_json(journal, status)
+                    return status
                 checks = tuple(task.commands[index] for index in step.commands)
                 goal = f"{step.objective}\n\nApply the relevant project requirements to your assigned files:\n{task.objective}"
                 worker = replace(task, workspace=stage, objective=goal[:8000],
@@ -314,14 +363,20 @@ def execute_plan(controller: Controller, task: Task, steps: list[Step], root: Pa
                                  commands=checks, verification_dir=None, baseline_check=False,
                                  preferred_profile=status["assignments"][step.id])
                 jobs[step.id] = enqueue(worker, step.id)
+                room -= 1
                 write_json(journal, status)
             ready = [jobs[step.id] for step in steps if step.id in jobs and verdict(jobs[step.id]) == "queued"]
             if not ready:
                 break
+            if pause_after:
+                ready = ready[:pause_after - dispatched]
             list(pool.map(controller.run_submitted, ready))
+            dispatched += len(ready)
     status["steps"] = {name: verdict(jobs[name]) if name in jobs else "waiting" for name in step_ids}
-    status["status"] = "partial"
+    status["status"] = "paused" if pause_after and dispatched >= pause_after else "partial"
     write_json(journal, status)
+    if status["status"] == "paused":
+        return status
     if set(status["steps"].values()) != {"verified"}:
         return status
     if (controller.config.state / "STOP").exists():
@@ -329,7 +384,12 @@ def execute_plan(controller: Controller, task: Task, steps: list[Step], root: Pa
 
     if "integration" not in jobs:
         combined = root / f"combined-{uuid4().hex}"
-        assemble(controller, task.workspace, combined, steps, jobs, step_ids)
+        try:
+            assemble(controller, task.workspace, combined, steps, jobs, step_ids)
+        except ValueError as exc:
+            status.update(status="partial", integration_error=str(exc))
+            write_json(journal, status)
+            return status
         status["combined"] = str(combined)
         integration = replace(task, workspace=combined, kind="direct", mode="restricted",
                               write_roots=(), commands=(), setup=(), baseline_check=False,

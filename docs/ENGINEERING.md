@@ -58,3 +58,29 @@ docker build -t aiwork-engineering:phase2 -f config/engineering.Dockerfile confi
 ```
 
 The self workflow archives committed Git HEAD and records its hash. Its write policy permits an index change and a targeted regression test. Check the resulting patch with `patch <job-id> --check .` before deciding whether to integrate it.
+
+## Phase 3 operator workflow
+
+From the repository root, build the runner and review a copy of the Phase 3 config for your machine. The examples assume that Docker Desktop is running and the model services are already reachable. Update the Qwen Code path if you installed it elsewhere.
+
+```powershell
+docker build -t aiwork-engineering:phase3 -f config/phase3.Dockerfile config
+Copy-Item config/phase3.example.toml config/phase3.local.toml
+$ai = '.\.venv\Scripts\aiwork.exe'
+$cfg = 'config/phase3.local.toml'
+& $ai --config $cfg task run examples/phase3/readings.toml --profile a100-existing
+& $ai --config $cfg project focus . --query 'token accounting metrics' --limit 12
+& $ai --config $cfg project evidence examples/phase3/readings
+& $ai --config $cfg draft examples/phase3/storage 'Implement storage unit reporting' --profile laptop-ollama
+```
+
+Use the draft as input to operator review. Copy selected recipes and scopes into a manifest, then supply a validated graph with `plan --reviewed`. Use a new ID and `--supersedes <old-id>` to revise a dependency. `--pause-after 1` stops after a completed dispatch batch. Run the original plan ID again to continue. After an externally terminated worker, run `task resume <job-id> --interrupted` once its process has exited, then resume the plan.
+
+A sealed check uses `oracle = "cases.json"` with a case file inside the manifest's `verification_dir` and an `argv` that invokes the candidate interface. Compose public check recipes separately. Only the current stdin reaches the candidate. Expected answers and the host-side comparison stay in controller state. Publish example cases only. Place real hidden cases in a private operator directory outside the workspace.
+
+```powershell
+& $ai --config $cfg self --repo . --profile a100-existing --manifest examples/phase3/self-metrics.toml
+& $ai --config $cfg patch <job-id> --check .
+```
+
+The self command uses committed Git HEAD, adds a full regression gate and returns a patch for review. It accepts changes to new test files inside authorized scopes and protects the committed tests.

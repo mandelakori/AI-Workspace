@@ -1,0 +1,45 @@
+# Phase 3 jobs use a separate queue and the existing GPU locks.
+state = "../.aiwork/phase3"
+execution_state = "../.aiwork"
+verification_image = "aiwork-engineering:phase3"
+qwen = ".aiwork/qwen-dependency/node_modules/@qwen-code/qwen-code/cli-entry.js"
+
+[ssh]
+alias = "aisak"
+remote_port = 18080
+
+[[profiles]]
+id = "laptop-ollama"
+engine = "ollama"
+harness = "opencode"
+location = "local"
+endpoint = "http://127.0.0.1:11434/v1"
+model = "qwen3.5:9b"
+context = 4096
+output_tokens = 1152
+quantization = "Q4_K_M"
+reasoning_effort = "none"
+
+[[profiles]]
+id = "a100-existing"
+engine = "llamacpp"
+harness = "opencode"
+location = "a100"
+endpoint = "http://127.0.0.1:18882/v1"
+model = "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf"
+context = 131072
+output_tokens = 3072
+quantization = "Q6_K"
+reasoning_effort = "none"
+
+[[profiles]]
+id = "a100-qwen"
+engine = "llamacpp"
+harness = "qwen"
+location = "a100"
+endpoint = "http://127.0.0.1:18882/v1"
+model = "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf"
+context = 131072
+output_tokens = 3072
+quantization = "Q6_K"
+reasoning_effort = "none"

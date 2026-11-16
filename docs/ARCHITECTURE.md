@@ -16,4 +16,14 @@ The A100 scheduler runs in the controller. An A100-local harness daemon, a gener
 - Setup and commands execute in disposable copies. A setup recipe can install from staged, reviewed offline packages. Independent verification runs an ordered pipeline in a separate copy. Each command may select a workspace-relative subdirectory.
 - Engineering attempts retain Git patches, checksums, failure classifications and validated checkpoints. Retries can start from a previous in-policy candidate. Use `task resume --reset` to start from the original snapshot while retaining previous evidence.
 - The planner sends a bounded index and objective to an existing inference profile. The controller validates the JSON graph against operator commands and write scopes. It assigns preferred lanes, runs workers through the same queue and merges only independently verified deltas. It checks file hashes and collisions before running combined verification. An integration failure can trigger one repair job.
-- The self workflow archives a committed Git snapshot. Its agent can change the relevance index and a dedicated regression test. The controller keeps the candidate and patch for operator review.
+- The self workflow archives a committed Git snapshot. The operator can supply an engineering manifest with explicit writable paths. The runner independently verifies the resulting patch and preserves the original regression suite.
+
+## Phase 3
+
+The project index stores path hashes, cached metadata and attempt evidence in SQLite. Each refresh rehashes the bounded tree and reparses previously unseen content for that language and parser version. Python imports and common relative JavaScript and TypeScript imports produce module edges. The operator can use a ranked selection and direct dependencies as manifest `inputs`. Hash comparisons indicate whether linked attempt observations match the indexed files.
+
+The planner accepts a validated operator-reviewed graph. A revision can inherit verified jobs when the manifest, baseline, private assets, runner, trust and predecessor chain agree. A pause leaves the queue between steps. The worker holds a per-job lock for its lifetime, and a short dispatch lock serializes claims with interrupted-job recovery.
+
+The sealed oracle runs each candidate invocation with read-only source and network disabled in a fresh Docker container. The controller sends the current case input and compares exit status, stdout and stderr on the host. Audit reports contain case counts, verdicts and timing. The legacy verification-directory mount continues to support reviewed tests that need that interface.
+
+Phase 3 shares one A100 inference lane with the original controller. GPU samples capture device total and free memory around harness calls. Effective output rate uses harness wall time, which includes tool calls. Category reliability and verified latency continue to inform routing.

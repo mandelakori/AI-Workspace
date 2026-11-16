@@ -1,0 +1,5 @@
+[
+  {"stdin":"[\"alpha\",\" Z \",\"alpha\",\"\\t\",\"beta\",\"beta\"]","stdout":"[[\"alpha\",2],[\"beta\",2],[\"Z\",1]]\n"},
+  {"stdin":"[\"__proto__\",\"constructor\",\"constructor\",\"__proto__\"]","stdout":"[[\"__proto__\",2],[\"constructor\",2]]\n"},
+  {"stdin":"[\" z \",\"A\",\"a\",\"\"]","stdout":"[[\"A\",1],[\"a\",1],[\"z\",1]]\n"}
+]

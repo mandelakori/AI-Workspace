@@ -19,7 +19,6 @@ class Route:
 def routes(task: Task, profiles: tuple[Profile, ...],
            scores: dict[str, tuple[int, int, float]]) -> list[Route]:
     eligible = [p for p in profiles if p.tools and p.context >= task.min_context and
-                (task.mode != "engineering" or p.harness == "opencode") and
                 (task.location == "auto" or p.location == task.location) and
                 (not task.profile or p.id == task.profile)]
     preferred = "a100" if task.complexity >= 4 else "local"

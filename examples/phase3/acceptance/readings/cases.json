@@ -1,0 +1,5 @@
+[
+  {"stdin":"[-4,-3]\n","stdout":"{\"count\":2,\"mean\":-4,\"total\":-7}\n"},
+  {"stdin":"[100,-100,2]\n","stdout":"{\"count\":3,\"mean\":0,\"total\":2}\n"},
+  {"stdin":"[]\n","stdout":"{\"count\":0,\"mean\":0,\"total\":0}\n"}
+]

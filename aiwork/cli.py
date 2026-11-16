@@ -28,6 +28,21 @@ def parser() -> argparse.ArgumentParser:
     root.add_argument("--version", action="version", version=f"%(prog)s {release}")
     root.add_argument("--config", type=Path, help="operator TOML file, defaults to aiwork.local.toml")
     commands = root.add_subparsers(dest="command", required=True)
+    project = commands.add_parser("project", help="index repositories and retrieve scoped context or evidence")
+    project.add_argument("action", choices=["index", "focus", "evidence"])
+    project.add_argument("root", type=Path)
+    project.add_argument("--query", default="")
+    project.add_argument("--limit", type=int, default=20)
+    project.add_argument("--scope", action="append", default=[])
+    draft = commands.add_parser("draft", help="propose an execution policy for operator review")
+    draft.add_argument("root", type=Path)
+    draft.add_argument("objective")
+    draft.add_argument("--profile", required=True)
+    campaign = commands.add_parser("campaign", help="dispatch an authorized self-authored REA-Next fixture")
+    campaign.add_argument("fixture", type=Path)
+    campaign.add_argument("--profile", required=True)
+    campaign.add_argument("--remote-root", required=True)
+    campaign.add_argument("--image", required=True)
     commands.add_parser("doctor", help="show Python, GPU and executable inventory")
     commands.add_parser("models", help="discover configured endpoints and model inventory")
     commands.add_parser("harnesses", help="show harness executable inventory")
@@ -43,6 +58,7 @@ def parser() -> argparse.ArgumentParser:
     comparison.add_argument("--profile", action="append", required=True)
     comparison.add_argument("--repeats", type=int, default=1)
     comparison.add_argument("--trusted", action="store_true")
+    comparison.add_argument("--suite", action="store_true", help="run all manifests in a suite")
     workflow = commands.add_parser("workflow", help="run or resume a deterministic dependency graph")
     workflow.add_argument("manifest", type=Path)
     workflow.add_argument("--id", required=True)
@@ -58,6 +74,9 @@ def parser() -> argparse.ArgumentParser:
     planning.add_argument("--cover-commands", action="store_true",
                           help="require every approved command to be assigned to a step")
     planning.add_argument("--plan-only", action="store_true")
+    planning.add_argument("--reviewed", type=Path, help="operator-reviewed JSON graph")
+    planning.add_argument("--supersedes", default="", help="reuse unchanged verified steps from a prior plan")
+    planning.add_argument("--pause-after", type=int, default=0, help="checkpoint after this many steps")
     planning.add_argument("--trusted", action="store_true")
     promotion = commands.add_parser("patch", help="inspect the verified patch and optionally check a Git checkout")
     promotion.add_argument("id")
@@ -67,6 +86,7 @@ def parser() -> argparse.ArgumentParser:
     self_task.add_argument("--repo", type=Path, default=Path("."))
     self_task.add_argument("--profile", default="")
     self_task.add_argument("--objective", default="")
+    self_task.add_argument("--manifest", type=Path, help="reviewed engineering scope and checks for the checkout")
     self_task.add_argument("--trusted", action="store_true")
     task = commands.add_parser("task", help="submit, inspect, or resume a job")
     actions = task.add_subparsers(dest="action", required=True)
@@ -128,7 +148,27 @@ def main(argv: list[str] | None = None) -> int:
             raise ValueError(f"configuration file not found: {args.config}")
         cfg = Config.load(args.config or Path("aiwork.local.toml"))
         controller = Controller(cfg)
-        if args.command == "doctor":
+        if args.command == "project":
+            from .project import ProjectStore
+            from .schema import bounded, relative
+            bounded("limit", args.limit, 1, 128)
+            store = ProjectStore(cfg.state)
+            updated = store.refresh(args.root)
+            if args.action == "focus":
+                updated["focus"] = store.focus(args.root, args.query, args.limit,
+                                               tuple(relative(path) for path in args.scope))
+            elif args.action == "evidence":
+                updated["evidence"] = store.recall(args.root)
+            print_json(updated)
+        elif args.command == "draft":
+            from .draft import draft
+            print_json(draft(controller, args.root, args.objective, args.profile))
+        elif args.command == "campaign":
+            from .campaign import campaign
+            result = campaign(controller, args.fixture, args.profile, args.remote_root, args.image)
+            print_json(result)
+            return 0 if result["status"] == "verified" else 1
+        elif args.command == "doctor":
             from .verify import runner_status
             print_json({"python": sys.version, "state": cfg.state, "gpus": gpu(cfg.state),
                         "tools": {name: executable(name) for name in ("ssh", "docker", "git")},
@@ -145,8 +185,9 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "models":
             print_json(discover(cfg))
         elif args.command == "benchmark":
-            from .benchmark import benchmark
-            result = benchmark(controller, args.manifest, args.profile, args.repeats, args.trusted)
+            from .benchmark import benchmark, suite
+            evaluate = suite if args.suite else benchmark
+            result = evaluate(controller, args.manifest, args.profile, args.repeats, args.trusted)
             print_json(result)
             return 0 if result["samples"] and all(
                 row["status"] == "verified" for row in result["samples"]) else 1
@@ -158,9 +199,10 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "plan":
             from .planner import planned
             result = planned(controller, args.manifest, args.id, args.workers, args.trusted,
-                             args.planner, args.plan_only, args.max_steps, args.cover_commands, args.min_steps)
+                             args.planner, args.plan_only, args.max_steps, args.cover_commands, args.min_steps,
+                             reviewed=args.reviewed, supersedes=args.supersedes, pause_after=args.pause_after)
             print_json(result)
-            return 0 if result["status"] == "verified" or args.plan_only else 1
+            return 0 if result["status"] in {"verified", "paused"} or args.plan_only else 1
         elif args.command == "patch":
             import re
             from .planner import terminal
@@ -190,7 +232,7 @@ def main(argv: list[str] | None = None) -> int:
             return 0 if result.get("applies", True) else 1
         elif args.command == "self":
             from .selfdev import propose
-            result = propose(controller, args.repo, args.profile, args.trusted, args.objective)
+            result = propose(controller, args.repo, args.profile, args.trusted, args.objective, args.manifest)
             print_json(result)
             return 0 if result["status"] == "verified" else 1
         elif args.command == "a100":

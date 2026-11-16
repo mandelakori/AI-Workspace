@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import json
 import shutil
-from contextlib import nullcontext
+import sqlite3
+import subprocess
+from contextlib import ExitStack, nullcontext
 from dataclasses import asdict, replace
 from pathlib import Path
 from time import monotonic, sleep, time
@@ -45,6 +47,8 @@ class Controller:
                 raise ValueError("profile override requires an agent task and a configured profile")
             task = replace(task, profile=profile_id, location="auto")
         task.validate()
+        if any(check.oracle for check in task.checks) and not self.config.verification_image:
+            raise ValueError("sealed verification requires a configured Docker image")
         if not self.config.verification_image and not trusted:
             raise ValueError("configure a verification image or use --trusted for a reviewed task")
         if self.config.state.is_relative_to(task.workspace) and not any(
@@ -72,7 +76,8 @@ class Controller:
                 for key in ("mode", "write_roots", "commands", "setup", "baseline_check",
                             "min_context", "preferred_profile"):
                     manifest.pop(key)
-                manifest["checks"] = [{key: value for key, value in check.items() if key != "cwd" or value}
+                manifest["checks"] = [{key: value for key, value in check.items()
+                                       if key not in {"cwd", "oracle"} or value}
                                       for check in manifest["checks"]]
             write_json(root / "intake.json", {
                 "manifest": manifest, "inventory": baseline,
@@ -90,12 +95,14 @@ class Controller:
     def work(self, job: str | None = None) -> dict | None:
         if (self.config.state / "STOP").exists():
             raise ValueError("controller paused by emergency stop")
-        row = self.state.claim(job)
-        if row is None:
-            return None
-        job = row["id"]
-        root = Path(row["spec"]).parent
-        with file_lock(root / "worker.lock"):
+        with ExitStack() as lifetime:
+            with file_lock(self.config.state / "dispatch.lock", timeout=20):
+                row = self.state.claim(job)
+                if row is None:
+                    return None
+                job = row["id"]
+                root = Path(row["spec"]).parent
+                lifetime.enter_context(file_lock(root / "worker.lock"))
             try:
                 return self._work(row, root)
             except KeyboardInterrupt:
@@ -109,7 +116,7 @@ class Controller:
         if not rows:
             raise ValueError("job was not found")
         root = Path(rows[0]["spec"]).parent
-        with file_lock(root / "worker.lock"):
+        with file_lock(self.config.state / "dispatch.lock", timeout=20), file_lock(root / "worker.lock"):
             status = self.state.jobs(job)[0]["status"]
             if reset and (status in {"blocked", "partial", "failed"} or status == "running" and interrupted):
                 attempts = [p.parent.name for p in root.glob("attempt-*/checkpoint.json")]
@@ -185,6 +192,19 @@ class Controller:
                 evidence["agent"] = json.loads(metrics.read_text(encoding="utf-8"))
             write_json(attempt / "evidence.json", evidence)
             self.state.record(row["id"], number + offset + 1, profile.id if profile else "direct", evidence)
+            from .project import ProjectStore
+            output = attempt / "output-inventory.json"
+            hashes = (json.loads(output.read_bytes()) if evidence["status"] == "verified" and output.is_file()
+                      else data["inventory"])
+            expected = {name: meta["sha256"] for name, meta in hashes.items()}
+            if evidence["status"] == "verified":
+                expected.update({name: None for name in data["inventory"].keys() - hashes.keys()})
+            try:
+                ProjectStore(self.config.state).record(
+                    f"{row['id']}:{number + offset + 1}", Path(data["manifest"]["workspace"]),
+                    evidence["status"], attempt / "evidence.json", expected)
+            except (OSError, sqlite3.Error, RuntimeError, ValueError) as exc:
+                write_json(attempt / "knowledge-error.json", {"detail": str(exc)})
             status, previous = evidence["status"], evidence["detail"]
             if status == "verified":
                 break
@@ -251,22 +271,30 @@ class Controller:
             if not outcome["passed"]:
                 return {"status": "failed", "detail": f"verification setup failed: {classify(outcome)}",
                         "changed": changed, **patch}
+        sealed = any(check.oracle for check in task.checks)
         for index, check in enumerate(task.checks):
             remaining = deadline - monotonic()
             if remaining <= 0:
                 return {"status": "partial", "detail": "verification deadline exhausted", "changed": changed,
                         **patch}
-            outcome = invoke(check, verification, attempt / "verify-home",
-                             self.config.verification_image, timeout=remaining, private=task.verification_dir,
-                             stop=self.config.state / "STOP")
-            category = classify(outcome)
+            if check.oracle:
+                from .oracle import evaluate
+                outcome = evaluate(check, verification, attempt / "verify-home", task.verification_dir,
+                                   self.config.verification_image, remaining, self.config.state / "STOP")
+            else:
+                outcome = invoke(check, verification, attempt / "verify-home",
+                                 self.config.verification_image, timeout=remaining,
+                                 private=None if sealed else task.verification_dir,
+                                 stop=self.config.state / "STOP")
+            category = outcome.get("classification") or classify(outcome)
             write_json(attempt / f"check-{index:02}.json", {**outcome, "classification": category})
             checks.append(outcome["passed"])
             if not outcome["passed"]:
                 # Private checks provide a verdict, not hidden inputs or failure transcripts, to retries.
                 detail = "private verification failed" if task.verification_dir else (
                     f"check {index} failed ({category})\n{outcome['stdout'][-900:]}\n{outcome['stderr'][-900:]}")
-                return {"status": "failed", "detail": detail, "changed": changed, "checks": checks, **patch}
+                return {"status": "failed", "detail": detail, "classification": category,
+                        "changed": changed, "checks": checks, **patch}
             if not profile and index == len(task.checks) - 1:
                 final = inventory(verification)
                 missing = [name for name in task.deliverables if name not in final]
@@ -349,13 +377,42 @@ class Controller:
                 remaining = deadline - monotonic()
                 if remaining <= 0:
                     raise TimeoutError("deadline exhausted during model readiness")
-                result = harness.execute(profile, task, work, attempt, prompt, remaining, spec,
+                readings = self.gpu_sample(profile)
+                result = harness.execute(profile, task, work, attempt, prompt,
+                                         max(0, deadline - monotonic()), spec,
                                          self.config.state / "STOP")
                 (attempt / "agent.jsonl").write_text(result.stdout, encoding="utf-8")
                 (attempt / "agent.stderr.txt").write_text(result.stderr, encoding="utf-8")
-                write_json(attempt / "agent-metrics.json", summarize_trace(result.stdout, attempt))
                 write_json(attempt / "agent-process.json", {
                     "code": result.code, "elapsed": result.elapsed,
                     "timed_out": result.timed_out, "truncated": result.truncated})
+                metrics = summarize_trace(result.stdout, attempt)
+                metrics["gpu_samples"] = {"before": readings, "after": self.gpu_sample(profile)}
+                peak = metrics.get("peak_reported_input_tokens")
+                metrics["reported_context_fraction"] = round(peak / profile.context, 4) if peak else None
+                tokens = metrics.get("tokens")
+                metrics["effective_output_tokens_per_second"] = (
+                    round(tokens["output"] / result.elapsed, 3) if tokens and result.elapsed else None)
+                metrics["inference_lanes"] = (self.config.a100_slots if profile.location == "a100"
+                                               else self.config.local_slots)
+                write_json(attempt / "agent-metrics.json", metrics)
                 if result.code or result.timed_out or result.truncated:
                     raise RuntimeError("harness failed or exceeded limits; see attempt logs")
+
+    def gpu_sample(self, profile: Profile) -> list[dict]:
+        try:
+            if profile.location == "local":
+                return gpu(self.config.state)
+            if profile.managed or not self.config.ssh.get("alias"):
+                return []
+            from .remote import ssh_probe
+            answer = ssh_probe(self.config.ssh["alias"])
+            records = []
+            for row in answer.get("inventory", "").splitlines():
+                fields = [field.strip() for field in row.split(",")]
+                if len(fields) == 3 and all(part.isdecimal() for part in fields[1:]):
+                    name, total, free = fields
+                    records.append({"name": name, "total_mib": int(total), "free_mib": int(free)})
+            return records
+        except (OSError, RuntimeError, ValueError, subprocess.TimeoutExpired):
+            return []

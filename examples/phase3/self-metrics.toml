@@ -1,0 +1,18 @@
+objective = "Harden aiwork/metrics.py against valid JSON trace messages where message.content is null, a string, or an object instead of an array. Ignore malformed content while counting valid later tool calls. Add a focused unittest in tests/test_metrics_extension.py. Run the approved regression command."
+workspace = "../.."
+kind = "agent"
+mode = "engineering"
+category = "self-trace-resilience"
+write_roots = ["aiwork/metrics.py", "tests/test_metrics_extension.py"]
+deliverables = ["tests/test_metrics_extension.py"]
+min_context = 8192
+timeout = 200
+attempts = 2
+
+[[commands]]
+argv = ["{python}", "-m", "unittest", "discover", "-s", "tests", "-v"]
+timeout = 60
+
+[[checks]]
+argv = ["{python}", "-m", "unittest", "discover", "-s", "tests", "-p", "test_metrics_extension.py", "-v"]
+timeout = 25

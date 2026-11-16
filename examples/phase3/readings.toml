@@ -1,0 +1,22 @@
+objective = """Add a compact sensor reading API. In reading.py validate each reading as an integer from -100 to 100 inclusive, rejecting booleans. In summary.py return {'count': n, 'total': sum, 'mean': sum // n}, using all zeros for empty inputs. In cli.py read a JSON array from stdin, use the summary function, and print one JSON line with alphabetically sorted keys, without spaces between JSON separators. Public command 0 exercises basic behavior."""
+workspace = "readings"
+kind = "agent"
+mode = "engineering"
+category = "unseen-python-api"
+write_roots = ["reading.py", "summary.py", "cli.py"]
+attempts = 1
+timeout = 105
+verification_dir = "acceptance/readings"
+
+[[commands]]
+argv = ["{python}", "-m", "unittest", "test_reading"]
+timeout = 15
+
+[[checks]]
+argv = ["{python}", "-m", "unittest", "test_reading"]
+timeout = 15
+
+[[checks]]
+argv = ["{python}", "cli.py"]
+oracle = "cases.json"
+timeout = 35

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import shutil
+from dataclasses import replace
 from pathlib import Path
 from uuid import uuid4
 from zipfile import ZipFile
@@ -45,7 +46,7 @@ def checkout(repo: Path, root: Path) -> tuple[Path, str]:
 
 
 def propose(controller: Controller, repo: Path, profile: str, trusted: bool,
-            objective: str = "") -> dict:
+            objective: str = "", manifest: Path | None = None) -> dict:
     if not controller.config.verification_image and not trusted:
         raise ValueError("self-development requires Docker or explicitly trusted regression checks")
     root = controller.config.state / "self" / uuid4().hex
@@ -53,18 +54,25 @@ def propose(controller: Controller, repo: Path, profile: str, trusted: bool,
     workspace, commit = checkout(repo.resolve(strict=True), root)
     if not (workspace / "aiwork/index.py").is_file() or not (workspace / "tests").is_dir():
         raise ValueError("self-development requires an AI Workspace checkout with regression tests")
-    base = ("Inspect aiwork/index.py. Its Python import summary omits plain import statements. "
-            "Include module names from both import and from-import statements and preserve the "
-            "existing relevance ranking and output limits. Add a focused unittest in tests/test_index.py "
-            "covering an aliased plain import and an existing from-import. Run command 0. "
-            "Make only this improvement and preserve CLI and permission behavior.")
+    base = ("Inspect aiwork/index.py and choose a small improvement to repository relevance. "
+            "Write a regression test in tests/test_index_extension.py and run the suite.")
     full_suite = Check(("{python}", "-m", "unittest", "discover", "-s", "tests", "-v"), 90)
-    task = Task(objective=objective or base, workspace=workspace, kind="agent",
-                category="aiwork-self-index", inputs=(), deliverables=("tests/test_index.py",),
-                checks=(full_suite,), profile=profile, attempts=2, timeout=360,
-                mode="engineering", write_roots=("aiwork/index.py", "tests/test_index.py"),
-                commands=(full_suite,), min_context=8192)
-    job = controller.submit_task(task, trusted)
+    if manifest:
+        requested = Task.load(manifest)
+        if requested.mode != "engineering" or requested.workspace.resolve() != repo.resolve():
+            raise ValueError("self manifest must authorize engineering against the named repository")
+        for name in requested.write_roots:
+            if (name == "tests" or name.startswith("tests/") and (workspace / name).exists()):
+                raise ValueError("self proposals may add tests while preserving the committed regression suite")
+        task = replace(requested, workspace=workspace, inputs=(), checks=(*requested.checks, full_suite),
+                       baseline_check=False)
+    else:
+        task = Task(objective=objective or base, workspace=workspace, kind="agent",
+                    category="aiwork-self-index", inputs=(), deliverables=("tests/test_index_extension.py",),
+                    checks=(full_suite,), profile=profile, attempts=2, timeout=360,
+                    mode="engineering", write_roots=("aiwork/index.py", "tests/test_index_extension.py"),
+                    commands=(full_suite,), min_context=8192)
+    job = controller.submit_task(task, trusted, profile_id=profile, source=manifest)
     write_json(root / "checkout.json", {"commit": commit, "workspace": str(workspace), "job": job})
     verified = controller.run_submitted(job)
     return {**verified, "base_commit": commit, "checkout_evidence": str(root / "checkout.json"),

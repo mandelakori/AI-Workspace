@@ -1,0 +1,22 @@
+objective = "Implement summarize in src/report.js. Given an array of strings, trim each string, discard empty strings, and count exact case-sensitive labels. Return an array of [label,count] pairs sorted by decreasing count, then codepoint ascending label. Keep CommonJS exports and the existing JSON CLI. Run public command 0."
+workspace = "node-report"
+kind = "agent"
+mode = "engineering"
+category = "unseen-node-api"
+write_roots = ["src/report.js"]
+attempts = 1
+timeout = 95
+verification_dir = "acceptance/node-report"
+
+[[commands]]
+argv = ["node", "--test"]
+timeout = 15
+
+[[checks]]
+argv = ["node", "--test"]
+timeout = 15
+
+[[checks]]
+argv = ["node", "src/cli.js"]
+oracle = "cases.json"
+timeout = 35

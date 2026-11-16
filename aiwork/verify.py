@@ -43,7 +43,9 @@ def pipeline(setup: tuple[Check, ...], check: Check, workspace: Path, home: Path
 
 def invoke(check: Check, workspace: Path, home: Path, image: str = "", *,
            timeout: float | None = None, private: Path | None = None,
-           stop: Path | None = None) -> dict:
+           stop: Path | None = None, stdin: bytes | None = None, sealed: bool = False) -> dict:
+    if check.oracle or sealed and (not image or private):
+        raise ValueError("sealed candidate runs require Docker and no private mounts")
     env = environment(home)
     working = contained(workspace, check.cwd) if check.cwd else workspace
     if not working.is_dir():
@@ -62,9 +64,11 @@ def invoke(check: Check, workspace: Path, home: Path, image: str = "", *,
         argv = [docker, "run", "--name", container, "--rm", "--pull=never", "--network=none",
                 "--memory=2g", "--cpus=2", "--pids-limit=96", "--cap-drop=ALL",
                 "--security-opt=no-new-privileges", "--read-only", "--tmpfs=/tmp:size=128m",
-                "--mount", f"type=bind,src={workspace},dst=/work",
+                "--mount", f"type=bind,src={workspace},dst=/work" + (",readonly" if sealed else ""),
                 "--workdir", "/work" + ("/" + check.cwd if check.cwd else ""),
                 "--env", "PYTHONDONTWRITEBYTECODE=1"]
+        if stdin is not None:
+            argv.append("-i")
         if private:
             argv += ["--mount", f"type=bind,src={private},dst=/verification,readonly"]
         # Docker Desktop configuration is needed by the trusted Docker client.
@@ -84,7 +88,7 @@ def invoke(check: Check, workspace: Path, home: Path, image: str = "", *,
             argv = [sys.executable, "-B", *argv[1:]]
     try:
         outcome = run(argv, cwd, min(check.timeout, timeout) if timeout is not None else check.timeout,
-                      env, stop)
+                      env, stop, stdin=stdin)
     except KeyboardInterrupt:
         if image:
             run([docker, "rm", "-f", container], workspace, 8, env)

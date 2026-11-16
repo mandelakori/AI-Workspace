@@ -22,6 +22,8 @@ Add `-InstallOpenCode` to bootstrap if OpenCode 2.0.27 is missing. Bootstrap cre
 
 ## Submit work and retrieve results
 
+The [Phase 3 engineering guide](docs/ENGINEERING.md#phase-3-operator-workflow) covers the Docker runner, sealed acceptance tests, repeated comparisons, repository indexing, plan revision and self-development patches.
+
 ```powershell
 & $ai task inspect examples/coding.toml
 & $ai task submit examples/coding.toml --trusted

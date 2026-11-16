@@ -1,0 +1,8 @@
+{"name":"audit-1","stdin":"1 0 1\n"}
+{"name":"audit-2","stdin":"11 0 1\n"}
+{"name":"audit-3","stdin":"44 4 0\n"}
+{"name":"audit-4","stdin":"60 1 0\n"}
+{"name":"audit-5","stdin":"119 4 1\n"}
+{"name":"audit-6","stdin":"200 0 1\n"}
+{"name":"audit-7","stdin":"44 8 0\n"}
+{"name":"audit-8","stdin":"44 4 2\n"}

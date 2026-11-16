@@ -27,11 +27,12 @@ class Check:
     timeout: int = 30
     stdout: str | None = None
     cwd: str = ""
+    oracle: str = ""
 
     @classmethod
     def read(cls, data: dict) -> Check:
-        if not isinstance(data, dict) or set(data) - {"argv", "timeout", "stdout", "cwd"}:
-            raise ValueError("checks must contain argv and optional timeout, stdout and cwd")
+        if not isinstance(data, dict) or set(data) - {"argv", "timeout", "stdout", "cwd", "oracle"}:
+            raise ValueError("checks must contain argv and supported runner options")
         argv = data["argv"]
         if not isinstance(argv, list) or not argv or any(
             not isinstance(arg, str) or not arg or "\0" in arg for arg in argv
@@ -45,7 +46,13 @@ class Check:
         cwd = data.get("cwd", "")
         if not isinstance(cwd, str):
             raise ValueError("cwd must be a workspace-relative directory")
-        return cls(tuple(argv), timeout, expected, relative(cwd) if cwd else "")
+        oracle = data.get("oracle", "")
+        if not isinstance(oracle, str):
+            raise ValueError("oracle must be a private-directory-relative file")
+        if oracle and (expected is not None or any("{verification}" in arg for arg in argv)):
+            raise ValueError("sealed oracle commands cannot reference verifier files or inline answers")
+        return cls(tuple(argv), timeout, expected, relative(cwd) if cwd else "",
+                   relative(oracle) if oracle else "")
 
 
 @dataclass(frozen=True)
@@ -145,6 +152,14 @@ class Task:
             raise ValueError("invalid engineering command or setup budget")
         if task.baseline_check and not task.commands:
             raise ValueError("baseline_check requires an approved commands entry at index zero")
+        if any(check.oracle for check in (*task.commands, *task.setup)):
+            raise ValueError("sealed oracles are only allowed in independent checks")
+        if any(check.oracle for check in task.checks) and not task.verification_dir:
+            raise ValueError("sealed oracles require verification_dir")
+        if any(check.oracle for check in task.checks) and any(
+            "{verification}" in arg for check in task.checks for arg in check.argv
+        ):
+            raise ValueError("sealed oracles cannot share a task with mounted private checks")
 
 
 def within(path: str, roots: tuple[str, ...]) -> bool:

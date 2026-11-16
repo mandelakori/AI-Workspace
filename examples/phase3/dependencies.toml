@@ -1,0 +1,20 @@
+objective = "Add an independently tested storage label. In units.py implement rounded_kib(byte_count) as an integer rounded up in 1024-byte units. In report.py use units.rounded_kib to format '<rounded value> KiB'. Do not duplicate the units formula in the report."
+workspace = "storage"
+kind = "agent"
+mode = "engineering"
+category = "dependency-revision"
+write_roots = ["units.py", "report.py"]
+attempts = 1
+timeout = 125
+
+[[commands]]
+argv = ["{python}", "-m", "unittest", "test_units"]
+timeout = 15
+
+[[commands]]
+argv = ["{python}", "-m", "unittest", "test_report"]
+timeout = 15
+
+[[checks]]
+argv = ["{python}", "-m", "unittest", "discover", "-v"]
+timeout = 20
