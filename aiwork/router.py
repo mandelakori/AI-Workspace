@@ -2,11 +2,11 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from threading import BoundedSemaphore
-from contextlib import contextmanager
-from time import monotonic
+from contextlib import ExitStack, contextmanager
+from time import monotonic, sleep
 
 from .process import environment, executable, run
+from .lock import file_lock
 from .schema import Profile, Task
 
 
@@ -57,23 +57,23 @@ def gpu(root: Path) -> list[dict]:
 
 
 class Plane:
-    def __init__(self, location: str, slots: int):
+    def __init__(self, location: str, slots: int, state: Path):
         self.location = location
-        self.capacity = BoundedSemaphore(slots)
-        self.model_slot = BoundedSemaphore(1)
+        self.slots = slots
+        self.state = state
 
     @contextmanager
     def reserve(self, profile: Profile, timeout: float):
-        started = monotonic()
-        if not self.capacity.acquire(timeout=timeout):
-            raise TimeoutError(f"{self.location} worker queue timed out")
-        exclusive = profile.memory_mib > 0 or profile.engine == "ollama"
-        reserved = not exclusive or self.model_slot.acquire(timeout=max(0, timeout - (monotonic() - started)))
-        try:
-            if not reserved:
-                raise TimeoutError(f"{self.location} model queue timed out")
-            yield
-        finally:
-            if reserved and exclusive:
-                self.model_slot.release()
-            self.capacity.release()
+        deadline = monotonic() + timeout
+        exclusive = profile.memory_mib > 0 or profile.engine == "ollama" or self.location == "a100"
+        with ExitStack() as locks:
+            while monotonic() < deadline and not (self.state / "STOP").exists():
+                for slot in range(1 if exclusive else self.slots):
+                    try:
+                        locks.enter_context(file_lock(self.state / f"{self.location}-{slot}.lock"))
+                    except TimeoutError:
+                        continue
+                    yield
+                    return
+                sleep(0.2)
+        raise TimeoutError(f"{self.location} worker queue timed out or was stopped")

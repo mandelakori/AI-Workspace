@@ -1,0 +1,29 @@
+state = ".aiwork"
+local_slots = 1
+
+[ssh]
+remote_port = 18080
+
+[lambda_cloud]
+key_env = "LAMBDA_API_KEY"
+name = "aiwork-dedicated-a100"
+instance_type = "REPLACE_FROM_A100_TYPES"
+region = "REPLACE_WITH_REGION"
+ssh_key_name = "REPLACE_WITH_REGISTERED_PUBLIC_KEY_NAME"
+ssh_host_alias = "aiwork-a100-managed"
+ssh_config_alias = "aiwork-lambda-identity"
+file_systems = ["REPLACE_WITH_PERSISTENT_FILESYSTEM"]
+# image_id = "REPLACE_WITH_COMPATIBLE_IMAGE_ID"
+# user_data_file = "cloud-init.example.yaml"
+allow_launch = false
+allow_terminate = false
+
+[[profiles]]
+id = "lambda-a100"
+location = "a100"
+managed = true
+engine = "llamacpp"
+model = "managed-coder"
+endpoint = "http://127.0.0.1:18882/v1"
+context = 8192
+output_tokens = 2048

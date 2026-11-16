@@ -14,3 +14,6 @@ aiwork = "aiwork.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["aiwork*"]
+
+[tool.setuptools.package-data]
+aiwork = ["ghidra/*.java"]

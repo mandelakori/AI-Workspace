@@ -7,6 +7,7 @@ from pathlib import Path
 
 from .schema import Check
 from .verify import invoke
+from .workspace import snapshot
 
 
 def serve(spec_path: Path) -> None:
@@ -47,7 +48,9 @@ def serve(spec_path: Path) -> None:
             else:
                 calls += 1
                 try:
-                    value = invoke(checks[index], workspace, spec_path.parent / "check-home",
+                    check_root = spec_path.parent / f"public-check-{calls:02}"
+                    snapshot(workspace, check_root, ())
+                    value = invoke(checks[index], check_root, spec_path.parent / "check-home",
                                    config["image"])
                     value["stdout"] = value["stdout"][:4000]
                     value["stderr"] = value["stderr"][:4000]

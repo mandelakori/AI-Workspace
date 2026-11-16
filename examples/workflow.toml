@@ -1,0 +1,6 @@
+[steps.environment]
+manifest = "direct.toml"
+
+[steps.conversion]
+manifest = "coding.toml"
+needs = ["environment"]

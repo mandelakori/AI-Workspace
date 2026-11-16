@@ -12,7 +12,8 @@ from time import monotonic
 
 OUTPUT_LIMIT = 1024 * 1024
 SAFE_ENV = {"PATH", "PATHEXT", "SYSTEMROOT", "WINDIR", "COMSPEC", "PROGRAMFILES",
-            "PROGRAMFILES(X86)", "SYSTEMDRIVE", "NUMBER_OF_PROCESSORS", "PROCESSOR_ARCHITECTURE"}
+            "PROGRAMFILES(X86)", "SYSTEMDRIVE", "NUMBER_OF_PROCESSORS", "PROCESSOR_ARCHITECTURE",
+            "INCLUDE", "LIB", "LIBPATH", "JAVA_HOME"}
 
 
 @dataclass(frozen=True)
@@ -65,7 +66,7 @@ def kill_tree(proc: subprocess.Popen) -> None:
             pass
 
 
-def run(argv: list[str], cwd: Path, timeout: float, env: dict[str, str]) -> Result:
+def run(argv: list[str] | str, cwd: Path, timeout: float, env: dict[str, str]) -> Result:
     started = monotonic()
     proc = subprocess.Popen(argv, cwd=cwd, env=env, stdin=subprocess.DEVNULL,
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE,
@@ -89,6 +90,10 @@ def run(argv: list[str], cwd: Path, timeout: float, env: dict[str, str]) -> Resu
             thread.join(timeout=max(0, started + timeout - monotonic()))
     except subprocess.TimeoutExpired:
         timed_out = True
+    except KeyboardInterrupt:
+        kill_tree(proc)
+        proc.wait(timeout=5)
+        raise
     finally:
         if proc.poll() is None or any(thread.is_alive() for thread in threads):
             timed_out = True

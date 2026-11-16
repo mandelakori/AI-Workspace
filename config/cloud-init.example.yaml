@@ -1,0 +1,31 @@
+#cloud-config
+# Replace the persistent filesystem contents with your pinned, GPU-compatible
+# llama-server bundle and your authorized GGUF before enabling this file.
+write_files:
+  - path: /etc/systemd/system/aiwork-inference.service
+    permissions: '0644'
+    content: |
+      [Unit]
+      Description=AI Workspace loopback inference
+      After=network-online.target remote-fs.target
+      Wants=network-online.target
+      RequiresMountsFor=/lambda/nfs/aiwork-models
+
+      [Service]
+      User=ubuntu
+      Group=ubuntu
+      WorkingDirectory=/lambda/nfs/aiwork-models/runtime
+      Environment=LD_LIBRARY_PATH=/lambda/nfs/aiwork-models/runtime
+      ExecStart=/lambda/nfs/aiwork-models/runtime/llama-server --host 127.0.0.1 --port 18080 --model /lambda/nfs/aiwork-models/models/managed-coder.gguf --alias managed-coder --ctx-size 8192 --n-gpu-layers 99 --jinja
+      Restart=on-failure
+      RestartSec=10
+      NoNewPrivileges=true
+      PrivateTmp=true
+      ProtectSystem=strict
+      ProtectHome=true
+
+      [Install]
+      WantedBy=multi-user.target
+runcmd:
+  - [systemctl, daemon-reload]
+  - [systemctl, enable, --now, aiwork-inference.service]

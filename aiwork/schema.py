@@ -3,14 +3,14 @@ from __future__ import annotations
 import re
 import tomllib
 from dataclasses import dataclass, field
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from urllib.parse import urlsplit
 
 
 def relative(value: str) -> str:
     parts = value.split("/")
     if any(not p or p in {".", ".."} or p.endswith((" ", ".")) or
-           re.search(r'[\\:*?"<>|\x00-\x1f]', p) or Path(p).is_reserved()
+           re.search(r'[\\:*?"<>|\x00-\x1f]', p) or PureWindowsPath(p).is_reserved()
            for p in parts):
         raise ValueError(f"unsafe relative path: {value!r}")
     return value
@@ -120,6 +120,7 @@ class Profile:
     source: str = ""
     tools: bool = True
     api_key_env: str = ""
+    managed: bool = False
 
     def validate(self) -> None:
         if not re.fullmatch(r"[a-zA-Z0-9_.-]{1,50}", self.id) or not self.model or len(self.model) > 512:
@@ -128,6 +129,8 @@ class Profile:
             raise ValueError(f"unsupported engine {self.engine}")
         if self.location not in {"local", "a100"} or self.harness not in {"opencode", "qwen"}:
             raise ValueError("unsupported location or harness")
+        if type(self.managed) is not bool or self.managed and self.location != "a100":
+            raise ValueError("managed profiles require the A100 plane")
         url = urlsplit(self.endpoint)
         if (url.scheme not in {"http", "https"} or url.hostname not in {"127.0.0.1", "::1", "localhost"} or
             url.username or url.password or url.query or url.fragment or not url.path.rstrip("/").endswith("/v1")):
@@ -160,6 +163,9 @@ class Config:
             raise ValueError("profile IDs must be unique")
         for profile in profiles:
             profile.validate()
+        if d.get("lambda_cloud", {}).get("user_data_file"):
+            settings = d["lambda_cloud"]
+            settings["user_data_file"] = str((path.parent / settings["user_data_file"]).resolve())
         cfg = cls((path.parent / d.pop("state", ".aiwork")).resolve(), profiles, **d)
         bounded("local_slots", cfg.local_slots, 1, 16)
         bounded("a100_slots", cfg.a100_slots, 1, 16)
