@@ -22,7 +22,7 @@ def summarize_trace(text: str, attempt: Path) -> dict:
             continue
         event = row.get("type")
         if event == "tool_use":
-            name = part.get("tool", row.get("tool_name", "unknown"))
+            name = part.get("tool") or row.get("tool_name") or row.get("tool") or "unknown"
             if isinstance(name, str):
                 tools[name] = tools.get(name, 0) + 1
             state = part.get("state", {})
@@ -31,7 +31,10 @@ def summarize_trace(text: str, attempt: Path) -> dict:
             usage = row["message"].get("usage")
             if isinstance(usage, dict) and type(usage.get("input_tokens")) is int:
                 peak_input = max(peak_input, usage["input_tokens"])
-            for item in row["message"].get("content", []):
+            content = row["message"].get("content")
+            if not isinstance(content, list):
+                continue
+            for item in content:
                 if not isinstance(item, dict):
                     continue
                 if item.get("type") == "tool_use" and isinstance(item.get("name"), str):
