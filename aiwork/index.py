@@ -12,6 +12,27 @@ WORD = re.compile(r"[A-Za-z][A-Za-z0-9]*")
 STOP = {"the", "and", "for", "with", "this", "that", "from", "into", "will"}
 
 
+def python_metadata(data: bytes, name: str) -> tuple[list[str], list[str]]:
+    try:
+        tree = ast.parse(data, filename=name)
+    except (SyntaxError, ValueError, RecursionError):
+        return [], []
+    symbols = []
+    imports = []
+    for node in tree.body:
+        if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+            symbols.append(node.name)
+        elif isinstance(node, ast.Import):
+            imports.extend(alias.name for alias in node.names)
+        elif isinstance(node, ast.ImportFrom):
+            module = "." * node.level + (node.module or "")
+            if node.module:
+                imports.append(module)
+            else:
+                imports.extend(module + alias.name for alias in node.names)
+    return symbols[:32], list(dict.fromkeys(imports))[:32]
+
+
 def words(text: str) -> set[str]:
     return {token.lower() for token in WORD.findall(text) if len(token) >= 3} - STOP
 
@@ -29,13 +50,8 @@ def relevant(root: Path, objective: str, scopes: tuple[str, ...], limit: int = 6
         symbols = []
         imports = []
         if path.suffix == ".py" and path.stat().st_size <= 65536:
-            try:
-                tree = ast.parse(path.read_bytes(), filename=name)
-                symbols = [n.name for n in tree.body if isinstance(
-                    n, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef))][:16]
-                imports = [n.module for n in tree.body if isinstance(n, ast.ImportFrom) and n.module][:12]
-            except (SyntaxError, ValueError):
-                pass
+            symbols, imports = python_metadata(path.read_bytes(), name)
+            symbols, imports = symbols[:16], imports[:12]
         priority = score + 3 * len(query & words(" ".join(symbols + imports)))
         records.append((priority, {"path": name, "symbols": symbols, "imports": imports}))
     output = []
