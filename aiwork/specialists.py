@@ -8,8 +8,16 @@ from dataclasses import asdict
 from pathlib import Path
 
 from .process import environment, executable, run
-from .schema import Config, Task
+from .schema import Config, Task, bounded
 from .workspace import contained, describe, inventory
+
+
+def capabilities(cfg: Config) -> list[dict]:
+    result = [{"id": "binary", "formats": ["ELF", "PE"], "host_authorization": False}]
+    for name, settings in sorted(cfg.specialists.items()):
+        result.append({"id": name, "formats": settings.get("artifact_formats", ["ELF", "PE"]),
+                       "host_authorization": True, "timeout": settings.get("timeout", 100)})
+    return result
 
 
 def analyze(cfg: Config, task: Task, work: Path, attempt: Path) -> str:
@@ -49,14 +57,23 @@ def analyze(cfg: Config, task: Task, work: Path, attempt: Path) -> str:
                 command = argv
             result = run(command, work, min(100, task.timeout), env)
     else:
-        if task.specialist not in {"rea", "rea-next"}:
+        if not re.fullmatch(r"[a-z][a-z0-9-]{0,49}", task.specialist) or not settings:
             raise ValueError(f"unknown specialist: {task.specialist}")
         vector = settings.get("argv", [])
-        if not vector or not (program := executable(vector[0])):
+        if (not isinstance(vector, list) or not 1 <= len(vector) <= 32
+            or any(not isinstance(arg, str) or not arg or len(arg) > 4096 or "\0" in arg for arg in vector)
+            or not (program := executable(vector[0]))):
             raise ValueError(f"configure specialists.{task.specialist}.argv with a trusted adapter")
+        formats = settings.get("artifact_formats", ["ELF", "PE"])
+        if not isinstance(formats, list) or not formats or any(fmt not in {"ELF", "PE"} for fmt in formats):
+            raise ValueError("specialist artifact_formats must be a nonempty array of ELF or PE")
+        if entries[filename]["format"] not in formats:
+            raise ValueError("requested specialist rejects the staged artifact format")
+        limit = settings.get("timeout", 100)
+        bounded("specialist timeout", limit, 1, 100)
         command = [program, *(a.replace("{binary}", str(binary)).replace("{artifacts}", str(attempt))
                               for a in vector[1:])]
-        result = run(command, work, min(100, task.timeout), env)
+        result = run(command, work, min(limit, task.timeout), env)
     (attempt / "specialist-process.json").write_text(json.dumps(asdict(result), indent=2), encoding="utf-8")
     if result.code or result.timed_out or result.truncated:
         raise RuntimeError("specialist process failed; see specialist-process.json")

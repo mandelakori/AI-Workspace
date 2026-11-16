@@ -1,0 +1,23 @@
+objective = """The release entrypoint was converted to ESM but package.json still advertises the old CommonJS source. Repair package.json so local ES module imports and 'node .' resolve the release CLI. Preserve the parsing module's splitTags export. Extract ordering and deduplication into a pure normalizeTags export in src/tags.js and have the CLI call it. Keep exact case, drop blank tags, keep first occurrence order, and preserve the existing JSON result and CLI error handling. Run the approved release checks."""
+workspace = "release"
+kind = "agent"
+mode = "engineering"
+category = "release-build-refactor"
+write_roots = ["package.json", "src/tags.js", "src/cli.js"]
+attempts = 2
+timeout = 105
+baseline_check = true
+verification_dir = "acceptance/release"
+
+[[commands]]
+argv = ["node", "--test"]
+timeout = 15
+
+[[checks]]
+argv = ["node", "--test"]
+timeout = 15
+
+[[checks]]
+argv = ["node", "."]
+oracle = "cases.json"
+timeout = 35

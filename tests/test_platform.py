@@ -60,6 +60,13 @@ argv = {check}
         self.assertTrue((root / "attempt-001/check-00.json").is_file())
         self.assertEqual(self.controller.state.jobs(job)[0]["status"], "verified")
         self.assertEqual(self.controller.run_submitted(job), value)
+        from aiwork.project import ProjectStore
+        projects = ProjectStore(self.root / "state")
+        source = self.root / "project"
+        projects.refresh(source)
+        records = projects.recall(source)
+        self.assertEqual(records[0]["job"], f"{job}:1")
+        self.assertFalse(records[0]["matches_index"])
 
     def test_trust_required_without_container(self):
         with self.assertRaisesRegex(ValueError, "reviewed task"):

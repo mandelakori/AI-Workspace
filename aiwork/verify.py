@@ -21,11 +21,13 @@ def runner_status(root: Path, image: str) -> dict:
     version = run([docker, "version", "--format", "{{.Server.Os}} {{.Server.Version}}"], root, 4, env)
     available = version.code == 0 and not version.timed_out and version.stdout.startswith("linux ")
     present = None
+    image_id = None
     if available and image:
         result = run([docker, "image", "inspect", "--format", "{{.Id}}", image], root, 4, env)
         present = result.code == 0 and not result.timed_out
+        image_id = result.stdout.strip() if present else None
     return {"available": available, "server": version.stdout.strip(), "image": image,
-            "image_present": present, "diagnostic": version.stderr[-500:]}
+            "image_present": present, "image_id": image_id, "diagnostic": version.stderr[-500:]}
 
 
 def pipeline(setup: tuple[Check, ...], check: Check, workspace: Path, home: Path, image: str,
@@ -88,7 +90,7 @@ def invoke(check: Check, workspace: Path, home: Path, image: str = "", *,
             argv = [sys.executable, "-B", *argv[1:]]
     try:
         outcome = run(argv, cwd, min(check.timeout, timeout) if timeout is not None else check.timeout,
-                      env, stop, stdin=stdin)
+                      env, stop, stdin=stdin, decode_errors="surrogateescape" if sealed else "replace")
     except KeyboardInterrupt:
         if image:
             run([docker, "rm", "-f", container], workspace, 8, env)

@@ -1,5 +1,25 @@
 # Status as of 2026-11-16
 
+## Phase 3
+
+| Capability | Status | Evidence |
+| --- | --- | --- |
+| Previously unseen engineering | VERIFIED | Eight OpenCode samples across two fixtures and two profiles passed all public and sealed checks. The matched A100 follow-up had one success and one sealed ordering mismatch per harness. [Benchmarks](BENCHMARKS.md) |
+| Pause, continue and revise a plan | VERIFIED | `p3-dependencies` paused after the laptop completed the first step. Resuming exposed the missing dependency in job `118b1e4252615acd904e27d4e2d00231`. The reviewed successor `p3-dependencies-fixed` reused `6b77efc075af5657a638431679c43814`, verified a new Qwen Code step and passed independent integration in `4be94ac613175b2995eb668f1cee5d06`. The patch passed `git apply --check`. |
+| Generalized self-development and retry | VERIFIED | A100 job `313c9d81880e4f099f92ea9c82ebd2a8` worked from commit `0212fa7`. The first implementation failed a new regression. The second passed the targeted test and full committed suite. The patch for trace parsing passed `git apply --check` and awaits operator review. |
+| Project memory and focused staging | VERIFIED | Tests indexed 5,001 files, retrieved a scoped subset, detected a same-size and same-timestamp content change, and linked attempt evidence to its original project key. |
+| Sealed verifier and worker recovery | VERIFIED | Docker test code observed a read-only workspace, absent private files and Docker socket, and loopback-only networking. A disposable Windows worker was forcibly killed while holding a claim. The controller preserved its partial artifacts and verified the next attempt. |
+| Model-generated policy draft | VERIFIED | A100 artifact `482e610d22a64e6082e42ad09ed315e0.json` proposed two valid file scopes, portable unittest recipes and the dependency between the steps. Earlier laptop proposals had unsuitable recipes and scopes. Drafts remain inert until the operator creates an executable manifest and graph. |
+| A100 REA-Next campaign | VERIFIED | Real campaigns ran on the existing SSH host and llama.cpp server. The longer trial `0b3b616c93524fac95c989359282b486` compiled a candidate, passed 6/10 development/probe inputs and 2/8 audit inputs, and ended `no_survivor`. Another trial exhausted synthesis turns without a candidate. |
+| Ghidra on ELF | VERIFIED | Ghidra emitted a function, direct calls and decompilation from the same toy ELF in job `a6907808dc8b4b218f9e6a8662c23c78`. |
+| Ghidra-assisted reconstruction | VERIFIED | A100 job `d441afb8c523479f9c2ba4f52fb4cd2e` received decompilation text and wrote fresh C. Separate Docker checks compiled it. The first candidate matched 5/8 original observations and the retry matched 8/8. This is agreement on the archived audit inputs. |
+| Existing Node package repair and refactor | VERIFIED | A100 job `5bd457e9236943af9efbf4101db20c34` passed the public regression and sealed CLI checks. The laptop exhausted its retries on the release entrypoint. |
+| Official REA ELF provider on Windows | BLOCKED | The pinned provider reported Linux x64 only for `inspect-binary-layout` in job `a230a9d7796f4b47ab8265fd83e0c599`. The existing PE adapter remains available. |
+| Interrupted SSH, real endpoint loss and A100 parallel throughput | UNTESTED | Clean SSH forwarding and a live single lane were exercised. Forced disconnect and endpoint loss were left for a disposable environment. |
+| Independent Windows installation | VERIFIED | The v0.3.0 wheel installed in a fresh Python 3.12.14 environment. Its CLI reported the version and verified the direct fixture from outside the source checkout. The Docker-enabled regression suite passed 42 tests. |
+
+Phase 3 state and artifacts are under `.aiwork/phase3`. See the [Windows runbook](ENGINEERING.md#phase-3-operator-workflow) for setup and operation.
+
 ## Phase 2
 
 | Demonstration | Status | Evidence |
@@ -28,7 +48,7 @@ See [Engineering mode](ENGINEERING.md) for the start commands, protected test se
 | D · Native reconstruction | VERIFIED | MSVC compiled the self-authored PE fixture. Ghidra 12.1.4 emitted function evidence. The A100-generated function passed source preflight, compiled and matched 182 differential inputs. Job `afd1e637ac384e7ba971c32387db4367`. |
 | D · Official REA | VERIFIED | Pinned REA 6.7.0 ran `inspect-pe-resources` through the specialist adapter and returned structured evidence on the toy PE. Job `5ce304e139534091815ec771fc233a7f`. |
 | D · REA-Next MCP bridge | VERIFIED | Inner REA-Next CLI’s read-only `probe-mcp` reported 207 installed tools and all 20 tools selected by the native profile. |
-| D · REA-Next campaign dispatch | UNTESTED | External argv boundary exists. Campaign creation, execution and export are pending. |
+| D · REA-Next campaign dispatch | VERIFIED | Phase 3 created and executed a bounded campaign and exported structured evidence. See the Phase 3 campaign row for its verdict. |
 | E · Real benchmarks | VERIFIED | One matched fixture per profile. Laptop 26.469 s and A100 18.688 s. On the same A100 model at matched settings, OpenCode took 13.640 s and Qwen Code 14.234 s. All four samples passed independent tests. [Benchmarks](BENCHMARKS.md) |
 | Cross-plane task graph | VERIFIED | `workflow examples/multi-agent.toml --id live-cross-plane --workers 2 --trusted` ran both model jobs and verified their artifact handoff. Journal at `.aiwork/workflows/live-cross-plane/workflow.json`. |
 | Windows background controller | VERIFIED | PowerShell start and status reported a live worker. It consumed a separately submitted direct job `31335729286e45659bacf7eafabfe4fe` and exited after the stop marker. |

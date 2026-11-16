@@ -62,7 +62,8 @@ def propose(controller: Controller, repo: Path, profile: str, trusted: bool,
         if requested.mode != "engineering" or requested.workspace.resolve() != repo.resolve():
             raise ValueError("self manifest must authorize engineering against the named repository")
         for name in requested.write_roots:
-            if (name == "tests" or name.startswith("tests/") and (workspace / name).exists()):
+            if (name.casefold() == "tests"
+                or name.casefold().startswith("tests/") and (workspace / name).exists()):
                 raise ValueError("self proposals may add tests while preserving the committed regression suite")
         task = replace(requested, workspace=workspace, inputs=(), checks=(*requested.checks, full_suite),
                        baseline_check=False)

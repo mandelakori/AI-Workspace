@@ -1,0 +1,7 @@
+[
+  {"stdin":"\" ,z,b,z,B, b , a,\"","stdout":"[\"z\",\"b\",\"B\",\"a\"]\n","stderr":""},
+  {"stdin":"\" , \"","stdout":"[]\n","stderr":""},
+  {"stdin":"\"résumé,Ö, résumé ,o\"","stdout":"[\"résumé\",\"Ö\",\"o\"]\n","stderr":""},
+  {"stdin":"[]","stdout":"","stderr":"invalid tags\n","code":2},
+  {"stdin":"invalid","stdout":"","stderr":"invalid tags\n","code":2}
+]

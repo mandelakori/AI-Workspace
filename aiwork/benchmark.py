@@ -12,6 +12,7 @@ from uuid import uuid4
 
 from .controller import Controller, write_json
 from .schema import Task, bounded
+from .verify import runner_status
 
 
 def benchmark(controller: Controller, manifest: Path, profiles: list[str],
@@ -26,6 +27,8 @@ def benchmark(controller: Controller, manifest: Path, profiles: list[str],
     directory.mkdir(parents=True)
     report = {"manifest": str(manifest.resolve()), "repeats": repeats, "samples": [],
               "profiles": [asdict(p) for p in controller.config.profiles if p.id in profiles],
+              "verification_runner": runner_status(controller.config.state,
+                                                   controller.config.verification_image),
               "manifest_sha256": hashlib.sha256(manifest.read_bytes()).hexdigest(),
               "comparisons": {}, "report": str(directory / "report.json")}
     write_json(directory / "report.json", report)

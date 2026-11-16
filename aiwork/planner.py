@@ -247,6 +247,7 @@ def planned(controller: Controller, source: Path, workflow_id: str, workers: int
         if journal.exists():
             status = json.loads(journal.read_text(encoding="utf-8"))
             if (status["manifest_sha256"] != fingerprint or status["trusted"] != trusted
+                or status.get("runner", controller.config.verification_image) != controller.config.verification_image
                 or status.get("max_steps", max_steps) != max_steps
                 or status.get("min_steps", min_steps) != min_steps
                 or status.get("cover_commands", cover_commands) != cover_commands):

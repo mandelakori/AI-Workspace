@@ -84,3 +84,34 @@ A sealed check uses `oracle = "cases.json"` with a case file inside the manifest
 ```
 
 The self command uses committed Git HEAD, adds a full regression gate and returns a patch for review. It accepts changes to new test files inside authorized scopes and protects the committed tests.
+
+### Self-authored native fixture
+
+Use the already provisioned SSH host, REA-Next checkout and compiler-enabled sandbox image named by the operator. The campaign creates a separate remote temporary directory, compiles the toy and saves the archive locally. A nonzero CLI exit can still produce complete evidence of an unsuccessful campaign.
+
+```powershell
+& $ai --config $cfg campaign examples/phase3/native --profile a100-existing `
+    --remote-root /home/ubuntu/rea-next-cegis-20261107 --image rea-next-ledger-sandbox:20261104
+```
+
+For a Ghidra-assisted recovery, add the following table to your Phase 3 config and use the archive path reported by the campaign.
+
+```toml
+[specialists.ghidra]
+headless = 'C:/path/to/ghidra/support/analyzeHeadless.bat'
+java_home = 'C:/Program Files/jdk-27'
+function = 'main'
+```
+
+```powershell
+$archive = '<campaign-artifacts>/evidence.tar.gz'
+$export = '.aiwork/phase3/static-elf/exported'
+New-Item -ItemType Directory -Force -Path $export
+tar -xzf $archive -C $export program
+& $ai --config $cfg task run examples/phase3/static-elf.toml --trusted
+& $ai --config $cfg campaign-recover $archive '<static-job-artifacts>/attempt-001/analysis.json' --profile a100-existing
+```
+
+Use a writable Windows temporary directory whose path has no dot-prefixed segments or cmd metacharacters if Ghidra rejects the process's default temporary path. Recovery links both inputs to the same binary hash, stages decompilation text, compiles generated C inside Docker and compares it against the original outputs from the complete campaign audit. The audit represents finite observed agreement. It requires a campaign archive containing per-case original observations. The current official REA ELF provider reports Linux x64 as its supported platform.
+
+Use `aiwork tools` to discover configured binary adapters. An operator can add a named `[specialists.<id>]` table with a fixed argv vector, `artifact_formats` and a timeout in seconds. Select it with `specialist = "<id>"` and authorize the host process with `--trusted`. The tool runs under the operator's account. The controller substitutes the staged binary and output directory for `{binary}` and `{artifacts}` in the configured arguments.

@@ -11,7 +11,7 @@ from time import monotonic, sleep, time
 
 from .changes import delta, save_patch, validate_changes
 from .harness import OpenCode, QwenCode, opencode_path, qwen_command
-from .inference import Inference
+from .inference import Inference, ollama_residency
 from .lock import file_lock
 from .metrics import summarize_trace
 from .router import Plane, gpu, routes
@@ -151,7 +151,7 @@ class Controller:
 
     def _work(self, row: dict, root: Path) -> dict:
         data = json.loads((root / "intake.json").read_text(encoding="utf-8"))
-        manifest = data["manifest"]
+        manifest = data["manifest"].copy()
         manifest["workspace"] = root / "baseline"
         manifest["verification_dir"] = root / "private" if (root / "private").is_dir() else None
         for key in ("inputs", "deliverables", "write_roots"):
@@ -291,7 +291,8 @@ class Controller:
             checks.append(outcome["passed"])
             if not outcome["passed"]:
                 # Private checks provide a verdict, not hidden inputs or failure transcripts, to retries.
-                detail = "private verification failed" if task.verification_dir else (
+                hidden = task.verification_dir and (not sealed or check.oracle)
+                detail = "private verification failed" if hidden else (
                     f"check {index} failed ({category})\n{outcome['stdout'][-900:]}\n{outcome['stderr'][-900:]}")
                 return {"status": "failed", "detail": detail, "classification": category,
                         "changed": changed, "checks": checks, **patch}
@@ -331,18 +332,28 @@ class Controller:
         if not binary and not qwen:
             raise ValueError(f"{profile.harness} harness unavailable for {profile.id}")
         harness = OpenCode(binary) if binary else QwenCode(qwen)
-        with self.planes[profile.location].reserve(profile, max(0, deadline - monotonic())):
+        entered = monotonic()
+        with self.planes[profile.location].reserve(profile, max(0, deadline - entered)):
+            admitted = monotonic()
             connection = (
                 a100_session(self.config, profile, dispatch=True,
                              timeout=min(120 if not profile.managed else 900, max(0, deadline - monotonic())))
                 if profile.location == "a100" else nullcontext()
             )
             with connection:
-                if profile.location == "local" and profile.memory_mib:
-                    available = gpu(self.config.state)
-                    if available and max(row["free_mib"] for row in available) < profile.memory_mib:
-                        raise ValueError(f"GPU free memory below {profile.memory_mib} MiB for {profile.id}")
                 Inference(profile).ready()
+                readings = self.gpu_sample(profile)
+                inference = ollama_residency(profile) if profile.engine == "ollama" else None
+                resident = bool(inference and inference["resident"])
+                below_budget = bool(profile.location == "local" and profile.memory_mib and readings
+                                    and max(row["free_mib"] for row in readings) < profile.memory_mib
+                                    and not resident)
+                write_json(attempt / "admission.json", {
+                    "gpu": readings, "inference": inference, "minimum_free_mib": profile.memory_mib,
+                    "admitted": not below_budget,
+                })
+                if below_budget:
+                    raise ValueError(f"GPU free memory below {profile.memory_mib} MiB for {profile.id}")
                 spec = None
                 engineering = task.mode == "engineering"
                 public = task.commands if engineering else task.checks if task.agent_checks and not task.verification_dir else ()
@@ -377,9 +388,9 @@ class Controller:
                 remaining = deadline - monotonic()
                 if remaining <= 0:
                     raise TimeoutError("deadline exhausted during model readiness")
-                readings = self.gpu_sample(profile)
+                reserve = min(20, max(4, task.timeout // 5)) if engineering else 0
                 result = harness.execute(profile, task, work, attempt, prompt,
-                                         max(0, deadline - monotonic()), spec,
+                                         max(0, deadline - monotonic() - reserve), spec,
                                          self.config.state / "STOP")
                 (attempt / "agent.jsonl").write_text(result.stdout, encoding="utf-8")
                 (attempt / "agent.stderr.txt").write_text(result.stderr, encoding="utf-8")
@@ -388,6 +399,8 @@ class Controller:
                     "timed_out": result.timed_out, "truncated": result.truncated})
                 metrics = summarize_trace(result.stdout, attempt)
                 metrics["gpu_samples"] = {"before": readings, "after": self.gpu_sample(profile)}
+                if profile.engine == "ollama":
+                    metrics["inference_samples"] = {"before": inference, "after": ollama_residency(profile)}
                 peak = metrics.get("peak_reported_input_tokens")
                 metrics["reported_context_fraction"] = round(peak / profile.context, 4) if peak else None
                 tokens = metrics.get("tokens")
@@ -395,6 +408,8 @@ class Controller:
                     round(tokens["output"] / result.elapsed, 3) if tokens and result.elapsed else None)
                 metrics["inference_lanes"] = (self.config.a100_slots if profile.location == "a100"
                                                else self.config.local_slots)
+                metrics["lane_wait_seconds"] = round(admitted - entered, 3)
+                metrics["harness_seconds"] = round(result.elapsed, 3)
                 write_json(attempt / "agent-metrics.json", metrics)
                 if result.code or result.timed_out or result.truncated:
                     raise RuntimeError("harness failed or exceeded limits; see attempt logs")

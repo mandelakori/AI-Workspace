@@ -43,6 +43,10 @@ def parser() -> argparse.ArgumentParser:
     campaign.add_argument("--profile", required=True)
     campaign.add_argument("--remote-root", required=True)
     campaign.add_argument("--image", required=True)
+    recovery = commands.add_parser("campaign-recover", help="verify a reconstruction from static evidence")
+    recovery.add_argument("archive", type=Path)
+    recovery.add_argument("analysis", type=Path)
+    recovery.add_argument("--profile", required=True)
     commands.add_parser("doctor", help="show Python, GPU and executable inventory")
     commands.add_parser("models", help="discover configured endpoints and model inventory")
     commands.add_parser("harnesses", help="show harness executable inventory")
@@ -53,7 +57,7 @@ def parser() -> argparse.ArgumentParser:
     remote.add_argument("--apply", action="store_true", help="apply the configured mutation")
     remote.add_argument("--instance")
     remote.add_argument("--timeout", type=int, default=900)
-    comparison = commands.add_parser("benchmark", help="compare explicit profiles on one frozen-input fixture")
+    comparison = commands.add_parser("benchmark", help="compare explicit profiles on frozen engineering fixtures")
     comparison.add_argument("manifest", type=Path)
     comparison.add_argument("--profile", action="append", required=True)
     comparison.add_argument("--repeats", type=int, default=1)
@@ -162,10 +166,17 @@ def main(argv: list[str] | None = None) -> int:
             print_json(updated)
         elif args.command == "draft":
             from .draft import draft
-            print_json(draft(controller, args.root, args.objective, args.profile))
+            result = draft(controller, args.root, args.objective, args.profile)
+            print_json(result)
+            return 0 if result["status"] == "review" else 1
         elif args.command == "campaign":
             from .campaign import campaign
             result = campaign(controller, args.fixture, args.profile, args.remote_root, args.image)
+            print_json(result)
+            return 0 if result["status"] == "verified" else 1
+        elif args.command == "campaign-recover":
+            from .native_recovery import recover
+            result = recover(controller, args.archive, args.analysis, args.profile)
             print_json(result)
             return 0 if result["status"] == "verified" else 1
         elif args.command == "doctor":
@@ -178,8 +189,10 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "harnesses":
             print_json({"opencode": opencode_path(cfg.opencode), "qwen": qwen_command(cfg.qwen, cfg.state)})
         elif args.command == "tools":
+            from .specialists import capabilities
             print_json({"preprocessing": ["inventory", "sha256", "python-symbols", "binary"],
                         "specialists": ["binary", *sorted(cfg.specialists)],
+                        "specialist_capabilities": capabilities(cfg),
                         "harness_mcp": ["checks:check (manifest test index)"],
                         "git": executable("git"), "verification_image": cfg.verification_image})
         elif args.command == "models":

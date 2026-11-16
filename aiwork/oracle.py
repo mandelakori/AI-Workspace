@@ -20,7 +20,7 @@ def load_cases(path: Path) -> list[dict]:
     for case in cases:
         if (not isinstance(case, dict) or case.keys() - {"stdin", "stdout", "code", "stderr"}
             or not isinstance(case.get("stdout"), str)
-            or type(case.get("code", 0)) is not int or not 0 <= case.get("code", 0) <= 125
+            or type(case.get("code", 0)) is not int or not 0 <= case.get("code", 0) <= 124
             or any(not isinstance(case[key], str) or len(case[key].encode("utf-8")) > 16384
                    for key in ("stdin", "stdout", "stderr") if key in case)):
             raise ValueError("invalid sealed case structure")

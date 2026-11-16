@@ -1,0 +1,11 @@
+objective = "Inspect the self-authored shipping scorer ELF and preserve static function evidence."
+workspace = "../../.aiwork/phase3/static-elf/exported"
+kind = "direct"
+category = "toy-static-analysis"
+specialist = "ghidra"
+inputs = ["program"]
+timeout = 110
+
+[[checks]]
+argv = ["{python}", "-c", "from pathlib import Path; assert Path('program').read_bytes()[:4] == bytes([127,69,76,70])"]
+timeout = 15
