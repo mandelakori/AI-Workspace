@@ -1,0 +1,13 @@
+objective = "Fix the Fahrenheit to Celsius conversion in units.py using the standard formula. Inspect units.py and test_units.py first. After editing, run the public tests using the checks_check tool with index 0."
+workspace = "project"
+kind = "agent"
+category = "python-bugfix"
+inputs = ["units.py", "test_units.py"]
+deliverables = ["units.py"]
+attempts = 1
+timeout = 240
+agent_checks = true
+
+[[checks]]
+argv = ["{python}", "-m", "unittest", "-v", "test_units"]
+timeout = 25

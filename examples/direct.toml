@@ -1,0 +1,9 @@
+objective = "Verify that Python can import the conversion module and that the freezing point is correct."
+workspace = "project"
+kind = "direct"
+category = "python-check"
+inputs = ["units.py"]
+
+[[checks]]
+argv = ["{python}", "-c", "from units import fahrenheit_to_celsius; print(fahrenheit_to_celsius(32))"]
+stdout = "0\n"

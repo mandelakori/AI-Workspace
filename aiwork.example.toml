@@ -1,0 +1,30 @@
+state = ".aiwork"
+local_slots = 1
+a100_slots = 1
+# verification_image = "python:3.12-slim" # Must already be installed and trusted.
+
+[ssh]
+alias = "aisak"
+remote_port = 18080
+
+[[profiles]]
+id = "laptop-ollama"
+engine = "ollama"
+harness = "opencode"
+location = "local"
+endpoint = "http://127.0.0.1:11434/v1"
+model = "qwen3.5:9b"
+context = 8192
+output_tokens = 2048
+quantization = "Q4_K_M"
+
+[[profiles]]
+id = "a100-existing"
+engine = "llamacpp"
+harness = "opencode"
+location = "a100"
+endpoint = "http://127.0.0.1:18881/v1"
+model = "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf"
+context = 16384
+output_tokens = 3072
+quantization = "Q6_K"

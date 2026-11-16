@@ -1,0 +1,101 @@
+from __future__ import annotations
+
+import os
+import shutil
+import signal
+import subprocess
+import sys
+from dataclasses import dataclass
+from pathlib import Path
+from threading import Thread
+from time import monotonic
+
+OUTPUT_LIMIT = 1024 * 1024
+SAFE_ENV = {"PATH", "PATHEXT", "SYSTEMROOT", "WINDIR", "COMSPEC", "PROGRAMFILES",
+            "PROGRAMFILES(X86)", "SYSTEMDRIVE", "NUMBER_OF_PROCESSORS", "PROCESSOR_ARCHITECTURE"}
+
+
+@dataclass(frozen=True)
+class Result:
+    code: int
+    elapsed: float
+    stdout: str
+    stderr: str
+    timed_out: bool
+    truncated: bool
+
+
+def environment(root: Path) -> dict[str, str]:
+    root.mkdir(parents=True, exist_ok=True)
+    env = {k: v for k, v in os.environ.items() if k.upper() in SAFE_ENV}
+    env.update({
+        "TEMP": str(root), "TMP": str(root), "TMPDIR": str(root),
+        "HOME": str(root), "USERPROFILE": str(root),
+        "APPDATA": str(root / "appdata"), "LOCALAPPDATA": str(root / "localappdata"),
+        "PYTHONDONTWRITEBYTECODE": "1", "PYTHONNOUSERSITE": "1",
+        "PYTHONUTF8": "1", "NO_PROXY": "127.0.0.1,localhost,::1",
+    })
+    for name in ("DATA", "CONFIG", "STATE", "CACHE"):
+        env[f"XDG_{name}_HOME"] = str(root / name.lower())
+    return env
+
+
+def executable(name: str) -> str | None:
+    if name == "{python}":
+        return sys.executable
+    match = shutil.which(name)
+    if os.name == "nt" and match and Path(match).suffix.lower() not in {".exe", ".com"}:
+        return None
+    return match
+
+
+def kill_tree(proc: subprocess.Popen) -> None:
+    if os.name == "nt":
+        try:
+            subprocess.run(["taskkill.exe", "/T", "/F", "/PID", str(proc.pid)],
+                           capture_output=True, timeout=5, check=False)
+        except subprocess.SubprocessError:
+            pass
+        if proc.poll() is None:
+            proc.kill()
+    else:
+        try:
+            os.killpg(proc.pid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+
+
+def run(argv: list[str], cwd: Path, timeout: float, env: dict[str, str]) -> Result:
+    started = monotonic()
+    proc = subprocess.Popen(argv, cwd=cwd, env=env, stdin=subprocess.DEVNULL,
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                            start_new_session=os.name != "nt",
+                            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if os.name == "nt" else 0)
+
+    def drain(stream, buffer: bytearray) -> None:
+        with stream:
+            while block := stream.read1(16384):
+                buffer.extend(block[:max(0, OUTPUT_LIMIT + 1 - len(buffer))])
+
+    buffers = [bytearray(), bytearray()]
+    threads = [Thread(target=drain, args=(stream, buffer), daemon=True)
+               for stream, buffer in zip((proc.stdout, proc.stderr), buffers)]
+    for thread in threads:
+        thread.start()
+    timed_out = False
+    try:
+        proc.wait(timeout=timeout)
+        for thread in threads:
+            thread.join(timeout=max(0, started + timeout - monotonic()))
+    except subprocess.TimeoutExpired:
+        timed_out = True
+    finally:
+        if proc.poll() is None or any(thread.is_alive() for thread in threads):
+            timed_out = True
+            kill_tree(proc)
+            proc.wait(timeout=5)
+            for thread in threads:
+                thread.join(timeout=1)
+    output = [bytes(b[:OUTPUT_LIMIT]).decode("utf-8", "replace") for b in buffers]
+    return Result(proc.returncode, monotonic() - started, *output, timed_out,
+                  any(len(b) > OUTPUT_LIMIT for b in buffers))
