@@ -6,6 +6,7 @@ import json
 import os
 import sys
 from contextlib import nullcontext
+from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
 from time import sleep
 
@@ -20,6 +21,11 @@ from .schema import Config, Task
 
 def parser() -> argparse.ArgumentParser:
     root = argparse.ArgumentParser(prog="aiwork", description="Run and independently verify engineering jobs.")
+    try:
+        release = version("ai-workspace")
+    except PackageNotFoundError:
+        release = "source checkout"
+    root.add_argument("--version", action="version", version=f"%(prog)s {release}")
     root.add_argument("--config", type=Path, help="operator TOML file, defaults to aiwork.local.toml")
     commands = root.add_subparsers(dest="command", required=True)
     commands.add_parser("doctor", help="show Python, GPU and executable inventory")
@@ -47,6 +53,10 @@ def parser() -> argparse.ArgumentParser:
     planning.add_argument("--id", required=True)
     planning.add_argument("--workers", type=int, default=2)
     planning.add_argument("--planner", default="")
+    planning.add_argument("--max-steps", type=int, default=8)
+    planning.add_argument("--min-steps", type=int, default=1)
+    planning.add_argument("--cover-commands", action="store_true",
+                          help="require every approved command to be assigned to a step")
     planning.add_argument("--plan-only", action="store_true")
     planning.add_argument("--trusted", action="store_true")
     promotion = commands.add_parser("patch", help="inspect the verified patch and optionally check a Git checkout")
@@ -119,10 +129,12 @@ def main(argv: list[str] | None = None) -> int:
         cfg = Config.load(args.config or Path("aiwork.local.toml"))
         controller = Controller(cfg)
         if args.command == "doctor":
+            from .verify import runner_status
             print_json({"python": sys.version, "state": cfg.state, "gpus": gpu(cfg.state),
                         "tools": {name: executable(name) for name in ("ssh", "docker", "git")},
                         "qwen": qwen_command(cfg.qwen, cfg.state),
-                        "opencode": opencode_path(cfg.opencode), "profiles": [p.id for p in cfg.profiles]})
+                        "opencode": opencode_path(cfg.opencode), "profiles": [p.id for p in cfg.profiles],
+                        "verification_runner": runner_status(cfg.state, cfg.verification_image)})
         elif args.command == "harnesses":
             print_json({"opencode": opencode_path(cfg.opencode), "qwen": qwen_command(cfg.qwen, cfg.state)})
         elif args.command == "tools":
@@ -146,7 +158,7 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "plan":
             from .planner import planned
             result = planned(controller, args.manifest, args.id, args.workers, args.trusted,
-                             args.planner, args.plan_only)
+                             args.planner, args.plan_only, args.max_steps, args.cover_commands, args.min_steps)
             print_json(result)
             return 0 if result["status"] == "verified" or args.plan_only else 1
         elif args.command == "patch":
@@ -169,7 +181,8 @@ def main(argv: list[str] | None = None) -> int:
                 git = executable("git")
                 if not git:
                     raise ValueError("Git executable unavailable")
-                outcome = run([git, "apply", "--check", "--", str(patch)], args.check.resolve(strict=True),
+                outcome = run([git, "-c", "core.autocrlf=false", "apply", "--check", "--", str(patch)],
+                              args.check.resolve(strict=True),
                               30, os.environ.copy())
                 result.update({"applies": outcome.code == 0 and not outcome.timed_out,
                                "diagnostic": outcome.stderr[-1000:]})

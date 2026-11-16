@@ -12,9 +12,10 @@ workspace = "project"
 kind = "agent"
 mode = "engineering"
 category = "parcel-release"
-write_roots = ["parcel", "docs"]
+write_roots = ["parcel/model.py", "parcel/policy.py", "parcel/service.py", "parcel/cli.py", "docs/usage.md", "parcel/report.py"]
 attempts = 2
 timeout = 260
+verification_dir = "holdouts"
 
 [[commands]]
 argv = ["{python}", "-m", "unittest", "discover", "-s", "tests", "-p", "test_pricing*.py", "-v"]
@@ -30,4 +31,16 @@ timeout = 20
 
 [[checks]]
 argv = ["{python}", "-m", "unittest", "discover", "-s", "tests", "-v"]
+timeout = 20
+
+[[checks]]
+argv = ["{python}", "-c", "from pathlib import Path; assert '--insured-value-cents' in Path('docs/usage.md').read_text()"]
+timeout = 20
+
+[[checks]]
+argv = ["{python}", "-m", "unittest", "discover", "-s", "{verification}/feature", "-v"]
+timeout = 20
+
+[[checks]]
+argv = ["{python}", "-m", "unittest", "discover", "-s", "{verification}/debug", "-v"]
 timeout = 20

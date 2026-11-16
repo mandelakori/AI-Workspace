@@ -69,6 +69,10 @@ class OpenCode:
             "permissions": permissions,
             "autoupdate": False,
         }
+        if task.mode == "engineering":
+            config["snapshots"] = False
+            if profile.context <= 4096:
+                config["compaction"] = {"auto": False}
         if tool_spec:
             config["mcp"] = {"servers": {"checks": {"type": "local", "command": tool_command(tool_spec),
                                                      "codemode": False}}}

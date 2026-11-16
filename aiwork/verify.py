@@ -13,6 +13,21 @@ from .schema import Check
 from .workspace import contained
 
 
+def runner_status(root: Path, image: str) -> dict:
+    docker = executable("docker")
+    if not docker:
+        return {"available": False, "image": image, "reason": "Docker CLI unavailable"}
+    env = os.environ.copy()
+    version = run([docker, "version", "--format", "{{.Server.Os}} {{.Server.Version}}"], root, 4, env)
+    available = version.code == 0 and not version.timed_out and version.stdout.startswith("linux ")
+    present = None
+    if available and image:
+        result = run([docker, "image", "inspect", "--format", "{{.Id}}", image], root, 4, env)
+        present = result.code == 0 and not result.timed_out
+    return {"available": available, "server": version.stdout.strip(), "image": image,
+            "image_present": present, "diagnostic": version.stderr[-500:]}
+
+
 def pipeline(setup: tuple[Check, ...], check: Check, workspace: Path, home: Path, image: str,
              *, timeout: float, stop: Path | None = None) -> dict:
     deadline = monotonic() + timeout
@@ -76,7 +91,8 @@ def invoke(check: Check, workspace: Path, home: Path, image: str = "", *,
         raise
     if image and outcome.timed_out:
         run([docker, "rm", "-f", container], workspace, 8, env)
-    return {"argv": list(check.argv), "cwd": check.cwd, **asdict(outcome),
+    return {"argv": list(check.argv), "cwd": check.cwd, "runner": image or "trusted-host",
+            **asdict(outcome),
             "passed": outcome.code == 0 and not outcome.timed_out and not outcome.truncated
             and (check.stdout is None or outcome.stdout.replace("\r\n", "\n") == check.stdout)}
 

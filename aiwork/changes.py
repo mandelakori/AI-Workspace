@@ -65,7 +65,8 @@ def git_patch(before: Path, after: Path, changed: list[str], root: Path) -> str:
 
     def command(*args: str) -> str:
         result = run([git, "-c", "core.longpaths=true", "-c", "core.autocrlf=false", "-c", "core.safecrlf=false",
-                      "-c", "core.hooksPath=" + os.devnull, *args], work, 20, env)
+                      "-c", "core.hooksPath=" + os.devnull, *args], work, 20, env,
+                     decode_errors="surrogateescape")
         if result.code or result.timed_out or result.truncated:
             raise ValueError(f"Git {args[0]} could not create a bounded patch: {result.stderr[-600:]}")
         return result.stdout
@@ -101,5 +102,6 @@ def git_patch(before: Path, after: Path, changed: list[str], root: Path) -> str:
 
 def save_patch(before: Path, after: Path, changed: list[str], root: Path) -> dict:
     patch = root / "proposed.patch"
-    patch.write_bytes(git_patch(before, after, changed, root / "patch-index").encode("utf-8"))
+    patch.write_bytes(git_patch(before, after, changed, root / "patch-index").encode(
+        "utf-8", "surrogateescape"))
     return {"patch": str(patch), "patch_sha256": hashlib.sha256(patch.read_bytes()).hexdigest()}

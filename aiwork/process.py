@@ -67,7 +67,7 @@ def kill_tree(proc: subprocess.Popen) -> None:
 
 
 def run(argv: list[str] | str, cwd: Path, timeout: float, env: dict[str, str],
-        stop: Path | None = None) -> Result:
+        stop: Path | None = None, *, decode_errors: str = "replace") -> Result:
     started = monotonic()
     proc = subprocess.Popen(argv, cwd=cwd, env=env, stdin=subprocess.DEVNULL,
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE,
@@ -109,6 +109,6 @@ def run(argv: list[str] | str, cwd: Path, timeout: float, env: dict[str, str],
             proc.wait(timeout=5)
             for thread in threads:
                 thread.join(timeout=1)
-    output = [bytes(b[:OUTPUT_LIMIT]).decode("utf-8", "replace") for b in buffers]
+    output = [bytes(b[:OUTPUT_LIMIT]).decode("utf-8", decode_errors) for b in buffers]
     return Result(proc.returncode, monotonic() - started, *output, timed_out,
                   any(len(b) > OUTPUT_LIMIT for b in buffers))

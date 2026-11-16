@@ -1,0 +1,20 @@
+objective = """Finish the sensor report. Fix units.py so fahrenheit_to_celsius uses (fahrenheit - 32) * 5 / 9. In labels.py render snake_case zone names as space-separated title case after trimming whitespace. Keep the interfaces used by report.py. The two behaviors can be tested independently."""
+workspace = "sensors"
+kind = "agent"
+mode = "engineering"
+category = "sensor-report"
+write_roots = ["units.py", "labels.py"]
+attempts = 2
+timeout = 200
+
+[[commands]]
+argv = ["{python}", "-m", "unittest", "test_units"]
+timeout = 15
+
+[[commands]]
+argv = ["{python}", "-m", "unittest", "test_labels"]
+timeout = 15
+
+[[checks]]
+argv = ["{python}", "-m", "unittest", "discover", "-v"]
+timeout = 20

@@ -21,7 +21,8 @@ To check the existing pinned MCP installation on this laptop, run `python -B -m 
 
 ## Priorities for the next implementation
 
-1. Verify Docker-backed generated code and private verifier isolation on a running Docker Desktop daemon. Add a separate evaluator identity for sealed holdouts.
+1. Add a separate evaluator identity for sealed holdouts. The current Docker pipeline runs staged code and its independent tests in the same container for a given check.
 2. Exercise Lambda launch, cloud-init and SSH using a dedicated approved instance and host CA. Confirm shutdown and persistent volume recovery before enabling unattended launch.
 3. Add actual GPU and server-side telemetry sampling, capacity-aware per-model reservations, and sustained repetitions across the profile matrix. Treat the existing A100 service as one serialized model lane until concurrency is measured.
 4. Add targeted official REA decompilation and REA-Next campaign exports to the specialist result contract. Add hardened MCP server administration, remote harness placement and a local logon trigger if needed.
+5. Extend engineering mode to additional harnesses and larger workspaces. Explore content-addressed snapshot storage and incremental materialization. Current isolated copies are bounded by file and byte counts, while review artifacts and checkpoints describe deltas.

@@ -73,6 +73,8 @@ Add `-InstallRea` to your bootstrap command and run `scripts/ReaDemo.ps1` from t
 
 ## Development
 
+[Engineering mode](docs/ENGINEERING.md) adds scoped multi-file editing, Docker command recipes, automatic planning, verified artifact integration and reviewable patches. It includes an isolated self-development command.
+
 ```powershell
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```

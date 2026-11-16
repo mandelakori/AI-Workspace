@@ -53,10 +53,11 @@ def propose(controller: Controller, repo: Path, profile: str, trusted: bool,
     workspace, commit = checkout(repo.resolve(strict=True), root)
     if not (workspace / "aiwork/index.py").is_file() or not (workspace / "tests").is_dir():
         raise ValueError("self-development requires an AI Workspace checkout with regression tests")
-    base = ("Inspect the read-only repository index implementation. Choose one bounded improvement "
-            "to file or symbol relevance, such as better matching snake_case identifiers, and add "
-            "a targeted regression test in tests/test_index.py using unittest. "
-            "Make only that improvement and preserve CLI and security behavior.")
+    base = ("Inspect aiwork/index.py. Its Python import summary omits plain import statements. "
+            "Include module names from both import and from-import statements and preserve the "
+            "existing relevance ranking and output limits. Add a focused unittest in tests/test_index.py "
+            "covering an aliased plain import and an existing from-import. Run command 0. "
+            "Make only this improvement and preserve CLI and permission behavior.")
     full_suite = Check(("{python}", "-m", "unittest", "discover", "-s", "tests", "-v"), 90)
     task = Task(objective=objective or base, workspace=workspace, kind="agent",
                 category="aiwork-self-index", inputs=(), deliverables=("tests/test_index.py",),

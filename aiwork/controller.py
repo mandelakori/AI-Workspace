@@ -213,13 +213,21 @@ class Controller:
                 raise ValueError("external native analysis requires a reviewed task authorized with --trusted")
             from .specialists import analyze
             findings = analyze(self.config, task, work, attempt)
+        execution_error = ""
         if profile:
-            self.agent(task, profile, work, attempt, deadline, previous, summary, findings)
+            try:
+                self.agent(task, profile, work, attempt, deadline, previous, summary, findings)
+            except RuntimeError as exc:
+                if not engineering or not (attempt / "agent-process.json").exists():
+                    raise
+                execution_error = str(exc)
         after = inventory(work)
         changed = delta(before, after)
         if engineering:
             validate_changes(changed, task.write_roots)
             if not changed:
+                if execution_error:
+                    return {"status": "blocked", "detail": execution_error, "changed": changed}
                 return {"status": "failed", "detail": "No edits were made. Use the edit or write tool to implement the change.",
                         "changed": changed}
         if profile and (not changed or (not engineering and set(changed) - set(task.deliverables))):
@@ -228,13 +236,14 @@ class Controller:
         if profile and missing:
             return {"status": "failed", "detail": f"missing deliverables: {missing}", "changed": changed}
         patch = save_patch(task.workspace, work, changed, attempt) if engineering else {}
+        if execution_error:
+            patch["agent_exit_detail"] = execution_error
         if engineering:
             write_json(attempt / "checkpoint.json", {"inventory": after, "from": str(checkpoint or ""),
                                                      **patch})
         checks = []
         verification = attempt / "verification"
         snapshot(work, verification, ())
-        outcome = None
         for index, setup in enumerate(task.setup):
             outcome = invoke(setup, verification, attempt / "verify-home", self.config.verification_image,
                              timeout=max(0, deadline - monotonic()), stop=self.config.state / "STOP")

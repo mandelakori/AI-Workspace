@@ -12,7 +12,7 @@ from pathlib import Path
 from unittest.mock import patch
 from zipfile import ZipFile
 
-from aiwork.changes import checked_merge, git_patch
+from aiwork.changes import checked_merge, save_patch
 from aiwork.controller import Controller
 from aiwork.planner import planned, validate_plan
 from aiwork.schema import Check, Config, Profile, Task
@@ -59,12 +59,12 @@ class EngineeringTests(unittest.TestCase):
         snapshot(self.source, stage, ())
         (stage / "pkg/one.py").write_text("value = 1\n", encoding="utf-8")
         (stage / "pkg/two.py").unlink()
-        (stage / "pkg/three.py").write_text("value = 3\n", encoding="utf-8")
+        (stage / "pkg/three.py").write_bytes(b"# coding: latin-1\nvalue = 'caf\xe9'\n")
         names = ["pkg/one.py", "pkg/three.py", "pkg/two.py"]
-        patch_file = self.root / "review.patch"
-        patch_file.write_bytes(git_patch(self.source, stage, names, self.root / "git").encode())
+        patch_file = Path(save_patch(self.source, stage, names, self.root)["patch"])
         subprocess.run(["git", "apply", "--check", str(patch_file)], cwd=self.source, check=True)
-        subprocess.run(["git", "-c", "core.whitespace=cr-at-eol", "apply", str(patch_file)],
+        subprocess.run(["git", "-c", "core.autocrlf=false", "-c", "core.whitespace=cr-at-eol",
+                        "apply", str(patch_file)],
                        cwd=self.source, check=True)
         self.assertEqual(inventory(stage), inventory(self.source))
 
@@ -88,6 +88,9 @@ class EngineeringTests(unittest.TestCase):
         second = {"id": "two", "objective": "Modify two", "needs": [],
                   "write_roots": ["pkg/two.py"], "commands": [0]}
         self.assertEqual(len(validate_plan({"steps": [first, second]}, self.task())), 2)
+        with self.assertRaisesRegex(ValueError, "missing required command"):
+            validate_plan({"steps": [first, second]}, self.task(commands=(self.check, self.check)),
+                          cover_commands=True)
         for invalid in ({**second, "write_roots": ["pkg"]}, {**second, "commands": [1]},
                         {**second, "needs": ["two"]}, {**second, "write_roots": ["pkg/.git"]}):
             with self.subTest(invalid=invalid), self.assertRaises(ValueError):
@@ -112,6 +115,25 @@ class EngineeringTests(unittest.TestCase):
         self.assertEqual((self.source / "pkg/one.py").read_text(), "value = 0\n")
 
     @unittest.skipUnless(shutil.which("git"), "requires Git")
+    def test_reset_preserves_evidence_but_skips_old_checkpoint(self):
+        def agent(_, task, profile, work, *rest):
+            path = work / "pkg/one.py"
+            self.assertEqual(path.read_text(), "value = 0\n")
+            path.write_text("value = 1\n", encoding="utf-8")
+
+        fail = Check(("{python}", "-c", "raise SystemExit(1)"))
+        with patch.object(Controller, "agent", agent):
+            job = self.controller.submit_task(self.task(attempts=1, checks=(fail,)), True)
+            first = self.controller.run_submitted(job)
+            self.controller.resume(job, reset=True)
+            second = self.controller.run_submitted(job)
+        self.assertEqual([first["status"], second["status"]], ["failed", "failed"])
+        root = Path(first["artifacts"])
+        self.assertTrue((root / "attempt-001/proposed.patch").is_file())
+        latest = json.loads((root / "attempt-002/checkpoint.json").read_text())
+        self.assertEqual(latest["from"], "")
+
+    @unittest.skipUnless(shutil.which("git"), "requires Git")
     def test_validated_plan_runs_workers_and_integrates(self):
         source = self.root / "objective.toml"
         source.write_text("""
@@ -126,18 +148,22 @@ attempts = 1
 argv = ["{python}", "-c", "from pkg.one import value; assert value == 1"]
 [[commands]]
 argv = ["{python}", "-c", "from pkg.two import value; assert value == 2"]
+[[commands]]
+argv = ["{python}", "-c", "from pkg.one import value as x; from pkg.two import value as y; from pkg.three import value as z; assert (x, y, z) == (1, 2, 3)"]
 [[checks]]
-argv = ["{python}", "-c", "from pkg.one import value as x; from pkg.two import value as y; assert (x, y) == (1, 2)"]
+argv = ["{python}", "-c", "from pkg.one import value as x; from pkg.two import value as y; from pkg.three import value as z; assert (x, y, z) == (1, 2, 3)"]
 """, encoding="utf-8")
         plan = {"steps": [
             {"id": "one", "objective": "Provide value 1", "needs": [],
              "write_roots": ["pkg/one.py"], "commands": [0]},
             {"id": "two", "objective": "Provide value 2", "needs": [],
              "write_roots": ["pkg/two.py"], "commands": [1]},
+            {"id": "three", "objective": "Provide value 3", "needs": ["one", "two"],
+             "write_roots": ["pkg/three.py"], "commands": [2]},
         ]}
 
         def agent(_, task, profile, work, *unused):
-            value = int(task.objective.split()[-1])
+            value = int(task.objective.splitlines()[0].split()[-1])
             (work / task.write_roots[0]).write_text(f"value = {value}\n", encoding="utf-8")
 
         with (patch("aiwork.planner.propose", return_value=plan) as proposal,

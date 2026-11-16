@@ -70,6 +70,8 @@ def serve(spec_path: Path) -> None:
                     if name == "diff":
                         patch = git_patch(baseline, workspace, changed,
                                           spec_path.parent / f"agent-diff-{calls:02}")
+                        patch_path = spec_path.parent / f"agent-diff-{calls:02}.patch"
+                        patch_path.write_bytes(patch.encode("utf-8", "surrogateescape"))
                         value = {"stdout": patch, "stderr": "", "passed": True}
                     else:
                         check_root = spec_path.parent / f"public-check-{calls:02}"

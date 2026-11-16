@@ -1,5 +1,23 @@
 # Status as of 2026-11-16
 
+## Phase 2
+
+| Demonstration | Status | Evidence |
+| --- | --- | --- |
+| A · Multi-file feature | VERIFIED | A100 job `0274e10d0dbe4a1bbf696b7d1be6d048` changed the parcel request model, pricing policy, service, CLI and usage page. Compilation, public pricing tests and the five-case independent insurance holdout passed. The saved patch passed `git apply --check`. |
+| B · Autonomous debugging | VERIFIED | A100 job `6a8020c67d414dc39106fc78b880b786` recorded the failing baseline, repaired timestamp ties and final-page cursors, and passed the public reproducers and two private checks. Earlier laptop and A100 attempts exposed compaction failures and an unhandled full final page. |
+| C · Automatic planning | VERIFIED | The controller generated and validated `parcel-release-holdouts` from a high-level objective, ran two jobs, and integrated six changed files. Integration job `6b89a1a520195d3ebf752d8509b3d56e` passed compilation, the documentation check, nine public tests and seven private tests. Pagination escalated from the laptop to the A100. The final patch passed `git apply --check`. |
+| D · Multi-worker collaboration | VERIFIED | In `sensor-release`, the laptop verified `fix-units` in job `3c8ed06070855287be0bf88f85a601ed`. The A100 verified `fix-labels` in job `4a187325384054c6a2ae9157665438b0`. Job `4e99f2afc95a5a8b85182c822dbe4614` independently verified the composed report. The combined patch passed `git apply --check`. |
+| E · Self-development | VERIFIED | From committed checkout `c731241`, A100 job `afa49c08c7f34087b84e0a7f7bf7897d` proposed plain-import indexing and a new test file. The Git-equipped Linux runner executed 33 tests with one nested-Docker test skipped. The patch passed `git apply --check` on the source checkout and is available for review. |
+| Docker runner and offline dependencies | VERIFIED | Docker Desktop Linux engine 29.9.3 ran Phase 2 command and verification copies. A test installed a self-authored wheel into a disposable copy and checked that the only network interface was loopback. |
+| Windows regression suite and package | VERIFIED | `python -m unittest discover -s tests -q` passed all 32 tests with `AIWORK_TEST_DOCKER_IMAGE` set to the configured Python image. AI Workspace 0.2.0 installed into a separate environment and verified a direct task using its packaged CLI. |
+
+The earlier parcel plan passed public integration in `parcel-release-covered`. A subsequent full holdout run, `ee672c0f71dd4398a8852cf490141171`, rejected missing insurance validation and output fields. The controller now includes the parent objective in each subtask and the release manifest requires both holdouts. The new `parcel-release-holdouts` run passed that stronger gate.
+
+See [Engineering mode](ENGINEERING.md) for the start commands, protected test setup and patch review.
+
+## Phase 1
+
 | Gate or integration | Status | Evidence |
 | --- | --- | --- |
 | A · Controller and local install | VERIFIED | Windows Bootstrap installed a wheel into a fresh Python 3.12.14 environment. CLI help, doctor, direct task, SQLite evidence and unit tests executed. |
@@ -15,7 +33,7 @@
 | Cross-plane task graph | VERIFIED | `workflow examples/multi-agent.toml --id live-cross-plane --workers 2 --trusted` ran both model jobs and verified their artifact handoff. Journal at `.aiwork/workflows/live-cross-plane/workflow.json`. |
 | Windows background controller | VERIFIED | PowerShell start and status reported a live worker. It consumed a separately submitted direct job `31335729286e45659bacf7eafabfe4fe` and exited after the stop marker. |
 | Qwen Code 0.27.4 | VERIFIED | With the measured 131,072-token serving context and scoped edit and MCP approvals, the A100 fixture edited source and passed the public and independent tests. Job `f246f2b721b34c65a62ff4e82135825e`, 17.250 s. Earlier runs exposed one-token requests and tool permission denials. |
-| Docker verification | BLOCKED | Docker CLI found. The Linux engine pipe was unavailable during validation. |
+| Docker verification during Phase 1 | BLOCKED | The Linux engine pipe was unavailable during initial validation. Phase 2 subsequently verified the runner. |
 | Ubuntu CI, vLLM and DeepSeek-specific harness | UNTESTED | CI workflow and OpenAI-compatible engine profile are supplied. A DeepSeek-specific harness adapter is pending. |
 
 ## Commands and outputs

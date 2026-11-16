@@ -8,3 +8,4 @@ AI Workspace is a Windows-first controller for engineering jobs. Preserve the bo
 - Keep retry loops and subprocess output bounded. Make each routed attempt independently auditable. A model’s claim does not set the verification verdict.
 - Keep private verification material out of harness inputs and retry text. Verify artifact paths and changes against the manifest and retain failed attempts. Do not add secrets or raw private benchmark artifacts to Git.
 - Update status labels only after checking actual logs. Keep provider and harness versions explicit. A finite differential suite supports its tested inputs.
+- For engineering tasks, authorize file roots and command recipes through the manifest. Keep Docker, planner, and checkpoint changes covered by `tests/test_engineering.py`. See [Engineering mode](docs/ENGINEERING.md) for the isolated runner and patch review flow.
