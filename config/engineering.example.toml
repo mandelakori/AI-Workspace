@@ -1,0 +1,32 @@
+# A separate state directory allows testing Phase 2 while a Phase 1 worker is active.
+state = "../.aiwork/phase2"
+execution_state = "../.aiwork"
+verification_image = "python@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b"
+
+[ssh]
+alias = "aisak"
+remote_port = 18080
+
+[[profiles]]
+id = "laptop-ollama"
+engine = "ollama"
+harness = "opencode"
+location = "local"
+endpoint = "http://127.0.0.1:11434/v1"
+model = "qwen3.5:9b"
+context = 4096
+output_tokens = 1152
+quantization = "Q4_K_M"
+reasoning_effort = "none"
+
+[[profiles]]
+id = "a100-existing"
+engine = "llamacpp"
+harness = "opencode"
+location = "a100"
+endpoint = "http://127.0.0.1:18882/v1"
+model = "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf"
+context = 32768
+output_tokens = 4096
+quantization = "Q6_K"
+reasoning_effort = "none"

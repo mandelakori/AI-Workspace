@@ -1,0 +1,26 @@
+objective = """Implement optional shipment insurance for the parcel calculator. Add insured_value_cents to QuoteRequest with default 0 and validate that it is an integer from 0 through 1,000,000. Put insurance_rate_cents in parcel/policy.py. Return zero for zero value and otherwise compute max(75, (insured_value_cents * 15 + 999) // 1000). Keep the weight pricing. Add insurance_cents to Quote with default 0, have service.quote use the new policy, and support --insured-value-cents in the CLI and its JSON output. Document the option with an example in docs/usage.md. Run approved command 0."""
+workspace = "project"
+kind = "agent"
+mode = "engineering"
+category = "parcel-feature"
+write_roots = ["parcel", "docs"]
+min_context = 8192
+attempts = 2
+timeout = 300
+verification_dir = "holdouts/feature"
+
+[[commands]]
+argv = ["{python}", "-m", "unittest", "discover", "-s", "tests", "-p", "test_pricing*.py", "-v"]
+timeout = 20
+
+[[checks]]
+argv = ["{python}", "-m", "compileall", "-q", "parcel"]
+timeout = 20
+
+[[checks]]
+argv = ["{python}", "-m", "unittest", "discover", "-s", "tests", "-p", "test_pricing*.py", "-v"]
+timeout = 20
+
+[[checks]]
+argv = ["{python}", "-m", "unittest", "discover", "-s", "{verification}", "-v"]
+timeout = 20

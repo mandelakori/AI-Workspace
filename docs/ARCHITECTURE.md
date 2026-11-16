@@ -9,3 +9,11 @@
 7. `benchmark.py` compares selected profiles with independent baseline snapshots and a common fixture hash. Results include wall time, tool calls, emitted token usage and independent verdicts. Every completed sample is checkpointed.
 
 The A100 scheduler runs in the controller. An A100-local harness daemon, a general MCP broker and a hard multi-tenant GPU allocator are extension points.
+
+## Engineering execution
+
+- Existing manifests use restricted execution. An engineering manifest authorizes explicit file or directory roots and a list of public command recipes. The harness can edit or create files under those roots. The MCP service offers command indices and a Git diff. Runner copies receive no host shell, network, Docker socket or private verifier mount.
+- Setup and commands execute in disposable copies. A setup recipe can install from staged, reviewed offline packages. Independent verification runs an ordered pipeline in a separate copy. Each command may select a workspace-relative subdirectory.
+- Engineering attempts retain Git patches, checksums, failure classifications and validated checkpoints. Retries can start from a previous in-policy candidate. Use `task resume --reset` to start from the original snapshot while retaining previous evidence.
+- The planner sends a bounded index and objective to an existing inference profile. The controller validates the JSON graph against operator commands and write scopes. It assigns preferred lanes, runs workers through the same queue and merges only independently verified deltas. It checks file hashes and collisions before running combined verification. An integration failure can trigger one repair job.
+- The self workflow archives a committed Git snapshot. Its agent can change the relevance index and a dedicated regression test. The controller keeps the candidate and patch for operator review.

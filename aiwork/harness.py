@@ -50,12 +50,12 @@ class OpenCode:
         actions = ["read", "glob", "grep", "list", "todowrite"]
         permissions = [rule("*", "*", "deny"), *(rule(action) for action in actions)]
         # Controller checks the actual changed file set again before verification.
-        permissions.extend(rule("edit", name) for name in task.deliverables)
-        permissions.extend(rule("write", name) for name in task.deliverables)
-        permissions.extend(rule("patch", name) for name in task.deliverables)
         # V2 commonly normalizes mutation resources to absolute paths.
+        allowed = task.deliverables if task.mode == "restricted" else tuple(
+            f"{root}{suffix}" for root in task.write_roots for suffix in ("", "/**"))
         for action in ("edit", "write", "patch"):
-            permissions.extend(rule(action, (work / name).as_posix()) for name in task.deliverables)
+            permissions.extend(rule(action, name) for name in allowed)
+            permissions.extend(rule(action, (work / name).as_posix()) for name in allowed)
         config = {
             "providers": {"aiwork": {
                 "name": "AI Workspace", "package": "@opencode/ai/providers/openai-compatible",
@@ -73,6 +73,8 @@ class OpenCode:
             config["mcp"] = {"servers": {"checks": {"type": "local", "command": tool_command(tool_spec),
                                                      "codemode": False}}}
             permissions.append(rule("checks_check"))
+            if task.mode == "engineering":
+                permissions.append(rule("checks_diff"))
         env.update({
             "OPENCODE_CONFIG_CONTENT": json.dumps(config),
             "OPENCODE_DISABLE_PROJECT_CONFIG": "true",

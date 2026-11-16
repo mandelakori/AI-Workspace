@@ -18,7 +18,8 @@ class Route:
 
 def routes(task: Task, profiles: tuple[Profile, ...],
            scores: dict[str, tuple[int, int, float]]) -> list[Route]:
-    eligible = [p for p in profiles if p.tools and
+    eligible = [p for p in profiles if p.tools and p.context >= task.min_context and
+                (task.mode != "engineering" or p.harness == "opencode") and
                 (task.location == "auto" or p.location == task.location) and
                 (not task.profile or p.id == task.profile)]
     preferred = "a100" if task.complexity >= 4 else "local"
@@ -26,7 +27,8 @@ def routes(task: Task, profiles: tuple[Profile, ...],
     def rank(profile: Profile) -> tuple:
         passed, total, seconds = scores.get(profile.id, (0, 0, 0))
         smoothed = (passed + 1) / (total + 2)
-        return (-smoothed, profile.location != preferred, seconds or float("inf"), profile.id)
+        return (bool(task.preferred_profile and profile.id != task.preferred_profile),
+                -smoothed, profile.location != preferred, seconds or float("inf"), profile.id)
 
     output = []
     for profile in sorted(eligible, key=rank):
@@ -34,6 +36,8 @@ def routes(task: Task, profiles: tuple[Profile, ...],
         basis = "operator override" if task.profile or task.location != "auto" else (
             f"complexity {task.complexity} favors {preferred}; "
             f"{passed}/{total} verified prior attempts for {task.category}, mean success {seconds:.2f}s")
+        if profile.id == task.preferred_profile and not task.profile:
+            basis = f"planner preferred lane; {basis}"
         output.append(Route(profile, basis))
     return output
 
@@ -57,10 +61,12 @@ def gpu(root: Path) -> list[dict]:
 
 
 class Plane:
-    def __init__(self, location: str, slots: int, state: Path):
+    def __init__(self, location: str, slots: int, state: Path, execution_state: Path | None = None):
         self.location = location
         self.slots = slots
         self.state = state
+        self.execution_state = execution_state or state
+        self.execution_state.mkdir(parents=True, exist_ok=True)
 
     @contextmanager
     def reserve(self, profile: Profile, timeout: float):
@@ -70,7 +76,7 @@ class Plane:
             while monotonic() < deadline and not (self.state / "STOP").exists():
                 for slot in range(1 if exclusive else self.slots):
                     try:
-                        locks.enter_context(file_lock(self.state / f"{self.location}-{slot}.lock"))
+                        locks.enter_context(file_lock(self.execution_state / f"{self.location}-{slot}.lock"))
                     except TimeoutError:
                         continue
                     yield

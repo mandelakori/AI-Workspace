@@ -1,0 +1,22 @@
+objective = """Repair parcel/report.py: pagination skips records at timestamp ties and sometimes emits a cursor on the final page. The baseline failure has already been reproduced. Read the function, diagnose and edit it, then verify with approved command 0. Preserve the page API."""
+workspace = "project"
+kind = "agent"
+mode = "engineering"
+category = "parcel-debug"
+write_roots = ["parcel/report.py"]
+baseline_check = true
+attempts = 2
+timeout = 240
+verification_dir = "holdouts/debug"
+
+[[commands]]
+argv = ["{python}", "-m", "unittest", "discover", "-s", "tests", "-p", "test_report_public.py", "-v"]
+timeout = 20
+
+[[checks]]
+argv = ["{python}", "-m", "unittest", "discover", "-s", "tests", "-p", "test_report_public.py", "-v"]
+timeout = 20
+
+[[checks]]
+argv = ["{python}", "-m", "unittest", "discover", "-s", "{verification}", "-v"]
+timeout = 20

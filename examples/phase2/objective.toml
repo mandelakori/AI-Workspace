@@ -1,0 +1,33 @@
+objective = """
+Prepare the parcel tool for a release with shipment insurance and reliable report pagination.
+Implement optional insured_value_cents in QuoteRequest (default 0, integer range 0 through
+1,000,000), a separate insurance_rate_cents function in parcel/policy.py, and a backward-compatible
+insurance_cents element in Quote. Charge 0 for value zero and max(75, (value * 15 + 999) // 1000)
+otherwise. Wire insurance into the quote service, the --insured-value-cents CLI option and output,
+and document an example in docs/usage.md. Separately fix parcel/report.py pagination so records
+with equal timestamps are not dropped, using the (timestamp, id) cursor, and emit no cursor when
+there is no next page. Preserve the existing public APIs and prices.
+"""
+workspace = "project"
+kind = "agent"
+mode = "engineering"
+category = "parcel-release"
+write_roots = ["parcel", "docs"]
+attempts = 2
+timeout = 260
+
+[[commands]]
+argv = ["{python}", "-m", "unittest", "discover", "-s", "tests", "-p", "test_pricing*.py", "-v"]
+timeout = 20
+
+[[commands]]
+argv = ["{python}", "-m", "unittest", "discover", "-s", "tests", "-p", "test_report_public.py", "-v"]
+timeout = 20
+
+[[checks]]
+argv = ["{python}", "-m", "compileall", "-q", "parcel"]
+timeout = 20
+
+[[checks]]
+argv = ["{python}", "-m", "unittest", "discover", "-s", "tests", "-v"]
+timeout = 20

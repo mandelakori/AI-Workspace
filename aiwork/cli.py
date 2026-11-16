@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
+import os
 import sys
 from contextlib import nullcontext
 from pathlib import Path
@@ -40,6 +42,22 @@ def parser() -> argparse.ArgumentParser:
     workflow.add_argument("--id", required=True)
     workflow.add_argument("--workers", type=int, default=2)
     workflow.add_argument("--trusted", action="store_true")
+    planning = commands.add_parser("plan", help="plan, run and integrate an engineering objective")
+    planning.add_argument("manifest", type=Path)
+    planning.add_argument("--id", required=True)
+    planning.add_argument("--workers", type=int, default=2)
+    planning.add_argument("--planner", default="")
+    planning.add_argument("--plan-only", action="store_true")
+    planning.add_argument("--trusted", action="store_true")
+    promotion = commands.add_parser("patch", help="inspect the verified patch and optionally check a Git checkout")
+    promotion.add_argument("id")
+    promotion.add_argument("--plan", action="store_true")
+    promotion.add_argument("--check", type=Path)
+    self_task = commands.add_parser("self", help="propose a read-only index improvement from a committed checkout")
+    self_task.add_argument("--repo", type=Path, default=Path("."))
+    self_task.add_argument("--profile", default="")
+    self_task.add_argument("--objective", default="")
+    self_task.add_argument("--trusted", action="store_true")
     task = commands.add_parser("task", help="submit, inspect, or resume a job")
     actions = task.add_subparsers(dest="action", required=True)
     for name in ("submit", "run", "inspect"):
@@ -53,6 +71,7 @@ def parser() -> argparse.ArgumentParser:
     resume.add_argument("job")
     resume.add_argument("--interrupted", action="store_true",
                         help="requeue a running job after confirming its worker exited")
+    resume.add_argument("--reset", action="store_true", help="resume from the frozen source without older edits")
     work = commands.add_parser("worker", help="consume the persistent queue")
     work.add_argument("--once", action="store_true")
     work.add_argument("--exclusive", action="store_true", help="allow one background worker per state directory")
@@ -124,6 +143,43 @@ def main(argv: list[str] | None = None) -> int:
             result = execute(controller, args.manifest, args.workers, args.trusted, args.id)
             print_json(result)
             return 0 if result["status"] == "verified" else 1
+        elif args.command == "plan":
+            from .planner import planned
+            result = planned(controller, args.manifest, args.id, args.workers, args.trusted,
+                             args.planner, args.plan_only)
+            print_json(result)
+            return 0 if result["status"] == "verified" or args.plan_only else 1
+        elif args.command == "patch":
+            import re
+            from .planner import terminal
+            if args.plan:
+                if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,62}", args.id):
+                    raise ValueError("invalid plan ID")
+                record = json.loads((cfg.state / "plans" / args.id / "result.json").read_text(encoding="utf-8"))
+            else:
+                _, record = terminal(controller, args.id)
+            if record["status"] != "verified" or not record.get("patch"):
+                raise ValueError("no verified engineering patch")
+            patch = Path(record["patch"])
+            if hashlib.sha256(patch.read_bytes()).hexdigest() != record["patch_sha256"]:
+                raise ValueError("patch hash no longer matches verification evidence")
+            result = {"patch": patch, "sha256": record["patch_sha256"], "changed": record["changed"]}
+            if args.check:
+                from .process import run
+                git = executable("git")
+                if not git:
+                    raise ValueError("Git executable unavailable")
+                outcome = run([git, "apply", "--check", "--", str(patch)], args.check.resolve(strict=True),
+                              30, os.environ.copy())
+                result.update({"applies": outcome.code == 0 and not outcome.timed_out,
+                               "diagnostic": outcome.stderr[-1000:]})
+            print_json(result)
+            return 0 if result.get("applies", True) else 1
+        elif args.command == "self":
+            from .selfdev import propose
+            result = propose(controller, args.repo, args.profile, args.trusted, args.objective)
+            print_json(result)
+            return 0 if result["status"] == "verified" else 1
         elif args.command == "a100":
             if args.action != "status":
                 from .cloud import Lambda, Lifecycle
@@ -152,7 +208,7 @@ def main(argv: list[str] | None = None) -> int:
             if args.action == "inspect":
                 print_json(Task.load(args.manifest).__dict__)
             elif args.action == "resume":
-                controller.resume(args.job, args.interrupted)
+                controller.resume(args.job, args.interrupted, args.reset)
                 print_json({"job": args.job, "status": "queued"})
             else:
                 job = controller.submit(args.manifest, args.trusted, profile_id=args.profile)
