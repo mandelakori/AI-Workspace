@@ -1,4 +1,4 @@
-objective = "Fix the Fahrenheit to Celsius conversion in units.py using the standard formula. Inspect units.py and test_units.py first. After editing, run the public tests using the checks_check tool with index 0."
+objective = "Fix the Fahrenheit to Celsius conversion in units.py using the standard formula. Inspect units.py and test_units.py first. Run the approved public test after editing."
 workspace = "project"
 kind = "agent"
 category = "python-bugfix"

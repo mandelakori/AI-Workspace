@@ -1,4 +1,4 @@
-state = ".aiwork"
+state = "../.aiwork"
 local_slots = 1
 
 [ssh]

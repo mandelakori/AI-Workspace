@@ -5,6 +5,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from threading import Timer
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import replace
 from pathlib import Path
@@ -12,7 +13,8 @@ from unittest.mock import patch
 
 from aiwork.benchmark import aggregate
 from aiwork.controller import Controller
-from aiwork.process import Result
+from aiwork.lock import file_lock
+from aiwork.process import Result, environment, run
 from aiwork.router import routes
 from aiwork.schema import Config, Profile, Task, relative
 from aiwork.workflow import execute
@@ -56,6 +58,7 @@ argv = {check}
         self.assertFalse((root / "baseline/.env").exists())
         self.assertTrue((root / "attempt-001/check-00.json").is_file())
         self.assertEqual(self.controller.state.jobs(job)[0]["status"], "verified")
+        self.assertEqual(self.controller.run_submitted(job), value)
 
     def test_trust_required_without_container(self):
         with self.assertRaisesRegex(ValueError, "reviewed task"):
@@ -64,7 +67,7 @@ argv = {check}
     def test_mock_agent_retry_escalates_and_verifies(self):
         attempted = []
 
-        def fixture(_, profile, task, work, attempt, prompt, timeout, tool_spec):
+        def fixture(_, profile, task, work, attempt, prompt, timeout, tool_spec, stop):
             attempted.append(profile.id)
             (work / "answer.py").write_text(f"answer = {len(attempted)}\n", encoding="utf-8")
             return Result(0, 0.02, "", "", False, False)
@@ -177,6 +180,38 @@ argv = ["{python}", "-c", "from pathlib import Path; assert Path('.handoff/seed/
         ])
         self.assertEqual(report["small"]["verified"], 1)
         self.assertEqual(report["small"]["p50_seconds"], 2)
+
+    def test_stop_marker_interrupts_active_subprocess(self):
+        marker = self.root / "STOP"
+        timer = Timer(0.3, marker.touch)
+        timer.start()
+        try:
+            result = run([sys.executable, "-c", "import time; time.sleep(20)"],
+                         self.root, 20, environment(self.root / "temp"), marker)
+        finally:
+            timer.cancel()
+            timer.join()
+        self.assertTrue(result.timed_out)
+        self.assertLess(result.elapsed, 8)
+
+    def test_allocated_job_id_recovers_journal_gap(self):
+        task = self.task()
+        allocated = "1" * 32
+        first = self.controller.submit(task, True, job_id=allocated)
+        second = self.controller.submit(task, True, job_id=allocated)
+        self.assertEqual(first, second)
+        self.assertEqual(len(self.controller.state.jobs()), 1)
+
+    def test_contended_file_lock_reports_busy(self):
+        lock = self.root / "lane.lock"
+        with file_lock(lock), self.assertRaises(TimeoutError), file_lock(lock):
+            self.fail("second lock unexpectedly acquired")
+        with file_lock(lock):
+            self.assertTrue(lock.exists())
+
+    @patch.dict("os.environ", {"LAMBDA_API_KEY": "credential"})
+    def test_child_environment_omits_credential(self):
+        self.assertNotIn("LAMBDA_API_KEY", environment(self.root / "temp"))
 
 
 if __name__ == "__main__":

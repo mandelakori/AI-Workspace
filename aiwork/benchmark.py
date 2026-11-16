@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+import hashlib
+import json
+from dataclasses import asdict
 from math import ceil
 from pathlib import Path
 from statistics import median
@@ -21,7 +24,11 @@ def benchmark(controller: Controller, manifest: Path, profiles: list[str],
     directory = controller.config.state / "benchmarks" / uuid4().hex
     directory.mkdir(parents=True)
     report = {"manifest": str(manifest.resolve()), "repeats": repeats, "samples": [],
+              "profiles": [asdict(p) for p in controller.config.profiles if p.id in profiles],
+              "manifest_sha256": hashlib.sha256(manifest.read_bytes()).hexdigest(),
               "comparisons": {}, "report": str(directory / "report.json")}
+    write_json(directory / "report.json", report)
+    baseline = None
     for repeat in range(repeats):
         # Rotate order to reduce systematic warm-start and temporal bias.
         cycle = profiles[repeat % len(profiles):] + profiles[:repeat % len(profiles)]
@@ -29,15 +36,27 @@ def benchmark(controller: Controller, manifest: Path, profiles: list[str],
             if (controller.config.state / "STOP").exists():
                 return report
             job = controller.submit(manifest, trusted, profile_id=profile)
+            root = controller.config.state / "runs" / job
+            intake = json.loads((root / "intake.json").read_text(encoding="utf-8"))
+            assets = [intake["inventory"], intake["private_inventory"]]
+            asset_hash = hashlib.sha256(json.dumps(assets, sort_keys=True).encode()).hexdigest()
+            spec_hash = hashlib.sha256((root / "task.toml").read_bytes()).hexdigest()
+            if baseline is None:
+                baseline = asset_hash
+                report["input_inventory_sha256"] = baseline
+            if asset_hash != baseline or spec_hash != report["manifest_sha256"]:
+                controller.state.finish(job, "blocked", "benchmark fixture changed between samples")
+                raise RuntimeError("benchmark fixture changed between samples")
             started = monotonic()
-            result = controller.work(job)
+            result = controller.run_submitted(job)
             attempts = controller.state.attempts(job)
             report["samples"].append({
                 "repeat": repeat + 1, "profile": profile, "job": job,
-                "status": result["status"] if result else "queued",
+                "status": result["status"],
                 "elapsed": round(monotonic() - started, 3),
                 "attempts": len(attempts),
                 "first_pass": bool(attempts and attempts[0]["status"] == "verified"),
+                "agent": [json.loads(record["evidence"]).get("agent") for record in attempts],
             })
             report["comparisons"] = aggregate(report["samples"])
             write_json(directory / "report.json", report)

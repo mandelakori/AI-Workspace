@@ -1,0 +1,29 @@
+state = "../.aiwork"
+
+[ssh]
+alias = "aisak"
+remote_port = 18080
+
+[[profiles]]
+id = "a100-qwen"
+harness = "qwen"
+engine = "llamacpp"
+location = "a100"
+endpoint = "http://127.0.0.1:18881/v1"
+model = "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf"
+context = 131072
+output_tokens = 3072
+quantization = "Q6_K"
+reasoning_effort = "none"
+
+[[profiles]]
+id = "a100-opencode-matched"
+harness = "opencode"
+engine = "llamacpp"
+location = "a100"
+endpoint = "http://127.0.0.1:18881/v1"
+model = "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf"
+context = 131072
+output_tokens = 3072
+quantization = "Q6_K"
+reasoning_effort = "none"

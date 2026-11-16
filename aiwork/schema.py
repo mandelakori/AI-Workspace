@@ -29,6 +29,8 @@ class Check:
 
     @classmethod
     def read(cls, data: dict) -> Check:
+        if not isinstance(data, dict) or set(data) - {"argv", "timeout", "stdout"}:
+            raise ValueError("checks must be tables containing argv and optional timeout and stdout")
         argv = data["argv"]
         if not isinstance(argv, list) or not argv or any(
             not isinstance(arg, str) or not arg or "\0" in arg for arg in argv
@@ -82,7 +84,12 @@ class Task:
                 d["workspace"].is_relative_to(d["verification_dir"])
             ):
                 raise ValueError("verification_dir must be a separate directory")
-        d["checks"] = tuple(Check.read(c) for c in d.get("checks", []))
+        else:
+            d["verification_dir"] = None
+        checks = d.get("checks", [])
+        if not isinstance(checks, list):
+            raise ValueError("checks must be an array of tables")
+        d["checks"] = tuple(Check.read(c) for c in checks)
         task = cls(**d)
         if (not isinstance(task.objective, str) or not task.objective.strip() or
             len(task.objective) > 8000 or not task.workspace.is_dir()):
@@ -121,6 +128,8 @@ class Profile:
     tools: bool = True
     api_key_env: str = ""
     managed: bool = False
+    reasoning_effort: str = ""
+    seed: int | None = None
 
     def validate(self) -> None:
         if not re.fullmatch(r"[a-zA-Z0-9_.-]{1,50}", self.id) or not self.model or len(self.model) > 512:
@@ -138,6 +147,14 @@ class Profile:
         bounded("context", self.context, 1024, 2_000_000)
         bounded("output_tokens", self.output_tokens, 128, self.context - 1)
         bounded("memory_mib", self.memory_mib, 0, 1_000_000)
+        if type(self.tools) is not bool or self.api_key_env and not re.fullmatch(
+            r"[A-Za-z_][A-Za-z0-9_]{0,99}", self.api_key_env
+        ):
+            raise ValueError("invalid tools capability or credential environment variable name")
+        if self.reasoning_effort and not re.fullmatch(r"[A-Za-z0-9_-]{1,30}", self.reasoning_effort):
+            raise ValueError("invalid reasoning effort")
+        if self.seed is not None:
+            bounded("seed", self.seed, 0, 2**31 - 1)
 
 
 @dataclass(frozen=True)
@@ -151,7 +168,6 @@ class Config:
     ssh: dict = field(default_factory=dict)
     lambda_cloud: dict = field(default_factory=dict)
     specialists: dict = field(default_factory=dict)
-    discovery: dict = field(default_factory=dict)
     verification_image: str = ""
 
     @classmethod
@@ -159,6 +175,8 @@ class Config:
         path = path.resolve()
         d = tomllib.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
         profiles = tuple(Profile(**p) for p in d.pop("profiles", []))
+        if len(profiles) > 64:
+            raise ValueError("a configuration supports up to 64 model profiles")
         if len({p.id for p in profiles}) != len(profiles):
             raise ValueError("profile IDs must be unique")
         for profile in profiles:
@@ -168,5 +186,5 @@ class Config:
             settings["user_data_file"] = str((path.parent / settings["user_data_file"]).resolve())
         cfg = cls((path.parent / d.pop("state", ".aiwork")).resolve(), profiles, **d)
         bounded("local_slots", cfg.local_slots, 1, 16)
-        bounded("a100_slots", cfg.a100_slots, 1, 16)
+        bounded("a100_slots", cfg.a100_slots, 1, 1)
         return cfg

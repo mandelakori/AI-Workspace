@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sqlite3
 from contextlib import contextmanager
 from pathlib import Path
@@ -37,9 +38,15 @@ class State:
         finally:
             connection.close()
 
-    def submit(self, category: str, trusted: bool, prepare) -> str:
-        job = uuid4().hex
+    def submit(self, category: str, trusted: bool, prepare, job: str = "") -> str:
+        if job and not re.fullmatch(r"[0-9a-f]{32}", job):
+            raise ValueError("invalid allocated job ID")
+        if job and self.jobs(job):
+            return job
+        job = job or uuid4().hex
         spec = self.root / "runs" / job / "task.toml"
+        if spec.parent.exists():
+            spec.parent.rename(spec.parent.with_name(f"{job}.incomplete-{uuid4().hex}"))
         prepare(spec)
         with self.db() as db:
             db.execute("INSERT INTO jobs(id,spec,category,trusted) VALUES(?,?,?,?)",

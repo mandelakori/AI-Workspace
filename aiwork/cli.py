@@ -8,7 +8,7 @@ from pathlib import Path
 from time import sleep
 
 from .controller import Controller
-from .harness import opencode_path
+from .harness import opencode_path, qwen_command
 from .inference import Inference, ollama_inventory
 from .process import executable
 from .remote import a100_session, ssh_probe
@@ -18,11 +18,12 @@ from .schema import Config, Task
 
 def parser() -> argparse.ArgumentParser:
     root = argparse.ArgumentParser(prog="aiwork", description="Run and independently verify engineering jobs.")
-    root.add_argument("--config", type=Path, default=Path("aiwork.local.toml"))
+    root.add_argument("--config", type=Path, help="operator TOML file, defaults to aiwork.local.toml")
     commands = root.add_subparsers(dest="command", required=True)
     commands.add_parser("doctor", help="show Python, GPU and executable inventory")
     commands.add_parser("models", help="discover configured endpoints and model inventory")
     commands.add_parser("harnesses", help="show harness executable inventory")
+    commands.add_parser("tools", help="list built-in tools and configured specialist adapters")
     remote = commands.add_parser("a100", help="inspect SSH and manage scoped Lambda lifecycle")
     remote.add_argument("action", nargs="?", choices=["status", "plan", "instances", "types",
                                                     "start", "stop"], default="status")
@@ -78,20 +79,38 @@ def discover(cfg: Config) -> list[dict]:
                     **(ollama_inventory(profile.endpoint) if profile.engine == "ollama" else {})})
         except (OSError, RuntimeError, ValueError, KeyError) as exc:
             found.append({"profile": profile.id, "available": False, "error": str(exc)})
+    if not cfg.profiles:
+        from .http import request
+        for engine, url in (("ollama", "http://127.0.0.1:11434/v1"),
+                            ("openai", "http://127.0.0.1:8080/v1")):
+            try:
+                found.append({"engine": engine, "endpoint": url, "available": True,
+                              "inventory": request(url + "/models", timeout=2)["data"],
+                              **(ollama_inventory(url) if engine == "ollama" else {})})
+            except (OSError, RuntimeError, ValueError, KeyError) as exc:
+                found.append({"engine": engine, "endpoint": url, "available": False, "error": str(exc)})
     return found
 
 
 def main(argv: list[str] | None = None) -> int:
     args = parser().parse_args(argv)
     try:
-        cfg = Config.load(args.config)
+        if args.config is not None and not args.config.is_file():
+            raise ValueError(f"configuration file not found: {args.config}")
+        cfg = Config.load(args.config or Path("aiwork.local.toml"))
         controller = Controller(cfg)
         if args.command == "doctor":
             print_json({"python": sys.version, "state": cfg.state, "gpus": gpu(cfg.state),
-                        "tools": {name: executable(name) for name in ("ssh", "docker", "git", "qwen")},
+                        "tools": {name: executable(name) for name in ("ssh", "docker", "git")},
+                        "qwen": qwen_command(cfg.qwen, cfg.state),
                         "opencode": opencode_path(cfg.opencode), "profiles": [p.id for p in cfg.profiles]})
         elif args.command == "harnesses":
-            print_json({"opencode": opencode_path(cfg.opencode), "qwen": executable(cfg.qwen or "qwen")})
+            print_json({"opencode": opencode_path(cfg.opencode), "qwen": qwen_command(cfg.qwen, cfg.state)})
+        elif args.command == "tools":
+            print_json({"preprocessing": ["inventory", "sha256", "python-symbols", "binary"],
+                        "specialists": ["binary", *sorted(cfg.specialists)],
+                        "harness_mcp": ["checks:check (manifest test index)"],
+                        "git": executable("git"), "verification_image": cfg.verification_image})
         elif args.command == "models":
             print_json(discover(cfg))
         elif args.command == "benchmark":
@@ -137,19 +156,25 @@ def main(argv: list[str] | None = None) -> int:
                 print_json({"job": args.job, "status": "queued"})
             else:
                 job = controller.submit(args.manifest, args.trusted, profile_id=args.profile)
-                result = controller.work(job) if args.action == "run" else None
+                result = controller.run_submitted(job) if args.action == "run" else None
                 print_json(result or {"job": job, "status": "queued"})
                 return 0 if not result or result["status"] == "verified" else 1
         elif args.command == "runs":
             print_json({"jobs": controller.state.jobs(args.job),
                         "attempts": controller.state.attempts(args.job) if args.job else []})
         elif args.command == "control":
+            from .lock import file_lock
             marker = cfg.state / "STOP"
             if args.action == "stop":
                 marker.touch()
             elif args.action == "start":
                 marker.unlink(missing_ok=True)
-            print_json({"paused": marker.exists()})
+            try:
+                with file_lock(cfg.state / "controller.lock"):
+                    worker = False
+            except TimeoutError:
+                worker = True
+            print_json({"paused": marker.exists(), "background_worker_active": worker})
         elif args.command == "worker":
             from .lock import file_lock
             with file_lock(cfg.state / "controller.lock") if args.exclusive else nullcontext():

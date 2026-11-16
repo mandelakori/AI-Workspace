@@ -66,7 +66,8 @@ def kill_tree(proc: subprocess.Popen) -> None:
             pass
 
 
-def run(argv: list[str] | str, cwd: Path, timeout: float, env: dict[str, str]) -> Result:
+def run(argv: list[str] | str, cwd: Path, timeout: float, env: dict[str, str],
+        stop: Path | None = None) -> Result:
     started = monotonic()
     proc = subprocess.Popen(argv, cwd=cwd, env=env, stdin=subprocess.DEVNULL,
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE,
@@ -85,7 +86,14 @@ def run(argv: list[str] | str, cwd: Path, timeout: float, env: dict[str, str]) -
         thread.start()
     timed_out = False
     try:
-        proc.wait(timeout=timeout)
+        while proc.poll() is None:
+            remaining = started + timeout - monotonic()
+            if remaining <= 0 or stop and stop.exists():
+                raise subprocess.TimeoutExpired(argv, timeout)
+            try:
+                proc.wait(timeout=min(0.25, remaining))
+            except subprocess.TimeoutExpired:
+                continue
         for thread in threads:
             thread.join(timeout=max(0, started + timeout - monotonic()))
     except subprocess.TimeoutExpired:

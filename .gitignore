@@ -4,5 +4,7 @@ __pycache__/
 *.egg-info/
 build/
 dist/
-aiwork.local.toml
+*.local.toml
 .env
+.env.*
+!.env.example

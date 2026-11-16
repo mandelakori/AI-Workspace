@@ -14,7 +14,8 @@ from .schema import Config, Profile
 
 SSH_OPTIONS = ["-o", "BatchMode=yes", "-o", "StrictHostKeyChecking=yes",
                "-o", "ConnectTimeout=8", "-o", "ServerAliveInterval=15",
-               "-o", "ServerAliveCountMax=2"]
+               "-o", "ServerAliveCountMax=2", "-o", "ForwardAgent=no",
+               "-o", "PermitLocalCommand=no", "-o", "ControlPath=none"]
 
 
 def ssh_base(alias: str) -> list[str]:

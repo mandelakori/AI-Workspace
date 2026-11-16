@@ -10,8 +10,7 @@ from time import monotonic, sleep
 def file_lock(path: Path, timeout: float = 0):
     deadline = monotonic() + timeout
     with path.open("a+b") as handle:
-        handle.seek(0)
-        if not handle.read(1):
+        if os.fstat(handle.fileno()).st_size == 0:
             handle.write(b"\x00")
             handle.flush()
         handle.seek(0)

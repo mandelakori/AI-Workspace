@@ -1,16 +1,18 @@
 from __future__ import annotations
 
+import ast
 import hashlib
 import os
 import re
 import shutil
 import stat
 from pathlib import Path
+from typing import Iterator
 
 FILE_LIMIT = 5000
 BYTE_LIMIT = 64 * 1024 * 1024
 SKIP = {".git", ".aiwork", ".venv", "node_modules", "__pycache__", ".opencode",
-        "opencode.json", "opencode.jsonc", ".ssh", ".aws", ".codex", ".agents",
+        "opencode.json", "opencode.jsonc", ".qwen", "qwen.md", ".ssh", ".aws", ".codex", ".agents",
         ".env", ".hg", ".svn", ".github", ".pytest_cache"}
 LANGUAGES = {".py": "Python", ".rs": "Rust", ".js": "JavaScript", ".ts": "TypeScript",
              ".c": "C", ".h": "C header", ".cpp": "C++", ".cs": "C#", ".go": "Go",
@@ -46,7 +48,7 @@ def ignore(name: str) -> bool:
             Path(name).suffix.lower() in {".pem", ".key", ".pfx"})
 
 
-def files(root: Path, *, exclude: bool = True):
+def files(root: Path, *, exclude: bool = True) -> Iterator[Path]:
     def fail(exc: OSError) -> None:
         raise exc
 
@@ -66,13 +68,15 @@ def files(root: Path, *, exclude: bool = True):
 
 
 def snapshot(source: Path, target: Path, inputs: tuple[str, ...]) -> dict[str, dict]:
+    from .schema import relative
+
     target.mkdir(parents=True, exist_ok=False)
     roots = [contained(source, i) for i in inputs] if inputs else [source]
     paths = (p for root in roots for p in (files(root) if root.is_dir() else (root,)))
     seen: set[str] = set()
     total = 0
     for path in paths:
-        name = path.relative_to(source).as_posix()
+        name = relative(path.relative_to(source).as_posix())
         if any(ignore(part) for part in Path(name).parts):
             raise ValueError(f"excluded input: {name}")
         if name in seen:
@@ -108,7 +112,7 @@ def describe(root: Path, entries: dict[str, dict]) -> dict:
               "languages": sorted({LANGUAGES[Path(p).suffix] for p in entries if Path(p).suffix in LANGUAGES}),
               "build_files": [p for p in entries if Path(p).name in BUILDS][:40],
               "candidate_tests": [p for p in entries if re.search(r"(^|/)(tests?/|test_)", p)][:40],
-              "binaries": {}}
+              "binaries": {}, "python_symbols": {}}
     for name in entries:
         with (root / name).open("rb") as stream:
             head = stream.read(64)
@@ -128,4 +132,22 @@ def describe(root: Path, entries: dict[str, dict]) -> dict:
                     }
         if len(result["binaries"]) >= 20:
             break
+    for name, meta in entries.items():
+        if len(result["python_symbols"]) >= 24:
+            break
+        if not name.endswith(".py") or meta["bytes"] > 256 * 1024:
+            continue
+        try:
+            module = ast.parse((root / name).read_bytes(), filename=name)
+        except (SyntaxError, ValueError):
+            continue
+        top = [node for node in module.body if isinstance(
+            node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef))]
+        result["python_symbols"][name] = [
+            {"name": symbol.name, "line": symbol.lineno,
+             "calls": sorted({node.func.id if isinstance(node.func, ast.Name) else node.func.attr
+                              for node in ast.walk(symbol) if isinstance(node, ast.Call)
+                              and isinstance(node.func, (ast.Name, ast.Attribute))})[:24]}
+            for symbol in top[:32]
+        ]
     return result

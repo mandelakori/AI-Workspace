@@ -14,9 +14,10 @@ harness = "opencode"
 location = "local"
 endpoint = "http://127.0.0.1:11434/v1"
 model = "qwen3.5:9b"
-context = 8192
+context = 4096
 output_tokens = 2048
 quantization = "Q4_K_M"
+reasoning_effort = "none"
 
 [[profiles]]
 id = "a100-existing"

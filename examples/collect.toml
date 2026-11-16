@@ -1,0 +1,9 @@
+objective = "Confirm both independently verified implementations reached the artifact handoff."
+workspace = "project"
+kind = "direct"
+category = "workflow-aggregation"
+inputs = ["test_units.py"]
+deliverables = ["comparison.txt"]
+
+[[checks]]
+argv = ["{python}", "-c", "from pathlib import Path; paths = [Path('.handoff') / name / 'units.py' for name in ('laptop', 'a100')]; assert all(p.is_file() and p.stat().st_size for p in paths); Path('comparison.txt').write_text('Two independently verified implementations received.\\n', encoding='utf-8')"]

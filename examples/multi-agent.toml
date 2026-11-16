@@ -1,0 +1,11 @@
+[steps.laptop]
+manifest = "coding.toml"
+profile = "laptop-ollama"
+
+[steps.a100]
+manifest = "coding.toml"
+profile = "a100-existing"
+
+[steps.collect]
+manifest = "collect.toml"
+needs = ["laptop", "a100"]

@@ -7,6 +7,7 @@ import tomllib
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from pathlib import Path
+from uuid import NAMESPACE_URL, uuid5
 
 from .controller import Controller, write_json
 from .lock import file_lock
@@ -18,6 +19,7 @@ from .workspace import contained
 class Node:
     manifest: Path
     needs: tuple[str, ...]
+    profile: str
 
 
 def read_plan(path: Path) -> dict[str, Node]:
@@ -31,7 +33,10 @@ def read_plan(path: Path) -> dict[str, Node]:
         needs = data.get("needs", [])
         if not isinstance(needs, list) or any(not isinstance(dep, str) for dep in needs):
             raise ValueError("workflow needs must be a string array")
-        nodes[name] = Node(source, tuple(needs))
+        profile = data.get("profile", "")
+        if not isinstance(profile, str) or data.keys() - {"manifest", "needs", "profile"}:
+            raise ValueError("invalid workflow step fields")
+        nodes[name] = Node(source, tuple(needs), profile)
     if not 1 <= len(nodes) <= 64:
         raise ValueError("workflow requires 1–64 steps")
     pending = set(nodes)
@@ -67,8 +72,7 @@ def execute(controller: Controller, source: Path, workers: int, trusted: bool,
         states: dict[str, str] = {}
 
         def run_node(job: str) -> str:
-            answer = controller.work(job)
-            return answer["status"] if answer else controller.state.jobs(job)[0]["status"]
+            return controller.run_submitted(job)["status"]
 
         with ThreadPoolExecutor(max_workers=workers) as pool:
             while not (controller.config.state / "STOP").exists():
@@ -87,7 +91,9 @@ def execute(controller: Controller, source: Path, workers: int, trusted: bool,
                         location = "verification" if upstream.kind == "direct" else "workspace"
                         for filename in upstream.deliverables:
                             handoff[f"{dep}/{filename}"] = contained(attempt / location, filename)
-                    jobs[name] = controller.submit(node.manifest, trusted, handoff=handoff)
+                    jobs[name] = controller.submit(node.manifest, trusted, profile_id=node.profile,
+                                                   handoff=handoff, job_id=uuid5(
+                                                       NAMESPACE_URL, f"aiwork:{workflow_id}/{name}").hex)
                     states[name] = "queued"
                     write_json(journal, result)
                 waiting = [jobs[name] for name, status in states.items() if status == "queued"]

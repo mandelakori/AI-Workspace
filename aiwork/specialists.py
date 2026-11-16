@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import tempfile
 from dataclasses import asdict
 from pathlib import Path
 
@@ -26,8 +27,6 @@ def analyze(cfg: Config, task: Task, work: Path, attempt: Path) -> str:
         return json.dumps(output)[:4500]
     env = environment(attempt / "specialist-home")
     if task.specialist == "ghidra":
-        project = attempt / "ghidra-project"
-        project.mkdir()
         path = Path(settings.get("headless", "")).resolve()
         if not path.is_file():
             raise ValueError("set specialists.ghidra.headless to analyzeHeadless or analyzeHeadless.bat")
@@ -35,17 +34,20 @@ def analyze(cfg: Config, task: Task, work: Path, attempt: Path) -> str:
         function = settings.get("function", "")
         if function and not re.fullmatch(r"[a-zA-Z0-9_.$@:-]{1,100}", function):
             raise ValueError("invalid Ghidra function selector")
-        argv = [str(path), str(project), "analysis", "-import", str(binary), "-readOnly",
-                "-analysisTimeoutPerFile", "60", "-max-cpu", "2", "-scriptPath", str(script_dir),
-                "-postScript", "AiworkEvidence.java", *([function] if function else [])]
         if java_home := settings.get("java_home"):
             env["JAVA_HOME"] = java_home
-        if os.name == "nt" and path.suffix.lower() == ".bat":
-            if any(re.search(r'["&|<>^%!\r\n]', arg) for arg in argv):
-                raise ValueError("Ghidra Windows paths contain unsupported cmd metacharacters")
-            command = subprocess_batch(argv)
-        else:
-            command = argv
+        # Ghidra rejects any project path containing a dot-prefixed element.
+        with tempfile.TemporaryDirectory(prefix="aiwork-ghidra-") as project:
+            argv = [str(path), project, "analysis", "-import", str(binary), "-readOnly",
+                    "-analysisTimeoutPerFile", "60", "-max-cpu", "2", "-scriptPath", str(script_dir),
+                    "-postScript", "AiworkEvidence.java", *([function] if function else [])]
+            if os.name == "nt" and path.suffix.lower() == ".bat":
+                if any(re.search(r'["&|<>^%!\r\n]', arg) for arg in argv):
+                    raise ValueError("Ghidra Windows paths contain unsupported cmd metacharacters")
+                command = subprocess_batch(argv)
+            else:
+                command = argv
+            result = run(command, work, min(100, task.timeout), env)
     else:
         if task.specialist not in {"rea", "rea-next"}:
             raise ValueError(f"unknown specialist: {task.specialist}")
@@ -54,7 +56,7 @@ def analyze(cfg: Config, task: Task, work: Path, attempt: Path) -> str:
             raise ValueError(f"configure specialists.{task.specialist}.argv with a trusted adapter")
         command = [program, *(a.replace("{binary}", str(binary)).replace("{artifacts}", str(attempt))
                               for a in vector[1:])]
-    result = run(command, work, min(100, task.timeout), env)
+        result = run(command, work, min(100, task.timeout), env)
     (attempt / "specialist-process.json").write_text(json.dumps(asdict(result), indent=2), encoding="utf-8")
     if result.code or result.timed_out or result.truncated:
         raise RuntimeError("specialist process failed; see specialist-process.json")
@@ -67,7 +69,13 @@ def analyze(cfg: Config, task: Task, work: Path, attempt: Path) -> str:
         if marker:
             output["decompilation"] = after.split("AIWORK_DECOMPILE_END", 1)[0].strip()[:6500]
     else:
-        output["findings"] = result.stdout[:8000]
+        if settings.get("format") == "json":
+            findings = json.loads(result.stdout)
+            if not isinstance(findings, (dict, list)):
+                raise ValueError("specialist did not return structured evidence")
+            output["findings"] = findings
+        else:
+            output["findings"] = result.stdout[:8000]
     artifact.write_text(json.dumps(output, indent=2), encoding="utf-8")
     return json.dumps({k: v for k, v in output.items() if k != "strings"})[:8000]
 
