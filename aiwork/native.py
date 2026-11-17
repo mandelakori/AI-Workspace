@@ -85,6 +85,12 @@ def recipe(spec: dict, key: str) -> Check:
     return check
 
 
+def install_public_check(workspace: Path, compiler: Check, invocation: Check) -> Check:
+    runner = "native_feedback.py"
+    shutil.copyfile(Path(__file__).with_name(runner), workspace / runner)
+    return Check(("{python}", runner, json.dumps(asdict(compiler)), json.dumps(asdict(invocation))), 30)
+
+
 def reconstruct(controller: Controller, manifest: Path, profile: str, *, evidence: str,
                 trusted: bool, rea_archive: Path | None = None) -> dict:
     spec = tomllib.loads(manifest.read_text(encoding="utf-8"))
@@ -130,7 +136,8 @@ def reconstruct(controller: Controller, manifest: Path, profile: str, *, evidenc
     task = Task(
         objective=spec["objective"], workspace=work, kind="agent", category=category, inputs=(),
         mode="engineering", write_roots=tuple(relative(p) for p in deliverables),
-        deliverables=tuple(deliverables), commands=(candidate_build,),
+        deliverables=tuple(deliverables),
+        commands=(install_public_check(work, candidate_build, candidate_run), candidate_build),
         checks=(candidate_build, replace(candidate_run, oracle="cases.json", timeout=120)),
         verification_dir=public, min_context=spec.get("min_context", 0),
         attempts=spec.get("attempts", 2), timeout=spec.get("timeout", 300),

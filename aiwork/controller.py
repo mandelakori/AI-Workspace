@@ -285,12 +285,13 @@ class Controller:
         findings = ""
         if task.baseline_check:
             trial = attempt / "baseline-check"
-            snapshot(task.workspace, trial, ())
+            snapshot(work, trial, ())
             failure = pipeline(task.setup, task.commands[0], trial, attempt / "baseline-home",
                                self.config.verification_image, timeout=max(0, deadline - monotonic()),
                                stop=self.config.state / "STOP")
             write_json(attempt / "baseline-check.json", {**failure, "classification": classify(failure)})
-            findings = (f"Baseline command 0 classification: {classify(failure)}\n"
+            source = "checkpoint" if checkpoint else "baseline"
+            findings = (f"Public command 0 on the current {source}: {classify(failure)}\n"
                         f"{failure['stdout'][-1200:]}\n{failure['stderr'][-1600:]}")
         if task.specialist:
             if task.specialist != "binary" and not trusted:

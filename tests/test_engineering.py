@@ -125,10 +125,12 @@ class EngineeringTests(unittest.TestCase):
         def agent(_, task, profile, work, artifact, deadline, previous, summary, findings):
             path = work / "pkg/one.py"
             value = path.read_text(encoding="utf-8")
+            self.assertIn(value.strip(), findings)
             path.write_text(f"value = {int(value.rsplit(' ', 1)[-1]) + 1}\n", encoding="utf-8")
 
         with patch.object(Controller, "agent", agent):
-            job = self.controller.submit_task(self.task(checks=(check,)), True)
+            report = Check(("{python}", "-c", "from pathlib import Path; print(Path('pkg/one.py').read_text())"))
+            job = self.controller.submit_task(self.task(checks=(check,), commands=(report,), baseline_check=True), True)
             result = self.controller.run_submitted(job)
         self.assertEqual(result["status"], "verified", self.controller.state.attempts(job))
         self.assertEqual([a["status"] for a in self.controller.state.attempts(job)], ["failed", "verified"])

@@ -1,8 +1,10 @@
 import hashlib
+import contextlib
 import io
 import json
 import tarfile
 import tempfile
+import sys
 import unittest
 from dataclasses import asdict
 from pathlib import Path
@@ -11,6 +13,7 @@ from unittest.mock import patch
 from aiwork.campaign import allocation_receipt, stage_fixture, static_evidence
 from aiwork.controller import Controller, write_json
 from aiwork.native import grade, read_inputs
+from aiwork.native_feedback import run_public_checks
 from aiwork.schema import Check, Config
 from aiwork.workspace import inventory
 
@@ -20,6 +23,25 @@ class NativeTests(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
         self.root = Path(self.tmp.name)
+
+    def test_public_feedback_shows_at_most_three_reproducers(self):
+        public = self.root / "examples.json"
+        write_json(public, [
+            {"name": f"public-{i}", "stdin": f"input-{i}", "argv": [], "code": 0,
+             "stdout": f"expected-{i}\n", "stderr": ""}
+            for i in range(1, 6)
+        ])
+        build = {"argv": [sys.executable, "-c", "pass"], "cwd": "", "timeout": 5}
+        run = {**build, "argv": [sys.executable, "-c", "print('observed')"]}
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output):
+            self.assertEqual(run_public_checks(public, build, run), 1)
+        summary = output.getvalue()
+        self.assertIn("expected-1", summary)
+        self.assertIn("observed", summary)
+        self.assertIn("input-3", summary)
+        self.assertNotIn("input-4", summary)
+        self.assertIn("passed: 0/5", summary)
 
     def test_campaign_receipt_binds_a_private_phase_four_directory(self):
         record = allocation_receipt("/tmp/aiwork-p4.Ab12CD34\nubuntu 1000 700 29 418")
