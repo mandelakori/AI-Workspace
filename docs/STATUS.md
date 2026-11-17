@@ -1,14 +1,14 @@
-# Status as of 2026-11-16
+# Status as of 2026-11-17
 
 ## Phase 4
 
 | Capability | Status | Evidence |
 | --- | --- | --- |
-| Windows regression and direct smoke | VERIFIED | All 52 tests passed with offline Docker and the OpenCode boundary probe enabled. The Phase 1 direct fixture verified in job `9360857808e347ffb2336a9dbd7cfed6`. The Phase 4 wheel also installed offline in a fresh environment and passed that fixture in job `c5324c68f14f4a9494cfae3dfc040150` before the boundary follow-up. |
+| Windows regression and direct smoke | VERIFIED | All 52 tests passed with offline Docker and the OpenCode boundary probe enabled. The Phase 4 wheel installed offline into a fresh environment and passed the original direct fixture in job `8fcb59393c8d45d8980a97ebf7084c7e`. |
 | Configurable native reconstruction and separate differential grading | VERIFIED | Three self-authored ELF targets exercised stdin, argv, multi-function source and stateful input sequences. The stride candidate passed 48/48 final cases. The classifier and ledger were rejected at 44/48 and 47/48. The laptop ledger attempt produced no candidate. |
 | Component isolation and integration | VERIFIED | Two Ollama workers implemented separate C functions. Both the serial and two-worker schedules independently verified and linked the components. They took 63.234 and 50.922 seconds with one laptop inference lane. |
 | Independent checkpoint verification | VERIFIED | A new deterministic job replayed the original PyPA acceptance pipeline against an unchanged checkpoint. It caught a syntax error in the generated test file. |
-| External repository feature | BLOCKED | The initial Qwen Code sample exhausted its turns. The first OpenCode sample was contaminated when it read the test generator outside its workspace. Checkpoint replay independently rejected the generated tests during compilation. |
+| External repository feature | BLOCKED | The first OpenCode sample read the test generator outside its workspace and is contaminated. A fresh 8K-context trial saved three of four files. Combining those files with independently verified documentation produced a reviewable patch, and the unchanged verifier rejected its generated tests during compilation. |
 | OpenCode workspace boundary | VERIFIED | The installed OpenCode process read and edited staged probe files. It denied read and search operations against synthetic files in the enclosing checkout. The probe used a fake local model endpoint. A separate Ollama job `e4dd3a4086e54e3fbcff1fdb9bf797d2` edited source and passed offline verification through the isolated workspace. |
 | Measured Ollama context admission | VERIFIED | The laptop reported a 4,096-token serving window during an 8,192-token harness declaration. Admission now caps the declared window when residency reports a smaller one. Regression coverage confirms an insufficient window blocks dispatch before the harness starts. |
 | REA-Next static evidence import | VERIFIED | Imported the pinned Phase 3 ELF archive's matching `file`, `readelf` and `objdump` artifacts. The Phase 4 REA-Next campaign descriptor and combined live comparison still need a newly authorized remote run. |

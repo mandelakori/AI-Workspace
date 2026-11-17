@@ -78,7 +78,8 @@ def failure(record: dict) -> str:
         ("context_or_harness", ("harness", "compaction", "serving context")),
         ("queue_or_timeout", ("timeout", "timed out", "deadline", "stop")),
         ("scope", ("outside write_roots", "invalid agent changes")),
-        ("no_candidate", ("no edits", "missing deliverables")),
+        ("missing_deliverables", ("missing deliverables",)),
+        ("no_candidate", ("no edits",)),
     ):
         if any(indicator in text for indicator in indicators):
             return name

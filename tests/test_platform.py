@@ -12,7 +12,7 @@ from pathlib import Path
 from time import monotonic, sleep
 from unittest.mock import patch
 
-from aiwork.benchmark import aggregate
+from aiwork.benchmark import aggregate, failure
 from aiwork.controller import Controller
 from aiwork.lock import file_lock
 from aiwork.process import Result, environment, run
@@ -237,6 +237,9 @@ argv = ["{python}", "-c", "from pathlib import Path; assert Path('.handoff/seed/
         ])
         self.assertEqual(report["small"]["verified"], 1)
         self.assertEqual(report["small"]["p50_seconds"], 2)
+        self.assertEqual(failure({"status": "failed", "detail": "missing deliverables: ['docs']"}),
+                         "missing_deliverables")
+        self.assertEqual(failure({"status": "failed", "detail": "No edits were made."}), "no_candidate")
 
     def test_stop_marker_interrupts_active_subprocess(self):
         marker = self.root / "STOP"
