@@ -156,6 +156,61 @@ class EngineeringTests(unittest.TestCase):
         self.assertEqual((root / "attempt-002/workspace/pkg/one.py").read_text(), "value = 1\n")
 
     @unittest.skipUnless(shutil.which("git"), "requires Git")
+    def test_ranked_public_candidate_rolls_back_to_incumbent_before_retry(self):
+        seed = self.source / "pkg/one.py"
+        seed.write_text("0", encoding="utf-8")
+        examples = [{"name": f"public-{i}", "stdin": str(i), "stdout": "pass"} for i in range(1, 5)]
+        (self.source / "examples.json").write_text(json.dumps(examples), encoding="utf-8")
+        sealed = self.root / "sealed"
+        sealed.mkdir()
+        marker = "sealed-marker-never-send"
+        (sealed / "cases.json").write_text(marker, encoding="utf-8")
+        controller = Controller(replace(self.controller.config, verification_image="offline"))
+        task = self.task(deliverables=("pkg/one.py",), checks=(self.check, self.check), attempts=3,
+                         rank_public=True)
+        with self.assertRaisesRegex(ValueError, "without private"):
+            controller.submit_task(replace(task, verification_dir=sealed))
+        columns = [{1}, {1, 2}, {2, 3, 4}, {1, 2, 3, 4}]
+
+        def oracle_runner(_, workspace, _home, _image, *, stdin, **kwargs):
+            self.assertTrue(kwargs["sealed"])
+            self.assertIsNone(kwargs.get("private"))
+            version = int((workspace / "pkg/one.py").read_text())
+            return {"code": 0, "stdout": "pass" if int(stdin) in columns[version] else "fail",
+                    "stderr": "", "timed_out": False, "truncated": False, "elapsed": 0}
+
+        def agent(_, manifest, profile, work, artifact, deadline, previous, summary, findings):
+            attempt = int(artifact.name.split("-")[-1])
+            path = work / "pkg/one.py"
+            self.assertEqual(path.read_text(), "0" if attempt == 1 else "1")
+            self.assertIn(f"passes {1 if attempt == 1 else 2}/4 public cases", findings)
+            if attempt == 3:
+                self.assertIn("Rejected public proposal (public_regression)", previous)
+                self.assertIn("indices lost: [1]", previous)
+            else:
+                self.assertEqual(previous, "")
+            self.assertNotIn(marker, findings + previous)
+            self.assertFalse((work / "cases.json").exists())
+            path.write_text(str(attempt), encoding="utf-8")
+
+        with (
+            patch.object(Controller, "agent", agent),
+            patch("aiwork.selection.invoke", return_value={"passed": True}),
+            patch("aiwork.oracle.invoke", side_effect=oracle_runner),
+        ):
+            result = controller.run_submitted(controller.submit_task(task))
+        self.assertEqual(result["status"], "verified", result)
+        root = Path(result["artifacts"])
+        regressed = json.loads((root / "attempt-002/checkpoint.json").read_bytes())
+        self.assertEqual(regressed["public"]["passed_cases"], 3)
+        self.assertEqual(regressed["selection"]["lost_cases"], [1])
+        self.assertTrue(regressed["selection"]["rollback"])
+        final = json.loads((root / "attempt-003/checkpoint.json").read_bytes())
+        self.assertEqual(final["selection"]["previous"], "attempt-001")
+        self.assertEqual(final["public"]["independent_verification"], "not_run")
+        self.assertFalse((root / "private").exists())
+
+    @unittest.skipUnless(shutil.which("git"), "requires Git")
     def test_checkpoint_verification_replays_checks_without_an_agent(self):
         def agent(_, task, profile, work, *rest):
             (work / "pkg" / "one.py").write_text("value = 1\n", encoding="utf-8")

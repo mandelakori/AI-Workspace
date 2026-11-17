@@ -16,8 +16,10 @@ from .harness import OpenCode, QwenCode, opencode_path, qwen_command
 from .inference import Inference, ollama_residency
 from .lock import file_lock
 from .metrics import summarize_trace
+from .oracle import load_cases
 from .router import Plane, gpu, routes
 from .schema import Check, Config, Profile, Task
+from .selection import CORPUS, compare, score
 from .state import State
 from .verify import classify, invoke, pipeline, runner_status
 from .workspace import contained, describe, inventory, snapshot
@@ -50,6 +52,8 @@ class Controller:
                 raise ValueError("profile override requires an agent task and a configured profile")
             task = replace(task, profile=profile_id, location="auto")
         task.validate()
+        if task.rank_public and not self.config.verification_image:
+            raise ValueError("public ranking requires an offline Docker runner")
         if any(check.oracle for check in task.checks) and not self.config.verification_image:
             raise ValueError("sealed verification requires a configured Docker image")
         if not self.config.verification_image and not trusted:
@@ -64,6 +68,8 @@ class Controller:
         def prepare(spec: Path) -> None:
             root = spec.parent
             baseline = snapshot(task.workspace, root / "baseline", task.inputs)
+            if task.rank_public:
+                load_cases(root / "baseline" / CORPUS, public=True)
             if handoff:
                 handoff_dir = root / "baseline" / ".handoff"
                 handoff_dir.mkdir(exist_ok=False)
@@ -85,7 +91,7 @@ class Controller:
             manifest = asdict(task)
             if task.mode == "restricted" and not task.min_context and not task.preferred_profile:
                 for key in ("mode", "write_roots", "commands", "setup", "baseline_check",
-                            "min_context", "preferred_profile"):
+                            "min_context", "preferred_profile", "rank_public"):
                     manifest.pop(key)
                 manifest["checks"] = [{key: value for key, value in check.items()
                                        if key not in {"cwd", "oracle"} or value}
@@ -163,6 +169,8 @@ class Controller:
     def _work(self, row: dict, root: Path) -> dict:
         data = json.loads((root / "intake.json").read_text(encoding="utf-8"))
         task = self.frozen_task(root, data)
+        if task.rank_public and inventory(task.workspace) != data["inventory"]:
+            raise ValueError("public ranking baseline changed after intake")
         if not self.config.verification_image and not row["trusted"]:
             raise ValueError("trusted execution policy has no configured verification image")
         return self.run_attempts(row, root, task, data)
@@ -193,6 +201,8 @@ class Controller:
             raise ValueError("checkpoint attempt has no completed execution record")
         data = json.loads((root / "intake.json").read_bytes())
         task = self.frozen_task(root, data)
+        if task.rank_public:
+            raise ValueError("ranked native candidates use separate final grading")
         if task.mode != "engineering":
             raise ValueError("checkpoint verification requires an engineering job")
         if task.setup:
@@ -237,6 +247,7 @@ class Controller:
         number = max((int(p.name.removeprefix("attempt-")) for p in root.glob("attempt-*")
                       if p.is_dir() and p.name.removeprefix("attempt-").isdecimal()), default=0)
         previous = ""
+        detail = ""
         status = "blocked"
         for offset in range(task.attempts if task.kind == "agent" else 1):
             if (self.config.state / "STOP").exists():
@@ -269,10 +280,19 @@ class Controller:
                     evidence["status"], attempt / "evidence.json", expected)
             except (OSError, sqlite3.Error, RuntimeError, ValueError) as exc:
                 write_json(attempt / "knowledge-error.json", {"detail": str(exc)})
-            status, previous = evidence["status"], evidence["detail"]
+            status, detail = evidence["status"], evidence["detail"]
+            previous = detail if not task.rank_public else ""
+            if task.rank_public and evidence.get("selection", {}).get("rollback"):
+                public = evidence["public"]
+                previous = (
+                    f"Rejected public proposal ({evidence['selection']['reason']}); "
+                    f"the workspace has been restored to the incumbent. "
+                    f"Previously passing case indices lost: {evidence['selection']['lost_cases']}. "
+                    + public.get("build_diagnostic", "")[:470]
+                )
             if status == "verified":
                 break
-        return self._finish(row["id"], root, status, previous)
+        return self._finish(row["id"], root, status, detail)
 
     def attempt(self, task: Task, profile: Profile | None, attempt: Path, previous: str,
                 summary: dict, trusted: bool) -> dict:
@@ -282,8 +302,22 @@ class Controller:
         staged = snapshot(checkpoint or task.workspace, work, ())
         before = inventory(task.workspace) if checkpoint else staged
         deadline = monotonic() + task.timeout
+        agent_deadline = deadline
         findings = ""
-        if task.baseline_check:
+        if task.rank_public:
+            incumbent = self.public_incumbent(task, attempt, checkpoint, deadline)
+            reserve = min(task.timeout / 2, max(25, 8 + 2 * incumbent["total"]))
+            agent_deadline -= reserve
+            findings = (
+                f"Selected checkpoint passes {incumbent['passed_cases']}/{incumbent['total']} public cases. "
+                "Reproduce one failure, identify its cause, make the smallest edit, then run public command 0. "
+                "A correction that breaks a previously passing case will be rolled back.\n"
+                + json.dumps(incumbent["discrepancies"][:2]) + "\n" + incumbent.get("build_diagnostic", "")
+            )
+            if incumbent["public_passed"]:
+                write_json(attempt / "output-inventory.json", staged)
+                return {"status": "verified", "detail": "incumbent passed the entire public corpus"}
+        elif task.baseline_check:
             trial = attempt / "baseline-check"
             snapshot(work, trial, ())
             failure = pipeline(task.setup, task.commands[0], trial, attempt / "baseline-home",
@@ -301,7 +335,7 @@ class Controller:
         execution_error = ""
         if profile:
             try:
-                self.agent(task, profile, work, attempt, deadline, previous, summary, findings)
+                self.agent(task, profile, work, attempt, agent_deadline, previous, summary, findings)
             except RuntimeError as exc:
                 if not engineering or not (attempt / "agent-process.json").exists():
                     raise
@@ -309,13 +343,24 @@ class Controller:
         after = inventory(work)
         changed = delta(before, after)
         if engineering:
-            validate_changes(changed, task.write_roots)
-            if not changed:
+            try:
+                validate_changes(changed, task.write_roots)
+            except ValueError:
+                if task.rank_public:
+                    write_json(attempt / "rejected-candidate.json", {
+                        "inventory": after, "from": str(checkpoint or ""), "changed": changed,
+                        "policy_valid": False, "classification": "file_policy_violation",
+                    })
+                raise
+            unchanged = after == staged if task.rank_public else not changed
+            if unchanged:
                 if execution_error:
                     return {"status": "blocked", "detail": execution_error, "changed": changed}
                 return {"status": "failed", "detail": "No edits were made. Use the edit or write tool to implement the change.",
                         "changed": changed}
-        if profile and (not changed or (not engineering and set(changed) - set(task.deliverables))):
+        if profile and not task.rank_public and (
+            not changed or (not engineering and set(changed) - set(task.deliverables))
+        ):
             return {"status": "failed", "detail": f"invalid agent changes: {changed}", "changed": changed}
         missing = [name for name in task.deliverables if name not in after]
         if profile and missing and not engineering:
@@ -323,6 +368,9 @@ class Controller:
         patch = save_patch(task.workspace, work, changed, attempt) if engineering else {}
         if execution_error:
             patch["agent_exit_detail"] = execution_error
+        if task.rank_public:
+            return self.record_public_candidate(task, work, attempt, checkpoint, incumbent, deadline,
+                                                after, changed, missing, patch)
         if engineering:
             write_json(attempt / "checkpoint.json", {"inventory": after, "from": str(checkpoint or ""),
                                                      **patch})
@@ -373,16 +421,63 @@ class Controller:
         return {"status": "verified", "detail": "all independent checks passed",
                 "changed": changed, "checks": checks, **patch}
 
+    def public_incumbent(self, task: Task, attempt: Path, checkpoint: Path | None, deadline: float) -> dict:
+        if checkpoint:
+            return json.loads((checkpoint.parent / "checkpoint.json").read_bytes())["public"]
+        record = attempt.parent / "baseline-public.json"
+        if not record.exists():
+            work = attempt / "baseline-check"
+            hashes = snapshot(task.workspace, work, ())
+            missing = [name for name in task.deliverables if name not in hashes]
+            outcome = self.measure_public(task, work, attempt / "baseline-home", deadline, missing)
+            if outcome["compiled"] and len(outcome["cases"]) != outcome["total"]:
+                raise ValueError("public baseline evaluation did not finish")
+            write_json(record, {**outcome, "inventory": hashes})
+        incumbent = json.loads(record.read_bytes())
+        if incumbent["runner"] != self.config.verification_image:
+            raise ValueError("public baseline runner changed")
+        return incumbent
+
+    def measure_public(self, task: Task, work: Path, home: Path, deadline: float,
+                       missing: list[str]) -> dict:
+        return score(*task.checks, task.workspace / CORPUS, work, home, self.config.verification_image,
+                     deadline, self.config.state / "STOP", missing)
+
+    def record_public_candidate(self, task: Task, work: Path, attempt: Path, checkpoint: Path | None,
+                                incumbent: dict, deadline: float, after: dict,
+                                changed: list[str], missing: list[str], patch: dict) -> dict:
+        verification = attempt / "verification"
+        snapshot(work, verification, ())
+        public = self.measure_public(task, verification, attempt / "verify-home", deadline, missing)
+        decision = compare(incumbent, public, protect_passing=True)
+        parent = checkpoint.parent.name if checkpoint else "baseline"
+        decision.update({"previous": parent, "selected": attempt.name if decision["accepted"] else parent,
+                         "rollback": not decision["accepted"]})
+        write_json(attempt / "checkpoint.json", {"inventory": after, "from": str(checkpoint or ""),
+                                                 "public": public, "selection": decision, **patch})
+        if decision["accepted"] and public["public_passed"]:
+            write_json(attempt / "output-inventory.json", after)
+            return {"status": "verified", "detail": "selected candidate passed the entire public corpus",
+                    "public": public, "selection": decision, "changed": changed, **patch}
+        return {"status": "failed", "detail": decision["reason"], "public": public,
+                "selection": decision, "changed": changed, **patch}
+
     def checkpoint(self, task: Task, attempt: Path) -> Path | None:
         restore = attempt.parent / "restore.json"
         discarded = set(json.loads(restore.read_text(encoding="utf-8"))["discarded_checkpoints"]
                         if restore.is_file() else ())
+        corpus_sha = hashlib.sha256((task.workspace / CORPUS).read_bytes()).hexdigest() if task.rank_public else ""
         for record in sorted(attempt.parent.glob("attempt-*/checkpoint.json"), reverse=True):
-            if record.parent.name in discarded:
+            if record.parent == attempt or record.parent.name in discarded:
                 continue
             candidate = record.parent / "workspace"
             try:
-                expected = json.loads(record.read_text(encoding="utf-8"))["inventory"]
+                saved = json.loads(record.read_text(encoding="utf-8"))
+                if task.rank_public and (not saved["selection"]["accepted"] or
+                    saved["public"]["runner"] != self.config.verification_image or
+                    saved["public"]["corpus_sha256"] != corpus_sha):
+                    continue
+                expected = saved["inventory"]
                 actual = inventory(candidate)
                 if expected != actual:
                     continue

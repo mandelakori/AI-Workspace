@@ -1,0 +1,92 @@
+[
+  {
+    "name": "example-1",
+    "group": "development",
+    "stdin": "show\nadd 8\ntake 5\nshow\nreset\n"
+  },
+  {
+    "name": "example-2",
+    "group": "development",
+    "stdin": "take 1\nadd -2\nbad\n"
+  },
+  {
+    "name": "example-3",
+    "group": "development",
+    "stdin": "add 1000\nadd 1001\nshow\n"
+  },
+  {
+    "name": "blank-after-add",
+    "group": "whitespace",
+    "stdin": "add 3\n\nshow\n"
+  },
+  {
+    "name": "show-garbage",
+    "group": "arguments",
+    "stdin": "add 9\nshow foo\nshow\n"
+  },
+  {
+    "name": "reset-garbage",
+    "group": "arguments",
+    "stdin": "add 4\nreset late\nshow\n"
+  },
+  {
+    "name": "blank-whitespace",
+    "group": "whitespace",
+    "stdin": " \t\u000b\f\r\nshow"
+  },
+  {
+    "name": "split-at-buffer",
+    "group": "framing",
+    "stdin": "add 14\n                                                                                             show\nshow\n"
+  },
+  {
+    "name": "fits-buffer",
+    "group": "framing",
+    "stdin": "add 7\n                                                                                          show\n"
+  },
+  {
+    "name": "show-eof",
+    "group": "framing",
+    "stdin": "add 7\nshow"
+  },
+  {
+    "name": "extra-after-add",
+    "group": "arguments",
+    "stdin": "add 5\nadd 3 more\nshow\n"
+  },
+  {
+    "name": "extra-after-take",
+    "group": "arguments",
+    "stdin": "add 6\ntake 1 tail\nshow\n"
+  },
+  {
+    "name": "empty",
+    "group": "framing",
+    "stdin": ""
+  },
+  {
+    "name": "no-newline-reset",
+    "group": "framing",
+    "stdin": "add 14\nreset"
+  },
+  {
+    "name": "tabbed-args",
+    "group": "whitespace",
+    "stdin": "\tadd\t+8  \n\tshow\t\n"
+  },
+  {
+    "name": "range-and-state",
+    "group": "state",
+    "stdin": "add 1000\ntake 1001\nadd 1001\ntake -1\ntake 999\nshow\n"
+  },
+  {
+    "name": "cap-and-state",
+    "group": "state",
+    "stdin": "add 1000\nadd 1000\nadd 1000\nadd 1000\nadd 1000\nadd 1000\nadd 1000\nadd 1000\nadd 1000\nadd 1000\nadd 1\nshow\nreset\nshow\n"
+  },
+  {
+    "name": "recovery",
+    "group": "state",
+    "stdin": "add 8\nwrong\nshow\nreset\nshow\n"
+  }
+]

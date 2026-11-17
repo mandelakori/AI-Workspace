@@ -92,7 +92,8 @@ def install_public_check(workspace: Path, compiler: Check, invocation: Check) ->
 
 
 def reconstruct(controller: Controller, manifest: Path, profile: str, *, evidence: str,
-                trusted: bool, rea_archive: Path | None = None) -> dict:
+                trusted: bool, rea_archive: Path | None = None, seed_run: Path | None = None,
+                public_inputs: Path | None = None, attempts: int | None = None) -> dict:
     spec = tomllib.loads(manifest.read_text(encoding="utf-8"))
     allowed = {"objective", "source", "source_inputs", "binary", "format", "development", "build_reference",
                "reference", "build_candidate", "candidate", "deliverables", "selectors", "attempts", "timeout",
@@ -126,21 +127,27 @@ def reconstruct(controller: Controller, manifest: Path, profile: str, *, evidenc
         raise ValueError("specialist evidence requires a configured specialists list")
     if profile not in {item.id for item in controller.config.profiles}:
         raise ValueError("native reconstruction requires a configured profile")
-    public_cases = read_inputs(raw / spec["development"], 32)
+    public_cases = read_inputs(public_inputs or raw / spec["development"], 32)
     image = pin_runner(controller)
     stop = controller.config.state / "STOP"
     work.mkdir(parents=True)
     public.mkdir()
     outputs.mkdir()
     shutil.copyfile(manifest, root / "manifest.toml")
+    objective = spec["objective"]
+    if seed_run:
+        objective = ("Repair the existing candidate using the public expected and observed behavior. "
+                     "Keep the existing implementation and change the smallest failing branch. "
+                     "After editing, run public command 1 to compile. Fix compiler errors before running command 0 "
+                     "to check the complete public suite.\n" + objective)
     task = Task(
-        objective=spec["objective"], workspace=work, kind="agent", category=category, inputs=(),
+        objective=objective, workspace=work, kind="agent", category=category, inputs=(),
         mode="engineering", write_roots=tuple(relative(p) for p in deliverables),
         deliverables=tuple(deliverables),
         commands=(install_public_check(work, candidate_build, candidate_run), candidate_build),
-        checks=(candidate_build, replace(candidate_run, oracle="cases.json", timeout=120)),
-        verification_dir=public, min_context=spec.get("min_context", 0),
-        attempts=spec.get("attempts", 2), timeout=spec.get("timeout", 300), baseline_check=True,
+        checks=(candidate_build, candidate_run), min_context=spec.get("min_context", 0),
+        attempts=attempts if attempts is not None else spec.get("attempts", 2),
+        timeout=spec.get("timeout", 300), rank_public=True,
     )
     task.validate()
     snapshot((raw / spec["source"]).resolve(strict=True), root / "reference-build", tuple(inputs))
@@ -153,6 +160,23 @@ def reconstruct(controller: Controller, manifest: Path, profile: str, *, evidenc
     target_format = describe(target, target_inventory)["binaries"].get(binary, {}).get("format")
     if target_format != spec["format"] or target_format not in {"ELF", "PE"}:
         raise ValueError("built artifact does not match the configured ELF or PE format")
+    seeded = {}
+    if seed_run:
+        seed_run = seed_run.resolve(strict=True)
+        origin = json.loads((seed_run / "run.json").read_bytes())
+        seeded = json.loads((seed_run / "frozen.json").read_bytes())
+        if (target_inventory != origin["target"] or set(seeded) != set(deliverables) or
+                inventory(seed_run / "frozen") != seeded):
+            raise ValueError("repair seed bytes, target, or deliverables do not match the frozen receipt")
+        copied = root / "seed"
+        if snapshot(seed_run / "frozen", copied, ()) != seeded:
+            raise ValueError("repair seed changed while staging")
+        for name in deliverables:
+            destination = contained(work, name)
+            if destination.exists():
+                raise ValueError("repair seed conflicts with a public fixture")
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(copied / name, destination)
 
     def collect(name: str, settings: dict, label: str) -> None:
         folder = outputs / label
@@ -193,21 +217,29 @@ def reconstruct(controller: Controller, manifest: Path, profile: str, *, evidenc
     job = lane.submit_task(task, profile_id=profile)
     write_json(root / "run.json", {
         "job": job, "profile": profile, "evidence": evidence, "image": image, "target": target_inventory,
+        "seed_run": str(seed_run) if seed_run else None, "seed": seeded,
         "rea_archive": str(rea_archive.resolve()) if rea_archive else None,
         "build_candidate": asdict(candidate_build), "candidate": asdict(candidate_run),
         "reference": asdict(reference_run), "deliverables": deliverables, "development": inventory(public),
     })
     result = lane.run_submitted(job)
-    if result["status"] == "verified":
-        path = Path(result["artifacts"])
-        attempt = sorted(path.glob("attempt-*/output-inventory.json"))[-1]
-        verified = json.loads(attempt.read_bytes())
-        frozen = snapshot(attempt.parent / "workspace", root / "frozen", tuple(deliverables))
-        if any(meta != verified.get(name) for name, meta in frozen.items()):
-            raise ValueError("verified candidate changed before freezing")
-        write_json(root / "frozen.json", frozen)
+    path = Path(result["artifacts"])
+    staged_task = lane.frozen_task(path, json.loads((path / "intake.json").read_bytes()))
+    selected = lane.checkpoint(staged_task, path / "selection")
+    receipt = selected.parent / "checkpoint.json" if selected else path / "baseline-public.json"
+    if receipt.is_file():
+        saved = json.loads(receipt.read_bytes())
+        public_outcome = saved["public"] if selected else saved
+        result["selection"] = {"attempt": selected.parent.name if selected else "baseline",
+                               "public": public_outcome, "record": str(receipt)}
+        if public_outcome["compiled"]:
+            frozen = snapshot(selected or staged_task.workspace, root / "frozen", tuple(deliverables))
+            if frozen != {name: saved["inventory"][name] for name in deliverables}:
+                raise ValueError("selected candidate changed before freezing")
+            write_json(root / "frozen.json", frozen)
+    result["native_run"] = str(root)
     write_json(root / "result.json", result)
-    return {**result, "native_run": str(root)}
+    return result
 
 
 def grade(controller: Controller, run: Path, final: Path, audits: list[Path], workers: int) -> dict:

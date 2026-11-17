@@ -79,6 +79,7 @@ class Task:
     baseline_check: bool = False
     min_context: int = 0
     preferred_profile: str = ""
+    rank_public: bool = False
 
     @classmethod
     def load(cls, path: Path) -> Task:
@@ -152,6 +153,12 @@ class Task:
             raise ValueError("invalid engineering command or setup budget")
         if task.baseline_check and not task.commands:
             raise ValueError("baseline_check requires an approved commands entry at index zero")
+        if type(task.rank_public) is not bool or task.rank_public and (
+            task.mode != "engineering" or task.verification_dir or task.setup or
+            len(task.checks) != 2 or any(check.oracle for check in task.checks) or
+            not task.deliverables
+        ):
+            raise ValueError("public ranking requires an engineering build and invocation without private checks")
         if any(check.oracle for check in (*task.commands, *task.setup)):
             raise ValueError("sealed oracles are only allowed in independent checks")
         if any(check.oracle for check in task.checks) and not task.verification_dir:

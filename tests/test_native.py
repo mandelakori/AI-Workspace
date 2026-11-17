@@ -14,7 +14,10 @@ from aiwork.campaign import allocation_receipt, stage_fixture, static_evidence
 from aiwork.controller import Controller, write_json
 from aiwork.native import grade, read_inputs
 from aiwork.native_feedback import run_public_checks
+from aiwork.oracle import evaluate
+from aiwork.rea_selection import exported_candidates
 from aiwork.schema import Check, Config
+from aiwork.selection import compare
 from aiwork.workspace import inventory
 
 
@@ -90,6 +93,59 @@ class NativeTests(unittest.TestCase):
         self.assertNotIn("unexpected", str(findings))
         with self.assertRaisesRegex(ValueError, "target digest"):
             static_evidence(archive, "0" * 64)
+
+    def test_exported_rounds_use_report_hashes_and_no_audit_artifacts(self):
+        target, candidate = b"target", b"\x7fELFcandidate"
+        target_digest = hashlib.sha256(target).hexdigest()
+        run = "engine/runs/sample"
+        remote = "/tmp/sample"
+        member = f"{run}/round-1/{'a' * 64}.elf"
+        state = {"config": {"target": remote + "/program"}, "input_hashes": {"target": target_digest},
+                 "report": f"{remote}/{run}/reconstruction.json"}
+        for correct in (True, False):
+            with self.subTest(correct=correct):
+                digest = hashlib.sha256(candidate).hexdigest() if correct else "0" * 64
+                report = {"target_sha256": target_digest, "rounds": [
+                    {"round": 1, "candidates": [{"candidate": f"{remote}/{member}", "sha256": digest}]}]}
+                archive = self.root / f"archive-{correct}.tar.gz"
+                with tarfile.open(archive, "w:gz") as bundle:
+                    for name, data in (
+                        ("program", target), ("result/state.json", json.dumps(state).encode()),
+                        (f"{run}/analysis/analysis.json", json.dumps({"target_sha256": target_digest}).encode()),
+                        (f"{run}/reconstruction.json", json.dumps(report).encode()),
+                        (member, candidate), ("result/audit.json", b"sealed-marker"),
+                    ):
+                        entry = tarfile.TarInfo(name)
+                        entry.size = len(data)
+                        bundle.addfile(entry, io.BytesIO(data))
+                if correct:
+                    exports = exported_candidates(archive, target_digest)
+                    self.assertEqual(exports, [("round-1-1", {"member": member, "sha256": digest}, candidate)])
+                else:
+                    with self.assertRaisesRegex(ValueError, "digest or ELF"):
+                        exported_candidates(archive, target_digest)
+
+    def test_public_ties_and_incomplete_candidates_keep_incumbent(self):
+        common = {"compiled": True, "missing": [], "corpus_sha256": "digest", "runner": "offline", "total": 2}
+        incumbent = {**common, "cases": [{"case": 1, "verdict": "pass"}, {"case": 2, "verdict": "stdout"}]}
+        self.assertEqual(compare(incumbent, incumbent, protect_passing=False)["reason"], "tie_keeps_incumbent")
+        incomplete = {**common, "cases": incumbent["cases"][:1]}
+        self.assertEqual(compare(incumbent, incomplete, protect_passing=True)["reason"], "incomplete_evaluation")
+        with self.assertRaisesRegex(ValueError, "different public"):
+            compare(incumbent, {**incumbent, "corpus_sha256": "changed"}, protect_passing=True)
+
+    def test_public_case_timeouts_do_not_truncate_the_suite_budget(self):
+        write_json(self.root / "examples.json", [{"stdin": str(i), "stdout": "ok"} for i in range(3)])
+        observed = {"code": 0, "stdout": "ok", "stderr": "", "elapsed": 1,
+                    "timed_out": False, "truncated": False}
+        with (
+            patch("aiwork.oracle.monotonic", side_effect=[0, 1, 2, 3]),
+            patch("aiwork.oracle.invoke", return_value=observed) as invoke,
+        ):
+            check = Check(("./candidate",), timeout=1, oracle="examples.json")
+            score = evaluate(check, self.root, self.root, self.root, "offline", 20, None, public=True)
+        self.assertEqual(score["passed_cases"], 3)
+        self.assertTrue(all(call.args[0].timeout == 1 for call in invoke.call_args_list))
 
     def prepare_grade(self):
         for name in ("frozen", "target", "development"):

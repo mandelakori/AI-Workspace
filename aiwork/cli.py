@@ -57,11 +57,17 @@ def parser() -> argparse.ArgumentParser:
                                 default="static")
     reconstruction.add_argument("--trusted", action="store_true", help="authorize configured host static tools")
     reconstruction.add_argument("--rea-archive", type=Path, help="import matching static REA-Next evidence")
+    reconstruction.add_argument("--seed-run", type=Path, help="repair a matching frozen native candidate")
+    reconstruction.add_argument("--public-cases", type=Path, help="override the public development inputs")
+    reconstruction.add_argument("--attempts", type=int, help="override the bounded attempt count")
     grading = native_actions.add_parser("grade", help="compare a frozen candidate against unseen inputs")
     grading.add_argument("run", type=Path)
     grading.add_argument("--cases", type=Path, required=True)
     grading.add_argument("--audit", type=Path, action="append", default=[])
     grading.add_argument("--workers", type=int, default=1)
+    rea_selection = native_actions.add_parser("rea-select", help="score exported REA-Next rounds on a native public corpus")
+    rea_selection.add_argument("archive", type=Path)
+    rea_selection.add_argument("run", type=Path, help="native run with a frozen public corpus for the same ELF")
     commands.add_parser("doctor", help="show Python, GPU and executable inventory")
     commands.add_parser("models", help="discover configured endpoints and model inventory")
     commands.add_parser("harnesses", help="show harness executable inventory")
@@ -201,7 +207,13 @@ def main(argv: list[str] | None = None) -> int:
             from .native import grade, reconstruct
             if args.action == "run":
                 result = reconstruct(controller, args.manifest, args.profile,
-                                     evidence=args.evidence, trusted=args.trusted, rea_archive=args.rea_archive)
+                                     evidence=args.evidence, trusted=args.trusted, rea_archive=args.rea_archive,
+                                     seed_run=args.seed_run, public_inputs=args.public_cases, attempts=args.attempts)
+            elif args.action == "rea-select":
+                from .rea_selection import select
+                result = select(controller, args.archive, args.run)
+                print_json(result)
+                return 0 if result["status"] == "selected" else 1
             else:
                 result = grade(controller, args.run, args.cases, args.audit, args.workers)
             print_json(result)

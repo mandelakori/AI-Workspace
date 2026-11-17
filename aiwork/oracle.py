@@ -20,31 +20,38 @@ def case_argv(value: object) -> tuple[str, ...]:
     return tuple(value)
 
 
-def load_cases(path: Path) -> list[dict]:
+def load_cases(path: Path, *, public: bool = False) -> list[dict]:
     if path.stat().st_size > 256 * 1024:
         raise ValueError("sealed case file exceeds 256 KiB")
     cases = json.loads(path.read_bytes())
     if not isinstance(cases, list) or not 1 <= len(cases) <= 32:
         raise ValueError("sealed oracle requires 1–32 cases")
+    allowed = {"argv", "stdin", "stdout", "code", "stderr"}
+    if public:
+        allowed |= {"name", "group"}
     for case in cases:
-        if (not isinstance(case, dict) or case.keys() - {"argv", "stdin", "stdout", "code", "stderr"}
+        if (not isinstance(case, dict) or case.keys() - allowed
             or not isinstance(case.get("stdout"), str)
             or type(case.get("code", 0)) is not int or not 0 <= case.get("code", 0) <= 124
             or any(not isinstance(case[key], str) or len(case[key].encode("utf-8")) > 16384
                    for key in ("stdin", "stdout", "stderr") if key in case)):
             raise ValueError("invalid sealed case structure")
+        if public and any(key in case and (not isinstance(case[key], str) or len(case[key]) > 100)
+                          for key in ("name", "group")):
+            raise ValueError("invalid public case label")
         case_argv(case.get("argv", []))
     return cases
 
 
 def evaluate(check: Check, workspace: Path, home: Path, private: Path, image: str,
-             time_limit: float, stop: Path | None) -> dict:
+             time_limit: float, stop: Path | None, *, public: bool = False) -> dict:
     if not image:
         raise ValueError("sealed verification requires a configured Docker image")
-    cases = load_cases(contained(private, check.oracle))
+    cases = load_cases(contained(private, check.oracle), public=public)
     command = replace(check, oracle="")
-    deadline = monotonic() + min(check.timeout, time_limit)
+    deadline = monotonic() + (time_limit if public else min(check.timeout, time_limit))
     results = []
+    discrepancies = []
     for case in cases:
         remaining = deadline - monotonic()
         if remaining <= 0 or stop and stop.exists():
@@ -65,7 +72,19 @@ def evaluate(check: Check, workspace: Path, home: Path, private: Path, image: st
             category = "stderr"
         results.append({"case": len(results) + 1, "verdict": category,
                         "duration": round(response["elapsed"], 3)})
+        if public and category != "pass" and len(discrepancies) < 3:
+            discrepancies.append({
+                "case": case.get("name", len(results)), "stdin": case.get("stdin", "")[:180],
+                "argv": [arg[:60] for arg in case.get("argv", [])[:4]], "classification": category,
+                "expected": {"code": case.get("code", 0), "stdout": case["stdout"][:160],
+                             "stderr": case.get("stderr", "")[:160]},
+                "observed": {"code": response["code"], "stdout": response["stdout"][:160],
+                             "stderr": response["stderr"][:160]},
+            })
     passed = sum(result["verdict"] == "pass" for result in results)
-    return {"runner": image, "kind": "sealed-black-box", "passed": passed == len(cases),
+    return {"runner": image, "kind": "public-regression" if public else "sealed-black-box",
+            "passed": passed == len(cases),
             "total": len(cases), "passed_cases": passed, "cases": results,
-            "classification": "pass" if passed == len(cases) else "sealed_mismatch"}
+            "classification": "pass" if passed == len(cases) else (
+                "public_mismatch" if public else "sealed_mismatch"),
+            **({"discrepancies": discrepancies} if public else {})}

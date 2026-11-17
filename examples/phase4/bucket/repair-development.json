@@ -1,0 +1,112 @@
+[
+  {
+    "name": "example-1",
+    "group": "development",
+    "stdin": "-30\n"
+  },
+  {
+    "name": "example-2",
+    "group": "development",
+    "stdin": "0\n"
+  },
+  {
+    "name": "example-3",
+    "group": "development",
+    "stdin": "12\n"
+  },
+  {
+    "name": "example-4",
+    "group": "development",
+    "stdin": "90\n"
+  },
+  {
+    "name": "example-5",
+    "group": "development",
+    "stdin": "invalid\n"
+  },
+  {
+    "name": "bare-eof",
+    "group": "framing",
+    "stdin": "19"
+  },
+  {
+    "name": "trailing-junk",
+    "group": "invalid",
+    "stdin": "19?"
+  },
+  {
+    "name": "newline-then-junk",
+    "group": "invalid",
+    "stdin": "19\n?"
+  },
+  {
+    "name": "whitespace-only",
+    "group": "whitespace",
+    "stdin": "\t\f\u000b\r\n"
+  },
+  {
+    "name": "empty",
+    "group": "invalid",
+    "stdin": ""
+  },
+  {
+    "name": "leading-c-whitespace",
+    "group": "whitespace",
+    "stdin": "\u000b\f\t+41"
+  },
+  {
+    "name": "trailing-c-whitespace",
+    "group": "whitespace",
+    "stdin": "-17\f\u000b \r\n"
+  },
+  {
+    "name": "second-integer",
+    "group": "invalid",
+    "stdin": "25 33\n"
+  },
+  {
+    "name": "sign-only",
+    "group": "invalid",
+    "stdin": "+"
+  },
+  {
+    "name": "negative-eof",
+    "group": "framing",
+    "stdin": " -9"
+  },
+  {
+    "name": "decimal",
+    "group": "invalid",
+    "stdin": "12.4"
+  },
+  {
+    "name": "lower-bound",
+    "group": "arithmetic",
+    "stdin": "-20"
+  },
+  {
+    "name": "negative-band",
+    "group": "arithmetic",
+    "stdin": "-1\n"
+  },
+  {
+    "name": "second-band",
+    "group": "arithmetic",
+    "stdin": "+10\n"
+  },
+  {
+    "name": "third-band",
+    "group": "arithmetic",
+    "stdin": "40\n"
+  },
+  {
+    "name": "upper-bound",
+    "group": "arithmetic",
+    "stdin": "80\n"
+  },
+  {
+    "name": "reject-late-token",
+    "group": "invalid",
+    "stdin": "4  \r\n +0"
+  }
+]
