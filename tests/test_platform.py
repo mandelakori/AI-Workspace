@@ -193,6 +193,19 @@ argv = ["{python}", "-c", "from pathlib import Path; assert Path('.handoff/seed/
         plan = self.root / "workflow.toml"
         plan.write_text(f'[steps.seed]\nmanifest = "{seed.name}"\n[steps.consume]\n'
                         'manifest = "check.toml"\nneeds = ["seed"]\n', encoding="utf-8")
+
+        run_submitted = self.controller.run_submitted
+
+        def change_verified_artifact(job):
+            result = run_submitted(job)
+            data = Path(result["artifacts"]) / "attempt-001" / "verification" / "data.txt"
+            if result["status"] == "verified" and data.is_file():
+                data.write_text("tampered", encoding="utf-8")
+            return result
+
+        with patch.object(self.controller, "run_submitted", side_effect=change_verified_artifact):
+            with self.assertRaisesRegex(ValueError, "verified handoff digest changed"):
+                execute(self.controller, plan, 2, True, "changed")
         first = execute(self.controller, plan, 2, True, "fixture")
         again = execute(self.controller, plan, 2, True, "fixture")
         self.assertEqual(first["status"], "verified")

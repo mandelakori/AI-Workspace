@@ -82,6 +82,7 @@ def execute(controller: Controller, source: Path, workers: int, trusted: bool,
                 for name in ready:
                     node = nodes[name]
                     handoff = {}
+                    handoff_hashes = {}
                     for dep in node.needs:
                         dep_job = jobs[dep]
                         attempts = controller.state.attempts(dep_job)
@@ -89,10 +90,18 @@ def execute(controller: Controller, source: Path, workers: int, trusted: bool,
                         attempt = controller.config.state / "runs" / dep_job / f"attempt-{success['n']:03}"
                         upstream = Task.load(nodes[dep].manifest)
                         location = "verification" if upstream.kind == "direct" else "workspace"
+                        record = attempt / ("verification-inventory.json" if upstream.kind == "direct"
+                                            else "output-inventory.json")
+                        verified = json.loads(record.read_bytes()) if record.is_file() else {}
                         for filename in upstream.deliverables:
-                            handoff[f"{dep}/{filename}"] = contained(attempt / location, filename)
+                            key = f"{dep}/{filename}"
+                            handoff[key] = contained(attempt / location, filename)
+                            if filename in verified:
+                                handoff_hashes[key] = verified[filename]["sha256"]
+                            elif record.is_file() or upstream.kind == "agent":
+                                raise ValueError(f"verified handoff artifact missing an inventory record: {key}")
                     jobs[name] = controller.submit(node.manifest, trusted, profile_id=node.profile,
-                                                   handoff=handoff, job_id=uuid5(
+                                                   handoff=handoff, handoff_hashes=handoff_hashes, job_id=uuid5(
                                                        NAMESPACE_URL, f"aiwork:{workflow_id}/{name}").hex)
                     states[name] = "queued"
                     write_json(journal, result)

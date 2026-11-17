@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import shutil
 import sqlite3
@@ -36,13 +37,14 @@ class Controller:
                        for location, slots in (("local", config.local_slots), ("a100", config.a100_slots))}
 
     def submit(self, source: Path, trusted: bool = False, *, profile_id: str = "",
-               handoff: dict[str, Path] | None = None, job_id: str = "") -> str:
+               handoff: dict[str, Path] | None = None, job_id: str = "",
+               handoff_hashes: dict[str, str] | None = None) -> str:
         return self.submit_task(Task.load(source), trusted, profile_id=profile_id, handoff=handoff,
-                                job_id=job_id, source=source)
+                                job_id=job_id, source=source, handoff_hashes=handoff_hashes)
 
     def submit_task(self, task: Task, trusted: bool = False, *, profile_id: str = "",
                     handoff: dict[str, Path] | None = None, job_id: str = "",
-                    source: Path | None = None) -> str:
+                    source: Path | None = None, handoff_hashes: dict[str, str] | None = None) -> str:
         if profile_id:
             if task.kind != "agent" or profile_id not in {p.id for p in self.config.profiles}:
                 raise ValueError("profile override requires an agent task and a configured profile")
@@ -56,6 +58,8 @@ class Controller:
             part.lower() == ".aiwork" for part in self.config.state.relative_to(task.workspace).parts
         ):
             raise ValueError("state inside the source workspace must be under .aiwork")
+        if handoff_hashes and not handoff_hashes.keys() <= (handoff or {}).keys():
+            raise ValueError("expected handoff digests require corresponding source files")
 
         def prepare(spec: Path) -> None:
             root = spec.parent
@@ -67,6 +71,12 @@ class Controller:
                     destination = contained(handoff_dir, name)
                     destination.parent.mkdir(parents=True, exist_ok=True)
                     shutil.copyfile(upstream, destination)
+                    expected = (handoff_hashes or {}).get(name)
+                    if expected is not None:
+                        with destination.open("rb") as stream:
+                            actual = hashlib.file_digest(stream, "sha256").hexdigest()
+                        if actual != expected:
+                            raise ValueError(f"verified handoff digest changed: {name}")
                 baseline = inventory(root / "baseline")
             private = None
             if task.verification_dir:
@@ -357,6 +367,7 @@ class Controller:
                 missing = [name for name in task.deliverables if name not in final]
                 if missing:
                     return {"status": "failed", "detail": f"missing deliverables: {missing}", "checks": checks}
+                write_json(attempt / "verification-inventory.json", final)
         write_json(attempt / "output-inventory.json", after)
         return {"status": "verified", "detail": "all independent checks passed",
                 "changed": changed, "checks": checks, **patch}
