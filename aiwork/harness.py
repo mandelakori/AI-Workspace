@@ -139,7 +139,7 @@ class QwenCode:
             expression for root in task.write_roots for expression in (root, root + "/**")))
         config = {
             "security": {"auth": {"selectedType": "openai"}},
-            "model": {"name": profile.model, "maxSessionTurns": 12},
+            "model": {"name": profile.model, "maxSessionTurns": profile.harness_turns or 12},
             "modelProviders": {"openai": [{
                 "id": profile.model, "envKey": "OPENAI_API_KEY", "baseUrl": profile.endpoint.rstrip("/"),
                 "generationConfig": generation,

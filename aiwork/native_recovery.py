@@ -5,15 +5,19 @@ import hashlib
 import json
 import re
 import tarfile
+import tomllib
+from dataclasses import replace
 from pathlib import Path
 from uuid import uuid4
 
 from .controller import Controller, write_json
+from .native import recipe
 from .oracle import load_cases
-from .schema import Check, Task
+from .schema import Task, relative
 
 
-def recover(controller: Controller, archive: Path, analysis: Path, profile: str) -> dict:
+def recover(controller: Controller, archive: Path, analysis: Path, profile: str,
+            manifest: Path | None = None) -> dict:
     if archive.stat().st_size > 32 * 1024 * 1024 or analysis.stat().st_size > 128 * 1024:
         raise ValueError("native recovery requires bounded campaign and static analysis artifacts")
     findings = json.loads(analysis.read_bytes())
@@ -69,15 +73,24 @@ def recover(controller: Controller, archive: Path, analysis: Path, profile: str)
     (workspace / "function-evidence.txt").write_text(evidence, encoding="utf-8")
     write_json(private / "cases.json", cases)
     load_cases(private / "cases.json")
-    compile_check = Check(("gcc", "-std=c11", "-O2", "candidate.c", "-o", "candidate"), 20)
+    policy = tomllib.loads(manifest.read_text(encoding="utf-8")) if manifest else {
+        "objective": "Reconstruct the authorized program in candidate.c from function-evidence.txt. "
+                      "Preserve its stdin protocol, exact output and invalid input handling. "
+                      "Run the public compile check.",
+        "deliverables": ["candidate.c"],
+        "build_candidate": {"argv": ["gcc", "-std=c11", "-O2", "candidate.c", "-o", "candidate"], "timeout": 20},
+        "candidate": {"argv": ["./candidate"], "timeout": 50},
+    }
+    compile_check, run_check = (recipe(policy, key) for key in ("build_candidate", "candidate"))
+    if (not isinstance(policy["deliverables"], list) or not policy["deliverables"] or
+        any(not isinstance(path, str) for path in policy["deliverables"])):
+        raise ValueError("recovery requires a deliverables array")
+    deliverables = tuple(relative(path) for path in policy["deliverables"])
     task = Task(
-        objective=("Reconstruct the behavior of the self-authored shipping scorer in candidate.c "
-                   "from function-evidence.txt. Translate the selected function into portable C11. "
-                   "Preserve the three-integer stdin protocol, output formatting and invalid input handling. "
-                   "Run the public compile check. Only write candidate.c."),
-        workspace=workspace, kind="agent", category="toy-ghidra-recovery", inputs=(),
-        mode="engineering", write_roots=("candidate.c",), deliverables=("candidate.c",),
-        commands=(compile_check,), checks=(compile_check, Check(("./candidate",), 50, oracle="cases.json")),
+        objective=policy["objective"],
+        workspace=workspace, kind="agent", category=policy.get("category", "toy-ghidra-recovery"), inputs=(),
+        mode="engineering", write_roots=deliverables, deliverables=deliverables,
+        commands=(compile_check,), checks=(compile_check, replace(run_check, oracle="cases.json")),
         verification_dir=private, min_context=4096, attempts=2, timeout=150,
     )
     job = controller.submit_task(task, profile_id=profile)

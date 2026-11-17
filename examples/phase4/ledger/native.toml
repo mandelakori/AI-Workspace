@@ -1,0 +1,25 @@
+objective = "Reconstruct this line-oriented account ledger in candidate.c. Each process starts at balance zero and accepts multiple commands until EOF. The valid command words are add, take, reset and show. Preserve command parsing, state transitions, and exact output. Read examples.json and any analysis JSON for input and evidence. Use the approved compile check."
+category = "native-ledger"
+source = "."
+source_inputs = ["reference.c"]
+binary = "reference.elf"
+format = "ELF"
+development = "development.json"
+selectors = ["main"]
+deliverables = ["candidate.c"]
+attempts = 2
+timeout = 240
+
+[build_reference]
+argv = ["gcc", "-std=c11", "-O0", "-fno-inline", "reference.c", "-o", "reference.elf"]
+
+[reference]
+argv = ["./reference.elf"]
+timeout = 12
+
+[build_candidate]
+argv = ["gcc","-std=c11","-O2","candidate.c","-o","candidate"]
+
+[candidate]
+argv = ["./candidate"]
+timeout = 12

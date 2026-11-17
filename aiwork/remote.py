@@ -57,7 +57,7 @@ def a100_session(cfg: Config, profile: Profile, *, dispatch: bool = False, timeo
             overrides += ["-o", f"HostName={instance['ip']}"]
             alias = identity_alias
     if not alias:
-        yield
+        yield None
         return
     port = urlsplit(profile.endpoint).port
     remote_port = cfg.ssh.get("remote_port", 18080)
@@ -87,7 +87,7 @@ def a100_session(cfg: Config, profile: Profile, *, dispatch: bool = False, timeo
                 sleep(0.4)
         else:
             raise RuntimeError("remote model failed readiness through SSH or was stopped")
-        yield
+        yield proc
     finally:
         if proc.poll() is None:
             proc.terminate()

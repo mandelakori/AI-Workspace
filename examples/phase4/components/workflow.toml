@@ -1,0 +1,11 @@
+[steps.clamp]
+manifest = "clamp.toml"
+profile = "laptop-ollama"
+
+[steps.band]
+manifest = "band.toml"
+profile = "a100-existing"
+
+[steps.compose]
+manifest = "compose.toml"
+needs = ["clamp", "band"]

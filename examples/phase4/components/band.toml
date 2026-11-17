@@ -1,0 +1,19 @@
+objective = "Implement the C contract in a new band.c. Implement int band_score(int value), returning 0 below 0, 1 below 10, 2 below 40 and 3 otherwise. Read contract.h and run the approved check."
+workspace = "component"
+kind = "agent"
+mode = "engineering"
+category = "phase4-component"
+inputs = ["contract.h", "check.c"]
+write_roots = ["band.c"]
+deliverables = ["band.c"]
+attempts = 2
+timeout = 160
+
+[[commands]]
+argv = ["gcc", "-DBAND", "check.c", "band.c", "-o", "probe"]
+
+[[checks]]
+argv = ["gcc", "-DBAND", "check.c", "band.c", "-o", "probe"]
+
+[[checks]]
+argv = ["./probe"]

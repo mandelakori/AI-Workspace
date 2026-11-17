@@ -1,0 +1,61 @@
+objective = """
+Add a dependency-policy audit feature to this pinned PyPA packaging source tree. Put the
+library in src/packaging/requirement_policy.py and a JSON CLI in src/packaging/__main__.py.
+Use existing Requirement, canonicalize_name, Version, and marker/specifier APIs.
+
+Expose evaluate_requirements(requirements, installed, environment=None), where requirements
+is a list of strings, installed maps distribution names to version strings, and environment
+is an optional dict of marker overrides. Reject invalid types, requirements, versions, direct
+URL requirements and installed names that collide after normalization with ValueError.
+Ignore blank and full-line-comment requirements; strip surrounding whitespace. Evaluate
+markers with the supplied overrides. For each remaining requirement produce a dict with
+exactly name (canonical name), requirement (stripped original), status and version. Status
+is skipped if its marker is false, missing if not installed, satisfied if the parsed
+specifier accepts the installed version, otherwise incompatible. Version is null for
+skipped or missing, otherwise the supplied version string. Include duplicate requirements.
+Order results by canonical name, preserving the original order within each name.
+
+The CLI reads one JSON document on stdin with requirements, installed and optional
+environment, returning one JSON object with key results. Serialize with sort_keys=True
+and separators=(',', ':'), followed by a newline. On invalid input, emit exactly
+'invalid policy input' and a newline to stderr, nothing to stdout, and exit 2. A valid
+report exits 0, even when requirements are unsatisfied. Add focused unittest tests in
+tests/test_requirement_policy.py and usage examples in docs/requirement-policy.rst.
+Plan the API, CLI and tests before editing. Use the approved checks and debug any failures.
+"""
+workspace = "../../.aiwork/phase4/upstream-packaging"
+verification_dir = "../../.aiwork/phase4/packaging-private"
+kind = "agent"
+mode = "engineering"
+category = "external-packaging-policy"
+attempts = 2
+timeout = 420
+baseline_check = true
+min_context = 8192
+write_roots = ["src/packaging/requirement_policy.py", "src/packaging/__main__.py", "tests/test_requirement_policy.py", "docs/requirement-policy.rst"]
+deliverables = ["src/packaging/requirement_policy.py", "src/packaging/__main__.py", "tests/test_requirement_policy.py", "docs/requirement-policy.rst"]
+
+[[commands]]
+argv = ["{python}", "-c", "import sys; sys.path.insert(0, 'src'); from packaging.requirement_policy import evaluate_requirements as audit; assert [r['status'] for r in audit(['FOO >= 2', 'Bar==1', 'foo==1'], {'foo': '2.0'})] == ['missing', 'satisfied', 'incompatible']"]
+timeout = 20
+
+[[commands]]
+argv = ["{python}", "-c", "import sys, unittest; sys.path.insert(0, 'src'); suite=unittest.defaultTestLoader.discover('tests', pattern='test_requirement_policy.py'); assert suite.countTestCases() >= 3; raise SystemExit(not unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful())"]
+timeout = 30
+
+[[checks]]
+argv = ["{python}", "-m", "compileall", "-q", "src/packaging", "tests/test_requirement_policy.py"]
+timeout = 30
+
+[[checks]]
+argv = ["{python}", "-c", "import sys; sys.path.insert(0, 'src'); from packaging.requirement_policy import evaluate_requirements as audit; assert [r['status'] for r in audit(['FOO >= 2', 'Bar==1', 'foo==1'], {'foo': '2.0'})] == ['missing', 'satisfied', 'incompatible']"]
+timeout = 20
+
+[[checks]]
+argv = ["{python}", "-c", "import sys, unittest; sys.path.insert(0, 'src'); suite=unittest.defaultTestLoader.discover('tests', pattern='test_requirement_policy.py'); assert suite.countTestCases() >= 3; raise SystemExit(not unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful())"]
+timeout = 30
+
+[[checks]]
+argv = ["{python}", "-c", "import runpy, sys; sys.path.insert(0, 'src'); runpy.run_module('packaging', run_name='__main__')"]
+oracle = "cases.json"
+timeout = 90

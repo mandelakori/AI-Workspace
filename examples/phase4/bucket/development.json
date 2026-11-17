@@ -1,0 +1,27 @@
+[
+  {
+    "name": "example-1",
+    "group": "development",
+    "stdin": "-30\n"
+  },
+  {
+    "name": "example-2",
+    "group": "development",
+    "stdin": "0\n"
+  },
+  {
+    "name": "example-3",
+    "group": "development",
+    "stdin": "12\n"
+  },
+  {
+    "name": "example-4",
+    "group": "development",
+    "stdin": "90\n"
+  },
+  {
+    "name": "example-5",
+    "group": "development",
+    "stdin": "invalid\n"
+  }
+]

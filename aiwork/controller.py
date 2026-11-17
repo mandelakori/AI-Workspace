@@ -8,6 +8,7 @@ from contextlib import ExitStack, nullcontext
 from dataclasses import asdict, replace
 from pathlib import Path
 from time import monotonic, sleep, time
+from uuid import uuid4
 
 from .changes import delta, save_patch, validate_changes
 from .harness import OpenCode, QwenCode, opencode_path, qwen_command
@@ -17,7 +18,7 @@ from .metrics import summarize_trace
 from .router import Plane, gpu, routes
 from .schema import Check, Config, Profile, Task
 from .state import State
-from .verify import classify, invoke, pipeline
+from .verify import classify, invoke, pipeline, runner_status
 from .workspace import contained, describe, inventory, snapshot
 
 
@@ -151,6 +152,13 @@ class Controller:
 
     def _work(self, row: dict, root: Path) -> dict:
         data = json.loads((root / "intake.json").read_text(encoding="utf-8"))
+        task = self.frozen_task(root, data)
+        if not self.config.verification_image and not row["trusted"]:
+            raise ValueError("trusted execution policy has no configured verification image")
+        return self.run_attempts(row, root, task, data)
+
+    @staticmethod
+    def frozen_task(root: Path, data: dict) -> Task:
         manifest = data["manifest"].copy()
         manifest["workspace"] = root / "baseline"
         manifest["verification_dir"] = root / "private" if (root / "private").is_dir() else None
@@ -160,8 +168,54 @@ class Controller:
             manifest[key] = tuple(Check.read(check) for check in manifest.get(key, ()))
         task = Task(**manifest)
         task.validate()
-        if not self.config.verification_image and not row["trusted"]:
-            raise ValueError("trusted execution policy has no configured verification image")
+        return task
+
+    def verify_checkpoint(self, job: str, number: int) -> dict:
+        """Run the original independent checks against a saved engineering candidate."""
+        if not self.config.verification_image:
+            raise ValueError("checkpoint verification requires the offline Docker runner")
+        rows = self.state.jobs(job)
+        if not rows or not 1 <= number <= 999999:
+            raise ValueError("checkpoint verification requires a job and positive attempt number")
+        root = Path(rows[0]["spec"]).parent
+        attempt = root / f"attempt-{number:03d}"
+        if not (attempt / "evidence.json").is_file():
+            raise ValueError("checkpoint attempt has no completed execution record")
+        data = json.loads((root / "intake.json").read_bytes())
+        task = self.frozen_task(root, data)
+        if task.mode != "engineering":
+            raise ValueError("checkpoint verification requires an engineering job")
+        if task.setup:
+            raise ValueError("checkpoint verification currently requires a fixture without setup recipes")
+        checkpoint = json.loads((attempt / "checkpoint.json").read_bytes())
+        record = self.config.state / "checkpoint-verification" / uuid4().hex
+        candidate = record / "candidate"
+        candidate_inventory = snapshot(attempt / "workspace", candidate, ())
+        if candidate_inventory != checkpoint["inventory"]:
+            raise ValueError("saved candidate inventory changed")
+        validate_changes(delta(data["inventory"], candidate_inventory), task.write_roots)
+        if set(task.deliverables) - candidate_inventory.keys():
+            raise ValueError("saved candidate is missing required deliverables")
+        actual_private = inventory(task.verification_dir) if task.verification_dir else {}
+        if actual_private != data["private_inventory"]:
+            raise ValueError("original independent verifier inputs changed")
+        direct = replace(task, workspace=candidate, inputs=(), kind="direct", mode="restricted",
+                         location="auto", profile="", preferred_profile="", attempts=1, write_roots=(),
+                         commands=(), baseline_check=False, min_context=0, agent_checks=False)
+        status = runner_status(self.config.state, self.config.verification_image)
+        if not status["image_id"]:
+            raise ValueError("checkpoint verification requires an available local runner image")
+        lane = Controller(replace(self.config, verification_image=status["image_id"]))
+        verification = lane.submit_task(direct)
+        write_json(record / "provenance.json", {"original_job": job, "original_attempt": number,
+                                               "verification_job": verification, "candidate": candidate_inventory,
+                                               "runner": status,
+                                               "patch": checkpoint.get("patch"),
+                                               "patch_sha256": checkpoint.get("patch_sha256")})
+        result = lane.run_submitted(verification)
+        return {**result, "provenance": str(record / "provenance.json")}
+
+    def run_attempts(self, row: dict, root: Path, task: Task, data: dict) -> dict:
         ranked = routes(task, self.config.profiles, self.state.scores(task.category))
         choices = [(r.profile, r.reason) for r in ranked] if task.kind == "agent" else [
             (None, "direct checks or specialist requested")]
@@ -253,7 +307,7 @@ class Controller:
         if profile and (not changed or (not engineering and set(changed) - set(task.deliverables))):
             return {"status": "failed", "detail": f"invalid agent changes: {changed}", "changed": changed}
         missing = [name for name in task.deliverables if name not in after]
-        if profile and missing:
+        if profile and missing and not engineering:
             return {"status": "failed", "detail": f"missing deliverables: {missing}", "changed": changed}
         patch = save_patch(task.workspace, work, changed, attempt) if engineering else {}
         if execution_error:
@@ -261,6 +315,8 @@ class Controller:
         if engineering:
             write_json(attempt / "checkpoint.json", {"inventory": after, "from": str(checkpoint or ""),
                                                      **patch})
+        if profile and missing:
+            return {"status": "failed", "detail": f"missing deliverables: {missing}", "changed": changed, **patch}
         checks = []
         verification = attempt / "verification"
         snapshot(work, verification, ())

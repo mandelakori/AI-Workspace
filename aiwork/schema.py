@@ -184,6 +184,7 @@ class Profile:
     managed: bool = False
     reasoning_effort: str = ""
     seed: int | None = None
+    harness_turns: int = 0
 
     def validate(self) -> None:
         if not re.fullmatch(r"[a-zA-Z0-9_.-]{1,50}", self.id) or not self.model or len(self.model) > 512:
@@ -209,6 +210,9 @@ class Profile:
             raise ValueError("invalid reasoning effort")
         if self.seed is not None:
             bounded("seed", self.seed, 0, 2**31 - 1)
+        bounded("harness_turns", self.harness_turns, 0, 64)
+        if self.harness_turns and self.harness != "qwen":
+            raise ValueError("harness_turns is supported by Qwen Code profiles")
 
 
 @dataclass(frozen=True)

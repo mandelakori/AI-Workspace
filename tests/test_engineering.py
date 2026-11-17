@@ -115,6 +115,46 @@ class EngineeringTests(unittest.TestCase):
         self.assertEqual((self.source / "pkg/one.py").read_text(), "value = 0\n")
 
     @unittest.skipUnless(shutil.which("git"), "requires Git")
+    def test_retry_retains_scoped_edits_when_a_deliverable_is_missing(self):
+        def agent(_, task, profile, work, *rest):
+            first = work / "pkg" / "one.py"
+            if first.read_text(encoding="utf-8") == "value = 0\n":
+                first.write_text("value = 1\n", encoding="utf-8")
+            else:
+                (work / "pkg" / "three.py").write_text("value = 3\n", encoding="utf-8")
+
+        with patch.object(Controller, "agent", agent):
+            job = self.controller.submit_task(self.task(write_roots=("pkg",), deliverables=("pkg/three.py",)), True)
+            result = self.controller.run_submitted(job)
+        self.assertEqual(result["status"], "verified", self.controller.state.attempts(job))
+        root = Path(result["artifacts"])
+        self.assertTrue((root / "attempt-001/checkpoint.json").is_file())
+        self.assertEqual((root / "attempt-002/workspace/pkg/one.py").read_text(), "value = 1\n")
+
+    @unittest.skipUnless(shutil.which("git"), "requires Git")
+    def test_checkpoint_verification_replays_checks_without_an_agent(self):
+        def agent(_, task, profile, work, *rest):
+            (work / "pkg" / "one.py").write_text("value = 1\n", encoding="utf-8")
+
+        controller = Controller(replace(self.controller.config, verification_image="offline"))
+        outcome = {"passed": True, "code": 0, "stdout": "ok\n", "stderr": ""}
+        with (
+            patch("aiwork.controller.invoke", return_value=outcome),
+            patch("aiwork.controller.runner_status", return_value={"image_id": "sha256:abc"}),
+            patch.object(Controller, "agent", side_effect=agent, autospec=True) as invocation,
+        ):
+            job = controller.submit_task(self.task(deliverables=("pkg/one.py",)))
+            initial = controller.run_submitted(job)
+            replay = controller.verify_checkpoint(job, 1)
+            invocation.assert_called_once()
+            self.assertEqual(replay["status"], "verified")
+            self.assertNotEqual(initial["job"], replay["job"])
+            source = Path(initial["artifacts"]) / "attempt-001" / "workspace" / "pkg" / "one.py"
+            source.write_text("value = 9\n", encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "inventory changed"):
+                controller.verify_checkpoint(job, 1)
+
+    @unittest.skipUnless(shutil.which("git"), "requires Git")
     def test_reset_preserves_evidence_but_skips_old_checkpoint(self):
         def agent(_, task, profile, work, *rest):
             path = work / "pkg/one.py"

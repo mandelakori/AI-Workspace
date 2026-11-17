@@ -47,6 +47,21 @@ def parser() -> argparse.ArgumentParser:
     recovery.add_argument("archive", type=Path)
     recovery.add_argument("analysis", type=Path)
     recovery.add_argument("--profile", required=True)
+    recovery.add_argument("--manifest", type=Path, help="use custom objective, deliverables and candidate recipes")
+    native = commands.add_parser("native", help="reconstruct or independently grade an authorized native target")
+    native_actions = native.add_subparsers(dest="action", required=True)
+    reconstruction = native_actions.add_parser("run", help="run a configurable native development campaign")
+    reconstruction.add_argument("manifest", type=Path)
+    reconstruction.add_argument("--profile", required=True)
+    reconstruction.add_argument("--evidence", choices=["static", "ghidra", "specialists", "combined"],
+                                default="static")
+    reconstruction.add_argument("--trusted", action="store_true", help="authorize configured host static tools")
+    reconstruction.add_argument("--rea-archive", type=Path, help="import matching static REA-Next evidence")
+    grading = native_actions.add_parser("grade", help="compare a frozen candidate against unseen inputs")
+    grading.add_argument("run", type=Path)
+    grading.add_argument("--cases", type=Path, required=True)
+    grading.add_argument("--audit", type=Path, action="append", default=[])
+    grading.add_argument("--workers", type=int, default=1)
     commands.add_parser("doctor", help="show Python, GPU and executable inventory")
     commands.add_parser("models", help="discover configured endpoints and model inventory")
     commands.add_parser("harnesses", help="show harness executable inventory")
@@ -106,6 +121,9 @@ def parser() -> argparse.ArgumentParser:
     resume.add_argument("--interrupted", action="store_true",
                         help="requeue a running job after confirming its worker exited")
     resume.add_argument("--reset", action="store_true", help="resume from the frozen source without older edits")
+    checkpoint = actions.add_parser("verify-checkpoint", help="retest an engineering checkpoint without inference")
+    checkpoint.add_argument("job")
+    checkpoint.add_argument("--attempt", type=int, required=True)
     work = commands.add_parser("worker", help="consume the persistent queue")
     work.add_argument("--once", action="store_true")
     work.add_argument("--exclusive", action="store_true", help="allow one background worker per state directory")
@@ -176,7 +194,16 @@ def main(argv: list[str] | None = None) -> int:
             return 0 if result["status"] == "verified" else 1
         elif args.command == "campaign-recover":
             from .native_recovery import recover
-            result = recover(controller, args.archive, args.analysis, args.profile)
+            result = recover(controller, args.archive, args.analysis, args.profile, args.manifest)
+            print_json(result)
+            return 0 if result["status"] == "verified" else 1
+        elif args.command == "native":
+            from .native import grade, reconstruct
+            if args.action == "run":
+                result = reconstruct(controller, args.manifest, args.profile,
+                                     evidence=args.evidence, trusted=args.trusted, rea_archive=args.rea_archive)
+            else:
+                result = grade(controller, args.run, args.cases, args.audit, args.workers)
             print_json(result)
             return 0 if result["status"] == "verified" else 1
         elif args.command == "doctor":
@@ -278,6 +305,10 @@ def main(argv: list[str] | None = None) -> int:
             elif args.action == "resume":
                 controller.resume(args.job, args.interrupted, args.reset)
                 print_json({"job": args.job, "status": "queued"})
+            elif args.action == "verify-checkpoint":
+                result = controller.verify_checkpoint(args.job, args.attempt)
+                print_json(result)
+                return 0 if result["status"] == "verified" else 1
             else:
                 job = controller.submit(args.manifest, args.trusted, profile_id=args.profile)
                 result = controller.run_submitted(job) if args.action == "run" else None

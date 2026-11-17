@@ -45,7 +45,8 @@ def pipeline(setup: tuple[Check, ...], check: Check, workspace: Path, home: Path
 
 def invoke(check: Check, workspace: Path, home: Path, image: str = "", *,
            timeout: float | None = None, private: Path | None = None,
-           stop: Path | None = None, stdin: bytes | None = None, sealed: bool = False) -> dict:
+           stop: Path | None = None, stdin: bytes | None = None, sealed: bool = False,
+           extra_args: tuple[str, ...] = ()) -> dict:
     if check.oracle or sealed and (not image or private):
         raise ValueError("sealed candidate runs require Docker and no private mounts")
     env = environment(home)
@@ -89,7 +90,8 @@ def invoke(check: Check, workspace: Path, home: Path, image: str = "", *,
         if check.argv[0] == "{python}":
             argv = [sys.executable, "-B", *argv[1:]]
     try:
-        outcome = run(argv, cwd, min(check.timeout, timeout) if timeout is not None else check.timeout,
+        vector = [*argv, *extra_args]
+        outcome = run(vector, cwd, min(check.timeout, timeout) if timeout is not None else check.timeout,
                       env, stop, stdin=stdin, decode_errors="surrogateescape" if sealed else "replace")
     except KeyboardInterrupt:
         if image:
@@ -97,7 +99,7 @@ def invoke(check: Check, workspace: Path, home: Path, image: str = "", *,
         raise
     if image and outcome.timed_out:
         run([docker, "rm", "-f", container], workspace, 8, env)
-    return {"argv": list(check.argv), "cwd": check.cwd, "runner": image or "trusted-host",
+    return {"argv": [*check.argv, *extra_args], "cwd": check.cwd, "runner": image or "trusted-host",
             **asdict(outcome),
             "passed": outcome.code == 0 and not outcome.timed_out and not outcome.truncated
             and (check.stdout is None or outcome.stdout.replace("\r\n", "\n") == check.stdout)}

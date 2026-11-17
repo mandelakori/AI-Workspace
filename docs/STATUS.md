@@ -1,5 +1,20 @@
 # Status as of 2026-11-16
 
+## Phase 4
+
+| Capability | Status | Evidence |
+| --- | --- | --- |
+| Windows regression and direct smoke | VERIFIED | All 50 tests passed with the offline Docker image enabled. The Phase 1 direct fixture verified in job `9360857808e347ffb2336a9dbd7cfed6`. |
+| Configurable native reconstruction and separate differential grading | VERIFIED | Three self-authored ELF targets exercised stdin, argv, multi-function source and stateful input sequences. The stride candidate passed 48/48 final cases. The classifier and ledger were rejected at 44/48 and 47/48. The laptop ledger attempt produced no candidate. |
+| Component isolation and integration | VERIFIED | Two Ollama workers implemented separate C functions. Both the serial and two-worker schedules independently verified and linked the components. They took 63.234 and 50.922 seconds with one laptop inference lane. |
+| Independent checkpoint verification | VERIFIED | A new deterministic job replayed the original PyPA acceptance pipeline against an unchanged checkpoint. It caught a syntax error in the generated test file. |
+| External repository feature | UNTESTED | Success against the full acceptance suite remains unverified. The Qwen Code sample exhausted its turns, and the OpenCode patch passed `git apply --check` before the checkpoint replay rejected it. |
+| REA-Next static evidence import | VERIFIED | Imported the pinned Phase 3 ELF archive's matching `file`, `readelf` and `objdump` artifacts. The Phase 4 REA-Next campaign descriptor and combined live comparison still need a newly authorized remote run. |
+| Matched remote specialist, cross-plane and resilience trials | BLOCKED | Automatic approval review rejected the Phase 4 remote REA-Next sandbox dispatch, A100 throughput and disconnect probes, cross-plane comparison and increased-turn Qwen trial. The one-lane A100 configuration stays in use. |
+| Coverage-guided or symbolic generation, PE runtime validation | UNTESTED | The new evaluator was exercised on Linux ELF command-line targets with seeded inputs. |
+
+See the [Phase 4 handoff](PHASE4.md) for commands, job IDs, limitations and report paths.
+
 ## Phase 3
 
 | Capability | Status | Evidence |

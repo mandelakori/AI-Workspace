@@ -1,0 +1,17 @@
+[
+  {
+    "name": "example-1",
+    "group": "development",
+    "stdin": "show\nadd 8\ntake 5\nshow\nreset\n"
+  },
+  {
+    "name": "example-2",
+    "group": "development",
+    "stdin": "take 1\nadd -2\nbad\n"
+  },
+  {
+    "name": "example-3",
+    "group": "development",
+    "stdin": "add 1000\nadd 1001\nshow\n"
+  }
+]

@@ -1,0 +1,39 @@
+[
+  {
+    "name": "example-1",
+    "group": "development",
+    "argv": [
+      "abcdef",
+      "2"
+    ]
+  },
+  {
+    "name": "example-2",
+    "group": "development",
+    "argv": [
+      "hello",
+      "1"
+    ]
+  },
+  {
+    "name": "example-3",
+    "group": "development",
+    "argv": [
+      "abcd",
+      "9"
+    ]
+  },
+  {
+    "name": "example-4",
+    "group": "development",
+    "argv": []
+  },
+  {
+    "name": "example-5",
+    "group": "development",
+    "argv": [
+      "",
+      "2"
+    ]
+  }
+]

@@ -11,6 +11,15 @@ from .verify import invoke
 from .workspace import contained
 
 
+def case_argv(value: object) -> tuple[str, ...]:
+    if not isinstance(value, list) or len(value) > 32 or any(
+        not isinstance(arg, str) or len(arg) > 1024 or "\0" in arg
+        or any(0xD800 <= ord(char) <= 0xDFFF for char in arg) for arg in value
+    ):
+        raise ValueError("invalid case argv")
+    return tuple(value)
+
+
 def load_cases(path: Path) -> list[dict]:
     if path.stat().st_size > 256 * 1024:
         raise ValueError("sealed case file exceeds 256 KiB")
@@ -18,12 +27,13 @@ def load_cases(path: Path) -> list[dict]:
     if not isinstance(cases, list) or not 1 <= len(cases) <= 32:
         raise ValueError("sealed oracle requires 1–32 cases")
     for case in cases:
-        if (not isinstance(case, dict) or case.keys() - {"stdin", "stdout", "code", "stderr"}
+        if (not isinstance(case, dict) or case.keys() - {"argv", "stdin", "stdout", "code", "stderr"}
             or not isinstance(case.get("stdout"), str)
             or type(case.get("code", 0)) is not int or not 0 <= case.get("code", 0) <= 124
             or any(not isinstance(case[key], str) or len(case[key].encode("utf-8")) > 16384
                    for key in ("stdin", "stdout", "stderr") if key in case)):
             raise ValueError("invalid sealed case structure")
+        case_argv(case.get("argv", []))
     return cases
 
 
@@ -40,6 +50,7 @@ def evaluate(check: Check, workspace: Path, home: Path, private: Path, image: st
         if remaining <= 0 or stop and stop.exists():
             break
         response = invoke(command, workspace, home, image, timeout=remaining, stop=stop,
+                          extra_args=case_argv(case.get("argv", [])),
                           stdin=case.get("stdin", "").encode("utf-8"), sealed=True)
         category = "pass"
         if response["timed_out"]:

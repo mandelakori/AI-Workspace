@@ -1,0 +1,25 @@
+objective = "Reconstruct the three-function integer classifier. Implement main in candidate.c and the external int clamp_score(int) and int band_score(int) interfaces in score.c. The program accepts one signed decimal integer or emits an error. Preserve observable parsing and output. Read examples.json and every analysis JSON for evidence. Run the approved compile check."
+category = "native-bucket"
+source = "."
+source_inputs = ["reference.c"]
+binary = "reference.elf"
+format = "ELF"
+development = "development.json"
+selectors = ["main","clamp_score","band_score"]
+deliverables = ["candidate.c","score.c"]
+attempts = 2
+timeout = 240
+
+[build_reference]
+argv = ["gcc", "-std=c11", "-O0", "-fno-inline", "reference.c", "-o", "reference.elf"]
+
+[reference]
+argv = ["./reference.elf"]
+timeout = 12
+
+[build_candidate]
+argv = ["gcc","-std=c11","-O2","candidate.c","score.c","-o","candidate"]
+
+[candidate]
+argv = ["./candidate"]
+timeout = 12

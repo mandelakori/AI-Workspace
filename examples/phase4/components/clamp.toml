@@ -1,0 +1,19 @@
+objective = "Implement the C contract in a new clamp.c. Implement int clamp_score(int value), saturating to the inclusive interval [-20, 80]. Read contract.h and run the approved check."
+workspace = "component"
+kind = "agent"
+mode = "engineering"
+category = "phase4-component"
+inputs = ["contract.h", "check.c"]
+write_roots = ["clamp.c"]
+deliverables = ["clamp.c"]
+attempts = 2
+timeout = 160
+
+[[commands]]
+argv = ["gcc", "-DCLAMP", "check.c", "clamp.c", "-o", "probe"]
+
+[[checks]]
+argv = ["gcc", "-DCLAMP", "check.c", "clamp.c", "-o", "probe"]
+
+[[checks]]
+argv = ["./probe"]

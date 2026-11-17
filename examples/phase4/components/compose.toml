@@ -1,0 +1,12 @@
+objective = "Link and independently test both verified C components against their shared contract."
+workspace = "component"
+kind = "direct"
+category = "phase4-component-integration"
+inputs = ["contract.h", "integration.c"]
+deliverables = ["probe"]
+
+[[checks]]
+argv = ["gcc", "-std=c11", "-Wall", "-Wextra", "-Werror", "-I.", "integration.c", ".handoff/clamp/clamp.c", ".handoff/band/band.c", "-o", "probe"]
+
+[[checks]]
+argv = ["./probe"]
