@@ -1,5 +1,6 @@
 """Measure the existing A100 lane or interrupt one owned test tunnel."""
 import argparse
+import json
 import os
 import subprocess
 from concurrent.futures import ThreadPoolExecutor
@@ -27,16 +28,26 @@ def throughput(controller, profile, artifacts):
                "Write the integers 33 to 64, in order, separated by single spaces. No other text."]
     options = request_options(profile)
 
-    def complete(index):
+    def complete(batch, index):
+        raw = artifacts / f"batch-{batch:02}-request-{index + 1:02}"
+        raw.mkdir()
+        body = {
+            "model": profile.model, "messages": [{"role": "user", "content": prompts[index]}],
+            "temperature": 0, "max_tokens": 160, "seed": 42, **options,
+        }
+
+        def capture(direction, data):
+            (raw / f"{direction}.json").write_bytes(data)
+            if direction == "request" and json.loads(data) != body:
+                raise ValueError("serialized API request differs from the configured probe")
+
         started = monotonic()
         try:
-            reply = request(endpoint + "/chat/completions", "POST", {
-                "model": profile.model, "messages": [{"role": "user", "content": prompts[index]}],
-                "temperature": 0, "max_tokens": 160, "seed": 42, **options,
-            }, timeout=45)
+            reply = request(endpoint + "/chat/completions", "POST", body, timeout=45, capture=capture)
         except (OSError, RuntimeError, ValueError) as exc:
             return {"prompt": index, "pass": False, "error": str(exc),
-                    "seconds": round(monotonic() - started, 3), "usage": None}
+                    "seconds": round(monotonic() - started, 3), "usage": None,
+                    "evidence": raw.name}
         choices = reply.get("choices") or [{}]
         choice = choices[0] if isinstance(choices, list) and isinstance(choices[0], dict) else {}
         message = choice.get("message")
@@ -44,8 +55,14 @@ def throughput(controller, profile, artifacts):
         content = message.get("content")
         words = content.split() if isinstance(content, str) else []
         expected = [str(x) for x in range(index * 32 + 1, index * 32 + 33)]
+        usage = reply.get("usage")
+        details = usage.get("completion_tokens_details") if isinstance(usage, dict) else None
+        reasoning = details.get("reasoning_tokens") if isinstance(details, dict) else None
+        if reasoning is None and isinstance(usage, dict):
+            reasoning = usage.get("reasoning_tokens")
         return {"prompt": index, "pass": words == expected, "response": words,
-                "seconds": round(monotonic() - started, 3), "usage": reply.get("usage"),
+                "visible_output": content, "seconds": round(monotonic() - started, 3), "usage": usage,
+                "reasoning_tokens": reasoning, "evidence": raw.name,
                 "finish_reason": choice.get("finish_reason"),
                 "reasoning_present": bool(message.get("reasoning_content"))}
 
@@ -61,22 +78,37 @@ def throughput(controller, profile, artifacts):
                     "error": props_error}
         write_json(artifacts / "capacity.json", capacity)
         batches = []
-        for workers in (1, 2, 2, 1, 1, 2):
+        for number, workers in enumerate((1, 2, 2, 1, 1, 2), 1):
             if (controller.config.state / "STOP").exists():
                 break
             started = monotonic()
             with ThreadPoolExecutor(max_workers=workers) as pool:
-                rows = list(pool.map(complete, (0, 1)))
+                rows = list(pool.map(complete, (number, number), (0, 1)))
             batches.append({"workers": workers, "seconds": round(monotonic() - started, 3), "requests": rows})
             write_json(artifacts / f"batch-{len(batches):02}.json", batches[-1])
     requests = [row for batch in batches for row in batch["requests"]]
+    recorded = sorted(artifacts.glob("batch-*-request-*/request.json"))
+    payloads = [json.loads(path.read_bytes()) for path in recorded]
+    matching_settings = sum(all(payload.get(key) == value for key, value in options.items())
+                            for payload in payloads)
+    modes = {}
+    for workers in (1, 2):
+        pairs = [batch for batch in batches if batch["workers"] == workers]
+        if pairs:
+            rows = [row for batch in pairs for row in batch["requests"]]
+            modes[workers] = {
+                "correct": sum(row["pass"] for row in rows), "requests": len(rows),
+                "median_request_seconds": median(row["seconds"] for row in rows),
+            }
     return {"reported_slots": capacity["total_slots"], "capacity": capacity, "prompts": prompts, "batches": batches,
             "request_options": options,
+            "serialized_request_count": len(recorded), "requests_with_configured_options": matching_settings,
+            "modes": modes,
             "request_count": len(requests), "correct": sum(row["pass"] for row in requests),
             "median_seconds": {workers: median(times) for workers in (1, 2)
                                if (times := [b["seconds"] for b in batches if b["workers"] == workers])},
             "status": ("partial" if len(requests) != 12 else
-                       "verified" if all(row["pass"] for row in requests) else "failed")}
+                       "verified" if matching_settings == 12 and all(row["pass"] for row in requests) else "failed")}
 
 
 def recovery(controller, profile, fixture, artifacts):
