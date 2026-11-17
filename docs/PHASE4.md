@@ -117,3 +117,36 @@ The [PyPA patch](../.aiwork/phase4-followup/pypa-assisted/proposed.patch) adds t
 ```powershell
 & $py -m aiwork --config $cfg task run .aiwork/phase4-followup/pypa-assisted/verify.toml
 ```
+
+## Functional closeout
+
+The previously delivered PyPA patch remains operator-assisted. The verifier copied its historical intake baseline, checked all 89 file hashes and the patch hash, and recorded the freeze before authoring the new suite. The 32 new inputs have zero normalized overlap with either retired suite. Expected results were authored from the interface contract, with independently generated ordering cases. A direct, model-free job passed the original public checks and **32/32 new sealed cases**. The verifier kept the new input and answer files outside the mounted candidate tree and sent one input per invocation. The private suite, [freeze receipt](../.aiwork/phase4-closeout/pypa/freeze.json), [verification plan](../.aiwork/phase4-closeout/pypa/verification-plan.json) and [job verdict](../.aiwork/phase4-followup/controller/runs/f5b8101526aa4e0985264b64861e7f7a/attempt-001/check-03.json) are retained locally. The contaminated generator and its descendants remain regression evidence only.
+
+The REA-Next diagnosis replays the original hash-verified round-one ELF in the same local Docker image with the same reference ELF and identical 52-input file as the archived Ghidra-assisted and REA-Next round-two comparisons.
+
+| Candidate | Valid inputs and boundaries | Malformed inputs | Total |
+| --- | ---: | ---: | ---: |
+| Ghidra-assisted | 44/44 | 3/8 | 47/52 |
+| REA-Next round one | 44/44 | 3/8 | 47/52 |
+| REA-Next round two, selected for audit | 0/44 | 7/8 | 7/52 |
+
+Round one accepted an integer prefix and ignored trailing invalid content. Round two changed the parser to require a second integer. This rejected all 44 valid single-integer invocations on the matched suite. Ghidra-assisted source accepted a trailing character after the first integer. It also had an EOF-specific failure on the earlier suite. The round-one replay isolates a regression across the REA-Next retry on this target. The archived generation runs differ in harness, budget, and evidence interface, so the replay compares candidates under common grading conditions. [Round-one replay](../.aiwork/phase4-closeout/rea-diagnosis/results.json) · [Earlier comparison](../.aiwork/phase4-followup/comparison/results.json)
+
+Native reconstruction now runs an approved diagnostic command that compiles the candidate and shows up to three public expected-versus-observed discrepancies in exit status, stdout and stderr. The controller runs it on the actual starting tree, including restored checkpoint edits on retries, and saves the output in `baseline-check.json`. The separate oracle still controls the verdict. The final suites and their diagnostics remain outside generation.
+
+OpenCode and the laptop Qwen model received the original failing agent-authored sources, public reproducers and recorded Ghidra evidence. During these two attempts per target, the operator supplied the acceptance conditions and public test inputs. The agent made all source edits. The classifier started at 7/13 development cases. The first edit failed to compile because it omitted `<ctype.h>`. The retry compiled and passed 12/13, with a whitespace-only error still sent to stdout. The ledger reached 7/11 on the first attempt and 9/11 on the second. It rejected surplus arguments, but still printed on blank chunks and used a 256-byte buffer where the reference reads at most 95 bytes per chunk.
+
+More directed OpenCode follow-ups reached 9/18 classifier and 11/15 ledger cases on expanded public suites. The focused Qwen Code jobs each produced one output token and made zero tool calls. A constrained, model-authored classifier edit with operator debugging guidance reached 16/18 by expanding whitespace handling. Its retry changed the error stream in the wrong branch and also reached 16/18. The first constrained ledger response was truncated before returning a valid patch. The retry compiled but changed command parsing and matched 0/15. The original, guided and constrained attempts are preserved in separate directories. [OpenCode verdicts](../.aiwork/phase4-closeout/native/results.json) · [Classifier constrained verdict](../.aiwork/phase4-closeout/native-constrained/bucket/result.json) · [Ledger constrained retry](../.aiwork/phase4-closeout/native-constrained-retry/ledger/result.json)
+
+The verifier hashed the selected checkpoints before creating 48 new input sequences per target, excluded known earlier stimuli, and compared each candidate against the same reference and Docker image. The classifier's 48-case suite omitted whitespace-only input. A supplemental suite used three new whitespace-only sequences and one valid control. The constrained checkpoint failed all three whitespace-only cases. On the ledger's 48 cases, the archived and autonomous candidates matched the same six framing cases. Both failed every randomized state sequence and every state-preservation case. [Classifier matched replay](../.aiwork/phase4-closeout/native/bucket-matched-replay.json) · [Ledger matched replay](../.aiwork/phase4-closeout/native/ledger-matched-replay.json) · [New candidate reports](../.aiwork/phase4-closeout/native/independent-results.json)
+
+| Candidate | Classifier, shared 48 | Classifier, supplemental 4 | Ledger, shared 48 |
+| --- | ---: | ---: | ---: |
+| Archived starting candidates | 43/48 | — | 6/48 |
+| Autonomous OpenCode checkpoints | 47/48 | — | 6/48 |
+| Constrained classifier edit with operator guidance | 48/48 | 1/4 | — |
+| Earlier operator-assisted source repairs | 48/48 | 4/4 | 48/48 |
+
+Autonomous repair remains incomplete for both native targets. The classifier improved on the shared suite. The ledger's development score improved without changing the result on the shared suite. The earlier operator-assisted repairs passed those same new inputs. All scores describe agreement on these finite corpora. [Operator-assisted matched replay](../.aiwork/phase4-closeout/native/operator-assisted-matched.json)
+
+The full Windows regression suite passed **56 tests** with the existing offline Docker fixture image and installed OpenCode boundary test enabled. The throughput and SSH recovery probes were left complete at their existing artifacts.

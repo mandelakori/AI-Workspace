@@ -140,7 +140,7 @@ def reconstruct(controller: Controller, manifest: Path, profile: str, *, evidenc
         commands=(install_public_check(work, candidate_build, candidate_run), candidate_build),
         checks=(candidate_build, replace(candidate_run, oracle="cases.json", timeout=120)),
         verification_dir=public, min_context=spec.get("min_context", 0),
-        attempts=spec.get("attempts", 2), timeout=spec.get("timeout", 300),
+        attempts=spec.get("attempts", 2), timeout=spec.get("timeout", 300), baseline_check=True,
     )
     task.validate()
     snapshot((raw / spec["source"]).resolve(strict=True), root / "reference-build", tuple(inputs))
