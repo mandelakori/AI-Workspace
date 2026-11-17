@@ -8,7 +8,7 @@ from dataclasses import asdict
 from pathlib import Path
 from unittest.mock import patch
 
-from aiwork.campaign import stage_fixture, static_evidence
+from aiwork.campaign import allocation_receipt, stage_fixture, static_evidence
 from aiwork.controller import Controller, write_json
 from aiwork.native import grade, read_inputs
 from aiwork.schema import Check, Config
@@ -20,6 +20,16 @@ class NativeTests(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
         self.root = Path(self.tmp.name)
+
+    def test_campaign_receipt_binds_a_private_phase_four_directory(self):
+        record = allocation_receipt("/tmp/aiwork-p4.Ab12CD34\nubuntu 1000 700 29 418")
+        self.assertEqual(record["remote_owner"], "ubuntu")
+        self.assertEqual(record["remote_uid"], 1000)
+        self.assertEqual(record["remote_inode"], 418)
+        for unexpected in ("/tmp/aiwork-p3.Ab12CD34\nubuntu 1000 700 29 418",
+                           "/tmp/aiwork-p4.Ab12CD34\nubuntu 1000 755 29 418"):
+            with self.assertRaises(ValueError):
+                allocation_receipt(unexpected)
 
     def test_target_descriptor_supports_pinned_elf_and_fixed_file_arguments(self):
         (self.root / "target.elf").write_bytes(b"\x7fELFdata")

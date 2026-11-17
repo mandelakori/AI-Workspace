@@ -20,6 +20,16 @@ from .schema import Check
 from .workspace import contained
 
 
+def allocation_receipt(output: str) -> dict:
+    match = re.fullmatch(r"(/tmp/aiwork-p4\.[A-Za-z0-9]{8})\n"
+                         r"([a-zA-Z0-9_.-]+) ([0-9]+) 700 ([0-9]+) ([0-9]+)", output)
+    if not match:
+        raise ValueError("unexpected campaign staging path, owner or permissions")
+    path, owner, uid, device, inode = match.groups()
+    return {"remote_directory": path, "remote_owner": owner, "remote_uid": int(uid),
+            "remote_mode": "0700", "remote_device": int(device), "remote_inode": int(inode)}
+
+
 def static_evidence(archive: Path, target_digest: str) -> list[dict]:
     if archive.stat().st_size > 32 * 1024 * 1024:
         raise ValueError("campaign archive exceeds 32 MiB")
@@ -182,11 +192,12 @@ def campaign(controller: Controller, fixture: Path, profile_id: str, remote_root
         return result.stdout.strip()
 
     with controller.planes["a100"].reserve(profile, 120):
-        location = call([*ssh, alias, "mktemp -d /tmp/aiwork-p3.XXXXXXXX"], "allocate", 15)
-        if not re.fullmatch(r"/tmp/aiwork-p3\.[A-Za-z0-9]{8}", location):
-            raise ValueError("unexpected campaign staging directory")
-        write_json(output / "dispatch.json", {"ssh_alias": alias, "remote_directory": location,
-                                               "checkout": remote_root, "image": image, "profile": profile.id})
+        allocate = ("set -eu; p=$(mktemp -d /tmp/aiwork-p4.XXXXXXXX); "
+                    "test -O \"$p\"; printf '%s\\n' \"$p\"; stat -c '%U %u %a %d %i' \"$p\"")
+        receipt = allocation_receipt(call([*ssh, alias, allocate], "allocate", 15))
+        location = receipt["remote_directory"]
+        write_json(output / "dispatch.json", {"ssh_alias": alias, **receipt, "remote_retained": True,
+                                              "checkout": remote_root, "image": image, "profile": profile.id})
         call([scp, *SSH_OPTIONS, *[str(path) for path in staging.iterdir()], f"{alias}:{location}/"],
              "upload", 30)
         build = (
@@ -202,7 +213,8 @@ def campaign(controller: Controller, fixture: Path, profile_id: str, remote_root
             f"cp -R {remote_root}/reanext engine/reanext; "
             f"cp -R {remote_root}/profiles engine/profiles; "
             f"sudo -n docker image inspect {image} >/dev/null; {build}"
-            "chmod u+x program; "
+            # REA-Next bind-mounts the target into a sandbox running as an unprivileged user.
+            "chmod 0555 program; "
             "file program > binary-metadata.txt; sha256sum program >> binary-metadata.txt; "
             "cd engine; "
             f"timeout --kill-after=10s 270s {remote_root}/.venv/bin/python -B -m reanext.campaign "
@@ -226,7 +238,7 @@ def campaign(controller: Controller, fixture: Path, profile_id: str, remote_root
             except RuntimeError as exc:
                 error = error or str(exc)
     result = {"status": "blocked" if error else "completed", "detail": error,
-              "artifacts": str(output), "remote_directory": location}
+              "artifacts": str(output), **receipt, "remote_retained": True}
     archive = output / "evidence.tar.gz"
     if archive.exists():
         with tarfile.open(archive, "r:gz") as bundle:
