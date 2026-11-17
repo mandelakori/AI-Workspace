@@ -401,15 +401,24 @@ class Controller:
                 readings = self.gpu_sample(profile)
                 inference = ollama_residency(profile) if profile.engine == "ollama" else None
                 resident = bool(inference and inference["resident"])
+                reported_context = inference.get("configured_server_context") if resident else None
+                effective_context = min(profile.context, reported_context) if reported_context else profile.context
                 below_budget = bool(profile.location == "local" and profile.memory_mib and readings
                                     and max(row["free_mib"] for row in readings) < profile.memory_mib
                                     and not resident)
+                below_context = effective_context < max(task.min_context, 1024)
                 write_json(attempt / "admission.json", {
                     "gpu": readings, "inference": inference, "minimum_free_mib": profile.memory_mib,
-                    "admitted": not below_budget,
+                    "profile_context": profile.context, "effective_context": effective_context,
+                    "minimum_context": task.min_context, "admitted": not (below_budget or below_context),
                 })
                 if below_budget:
                     raise ValueError(f"GPU free memory below {profile.memory_mib} MiB for {profile.id}")
+                if below_context:
+                    raise ValueError(f"Ollama serving context {effective_context} is below task requirements "
+                                     f"for {profile.id}")
+                profile = replace(profile, context=effective_context,
+                                  output_tokens=min(profile.output_tokens, effective_context - 1))
                 spec = None
                 engineering = task.mode == "engineering"
                 public = task.commands if engineering else task.checks if task.agent_checks and not task.verification_dir else ()

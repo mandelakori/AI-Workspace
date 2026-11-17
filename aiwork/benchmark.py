@@ -75,9 +75,10 @@ def failure(record: dict) -> str:
     text = record.get("detail", "").lower()
     for name, indicators in (
         ("endpoint", ("remote model", "connection", "inventory", "ssh forwarding")),
-        ("context_or_harness", ("harness", "compaction")),
+        ("context_or_harness", ("harness", "compaction", "serving context")),
         ("queue_or_timeout", ("timeout", "timed out", "deadline", "stop")),
-        ("scope", ("outside write_roots", "no edits", "invalid agent changes")),
+        ("scope", ("outside write_roots", "invalid agent changes")),
+        ("no_candidate", ("no edits", "missing deliverables")),
     ):
         if any(indicator in text for indicator in indicators):
             return name

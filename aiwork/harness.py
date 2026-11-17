@@ -6,11 +6,15 @@ import shutil
 import sys
 from dataclasses import dataclass
 from pathlib import Path
+from tempfile import TemporaryDirectory
+from time import monotonic
 from typing import Protocol
 
+from .changes import delta, validate_changes
 from .inference import Inference
 from .process import Result, environment, executable, run
 from .schema import Config, Profile, Task
+from .workspace import inventory, snapshot
 
 
 class Harness(Protocol):
@@ -40,6 +44,42 @@ class OpenCode:
     def execute(self, profile: Profile, task: Task, work: Path, artifacts: Path,
                 prompt: str, timeout: float, tool_spec: Path | None = None,
                 stop: Path | None = None) -> Result:
+        started = monotonic()
+        with TemporaryDirectory(prefix="aiwork-opencode-") as directory:
+            isolated = Path(directory).resolve()
+            if any((parent / ".git").exists() for parent in isolated.parents):
+                raise ValueError("OpenCode temporary workspaces must be outside existing Git worktrees")
+            stage = isolated / "workspace"
+            before = snapshot(work, stage, ())
+            if tool_spec:
+                policy = json.loads(tool_spec.read_bytes())
+                policy["workspace"] = str(stage)
+                tool_spec = artifacts / "opencode-tool.json"
+                tool_spec.write_text(json.dumps(policy), encoding="utf-8")
+            result = self.run_session(profile, task, stage, artifacts, prompt,
+                                      max(0, timeout - (monotonic() - started)), tool_spec, stop)
+            try:
+                changed = delta(before, inventory(stage))
+                roots = task.write_roots if task.mode == "engineering" else task.deliverables
+                validate_changes(changed, roots)
+            except (OSError, ValueError):
+                (artifacts / "agent.jsonl").write_text(result.stdout, encoding="utf-8")
+                (artifacts / "agent.stderr.txt").write_text(result.stderr, encoding="utf-8")
+                raise
+            if changed:
+                staged = artifacts / "opencode-output"
+                snapshot(stage, staged, ())
+                previous = artifacts / "pre-opencode"
+                work.rename(previous)
+                try:
+                    staged.rename(work)
+                except OSError:
+                    previous.rename(work)
+                    raise
+            return result
+
+    def run_session(self, profile: Profile, task: Task, work: Path, artifacts: Path, prompt: str,
+                    timeout: float, tool_spec: Path | None, stop: Path | None) -> Result:
         env = environment(artifacts / "harness-home")
         key = Inference(profile).key()
         settings = {"baseURL": profile.endpoint.rstrip("/")}
@@ -49,6 +89,7 @@ class OpenCode:
         body = request_options(profile)
         actions = ["read", "glob", "grep", "list", "todowrite"]
         permissions = [rule("*", "*", "deny"), *(rule(action) for action in actions)]
+        permissions.append(rule("external_directory", effect="deny"))
         # Controller checks the actual changed file set again before verification.
         # V2 commonly normalizes mutation resources to absolute paths.
         allowed = task.deliverables if task.mode == "restricted" else tuple(
@@ -67,6 +108,7 @@ class OpenCode:
             "model": f"aiwork/{profile.model}",
             "small_model": f"aiwork/{profile.model}",
             "permissions": permissions,
+            "policies": [rule("tool.use", "external_directory:*", "deny")],
             "autoupdate": False,
         }
         if task.mode == "engineering":

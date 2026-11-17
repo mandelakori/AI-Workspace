@@ -53,6 +53,28 @@ class EngineeringTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             Check.read({"argv": ["{python}", "-V"], "cwd": "../outside"})
 
+    def test_admission_rejects_declared_context_above_live_ollama_window(self):
+        profile = replace(self.local, engine="ollama", context=8192)
+        artifact = self.root / "admission"
+        artifact.mkdir()
+        with (
+            patch("aiwork.controller.opencode_path", return_value="opencode"),
+            patch("aiwork.controller.Inference.ready"),
+            patch("aiwork.controller.ollama_residency", return_value={
+                "resident": True, "configured_server_context": 4096,
+            }),
+            patch.object(Controller, "gpu_sample", return_value=[]),
+            patch("aiwork.controller.OpenCode.execute") as execute,
+            self.assertRaisesRegex(ValueError, "serving context 4096"),
+        ):
+            from time import monotonic
+            self.controller.agent(self.task(min_context=8192), profile, self.source,
+                                  artifact, monotonic() + 5, "", {}, "")
+        execute.assert_not_called()
+        record = json.loads((artifact / "admission.json").read_bytes())
+        self.assertFalse(record["admitted"])
+        self.assertEqual(record["effective_context"], 4096)
+
     @unittest.skipUnless(shutil.which("git"), "requires Git")
     def test_git_patch_includes_added_modified_and_deleted_files(self):
         stage = self.root / "candidate"

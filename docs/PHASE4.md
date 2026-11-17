@@ -6,6 +6,7 @@ Run these commands from the AI-Workspace checkout using Windows PowerShell. The 
 $py = '.venv/Scripts/python.exe'
 $cfg = '.aiwork/phase4.local.toml'
 $env:AIWORK_TEST_DOCKER_IMAGE = 'aiwork-engineering:phase3'
+$env:AIWORK_TEST_OPENCODE_BOUNDARY = '1'
 & $py -m unittest discover -s tests -v
 & $py -m aiwork --config $cfg models
 & $py -m aiwork --config $cfg doctor
@@ -60,7 +61,11 @@ git -C .aiwork/phase4/upstream-packaging rev-parse HEAD
 & $py -m aiwork --config $cfg task verify-checkpoint ffde5b150ada4309b1f1ee6dbb2df40e --attempt 1
 ```
 
-The original checkout stayed clean. Qwen Code's 12-turn trial wrote one of four deliverables before exhausting its budget. The run took 92.469 seconds and scored zero first-pass and final successes. OpenCode produced four files in its first attempt, with verification and retry interrupted by deadlines. Its recorded durations exceed the attempt budget by a wide margin. Treat them as unusable for a speed comparison. The saved checkpoint's separate replay `f6b5be775ec940a1babe600f91cbb72b` failed compilation of the generated unittest. The reviewable patch is in `.aiwork/phase4/runs/ffde5b150ada4309b1f1ee6dbb2df40e/attempt-001/proposed.patch`. The original benchmark reports are `b0fc46265f5f4379904f83ce11792729` and `d450ad15a53a49ec92bf1837175c201f` under `.aiwork/phase4/benchmarks`.
+The original checkout stayed clean. Qwen Code's 12-turn trial wrote one of four deliverables before exhausting its budget. The run took 92.469 seconds and scored zero first-pass and final successes. The first OpenCode trial is contaminated. Its trace recorded a read of the operator-side oracle generator outside the staged workspace, and its generated unittest copied a sealed stimulus. Its saved checkpoint also failed compilation during independent replay `f6b5be775ec940a1babe600f91cbb72b`. A laptop repair of that candidate timed out without validated edits. The original benchmark reports are `b0fc46265f5f4379904f83ce11792729` and `d450ad15a53a49ec92bf1837175c201f` under `.aiwork/phase4/benchmarks`.
+
+OpenCode now runs in a task copy outside any enclosing Git worktree with an explicit deny for external directory access. The installed-harness boundary test uses synthetic data and a local scripted endpoint to check that read and search tools reject outside files and a permitted edit survives. The test exercises the configured tool policy. An OS account or VM is still needed for kernel isolation of hostile harness binaries. [OpenCode directory permissions](https://opencode.ai/docs/permissions/#directories)
+
+A fresh laptop trial with the hardened boundary generated no edits in two attempts. It took 93.984 seconds and is recorded at `.aiwork/phase4-boundary/benchmarks/2367737fc8304c778de29b841c0f1e52/report.json`. Ollama reported a 4,096-token server window throughout the run. The trial's 8,192-token harness declaration did not increase the server window. Admission now uses the reported resident-window limit and records both values.
 
 The Phase 3 Node report's public test exercises different counts, so it cannot distinguish comparator choices for equal counts. A new public counterexample derived from the written contract gives `Zebra`, `apple`, U+E000 and U+10000 equal counts. A local Node probe confirmed that code-point order, default UTF-16 string order and English locale order produce three distinct sequences. This provides an independent tie-breaker test for a future fixture revision. The historical fixture and sealed inputs were preserved.
 
