@@ -4,16 +4,27 @@
 
 | Capability | Status | Evidence |
 | --- | --- | --- |
-| Windows regression and direct smoke | VERIFIED | All 52 tests passed with offline Docker and the OpenCode boundary probe enabled. The Phase 4 wheel installed offline into a fresh environment and passed the original direct fixture in job `8fcb59393c8d45d8980a97ebf7084c7e`. |
+| Windows regression and direct smoke | VERIFIED | All 54 tests passed with offline Docker and the OpenCode boundary probe enabled. The Phase 4 wheel from the initial checkpoint installed offline into a fresh environment and passed the original direct fixture in job `8fcb59393c8d45d8980a97ebf7084c7e`. |
 | Configurable native reconstruction and separate differential grading | VERIFIED | Three self-authored ELF targets exercised stdin, argv, multi-function source and stateful input sequences. The stride candidate passed 48/48 final cases. The classifier and ledger were rejected at 44/48 and 47/48. The laptop ledger attempt produced no candidate. |
 | Component isolation and integration | VERIFIED | Two Ollama workers implemented separate C functions. Both the serial and two-worker schedules independently verified and linked the components. They took 63.234 and 50.922 seconds with one laptop inference lane. |
 | Independent checkpoint verification | VERIFIED | A new deterministic job replayed the original PyPA acceptance pipeline against an unchanged checkpoint. It caught a syntax error in the generated test file. |
-| External repository feature | BLOCKED | The first OpenCode sample read the test generator outside its workspace and is contaminated. A fresh 8K-context trial saved three of four files. Combining those files with independently verified documentation produced a reviewable patch, and the unchanged verifier rejected its generated tests during compilation. |
+| Autonomous external feature | BLOCKED | The first OpenCode sample read the test generator outside its workspace and is contaminated. A fresh 8K-context trial saved three of four files. Combining those files with independently verified documentation produced a reviewable patch, and the unchanged verifier rejected its generated tests during compilation. |
 | OpenCode workspace boundary | VERIFIED | The installed OpenCode process read and edited staged probe files. It denied read and search operations against synthetic files in the enclosing checkout. The probe used a fake local model endpoint. A separate Ollama job `e4dd3a4086e54e3fbcff1fdb9bf797d2` edited source and passed offline verification through the isolated workspace. |
 | Measured Ollama context admission | VERIFIED | The laptop reported a 4,096-token serving window during an 8,192-token harness declaration. Admission now caps the declared window when residency reports a smaller one. Regression coverage confirms an insufficient window blocks dispatch before the harness starts. |
 | REA-Next static evidence import | VERIFIED | Imported the pinned Phase 3 ELF archive's matching `file`, `readelf` and `objdump` artifacts. The Phase 4 REA-Next campaign descriptor and combined live comparison still need a newly authorized remote run. |
-| Matched remote specialist, cross-plane and resilience trials | BLOCKED | Automatic approval review rejected the Phase 4 remote REA-Next sandbox dispatch, A100 throughput and disconnect probes, cross-plane comparison and increased-turn Qwen trial. The one-lane A100 configuration stays in use. |
+| Cross-plane component and increased-turn Qwen trials | UNTESTED | The follow-up authorization covered two REA-Next campaigns, a 12-request probe and test-owned SSH interruption. The separate cross-plane component and increased-turn Qwen experiments remain pending. |
 | Coverage-guided or symbolic generation, PE runtime validation | UNTESTED | The new evaluator was exercised on Linux ELF command-line targets with seeded inputs. |
+
+### Authorized A100 follow-up
+
+| Capability | Status | Evidence |
+| --- | --- | --- |
+| Bounded REA-Next dispatch and receipt | VERIFIED | Two directories were allocated with the Phase 4 prefix and recorded as UID 1000, mode 0700. The first dispatch failed preflight. The second completed with no survivor. Its best compiled output passed 1/9 development and probe inputs and 1/4 campaign audit inputs. Both evidence archives were preserved. |
+| A100 client throughput measurement | VERIFIED | Exactly 12 requests completed. The server reported one slot and a 131,072-token default context. All responses reached the 160-token output cap with empty visible content. Correctness was 0/12, leaving throughput for correct responses unmeasured. |
+| SSH interruption and recovery | VERIFIED | The probe stopped its owned forward. Readiness failed and the controller recorded a blocked attempt. The probe requeued the same job, which passed independent verification on the next attempt in a fresh session. |
+| Native parser repairs | VERIFIED | Operator-assisted revisions passed fresh differential suites of 52/52 classifier and 55/55 ledger cases. The failed autonomous baselines remain in the evidence trail. |
+| Matched classifier artifact comparison | VERIFIED | On the same 52 fresh inputs, the historical Ghidra-assisted candidate matched 47, the REA-Next audit candidate matched 7, and the stronger local combined-evidence checkpoint matched 16. All three failed the final gate. |
+| PyPA feature delivery | VERIFIED | The operator-assisted patch passed `git apply --check`, four focused tests and all 18 preserved sealed cases. Autonomous completion remains unverified. |
 
 See the [Phase 4 handoff](PHASE4.md) for commands, job IDs, limitations and report paths.
 

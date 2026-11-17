@@ -36,9 +36,9 @@ The historical runs below used 48 distinct inputs per target. The ledger include
 | Stateful ledger | A100 Qwen Code | 3/3 | 47/48, failed | `f540f4381804475f9bdfc76093968bd9/final/eb4968b2fe32425aa7a8f41e7e830d44` |
 | Stateful ledger | Laptop OpenCode | No candidate in two attempts | Ungraded | `064e5bcde6694876b6f03ad6d3e72c99` |
 
-The directories are under `.aiwork/phase4/native`. Each `run.json` links to the controller job, which holds harness traces, source and patches. The independently graded results support agreement only for the tested invocations. Classifier and ledger discrepancies remain unresolved. Lengthier sessions, other environments, execution through a PE-compatible runner, raw binary input protocols, side effects and untested error paths remain outside demonstrated coverage. No coverage-guided or symbolic engine was exercised.
+The directories are under `.aiwork/phase4/native`. Each `run.json` links to the controller job, which holds harness traces, source and patches. The independently graded results support agreement only for the tested invocations. The parser diagnosis and revised candidate reports appear in the follow-up below. Lengthier sessions, other environments, execution through a PE-compatible runner, raw binary input protocols, side effects and untested error paths remain outside demonstrated coverage. No coverage-guided or symbolic engine was exercised.
 
-`native run --rea-archive <archive> --evidence ghidra --trusted` adds static listings from a REA-Next archive after checking the exact target hash and the listing hashes. Its importer reads selected static entries. Campaign audit observations remain in the operator archive. With an authorized existing remote checkout, `campaign <fixture.toml>` accepts either a prebuilt ELF or flat sources and an offline build argv that produces `program`, development and audit JSONL, and `[input]` with stdin or file transport and fixed argv. The Phase 3 directory input still works. A prepared prebuilt classifier descriptor for this checkout lives at `.aiwork/phase4/rea-bucket/campaign.toml`. The new transport was exercised in staging tests. The remote dispatch and the matched REA-only versus Ghidra versus combined benchmark require authorization.
+`native run --rea-archive <archive> --evidence ghidra --trusted` adds static listings from a REA-Next archive after checking the exact target hash and the listing hashes. Its importer reads selected static entries. Campaign audit observations remain in the operator archive. With an authorized existing remote checkout, `campaign <fixture.toml>` accepts either a prebuilt ELF or flat sources and an offline build argv that produces `program`, development and audit JSONL, and `[input]` with stdin or file transport and fixed argv. The Phase 3 directory input still works. A prepared prebuilt classifier descriptor for this checkout lives at `.aiwork/phase4/rea-bucket/campaign.toml`. The new transport was exercised in staging tests. The authorized dispatch and classifier comparison appear in the follow-up below.
 
 ## Independent functions and scheduling
 
@@ -47,7 +47,7 @@ $env:PYTHONPATH = (Get-Location).Path
 & $py examples/phase4/component_benchmark.py --config $cfg --local-only
 ```
 
-The two workers each receive an interface and a small approved compile recipe. Independent checks verify each implementation. The dependency journal carries both sources to a separate link and integration job that checks 501 inputs and both integer extremes. Both serial and two-worker trials passed in report `.aiwork/phase4/component-benchmarks/cbdb1f89c20e4e60/report.json`. This is one paired sample, with host overlap and one serialized Ollama lane. The same script can run the separate laptop and A100 profiles after explicit authorization. A100 multi-request capacity remains unmeasured.
+The two workers each receive an interface and a small approved compile recipe. Independent checks verify each implementation. The dependency journal carries both sources to a separate link and integration job that checks 501 inputs and both integer extremes. Both serial and two-worker trials passed in report `.aiwork/phase4/component-benchmarks/cbdb1f89c20e4e60/report.json`. This is one paired sample, with host overlap and one serialized Ollama lane. The same script can run the separate laptop and A100 profiles after explicit authorization. The A100 client submission experiment appears in the follow-up below.
 
 Workflow handoffs now compare the bytes staged for a dependent job against the upstream verifier's recorded SHA-256 digest. A regression test changes an upstream artifact after verification and confirms the dependent job is rejected before dispatch. Legacy direct outputs without inventories remain readable.
 
@@ -83,10 +83,33 @@ The Phase 3 Node report's public test exercises different counts, so it cannot d
 
 `task verify-checkpoint` verifies the recorded candidate hash, permitted changes and verifier inventory, then creates a model-free job. It currently accepts engineering fixtures without setup recipes. Candidate verification results leave the original attempt history intact. Policy-valid incomplete work is now checkpointed for retries. Qwen Code profiles can set a bounded `harness_turns` value. The default stays at 12.
 
-After approval for the specific remote experiments, use the following commands to measure one versus two requests on the existing lane and test failure and recovery of a disposable local SSH forward. The examples preserve the existing A100 service, profile locks and inference configuration. The live probes remain pending.
+The approved A100 probes use the following commands. A fresh run is a separate experiment with its own authorization and request budget.
 
 ```powershell
 $env:PYTHONPATH = (Get-Location).Path
 & $py examples/phase4/remote_probe.py throughput --config $cfg --profile a100-existing
 & $py examples/phase4/remote_probe.py recovery --config $cfg --profile a100-existing
+```
+
+## Authorized follow-up
+
+The two classifier campaigns used the same prebuilt reference ELF, existing REA-Next installation and cached sandbox image. Launches were limited to two. The paths remain available on `aisak` for inspection. Both were owned by `ubuntu` (UID 1000) with mode `0700`. Each local `dispatch.json` records the path, owner, device, inode and image.
+
+| Campaign | Remote directory | Controller outcome |
+| --- | --- | --- |
+| `50c269b426ec44c6abc7301a1abb5869` | `/tmp/aiwork-p4.WXo4fh0s` | Non-root sandbox worker could not execute the uploaded ELF. Preflight failed. |
+| `71a0ea71bf5247298523ab1a79b13c18` | `/tmp/aiwork-p4.AviOYr3M` | Changing the staged ELF to mode `0555` resolved preflight. The campaign finished in 31.094 seconds. Its best compiled output passed 1/9 development and probe inputs, then 1/4 audit inputs. Final decision `no_survivor`. |
+
+The [throughput probe report](../.aiwork/phase4/remote-probes/74b31f81811c4133aca0dd3e666c26ee/report.json) records six two-request batches, three for each submission mode. The server advertised one slot and a 131,072-token default context. Median pair completion time was 2.656 seconds sequential and 2.578 seconds concurrent. The corresponding median individual latencies were 1.328 and 1.961 seconds. Across all 12 requests the server reported 390 prompt tokens and 1,920 completion tokens. All responses reached the 160-token completion cap without visible answers, so correctness was 0/12. Throughput for correct answers remains unmeasured. The probe now applies the profile's reasoning options and records finish reasons, with the 12-request limit covered by a mock regression. A live rerun requires a fresh request budget.
+
+The [recovery report](../.aiwork/phase4/remote-probes/5ee877d1823a4ec99e9da962325ad0fe/report.json) records the test PID, owned SSH process handle, command, and failed loopback readiness after termination. The first attempt was blocked. The probe requeued the same job `e163566ebd2e4e588b854ce4a25e6405` and the next attempt passed independent verification. Total elapsed time was 26 seconds.
+
+The classifier's original candidate accepted trailing non-whitespace after the integer and rejected an otherwise valid value ending at EOF. The ledger accepted trailing arguments to `show` and `reset`, treated blank lines as errors, and used a larger line buffer. The operator-assisted revisions passed 52/52 and 55/55 fresh inputs, respectively. The new suites exclude the exact historical final stimuli and, for the classifier, the campaign audit inputs. The fresh suites, revised sources, parent hashes and per-case reports are under `.aiwork/phase4-followup/native-parser`.
+
+The [classifier comparison](../.aiwork/phase4-followup/comparison/results.json) used the same reference ELF and the same 52 new inputs. The historical Ghidra-assisted candidate matched 47/52. The hash-verified executable from the REA-Next audit matched 7/52. The local OpenCode run with both Ghidra and REA-Next static evidence compiled two candidates. They passed 2/5 and 0/5 development cases. The stronger development checkpoint matched 16/52 on the common final suite. The last checkpoint matched 0/52 and used the wrong upper clamp, score bands and error stream. These are artifact comparisons across different generation workflows and model configurations. They cannot isolate the effect of either specialist.
+
+The [PyPA patch](../.aiwork/phase4-followup/pypa-assisted/proposed.patch) adds the library, CLI, tests and usage documentation in a separate copy of the pinned checkout. It passed `git apply --check`, compilation, the original public check, four focused unittests and 18/18 preserved sealed cases. This was an operator-assisted implementation. Prior autonomous attempts and the original upstream checkout were preserved. The verification job is `6ef1d9da4f1c46aaade89237a5d9306a`.
+
+```powershell
+& $py -m aiwork --config $cfg task run .aiwork/phase4-followup/pypa-assisted/verify.toml
 ```
