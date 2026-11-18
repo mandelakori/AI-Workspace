@@ -8,6 +8,7 @@ from pathlib import Path
 from time import monotonic
 from unittest.mock import patch
 
+from aiwork.adaptive import validate_revision
 from aiwork.controller import Controller, write_json
 from aiwork.component_source import propose_source
 from aiwork.hierarchy import execute, graph_tasks, inspect, leaves, prepare, register
@@ -105,6 +106,27 @@ class HierarchyTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "approval digest"):
             execute(self.controller, "fixture", "refinement", first["approval"], 1)
 
+    def test_adaptive_proposal_can_split_and_rewire_but_cannot_expand_existing_ownership(self):
+        draft = {"parts": [
+            {"id": "tokenize", "interface": "Tokenize the input.", "outputs": ["tokens.txt"],
+             "needs": ["analysis"]},
+            {"id": "validate", "interface": "Validate the tokens.", "outputs": ["checked.txt"],
+             "needs": ["tokenize"]}],
+            "rewire": {"integration": ["first", "validate"]},
+            "missing_requirements": ["Test malformed tokens."]}
+        self.assertEqual(validate_revision(draft, self.components, "second"), draft)
+        draft["rewire"]["integration"] = ["validate"]
+        with self.assertRaisesRegex(ValueError, "unrelated"):
+            validate_revision(draft, self.components, "second")
+        draft["rewire"]["integration"] = ["first", "validate"]
+        draft["parts"][1]["outputs"] = ["first.txt"]
+        with self.assertRaisesRegex(ValueError, "overlaps"):
+            validate_revision(draft, self.components, "second")
+        draft["parts"][1]["outputs"] = ["checked.txt"]
+        draft["parts"][0]["needs"] = ["validate"]
+        with self.assertRaisesRegex(ValueError, "cycle"):
+            validate_revision(draft, self.components, "second")
+
     def test_source_proposal_cannot_choose_files_or_send_unapproved_context(self):
         self.components["first"]["source_context"] = ["driver.py"]
         self.save_policy()
@@ -154,3 +176,43 @@ class HierarchyTests(unittest.TestCase):
         self.assertEqual(len(self.controller.state.attempts(complete["jobs"]["first"])), 1)
         outputs = inspect(self.controller, "fixture", "run")["outputs"]
         self.assertEqual(Path(outputs["integration"]["joined.txt"]["path"]).read_text(), "firstsecond")
+
+    @unittest.skipUnless(os.environ.get("AIWORK_TEST_DOCKER_IMAGE"), "requires offline Docker")
+    def test_ranked_component_uses_public_diagnostics_and_reuses_only_compatible_revision_jobs(self):
+        file = self.workspace / "named-corpus.json"
+        write_json(file, [{"name": "named-case", "stdin": "probe", "stdout": "second"}])
+        self.components["second"].update(inputs=["driver.py", file.name], public_cases=file.name, checks=[
+            {"argv": ["{python}", "-c", "pass"]},
+            {"argv": ["{python}", "-c", "from pathlib import Path; print(Path('second.txt').read_text(),end='')"]},
+        ])
+        self.save_policy()
+        register(self.controller, "fixture", self.policy)
+        first = prepare(self.controller, "fixture", "initial", "Objective", "local-p", self.reviewed)
+
+        def worker(_, task, profile, work, attempt, deadline, previous, summary, findings):
+            name = task.deliverables[0]
+            self.assertFalse((work / "outside.txt").exists())
+            if name == "second.txt" and "Clarified" not in task.objective:
+                if task.agent_role == "implementation":
+                    (work/name).write_text("wrong", encoding="utf-8")
+                    return
+                self.assertIn("named-case", findings)
+                self.assertIn('"differences": ["stdout"]', findings)
+                self.assertIn('"stdout": "wrong"', findings)
+                self.assertIn('"stdout": "second"', findings)
+            (work/name).write_text(Path(name).stem, encoding="utf-8")
+
+        with patch.object(Controller, "agent", worker):
+            baseline = execute(self.controller, "fixture", "initial", first["approval"], 1)
+            self.assertEqual(baseline["status"], "verified")
+            second = baseline["jobs"]["second"]
+            self.assertEqual(len(self.controller.state.attempts(second)), 2)
+            self.components["second"]["interface"] += " Clarified."
+            self.save_policy()
+            register(self.controller, "revision", self.policy)
+            plan = prepare(self.controller, "revision", "with-reuse", "Objective", "local-p", self.reviewed,
+                           reuse_from="fixture/initial")
+            revised = execute(self.controller, "revision", "with-reuse", plan["approval"], 1)
+        self.assertEqual(revised["status"], "verified")
+        self.assertEqual(revised["reused"], {name: baseline["jobs"][name] for name in ("analysis", "first")})
+        self.assertNotEqual(revised["jobs"]["integration"], baseline["jobs"]["integration"])

@@ -82,6 +82,8 @@ class Task:
     rank_public: bool = False
     agent_role: str = ""
     source_context: tuple[str, ...] = ()
+    public_cases: str = ""
+    attempt_limit: int = 0
 
     @classmethod
     def load(cls, path: Path) -> Task:
@@ -161,6 +163,14 @@ class Task:
             not task.deliverables
         ):
             raise ValueError("public ranking requires an engineering build and invocation without private checks")
+        if not isinstance(task.public_cases, str) or task.public_cases and (
+            not task.rank_public or relative(task.public_cases) not in task.inputs
+            or within(task.public_cases, task.write_roots)
+        ):
+            raise ValueError("public_cases must identify a read-only staged input for ranked verification")
+        bounded("attempt_limit", task.attempt_limit, 0, 5)
+        if task.attempt_limit and (not task.rank_public or task.attempts > task.attempt_limit):
+            raise ValueError("attempt_limit bounds a ranked engineering job")
         if task.agent_role not in {"", "implementation", "debugging"} or (
             task.agent_role and task.mode != "engineering"
         ):

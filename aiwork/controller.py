@@ -69,7 +69,7 @@ class Controller:
             root = spec.parent
             baseline = snapshot(task.workspace, root / "baseline", task.inputs)
             if task.rank_public:
-                load_cases(root / "baseline" / CORPUS, public=True)
+                load_cases(root / "baseline" / (task.public_cases or CORPUS), public=True)
             if handoff:
                 handoff_dir = root / "baseline" / ".handoff"
                 handoff_dir.mkdir(exist_ok=False)
@@ -91,7 +91,8 @@ class Controller:
             manifest = asdict(task)
             if task.mode == "restricted" and not task.min_context and not task.preferred_profile:
                 for key in ("mode", "write_roots", "commands", "setup", "baseline_check",
-                            "min_context", "preferred_profile", "rank_public", "agent_role", "source_context"):
+                            "min_context", "preferred_profile", "rank_public", "agent_role", "source_context",
+                            "public_cases", "attempt_limit"):
                     manifest.pop(key)
                 manifest["checks"] = [{key: value for key, value in check.items()
                                        if key not in {"cwd", "oracle"} or value}
@@ -250,7 +251,12 @@ class Controller:
         previous = ""
         detail = ""
         status = "blocked"
-        for offset in range(task.attempts if task.kind == "agent" else 1):
+        rounds = task.attempts if task.kind == "agent" else 1
+        if task.attempt_limit:
+            rounds = min(rounds, task.attempt_limit - number)
+            if rounds <= 0:
+                return self._finish(row["id"], root, "failed", "ranked attempt budget exhausted")
+        for offset in range(rounds):
             if (self.config.state / "STOP").exists():
                 return self._finish(row["id"], root, "blocked", "stopped before next attempt")
             profile, reason = choices[min(offset, len(choices) - 1)]
@@ -297,6 +303,8 @@ class Controller:
                     f"Previously passing case indices lost: {evidence['selection']['lost_cases']}. "
                     + public.get("build_diagnostic", "")[:470]
                 )
+            elif task.rank_public and evidence.get("unchanged_proposal"):
+                previous = "The previous proposal left every source byte unchanged. Address the public discrepancy."
             if status == "verified":
                 break
         return self._finish(row["id"], root, status, detail)
@@ -315,10 +323,11 @@ class Controller:
             incumbent = self.public_incumbent(task, attempt, checkpoint, deadline)
             reserve = min(task.timeout / 2, max(25, 8 + 2 * incumbent["total"]))
             agent_deadline -= reserve
+            tools = "Run the approved public checks when tools are available. " if task.commands else ""
             findings = (
                 f"Selected checkpoint passes {incumbent['passed_cases']}/{incumbent['total']} public cases. "
-                "Reproduce one failure, identify its cause, make the smallest edit, then run public command 0. "
-                "A correction that breaks a previously passing case will be rolled back.\n"
+                "Reproduce one failure, identify its cause and make the smallest edit. "
+                f"{tools}A correction that breaks a previously passing case will be rolled back.\n"
                 + json.dumps(incumbent["discrepancies"][:2]) + "\n" + incumbent.get("build_diagnostic", "")
             )
             if incumbent["public_passed"]:
@@ -363,6 +372,9 @@ class Controller:
             if unchanged:
                 if execution_error:
                     return {"status": "blocked", "detail": execution_error, "changed": changed}
+                if task.rank_public:
+                    return {"status": "failed", "detail": "proposal left the selected checkpoint unchanged",
+                            "changed": changed, "unchanged_proposal": True}
                 return {"status": "failed", "detail": "No edits were made. Use the edit or write tool to implement the change.",
                         "changed": changed}
         if profile and not task.rank_public and (
@@ -447,7 +459,8 @@ class Controller:
 
     def measure_public(self, task: Task, work: Path, home: Path, deadline: float,
                        missing: list[str]) -> dict:
-        return score(*task.checks, task.workspace / CORPUS, work, home, self.config.verification_image,
+        return score(*task.checks, task.workspace / (task.public_cases or CORPUS), work, home,
+                     self.config.verification_image,
                      deadline, self.config.state / "STOP", missing)
 
     def record_public_candidate(self, task: Task, work: Path, attempt: Path, checkpoint: Path | None,
@@ -473,7 +486,8 @@ class Controller:
         restore = attempt.parent / "restore.json"
         discarded = set(json.loads(restore.read_text(encoding="utf-8"))["discarded_checkpoints"]
                         if restore.is_file() else ())
-        corpus_sha = hashlib.sha256((task.workspace / CORPUS).read_bytes()).hexdigest() if task.rank_public else ""
+        corpus = task.workspace / (task.public_cases or CORPUS)
+        corpus_sha = hashlib.sha256(corpus.read_bytes()).hexdigest() if task.rank_public else ""
         for record in sorted(attempt.parent.glob("attempt-*/checkpoint.json"), reverse=True):
             if record.parent == attempt or record.parent.name in discarded:
                 continue
@@ -498,7 +512,10 @@ class Controller:
               previous: str, summary: dict, findings: str) -> None:
         if task.source_context:
             from .component_source import propose_source
-            propose_source(self, task, profile, work, attempt, deadline, findings)
+            diagnose = findings
+            if task.rank_public and previous:
+                diagnose += "\n" + previous
+            propose_source(self, task, profile, work, attempt, deadline, diagnose)
             return
         from .remote import a100_session
         binary = opencode_path(self.config.opencode) if profile.harness == "opencode" else None

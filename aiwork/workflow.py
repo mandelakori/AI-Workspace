@@ -70,7 +70,7 @@ def execute(controller: Controller, source: Path, workers: int, trusted: bool,
 
 def execute_graph(controller: Controller, nodes: dict[str, GraphTask], workers: int, trusted: bool,
                   workflow_id: str, fingerprint: str, definitions: dict[str, str],
-                  *, retry: str = "", max_attempts: int = 1) -> dict:
+                  *, retry: str = "", max_attempts: int = 1, reuse: dict[str, str] | None = None) -> dict:
     bounded("workers", workers, 1, 16)
     if not re.fullmatch(r"[a-zA-Z0-9_-]{1,64}", workflow_id):
         raise ValueError("workflow id must contain 1–64 letters, digits, underscores or dashes")
@@ -80,7 +80,8 @@ def execute_graph(controller: Controller, nodes: dict[str, GraphTask], workers: 
     with file_lock(root / "workflow.lock"):
         result = (json.loads(journal.read_text(encoding="utf-8")) if journal.exists() else
                   {"workflow": workflow_id, "plan": fingerprint, "definitions": definitions,
-                   "trusted": trusted, "jobs": {}, "status": "running"})
+                   "trusted": trusted, "jobs": dict(reuse or {}), "status": "running",
+                   **({"reused": dict(reuse)} if reuse else {})})
         if (result["plan"] != fingerprint or result["definitions"] != definitions
             or result["trusted"] != trusted):
             raise ValueError("workflow plan, task manifests or authorization changed; use a new ID")

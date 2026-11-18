@@ -47,12 +47,19 @@ def parser() -> argparse.ArgumentParser:
     planning_hierarchy.add_argument("--reviewed", type=Path, help="use a supplied tree without model planning")
     planning_hierarchy.add_argument("--from-run", default="", help="propose a specialist refinement of an existing plan")
     planning_hierarchy.add_argument("--group", default="", help="group the specialist may refine")
+    planning_hierarchy.add_argument("--reuse-from", default="", help="compatible verified predecessor as PROJECT/RUN")
+    investigation = actions.add_parser("investigate", help="propose reviewed interface changes from a public failure")
+    investigation.add_argument("project")
+    investigation.add_argument("run")
+    investigation.add_argument("component")
+    investigation.add_argument("proposal")
     execution = actions.add_parser("run", help="execute a reviewed plan")
     execution.add_argument("project")
     execution.add_argument("run")
     execution.add_argument("--approve", required=True)
     execution.add_argument("--workers", type=int, default=1)
     execution.add_argument("--retry", help="resume one failed component within the reviewed attempt budget")
+    execution.add_argument("--investigate-on-failure", help="create one review-only proposal for this failed component")
     inspection = actions.add_parser("status", help="inspect progress and retrieve verified output references")
     inspection.add_argument("project")
     inspection.add_argument("run")
@@ -216,10 +223,22 @@ def main(argv: list[str] | None = None) -> int:
                 result = hierarchy.register(controller, args.project, args.descriptor)
             elif args.action == "plan":
                 result = hierarchy.prepare(controller, args.project, args.run, args.objective,
-                                           args.profile, args.reviewed, from_run=args.from_run, group=args.group)
+                                           args.profile, args.reviewed, from_run=args.from_run, group=args.group,
+                                           reuse_from=args.reuse_from)
+            elif args.action == "investigate":
+                from .adaptive import investigate
+                result = investigate(controller, args.project, args.run, args.component, args.proposal)
             elif args.action == "run":
                 result = hierarchy.execute(controller, args.project, args.run, args.approve,
                                            args.workers, args.retry or "")
+                component = args.investigate_on_failure
+                if component and result["steps"].get(component) in {"failed", "partial", "blocked"}:
+                    from .adaptive import investigate
+                    proposal = f"auto-{hierarchy.digest(component)[:12]}"
+                    try:
+                        result["investigation"] = investigate(controller, args.project, args.run, component, proposal)
+                    except (OSError, ValueError, RuntimeError, KeyError, TypeError) as exc:
+                        result["investigation_error"] = str(exc)
                 print_json(result)
                 return 0 if result["status"] == "verified" else 1
             else:

@@ -65,14 +65,15 @@ def graph_tasks(policy: dict, stage: Path, profile: str,
         node = entries[key]
         label(key)
         if set(node) - {"role", "interface", "inputs", "outputs", "needs", "imports", "checks", "timeout",
-                        "source_context"}:
+                        "source_context", "public_cases", "commands"}:
             raise ValueError(f"{key}: unknown component policy field")
         role = node["role"]
         if role not in ROLES:
             raise ValueError(f"{key}: invalid role")
         contract = text_field(node["interface"], 1100)
         checks = tuple(Check.read(row) for row in array(node, "checks", 4))
-        if any(check.oracle or any("{verification}" in arg for arg in check.argv) for check in checks):
+        commands = tuple(Check.read(row) for row in array(node, "commands", 4))
+        if any(check.oracle or any("{verification}" in arg for arg in check.argv) for check in (*checks, *commands)):
             raise ValueError("registered component checks must be public")
         needs = tuple(label(item) for item in array(node, "needs", 12))
         if len(set(needs)) != len(needs) or key in needs:
@@ -89,17 +90,24 @@ def graph_tasks(policy: dict, stage: Path, profile: str,
                 raise ValueError("component outputs must have disjoint ownership")
             outputs.append(folded)
         agent = role in {"implementation", "debugging"}
+        if commands and not agent:
+            raise ValueError("only engineering workers can invoke approved public tooling")
         objective = (f"Component: {key}.\nInterface contract: {contract}\n"
                      "Use the approved staged inputs and verified dependency artifacts. "
                      "Implement only your assigned deliverables.")
         source_context = paths(node, "source_context")
+        corpus = node.get("public_cases", "")
         if agent and not source_context:
             objective += " Run the approved public check before finishing."
         task = Task(objective, stage, "agent" if agent else "direct", f"hierarchy-{key}", inputs,
-                    deliverables, checks, location="local", timeout=node.get("timeout", 90), attempts=1,
+                    deliverables, checks, location="local", timeout=node.get("timeout", 90),
+                    attempts=policy["max_attempts"] if corpus else 1,
                     mode="engineering" if agent else "restricted", write_roots=deliverables if agent else (),
-                    commands=checks if agent else (), baseline_check=agent, agent_role=role if agent else "",
-                    source_context=source_context, profile=profile if source_context else "")
+                    commands=(commands or checks) if agent else (),
+                    baseline_check=agent, agent_role=role if agent else "",
+                    source_context=source_context, profile=profile if source_context else "",
+                    rank_public=bool(corpus), public_cases=corpus,
+                    attempt_limit=policy["max_attempts"] if corpus else 0)
         task.validate()
         requested = node.get("imports", {})
         if not isinstance(requested, dict) or requested.keys() - set(needs):
@@ -169,7 +177,7 @@ def register(controller: Controller, name: str, descriptor: Path) -> dict:
     policy = json.loads(descriptor.read_bytes())
     if set(policy) != {"workspace", "components", "max_attempts"}:
         raise ValueError("project descriptor requires workspace, components and max_attempts")
-    bounded("max_attempts", policy["max_attempts"], 1, 3)
+    bounded("max_attempts", policy["max_attempts"], 1, 5)
     workspace = (descriptor.parent / policy["workspace"]).resolve(strict=True)
     graph = graph_tasks(policy, workspace, "")
     files = tuple(sorted({item for node in graph.values() for item in node.task.inputs}))
@@ -212,6 +220,13 @@ def propose(controller: Controller, profile, work: Path, objective: str, entries
         "Return the tree object only. Include no code or permissions. "
         f"Starting tree: {json.dumps(example)}"
     )
+    draft, evidence = ask_planner(controller, profile, work, prompt, context, role)
+    leaves(draft, set(entries))
+    return draft, evidence
+
+
+def ask_planner(controller: Controller, profile, work: Path, prompt: str, context: dict,
+                role: str) -> tuple[dict, dict]:
     start = monotonic()
     with controller.planes["local"].reserve(profile, 45):
         client = Inference(profile)
@@ -223,11 +238,10 @@ def propose(controller: Controller, profile, work: Path, objective: str, entries
                          {"role": "user", "content": json.dumps(context)}],
         }, key=client.key(), timeout=40)
     raw = response["choices"][0]["message"]["content"]
-    write_json(work, {"role": role, "profile": profile.id, "input": context, "content": raw,
-                      "usage": response.get("usage"), "seconds": round(monotonic() - start, 3)})
-    draft = json.loads(raw)
-    leaves(draft, set(entries))
-    return draft, json.loads(work.read_bytes())
+    evidence = {"role": role, "profile": profile.id, "input": context, "content": raw,
+                "usage": response.get("usage"), "seconds": round(monotonic() - start, 3)}
+    write_json(work, evidence)
+    return json.loads(raw), evidence
 
 
 def group_nodes(tree: dict):
@@ -246,7 +260,8 @@ def component_names(tree: dict):
 
 
 def prepare(controller: Controller, project: str, run_id: str, objective: str, profile_id: str,
-            reviewed: Path | None = None, *, from_run: str = "", group: str = "") -> dict:
+            reviewed: Path | None = None, *, from_run: str = "", group: str = "",
+            reuse_from: str = "") -> dict:
     """Create a reviewable approval receipt. This action submits no component jobs."""
     root, registration = load_registration(controller, project)
     if not controller.config.verification_image:
@@ -290,6 +305,13 @@ def prepare(controller: Controller, project: str, run_id: str, objective: str, p
                 "origin": origin}
     if from_run:
         approval.update(parent_plan=from_run, refined_group=group)
+    if reuse_from:
+        source_project, _, source_run = reuse_from.partition("/")
+        origin_root, _ = load_registration(controller, source_project)
+        previous = json.loads((origin_root / "plans" / label(source_run) / "approval.json").read_bytes())
+        if (source_project, source_run) == (project, run_id):
+            raise ValueError("a plan cannot reuse itself")
+        approval["reuse_from"] = {"project": source_project, "run": source_run, "approval": digest(previous)}
     write_json(folder / "approval.json", approval)
     return {"approval": digest(approval), "document": str(folder / "approval.json"), **approval}
 
@@ -316,11 +338,40 @@ def execute(controller: Controller, project: str, run_id: str, approval_hash: st
     if runner and pin_runner(controller) != runner:
         raise ValueError("approved offline image digest changed")
     lane = Controller(replace(controller.config, verification_image=runner)) if runner else controller
+    reused = compatible_jobs(controller, registration, approval, graph) if "reuse_from" in approval else {}
     result = execute_graph(lane, graph, workers, False, workflow_id, approval_hash,
                            {name: digest(approval["permissions"][name]) for name in graph},
-                           retry=retry, max_attempts=approval["max_attempts"])
+                           retry=retry, max_attempts=approval["max_attempts"], reuse=reused)
     return {**result, "project": project, "run": run_id, "tree": approval["tree"],
             "workflow_report": str(controller.config.state / "workflows" / workflow_id / "workflow.json")}
+
+
+def compatible_jobs(controller: Controller, registration: dict, approval: dict,
+                    graph: dict[str, GraphTask]) -> dict[str, str]:
+    link = approval["reuse_from"]
+    project, run = link["project"], link["run"]
+    root, previous = load_registration(controller, project)
+    old = json.loads((root / "plans" / label(run) / "approval.json").read_bytes())
+    if (digest(old) != link["approval"] or digest(previous) != old["registration_sha256"]
+            or not approval.get("runner_image") or approval["runner_image"] != old.get("runner_image")
+            or approval["profile_sha256"] != old["profile_sha256"]):
+        raise ValueError("predecessor approval, profile or pinned verifier changed")
+    result = inspect(controller, project, run)
+    if result.get("plan") != link["approval"]:
+        raise ValueError("predecessor execution does not match its approval")
+    reused = {}
+    pending = set(graph)
+    while pending:
+        ready = sorted(name for name in pending if not (set(graph[name].needs) & pending))
+        for name in ready:
+            node = graph[name]
+            if (name in result["outputs"] and old["permissions"].get(name) == approval["permissions"][name]
+                    and set(node.needs) <= reused.keys()
+                    and all(previous["inventory"].get(file) == registration["inventory"][file]
+                            for file in node.task.inputs)):
+                reused[name] = result["jobs"][name]
+        pending.difference_update(ready)
+    return reused
 
 
 def inspect(controller: Controller, project: str, run_id: str) -> dict:

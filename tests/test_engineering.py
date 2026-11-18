@@ -210,6 +210,29 @@ class EngineeringTests(unittest.TestCase):
         self.assertEqual(final["public"]["independent_verification"], "not_run")
         self.assertFalse((root / "private").exists())
 
+    def test_ranked_attempt_limit_survives_resume(self):
+        (self.source / "examples.json").write_text('[{"stdin":"","stdout":"pass"}]', encoding="utf-8")
+        controller = Controller(replace(self.controller.config, verification_image="offline"))
+        task = self.task(deliverables=("pkg/one.py",), checks=(self.check, self.check), attempts=2,
+                         rank_public=True, attempt_limit=2)
+
+        def agent(_, manifest, profile, work, artifact, deadline, previous, summary, findings):
+            (work/"pkg/one.py").write_text(artifact.name, encoding="utf-8")
+
+        observed = {"code":0, "stdout":"fail", "stderr":"", "timed_out":False, "truncated":False, "elapsed":0}
+        with (
+            patch.object(Controller, "agent", agent),
+            patch("aiwork.selection.invoke", return_value={"passed":True}),
+            patch("aiwork.oracle.invoke", return_value=observed),
+        ):
+            job = controller.submit_task(task)
+            first = controller.run_submitted(job)
+            self.assertEqual(first["status"], "failed")
+            controller.resume(job)
+            second = controller.run_submitted(job)
+        self.assertEqual(second["detail"], "ranked attempt budget exhausted")
+        self.assertEqual(len(controller.state.attempts(job)), 2)
+
     @unittest.skipUnless(shutil.which("git"), "requires Git")
     def test_checkpoint_verification_replays_checks_without_an_agent(self):
         def agent(_, task, profile, work, *rest):

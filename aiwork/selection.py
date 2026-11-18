@@ -25,8 +25,10 @@ def score(build: Check, run: Check, corpus: Path, work: Path, home: Path, image:
         return {**receipt, "classification": "missing_deliverables"}
     compilation = invoke(build, work, home, image, timeout=max(0, deadline-monotonic()), stop=stop)
     if not compilation["passed"]:
+        diagnostic = compilation["stderr"] or compilation["stdout"]
+        excerpt = diagnostic if len(diagnostic) <= 900 else diagnostic[:600] + "\n...\n" + diagnostic[-300:]
         return {**receipt, "classification": classify(compilation),
-                "build_diagnostic": compilation["stderr"][-800:] or compilation["stdout"][-800:]}
+                "build_diagnostic": excerpt}
     result = evaluate(replace(run, oracle=corpus.name), work, home, corpus.parent, image,
                       deadline-monotonic(), stop, public=True)
     return {**receipt, **result, "compiled": True, "public_passed": result["passed"]}

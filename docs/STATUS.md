@@ -1,4 +1,17 @@
-# Status as of 2026-11-17
+# Status as of 2026-11-18
+
+## Phase 5.1
+
+| Capability | Status | Evidence |
+| --- | --- | --- |
+| Ranked iterative component repair | VERIFIED | The meter state specialist improved 5/7 to 7/7 public cases without a lost pass. The rebuilt executable passed 32/32 new sealed cases, compared with 27/32 for the archived executable on the same inputs. |
+| Adaptive interface proposals and artifact reuse | VERIFIED | The local diagnostic planner proposed tokenizer and validator interfaces with changed dependencies. The review-only proposal introduced no executable authority. An approved diagnostic revision reused the verified ledger analysis, behavioral verdict and output jobs. |
+| Deterministic behavioral validation | VERIFIED | Structured ledger grammar, bounds, transitions and error/output contracts matched 18 public observations and selected static evidence using zero inference requests. |
+| Matched repeated local evaluation | VERIFIED | Two trials per approach on each of two unfamiliar stateful targets passed all 32 fresh sealed cases. Both approaches used the same model, source adapter, maximum request count and evaluation process. |
+| Ledger reconstruction | BLOCKED | Framing and balance repeated their failed source, while syntax failed compilation in all three turns. No integrated candidate was produced. |
+| Regression and offline direct fixture | VERIFIED | All 67 tests passed, including the original 64 and installed OpenCode boundary check. The direct fixture passed in job `5e42376663e34b6f8b31890c2b243078`. |
+
+See the [Phase 5.1 handoff](PHASE51.md) for exact artifacts, controlled budgets, operator involvement and limitations.
 
 ## Phase 5
 

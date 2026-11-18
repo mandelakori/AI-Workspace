@@ -70,11 +70,19 @@ def evaluate(check: Check, workspace: Path, home: Path, private: Path, image: st
             category = "stdout"
         elif "stderr" in case and response["stderr"].replace("\r\n", "\n") != case["stderr"]:
             category = "stderr"
-        results.append({"case": len(results) + 1, "verdict": category,
-                        "duration": round(response["elapsed"], 3)})
-        if public and category != "pass" and len(discrepancies) < 3:
+        number = len(results) + 1
+        results.append({"case": number, "verdict": category, "duration": round(response["elapsed"], 3),
+                        **({"name": case.get("name", str(number))} if public else {})})
+        if public and category != "pass":
+            differences = []
+            for key, default in (("code", 0), ("stdout", ""), ("stderr", "")):
+                if key != "stderr" or key in case:
+                    actual = response[key] if key == "code" else response[key].replace("\r\n", "\n")
+                    if actual != case.get(key, default):
+                        differences.append(key)
             discrepancies.append({
-                "case": case.get("name", len(results)), "stdin": case.get("stdin", "")[:180],
+                "case": case.get("name", number), "index": number, "differences": differences,
+                "stdin": case.get("stdin", "")[:180],
                 "argv": [arg[:60] for arg in case.get("argv", [])[:4]], "classification": category,
                 "expected": {"code": case.get("code", 0), "stdout": case["stdout"][:160],
                              "stderr": case.get("stderr", "")[:160]},
