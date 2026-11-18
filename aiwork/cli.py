@@ -34,6 +34,28 @@ def parser() -> argparse.ArgumentParser:
     project.add_argument("--query", default="")
     project.add_argument("--limit", type=int, default=20)
     project.add_argument("--scope", action="append", default=[])
+    hierarchy = commands.add_parser("hierarchy", help="register and run reviewed, nested engineering plans")
+    actions = hierarchy.add_subparsers(dest="action", required=True)
+    registration = actions.add_parser("register", help="freeze a project's approved component policy")
+    registration.add_argument("project")
+    registration.add_argument("descriptor", type=Path)
+    planning_hierarchy = actions.add_parser("plan", help="propose and review a nested plan")
+    planning_hierarchy.add_argument("project")
+    planning_hierarchy.add_argument("run")
+    planning_hierarchy.add_argument("--objective", required=True)
+    planning_hierarchy.add_argument("--profile", required=True)
+    planning_hierarchy.add_argument("--reviewed", type=Path, help="use a supplied tree without model planning")
+    planning_hierarchy.add_argument("--from-run", default="", help="propose a specialist refinement of an existing plan")
+    planning_hierarchy.add_argument("--group", default="", help="group the specialist may refine")
+    execution = actions.add_parser("run", help="execute a reviewed plan")
+    execution.add_argument("project")
+    execution.add_argument("run")
+    execution.add_argument("--approve", required=True)
+    execution.add_argument("--workers", type=int, default=1)
+    execution.add_argument("--retry", help="resume one failed component within the reviewed attempt budget")
+    inspection = actions.add_parser("status", help="inspect progress and retrieve verified output references")
+    inspection.add_argument("project")
+    inspection.add_argument("run")
     draft = commands.add_parser("draft", help="propose an execution policy for operator review")
     draft.add_argument("root", type=Path)
     draft.add_argument("objective")
@@ -188,6 +210,21 @@ def main(argv: list[str] | None = None) -> int:
             elif args.action == "evidence":
                 updated["evidence"] = store.recall(args.root)
             print_json(updated)
+        elif args.command == "hierarchy":
+            from . import hierarchy
+            if args.action == "register":
+                result = hierarchy.register(controller, args.project, args.descriptor)
+            elif args.action == "plan":
+                result = hierarchy.prepare(controller, args.project, args.run, args.objective,
+                                           args.profile, args.reviewed, from_run=args.from_run, group=args.group)
+            elif args.action == "run":
+                result = hierarchy.execute(controller, args.project, args.run, args.approve,
+                                           args.workers, args.retry or "")
+                print_json(result)
+                return 0 if result["status"] == "verified" else 1
+            else:
+                result = hierarchy.inspect(controller, args.project, args.run)
+            print_json(result)
         elif args.command == "draft":
             from .draft import draft
             result = draft(controller, args.root, args.objective, args.profile)

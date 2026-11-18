@@ -1,0 +1,24 @@
+objective = "Reconstruct the window-counting utility in candidate.c. Read public examples first. Consume input in chunks of at most 79 bytes including the newline. Blank whitespace emits nothing. Recognize a separate + or - token with one signed decimal amount in 0..50, or ? with no operands. A malformed chunk emits invalid. State starts at zero. Each addition or subtraction emits the new state if in 0..99, otherwise it emits limit without changing state. Query emits the current state. All output lines end in newline."
+source = "."
+source_inputs = ["reference.c"]
+binary = "reference.elf"
+format = "ELF"
+development = "development.json"
+deliverables = ["candidate.c"]
+attempts = 2
+timeout = 107
+category = "native-phase5-window"
+
+[build_reference]
+argv = ["gcc", "-std=c11", "-O0", "-fno-inline", "reference.c", "-o", "reference.elf"]
+
+[reference]
+argv = ["./reference.elf"]
+timeout = 12
+
+[build_candidate]
+argv = ["gcc", "-std=c11", "-O2", "candidate.c", "-o", "candidate"]
+
+[candidate]
+argv = ["./candidate"]
+timeout = 12

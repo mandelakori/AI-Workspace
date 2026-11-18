@@ -1,0 +1,24 @@
+objective = "Reconstruct the band meter as candidate.c. Read signed decimal integers from stdin until EOF or the first invalid token. State starts at zero. For each integer, add it to state and clamp the result to the inclusive range 0 through 9. Output one line with L for 0 to 2, M for 3 to 6, or H for 7 to 9, then a colon and the numeric state. Preserve state across inputs. Use the public examples and approved checker."
+source = "."
+source_inputs = ["reference.c"]
+binary = "reference.elf"
+format = "ELF"
+development = "development.json"
+deliverables = ["candidate.c"]
+attempts = 2
+timeout = 107
+category = "native-phase5-meter"
+
+[build_reference]
+argv = ["gcc", "-std=c11", "-O0", "-fno-inline", "reference.c", "-o", "reference.elf"]
+
+[reference]
+argv = ["./reference.elf"]
+timeout = 12
+
+[build_candidate]
+argv = ["gcc", "-std=c11", "-O2", "candidate.c", "-o", "candidate"]
+
+[candidate]
+argv = ["./candidate"]
+timeout = 12

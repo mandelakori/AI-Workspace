@@ -22,6 +22,15 @@ class Node:
     profile: str
 
 
+@dataclass(frozen=True)
+class GraphTask:
+    task: Task
+    needs: tuple[str, ...] = ()
+    profile: str = ""
+    source: Path | None = None
+    imports: dict[str, tuple[str, ...]] | None = None
+
+
 def read_plan(path: Path) -> dict[str, Node]:
     plan = tomllib.loads(path.read_text(encoding="utf-8"))
     nodes = {}
@@ -50,13 +59,21 @@ def read_plan(path: Path) -> dict[str, Node]:
 
 def execute(controller: Controller, source: Path, workers: int, trusted: bool,
             workflow_id: str) -> dict:
-    bounded("workers", workers, 1, 16)
-    if not re.fullmatch(r"[a-zA-Z0-9_-]{1,64}", workflow_id):
-        raise ValueError("workflow id must contain 1–64 letters, digits, underscores or dashes")
     nodes = read_plan(source.resolve())
     fingerprint = hashlib.sha256(source.read_bytes()).hexdigest()
     definitions = {name: hashlib.sha256(node.manifest.read_bytes()).hexdigest()
                    for name, node in nodes.items()}
+    tasks = {name: GraphTask(Task.load(node.manifest), node.needs, node.profile, node.manifest)
+             for name, node in nodes.items()}
+    return execute_graph(controller, tasks, workers, trusted, workflow_id, fingerprint, definitions)
+
+
+def execute_graph(controller: Controller, nodes: dict[str, GraphTask], workers: int, trusted: bool,
+                  workflow_id: str, fingerprint: str, definitions: dict[str, str],
+                  *, retry: str = "", max_attempts: int = 1) -> dict:
+    bounded("workers", workers, 1, 16)
+    if not re.fullmatch(r"[a-zA-Z0-9_-]{1,64}", workflow_id):
+        raise ValueError("workflow id must contain 1–64 letters, digits, underscores or dashes")
     root = controller.config.state / "workflows" / workflow_id
     root.mkdir(parents=True, exist_ok=True)
     journal = root / "workflow.json"
@@ -69,6 +86,13 @@ def execute(controller: Controller, source: Path, workers: int, trusted: bool,
             raise ValueError("workflow plan, task manifests or authorization changed; use a new ID")
         write_json(journal, result)
         jobs = result["jobs"]
+        if retry:
+            job = jobs.get(retry)
+            if not job or controller.state.jobs(job)[0]["status"] not in {"failed", "blocked", "partial"}:
+                raise ValueError("retry requires a failed, blocked or partial workflow component")
+            if len(controller.state.attempts(job)) >= max_attempts:
+                raise ValueError("component retry budget exhausted")
+            controller.resume(job)
         states: dict[str, str] = {}
 
         def run_node(job: str) -> str:
@@ -88,21 +112,23 @@ def execute(controller: Controller, source: Path, workers: int, trusted: bool,
                         attempts = controller.state.attempts(dep_job)
                         success = next(item for item in reversed(attempts) if item["status"] == "verified")
                         attempt = controller.config.state / "runs" / dep_job / f"attempt-{success['n']:03}"
-                        upstream = Task.load(nodes[dep].manifest)
+                        upstream = nodes[dep].task
                         location = "verification" if upstream.kind == "direct" else "workspace"
                         record = attempt / ("verification-inventory.json" if upstream.kind == "direct"
                                             else "output-inventory.json")
                         verified = json.loads(record.read_bytes()) if record.is_file() else {}
-                        for filename in upstream.deliverables:
+                        names = node.imports.get(dep, ()) if node.imports is not None else upstream.deliverables
+                        for filename in names:
                             key = f"{dep}/{filename}"
                             handoff[key] = contained(attempt / location, filename)
                             if filename in verified:
                                 handoff_hashes[key] = verified[filename]["sha256"]
                             elif record.is_file() or upstream.kind == "agent":
                                 raise ValueError(f"verified handoff artifact missing an inventory record: {key}")
-                    jobs[name] = controller.submit(node.manifest, trusted, profile_id=node.profile,
-                                                   handoff=handoff, handoff_hashes=handoff_hashes, job_id=uuid5(
-                                                       NAMESPACE_URL, f"aiwork:{workflow_id}/{name}").hex)
+                    jobs[name] = controller.submit_task(node.task, trusted, profile_id=node.profile,
+                                                        source=node.source, handoff=handoff,
+                                                        handoff_hashes=handoff_hashes, job_id=uuid5(
+                                                            NAMESPACE_URL, f"aiwork:{workflow_id}/{name}").hex)
                     states[name] = "queued"
                     write_json(journal, result)
                 waiting = [jobs[name] for name, status in states.items() if status == "queued"]

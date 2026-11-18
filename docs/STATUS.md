@@ -1,5 +1,17 @@
 # Status as of 2026-11-17
 
+## Phase 5
+
+| Capability | Status | Evidence |
+| --- | --- | --- |
+| Nested reviewed component graphs | VERIFIED | A local model proposed the meter tree. The specialist refined one subgroup under the same registered authority. Independent checks verified both implementation components and the merged executable on the public corpus. |
+| Failed-component recovery | VERIFIED | Targeted ledger retries kept the verified output component. A Docker regression test recovered a failed component and verified integration using the original unrelated artifact. |
+| Held-out comparison | VERIFIED | The meter hierarchy passed 38/40 fresh sealed inputs, compared with 37/40 for ranked single-agent execution on the same reference. The retained single-agent ledger baseline passed 6/40. |
+| Complete ledger reconstruction | BLOCKED | Framing, syntax and balance failed public checks. No independently verified integrated candidate was produced. |
+| Windows regression and direct fixture | VERIFIED | All 64 tests passed, including the installed OpenCode workspace boundary check. The direct fixture verified in job `3e0ffe44a5f14f8a8f7f91b21155a440`. |
+
+See the [Phase 5 handoff](PHASE5.md) for commands, metrics and artifact paths.
+
 ## Phase 4
 
 | Capability | Status | Evidence |

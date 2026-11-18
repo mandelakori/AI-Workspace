@@ -80,6 +80,8 @@ class Task:
     min_context: int = 0
     preferred_profile: str = ""
     rank_public: bool = False
+    agent_role: str = ""
+    source_context: tuple[str, ...] = ()
 
     @classmethod
     def load(cls, path: Path) -> Task:
@@ -88,7 +90,7 @@ class Task:
         allowed = {key for key in cls.__dataclass_fields__}
         if unknown := d.keys() - allowed:
             raise ValueError(f"unknown task fields: {sorted(unknown)}")
-        for key in ("inputs", "deliverables", "write_roots"):
+        for key in ("inputs", "deliverables", "write_roots", "source_context"):
             values = d.get(key, [])
             if type(values) is not list or any(type(i) is not str for i in values):
                 raise ValueError(f"{key} must be an array of relative paths")
@@ -159,6 +161,16 @@ class Task:
             not task.deliverables
         ):
             raise ValueError("public ranking requires an engineering build and invocation without private checks")
+        if task.agent_role not in {"", "implementation", "debugging"} or (
+            task.agent_role and task.mode != "engineering"
+        ):
+            raise ValueError("agent_role is only available for scoped engineering workers")
+        if task.source_context and (
+            not task.agent_role or task.location != "local" or len(task.source_context) > 4 or
+            len(task.deliverables) != 1 or task.deliverables != task.write_roots or
+            not set(task.source_context) <= set(task.inputs)
+        ):
+            raise ValueError("source proposals require a local worker, explicit staged context and one writable file")
         if any(check.oracle for check in (*task.commands, *task.setup)):
             raise ValueError("sealed oracles are only allowed in independent checks")
         if any(check.oracle for check in task.checks) and not task.verification_dir:

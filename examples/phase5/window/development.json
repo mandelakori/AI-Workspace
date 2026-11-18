@@ -1,0 +1,62 @@
+[
+  {
+    "name": "read",
+    "group": "query",
+    "stdin": "?\n"
+  },
+  {
+    "name": "move",
+    "group": "arithmetic",
+    "stdin": "+ 17\n- 7\n?\n"
+  },
+  {
+    "name": "underflow",
+    "group": "range",
+    "stdin": "- 1\n?\n"
+  },
+  {
+    "name": "overflow",
+    "group": "range",
+    "stdin": "+ 50\n+ 49\n+ 1\n?"
+  },
+  {
+    "name": "args",
+    "group": "syntax",
+    "stdin": "? extra\n+9\n- \n+ 8 tail\n?\n"
+  },
+  {
+    "name": "blank",
+    "group": "whitespace",
+    "stdin": "\t\r\n\u000b\f \n?\n"
+  },
+  {
+    "name": "eof",
+    "group": "framing",
+    "stdin": "+ 8\n- 2"
+  },
+  {
+    "name": "amount",
+    "group": "validation",
+    "stdin": "+ -1\n- 51\n+ 50\n?\n"
+  },
+  {
+    "name": "leading",
+    "group": "whitespace",
+    "stdin": "\t+ \t+3\r\n  ?\t\n"
+  },
+  {
+    "name": "recovery",
+    "group": "state",
+    "stdin": "+ 7\n!\n- 2\n? extra\n?\n"
+  },
+  {
+    "name": "edge",
+    "group": "state",
+    "stdin": "+ 0\n- 0\n+ 49\n+ 50\n- 50\n- 49\n?\n"
+  },
+  {
+    "name": "split",
+    "group": "framing",
+    "stdin": "                                                                               + 7\n?\n"
+  }
+]

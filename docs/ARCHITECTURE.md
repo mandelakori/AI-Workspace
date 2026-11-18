@@ -10,6 +10,10 @@
 
 The A100 scheduler runs in the controller. An A100-local harness daemon, a general MCP broker and a hard multi-tenant GPU allocator are extension points.
 
+## Hierarchical engineering
+
+`hierarchy.py` registers a project with explicit component interfaces, selected public files, dependency artifacts and approved runner commands. The local planning coordinator and planning specialist reorganize these component IDs in a nested tree. An approval digest binds the tree to the registered policy, runner and profile. The existing workflow scheduler expands the tree into dependency jobs and validates the digests of their scoped handoffs. Separate deterministic analysis, testing and integration jobs produce evidence and verified artifacts. Implementers use the installed harness or a bounded local single-file proposal. A targeted retry switches the worker to the debugging role and preserves other verified jobs. [Phase 5 operator workflow](PHASE5.md)
+
 ## Engineering execution
 
 - Existing manifests use restricted execution. An engineering manifest authorizes explicit file or directory roots and a list of public command recipes. The harness can edit or create files under those roots. The MCP service offers command indices and a Git diff. Runner copies receive no host shell, network, Docker socket or private verifier mount.
