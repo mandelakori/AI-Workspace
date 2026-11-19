@@ -1,5 +1,16 @@
 # Status as of 2026-11-19
 
+## Phase 5.2 bounded ledger closeout
+
+| Capability | Status | Evidence |
+| --- | --- | --- |
+| Scoped targeted source edits | VERIFIED | Optional exact-match model edits preserve destination ownership, record source hashes and keep prior public diagnostics visible. Two new regression tests cover rejected edits, context boundaries and provenance. |
+| Verified component preservation | VERIFIED | The closeout reused unchanged analysis, behavior, tokenizer and output jobs. Six local source-edit requests exhausted two attempts per failing component without an accepted correction. |
+| Ledger integration | BLOCKED | Independent public replays retained framing 4/7 and validation 14/18. Balance matched 8/10 normally and 7/10 under UBSan. The sanitizer gate rejected both proposed repairs. No verified executable qualified for final sealed evaluation. |
+| Regression and direct fixture | VERIFIED | All 73 tests passed with offline Docker and the installed OpenCode boundary check enabled. Direct fixture job `deb952a5d0fc491484144cd1cf667c33` passed. |
+
+See the [closeout report](LEDGER-CLOSEOUT.md) for exact unsuccessful attempts, hashes and public reproduction commands. The following sections preserve earlier measurements.
+
 ## Ledger specialist follow-up
 
 | Capability | Status | Evidence |

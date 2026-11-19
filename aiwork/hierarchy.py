@@ -65,7 +65,7 @@ def graph_tasks(policy: dict, stage: Path, profile: str,
         node = entries[key]
         label(key)
         if set(node) - {"role", "interface", "inputs", "outputs", "needs", "imports", "checks", "timeout",
-                        "source_context", "public_cases", "commands"}:
+                        "source_context", "source_patch", "public_cases", "commands"}:
             raise ValueError(f"{key}: unknown component policy field")
         role = node["role"]
         if role not in ROLES:
@@ -106,6 +106,7 @@ def graph_tasks(policy: dict, stage: Path, profile: str,
                     commands=(commands or checks) if agent else (),
                     baseline_check=agent, agent_role=role if agent else "",
                     source_context=source_context, profile=profile if source_context else "",
+                    source_patch=node.get("source_patch", False),
                     rank_public=bool(corpus), public_cases=corpus,
                     attempt_limit=policy["max_attempts"] if corpus else 0)
         task.validate()

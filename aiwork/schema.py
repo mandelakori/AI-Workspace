@@ -82,6 +82,7 @@ class Task:
     rank_public: bool = False
     agent_role: str = ""
     source_context: tuple[str, ...] = ()
+    source_patch: bool = False
     public_cases: str = ""
     attempt_limit: int = 0
 
@@ -181,6 +182,8 @@ class Task:
             not set(task.source_context) <= set(task.inputs)
         ):
             raise ValueError("source proposals require a local worker, explicit staged context and one writable file")
+        if type(task.source_patch) is not bool or task.source_patch and not task.source_context:
+            raise ValueError("source_patch requires a scoped source worker")
         if any(check.oracle for check in (*task.commands, *task.setup)):
             raise ValueError("sealed oracles are only allowed in independent checks")
         if any(check.oracle for check in task.checks) and not task.verification_dir:

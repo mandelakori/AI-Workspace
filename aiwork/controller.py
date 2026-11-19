@@ -92,7 +92,7 @@ class Controller:
             if task.mode == "restricted" and not task.min_context and not task.preferred_profile:
                 for key in ("mode", "write_roots", "commands", "setup", "baseline_check",
                             "min_context", "preferred_profile", "rank_public", "agent_role", "source_context",
-                            "public_cases", "attempt_limit"):
+                            "public_cases", "attempt_limit", "source_patch"):
                     manifest.pop(key)
                 manifest["checks"] = [{key: value for key, value in check.items()
                                        if key not in {"cwd", "oracle"} or value}
@@ -223,7 +223,7 @@ class Controller:
         direct = replace(task, workspace=candidate, inputs=(), kind="direct", mode="restricted",
                          location="auto", profile="", preferred_profile="", attempts=1, write_roots=(),
                          commands=(), baseline_check=False, min_context=0, agent_checks=False,
-                         agent_role="", source_context=())
+                         agent_role="", source_context=(), source_patch=False)
         status = runner_status(self.config.state, self.config.verification_image)
         if not status["image_id"]:
             raise ValueError("checkpoint verification requires an available local runner image")
@@ -305,6 +305,8 @@ class Controller:
                 )
             elif task.rank_public and evidence.get("unchanged_proposal"):
                 previous = "The previous proposal left every source byte unchanged. Address the public discrepancy."
+            elif task.source_patch and status == "blocked":
+                previous = f"The previous patch could not be applied: {detail[:600]}"
             if status == "verified":
                 break
         return self._finish(row["id"], root, status, detail)
@@ -512,10 +514,8 @@ class Controller:
               previous: str, summary: dict, findings: str) -> None:
         if task.source_context:
             from .component_source import propose_source
-            diagnose = findings
-            if task.rank_public and previous:
-                diagnose += "\n" + previous
-            propose_source(self, task, profile, work, attempt, deadline, diagnose)
+            propose_source(self, task, profile, work, attempt, deadline, findings,
+                           previous=previous if task.rank_public else "")
             return
         from .remote import a100_session
         binary = opencode_path(self.config.opencode) if profile.harness == "opencode" else None

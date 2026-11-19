@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import os
 import tempfile
 import unittest
@@ -10,7 +11,7 @@ from unittest.mock import patch
 
 from aiwork.adaptive import validate_revision
 from aiwork.controller import Controller, write_json
-from aiwork.component_source import propose_source
+from aiwork.component_source import apply_edits, propose_source
 from aiwork.hierarchy import execute, graph_tasks, inspect, leaves, prepare, register
 from aiwork.schema import Config, Profile
 
@@ -172,6 +173,53 @@ class HierarchyTests(unittest.TestCase):
         self.assertEqual(sent["public_cases_omitted"], 0)
         self.assertNotIn("fixture private marker", json.dumps(sent))
         self.assertEqual((self.workspace/"first.txt").read_text(), "repaired")
+
+    def test_targeted_patch_requires_unique_bounded_edits(self):
+        self.assertEqual(apply_edits("before\nkeep\n", {"edits": [
+            {"old": "before", "new": "after"}]}), "after\nkeep\n")
+        for proposal in (
+            {"edits": [{"old": "absent", "new": "x"}]},
+            {"edits": [{"old": "e", "new": "x"}]},
+            {"edits": [{"old": "before", "new": "before"}]},
+            {"edits": [{"old": "before", "new": "\0"}]},
+            {"edits": [{"old": "before", "new": "x", "path": "outside.txt"}]},
+            {"edits": []},
+        ):
+            with self.subTest(proposal=proposal), self.assertRaises(ValueError):
+                apply_edits("before\nkeep\n", proposal)
+
+    def test_patch_worker_preserves_source_on_invalid_edits_and_records_valid_provenance(self):
+        self.components["first"].update(source_context=["driver.py"], source_patch=True)
+        self.save_policy()
+        task = graph_tasks(json.loads(self.policy.read_bytes()), self.workspace, "local-p")["first"].task
+        target = self.workspace/"first.txt"
+        original = b"before\r\n"
+        target.write_bytes(original)
+        for number, edit in enumerate(({"old": "missing", "new": "after"},
+                                      {"old": "before", "new": "after"})):
+            attempt = self.root/f"patch-{number}"
+            attempt.mkdir()
+            response = {"choices": [{"message": {"content": json.dumps({"edits": [edit]})},
+                                      "finish_reason": "stop"}]}
+            with (patch("aiwork.component_source.Inference.ready"),
+                  patch("aiwork.component_source.request", return_value=response) as request):
+                if number == 0:
+                    with self.assertRaisesRegex(ValueError, "exactly once"):
+                        propose_source(self.controller, task, self.controller.config.profiles[0],
+                                       self.workspace, attempt, monotonic()+30, "public failure")
+                    self.assertEqual(target.read_text(), "before\n")
+                else:
+                    propose_source(self.controller, task, self.controller.config.profiles[0], self.workspace,
+                                   attempt, monotonic()+30, "public failure", previous="patch mismatch")
+                    sent = json.loads(request.call_args.args[2]["messages"][1]["content"])
+                    self.assertEqual(sent["previous_public_attempt"], "patch mismatch")
+                    receipt = json.loads((attempt/"applied-edits.json").read_bytes())
+                    self.assertEqual(receipt["filename"], "first.txt")
+                    self.assertEqual(receipt["before_sha256"], hashlib.sha256(original).hexdigest())
+                    self.assertEqual(receipt["after_sha256"], hashlib.sha256(target.read_bytes()).hexdigest())
+                    self.assertNotEqual(receipt["before_sha256"], receipt["after_sha256"])
+        self.assertEqual(target.read_text(), "after\n")
+        self.assertEqual((self.workspace/"outside.txt").read_text(), "fixture private marker")
 
     @unittest.skipUnless(os.environ.get("AIWORK_TEST_DOCKER_IMAGE"), "requires offline Docker")
     def test_failed_component_retry_reuses_verified_artifacts_and_integrates(self):

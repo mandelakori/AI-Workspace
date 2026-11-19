@@ -1,5 +1,9 @@
 # Next steps
 
+## Current ledger handoff
+
+The Phase 5.2 closeout exhausted two local source-edit attempts per failing component. Integration remains blocked by framing, operand validation and balance's arithmetic ordering. Preserve the selected checkpoints and reused verified jobs. Use the [closeout report](LEDGER-CLOSEOUT.md) to reproduce failures without inference. Any further repair campaign requires a new bounded reviewed plan. Freeze a verified executable before authoring a fresh sealed suite.
+
 ## Lambda managed profile
 
 1. Confirm your Lambda API access independently of `aisak`. Copy `config/lambda.example.toml` to `config/lambda.local.toml` and set `LAMBDA_API_KEY` in the PowerShell process from your credential manager. Run `aiwork --config config/lambda.local.toml a100 instances` and `a100 types` to find instance types and capacity in your account.
