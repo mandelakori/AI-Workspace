@@ -134,7 +134,9 @@ def hold(self, row, root):
 Controller._work = hold
 Controller(Config(Path(argv[1]), ())).work(argv[2])
 """
-        child = subprocess.Popen([sys.executable, "-c", script, str(self.root / "state"), job])
+        from aiwork.process import owned_process, kill_tree
+        owner = owned_process([sys.executable, "-c", script, str(self.root / "state"), job])
+        child = owner.__enter__()
         partial = root / "attempt-001" / "partial.txt"
         try:
             deadline = monotonic() + 10
@@ -145,8 +147,9 @@ Controller(Config(Path(argv[1]), ())).work(argv[2])
                 self.controller.resume(job, interrupted=True)
         finally:
             if child.poll() is None:
-                child.kill()
+                kill_tree(child)
             child.wait(timeout=10)
+            owner.__exit__(None, None, None)
         self.controller.resume(job, interrupted=True)
         self.assertEqual(self.controller.work(job)["status"], "verified")
         self.assertEqual(partial.read_text(), "preserve this attempt")

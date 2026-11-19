@@ -1,4 +1,16 @@
-# Status as of 2026-11-18
+# Status as of 2026-11-19
+
+## Ledger specialist follow-up
+
+| Capability | Status | Evidence |
+| --- | --- | --- |
+| Reviewed executable tokenizer/validator split | VERIFIED | The revised graph compiled and evaluated each owned interface, reused compatible evidence/output jobs, and revalidated model-authored tokenizer and balance sources. Linking stayed gated by incomplete public correctness. |
+| Specialist repair progress | VERIFIED | Tool workers improved framing from 2/7 to 4/7, balance from 4/8 to 8/8, and validation from 12/18 to 14/18. Ranked selection rejected regressions and retained passing behavior. |
+| Native ledger completion | BLOCKED | The selected framing function combines lines, the validator rejects valid numeric operands, and UBSan detects overflow in balance before its operand-range check. Public reproductions and frozen sources are preserved. |
+| Complete private component grading | VERIFIED | All 24 cases completed in each replay. Tokenizer matched 24/24, framing 0/24, balanced grammar validation 16/24, and reachable balance sequences 24/24. The public sanitizer probe failed. No integrated candidate was produced. |
+| Original venv process recovery | VERIFIED | Managed Windows children are assigned to an owned job before execution. Cleanup releases descendant locks and preserves a separate test job. All 71 tests passed on the original venv invocation, including the existing 67. The direct fixture passed in job `3dae93c6aee742c9b1e50cce5922fd7c`. |
+
+See the [ledger repair report](LEDGER-REPAIR.md) for exact failures, comparison budgets, evaluator corrections and commands.
 
 ## Phase 5.1
 

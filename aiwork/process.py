@@ -7,6 +7,7 @@ import subprocess
 import sys
 from tempfile import TemporaryFile
 from dataclasses import dataclass
+from contextlib import contextmanager
 from pathlib import Path
 from threading import Thread
 from time import monotonic
@@ -53,6 +54,9 @@ def executable(name: str) -> str | None:
 
 def kill_tree(proc: subprocess.Popen) -> None:
     if os.name == "nt":
+        if job := getattr(proc, "_aiwork_job", None):
+            job.terminate()
+            return
         try:
             subprocess.run(["taskkill.exe", "/T", "/F", "/PID", str(proc.pid)],
                            capture_output=True, timeout=5, check=False)
@@ -67,6 +71,33 @@ def kill_tree(proc: subprocess.Popen) -> None:
             pass
 
 
+@contextmanager
+def owned_process(*args, **kwargs):
+    """Start a child before any descendants can escape the owned Windows job."""
+    job = None
+    proc = None
+    if os.name == "nt":
+        from .windows_job import Job
+        job = Job()
+        kwargs["creationflags"] = kwargs.get("creationflags", 0) | 0x4  # CREATE_SUSPENDED
+    else:
+        kwargs.setdefault("start_new_session", True)
+    try:
+        proc = subprocess.Popen(*args, **kwargs)
+        if job:
+            proc._aiwork_job = job
+            job.attach_and_resume(proc)
+        yield proc
+    finally:
+        if job:
+            job.close()
+        elif proc is not None and proc.poll() is None:
+            kill_tree(proc)
+        if proc is not None and proc.poll() is None:
+            proc.kill()
+            proc.wait(timeout=5)
+
+
 def run(argv: list[str] | str, cwd: Path, timeout: float, env: dict[str, str],
         stop: Path | None = None, *, decode_errors: str = "replace",
         stdin: bytes | None = None) -> Result:
@@ -76,11 +107,12 @@ def run(argv: list[str] | str, cwd: Path, timeout: float, env: dict[str, str],
         if source is not None:
             source.write(stdin)
             source.seek(0)
-        proc = subprocess.Popen(argv, cwd=cwd, env=env,
+        owner = owned_process(argv, cwd=cwd, env=env,
                                 stdin=source if source is not None else subprocess.DEVNULL,
                                 stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                                 start_new_session=os.name != "nt",
                                 creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if os.name == "nt" else 0)
+        proc = owner.__enter__()
     finally:
         if source is not None:
             source.close()
@@ -120,6 +152,7 @@ def run(argv: list[str] | str, cwd: Path, timeout: float, env: dict[str, str],
             proc.wait(timeout=5)
             for thread in threads:
                 thread.join(timeout=1)
+        owner.__exit__(None, None, None)
     output = [bytes(b[:OUTPUT_LIMIT]).decode("utf-8", decode_errors) for b in buffers]
     return Result(proc.returncode, monotonic() - started, *output, timed_out,
                   any(len(b) > OUTPUT_LIMIT for b in buffers))

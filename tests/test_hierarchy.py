@@ -146,6 +146,33 @@ class HierarchyTests(unittest.TestCase):
         self.assertEqual((self.workspace / "outside.txt").read_text(), "fixture private marker")
         self.assertFalse((self.workspace / "first.txt").exists())
 
+    def test_source_repair_receives_complete_current_component(self):
+        self.components["first"]["source_context"] = ["driver.py"]
+        write_json(self.workspace/"public-cases.json", [
+            {"name":"grammar-case", "stdin":"malformed", "stdout":"error\n", "code":0, "stderr":""},
+        ])
+        self.components["first"]["inputs"].append("public-cases.json")
+        self.components["first"]["public_cases"] = "public-cases.json"
+        self.components["first"]["checks"] *= 2
+        self.save_policy()
+        task = graph_tasks(json.loads(self.policy.read_bytes()), self.workspace, "local-p")["first"].task
+        current = "/*" + "existing implementation " * 150 + "*/"
+        (self.workspace/"first.txt").write_text(current, encoding="utf-8")
+        attempt = self.root/"source-repair"
+        attempt.mkdir()
+        response = {"choices":[{"message":{"content":'{"source":"repaired"}'},"finish_reason":"stop"}]}
+        with (patch("aiwork.component_source.Inference.ready"),
+              patch("aiwork.component_source.request", return_value=response) as request):
+            propose_source(self.controller, task, self.controller.config.profiles[0], self.workspace, attempt,
+                           monotonic()+30, "approved public discrepancy")
+        sent = json.loads(request.call_args.args[2]["messages"][1]["content"])
+        self.assertEqual(sent["current_source"], current)
+        self.assertEqual(sent["public_cases"][0]["case"], "grammar-case")
+        self.assertEqual(sent["public_cases"][0]["expected"]["stdout"], "error\n")
+        self.assertEqual(sent["public_cases_omitted"], 0)
+        self.assertNotIn("fixture private marker", json.dumps(sent))
+        self.assertEqual((self.workspace/"first.txt").read_text(), "repaired")
+
     @unittest.skipUnless(os.environ.get("AIWORK_TEST_DOCKER_IMAGE"), "requires offline Docker")
     def test_failed_component_retry_reuses_verified_artifacts_and_integrates(self):
         register(self.controller, "fixture", self.policy)

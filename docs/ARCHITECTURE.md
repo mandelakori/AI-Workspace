@@ -16,6 +16,8 @@ The A100 scheduler runs in the controller. An A100-local harness daemon, a gener
 
 Components can opt into ranked multi-turn engineering with a named read-only public corpus, approved compile/run recipes and an absolute attempt budget. `adaptive.py` produces review-only interface and dependency changes from recorded public failures. A new approved graph can reuse byte-identical verified nodes with compatible dependency ancestry, profile and pinned verifier. [Phase 5.1 operator workflow](PHASE51.md)
 
+The source adapter retains the complete bounded selected file, records the supplied context sizes, and includes summaries of named public cases. Windows subprocess launches use a suspended child assigned to a private job before execution. Termination uses that owned handle to include launcher descendants. The ledger follow-up supplies named public reproduction recipes and a component evaluator with independent case and suite budgets. [Ledger repair evidence](LEDGER-REPAIR.md)
+
 ## Engineering execution
 
 - Existing manifests use restricted execution. An engineering manifest authorizes explicit file or directory roots and a list of public command recipes. The harness can edit or create files under those roots. The MCP service offers command indices and a Git diff. Runner copies receive no host shell, network, Docker socket or private verifier mount.

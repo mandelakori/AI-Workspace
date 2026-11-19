@@ -11,6 +11,7 @@ from .controller import Controller, write_json
 from .harness import request_options
 from .http import request
 from .inference import Inference
+from .oracle import load_cases
 from .schema import Profile, Task
 from .workspace import contained, files
 
@@ -36,7 +37,26 @@ def propose_source(controller: Controller, task: Task, profile: Profile, work: P
     prompt = {"objective": task.objective, "filename": name, "approved_context": context,
               "public_diagnostic": findings[:1800]}
     if target.is_file():
-        prompt["current_source"] = read_excerpt(target, 2400)
+        if target.stat().st_size > 10000:
+            raise ValueError("existing component exceeds the source proposal context budget")
+        prompt["current_source"] = target.read_text(encoding="utf-8")
+    prompt["context_receipt"] = {
+        item: {"bytes": contained(work, item).stat().st_size, "included_bytes": len(context[item].encode())}
+        for item in task.source_context
+    }
+    if task.public_cases:
+        cases = load_cases(contained(work, task.public_cases), public=True)
+        brief = []
+        for case in cases:
+            row = {"case": case.get("name", str(len(brief)+1)), "stdin": case.get("stdin", "")[:300],
+                   "argv": case.get("argv", []), "expected": {
+                       "code": case.get("code", 0), "stdout": case["stdout"][:500],
+                       "stderr": case.get("stderr", "")[:200]}}
+            if len(json.dumps([*brief, row])) > 7000:
+                break
+            brief.append(row)
+        prompt["public_cases"] = brief
+        prompt["public_cases_omitted"] = len(cases) - len(brief)
     messages = [
         {"role": "system", "content": (
             f"Role: {task.agent_role}. Return a JSON object with exactly one string field, source. "
@@ -60,7 +80,7 @@ def propose_source(controller: Controller, task: Task, profile: Profile, work: P
         response = request(profile.endpoint.rstrip("/") + "/chat/completions", "POST", {
             "model": profile.model, "messages": messages,
             "temperature": 0.25 if task.agent_role == "debugging" else 0,
-            "max_tokens": min(profile.output_tokens, 1300), "response_format": {"type": "json_object"},
+            "max_tokens": min(profile.output_tokens, 2048), "response_format": {"type": "json_object"},
             **request_options(profile),
         }, key=client.key(), timeout=min(45, remaining))
     write_json(attempt / "proposal-response.json", response)
