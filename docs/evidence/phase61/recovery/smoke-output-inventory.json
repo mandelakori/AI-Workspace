@@ -1,0 +1,14 @@
+{
+  "README.md": {
+    "bytes": 62,
+    "sha256": "0443eba3542aa52ad0cf3382b5e0d6d6697f29ece4a57089cfd1b1c5c8b742c6"
+  },
+  "duration.py": {
+    "bytes": 2724,
+    "sha256": "48f4fd26672bf9c7dd44954d022575f5b347ff09b412dcd03c9c698e664f28d8"
+  },
+  "tests/test_duration.py": {
+    "bytes": 547,
+    "sha256": "e7b9f66c168ce9f24582b9de5dba0f093b46e296dcf832a0747118d98846570e"
+  }
+}

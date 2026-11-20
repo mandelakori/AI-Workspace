@@ -1,0 +1,17 @@
+diff --git a/duration.py b/duration.py
+index d432a0749859612dd50cddcbbde8c4cb9899a9ae..9f5815f8fd0af2abc25217b791fee97f5e4ff08f 100644
+--- a/duration.py
++++ b/duration.py
+@@ -81,4 +81,11 @@
+ class Duration:
+     @staticmethod
+     def to_seconds(amount, unit):
+-        return amount
++        multipliers = {
++            'seconds': 1,
++            'minutes': 60,
++            'hours': 3600
++        }
++        if unit not in multipliers:
++            raise ValueError(f"Unknown unit: {unit}")
++        return amount * multipliers[unit]

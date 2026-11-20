@@ -2,6 +2,13 @@
 
 ## Phase 6.1 next approved work
 
+Review the [execution recovery report and fresh HTTPX manifest](PHASE61-EXECUTION-RECOVERY.md).
+Navigation and objective fixes pass 120 regressions and one bounded local
+fixture smoke (1/4 → 4/4 public). This is not unfamiliar-repository completion.
+The fresh HTTPX bundle remains PREPARED_NOT_AUTHORIZED and needs approval of its
+new exact digest. Both historical quarantined trials remain closed; instructions
+below concerning earlier review bundles are historical.
+
 The authorized replacement comparison is now **QUARANTINED** following a direct
 worker harness timeout. Read the [result and preserved evidence](HTTPX-REPLACEMENT-RESULT.md).
 The worker made no source changes; the fallback is 7/16 public. Hierarchical

@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "cwd": "",
+  "runner": "aiwork-engineering:phase3",
+  "code": 0,
+  "elapsed": 0.7030000000959262,
+  "stdout": "",
+  "stderr": "test_hours (test_duration.PublicDuration.test_hours) ... ok\ntest_minutes (test_duration.PublicDuration.test_minutes) ... ok\ntest_seconds (test_duration.PublicDuration.test_seconds) ... ok\ntest_unknown (test_duration.PublicDuration.test_unknown) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK\n",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true,
+  "classification": "pass"
+}

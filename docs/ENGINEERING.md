@@ -27,6 +27,25 @@ Use `scripts/Controller.ps1 -Action Start -Config config/engineering.example.tom
 
 Set `workspace`, a concrete `objective`, and a category. Narrow `inputs` for large repositories. Source staging is bounded to 5,000 files and 64 MiB. Intake records hashes and project metadata. The harness receives a relevance index and opens selected files as needed.
 
+Keep `objective` an active implementation contract. Store preparation and
+authorization notes separately; repository text cannot grant tools or cancel
+the current work order. The HTTPX intake now records these separately in its
+approval manifest without changing the frozen feature specification.
+
+Engineering workers can use `checks_focus` with a relative `path` and optional
+`query`, exact Python `symbol` (`Class.method`), or `line`. Responses include
+bounded symbol discovery and `next_line`. Unchanged duplicate excerpts are
+suppressed; edit the source or choose a different symbol/window. Source and
+navigation history stay scoped to the staged workspace. The sixteen-call MCP
+budget persists across reconnects, and inspection is not counted as a passing
+public test. The active objective remains available in harness instructions
+and public-tool responses.
+
+For measured trials, the phase deadline bounds all attempts, and quarantined or
+consumed phases cannot resume. Generic resume instructions elsewhere in this
+document do not override that restriction. See the
+[execution recovery evidence](PHASE61-EXECUTION-RECOVERY.md).
+
 - Use `[[commands]]` for public recipes the agent may run by index. Each entry runs an exact argument array and can set a workspace-relative `cwd`, a timeout and expected stdout. To reproduce a bug before the agent starts, set `baseline_check = true` and put the failing reproduction at index 0.
 - Use `[[setup]]` for reviewed prerequisites. For example, stage a wheel in the input tree, install it with `python -m pip install --no-index --no-deps --target .deps wheelhouse/package.whl`, and make the approved checks load that local directory. Each public invocation rebuilds setup in a disposable copy. Independent verification runs setup once in its own copy.
 - Use `[[checks]]` for independent commands that decide final acceptance. Existing build, lint, unit and integration tools can run here. Test discovery hints from intake do not add commands to the approved list.

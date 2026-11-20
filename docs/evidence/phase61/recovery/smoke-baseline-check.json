@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "cwd": "",
+  "runner": "aiwork-engineering:phase3",
+  "code": 1,
+  "elapsed": 0.7179999999934807,
+  "stdout": "",
+  "stderr": "test_hours (test_duration.PublicDuration.test_hours) ... FAIL\ntest_minutes (test_duration.PublicDuration.test_minutes) ... FAIL\ntest_seconds (test_duration.PublicDuration.test_seconds) ... ok\ntest_unknown (test_duration.PublicDuration.test_unknown) ... FAIL\n\n======================================================================\nFAIL: test_hours (test_duration.PublicDuration.test_hours)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/work/tests/test_duration.py\", line 10, in test_hours\n    self.assertEqual(Duration.to_seconds(2, 'hours'), 7200)\nAssertionError: 2 != 7200\n\n======================================================================\nFAIL: test_minutes (test_duration.PublicDuration.test_minutes)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/work/tests/test_duration.py\", line 8, in test_minutes\n    self.assertEqual(Duration.to_seconds(1.5, 'minutes'), 90)\nAssertionError: 1.5 != 90\n\n======================================================================\nFAIL: test_unknown (test_duration.PublicDuration.test_unknown)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/work/tests/test_duration.py\", line 12, in test_unknown\n    with self.assertRaises(ValueError):\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n----------------------------------------------------------------------\nRan 4 tests in 0.010s\n\nFAILED (failures=3)\n",
+  "timed_out": false,
+  "truncated": false,
+  "passed": false,
+  "classification": "tests"
+}

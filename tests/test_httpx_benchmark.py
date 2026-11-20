@@ -17,6 +17,19 @@ from aiwork.workspace import inventory, snapshot
 
 
 class BenchmarkPreparationTests(unittest.TestCase):
+    def test_worker_contract_separates_preparation_without_changing_frozen_spec(self):
+        path=Path(__file__).resolve().parents[1]/'examples/phase61/HTTPX-FEATURE.md'
+        before=path.read_bytes()
+        objective,operator=benchmark.worker_contract(before.decode())
+        self.assertIn('Add path-prefix matching',objective)
+        self.assertIn('normalized percent-encoded paths',objective)
+        self.assertIn('tests/test_path_mounts.py',objective)
+        self.assertNotIn('Preparation only',objective)
+        self.assertNotIn('No model campaign is authorized',objective)
+        self.assertIn('No model campaign is authorized',operator)
+        self.assertIn('Independent acceptance inputs',operator)
+        self.assertEqual(path.read_bytes(),before)
+
     def test_independent_grader_checks_exit_code_timeout_and_truncation(self):
         row={'stdout':'fixture\n','stderr':'expected error\n','code':2}
         raw={'stdout':'fixture\r\n','stderr':'expected error\r\n','code':2,'timed_out':False,'truncated':False}

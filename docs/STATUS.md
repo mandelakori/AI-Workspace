@@ -2,6 +2,12 @@
 
 ## Phase 6.1 bounded autonomy preparation
 
+| Execution recovery | Status | Evidence |
+| --- | --- | --- |
+| Bounded source navigation and persistent objective | VERIFIED | [Recovery report](PHASE61-EXECUTION-RECOVERY.md): symbol discovery/query excerpts, duplicate suppression, writable-source ranking, reconnect quotas and public-test goal persistence. All 120 regressions pass. |
+| Inspect/edit/verify smoke | VERIFIED | One local worker, no retry/guidance: model-authored edit changes a self-authored fixture from 1/4 to 4/4 public cases, independently rerun by the controller. 31.625-second work process. One denied native-read call remains; unfamiliar-repository completion is not established. |
+| Fresh HTTPX recovery pilot | UNTESTED | New manifest remains PREPARED_NOT_AUTHORIZED. Old grants are rejected, both quarantined trials/evidence are preserved, and no HTTPX inference or new sealed cases occurred during recovery. |
+
 | Capability | Status | Evidence |
 | --- | --- | --- |
 | Windows CI repair | VERIFIED | Minimal resolved-path assertion fix `fc7e8e4`; both Windows and Ubuntu Actions jobs passed before Phase 6.1 branching. |

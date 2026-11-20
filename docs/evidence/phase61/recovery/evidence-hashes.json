@@ -1,0 +1,78 @@
+{
+  ".aiwork\\phase61-recovery\\trace-audit.json": {
+    "bytes": 20317,
+    "sha256": "87edab0ac93000d18267f181b356026c805b910563d0200aeac8a4750303a041"
+  },
+  ".aiwork\\phase61-recovery\\regressions.log": {
+    "bytes": 18708,
+    "sha256": "57bb0d90ea78ed6ccfb77683ce739f42b642de45cf36fc111c9233166a083705"
+  },
+  ".aiwork\\phase61-recovery\\smoke\\result.json": {
+    "bytes": 276,
+    "sha256": "18646b161075190de75c3e175d4a2e8ff73d3399c6f0fe15ac8c873dee3e661d"
+  },
+  ".aiwork\\phase61-recovery\\smoke\\work-process.json": {
+    "bytes": 178,
+    "sha256": "dc345a0e13240af1e4b406695d343d633300ce4752c7b3fd35a6156c466db51b"
+  },
+  ".aiwork\\phase61-recovery\\smoke\\task-receipt.json": {
+    "bytes": 4819,
+    "sha256": "72c98579e38cc77e9bc3be04c87829e90364a6e56cb1cacd5d63b925d269b479"
+  },
+  ".aiwork\\phase61-recovery\\smoke\\controller\\runs\\c655138b03324f4183fd01736bf66974\\attempt-001\\agent-metrics.json": {
+    "bytes": 989,
+    "sha256": "940d944cfedd8b274226bec99371b510e166e052f4f769bb98f06db6435676d4"
+  },
+  ".aiwork\\phase61-recovery\\smoke\\controller\\runs\\c655138b03324f4183fd01736bf66974\\attempt-001\\agent-process.json": {
+    "bytes": 96,
+    "sha256": "fb09b8f27027b9258d3f2ac3785fd58d670c8f5b88a29fe6301a4eddb7f3fff3"
+  },
+  ".aiwork\\phase61-recovery\\smoke\\controller\\runs\\c655138b03324f4183fd01736bf66974\\attempt-001\\harness-budget.json": {
+    "bytes": 409,
+    "sha256": "1172afe989409c49519c4cc69d4702f277bb659ac949c62de420043f2f6073aa"
+  },
+  ".aiwork\\phase61-recovery\\smoke\\controller\\runs\\c655138b03324f4183fd01736bf66974\\attempt-001\\evidence.json": {
+    "bytes": 1531,
+    "sha256": "109dedf14a2b400c471da2d7e5d4f58d24dbaae842c478aa772c83235dcd3b25"
+  },
+  ".aiwork\\phase61-recovery\\smoke\\controller\\runs\\c655138b03324f4183fd01736bf66974\\attempt-001\\agent.jsonl": {
+    "bytes": 11591,
+    "sha256": "1ff9d81a07aa001f865187dc8af27048dc21f68495d1e1b93a0b6130a0f6cf2d"
+  },
+  ".aiwork\\phase61-recovery\\smoke\\controller\\runs\\c655138b03324f4183fd01736bf66974\\attempt-001\\agent-live.jsonl": {
+    "bytes": 11576,
+    "sha256": "59d6ea298759190a3913595c28d62053dbdc23e9f0dff2baec9609d8adebfe72"
+  },
+  ".aiwork\\phase61-recovery\\smoke\\controller\\runs\\c655138b03324f4183fd01736bf66974\\attempt-001\\mcp.jsonl": {
+    "bytes": 1962,
+    "sha256": "f47b33cf136eab2c8f38ff927e9efe63d27de5357087b788f7ea544ace5e7066"
+  },
+  ".aiwork\\phase61-recovery\\smoke\\controller\\runs\\c655138b03324f4183fd01736bf66974\\attempt-001\\proposed.patch": {
+    "bytes": 549,
+    "sha256": "34de6eb40b8aef872bf765ed311c96c96e0fbc67a11cff271af0a1893e6cbc92"
+  },
+  ".aiwork\\phase61-recovery\\smoke\\controller\\runs\\c655138b03324f4183fd01736bf66974\\attempt-001\\output-inventory.json": {
+    "bytes": 393,
+    "sha256": "b2858e6ab6a8ce1b40ef92301a986ee3b98cc65b4335d77bc8d4633228dee4e2"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\manifest.json": {
+    "bytes": 82246,
+    "sha256": "c1853577838a04c6a0cf9d62cca269dca854c93d4cb498671620fbbad337cafd"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\manifest.sha256": {
+    "bytes": 64,
+    "sha256": "015913648bda70b44a134645bc2389b67ee303b35beb8e7c8abb86ade11052d4"
+  },
+  ".aiwork\\phase61-recovery\\smoke\\controller\\runs\\c655138b03324f4183fd01736bf66974\\attempt-001\\baseline-check.json": {
+    "bytes": 1963,
+    "sha256": "cc20b4de9a6210e52811684e2f541a5d3bba028e54ad74809a2a8d4c5bd2846d"
+  },
+  ".aiwork\\phase61-recovery\\smoke\\controller\\runs\\c655138b03324f4183fd01736bf66974\\attempt-001\\check-00.json": {
+    "bytes": 708,
+    "sha256": "c1a04f3c88fab49abad3348064891e900f97281e3fbe5629a5db9610c8d3b803"
+  },
+  ".aiwork\\phase61-recovery\\smoke\\controller\\runs\\c655138b03324f4183fd01736bf66974\\attempt-001\\operator-task.md": {
+    "bytes": 653,
+    "sha256": "0a5f26d6c0d836b692e8b93b3a4ad39d3f23c5d2588e4dfbe4c527ab60e2861b"
+  }
+}

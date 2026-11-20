@@ -1,0 +1,125 @@
+{
+  "status": "RECOVERY_FIXTURE_VERIFIED_HTTPX_NOT_RERUN",
+  "regressions": {
+    "tests": 120,
+    "passed": 120,
+    "skipped": 0,
+    "seconds": 68.088,
+    "docker": true,
+    "inert_opencode_boundary": true
+  },
+  "development_failures": [
+    {
+      "targeted_tests": 21,
+      "failures": 1,
+      "cause": "New unit fixture used platform CRLF but assertion expected LF. Corrected test fixture to explicit LF; runtime source bytes remain preserved."
+    }
+  ],
+  "smoke": {
+    "job": "c655138b03324f4183fd01736bf66974",
+    "status": "verified",
+    "worker_sessions": 1,
+    "timeout_seconds": 120,
+    "attempts": 1,
+    "input_inventory": {
+      "README.md": {
+        "bytes": 62,
+        "sha256": "0443eba3542aa52ad0cf3382b5e0d6d6697f29ece4a57089cfd1b1c5c8b742c6"
+      },
+      "duration.py": {
+        "bytes": 2494,
+        "sha256": "bd341c649bc7399c880785b07cba8f4e0687782b7bda0d914e63840d8491543f"
+      },
+      "tests/test_duration.py": {
+        "bytes": 547,
+        "sha256": "e7b9f66c168ce9f24582b9de5dba0f093b46e296dcf832a0747118d98846570e"
+      }
+    },
+    "output_inventory": {
+      "README.md": {
+        "bytes": 62,
+        "sha256": "0443eba3542aa52ad0cf3382b5e0d6d6697f29ece4a57089cfd1b1c5c8b742c6"
+      },
+      "duration.py": {
+        "bytes": 2724,
+        "sha256": "48f4fd26672bf9c7dd44954d022575f5b347ff09b412dcd03c9c698e664f28d8"
+      },
+      "tests/test_duration.py": {
+        "bytes": 547,
+        "sha256": "e7b9f66c168ce9f24582b9de5dba0f093b46e296dcf832a0747118d98846570e"
+      }
+    },
+    "public_initial_passed": 1,
+    "public_initial_total": 4,
+    "public_final_passed": 4,
+    "public_final_total": 4,
+    "work_seconds": 31.625,
+    "metrics": {
+      "tool_calls": {
+        "read": 1,
+        "checks_focus": 1,
+        "edit": 1,
+        "checks_check": 1
+      },
+      "tool_errors": 1,
+      "tokens": {
+        "input": 6687,
+        "output": 298,
+        "reasoning": 0
+      },
+      "peak_reported_input_tokens": 3206,
+      "successful_public_mcp_checks": 1,
+      "gpu_samples": {
+        "before": [
+          {
+            "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+            "total_mib": 8151,
+            "free_mib": 7395
+          }
+        ],
+        "after": [
+          {
+            "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+            "total_mib": 8151,
+            "free_mib": 1126
+          }
+        ]
+      },
+      "inference_samples": {
+        "before": {
+          "resident": false
+        },
+        "after": {
+          "resident": true,
+          "model_vram_mib": 5199,
+          "configured_server_context": 8192
+        }
+      },
+      "reported_context_fraction": 0.3914,
+      "effective_output_tokens_per_second": 10.428,
+      "inference_lanes": 1,
+      "lane_wait_seconds": 0.0,
+      "harness_seconds": 28.578
+    },
+    "operator_mid_run_guidance": false,
+    "operator_feature_source_corrections": false,
+    "acceptance": "Self-authored fixture only; no unfamiliar-repository completion claim"
+  },
+  "httpx_replacement": {
+    "status": "PREPARED_NOT_AUTHORIZED",
+    "approval_digest": "2a12502209bd9ada3a5082e3ab489bb6423a41a6cdf5144fbec8de05874fe3b9",
+    "bundle": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared",
+    "old_grants_rejected": [
+      ".aiwork\\phase61-authorization\\operator-approval.json",
+      ".aiwork\\phase61-cleanup-repair\\operator-approval.json"
+    ],
+    "model_inference_requests": 0,
+    "worker_dispatches": 0,
+    "operator_grant_created": false,
+    "sealed_cases_created": 0
+  },
+  "original_trials_and_evidence_unchanged": true,
+  "original_trials_remain_quarantined": true,
+  "frozen_click_unchanged": true,
+  "main_ref": "cf50e89c2ca2ad21d86fda5473f5ad6edc0c2623"
+}

@@ -1,0 +1,777 @@
+{
+  "source_trace_sha256": "60f425639c199f633a14834f972d718acf0e4125910f59a1008b4e887f273661",
+  "source_context_sha256": "d3bfc9c9154412ee1c90ed830960ecc5acd00d1c5e07ba578cfb07c6a71255d2",
+  "read_calls": 7,
+  "unchanged_duplicate_windows": 3,
+  "reads": [
+    {
+      "path": "httpx/_client.py",
+      "line": 1,
+      "source_sha256": "c43f941baefe58c91e96d00039e1868fe719d91453026d7db1647194563bff8d",
+      "duplicate_suppressed": false,
+      "symbols": [
+        {
+          "symbol": "UseClientDefault",
+          "line": 94,
+          "end_line": 111,
+          "kind": "class"
+        },
+        {
+          "symbol": "ClientState",
+          "line": 125,
+          "end_line": 136,
+          "kind": "class"
+        },
+        {
+          "symbol": "BoundSyncStream",
+          "line": 139,
+          "end_line": 159,
+          "kind": "class"
+        },
+        {
+          "symbol": "BoundAsyncStream",
+          "line": 162,
+          "end_line": 182,
+          "kind": "class"
+        },
+        {
+          "symbol": "BaseClient",
+          "line": 188,
+          "end_line": 591,
+          "kind": "class"
+        },
+        {
+          "symbol": "Client",
+          "line": 594,
+          "end_line": 1304,
+          "kind": "class"
+        },
+        {
+          "symbol": "AsyncClient",
+          "line": 1307,
+          "end_line": 2019,
+          "kind": "class"
+        },
+        {
+          "symbol": "_is_https_redirect",
+          "line": 62,
+          "end_line": 74,
+          "kind": "function"
+        },
+        {
+          "symbol": "_port_or_default",
+          "line": 77,
+          "end_line": 80,
+          "kind": "function"
+        },
+        {
+          "symbol": "_same_origin",
+          "line": 83,
+          "end_line": 91,
+          "kind": "function"
+        },
+        {
+          "symbol": "BoundSyncStream.__init__",
+          "line": 145,
+          "end_line": 150,
+          "kind": "function"
+        },
+        {
+          "symbol": "BoundSyncStream.__iter__",
+          "line": 152,
+          "end_line": 154,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "httpx/_utils.py",
+      "line": 1,
+      "source_sha256": "fd355ea802afc4990a1ddcfb74579be2cd0b66a41781e1645d281f88704aff5a",
+      "duplicate_suppressed": false,
+      "symbols": [
+        {
+          "symbol": "URLPattern",
+          "line": 120,
+          "end_line": 226,
+          "kind": "class"
+        },
+        {
+          "symbol": "primitive_value_to_str",
+          "line": 15,
+          "end_line": 27,
+          "kind": "function"
+        },
+        {
+          "symbol": "get_environment_proxies",
+          "line": 30,
+          "end_line": 76,
+          "kind": "function"
+        },
+        {
+          "symbol": "to_bytes",
+          "line": 79,
+          "end_line": 80,
+          "kind": "function"
+        },
+        {
+          "symbol": "to_str",
+          "line": 83,
+          "end_line": 84,
+          "kind": "function"
+        },
+        {
+          "symbol": "to_bytes_or_str",
+          "line": 87,
+          "end_line": 88,
+          "kind": "function"
+        },
+        {
+          "symbol": "unquote",
+          "line": 91,
+          "end_line": 92,
+          "kind": "function"
+        },
+        {
+          "symbol": "peek_filelike_length",
+          "line": 95,
+          "end_line": 117,
+          "kind": "function"
+        },
+        {
+          "symbol": "is_ipv4_hostname",
+          "line": 229,
+          "end_line": 234,
+          "kind": "function"
+        },
+        {
+          "symbol": "is_ipv6_hostname",
+          "line": 237,
+          "end_line": 242,
+          "kind": "function"
+        },
+        {
+          "symbol": "URLPattern.__init__",
+          "line": 162,
+          "end_line": 190,
+          "kind": "function"
+        },
+        {
+          "symbol": "URLPattern.matches",
+          "line": 192,
+          "end_line": 203,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "httpx/_client.py",
+      "line": 1,
+      "source_sha256": "c43f941baefe58c91e96d00039e1868fe719d91453026d7db1647194563bff8d",
+      "duplicate_suppressed": true,
+      "symbols": [
+        {
+          "symbol": "UseClientDefault",
+          "line": 94,
+          "end_line": 111,
+          "kind": "class"
+        },
+        {
+          "symbol": "ClientState",
+          "line": 125,
+          "end_line": 136,
+          "kind": "class"
+        },
+        {
+          "symbol": "BoundSyncStream",
+          "line": 139,
+          "end_line": 159,
+          "kind": "class"
+        },
+        {
+          "symbol": "BoundAsyncStream",
+          "line": 162,
+          "end_line": 182,
+          "kind": "class"
+        },
+        {
+          "symbol": "BaseClient",
+          "line": 188,
+          "end_line": 591,
+          "kind": "class"
+        },
+        {
+          "symbol": "Client",
+          "line": 594,
+          "end_line": 1304,
+          "kind": "class"
+        },
+        {
+          "symbol": "AsyncClient",
+          "line": 1307,
+          "end_line": 2019,
+          "kind": "class"
+        },
+        {
+          "symbol": "_is_https_redirect",
+          "line": 62,
+          "end_line": 74,
+          "kind": "function"
+        },
+        {
+          "symbol": "_port_or_default",
+          "line": 77,
+          "end_line": 80,
+          "kind": "function"
+        },
+        {
+          "symbol": "_same_origin",
+          "line": 83,
+          "end_line": 91,
+          "kind": "function"
+        },
+        {
+          "symbol": "BoundSyncStream.__init__",
+          "line": 145,
+          "end_line": 150,
+          "kind": "function"
+        },
+        {
+          "symbol": "BoundSyncStream.__iter__",
+          "line": 152,
+          "end_line": 154,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "httpx/_client.py",
+      "line": 61,
+      "source_sha256": "c43f941baefe58c91e96d00039e1868fe719d91453026d7db1647194563bff8d",
+      "duplicate_suppressed": false,
+      "symbols": [
+        {
+          "symbol": "UseClientDefault",
+          "line": 94,
+          "end_line": 111,
+          "kind": "class"
+        },
+        {
+          "symbol": "ClientState",
+          "line": 125,
+          "end_line": 136,
+          "kind": "class"
+        },
+        {
+          "symbol": "BoundSyncStream",
+          "line": 139,
+          "end_line": 159,
+          "kind": "class"
+        },
+        {
+          "symbol": "BoundAsyncStream",
+          "line": 162,
+          "end_line": 182,
+          "kind": "class"
+        },
+        {
+          "symbol": "BaseClient",
+          "line": 188,
+          "end_line": 591,
+          "kind": "class"
+        },
+        {
+          "symbol": "Client",
+          "line": 594,
+          "end_line": 1304,
+          "kind": "class"
+        },
+        {
+          "symbol": "AsyncClient",
+          "line": 1307,
+          "end_line": 2019,
+          "kind": "class"
+        },
+        {
+          "symbol": "_is_https_redirect",
+          "line": 62,
+          "end_line": 74,
+          "kind": "function"
+        },
+        {
+          "symbol": "_port_or_default",
+          "line": 77,
+          "end_line": 80,
+          "kind": "function"
+        },
+        {
+          "symbol": "_same_origin",
+          "line": 83,
+          "end_line": 91,
+          "kind": "function"
+        },
+        {
+          "symbol": "BoundSyncStream.__init__",
+          "line": 145,
+          "end_line": 150,
+          "kind": "function"
+        },
+        {
+          "symbol": "BoundSyncStream.__iter__",
+          "line": 152,
+          "end_line": 154,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "httpx/_client.py",
+      "line": 121,
+      "source_sha256": "c43f941baefe58c91e96d00039e1868fe719d91453026d7db1647194563bff8d",
+      "duplicate_suppressed": false,
+      "symbols": [
+        {
+          "symbol": "UseClientDefault",
+          "line": 94,
+          "end_line": 111,
+          "kind": "class"
+        },
+        {
+          "symbol": "ClientState",
+          "line": 125,
+          "end_line": 136,
+          "kind": "class"
+        },
+        {
+          "symbol": "BoundSyncStream",
+          "line": 139,
+          "end_line": 159,
+          "kind": "class"
+        },
+        {
+          "symbol": "BoundAsyncStream",
+          "line": 162,
+          "end_line": 182,
+          "kind": "class"
+        },
+        {
+          "symbol": "BaseClient",
+          "line": 188,
+          "end_line": 591,
+          "kind": "class"
+        },
+        {
+          "symbol": "Client",
+          "line": 594,
+          "end_line": 1304,
+          "kind": "class"
+        },
+        {
+          "symbol": "AsyncClient",
+          "line": 1307,
+          "end_line": 2019,
+          "kind": "class"
+        },
+        {
+          "symbol": "_is_https_redirect",
+          "line": 62,
+          "end_line": 74,
+          "kind": "function"
+        },
+        {
+          "symbol": "_port_or_default",
+          "line": 77,
+          "end_line": 80,
+          "kind": "function"
+        },
+        {
+          "symbol": "_same_origin",
+          "line": 83,
+          "end_line": 91,
+          "kind": "function"
+        },
+        {
+          "symbol": "BoundSyncStream.__init__",
+          "line": 145,
+          "end_line": 150,
+          "kind": "function"
+        },
+        {
+          "symbol": "BoundSyncStream.__iter__",
+          "line": 152,
+          "end_line": 154,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "httpx/_utils.py",
+      "line": 1,
+      "source_sha256": "fd355ea802afc4990a1ddcfb74579be2cd0b66a41781e1645d281f88704aff5a",
+      "duplicate_suppressed": true,
+      "symbols": [
+        {
+          "symbol": "URLPattern",
+          "line": 120,
+          "end_line": 226,
+          "kind": "class"
+        },
+        {
+          "symbol": "primitive_value_to_str",
+          "line": 15,
+          "end_line": 27,
+          "kind": "function"
+        },
+        {
+          "symbol": "get_environment_proxies",
+          "line": 30,
+          "end_line": 76,
+          "kind": "function"
+        },
+        {
+          "symbol": "to_bytes",
+          "line": 79,
+          "end_line": 80,
+          "kind": "function"
+        },
+        {
+          "symbol": "to_str",
+          "line": 83,
+          "end_line": 84,
+          "kind": "function"
+        },
+        {
+          "symbol": "to_bytes_or_str",
+          "line": 87,
+          "end_line": 88,
+          "kind": "function"
+        },
+        {
+          "symbol": "unquote",
+          "line": 91,
+          "end_line": 92,
+          "kind": "function"
+        },
+        {
+          "symbol": "peek_filelike_length",
+          "line": 95,
+          "end_line": 117,
+          "kind": "function"
+        },
+        {
+          "symbol": "is_ipv4_hostname",
+          "line": 229,
+          "end_line": 234,
+          "kind": "function"
+        },
+        {
+          "symbol": "is_ipv6_hostname",
+          "line": 237,
+          "end_line": 242,
+          "kind": "function"
+        },
+        {
+          "symbol": "URLPattern.__init__",
+          "line": 162,
+          "end_line": 190,
+          "kind": "function"
+        },
+        {
+          "symbol": "URLPattern.matches",
+          "line": 192,
+          "end_line": 203,
+          "kind": "function"
+        }
+      ]
+    },
+    {
+      "path": "httpx/_utils.py",
+      "line": 1,
+      "source_sha256": "fd355ea802afc4990a1ddcfb74579be2cd0b66a41781e1645d281f88704aff5a",
+      "duplicate_suppressed": true,
+      "symbols": [
+        {
+          "symbol": "URLPattern",
+          "line": 120,
+          "end_line": 226,
+          "kind": "class"
+        },
+        {
+          "symbol": "primitive_value_to_str",
+          "line": 15,
+          "end_line": 27,
+          "kind": "function"
+        },
+        {
+          "symbol": "get_environment_proxies",
+          "line": 30,
+          "end_line": 76,
+          "kind": "function"
+        },
+        {
+          "symbol": "to_bytes",
+          "line": 79,
+          "end_line": 80,
+          "kind": "function"
+        },
+        {
+          "symbol": "to_str",
+          "line": 83,
+          "end_line": 84,
+          "kind": "function"
+        },
+        {
+          "symbol": "to_bytes_or_str",
+          "line": 87,
+          "end_line": 88,
+          "kind": "function"
+        },
+        {
+          "symbol": "unquote",
+          "line": 91,
+          "end_line": 92,
+          "kind": "function"
+        },
+        {
+          "symbol": "peek_filelike_length",
+          "line": 95,
+          "end_line": 117,
+          "kind": "function"
+        },
+        {
+          "symbol": "is_ipv4_hostname",
+          "line": 229,
+          "end_line": 234,
+          "kind": "function"
+        },
+        {
+          "symbol": "is_ipv6_hostname",
+          "line": 237,
+          "end_line": 242,
+          "kind": "function"
+        },
+        {
+          "symbol": "URLPattern.__init__",
+          "line": 162,
+          "end_line": 190,
+          "kind": "function"
+        },
+        {
+          "symbol": "URLPattern.matches",
+          "line": 192,
+          "end_line": 203,
+          "kind": "function"
+        }
+      ]
+    }
+  ],
+  "initial_index_at_722414c": {
+    "matches": [
+      {
+        "path": "tests/models/test_url.py",
+        "symbols": [
+          "test_basic_url",
+          "test_complete_url",
+          "test_url_with_empty_query",
+          "test_url_no_scheme",
+          "test_url_no_authority",
+          "test_path_query_fragment",
+          "test_url_query_encoding",
+          "test_url_params",
+          "test_url_username_and_password",
+          "test_url_valid_host",
+          "test_url_normalized_host",
+          "test_url_percent_escape_host",
+          "test_url_ipv4_like_host",
+          "test_url_valid_port",
+          "test_url_normalized_port",
+          "test_url_invalid_port"
+        ],
+        "imports": [
+          "pytest",
+          "httpx"
+        ]
+      },
+      {
+        "path": "tests/client/test_async_client.py",
+        "symbols": [
+          "test_get",
+          "test_get_invalid_url",
+          "test_build_request",
+          "test_post",
+          "test_post_json",
+          "test_stream_response",
+          "test_access_content_stream_response",
+          "test_stream_request",
+          "test_cannot_stream_sync_request",
+          "test_raise_for_status",
+          "test_options",
+          "test_head",
+          "test_put",
+          "test_patch",
+          "test_delete",
+          "test_100_continue"
+        ],
+        "imports": [
+          "__future__",
+          "typing",
+          "datetime",
+          "pytest",
+          "httpx"
+        ]
+      },
+      {
+        "path": "tests/client/test_headers.py",
+        "symbols": [
+          "echo_headers",
+          "echo_repeated_headers_multi_items",
+          "echo_repeated_headers_items",
+          "test_client_header",
+          "test_header_merge",
+          "test_header_merge_conflicting_headers",
+          "test_header_update",
+          "test_header_repeated_items",
+          "test_header_repeated_multi_items",
+          "test_remove_default_header",
+          "test_header_does_not_exist",
+          "test_header_with_incorrect_value",
+          "test_host_with_auth_and_port_in_url",
+          "test_host_with_non_default_port_in_url",
+          "test_request_auto_headers",
+          "test_same_origin"
+        ],
+        "imports": [
+          "pytest",
+          "httpx"
+        ]
+      }
+    ]
+  },
+  "revised_index_same_objective_and_limit": {
+    "matches": [
+      {
+        "path": "httpx/_client.py",
+        "symbols": [
+          "_port_or_default",
+          "_same_origin",
+          "Client",
+          "AsyncClient",
+          "_is_https_redirect",
+          "UseClientDefault",
+          "ClientState",
+          "BoundSyncStream",
+          "BoundAsyncStream",
+          "BaseClient"
+        ],
+        "imports": [
+          "__future__",
+          "datetime",
+          "enum",
+          "logging",
+          "time",
+          "typing"
+        ]
+      },
+      {
+        "path": "httpx/_utils.py",
+        "symbols": [
+          "get_environment_proxies",
+          "URLPattern",
+          "primitive_value_to_str",
+          "to_bytes",
+          "to_str",
+          "to_bytes_or_str",
+          "unquote",
+          "peek_filelike_length",
+          "is_ipv4_hostname",
+          "is_ipv6_hostname"
+        ],
+        "imports": [
+          "__future__",
+          "ipaddress",
+          "os",
+          "re",
+          "typing",
+          "urllib.request"
+        ]
+      },
+      {
+        "path": "docs/advanced/transports.md",
+        "symbols": [],
+        "imports": []
+      },
+      {
+        "path": "tests/client/test_async_client.py",
+        "symbols": [
+          "test_cannot_stream_sync_request",
+          "test_context_managed_transport",
+          "test_context_managed_transport_and_mount",
+          "test_client_closed_state_using_implicit_open",
+          "test_client_closed_state_using_with_block",
+          "test_async_mock_transport",
+          "test_get_invalid_url",
+          "test_build_request",
+          "test_stream_request",
+          "test_100_continue",
+          "test_mounted_transport",
+          "test_cancellation_during_stream"
+        ],
+        "imports": [
+          "__future__",
+          "typing",
+          "datetime",
+          "pytest",
+          "httpx"
+        ]
+      },
+      {
+        "path": "tests/models/test_url.py",
+        "symbols": [
+          "test_url_with_empty_query",
+          "test_url_normalized_host",
+          "test_url_percent_escape_host",
+          "test_url_normalized_port",
+          "test_url_normalized_path",
+          "test_query_with_existing_percent_encoding",
+          "test_complete_url",
+          "test_url_no_scheme",
+          "test_path_query_fragment",
+          "test_url_query_encoding",
+          "test_url_valid_host",
+          "test_url_ipv4_like_host"
+        ],
+        "imports": [
+          "pytest",
+          "httpx"
+        ]
+      },
+      {
+        "path": "httpx/_transports/base.py",
+        "symbols": [
+          "BaseTransport",
+          "AsyncBaseTransport"
+        ],
+        "imports": [
+          "__future__",
+          "typing",
+          "types",
+          ".._models"
+        ]
+      }
+    ]
+  },
+  "timing": {
+    "attempt_limit_seconds": 120,
+    "intentional_verification_reserve_seconds": 20,
+    "harness_seconds": 95.76600000006147,
+    "outer_work_limit_seconds": 180,
+    "outer_work_execution_seconds": 117.36,
+    "initial_selector_verification_seconds": 10.844000000040978,
+    "attempt_baseline_check_seconds": 1.4060000000754371,
+    "outer_unused_seconds_not_refundable": 62.64,
+    "causal_order": "Harness watchdog -> inference quarantine -> blocked retry/selection -> outer phase exits before 180s. Exact prelaunch timing split was not recorded."
+  },
+  "objective_conflict": "Worker active work order included Preparation only / No model campaign is authorized. New intake separates implementation requirements from operator review notes without modifying FEATURE.md.",
+  "causal_limits": "Repeated requests, unhelpful index and conflicting instructions are observed; internal model motives and context-compaction causality are not established.",
+  "replay_classification": "Deterministic public-source replay, not a new worker run or HTTPX grading"
+}

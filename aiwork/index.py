@@ -12,6 +12,20 @@ WORD = re.compile(r"[A-Za-z][A-Za-z0-9]*")
 STOP = {"the", "and", "for", "with", "this", "that", "from", "into", "will"}
 
 
+def python_symbols(text: str) -> list[dict]:
+    """Static qualified definitions, including methods, without importing code."""
+    result = []
+    def visit(nodes, prefix=""):
+        for node in nodes:
+            if isinstance(node, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
+                name = prefix + node.name
+                result.append({"symbol": name, "line": min([node.lineno, *(d.lineno for d in node.decorator_list)]),
+                               "end_line": node.end_lineno, "kind": "class" if isinstance(node, ast.ClassDef) else "function"})
+                visit(node.body, name + ".")
+    visit(ast.parse(text).body)
+    return result
+
+
 def python_metadata(data: bytes, name: str) -> tuple[list[str], list[str]]:
     try:
         tree = ast.parse(data, filename=name)
@@ -46,21 +60,22 @@ def relevant(root: Path, objective: str, scopes: tuple[str, ...], limit: int = 6
         score = 7 * len(query & words(name)) + 2 * within(name, scopes) + 3 * build
         scored.append((score, name, path))
     records = []
-    for score, name, path in sorted(scored, key=lambda item: (-item[0], item[1]))[:120]:
+    for score, name, path in sorted(scored, key=lambda item: (-within(item[1], scopes), -item[0], item[1]))[:120]:
         symbols = []
         imports = []
-        if path.suffix == ".py" and path.stat().st_size <= 65536:
+        if path.suffix == ".py" and path.stat().st_size <= 256 * 1024:
             symbols, imports = python_metadata(path.read_bytes(), name)
-            symbols, imports = symbols[:16], imports[:12]
+            symbols = sorted(symbols, key=lambda symbol: -len(query & words(symbol)))[:12]
+            imports = imports[:6]
         priority = score + 3 * len(query & words(" ".join(symbols + imports)))
-        records.append((priority, {"path": name, "symbols": symbols, "imports": imports}))
+        records.append((within(name, scopes), priority, {"path": name, "symbols": symbols, "imports": imports}))
     output = []
     size = len('{"matches":[]}')
-    ordered = sorted(records, key=lambda item: -item[0])
-    for _, entry in ordered:
+    ordered = sorted(records, key=lambda item: (-item[0], -item[1]))
+    for _, _, entry in ordered:
         width = len(json.dumps(entry)) + 2
         if size + width > limit:
-            break
+            continue
         output.append(entry)
         size += width
     return json.dumps({"matches": output})

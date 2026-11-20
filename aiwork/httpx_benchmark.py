@@ -59,6 +59,17 @@ def config(root: Path, arm: str, manifest: dict) -> Config:
                   local_slots=1, execution_state=Path(manifest['execution_state']))
 
 
+def worker_contract(feature: str) -> tuple[str, str]:
+    """Separate this benchmark's frozen requirements from its operator review notes."""
+    if not feature.startswith('# HTTPX path-scoped transport mounts'):
+        return feature, ''
+    paragraphs=feature.strip().split('\n\n')
+    start=next(i for i,p in enumerate(paragraphs) if p.startswith('Add path-prefix matching'))
+    end=next(i for i,p in enumerate(paragraphs) if p.startswith('Workers may inspect'))
+    return ('\n\n'.join([paragraphs[0],*paragraphs[start:end]]),
+            '\n\n'.join([*paragraphs[1:start],*paragraphs[end:]]))
+
+
 def prepare(review_path: Path, root: Path) -> dict:
     original = json.loads(review_path.read_bytes())
     old_digest = original.pop('approval_digest')
@@ -111,10 +122,12 @@ def prepare(review_path: Path, root: Path) -> dict:
     observed = json.loads(probe['stdout']) if probe['passed'] else {}
     if not observed.get('timeout') or not probe_start-.25 <= observed.get('utc',0) <= probe_end+.25:
         raise ValueError('image watchdog/clock preflight failed')
+    implementation_objective, operator_notes=worker_contract((source/'FEATURE.md').read_text(encoding='utf-8'))
     manifest = {
         'format':1,'status':'PREPARED_NOT_AUTHORIZED','execution_allowed':False,'bundle':str(root.resolve()),
         'source_commit':head,'original_review_digest':old_digest,
         'specification_sha256':original['feature_sha256'],'public_corpus_sha256':original['public_sha256'],
+        'implementation_objective':implementation_objective,'operator_preparation_notes':operator_notes,
         'original_inventory':original['inventory'],'starting_inventories':starts,
         'profile':asdict(profile),'profile_sha256':digest(asdict(profile)), 'model':metadata,
         'runner':original['runner'],'harness':{'path':binary,'sha256':file_hash(Path(binary))},
@@ -220,7 +233,7 @@ def task(root: Path, arm: str, manifest: dict) -> Task:
               Check(('python','_public_checks.py',*('PublicPathMounts.'+name for name in names)),timeout=60),
               upstream,Check(('python','_trial_score.py','artifacts'),timeout=75))
     profile=manifest['profile']
-    return Task((work/'FEATURE.md').read_text()+'\nUse approved public commands and bounded inspection. Complete source, authored tests and documentation without asking for implementation guidance.',
+    return Task(manifest['implementation_objective']+'\nUse approved public commands and bounded inspection. Complete source, authored tests and documentation without asking for implementation guidance.',
                 work,'agent','httpx-autonomy',tuple(sorted({name.split('/')[0] for name in manifest['starting_inventories'][arm]})),
                 (), (all_public,upstream,commands[4]), mode='engineering',write_roots=PATHS,
                 profile=profile['id'],location='local',agent_role='implementation',min_context=8192,

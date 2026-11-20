@@ -589,7 +589,8 @@ class Controller:
                 if engineering:
                     tools += ("Use edit or write tools before giving a final answer. Keep intermediate narration brief. "
                               "For OpenCode source inspection use checks_focus with path and optional Python symbol "
-                              "(Class.method) or line; follow next_line instead of repeating a whole-file read. "
+                              "(Class.method), query, or line. The response lists qualified symbols; "
+                              "jump to a relevant symbol or follow next_line. Unchanged duplicate excerpts are suppressed. "
                               "Cycle within the tool budget: inspect, edit, run an approved public check, "
                               "diagnose its concrete failure, repair and rerun. A failed check is not permission to abandon the objective. ")
                 role = ""
@@ -610,6 +611,15 @@ class Controller:
                 if remaining <= 0:
                     raise TimeoutError("deadline exhausted during model readiness")
                 reserve = min(20, max(4, task.timeout // 5)) if engineering else 0
+                harness_allowance = max(0, deadline - monotonic() - reserve)
+                write_json(attempt / 'harness-budget.json', {
+                    'configured_attempt_seconds':task.timeout,
+                    'remaining_attempt_seconds':round(remaining,6),
+                    'verification_reserve_seconds':reserve,
+                    'harness_allowance_seconds':round(harness_allowance,6),
+                    'phase_limit':public_limit(),
+                    'note':'Baseline/admission and staging consume the attempt; the outer phase also charges planning and final selection.',
+                })
                 result = harness.execute(profile, task, work, attempt, prompt,
                                          max(0, deadline - monotonic() - reserve), spec,
                                          self.config.state / "STOP")
