@@ -1,3 +1,4 @@
 * text=auto eol=lf
 *.ps1 text eol=crlf
 /deliverables/phase6/*.patch -text -whitespace
+/docs/evidence/phase61/httpx-replacement-run/*.jsonl -text -whitespace
