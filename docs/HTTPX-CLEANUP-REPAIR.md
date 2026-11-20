@@ -1,5 +1,10 @@
 # HTTPX cleanup correction and replacement review
 
+Follow-up: this replacement was authorized once and is now
+[QUARANTINED](HTTPX-REPLACEMENT-RESULT.md) after its direct worker timed out.
+The preparation review below is preserved. Its example commands must not be
+used to resume or repeat the closed comparison.
+
 **PREPARED_NOT_AUTHORIZED.** No real model inference or engineering campaign
 ran during this correction. The original quarantined comparison, authorization
 and evidence remain unchanged. Its reservations cannot resume.

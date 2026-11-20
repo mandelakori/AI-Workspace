@@ -1,0 +1,12 @@
+{
+  "phase": "warm",
+  "code": 0,
+  "elapsed": 14.85999999998603,
+  "timed_out": false,
+  "stdout": "",
+  "stderr": "",
+  "cleanup": {
+    "passed": true,
+    "not_applicable": "warm phase forbids verification containers"
+  }
+}

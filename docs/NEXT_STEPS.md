@@ -2,6 +2,12 @@
 
 ## Phase 6.1 next approved work
 
+The authorized replacement comparison is now **QUARANTINED** following a direct
+worker harness timeout. Read the [result and preserved evidence](HTTPX-REPLACEMENT-RESULT.md).
+The worker made no source changes; the fallback is 7/16 public. Hierarchical
+execution and sealed grading were not started. Do not resume either arm or reuse
+its authorization. The preparation/review instructions below are historical.
+
 The [cleanup correction and new authorization instructions](HTTPX-CLEANUP-REPAIR.md)
 are ready. All 115 regressions pass. The fresh replacement bundle remains
 PREPARED_NOT_AUTHORIZED and requires approval of its new exact digest; no

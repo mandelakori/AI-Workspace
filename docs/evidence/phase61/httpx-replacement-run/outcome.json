@@ -1,0 +1,121 @@
+{
+  "status": "QUARANTINED",
+  "recorded_at": "2026-11-20T22:50:17.916301+00:00",
+  "approval_digest": "cac8f70e899ef694fde19c0100109a92636b316e5bc5020086d7c7809c9a4639",
+  "classification": "AUTONOMOUS_ATTEMPT_FAILED_NO_IMPLEMENTATION_DELIVERY",
+  "reason": "inference client interrupted; backend cancellation latency unverified",
+  "direct": {
+    "worker_sessions": 1,
+    "planner_requests": 0,
+    "completed_attempt_records": 1,
+    "blocked_retry_bookkeeping_records": 1,
+    "retry_worker_dispatches": 0,
+    "agent_process": {
+      "code": 1,
+      "elapsed": 95.76600000006147,
+      "timed_out": true,
+      "truncated": false
+    },
+    "phases": {
+      "warm": {
+        "limit": 20,
+        "status": "FINISHED",
+        "started_utc": 1795214652.0904753,
+        "deadline_utc": 1795214672.0904753,
+        "deadline_monotonic": 610781.015,
+        "label": "aiwork-trial-09346fcc2e3f464083b233979f6198d0",
+        "finished_utc": 1795214666.9608488,
+        "execution_elapsed_with_termination": 14.86,
+        "cancellation_cleanup_seconds": 0.0,
+        "error": "",
+        "timed_out": false,
+        "cleanup": {
+          "passed": true,
+          "not_applicable": "warm phase forbids verification containers"
+        }
+      },
+      "work": {
+        "limit": 180,
+        "status": "FAILED",
+        "started_utc": 1795214666.9768488,
+        "deadline_utc": 1795214846.9768488,
+        "deadline_monotonic": 610955.89,
+        "label": "aiwork-trial-e56fa04843004f3eb1a38bfbbfc33af5",
+        "finished_utc": 1795214784.5317247,
+        "execution_elapsed_with_termination": 117.36,
+        "cancellation_cleanup_seconds": 0.203,
+        "error": "",
+        "timed_out": false,
+        "cleanup": {
+          "passed": true,
+          "removed": []
+        }
+      },
+      "grade": {
+        "limit": 40,
+        "status": "PENDING"
+      }
+    },
+    "controller_tool_calls": {
+      "glob": 6,
+      "checks_focus": 7,
+      "grep": 2
+    },
+    "tool_errors": 0,
+    "successful_worker_public_checks": 0,
+    "source_changed": false,
+    "completion_status": "FAILED",
+    "frozen_fallback": {
+      "path": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-cleanup-repair\\benchmark\\arms\\direct\\frozen-6761f7fefe4798a5",
+      "inventory_sha256": "5d4e3c9e66ae2da5c42bd1d7a58ed6dd0131835f72ddd95ff3fb54282a10e038",
+      "model_source_delivery": false,
+      "public_passed_cases": 7,
+      "public_total": 16,
+      "public_all_gates_passed": false,
+      "upstream_gate_passed": true,
+      "missing": [
+        "authored tests / documentation"
+      ]
+    },
+    "model_candidate": null,
+    "sealed_score": null,
+    "regressions": "No source changes or promoted candidate; baseline retained. Post-attempt selection and grading blocked by quarantine."
+  },
+  "hierarchical": {
+    "status": "NOT_STARTED_QUARANTINED",
+    "worker_sessions": 0,
+    "planner_requests": 0,
+    "model_candidate": null,
+    "public_score": null,
+    "sealed_score": null
+  },
+  "model_usage": {
+    "warm": {
+      "prompt_tokens": 17,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens": 2,
+      "total_tokens": 19
+    },
+    "worker_completed_usage_events": 10,
+    "worker_started_steps": 11,
+    "worker_reported_tokens": {
+      "input": 19821,
+      "output": 714,
+      "reasoning": 0
+    },
+    "worker_cache_read_tokens_separate": 30183,
+    "worker_cache_write_tokens_separate": 0,
+    "incomplete_generation_usage": "Unknown; final step interrupted. Complete server request/token totals are unavailable."
+  },
+  "execution_wall_seconds_between_phase_start_and_close": 132.441249,
+  "hierarchy_effect": "NOT_MEASURED; hierarchical arm not dispatched",
+  "mid_run_implementation_guidance": false,
+  "operator_feature_source_corrections": false,
+  "sealed_cases_authored": 0,
+  "additional_campaigns": 0,
+  "remote_inference": false,
+  "resumption_allowed": false,
+  "approved_inputs_code_permissions_model_image_budgets_unchanged": true
+}
