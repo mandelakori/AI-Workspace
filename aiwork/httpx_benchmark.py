@@ -127,7 +127,7 @@ def prepare(review_path: Path, root: Path) -> dict:
                          'native_shell':False,'network_in_verifier':False,'read_scope':'identical staged public inputs only'},
         'phase_seconds':PHASE_LIMITS,'total_seconds_per_arm':240,'total_seconds_pair':480,
         'clock_policy':'Cumulative execution reservations: warm/preflight 20 + engineering/public verification 180 + independent grading 40. No transfers, refunds, restarts or resumed worker sessions.',
-        'cleanup_policy':'Only cancellation/owned-container deletion may run after a deadline, for at most 10 seconds. No new inference, tools or verification. Cleanup failure quarantines the trial.',
+        'cleanup_policy':'Warm phase forbids verification/container launches and has no container cleanup. Work/grade cleanup commands share one absolute 10-second allowance, without a shorter per-command cap. Only cancellation/owned-container deletion may run after a deadline. No new inference, tools or verification. Unknown ownership or cleanup failure quarantines the trial.',
         'provider_cancellation':'Owned clients are terminated at the deadline; the existing shared server is never killed. Backend cancellation latency is not measured during preparation. Inference interruption or a work/warm watchdog timeout quarantines the pair: no further arm/grade dispatch.',
         'warm_protocol':{'order':list(ARMS),'neutral_requests_per_arm':1,'max_tokens':4,
                          'prompt':'Reply with exactly READY.','temperature':0,'reasoning_effort':profile.reasoning_effort,

@@ -13,7 +13,7 @@ from aiwork.mcp import reserve_trial_call
 from aiwork.process import environment
 from aiwork.process import run
 from aiwork.schema import Config
-from aiwork.trial_budget import FILE, PHASE_LIMITS, create, current, run_phase
+from aiwork.trial_budget import FILE, PHASE_LIMITS, cleanup_containers, create, current, run_phase
 
 
 class TrialBudgetTests(unittest.TestCase):
@@ -26,6 +26,62 @@ class TrialBudgetTests(unittest.TestCase):
 
     def command(self, source):
         return [sys.executable, "-c", source]
+
+    def test_healthy_slow_query_uses_remaining_cleanup_allowance(self):
+        clock=[0.0];timeouts=[]
+        def query(argv,**kwargs):
+            timeouts.append(kwargs['timeout'])
+            if len(timeouts)==1:
+                if kwargs['timeout']<=3:raise subprocess.TimeoutExpired(argv,kwargs['timeout'])
+                clock[0]+=5.813
+            return subprocess.CompletedProcess(argv,0,'','')
+        with (patch('aiwork.trial_budget.executable',return_value='docker'),
+              patch('aiwork.trial_budget.monotonic',side_effect=lambda:clock[0]),
+              patch('aiwork.trial_budget.subprocess.run',side_effect=query)):
+            result=cleanup_containers('aiwork-trial-'+'a'*32,self.repo)
+        self.assertTrue(result['passed'])
+        self.assertEqual(timeouts[0],10)
+        self.assertAlmostEqual(timeouts[1],4.187)
+
+    def test_unknown_ownership_and_timeout_fail_closed_without_removal(self):
+        for failure in ['inspect','mismatch','timeout']:
+            calls=[]
+            def query(argv,**kwargs):
+                calls.append(argv)
+                if failure=='timeout':raise subprocess.TimeoutExpired(argv,kwargs['timeout'])
+                if argv[1]=='ps':return subprocess.CompletedProcess(argv,0,'abcdef123456\n','')
+                return subprocess.CompletedProcess(argv,1 if failure=='inspect' else 0,'unrelated-owner','')
+            with (patch('aiwork.trial_budget.executable',return_value='docker'),
+                  patch('aiwork.trial_budget.subprocess.run',side_effect=query)):
+                result=cleanup_containers('aiwork-trial-'+'a'*32,self.repo)
+            self.assertFalse(result['passed'],failure)
+            self.assertFalse(any('rm' in call for call in calls))
+
+    def test_warm_is_container_free_but_cleanup_failure_still_quarantines_work(self):
+        create(self.state,'test','direct')
+        with patch('aiwork.trial_budget.cleanup_containers') as cleanup:
+            warm=run_phase(self.state,'warm',self.command("print('no inference')"),self.repo)
+        cleanup.assert_not_called()
+        self.assertIn('not_applicable',warm['cleanup'])
+        with patch('aiwork.trial_budget.cleanup_containers',return_value={'passed':False,'error':'fixture failure'}):
+            run_phase(self.state,'work',self.command('pass'),self.repo)
+        self.assertTrue(json.loads((self.state/FILE).read_bytes())['quarantined'])
+        with self.assertRaisesRegex(ValueError,'quarantined'):
+            run_phase(self.state,'grade',self.command('pass'),self.repo)
+
+    def test_warm_cannot_launch_verification_and_interrupted_inference_quarantines(self):
+        from aiwork.verify import invoke
+        from aiwork.schema import Check
+        from aiwork.trial_budget import inference_interrupted
+        with patch('aiwork.trial_budget.current',return_value={'phase':'warm'}),patch('aiwork.verify.run') as launch:
+            with self.assertRaisesRegex(ValueError,'warm phase cannot launch'):
+                invoke(Check(('python','-V')),self.root,self.root/'home','fixture-image')
+        launch.assert_not_called()
+        create(self.state,'test','direct')
+        with patch.dict(os.environ,{'AIWORK_TRIAL_BUDGET':str(self.state/FILE)}):inference_interrupted()
+        self.assertTrue(json.loads((self.state/FILE).read_bytes())['quarantined'])
+        with self.assertRaisesRegex(ValueError,'quarantined'):
+            run_phase(self.state,'warm',self.command('pass'),self.repo)
 
     def make_warm(self, work, grade):
         create(self.state,"test","direct",{"warm":3,"work":work,"grade":grade})

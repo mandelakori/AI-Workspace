@@ -48,7 +48,10 @@ def invoke(check: Check, workspace: Path, home: Path, image: str = "", *,
            timeout: float | None = None, private: Path | None = None,
            stop: Path | None = None, stdin: bytes | None = None, sealed: bool = False,
            extra_args: tuple[str, ...] = (), trial: dict | None = None) -> dict:
-    from .trial_budget import public_limit
+    from .trial_budget import current, public_limit
+    active = current()
+    if active and active["phase"] == "warm":
+        raise ValueError("warm phase cannot launch verification commands or containers")
     trial = trial or public_limit()
     if trial:
         from time import time

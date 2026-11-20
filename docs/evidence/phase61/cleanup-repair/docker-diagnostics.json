@@ -1,0 +1,37 @@
+[
+  {
+    "argv": [
+      "version",
+      "--format",
+      "{{.Server.Os}} {{.Server.Version}}"
+    ],
+    "code": 0,
+    "stdout": "linux 29.9.3\n",
+    "stderr": "",
+    "seconds": 0.125
+  },
+  {
+    "argv": [
+      "ps",
+      "-aq",
+      "--filter",
+      "label=aiwork.trial=aiwork-trial-4623c2f40ad04073b1e06353c1a68690"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 5.813
+  },
+  {
+    "argv": [
+      "ps",
+      "-aq",
+      "--filter",
+      "label=aiwork.trial=aiwork-trial-4623c2f40ad04073b1e06353c1a68690"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.14
+  }
+]

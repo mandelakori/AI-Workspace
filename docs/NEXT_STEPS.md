@@ -2,6 +2,11 @@
 
 ## Phase 6.1 next approved work
 
+The [cleanup correction and new authorization instructions](HTTPX-CLEANUP-REPAIR.md)
+are ready. All 115 regressions pass. The fresh replacement bundle remains
+PREPARED_NOT_AUTHORIZED and requires approval of its new exact digest; no
+engineering campaign was started during diagnosis. Do not reuse the original grant.
+
 The subsequently authorized HTTPX comparison is now **QUARANTINED** after a
 Docker cleanup ownership-query timeout following direct warm-up. Read the
 [outcome and preserved receipts](HTTPX-COMPARISON.md). No engineering worker or

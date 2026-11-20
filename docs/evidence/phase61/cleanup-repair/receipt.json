@@ -1,0 +1,25 @@
+{
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "approval_digest": "cac8f70e899ef694fde19c0100109a92636b316e5bc5020086d7c7809c9a4639",
+  "bundle": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-cleanup-repair\\benchmark",
+  "old_run_and_grant_hashes_unchanged": true,
+  "old_trial_remains_quarantined": true,
+  "old_approval_rejected_by_replacement": true,
+  "same_starting_inventories_profile_model_image_permissions_budgets": true,
+  "frozen_click_unchanged": true,
+  "real_model_inference_requests": 0,
+  "worker_dispatches": 0,
+  "new_trial_states": 0,
+  "new_acceptance_inputs": 0,
+  "operator_grant_created": false,
+  "tests": {
+    "run": 115,
+    "passed": 115,
+    "skipped": 0,
+    "seconds": 67.48,
+    "docker": true,
+    "installed_opencode_inert_provider": true
+  },
+  "diagnosis": "Successful first ownership query took 5.813s, exceeding old 3s cap within unchanged 10s cleanup budget; repeated query 0.140s. Warm phase has no container-launch path. Precise Docker latency cause remains unknown.",
+  "main_ref": "cf50e89c2ca2ad21d86fda5473f5ad6edc0c2623"
+}

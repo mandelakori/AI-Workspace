@@ -116,7 +116,7 @@ def cleanup_containers(label: str, cwd: Path) -> dict:
         if monotonic() >= deadline:
             raise TimeoutError("owned-container cancellation deadline exhausted")
         return subprocess.run([docker, *args], capture_output=True, text=True,
-                              timeout=max(.01, min(3, deadline-monotonic())))
+                              timeout=max(.01, deadline-monotonic()))
     try:
         listed = call("ps", "-aq", "--filter", f"label=aiwork.trial={label}")
         if listed.returncode:
@@ -125,8 +125,8 @@ def cleanup_containers(label: str, cwd: Path) -> dict:
             if not re.fullmatch(r"[a-f0-9]{12,64}", identifier):
                 raise ValueError("invalid owned container ID")
             checked = call("inspect", "--format", '{{index .Config.Labels "aiwork.trial"}}', identifier)
-            if checked.returncode:  # --rm may have removed it between enumeration and inspection.
-                continue
+            if checked.returncode:
+                return {"passed": False, "error": "container ownership inspection failed"}
             if checked.stdout.strip() != label:
                 raise ValueError("container ownership mismatch")
             stopped = call("rm", "-f", identifier)
@@ -179,7 +179,10 @@ def run_phase(state: Path, phase: str, argv: list[str], cwd: Path, *, containers
     finally:
         execution_elapsed = monotonic()-started
         cleanup_started = monotonic()
-        cleanup = cleanup_containers(active["label"], cwd) if containers else {"passed": True, "not_used": True}
+        if phase == "warm":
+            cleanup = {"passed": True, "not_applicable": "warm phase forbids verification containers"}
+        else:
+            cleanup = cleanup_containers(active["label"], cwd) if containers else {"passed": True, "not_used": True}
         with file_lock(path.with_suffix(".lock")):
             data = json.loads(path.read_bytes())
             entry = data["phases"][phase]
