@@ -1,0 +1,12 @@
+{
+  "authorized_at": "2026-11-20T11:16:37.685351+00:00",
+  "grant": {
+    "approval_digest": "3bdd3fb56a0d2f8c15fdbdf3ff879619a2dc94cb09f64c43b6fce6af65114b53",
+    "authorize": [
+      "direct",
+      "hierarchical"
+    ],
+    "operator_approved": true
+  },
+  "scope": "One comparison only; direct then hierarchical; frozen 20/180/40 reservations; no mid-run guidance; quarantine stops both arms; no remote operations or extra campaigns."
+}

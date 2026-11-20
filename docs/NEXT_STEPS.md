@@ -2,6 +2,14 @@
 
 ## Phase 6.1 next approved work
 
+The subsequently authorized HTTPX comparison is now **QUARANTINED** after a
+Docker cleanup ownership-query timeout following direct warm-up. Read the
+[outcome and preserved receipts](HTTPX-COMPARISON.md). No engineering worker or
+sealed grader ran. Do not execute the authorization-review commands again or
+resume the unspent reservations. A replacement trial is not authorized.
+
+The original preparation/review guidance below remains historical:
+
 Review the [exact HTTPX authorization bundle](HTTPX-AUTHORIZATION.md) and
 [bounded handoff](PHASE61.md) before any new measured trial. The CI failure is
 fixed and both original matrix jobs passed.

@@ -1,0 +1,45 @@
+{
+  "approval_digest": "3bdd3fb56a0d2f8c15fdbdf3ff879619a2dc94cb09f64c43b6fce6af65114b53",
+  "files": {
+    "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-authorization\\benchmark-v2\\operator-authorization-receipt.json": {
+      "bytes": 452,
+      "sha256": "b86a2a394612221a40bf49913e39b9762b230fe7bacb320c10fcf7cd1188cc4c"
+    },
+    "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-authorization\\operator-approval.json": {
+      "bytes": 182,
+      "sha256": "e452f0964037a79a0e02676f88aa86a6ad6706819a41e3c46be5a28a997267be"
+    },
+    "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-authorization\\benchmark-v2\\pair-outcome.json": {
+      "bytes": 1842,
+      "sha256": "535ba2851e89ead6b84381026070475412a7ffd4a410c24422aa5bb3f7448c86"
+    },
+    "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-authorization\\benchmark-v2\\arms\\direct\\state\\trial-budget.json": {
+      "bytes": 1177,
+      "sha256": "6cce3d703bfbbe71634a01ac0250407df849a1db68c15eb1076e93a600ac2290"
+    },
+    "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-authorization\\benchmark-v2\\arms\\direct\\warm-process.json": {
+      "bytes": 425,
+      "sha256": "54921cd257de870469fbc07b99632eb31501f2a19163931010227bc5b09d9ac8"
+    },
+    "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-authorization\\benchmark-v2\\arms\\direct\\warm-request.json": {
+      "bytes": 220,
+      "sha256": "fcb5a319f485930c1d4f1e239384d93bfa21852fe05713f0df41431b09d0851f"
+    },
+    "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-authorization\\benchmark-v2\\arms\\direct\\warm-wire-request.json": {
+      "bytes": 171,
+      "sha256": "b9fdd2431c9645d7169c8ef8a05225c799dfd676a25914729506e1efb3f81a74"
+    },
+    "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-authorization\\benchmark-v2\\arms\\direct\\warm-wire-response.json": {
+      "bytes": 346,
+      "sha256": "692de164973d41e4ccd18d5deba013a0d64edfbba2932ceb0fb8ff07ce4bba64"
+    },
+    "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-authorization\\benchmark-v2\\arms\\direct\\warm-response.json": {
+      "bytes": 502,
+      "sha256": "02f9d2e593c2cbf43069f046926832172a49e1a063052729285845f6c0a5478a"
+    },
+    "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-authorization\\benchmark-v2\\arms\\direct\\warm-state.json": {
+      "bytes": 2845,
+      "sha256": "512d5b5340d9851e6fd5a0f4b014a581ccf017fce82b5970736e239c87b67968"
+    }
+  }
+}

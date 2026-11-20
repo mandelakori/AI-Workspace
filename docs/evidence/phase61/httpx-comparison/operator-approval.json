@@ -1,0 +1,8 @@
+{
+  "approval_digest": "3bdd3fb56a0d2f8c15fdbdf3ff879619a2dc94cb09f64c43b6fce6af65114b53",
+  "authorize": [
+    "direct",
+    "hierarchical"
+  ],
+  "operator_approved": true
+}

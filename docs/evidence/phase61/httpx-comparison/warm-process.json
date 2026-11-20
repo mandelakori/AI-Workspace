@@ -1,0 +1,12 @@
+{
+  "phase": "warm",
+  "code": 0,
+  "elapsed": 13.641000000061467,
+  "timed_out": false,
+  "stdout": "",
+  "stderr": "",
+  "cleanup": {
+    "passed": false,
+    "error": "Command '['C:\\\\Users\\\\mande\\\\AppData\\\\Local\\\\Programs\\\\DockerDesktop\\\\resources\\\\bin\\\\docker.EXE', 'ps', '-aq', '--filter', 'label=aiwork.trial=aiwork-trial-4623c2f40ad04073b1e06353c1a68690']' timed out after 3 seconds"
+  }
+}

@@ -1,5 +1,10 @@
 # HTTPX final authorization review
 
+Follow-up: the operator authorized this digest once. The attempted comparison
+is now [QUARANTINED](HTTPX-COMPARISON.md) after direct warm-up cleanup failed.
+The preparation review below is preserved; its example commands must not be
+used to resume or repeat the closed comparison.
+
 **PREPARED_NOT_AUTHORIZED.** Preparation made zero model inference requests.
 No trial state, operator grant or private acceptance inputs have been created.
 The frozen Click delivery is unchanged. This supersedes the earlier HTTPX

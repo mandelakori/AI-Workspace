@@ -1,0 +1,53 @@
+{
+  "status": "QUARANTINED",
+  "recorded_at": "2026-11-20T11:17:44.005261+00:00",
+  "approval_digest": "3bdd3fb56a0d2f8c15fdbdf3ff879619a2dc94cb09f64c43b6fce6af65114b53",
+  "authorization": "Explicit user approval of one direct/hierarchical comparison",
+  "stop_reason": "Direct warm phase ownership cleanup query docker ps timed out after 3 seconds; frozen protocol blocks all subsequent dispatch.",
+  "classification": "INFRASTRUCTURE_FAILURE_BEFORE_ENGINEERING",
+  "arms": {
+    "direct": {
+      "status": "QUARANTINED_BEFORE_ENGINEERING",
+      "warm_response": "READY",
+      "cold_start": true,
+      "phase_execution_seconds": 13.641000000061467,
+      "execution_with_termination_seconds": 13.656,
+      "cancellation_cleanup_seconds": 3.047,
+      "warm_timed_out": false,
+      "cleanup_passed": false,
+      "worker_sessions": 0,
+      "planner_requests": 0,
+      "candidate": null,
+      "public_score": null,
+      "sealed_score": null
+    },
+    "hierarchical": {
+      "status": "NOT_STARTED_QUARANTINED",
+      "worker_sessions": 0,
+      "planner_requests": 0,
+      "candidate": null,
+      "public_score": null,
+      "sealed_score": null
+    }
+  },
+  "model_usage": {
+    "requests": 1,
+    "purpose": "approved neutral warm-up only",
+    "provider_reported": {
+      "prompt_tokens": 17,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens": 2,
+      "total_tokens": 19
+    }
+  },
+  "implementation_guidance": false,
+  "engineering_tool_calls": 0,
+  "sealed_cases_created": 0,
+  "additional_campaigns": 0,
+  "remote_inference": false,
+  "resumption_allowed": false,
+  "approved_manifest_unchanged": true,
+  "remaining_reservations": "Unspent; not transferable, resumable or refunded. No new dispatch under this comparison."
+}

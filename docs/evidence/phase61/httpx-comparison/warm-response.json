@@ -1,0 +1,25 @@
+{
+  "id": "chatcmpl-773",
+  "object": "chat.completion",
+  "created": 1795173417,
+  "model": "aiwork-qwen35-phase4:8k",
+  "system_fingerprint": "fp_ollama",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "READY"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 17,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens": 2,
+    "total_tokens": 19
+  }
+}
