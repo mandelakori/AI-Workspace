@@ -11,6 +11,27 @@ from aiwork.schema import Check, Profile, Task
 
 
 class HarnessContextTests(unittest.TestCase):
+    def test_measured_worker_source_survives_interrupted_export(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary).resolve()
+            work=root/'input';work.mkdir();(work/'module.py').write_text('original')
+            artifacts=root/'artifacts';artifacts.mkdir()
+            isolated=root/'owned-stage';isolated.mkdir()
+            task=Task('public objective',work,'agent','fixture',(),(),(),mode='engineering',write_roots=('module.py',))
+            profile=Profile('local','fixture','http://127.0.0.1:9999/v1')
+            def interrupted(*args):
+                (args[2]/'module.py').write_text('MODEL-GENERATED-CANARY')
+                raise RuntimeError('fixture interruption before export')
+            with (patch('aiwork.trial_budget.current',return_value={'label':'fixture-owned'}),
+                  patch('aiwork.harness.mkdtemp',return_value=str(isolated)),
+                  patch.object(OpenCode,'run_session',side_effect=interrupted)):
+                with self.assertRaisesRegex(RuntimeError,'interruption'):
+                    OpenCode('fixture').execute(profile,task,work,artifacts,'public prompt',10)
+            receipt=json.loads((artifacts/'retained-stage.json').read_bytes())
+            self.assertTrue(receipt['retained'])
+            self.assertEqual((Path(receipt['workspace'])/'module.py').read_text(),'MODEL-GENERATED-CANARY')
+            self.assertEqual((work/'module.py').read_text(),'original')
+
     def test_instruction_baseline_keeps_goal_and_scope_without_private_material(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

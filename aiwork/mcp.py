@@ -14,6 +14,19 @@ from .verify import pipeline
 from .workspace import contained, ignore, inventory, snapshot
 
 
+def reserve_trial_call(spec: Path, limit: int) -> int:
+    """Reconnects cannot reset a measured session's public-tool allowance."""
+    from .lock import file_lock
+    from .trial_budget import write
+    path = spec.with_name("trial-tool-calls.json")
+    with file_lock(path.with_suffix(".lock")):
+        used = json.loads(path.read_bytes())["used"] if path.exists() else 0
+        if used >= limit:
+            raise ValueError("measured public-tool budget exhausted")
+        write(path, {"used": used + 1})
+        return used + 1
+
+
 def focus(workspace: Path, args: dict) -> dict:
     """Read a bounded public source window without exporting a whole file."""
     if (not isinstance(args, dict) or set(args) - {"path", "line", "symbol"}
@@ -127,8 +140,8 @@ def serve(spec_path: Path) -> None:
                        and type(index) is int and 0 <= index < len(checks))):
                 value = {"error": "invalid tool or command index"}
             else:
-                calls += 1
                 try:
+                    calls = reserve_trial_call(spec_path, budget) if config.get("trial") else calls + 1
                     if build:
                         changed = delta(inventory(baseline), inventory(workspace))
                         validate_changes(changed, tuple(config["write_roots"]))
@@ -148,7 +161,7 @@ def serve(spec_path: Path) -> None:
                         snapshot(workspace, check_root, ())
                         remaining = config.get("deadline", time() + 900) - time()
                         value = pipeline(setup, checks[index], check_root, spec_path.parent / "check-home",
-                                         config["image"], timeout=remaining, stop=stop)
+                                         config["image"], timeout=remaining, stop=stop, trial=config.get("trial"))
                     value["stdout"] = value["stdout"][-4000:]
                     value["stderr"] = value["stderr"][-4000:]
                     error = not value["passed"]

@@ -9,6 +9,9 @@
 | Controller regression | VERIFIED | 96 local tests, including Docker and installed OpenCode boundary coverage. Inspector successes are separated from public-check success; original smoke overcount and corrected recount are preserved. |
 | Click type/documentation checks | VERIFIED | Frozen candidate passes mypy, Pyright, cached-inventory Sphinx and lock checks. Ruff reports 15 issues and formatter would change types.py; both fail while the baseline passes. The artifact remains unchanged. |
 | HTTPX task preparation | VERIFIED | Pinned unfamiliar project, frozen specification/16 public checks and permission draft; unmodified baseline passes 75 selected upstream tests and 7/16 new requirements. No worker dispatched. |
+| HTTPX final approval bundle | VERIFIED | [Exact manifest and protocol](HTTPX-AUTHORIZATION.md), identical clean snapshots, four write paths and pinned local model/image. Remains PREPARED_NOT_AUTHORIZED; zero inference requests. |
+| Cumulative trial enforcement | VERIFIED | 20-second warm/preflight + 180-second engineering/public + 40-second grading reservations; persistent expiry/resume guards, quotas, owned-process/container cancellation and retained source. 43 targeted infrastructure tests pass; full suite not rerun. |
+| Matched warm execution and backend cancellation | UNTESTED | Protocol and mocked cold/warm checks prepared; live model warm-up, backend cancellation latency and actual direct/hierarchical trials await authorization. |
 | Unassisted unfamiliar-feature acceptance | UNTESTED | Awaiting initial permissions/budget approval and sufficient execution capacity; no full campaign or matched comparison started. |
 
 See the [Phase 6.1 handoff](PHASE61.md). Historical Phase 6 delivery and evaluation material remain unchanged.

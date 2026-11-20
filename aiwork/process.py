@@ -40,6 +40,8 @@ def environment(root: Path) -> dict[str, str]:
     })
     for name in ("DATA", "CONFIG", "STATE", "CACHE"):
         env[f"XDG_{name}_HOME"] = str(root / name.lower())
+    if os.environ.get("AIWORK_TRIAL_BUDGET") or os.environ.get("AIWORK_TRIAL_GROUP_MEMBER"):
+        env["AIWORK_TRIAL_GROUP_MEMBER"] = "1"  # Ownership only; never export the budget lease/token.
     return env
 
 
@@ -66,7 +68,7 @@ def kill_tree(proc: subprocess.Popen) -> None:
             proc.kill()
     else:
         try:
-            os.killpg(proc.pid, signal.SIGKILL)
+            os.killpg(getattr(proc, "_aiwork_pgid", proc.pid), signal.SIGKILL)
         except ProcessLookupError:
             pass
 
@@ -76,14 +78,20 @@ def owned_process(*args, **kwargs):
     """Start a child before any descendants can escape the owned Windows job."""
     job = None
     proc = None
+    trial_root = bool((kwargs.get("env") or {}).get("AIWORK_TRIAL_BUDGET")
+                      and not (os.environ.get("AIWORK_TRIAL_BUDGET") or os.environ.get("AIWORK_TRIAL_GROUP_MEMBER")))
     if os.name == "nt":
         from .windows_job import Job
         job = Job()
         kwargs["creationflags"] = kwargs.get("creationflags", 0) | 0x4  # CREATE_SUSPENDED
     else:
         kwargs.setdefault("start_new_session", True)
+        if os.environ.get("AIWORK_TRIAL_BUDGET") or os.environ.get("AIWORK_TRIAL_GROUP_MEMBER"):
+            kwargs["start_new_session"] = False
     try:
         proc = subprocess.Popen(*args, **kwargs)
+        if os.name != "nt" and not kwargs.get("start_new_session", True):
+            proc._aiwork_pgid = os.getpgrp()
         if job:
             proc._aiwork_job = job
             job.attach_and_resume(proc)
@@ -91,6 +99,8 @@ def owned_process(*args, **kwargs):
     finally:
         if job:
             job.close()
+        elif proc is not None and trial_root:
+            kill_tree(proc)  # Also reap orphaned descendants after a normal phase exit.
         elif proc is not None and proc.poll() is None:
             kill_tree(proc)
         if proc is not None and proc.poll() is None:
@@ -100,7 +110,8 @@ def owned_process(*args, **kwargs):
 
 def run(argv: list[str] | str, cwd: Path, timeout: float, env: dict[str, str],
         stop: Path | None = None, *, decode_errors: str = "replace",
-        stdin: bytes | None = None, output_limit: int = OUTPUT_LIMIT) -> Result:
+        stdin: bytes | None = None, output_limit: int = OUTPUT_LIMIT,
+        stdout_path: Path | None = None) -> Result:
     if type(output_limit) is not int or not 1 <= output_limit <= 16 * OUTPUT_LIMIT:
         raise ValueError("output_limit must be a positive byte count up to 16 MiB")
     started = monotonic()
@@ -119,14 +130,23 @@ def run(argv: list[str] | str, cwd: Path, timeout: float, env: dict[str, str],
         if source is not None:
             source.close()
 
-    def drain(stream, buffer: bytearray) -> None:
+    def drain(stream, buffer: bytearray, log: Path | None) -> None:
+        target = log.open("wb", buffering=0) if log else None
         with stream:
-            while block := stream.read1(16384):
-                buffer.extend(block[:max(0, output_limit + 1 - len(buffer))])
+            try:
+                while block := stream.read1(16384):
+                    before = len(buffer)
+                    captured = block[:max(0, output_limit + 1 - before)]
+                    buffer.extend(captured)
+                    if target:
+                        target.write(captured[:max(0, output_limit-before)])
+            finally:
+                if target:
+                    target.close()
 
     buffers = [bytearray(), bytearray()]
-    threads = [Thread(target=drain, args=(stream, buffer), daemon=True)
-               for stream, buffer in zip((proc.stdout, proc.stderr), buffers)]
+    threads = [Thread(target=drain, args=(stream, buffer, log), daemon=True)
+               for stream, buffer, log in zip((proc.stdout, proc.stderr), buffers, (stdout_path, None))]
     for thread in threads:
         thread.start()
     timed_out = False

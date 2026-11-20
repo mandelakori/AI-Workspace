@@ -53,12 +53,14 @@ sealed suite. Current prepared inputs are `.aiwork/phase61/httpx-task` and
 upstream tests and nine expected feature failures among 16 public checks.
 
 Before **any measured autonomy trial**, the operator must review and approve the
-exact `httpx-review.json` digest, four write roots, public commands, local profile,
-image and cumulative resource policy. The public
+new [exact authorization manifest and protocol](../../docs/HTTPX-AUTHORIZATION.md),
+four write roots, public commands, local profile, image and cumulative resource
+policy. The original `httpx-review.json` remains unchanged. Its public
 [preparation summary](../../docs/evidence/phase61/httpx-preparation.json) contains
-the current digest. No task manifest is emitted while approval is pending.
-Use the existing reviewed planning/workflow and ranked controller for a future
-dispatch, after the cumulative deadline/warm-model protocol is resolved.
+the original draft digest. The final bundle binds the execution tasks but refuses
+dispatch without a separate grant for its exact digest. Persistent cumulative
+deadlines, one-shot reservations and a common neutral warm-up protocol are now
+implemented. Preparation makes no model inference requests.
 
 During such a trial, models may inspect approved code, edit and run approved
 public checks. Permission expansion or operator implementation guidance stops

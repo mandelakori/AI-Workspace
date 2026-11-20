@@ -91,6 +91,11 @@ upstream-ready style verdict. See [check receipts](evidence/phase61/click-checks
 
 ## Unfamiliar task prepared, not executed
 
+Follow-up: the [final authorization review](HTTPX-AUTHORIZATION.md) now freezes
+the cumulative deadline implementation, matched warm protocol and exact approval
+manifest. It remains PREPARED_NOT_AUTHORIZED. The original draft and measurements
+below are preserved as historical preparation evidence.
+
 HTTPX 0.28.1 is pinned at `26d48e0634e6ee9cdc0533996db289ce4b430177`.
 It has not previously served as this project's reconstruction/engineering
 fixture; model pretraining familiarity cannot be established. The new

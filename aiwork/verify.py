@@ -31,13 +31,14 @@ def runner_status(root: Path, image: str) -> dict:
 
 
 def pipeline(setup: tuple[Check, ...], check: Check, workspace: Path, home: Path, image: str,
-             *, timeout: float, stop: Path | None = None) -> dict:
+             *, timeout: float, stop: Path | None = None, trial: dict | None = None) -> dict:
     deadline = monotonic() + timeout
     for step in (*setup, check):
         remaining = deadline - monotonic()
         if remaining <= 0:
             return {"passed": False, "timed_out": True, "stdout": "", "stderr": "pipeline deadline"}
-        outcome = invoke(step, workspace, home, image, timeout=remaining, stop=stop)
+        options = {"trial": trial} if trial else {}
+        outcome = invoke(step, workspace, home, image, timeout=remaining, stop=stop, **options)
         if not outcome["passed"]:
             return outcome
     return outcome
@@ -46,7 +47,18 @@ def pipeline(setup: tuple[Check, ...], check: Check, workspace: Path, home: Path
 def invoke(check: Check, workspace: Path, home: Path, image: str = "", *,
            timeout: float | None = None, private: Path | None = None,
            stop: Path | None = None, stdin: bytes | None = None, sealed: bool = False,
-           extra_args: tuple[str, ...] = ()) -> dict:
+           extra_args: tuple[str, ...] = (), trial: dict | None = None) -> dict:
+    from .trial_budget import public_limit
+    trial = trial or public_limit()
+    if trial:
+        from time import time
+        if (set(trial) != {"label", "deadline"}
+                or not re.fullmatch(r"aiwork-trial-[a-f0-9]{32}", trial["label"])):
+            raise ValueError("invalid measured verifier lease")
+        remaining = trial["deadline"] - time()
+        if remaining <= 0:
+            raise ValueError("measured verification deadline exhausted")
+        timeout = min(timeout if timeout is not None else check.timeout, remaining)
     if check.oracle or sealed and (not image or private):
         raise ValueError("sealed candidate runs require Docker and no private mounts")
     env = environment(home)
@@ -79,6 +91,13 @@ def invoke(check: Check, workspace: Path, home: Path, image: str = "", *,
         vector = ["python" if arg == "{python}" else
                   arg.replace("{verification}", "/verification") if private else arg
                   for arg in check.argv]
+        if trial:
+            argv += ["--label", "aiwork.trial=" + trial["label"]]
+            # The daemon's container has its own absolute-deadline watchdog, even if its CLI dies.
+            watchdog = ("import os,sys,time; left=float(sys.argv[1])-time.time(); "
+                        "sys.exit(124) if left<=0 else None; "
+                        "os.execvp('timeout',['timeout','--signal=KILL',str(left),*sys.argv[2:]])")
+            vector = ["python", "-I", "-c", watchdog, str(trial["deadline"]), *vector]
         argv += [image, *vector]
         cwd = workspace
     else:

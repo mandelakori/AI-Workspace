@@ -1,0 +1,21 @@
+{
+  "review_digest": "032364929b38cfb12aa04dc6cfaae145848151631bcdb86cddf4dbec59ebe475",
+  "source_commit": "26d48e0634e6ee9cdc0533996db289ce4b430177",
+  "source_files": 119,
+  "feature_sha256": "06f1948ce3f59fe02503e0a3cd91fd6c8987adc41d3a9ddabf899aad0b7a355c",
+  "public_sha256": "532542411a986c14f0315947840c41bf9a520358a8931b2e69a1dc1e1d0dbab5",
+  "runner": "sha256:d3521c3f00c0489a2c2ddccd1975469ee5658bac4e5a79fafd94a1f4f017ada3",
+  "profile_sha256": "272074b63854b9a983b98ab973c242f83d9e64a073c5ef995439395b726c5995",
+  "model_digest": "5852b52876b93f88a1d3b8f6a9888e3f6f904a38dff024a18f28831f6cbc1048",
+  "model_parameters": "num_ctx                        8192\npresence_penalty               1.5\ntemperature                    1\ntop_k                          20\ntop_p                          0.95",
+  "model_capabilities": [
+    "completion",
+    "vision",
+    "tools",
+    "thinking"
+  ],
+  "residency": {
+    "models": []
+  },
+  "no_inference_requests": true
+}

@@ -322,6 +322,7 @@ workspace = "source"
 kind = "agent"
 mode = "engineering"
 category = "integration"
+agent_role = "implementation"
 write_roots = ["pkg"]
 attempts = 1
 [[commands]]

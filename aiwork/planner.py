@@ -176,11 +176,20 @@ def propose(controller: Controller, task: Task, root: Path, planner_id: str, max
                     schema = plan_schema(min_steps, max_steps, len(task.commands))
                     fmt = {"type": "json_schema", "schema": schema,
                            "json_schema": {"name": "aiwork_plan", "schema": schema}}
-                response = request(profile.endpoint.rstrip("/") + "/chat/completions", "POST", {
+                from .trial_budget import claim, timeout
+                claim("planner", cfg.state)
+                payload = {
                     "model": profile.model, "messages": messages, "temperature": 0.1,
                     "max_tokens": min(profile.output_tokens, 2400),
                     "response_format": fmt, **request_options(profile),
-                }, key=client.key(), timeout=90)
+                }
+                from .trial_budget import current
+                if current():
+                    write_json(root / "planner-request.json", payload)
+                response = request(profile.endpoint.rstrip("/") + "/chat/completions", "POST", payload,
+                                   key=client.key(), timeout=timeout(90))
+                if current():
+                    write_json(root / "planner-response.json", response)
             raw = response["choices"][0]["message"]["content"]
             (root / f"planner-{proposal_id}-{attempt + 1}.json.txt").write_text(raw, encoding="utf-8")
             plan = json.loads(raw)
@@ -189,6 +198,9 @@ def propose(controller: Controller, task: Task, root: Path, planner_id: str, max
                                                         "usage": response.get("usage"), "input": policy})
             return plan
         except (ValueError, OSError, RuntimeError, KeyError, IndexError, TypeError) as exc:
+            if isinstance(exc, OSError):
+                from .trial_budget import inference_interrupted
+                inference_interrupted()
             feedback = (f"\nPrevious proposal rejected: {str(exc)[:500]}. "
                         "Consolidate any untestable step into its related feature. Return a corrected complete plan.")
     raise ValueError(feedback.strip())
@@ -394,6 +406,7 @@ def execute_plan(controller: Controller, task: Task, steps: list[Step], root: Pa
         status["combined"] = str(combined)
         integration = replace(task, workspace=combined, kind="direct", mode="restricted",
                               write_roots=(), commands=(), setup=(), baseline_check=False,
+                              agent_role="", source_context=(), source_patch=False,
                               profile="", location="auto", checks=task.setup + task.checks, attempts=1)
         jobs["integration"] = enqueue(integration, "integration")
         write_json(journal, status)

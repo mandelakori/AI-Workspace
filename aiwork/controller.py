@@ -111,6 +111,8 @@ class Controller:
         return self.state.submit(task.category, trusted, prepare, job_id)
 
     def work(self, job: str | None = None) -> dict | None:
+        from .trial_budget import current
+        current(self.config.state)
         if (self.config.state / "STOP").exists():
             raise ValueError("controller paused by emergency stop")
         with ExitStack() as lifetime:
@@ -130,6 +132,9 @@ class Controller:
                 return self._finish(job, root, "blocked", str(exc))
 
     def resume(self, job: str, interrupted: bool = False, reset: bool = False) -> None:
+        from .trial_budget import FILE
+        if (self.config.state / FILE).exists():
+            raise ValueError("measured trial sessions cannot be resumed")
         rows = self.state.jobs(job)
         if not rows:
             raise ValueError("job was not found")
@@ -313,12 +318,15 @@ class Controller:
 
     def attempt(self, task: Task, profile: Profile | None, attempt: Path, previous: str,
                 summary: dict, trusted: bool) -> dict:
+        from .trial_budget import claim, timeout
+        if profile:
+            claim("worker", self.config.state)
         work = attempt / "workspace"
         engineering = task.mode == "engineering"
         checkpoint = self.checkpoint(task, attempt) if engineering else None
         staged = snapshot(checkpoint or task.workspace, work, ())
         before = inventory(task.workspace) if checkpoint else staged
-        deadline = monotonic() + task.timeout
+        deadline = monotonic() + timeout(task.timeout)
         agent_deadline = deadline
         findings = ""
         if task.rank_public:
@@ -518,6 +526,7 @@ class Controller:
                            previous=previous if task.rank_public else "")
             return
         from .remote import a100_session
+        from .trial_budget import public_limit
         binary = opencode_path(self.config.opencode) if profile.harness == "opencode" else None
         qwen = qwen_command(self.config.qwen, self.config.state) if profile.harness == "qwen" else None
         if not binary and not qwen:
@@ -563,6 +572,7 @@ class Controller:
                                       "setup": [asdict(c) for c in task.setup], "engineering": engineering,
                                       "write_roots": task.write_roots, "baseline": str(task.workspace),
                                       "objective": task.objective,
+                                      "trial": public_limit(),
                                       "workspace": str(work), "image": self.config.verification_image,
                                       "stop": str(self.config.state / "STOP"),
                                       "deadline": time() + max(0, deadline - monotonic())})
@@ -622,6 +632,9 @@ class Controller:
                 metrics["lane_wait_seconds"] = round(admitted - entered, 3)
                 metrics["harness_seconds"] = round(result.elapsed, 3)
                 write_json(attempt / "agent-metrics.json", metrics)
+                if result.timed_out:
+                    from .trial_budget import inference_interrupted
+                    inference_interrupted()
                 if result.code or result.timed_out or result.truncated:
                     raise RuntimeError("harness failed or exceeded limits; see attempt logs")
 

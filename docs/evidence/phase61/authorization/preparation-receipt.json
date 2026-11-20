@@ -1,0 +1,35 @@
+{
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "approval_digest": "3bdd3fb56a0d2f8c15fdbdf3ff879619a2dc94cb09f64c43b6fce6af65114b53",
+  "original_review_digest": "032364929b38cfb12aa04dc6cfaae145848151631bcdb86cddf4dbec59ebe475",
+  "original_frozen_files": 119,
+  "identical_start_files": 121,
+  "four_write_paths": [
+    "httpx/_utils.py",
+    "httpx/_client.py",
+    "tests/test_path_mounts.py",
+    "docs/advanced/transports.md"
+  ],
+  "profile_unchanged": true,
+  "public_corpus_unchanged": true,
+  "feature_unchanged": true,
+  "frozen_click_inventory_unchanged": true,
+  "no_trial_states": true,
+  "no_operator_grant_created": true,
+  "no_sealed_inputs_created": true,
+  "model_inference_requests": 0,
+  "targeted_tests": {
+    "run": 43,
+    "passed": 43,
+    "skipped": 0,
+    "seconds": 33.109,
+    "docker_enabled": true
+  },
+  "full_regression_suite": "NOT_RUN per targeted-only instruction",
+  "installed_boundary_hardware_fixture": "NOT_RERUN; no model inference permitted",
+  "baseline_evidence": "Existing 75/75 upstream and 7/16 public; HTTPX tests not rerun during preparation",
+  "bundle": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-authorization\\benchmark-v2",
+  "superseded_preparation_digest": "800a256d9597c98ad6ce672ea60b1a914d7c8c6476fe8cecd925ad44fbfb881f",
+  "superseded_bundle_reason": "Expected nonzero exit grading correction; no trial or inference occurred.",
+  "main_ref": "cf50e89c2ca2ad21d86fda5473f5ad6edc0c2623"
+}

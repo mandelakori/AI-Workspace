@@ -4,9 +4,10 @@ import json
 import os
 import shutil
 import sys
+from contextlib import nullcontext
 from dataclasses import dataclass
 from pathlib import Path
-from tempfile import TemporaryDirectory
+from tempfile import TemporaryDirectory, mkdtemp
 from time import monotonic
 from typing import Protocol
 
@@ -45,12 +46,23 @@ class OpenCode:
                 prompt: str, timeout: float, tool_spec: Path | None = None,
                 stop: Path | None = None) -> Result:
         started = monotonic()
-        with TemporaryDirectory(prefix="aiwork-opencode-") as directory:
+        from .trial_budget import current
+        trial = current()
+        # A deadline may kill the supervising Python process before source export.
+        # Measured stages are therefore retained from creation, with an ownership receipt.
+        staging = (nullcontext(mkdtemp(prefix=trial["label"] + "-opencode-")) if trial
+                   else TemporaryDirectory(prefix="aiwork-opencode-"))
+        with staging as directory:
             isolated = Path(directory).resolve()
             if any((parent / ".git").exists() for parent in isolated.parents):
                 raise ValueError("OpenCode temporary workspaces must be outside existing Git worktrees")
             stage = isolated / "workspace"
             before = snapshot(work, stage, ())
+            if trial:
+                (artifacts / "retained-stage.json").write_text(json.dumps({
+                    "isolated_root": str(isolated), "workspace": str(stage),
+                    "phase_label": trial["label"], "owner_pid": os.getpid(), "retained": True,
+                }), encoding="utf-8")
             if tool_spec:
                 policy = json.loads(tool_spec.read_bytes())
                 policy["workspace"] = str(stage)
@@ -140,7 +152,7 @@ class OpenCode:
         })
         return run([self.binary, "run", "--standalone", "--format", "json",
                     "--model", config["model"], "--", prompt], work, timeout, env, stop,
-                   output_limit=8 * 1024 * 1024)
+                   output_limit=8 * 1024 * 1024, stdout_path=artifacts / "agent-live.jsonl")
 
 
 def rule(action: str, resource: str = "*", effect: str = "allow") -> dict:
@@ -230,4 +242,4 @@ class QwenCode:
         })
         return run([*self.command, "--output-format", "stream-json", "--approval-mode", "default",
                     "--model", profile.model, "--prompt", prompt], work, timeout, env, stop,
-                   output_limit=8 * 1024 * 1024)
+                   output_limit=8 * 1024 * 1024, stdout_path=artifacts / "agent-live.jsonl")
