@@ -1,0 +1,176 @@
+{
+  "status": "QUARANTINED",
+  "recorded_at": "2026-11-20T23:32:16.239332+00:00",
+  "approval_digest": "2a12502209bd9ada3a5082e3ab489bb6423a41a6cdf5144fbec8de05874fe3b9",
+  "classification": "AUTONOMOUS_ATTEMPT_WITH_REJECTED_EDITS_NO_IMPLEMENTATION_DELIVERY",
+  "quarantine_reason": "inference client interrupted; backend cancellation latency unverified",
+  "direct": {
+    "worker_sessions": 1,
+    "planner_requests": 0,
+    "harness_process": {
+      "code": 1,
+      "elapsed": 95.375,
+      "timed_out": true,
+      "truncated": false
+    },
+    "harness_budget": {
+      "configured_attempt_seconds": 120,
+      "remaining_attempt_seconds": 116.547,
+      "verification_reserve_seconds": 20,
+      "harness_allowance_seconds": 96.547,
+      "phase_limit": {
+        "label": "aiwork-trial-b767886715a9435a8fee6e59984d4507",
+        "deadline": 1795217379.7845032
+      },
+      "note": "Baseline/admission and staging consume the attempt; the outer phase also charges planning and final selection."
+    },
+    "phases": {
+      "warm": {
+        "limit": 20,
+        "status": "FINISHED",
+        "started_utc": 1795217189.0444236,
+        "deadline_utc": 1795217209.0444236,
+        "deadline_monotonic": 613317.968,
+        "label": "aiwork-trial-e8d661b526b8474fad6ab08cc9a8ef1c",
+        "finished_utc": 1795217199.7676673,
+        "execution_elapsed_with_termination": 10.719,
+        "cancellation_cleanup_seconds": 0.0,
+        "error": "",
+        "timed_out": false,
+        "cleanup": {
+          "passed": true,
+          "not_applicable": "warm phase forbids verification containers"
+        }
+      },
+      "work": {
+        "limit": 180,
+        "status": "FAILED",
+        "started_utc": 1795217199.7845032,
+        "deadline_utc": 1795217379.7845032,
+        "deadline_monotonic": 613488.703,
+        "label": "aiwork-trial-b767886715a9435a8fee6e59984d4507",
+        "finished_utc": 1795217318.2254992,
+        "execution_elapsed_with_termination": 118.234,
+        "cancellation_cleanup_seconds": 0.203,
+        "error": "",
+        "timed_out": false,
+        "cleanup": {
+          "passed": true,
+          "removed": []
+        }
+      },
+      "grade": {
+        "limit": 40,
+        "status": "PENDING"
+      }
+    },
+    "progress_beyond_exploration": true,
+    "relevant_source_reached": "URLPattern class at line 120 and priority section at line 203",
+    "edit_attempts": 2,
+    "accepted_edits": 0,
+    "source_changed": false,
+    "tool_calls": {
+      "checks_focus": 7,
+      "glob": 1,
+      "edit": 2,
+      "grep": 1
+    },
+    "tool_errors": [
+      {
+        "tool": "checks_focus",
+        "input": {
+          "path": "httpx/_utils.py",
+          "query": "class URLPattern"
+        },
+        "error": "No tool named \"checks_focus\" is currently available. Please use a tool from the available tool list."
+      },
+      {
+        "tool": "checks_focus",
+        "input": {
+          "path": "C:\\Users\\mande\\AppData\\Local\\Temp\\aiwork-trial-b767886715a9435a8fee6e59984d4507-opencode-57ax4cvn\\workspace\\httpx\\_utils.py",
+          "query": "URLPattern"
+        },
+        "error": "{\"error\": \"unsafe relative path: 'C:\\\\\\\\Users\\\\\\\\mande\\\\\\\\AppData\\\\\\\\Local\\\\\\\\Temp\\\\\\\\aiwork-trial-b767886715a9435a8fee6e59984d4507-opencode-57ax4cvn\\\\\\\\workspace\\\\\\\\httpx\\\\\\\\_utils.py'\"}"
+      },
+      {
+        "tool": "edit",
+        "input": {
+          "path": "httpx/_utils.py",
+          "oldString": "class URLPattern:\n    \"\"\"\n    A utility class currently used for making lookups against proxy keys...\n\n    # Wildcard matching...\n    >>> pattern = URLPattern(\"all://\")\n    >>> pattern.matches(httpx.URL(\"http://example.com\"))\n    True\n\n    # Witch scheme matching...\n    >>> pattern = URLPattern(\"https://\")\n    >>> pattern.matches(httpx.URL(\"https://example.com\"))\n    True\n    >>> pattern.matches(httpx.URL(\"http://example.com\"))\n    False\n\n    # With domain matching...\n    >>> pattern = URLPattern(\"https://example.com\")\n    >>> pattern.matches(httpx.URL(\"https://example.com\"))\n    True\n    >>> pattern.matches(httpx.URL(\"http://example.com\"))\n    False\n    >>> pattern.matches(httpx.URL(\"https://other.com\"))\n    False\n\n    # Wildcard scheme, with domain matching...\n    >>> pattern = URLPattern(\"all://example.com\")\n    >>> pattern.matches(httpx.URL(\"https://example.com\"))\n    True\n    >>> pattern.matches(httpx.URL(\"http://example.com\"))\n    True\n    >>> pattern.matches(httpx.URL(\"https://other.com\"))\n    False\n\n    # With port matching...\n    >>> pattern = URLPattern(\"https://example.com:1234\")\n    >>> pattern.matches(httpx.URL(\"https://example.com:1234\"))\n    True\n    >>> pattern.matches(httpx.URL(\"https://example.com\"))\n    False\n    \"\"\"\n\n    def __init__(self, pattern: str) -> None:\n        from ._urls import URL\n\n        if pattern and \":\" not in pattern:\n            raise ValueError(\n                f\"Proxy keys should use proper URL forms rather \"\n                f\"than plain scheme strings. \"\n                f'Instead of \"{pattern}\", use \"{pattern}://\"')\n\n        url = URL(pattern)\n        self.pattern = pattern\n        self.scheme = \"\" if url.scheme == \"all\" else url.scheme\n        self.host = \"\" if url.host == \"*\" else url.host\n        self.port = url.port\n        if not url.host or url.host == \"*\":\n            self.host_regex: typing.Pattern[str] | None = None\n        elif url.host.startswith(\"*.\"):",
+          "newString": "class URLPattern:\n    \"\"\"\n    A utility class currently used for making lookups against proxy keys...\n\n    # Wildcard matching...\n    >>> pattern = URLPattern(\"all://\")\n    >>> pattern.matches(httpx.URL(\"http://example.com\"))\n    True\n\n    # Witch scheme matching...\n    >>> pattern = URLPattern(\"https://\")\n    >>> pattern.matches(httpx.URL(\"https://example.com\"))\n    True\n    >>> pattern.matches(httpx.URL(\"http://example.com\"))\n    False\n\n    # With domain matching...\n    >>> pattern = URLPattern(\"https://example.com\")\n    >>> pattern.matches(httpx.URL(\"https://example.com\"))\n    True\n    >>> pattern.matches(httpx.URL(\"http://example.com\"))\n    False\n    >>> pattern.matches(httpx.URL(\"https://other.com\"))\n    False\n\n    # Wildcard scheme, with domain matching...\n    >>> pattern = URLPattern(\"all://example.com\")\n    >>> pattern.matches(httpx.URL(\"https://example.com\"))\n    True\n    >>> pattern.matches(httpx.URL(\"http://example.com\"))\n    True\n    >>> pattern.matches(httpx.URL(\"https://other.com\"))\n    False\n\n    # With port matching...\n    >>> pattern = URLPattern(\"https://example.com:1234\")\n    >>> pattern.matches(httpx.URL(\"https://example.com:1234\"))\n    True\n    >>> pattern.matches(httpx.URL(\"https://example.com\"))\n    False\n    \"\"\"\n\n    def __init__(self, pattern: str) -> None:\n        from ._urls import URL\n\n        if pattern and \":\" not in pattern:\n            raise ValueError(\n                f\"Proxy keys should use proper URL forms rather \"\n                f\"than plain scheme strings. \"\n                f'Instead of \"{pattern}\", use \"{pattern}://\"')\n\n        url = URL(pattern)\n        self.pattern = pattern\n        self.scheme = \"\" if url.scheme == \"all\" else url.scheme\n        self.host = \"\" if url.host == \"*\" else url.host\n        self.port = url.port\n        # Parse the path component for potential path-prefix matching\n        # Path is empty or root if no \"/\" in netloc+path (scheme://host/path)\n        self.path: str = url.path\n        if not url.host or url.host == \"*\":\n            self.host_regex: typing.Pattern[str] | None = None\n        elif url.host.startswith(\"*.\"):"
+        },
+        "error": "Could not find oldString in httpx/_utils.py. It must match exactly, including whitespace and indentation."
+      },
+      {
+        "tool": "edit",
+        "input": {
+          "path": "httpx/_utils.py",
+          "oldString": "    def __init__(self, pattern: str) -> None:\n        from ._urls import URL\n\n        if pattern and \":\" not in pattern:\n            raise ValueError(\n                f\"Proxy keys should use proper URL forms rather \"\n                f\"than plain scheme strings. \"\n                f'Instead of \"{pattern}\", use \"{pattern}://\"')\n\n        url = URL(pattern)\n        self.pattern = pattern\n        self.scheme = \"\" if url.scheme == \"all\" else url.scheme\n        self.host = \"\" if url.host == \"*\" else url.host\n        self.port = url.port\n        if not url.host or url.host == \"*\":",
+          "newString": "    def __init__(self, pattern: str) -> None:\n        from ._urls import URL\n\n        if pattern and \":\" not in pattern:\n            raise ValueError(\n                f\"Proxy keys should use proper URL forms rather \"\n                f\"than plain scheme strings. \"\n                f'Instead of \"{pattern}\", use \"{pattern}://\"')\n\n        url = URL(pattern)\n        self.pattern = pattern\n        self.scheme = \"\" if url.scheme == \"all\" else url.scheme\n        self.host = \"\" if url.host == \"*\" else url.host\n        self.port = url.port\n        # Parse the path component for potential path-prefix matching\n        # Path is empty or root if no \"/\" in netloc+path (scheme://host/path)\n        self.path: str = url.path\n        if not url.host or url.host == \"*\":"
+        },
+        "error": "Could not find oldString in httpx/_utils.py. It must match exactly, including whitespace and indentation."
+      }
+    ],
+    "mcp_calls_recorded": 6,
+    "duplicate_excerpts_suppressed": 2,
+    "worker_public_test_calls": 0,
+    "new_feature_functionality_independently_verified": false,
+    "frozen_fallback": {
+      "path": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\frozen-6761f7fefe4798a5",
+      "inventory_sha256": "5d4e3c9e66ae2da5c42bd1d7a58ed6dd0131835f72ddd95ff3fb54282a10e038",
+      "public_passed_cases": 7,
+      "public_total": 16,
+      "upstream_gate_passed": true,
+      "all_public_gates_passed": false,
+      "model_source_delivery": false,
+      "missing": [
+        "authored tests / documentation"
+      ]
+    },
+    "model_candidate": null,
+    "sealed_score": null,
+    "regressions": "No applied changes; starting source and fallback retained unchanged. No post-attempt challenger grading."
+  },
+  "hierarchical": {
+    "status": "NOT_STARTED_QUARANTINED",
+    "worker_sessions": 0,
+    "planner_requests": 0,
+    "candidate": null,
+    "public_score": null,
+    "sealed_score": null
+  },
+  "usage": {
+    "warm": {
+      "prompt_tokens": 17,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens": 2,
+      "total_tokens": 19
+    },
+    "cold_before_neutral": true,
+    "completed_worker_usage_events": 11,
+    "worker_started_steps": 11,
+    "worker_reported_token_fields": {
+      "input": 18579,
+      "output": 2030,
+      "reasoning": 0
+    },
+    "cache_read_tokens_separate": 35214,
+    "cache_write_tokens_separate": 0,
+    "unrecorded_usage": "Eleven started and completed steps appear in the trace. Any provider work not represented by completed records is unknown. The watchdog does not independently identify backend activity at interruption."
+  },
+  "execution_wall_seconds": 129.181076,
+  "blocked_retry_bookkeeping": {
+    "record_created": true,
+    "worker_dispatches": 0
+  },
+  "hierarchy_effect": "NOT_MEASURED; incomplete comparison",
+  "mid_run_implementation_guidance": false,
+  "operator_feature_source_corrections": false,
+  "sealed_cases_authored": 0,
+  "additional_campaigns": 0,
+  "remote_inference": false,
+  "resumption_allowed": false,
+  "approved_inputs_implementation_model_image_permissions_budgets_unchanged": true
+}

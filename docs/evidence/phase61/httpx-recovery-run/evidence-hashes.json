@@ -1,0 +1,94 @@
+{
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\pair-outcome.json": {
+    "bytes": 12101,
+    "sha256": "22a9938a0da6f02fb1c730b2ca7da703122c39dbc4cf4091061b633b66b9b2e6"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\operator-approval.json": {
+    "bytes": 182,
+    "sha256": "1de1a2e53caa72094509a4f54237cbad64870b81ea71add998b761b77a6baf30"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\operator-authorization-receipt.json": {
+    "bytes": 431,
+    "sha256": "8f9f6c783145a5060cc9bd40222f6d9482468518cfe14939efd23c45a8f96388"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\warm-process.json": {
+    "bytes": 239,
+    "sha256": "e6ef368aa3686020a30be7d59f200a4d251eb93c29dc3aaec82de56c85172f11"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\warm-wire-request.json": {
+    "bytes": 171,
+    "sha256": "b9fdd2431c9645d7169c8ef8a05225c799dfd676a25914729506e1efb3f81a74"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\warm-wire-response.json": {
+    "bytes": 346,
+    "sha256": "2a86e33a9812de69d70e6fd02ecdea5d7fcf310a8c79b17bd4a7ff50af24b7f5"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\warm-state.json": {
+    "bytes": 2845,
+    "sha256": "20ec9b5e302d06b69b0c9044689c52c383e6c1d5e156dcf36572d8bb70632b6d"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\work-process.json": {
+    "bytes": 1455,
+    "sha256": "becaadd45aad92737c02f778c9d9a5078a26e3c5dd2e56cd960bb08b8538fb80"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\engineering-result.json": {
+    "bytes": 325,
+    "sha256": "dd22040e14d90fb7b568ce4829545ba749c5a136001a22e623971e2b2469f250"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\frozen.json": {
+    "bytes": 43598,
+    "sha256": "1a4eead0dbe12b14a7667a3d0b0b34e4f23c411c6df97904655a4b6a736c41df"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\state\\runs\\751d1208a893402eb46fcd216e672cb9\\attempt-001\\agent-process.json": {
+    "bytes": 84,
+    "sha256": "e6437f47ec8c12e799234f2a27f8784b59f075200d94812b8983e7c1a5a8ed36"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\state\\runs\\751d1208a893402eb46fcd216e672cb9\\attempt-001\\agent-metrics.json": {
+    "bytes": 1055,
+    "sha256": "a6b282b19684fe292bf370c91d4cc78afd2e7f5ff54acb9e5338411f6eb30603"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\state\\runs\\751d1208a893402eb46fcd216e672cb9\\attempt-001\\harness-budget.json": {
+    "bytes": 411,
+    "sha256": "bcbf5a7313afa5a06bcf1528fcb992d8f5c17e6df4272933b96f7418063a1a7e"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\state\\runs\\751d1208a893402eb46fcd216e672cb9\\attempt-001\\operator-task.md": {
+    "bytes": 2136,
+    "sha256": "6635b81c12e6da582bd02d76f84317e0c0daa5978d609ef35c1cb6b200734a7f"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\state\\runs\\751d1208a893402eb46fcd216e672cb9\\attempt-001\\agent.jsonl": {
+    "bytes": 68363,
+    "sha256": "5c2270da8935259d836acfc52fd5042aeff557a9ff6445e76df2bf2ef9d60431"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\state\\runs\\751d1208a893402eb46fcd216e672cb9\\attempt-001\\agent-live.jsonl": {
+    "bytes": 68321,
+    "sha256": "447025d5e2ade4c8bf796356109cd6f9552ae87a09efd61bf7752d2a4ff30d5c"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\state\\runs\\751d1208a893402eb46fcd216e672cb9\\attempt-001\\mcp.jsonl": {
+    "bytes": 17555,
+    "sha256": "f03c891bfae5a69ff030abaf3a44cf32780782cc65d862f78a7a799979e9fc5b"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\state\\runs\\751d1208a893402eb46fcd216e672cb9\\attempt-001\\evidence.json": {
+    "bytes": 1301,
+    "sha256": "4fdf05de0e6e770534c9125a7351d56221ce0875c34b2d8b8a8f5dc6f65d82c1"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\state\\runs\\751d1208a893402eb46fcd216e672cb9\\attempt-002\\evidence.json": {
+    "bytes": 124,
+    "sha256": "68196c83ef6699878361155fc6d89221f0d3bed3e12f4b259a3f2a6aff55aa9a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\selection\\baseline-score.json": {
+    "bytes": 24340,
+    "sha256": "7d996fdc8151b100352abc8ef7d71b96012522f4e14a07739ebbb21ebc8ffec3"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\arms\\direct\\selection\\baseline-raw.json": {
+    "bytes": 6897,
+    "sha256": "06647ccaf3c0cf281aa19241c5803b14f87cb268beb531667e12930e6a8f5174"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\archival\\source-receipt.json": {
+    "bytes": 18322,
+    "sha256": "35466c3d40a04cdc4b4e92db237b67f882eccfc92c215357200069b80a58ee30"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-recovery\\httpx-prepared\\archival\\unapplied-model-proposals.json": {
+    "bytes": 6391,
+    "sha256": "24c0707359eb376427183cd93ebfb5979bea72d135364d12d543c6941b273dba"
+  }
+}

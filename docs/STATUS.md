@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | Bounded source navigation and persistent objective | VERIFIED | [Recovery report](PHASE61-EXECUTION-RECOVERY.md): symbol discovery/query excerpts, duplicate suppression, writable-source ranking, reconnect quotas and public-test goal persistence. All 120 regressions pass. |
 | Inspect/edit/verify smoke | VERIFIED | One local worker, no retry/guidance: model-authored edit changes a self-authored fixture from 1/4 to 4/4 public cases, independently rerun by the controller. 31.625-second work process. One denied native-read call remains; unfamiliar-repository completion is not established. |
-| Fresh HTTPX recovery pilot | UNTESTED | New manifest remains PREPARED_NOT_AUTHORIZED. Old grants are rejected, both quarantined trials/evidence are preserved, and no HTTPX inference or new sealed cases occurred during recovery. |
+| Fresh HTTPX recovery comparison | BLOCKED | [Authorized outcome](HTTPX-RECOVERY-COMPARISON-RESULT.md): direct worker reached URLPattern and attempted two edits; both failed exact matching. Source remains unchanged, no public test call or sealed grading occurred, and the harness timeout quarantined the pair. No hierarchical dispatch or further authorization remains. |
 
 | Capability | Status | Evidence |
 | --- | --- | --- |

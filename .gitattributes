@@ -4,3 +4,4 @@
 /docs/evidence/phase61/httpx-replacement-run/*.jsonl -text -whitespace
 /docs/evidence/phase61/recovery/*.jsonl -text -whitespace
 /docs/evidence/phase61/recovery/*.patch -text -whitespace
+/docs/evidence/phase61/httpx-recovery-run/*.jsonl -text -whitespace

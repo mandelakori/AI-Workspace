@@ -1,0 +1,55 @@
+{
+  "status": "blocked",
+  "detail": "harness failed or exceeded limits; see attempt logs",
+  "changed": [],
+  "elapsed": 101.593,
+  "agent": {
+    "tool_calls": {
+      "checks_focus": 7,
+      "glob": 1,
+      "edit": 2,
+      "grep": 1
+    },
+    "tool_errors": 4,
+    "tokens": {
+      "input": 18579,
+      "output": 2030,
+      "reasoning": 0
+    },
+    "peak_reported_input_tokens": 5230,
+    "successful_public_mcp_checks": 0,
+    "gpu_samples": {
+      "before": [
+        {
+          "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+          "total_mib": 8151,
+          "free_mib": 1294
+        }
+      ],
+      "after": [
+        {
+          "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+          "total_mib": 8151,
+          "free_mib": 1284
+        }
+      ]
+    },
+    "inference_samples": {
+      "before": {
+        "resident": true,
+        "model_vram_mib": 5199,
+        "configured_server_context": 8192
+      },
+      "after": {
+        "resident": true,
+        "model_vram_mib": 5199,
+        "configured_server_context": 8192
+      }
+    },
+    "reported_context_fraction": 0.6384,
+    "effective_output_tokens_per_second": 21.284,
+    "inference_lanes": 1,
+    "lane_wait_seconds": 0.0,
+    "harness_seconds": 95.375
+  }
+}

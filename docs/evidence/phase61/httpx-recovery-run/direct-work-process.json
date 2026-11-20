@@ -1,0 +1,12 @@
+{
+  "phase": "work",
+  "code": 1,
+  "elapsed": 118.23400000005495,
+  "timed_out": false,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\r\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\r\n  File \"<frozen runpy>\", line 88, in _run_code\r\n  File \"C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\aiwork\\httpx_benchmark.py\", line 406, in <module>\r\n    if __name__=='__main__':main()\r\n                            ^^^^^^\r\n  File \"C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\aiwork\\httpx_benchmark.py\", line 372, in main\r\n    {'warm':lambda:warm(root,args.arm,manifest),'work':lambda:work(root,args.arm,manifest),\r\n  File \"C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\aiwork\\httpx_benchmark.py\", line 372, in <lambda>\r\n    {'warm':lambda:warm(root,args.arm,manifest),'work':lambda:work(root,args.arm,manifest),\r\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\aiwork\\httpx_benchmark.py\", line 301, in work\r\n    current()\r\n  File \"C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\aiwork\\trial_budget.py\", line 51, in current\r\n    raise ValueError(\"measured trial quarantined after cancellation/cleanup failure\")\r\nValueError: measured trial quarantined after cancellation/cleanup failure\r\n",
+  "cleanup": {
+    "passed": true,
+    "removed": []
+  }
+}

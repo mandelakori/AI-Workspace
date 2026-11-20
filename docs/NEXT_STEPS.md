@@ -2,6 +2,14 @@
 
 ## Phase 6.1 next approved work
 
+The newly authorized recovery comparison is now **QUARANTINED**. Read the
+[result and preserved evidence](HTTPX-RECOVERY-COMPARISON-RESULT.md): navigation
+reached relevant code and two duplicate excerpts were suppressed, but both edit
+attempts failed exact matching. No source change or public-test attempt was
+delivered before the harness timeout. The hierarchical arm and sealed grading
+were not started. This grant cannot be reused; earlier preparation/review
+instructions below are historical.
+
 Review the [execution recovery report and fresh HTTPX manifest](PHASE61-EXECUTION-RECOVERY.md).
 Navigation and objective fixes pass 120 regressions and one bounded local
 fixture smoke (1/4 → 4/4 public). This is not unfamiliar-repository completion.
