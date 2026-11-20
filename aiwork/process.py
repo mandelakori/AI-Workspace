@@ -100,7 +100,9 @@ def owned_process(*args, **kwargs):
 
 def run(argv: list[str] | str, cwd: Path, timeout: float, env: dict[str, str],
         stop: Path | None = None, *, decode_errors: str = "replace",
-        stdin: bytes | None = None) -> Result:
+        stdin: bytes | None = None, output_limit: int = OUTPUT_LIMIT) -> Result:
+    if type(output_limit) is not int or not 1 <= output_limit <= 16 * OUTPUT_LIMIT:
+        raise ValueError("output_limit must be a positive byte count up to 16 MiB")
     started = monotonic()
     source = TemporaryFile() if stdin is not None else None
     try:
@@ -120,7 +122,7 @@ def run(argv: list[str] | str, cwd: Path, timeout: float, env: dict[str, str],
     def drain(stream, buffer: bytearray) -> None:
         with stream:
             while block := stream.read1(16384):
-                buffer.extend(block[:max(0, OUTPUT_LIMIT + 1 - len(buffer))])
+                buffer.extend(block[:max(0, output_limit + 1 - len(buffer))])
 
     buffers = [bytearray(), bytearray()]
     threads = [Thread(target=drain, args=(stream, buffer), daemon=True)
@@ -153,6 +155,6 @@ def run(argv: list[str] | str, cwd: Path, timeout: float, env: dict[str, str],
             for thread in threads:
                 thread.join(timeout=1)
         owner.__exit__(None, None, None)
-    output = [bytes(b[:OUTPUT_LIMIT]).decode("utf-8", decode_errors) for b in buffers]
+    output = [bytes(b[:output_limit]).decode("utf-8", decode_errors) for b in buffers]
     return Result(proc.returncode, monotonic() - started, *output, timed_out,
-                  any(len(b) > OUTPUT_LIMIT for b in buffers))
+                  any(len(b) > output_limit for b in buffers))

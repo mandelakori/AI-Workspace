@@ -1,5 +1,16 @@
 # Next steps
 
+## Current Phase 6 handoff
+
+Review the [Click feature patch and verification receipts](../deliverables/phase6/README.md).
+The frozen result passes 31/31 public and 32/32 fresh sealed checks, plus 1,392
+default repository tests and offline wheel integration. Production code/tests
+are model-authored; recovery and documentation review required operator help.
+No unassisted hierarchical advantage was demonstrated. Preserve the frozen
+candidate and private final suite; do not feed sealed feedback into repair.
+The [report](PHASE6-REPORT.md) records all unsuccessful attempts, the evaluator
+correction and reproducible commands. Main and the Phase 5 release remain unchanged.
+
 ## Current ledger handoff
 
 The bounded Phase 5 finalization is complete. The local function-replacement trial exhausted six requests without an accepted correction. Preserve framing 4/7, validation 14/18 and the imported A100 balance 9/10 checkpoint, plus the archived verified dependencies. All three selected sources pass UBSan execution but remain behaviorally incomplete. See the [final handoff](PHASE5-HANDOFF.md) for exact failures, costs and commands. Further repair requires new bounded authorization. Keep integration gated and freeze a verified executable before authoring a fresh sealed suite.

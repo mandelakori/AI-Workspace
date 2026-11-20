@@ -9,10 +9,30 @@ from time import monotonic, sleep
 import unittest
 
 from aiwork.lock import file_lock
-from aiwork.process import environment, kill_tree, owned_process, run
+from aiwork.process import OUTPUT_LIMIT, environment, kill_tree, owned_process, run
 
 
 class OwnershipTests(unittest.TestCase):
+    def test_bounded_large_trace_preserves_final_usage_event(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            script = ("import json; print(json.dumps({'tool':'read','output':'x'*"+str(OUTPUT_LIMIT+64)+"})); "
+                      "print(json.dumps({'type':'step_finish','tokens':{'input':17,'output':9}}))")
+            command = [sys.executable, "-c", script]
+            bounded = run(command, root, 10, environment(root/"default-home"))
+            self.assertTrue(bounded.truncated)
+            self.assertLessEqual(len(bounded.stdout.encode()), OUTPUT_LIMIT)
+            complete = run(command, root, 10, environment(root/"trace-home"), output_limit=2*OUTPUT_LIMIT)
+            self.assertFalse(complete.truncated)
+            self.assertEqual(complete.code, 0)
+            rows = [json.loads(line) for line in complete.stdout.splitlines()]
+            self.assertEqual(rows[-1]["tokens"], {"input":17,"output":9})
+
+    def test_trace_limit_is_validated_before_process_launch(self):
+        for limit in (0, -1, True, 17*OUTPUT_LIMIT):
+            with self.subTest(limit=limit), self.assertRaisesRegex(ValueError, "output_limit"):
+                run(["unavailable-program"], Path.cwd(), 1, {}, output_limit=limit)
+
     @unittest.skipUnless(os.name == "nt", "Windows launcher ownership")
     def test_killing_venv_worker_releases_descendant_lock_and_preserves_other_job(self):
         with tempfile.TemporaryDirectory() as temporary:

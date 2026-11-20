@@ -144,6 +144,8 @@ class HierarchyTests(unittest.TestCase):
                 propose_source(self.controller, task, profile, self.workspace, attempt, monotonic()+30, "")
         request_text = str(request.call_args.args[2]["messages"])
         self.assertIn("driver.py", request_text)
+        self.assertIn("implementation, tests or documentation", request_text)
+        self.assertNotIn("prose, tests or other files", request_text)
         self.assertNotIn("fixture private marker", request_text)
         self.assertEqual((self.workspace / "outside.txt").read_text(), "fixture private marker")
         self.assertFalse((self.workspace / "first.txt").exists())

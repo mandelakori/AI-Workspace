@@ -1,0 +1,36 @@
+"""The operator goal must remain available independently of a model-written summary."""
+import json
+from pathlib import Path
+import tempfile
+import unittest
+from unittest.mock import patch
+
+from aiwork.harness import OpenCode
+from aiwork.process import Result
+from aiwork.schema import Check, Profile, Task
+
+
+class HarnessContextTests(unittest.TestCase):
+    def test_instruction_baseline_keeps_goal_and_scope_without_private_material(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            work = root/"workspace"
+            work.mkdir()
+            artifacts = root/"artifacts"
+            artifacts.mkdir()
+            (root/"private.txt").write_text("PRIVATE-CANARY", encoding="utf-8")
+            goal = "Implement the reviewed public feature; do not lose this objective."
+            task = Task(goal, work, "agent", "test", (), ("module.py",), (Check(("{python}", "-V")),),
+                        mode="engineering", write_roots=("module.py",), commands=(Check(("{python}", "-V")),))
+            profile = Profile("local", "fixture", "http://127.0.0.1:9999/v1", context=8192)
+            with patch("aiwork.harness.run", return_value=Result(0, 0, "", "", False, False)) as run:
+                OpenCode("fixture").run_session(profile, task, work, artifacts, "Initial request", 10, None, None)
+            config = json.loads(run.call_args.args[3]["OPENCODE_CONFIG_CONTENT"])
+            instruction = Path(config["instructions"][0])
+            text = instruction.read_text()
+            self.assertTrue(instruction.is_relative_to(artifacts))
+            self.assertIn(goal, text)
+            self.assertIn("module.py", text)
+            self.assertNotIn("PRIVATE-CANARY", text)
+            self.assertNotIn("compaction", config)
+            self.assertIn({"action":"external_directory","resource":"*","effect":"deny"}, config["permissions"])

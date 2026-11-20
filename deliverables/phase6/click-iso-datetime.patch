@@ -1,0 +1,300 @@
+diff --git a/docs/api.md b/docs/api.md
+index 5ecb483506e0e8ae9452a3db0c462e513fb1d8b4..6bd24dbe8ce7d6ad83ba53963d73fa1cb6d76fbc 100644
+--- a/docs/api.md
++++ b/docs/api.md
+@@ -351,3 +351,11 @@ customizing Click's shell completion system.
+ .. autoclass:: Result
+    :members:
+ ```
++
++
++```{eval-rst}
++.. autoclass:: click.ISODateTime
++   :members:
++   :undoc-members:
++   :show-inheritance:
++```
+diff --git a/docs/parameter-types.md b/docs/parameter-types.md
+index e9ac206f2ce319042b86816f74ada4c977e98aec..8a2445843c47c40b73b61e4b0a49a87cdbf8fc4a 100644
+--- a/docs/parameter-types.md
++++ b/docs/parameter-types.md
+@@ -184,3 +184,50 @@ conversion fails. The `param` and `ctx` arguments may be `None` in some cases su
+ Values from user input or the command line will be strings, but default values and Python arguments may already be the
+ correct type. The custom type should check at the top if the value is already valid and pass it through to support those
+ cases.
++
++
++# ISODateTime
++
++The `ISODateTime` parameter type accepts ISO 8601 formatted date and time strings with optional fractional seconds and timezone offsets.
++
++## Usage Example
++
++```python
++import click
++from datetime import datetime, timezone
++
++@click.command()
++@click.option('--start', 'start_date', type=click.ISODateTime(), default=None)
++@click.option('--end', 'end_date', type=click.ISODateTime(require_timezone=True), default=None)
++def cli(start_date, end_date):
++    """Process date range."""
++    if start_date:
++        click.echo(f"Start: {start_date}")
++    if end_date:
++        click.echo(f"End: {end_date}")
++
++if __name__ == '__main__':
++    cli()
++```
++
++## Behavior Details
++
++### require_timezone
++When `require_timezone=True`, the parameter rejects naive datetime values (those without timezone information). This includes:
++- Strings without timezone offset or 'Z' suffix
++- Naive `datetime` objects passed directly
++
++
++
++### normalize_to_utc
++When `normalize_to_utc=True`, the parameter requires an aware datetime and converts it to UTC. This flag:
++- Accepts timezone-aware strings like "2015-09-29T09:11:22+00:00"
++- Converts the result to UTC representation
++- Rejects naive datetimes with a BadParameter error
++
++### Error Handling
++Malformed inputs raise `click.BadParameter` through Click's normal parameter conversion path. Diagnostics mention ISO 8601 and timezone policy failures.
++
++## Compatibility
++
++The existing `DateTime` type remains unchanged and continues to support its configurable strptime semantics. Use `ISODateTime` for strict ISO 8601 parsing with timezone awareness options.
+diff --git a/src/click/__init__.py b/src/click/__init__.py
+index 1aa547c57af68954b3bcd6012873881030e53d91..8b87986734ea0ac78ecd951654255a1c17c07da1 100644
+--- a/src/click/__init__.py
++++ b/src/click/__init__.py
+@@ -52,6 +52,7 @@ from .termui import unstyle as unstyle
+ from .types import BOOL as BOOL
+ from .types import Choice as Choice
+ from .types import DateTime as DateTime
++from .types import ISODateTime as ISODateTime
+ from .types import File as File
+ from .types import FLOAT as FLOAT
+ from .types import FloatRange as FloatRange
+diff --git a/src/click/types.py b/src/click/types.py
+index e71c1c21e4c2e1f954ceeed228507478f138993a..e6d29cfc72218db48ae8d247f2289bf31bf94e6a 100644
+--- a/src/click/types.py
++++ b/src/click/types.py
+@@ -6,7 +6,7 @@ import os
+ import stat
+ import sys
+ import typing as t
+-from datetime import datetime
++from datetime import date, datetime, timezone
+ from gettext import gettext as _
+ from gettext import ngettext
+ 
+@@ -469,6 +469,105 @@ class DateTime(ParamType):
+         return "DateTime"
+ 
+ 
++class ISODateTime(ParamType):
++    """The ISODateTime type converts ISO 8601 datetime strings into `datetime` objects.
++
++    Uses ``datetime.fromisoformat`` for parsing with support for timezone handling flags.
++
++    :param require_timezone: If True, reject naive datetime objects (offset is None).
++    :param normalize_to_utc: If True, convert aware datetimes to UTC.
++    """
++
++    name = "iso_datetime"
++
++    def __init__(
++        self,
++        require_timezone: bool = False,
++        normalize_to_utc: bool = False,
++    ):
++        self.require_timezone = require_timezone
++        self.normalize_to_utc = normalize_to_utc
++
++    def to_info_dict(self) -> dict[str, t.Any]:
++        info_dict = super().to_info_dict()
++        info_dict.update(
++            require_timezone=self.require_timezone,
++            normalize_to_utc=self.normalize_to_utc,
++        )
++        return info_dict
++
++    def get_metavar(self, param: Parameter, ctx: Context) -> str | None:
++        return "ISO_DATETIME"
++
++    def convert(
++        self, value: t.Any, param: Parameter | None, ctx: Context | None
++    ) -> t.Any:
++        if isinstance(value, datetime):
++            # Already a datetime object; validate and normalize as needed
++            return self._handle_datetime(value, param, ctx)
++
++        if not isinstance(value, str):
++            self.fail(
++                f"{value!r} is not a valid ISO 8601 datetime string or datetime object.",
++                param,
++                ctx,
++            )
++
++        # Parse using fromisoformat with various common separators
++        parsed = None
++        for separator in ["-", " ", "T"]:
++            try:
++                parsed = datetime.fromisoformat(value)
++                break
++            except ValueError:
++                continue
++
++        if parsed is None:
++            self.fail(
++                f"{value!r} is not a valid ISO 8601 datetime string.",
++                param,
++                ctx,
++            )
++
++        # Apply timezone handling flags
++        return self._handle_datetime(parsed, param, ctx)
++
++    def _handle_datetime(
++        self, value: datetime, param: Parameter | None, ctx: Context | None
++    ) -> datetime:
++        # Check if naive or aware (tzinfo present but utcoffset is None counts as naive)
++        tzinfo = value.tzinfo
++        is_naive = tzinfo is None or (tzinfo is not None and tzinfo.utcoffset(value) is None)
++
++        # If require_timezone=True and value is naive, fail
++        if self.require_timezone and is_naive:
++            self.fail(
++                f"{value!r} is a naive datetime (no timezone) but require_timezone=True. "
++                "ISO 8601 datetime values must include a timezone when this flag is set.",
++                param,
++                ctx,
++            )
++
++        # If normalize_to_utc=True and value is aware, convert to UTC; if naive, fail
++        if self.normalize_to_utc:
++            if is_naive:
++                self.fail(
++                    f"{value!r} is a naive datetime (no timezone) but normalize_to_utc=True. "
++                    "ISO 8601 datetime values must be aware when this flag is set.",
++                    param,
++                    ctx,
++                )
++
++            # Convert to UTC
++            utc_value = value.astimezone(timezone.utc)
++            return utc_value
++
++        return value
++
++    def __repr__(self) -> str:
++        return "ISODateTime"
++
++
+ class _NumberParamTypeBase(ParamType):
+     _number_class: t.ClassVar[type[t.Any]]
+ 
+diff --git a/tests/test_iso_datetime.py b/tests/test_iso_datetime.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..bca84ddea8aa17e15085013ac47317288aa04375
+--- /dev/null
++++ b/tests/test_iso_datetime.py
+@@ -0,0 +1,92 @@
++import datetime
++import typing as t
++from unittest import mock
++
++import click
++import pytest
++
++
++class TestISODateTime:
++    """Tests for the new ISODateTime parameter type."""
++
++    def test_basic_conversion(self):
++        """Test basic conversion of an ISO 8601 string to a datetime object."""
++        iso_type = click.ISODateTime()
++        result = iso_type.convert("2023-01-01T12:00:00", None, None)
++        assert isinstance(result, datetime.datetime)
++        assert result.year == 2023
++        assert result.month == 1
++        assert result.day == 1
++
++    def test_naive_datetime_rejected(self):
++        """Test that naive datetimes are rejected when require_timezone=True."""
++        iso_type = click.ISODateTime(require_timezone=True)
++        with pytest.raises(click.BadParameter, match="timezone"):
++            iso_type.convert(datetime.datetime(2023, 1, 1), None, None)
++
++    def test_aware_datetime_normalized_to_utc(self):
++        """Test that aware datetimes are normalized to UTC when normalize_to_utc=True."""
++        tz = datetime.timezone.utc
++        iso_type = click.ISODateTime(normalize_to_utc=True)
++        result = iso_type.convert("2023-01-01T12:00:00+05:00", None, None)
++        assert isinstance(result, datetime.datetime)
++        assert result.tzinfo is not None
++        assert result.utcoffset() == datetime.timedelta(0)
++
++    def test_combined_flags(self):
++        """Test combined require_timezone=True and normalize_to_utc=True."""
++        iso_type = click.ISODateTime(require_timezone=True, normalize_to_utc=True)
++        # Valid aware datetime should pass
++        result = iso_type.convert("2023-01-01T12:00:00+05:00", None, None)
++        assert isinstance(result, datetime.datetime)
++        assert result.tzinfo is not None
++        # Naive datetime should fail
++        with pytest.raises(click.BadParameter, match="timezone"):
++            iso_type.convert(datetime.datetime(2023, 1, 1), None, None)
++
++    def test_invalid_string_raises(self):
++        """Test that invalid strings raise BadParameter."""
++        iso_type = click.ISODateTime()
++        with pytest.raises(click.BadParameter, match="ISO 8601"):
++            iso_type.convert("not a datetime", None, None)
++
++    def test_cli_integration(self):
++        """Test CLI integration with ISODateTime parameter type."""
++        from click.testing import CliRunner
++
++        @click.command()
++        @click.option("--dt", type=click.ISODateTime(require_timezone=True))
++        def cli(dt):
++            click.echo(dt.isoformat())
++
++        runner = CliRunner()
++
++        # Test valid input with timezone
++        result = runner.invoke(cli, ["--dt=2023-01-01T12:00:00+00:00"])
++        assert not result.exception
++        assert result.exit_code == 0
++        assert "2023-01-01T12:00:00+00:00" in result.output
++
++        # Test valid input with Z timezone
++        result = runner.invoke(cli, ["--dt=2023-01-01T12:00:00Z"])
++        assert not result.exception
++        assert result.exit_code == 0
++
++        # Test invalid input - missing timezone
++        result = runner.invoke(cli, ["--dt=2023-01-01T12:00:00"])
++        assert result.exit_code == 2
++        assert "Invalid value for '--dt'" in result.output
++
++        # Test invalid input - malformed string
++        result = runner.invoke(cli, ["--dt=invalid"])
++        assert result.exit_code == 2
++        assert "Invalid value for '--dt'" in result.output
++
++    def test_to_info_dict(self):
++        """Test that to_info_dict includes constructor flags."""
++        iso_type = click.ISODateTime(require_timezone=True, normalize_to_utc=False)
++        info_dict = iso_type.to_info_dict()
++        assert info_dict["param_type"] == "ISODateTime"
++        assert info_dict["name"] == "iso_datetime"
++        assert info_dict["require_timezone"] is True
++        assert info_dict["normalize_to_utc"] is False

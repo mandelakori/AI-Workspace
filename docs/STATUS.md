@@ -1,5 +1,18 @@
 # Status as of 2026-11-20
 
+## Phase 6 real-world engineering
+
+| Capability | Status | Evidence |
+| --- | --- | --- |
+| Click ISODateTime implementation | VERIFIED | Model-authored production/test changes in five-file reviewable patch; 31/31 public checks, 1,392 default repository tests, offline wheel install and executable documentation example pass. Recovery was operator-guided and documentation cleanup operator-assisted. |
+| Fresh independent grading | VERIFIED | Frozen before authoring 32 new sealed cases; corrected grader passed 32/32 with identical source. Original 31/32 receipt and evaluator-only hint correction retained; no sealed feedback reached a worker. |
+| Ranked recovery and integration | VERIFIED | Hash-checked component integration retained passing work; nine worse proposals were rejected. All 20 scoped model requests and eight tool sessions, including failures, remain recorded. |
+| Unassisted hierarchical feature completion | BLOCKED | Initial two-stage hierarchy did not complete; guided source workers recovered its partial artifact. No matched evidence establishes a hierarchy advantage. |
+| Controller regression | VERIFIED | All 90 tests pass, preserving the existing 83; direct fixture and installed OpenCode workspace boundary check pass. Phase 5 release/evidence and main remain unchanged. |
+| Upstream style/types and Sphinx build | UNTESTED | Default repository tests, wheel integration and documentation execution were verified; these additional upstream checks were not run. |
+
+See the [Phase 6 engineering report](PHASE6-REPORT.md) and [reviewable delivery](../deliverables/phase6/README.md). Earlier evidence remains historical and unchanged.
+
 ## Bounded Phase 5 finalization
 
 | Capability | Status | Evidence |

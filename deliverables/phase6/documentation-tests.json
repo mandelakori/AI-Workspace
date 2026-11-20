@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "python",
+    "_aiwork_verify_docs.py"
+  ],
+  "cwd": "",
+  "runner": "sha256:885f0aefe0ae650b7115ca729d533b74f092712a0b5b340262090d5ccfc8ffeb",
+  "code": 0,
+  "elapsed": 1.077999999979511,
+  "stdout": "Documentation CLI examples passed: 1\n",
+  "stderr": "",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true
+}

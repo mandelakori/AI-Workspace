@@ -1,0 +1,14 @@
+{
+  "classification": "operator-assisted documentation cleanup",
+  "production_and_tests_unchanged": true,
+  "actions": [
+    "Retained the first model-authored edit removing the unused example flag and callback parameter.",
+    "Removed duplicate docstring caused by that edit.",
+    "Removed the inaccurate CLI error transcript; retained complete policy prose and working example."
+  ],
+  "implementation_code_supplied_by_operator": false,
+  "raw_model_proposal": "docs-example-repair/attempt/proposal-response.json",
+  "canonical_text_before_sha256": "7830a329fef983d3fc20015a43a949d1ee4d85e70023cb02d9f22ad2ab2bf528",
+  "canonical_text_after_sha256": "98cc78fe5aacf5855b9b84bb9d215d6f3e2ad014bc44cf1ddd894ba3caeba5e4",
+  "raw_final_sha256": "606ca0971550b6cddf1d47b5a23aaaad12c22667d04b8b44e872167ac0ed6e7a"
+}

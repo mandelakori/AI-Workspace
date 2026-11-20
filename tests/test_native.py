@@ -147,6 +147,22 @@ class NativeTests(unittest.TestCase):
         self.assertEqual(score["passed_cases"], 3)
         self.assertTrue(all(call.args[0].timeout == 1 for call in invoke.call_args_list))
 
+    def test_public_traceback_retains_exception_without_exposing_sealed_feedback(self):
+        write_json(self.root / "cases.json", [{"stdout": "ok", "stderr": ""}])
+        diagnostic = "Traceback (most recent call last):\n" + "frame details\n" * 50 + "TypeError: missing datetime argument\n"
+        observed = {"code": 1, "stdout": "", "stderr": diagnostic, "elapsed": 1,
+                    "timed_out": False, "truncated": False}
+        check = Check(("./candidate",), oracle="cases.json")
+        with patch("aiwork.oracle.invoke", return_value=observed):
+            public = evaluate(check, self.root, self.root, self.root, "offline", 20, None, public=True)
+            sealed = evaluate(check, self.root, self.root, self.root, "offline", 20, None)
+        excerpt = public["discrepancies"][0]["observed"]["stderr"]
+        self.assertLessEqual(len(excerpt), 160)
+        self.assertIn("Traceback", excerpt)
+        self.assertIn("TypeError: missing datetime argument", excerpt)
+        self.assertNotIn("discrepancies", sealed)
+        self.assertNotIn("missing datetime argument", str(sealed))
+
     def prepare_grade(self):
         for name in ("frozen", "target", "development"):
             (self.root / name).mkdir()

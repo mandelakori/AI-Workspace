@@ -11,6 +11,11 @@ from .verify import invoke
 from .workspace import contained
 
 
+def diagnostic_excerpt(text: str) -> str:
+    """Keep the exception at the end of a public traceback within the existing cap."""
+    return text if len(text) <= 160 else text[:55] + "\n...\n" + text[-100:]
+
+
 def case_argv(value: object) -> tuple[str, ...]:
     if not isinstance(value, list) or len(value) > 32 or any(
         not isinstance(arg, str) or len(arg) > 1024 or "\0" in arg
@@ -85,9 +90,9 @@ def evaluate(check: Check, workspace: Path, home: Path, private: Path, image: st
                 "stdin": case.get("stdin", "")[:180],
                 "argv": [arg[:60] for arg in case.get("argv", [])[:4]], "classification": category,
                 "expected": {"code": case.get("code", 0), "stdout": case["stdout"][:160],
-                             "stderr": case.get("stderr", "")[:160]},
+                             "stderr": diagnostic_excerpt(case.get("stderr", ""))},
                 "observed": {"code": response["code"], "stdout": response["stdout"][:160],
-                             "stderr": response["stderr"][:160]},
+                             "stderr": diagnostic_excerpt(response["stderr"])},
             })
     passed = sum(result["verdict"] == "pass" for result in results)
     return {"runner": image, "kind": "public-regression" if public else "sealed-black-box",

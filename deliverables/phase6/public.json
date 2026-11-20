@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python",
+    "_aiwork_verify.py",
+    "public"
+  ],
+  "cwd": "",
+  "runner": "sha256:885f0aefe0ae650b7115ca729d533b74f092712a0b5b340262090d5ccfc8ffeb",
+  "code": 0,
+  "elapsed": 7.718999999924563,
+  "stdout": "Failed public cases: []\n",
+  "stderr": "",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true
+}

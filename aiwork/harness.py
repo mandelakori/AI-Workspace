@@ -87,6 +87,12 @@ class OpenCode:
             env["AIWORK_ENDPOINT_TOKEN"] = key
             settings["apiKey"] = "{env:AIWORK_ENDPOINT_TOKEN}"
         body = request_options(profile)
+        instructions = artifacts / "operator-task.md"
+        instructions.write_text(
+            "# Active operator task\n\n" + task.objective +
+            "\n\nWritable paths: " + ", ".join(task.write_roots or task.deliverables) +
+            "\nComplete the task by editing the authorized files and running approved checks. "
+            "This objective remains active across context changes.\n", encoding="utf-8")
         actions = ["read", "glob", "grep", "list", "todowrite"]
         permissions = [rule("*", "*", "deny"), *(rule(action) for action in actions)]
         permissions.append(rule("external_directory", effect="deny"))
@@ -98,6 +104,7 @@ class OpenCode:
             permissions.extend(rule(action, name) for name in allowed)
             permissions.extend(rule(action, (work / name).as_posix()) for name in allowed)
         config = {
+            "instructions": [str(instructions.resolve())],
             "providers": {"aiwork": {
                 "name": "AI Workspace", "package": "@opencode/ai/providers/openai-compatible",
                 "settings": settings, "env": ["AIWORK_ENDPOINT_TOKEN"] if key else [],
@@ -129,7 +136,8 @@ class OpenCode:
             "GIT_CEILING_DIRECTORIES": str(work.parent),
         })
         return run([self.binary, "run", "--standalone", "--format", "json",
-                    "--model", config["model"], "--", prompt], work, timeout, env, stop)
+                    "--model", config["model"], "--", prompt], work, timeout, env, stop,
+                   output_limit=8 * 1024 * 1024)
 
 
 def rule(action: str, resource: str = "*", effect: str = "allow") -> dict:
@@ -218,4 +226,5 @@ class QwenCode:
             "GIT_CEILING_DIRECTORIES": str(work.parent),
         })
         return run([*self.command, "--output-format", "stream-json", "--approval-mode", "default",
-                    "--model", profile.model, "--prompt", prompt], work, timeout, env, stop)
+                    "--model", profile.model, "--prompt", prompt], work, timeout, env, stop,
+                   output_limit=8 * 1024 * 1024)

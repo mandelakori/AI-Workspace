@@ -1,0 +1,12 @@
+{
+  "passed_cases": 32,
+  "total": 32,
+  "elapsed": 36.391,
+  "candidate_inventory_sha256": "e692e0930abe59b27ae820aeeb1eeae59a51a5f9fc638250886505b34fcd1f04",
+  "case_sha256": "37a3cbc52c1008cb6bf5f0f635b68e1514ec8f2130b816790c7a1d4f518ce17a",
+  "authored_at": "2026-11-20T08:48:30.613103+00:00",
+  "frozen_at": "2026-11-20T08:43:23.904291+00:00",
+  "source_unchanged": true,
+  "private_not_mounted": true,
+  "post_sealed_inference_requests": 0
+}

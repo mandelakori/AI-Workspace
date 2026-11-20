@@ -1,0 +1,25 @@
+{
+  "merges": [
+    {
+      "experiment": "api-contract-recovery",
+      "file": "src/click/types.py",
+      "verified_sha256": "ae4a0af42c4169723cad5b69f731375fc8f20f2596fe84b073d558c4606dfb9d"
+    },
+    {
+      "experiment": "test-method-recovery",
+      "file": "tests/test_iso_datetime.py",
+      "verified_sha256": "e062f5a5cc25ecd9656c2bd85e4e6746555b2abbf80702870dafc81e743fa0a1"
+    }
+  ],
+  "formatting": [
+    {
+      "file": "tests/test_iso_datetime.py",
+      "ast_identical": true,
+      "canonical_text_before_sha256": "c18981c6fcb1f5f54ac5aca2025fb5d767d4dd2a1f3236f4ae7da057060e0f62",
+      "canonical_text_after_sha256": "c6d489ffbe1e503213d081a37a5bf5b605b3380e3c71d43f65a7801204174cf2",
+      "raw_before_sha256": "e062f5a5cc25ecd9656c2bd85e4e6746555b2abbf80702870dafc81e743fa0a1",
+      "raw_after_sha256": "03a3c8c77c65eb785180ee372e6fa0957453d63ce787e3506479419e8c0a08ce"
+    }
+  ],
+  "no_operator_implementation": true
+}

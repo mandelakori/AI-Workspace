@@ -1,0 +1,61 @@
+{
+  "upstream": "https://github.com/pallets/click",
+  "base_commit": "052c006033729bbb422cbdad0c4fee988ecb5aa5",
+  "release": "8.3.2",
+  "patch_sha256": "07e7280d77e52f888489840e73c712017f7af502c4708f4d26fd3f3fa20a756a",
+  "files": {
+    "src/click/types.py": {
+      "bytes": 44611,
+      "sha256": "ae4a0af42c4169723cad5b69f731375fc8f20f2596fe84b073d558c4606dfb9d"
+    },
+    "src/click/__init__.py": {
+      "bytes": 4643,
+      "sha256": "2b907757f1d88a68ad77757aeea1f6f97dc6ae485fb3cc72db09bed5c8217d53"
+    },
+    "tests/test_iso_datetime.py": {
+      "bytes": 3905,
+      "sha256": "03a3c8c77c65eb785180ee372e6fa0957453d63ce787e3506479419e8c0a08ce"
+    },
+    "docs/parameter-types.md": {
+      "bytes": 7504,
+      "sha256": "606ca0971550b6cddf1d47b5a23aaaad12c22667d04b8b44e872167ac0ed6e7a"
+    },
+    "docs/api.md": {
+      "bytes": 4628,
+      "sha256": "e0541ffa757cfc3ea3b7aa37f8b4dfcb87ed18ab8955238fbc068c202f0573cc"
+    }
+  },
+  "frozen_at": "2026-11-20T08:43:23.904291+00:00",
+  "inventory_sha256": "e692e0930abe59b27ae820aeeb1eeae59a51a5f9fc638250886505b34fcd1f04",
+  "runner": "sha256:885f0aefe0ae650b7115ca729d533b74f092712a0b5b340262090d5ccfc8ffeb",
+  "public": {
+    "passed": 31,
+    "total": 31
+  },
+  "implementation": "model-authored; operator-guided recovery",
+  "documentation": "operator-assisted review cleanup",
+  "private_cases_included": false,
+  "delivery_files": {
+    "src/click/types.py": {
+      "bytes": 43303,
+      "sha256": "c82bfa1334f97ca95f4b1b4bf64a98425aec81e7eef082e0a120af2aac83951d"
+    },
+    "src/click/__init__.py": {
+      "bytes": 4519,
+      "sha256": "755557a222da2bbbd7d60fb7add4d77be4edfe15bc9aaacc8896a675a72b474f"
+    },
+    "tests/test_iso_datetime.py": {
+      "bytes": 3813,
+      "sha256": "c6d489ffbe1e503213d081a37a5bf5b605b3380e3c71d43f65a7801204174cf2"
+    },
+    "docs/parameter-types.md": {
+      "bytes": 7271,
+      "sha256": "98cc78fe5aacf5855b9b84bb9d215d6f3e2ad014bc44cf1ddd894ba3caeba5e4"
+    },
+    "docs/api.md": {
+      "bytes": 4267,
+      "sha256": "e4157cc66fc8df44333ba5cdce599436ff38f34b9b8fb4272fae6d7a72bce039"
+    }
+  },
+  "delivery_encoding": "CRLF normalized to LF for a portable patch; text otherwise identical, Python ASTs identical. Frozen raw candidate unchanged."
+}

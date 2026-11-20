@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "python",
+    "_aiwork_verify_install.py"
+  ],
+  "cwd": "",
+  "runner": "sha256:885f0aefe0ae650b7115ca729d533b74f092712a0b5b340262090d5ccfc8ffeb",
+  "code": 0,
+  "elapsed": 3.2660000000614673,
+  "stdout": "Processing /work\n  Preparing metadata (pyproject.toml): started\n  Preparing metadata (pyproject.toml): finished with status 'done'\nBuilding wheels for collected packages: click\n  Building wheel for click (pyproject.toml): started\n  Building wheel for click (pyproject.toml): finished with status 'done'\n  Created wheel for click: filename=click-8.3.2-py3-none-any.whl size=109810 sha256=4efb552dbdc858964c1e01fbe3c4b0663d04895fc8c22c043416d9a051781d37\n  Stored in directory: /tmp/pip-ephem-wheel-cache-x5jssmr7/wheels/c3/be/f9/d4edc8a6a5fc130baa8821785099dbd6f21e4c903787b290b5\nSuccessfully built click\nProcessing /tmp/tmps2k5pez9/wheels/click-8.3.2-py3-none-any.whl\nInstalling collected packages: click\nSuccessfully installed click-8.3.2\nInstalled wheel CLI integration passed\n",
+  "stderr": "WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.\n",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true
+}
