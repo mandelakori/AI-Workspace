@@ -1,4 +1,15 @@
-# Status as of 2026-11-19
+# Status as of 2026-11-20
+
+## Ledger benchmark preparation
+
+| Capability | Status | Evidence |
+| --- | --- | --- |
+| Frozen public repair benchmark | VERIFIED | Archived exact closeout starts, six original proposals and public contracts without rerunning inference. Bundle inventories and implementation hashes protect reproducibility. |
+| Separate evaluation stages | VERIFIED | Compilation, ordinary behavior, instrumented compilation and sanitizer execution have distinct receipts. Tests confirm sanitizer failures block promotion without changing compilation success. |
+| Existing A100 repair configuration | UNTESTED | Offline preparation uses the archived coding profile and matched six-request budget. Live availability and remote repair remain untested. Execution requires separate authorization. |
+| Benchmark baseline and regression | VERIFIED | Offline replay records six historical proposals, one compiler failure and one sanitizer failure, with zero new inference requests. All 78 tests passed, including the existing 73. Direct fixture job `6abf32b214dd49c1980272f0b4c80621` passed. |
+
+See the [benchmark workflow](LEDGER-BENCHMARK.md). Earlier closeout receipts and checkpoints remain preserved below.
 
 ## Phase 5.2 bounded ledger closeout
 

@@ -45,7 +45,11 @@ def compare(incumbent: dict, challenger: dict, *, protect_passing: bool) -> dict
     losses, gains = sorted(old-new), sorted(new-old)
     old_rank = (incumbent["compiled"], len(old), -len(incumbent["missing"]))
     new_rank = (challenger["compiled"], len(new), -len(challenger["missing"]))
-    if challenger["compiled"] and len(challenger["cases"]) != challenger["total"]:
+    if incumbent.get("sanitizer_required") != challenger.get("sanitizer_required"):
+        raise ValueError("cannot compare candidates with different sanitizer requirements")
+    if challenger.get("sanitizer_required") and not challenger.get("sanitizer_passed"):
+        reason = "sanitizer_failure" if challenger["compiled"] else "build_regression"
+    elif challenger["compiled"] and len(challenger["cases"]) != challenger["total"]:
         reason = "incomplete_evaluation"
     elif old_rank[0] and not new_rank[0]:
         reason = "build_regression"

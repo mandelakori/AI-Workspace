@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import hashlib
+from dataclasses import replace
 import os
 import tempfile
 import unittest
@@ -187,6 +188,35 @@ class HierarchyTests(unittest.TestCase):
         ):
             with self.subTest(proposal=proposal), self.assertRaises(ValueError):
                 apply_edits("before\nkeep\n", proposal)
+
+    def test_remote_source_proposals_require_explicit_authorization_and_preserve_request_settings(self):
+        self.components["first"].update(source_context=["driver.py"], source_patch=True)
+        self.save_policy()
+        task = graph_tasks(json.loads(self.policy.read_bytes()), self.workspace, "local-p")["first"].task
+        remote = replace(self.controller.config.profiles[0], location="a100", engine="llamacpp",
+                         reasoning_effort="none", output_tokens=3072)
+        controller = Controller(replace(self.controller.config, ssh={"alias": "aisak", "remote_port": 18080}))
+        target = self.workspace/"first.txt"
+        target.write_text("before", encoding="utf-8")
+        attempt = self.root/"remote-proposal"
+        attempt.mkdir()
+        response = {"choices": [{"message": {"content": '{"edits":[{"old":"before","new":"after"}]}'},
+                                  "finish_reason": "stop"}]}
+        from contextlib import nullcontext
+        with (patch("aiwork.remote.a100_session", return_value=nullcontext()) as tunnel,
+              patch("aiwork.component_source.Inference.ready"),
+              patch("aiwork.component_source.request", return_value=response) as request):
+            with self.assertRaisesRegex(ValueError, "separate explicit authorization"):
+                propose_source(controller, task, remote, self.workspace, attempt, monotonic()+30, "public")
+            tunnel.assert_not_called()
+            request.assert_not_called()
+            propose_source(controller, task, remote, self.workspace, attempt, monotonic()+30, "public",
+                           remote_authorized=True)
+        payload = json.loads((attempt/"proposal-request.json").read_bytes())
+        self.assertEqual(payload["reasoning_effort"], "none")
+        self.assertFalse(payload["chat_template_kwargs"]["enable_thinking"])
+        self.assertEqual(payload["max_tokens"], 2048)
+        self.assertEqual(target.read_text(), "after")
 
     def test_patch_worker_preserves_source_on_invalid_edits_and_records_valid_provenance(self):
         self.components["first"].update(source_context=["driver.py"], source_patch=True)

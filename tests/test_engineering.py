@@ -17,6 +17,8 @@ from aiwork.controller import Controller
 from aiwork.planner import planned, validate_plan
 from aiwork.schema import Check, Config, Profile, Task
 from aiwork.verify import invoke, pipeline
+from aiwork.repair_benchmark import evaluate_candidate
+from aiwork.selection import compare
 from aiwork.workspace import inventory, snapshot
 
 
@@ -45,6 +47,42 @@ class EngineeringTests(unittest.TestCase):
                 self.task(write_roots=roots).validate()
         with self.assertRaises(ValueError):
             self.task(deliverables=("outside.py",)).validate()
+
+    def test_sanitizer_failure_is_separate_from_compilation_and_behavior(self):
+        (self.source/"examples.json").write_text('[{"stdin":"public","stdout":"ok"}]', encoding="utf-8")
+        build = Check(("gcc", "-O2", "pkg/one.py", "-o", "probe"))
+        task = self.task(checks=(build, Check(("./probe",))), public_cases="examples.json",
+                         rank_public=True, deliverables=("pkg/one.py",))
+        raw = {"code": 0, "stdout": "ok", "stderr": "", "elapsed": 0,
+               "passed": True, "timed_out": False, "truncated": False}
+        sanitizer = {**raw, "code": 1, "stdout": "", "stderr": "runtime error: signed integer overflow"}
+        from time import monotonic
+        with patch("aiwork.repair_benchmark.invoke", side_effect=[raw, raw, raw, sanitizer]):
+            receipt = evaluate_candidate(task, self.source, self.root/"measured", "offline", monotonic()+30)
+        self.assertTrue(receipt["compiled"])
+        self.assertTrue(receipt["sanitizer_compilation"]["passed"])
+        self.assertTrue(receipt["behavior"]["passed"])
+        self.assertFalse(receipt["sanitizer_passed"])
+        self.assertFalse(receipt["promotion_eligible"])
+        self.assertEqual(receipt["classification"], "sanitizer_failure")
+        incumbent = {**receipt, "sanitizer_passed": True}
+        self.assertEqual(compare(incumbent, receipt, protect_passing=True)["reason"], "sanitizer_failure")
+        self.assertTrue(receipt["compiled"])
+
+    def test_sanitizer_success_does_not_claim_correct_behavior(self):
+        (self.source/"examples.json").write_text('[{"stdin":"public","stdout":"expected"}]', encoding="utf-8")
+        task = self.task(checks=(Check(("gcc", "pkg/one.py", "-o", "probe")), Check(("./probe",))),
+                         public_cases="examples.json", rank_public=True, deliverables=("pkg/one.py",))
+        raw = {"code": 0, "stdout": "wrong", "stderr": "", "elapsed": 0,
+               "passed": True, "timed_out": False, "truncated": False}
+        from time import monotonic
+        with patch("aiwork.repair_benchmark.invoke", return_value=raw):
+            receipt = evaluate_candidate(task, self.source, self.root/"measured", "offline", monotonic()+30)
+        self.assertTrue(receipt["compiled"])
+        self.assertTrue(receipt["sanitizer_passed"])
+        self.assertFalse(receipt["behavior"]["passed"])
+        self.assertFalse(receipt["public_passed"])
+        self.assertEqual(receipt["classification"], "public_mismatch")
 
     def test_subdirectory_argv_is_constrained(self):
         command = Check.read({"argv": ["{python}", "-c", "from pathlib import Path; print(Path.cwd().name)"],

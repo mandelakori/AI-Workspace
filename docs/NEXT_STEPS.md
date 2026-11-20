@@ -2,7 +2,7 @@
 
 ## Current ledger handoff
 
-The Phase 5.2 closeout exhausted two local source-edit attempts per failing component. Integration remains blocked by framing, operand validation and balance's arithmetic ordering. Preserve the selected checkpoints and reused verified jobs. Use the [closeout report](LEDGER-CLOSEOUT.md) to reproduce failures without inference. Any further repair campaign requires a new bounded reviewed plan. Freeze a verified executable before authoring a fresh sealed suite.
+The Phase 5.2 closeout exhausted two local source-edit attempts per failing component. Integration remains blocked by framing, operand validation and balance's arithmetic ordering. Preserve the selected checkpoints and reused verified jobs. The [frozen benchmark](LEDGER-BENCHMARK.md) records that baseline without new inference and prepares the existing A100 coding profile for a separately authorized, matched six-request experiment. No remote dispatch is currently authorized. Freeze a verified executable before authoring a fresh sealed suite.
 
 ## Lambda managed profile
 

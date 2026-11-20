@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import hashlib
 from itertools import islice
+from contextlib import nullcontext
 from pathlib import Path
 from time import monotonic
 from urllib.parse import urlsplit
@@ -46,10 +47,13 @@ def apply_edits(source: str, proposal: object) -> str:
 
 
 def propose_source(controller: Controller, task: Task, profile: Profile, work: Path, attempt: Path,
-                   deadline: float, findings: str, *, previous: str = "") -> None:
-    if (profile.location != "local" or profile.managed or
+                   deadline: float, findings: str, *, previous: str = "",
+                   remote_authorized: bool = False) -> None:
+    if (profile.managed or profile.location not in {"local", "a100"} or
             urlsplit(profile.endpoint).hostname not in {"127.0.0.1", "::1", "localhost"}):
-        raise ValueError("source proposal requires a local loopback inference endpoint")
+        raise ValueError("source proposal requires an existing loopback inference endpoint")
+    if profile.location == "a100" and (not remote_authorized or not controller.config.ssh.get("alias")):
+        raise ValueError("remote source proposals require separate explicit authorization and an SSH alias")
     name, = task.deliverables
     target = contained(work, name)
     context = {item: read_excerpt(contained(work, item), 2300) for item in task.source_context}
@@ -104,18 +108,25 @@ def propose_source(controller: Controller, task: Task, profile: Profile, work: P
     ]
     write_json(attempt / "proposal-context.json", prompt)
     started = monotonic()
-    with controller.planes["local"].reserve(profile, max(0, deadline-monotonic())):
-        client = Inference(profile)
-        client.ready()
-        remaining = deadline-monotonic()-5
-        if remaining <= 0:
-            raise ValueError("source proposal budget expired before inference")
-        response = request(profile.endpoint.rstrip("/") + "/chat/completions", "POST", {
-            "model": profile.model, "messages": messages,
-            "temperature": 0.25 if task.agent_role == "debugging" else 0,
-            "max_tokens": min(profile.output_tokens, 2048), "response_format": {"type": "json_object"},
-            **request_options(profile),
-        }, key=client.key(), timeout=min(45, remaining))
+    from .remote import a100_session
+    with controller.planes[profile.location].reserve(profile, max(0, deadline-monotonic())):
+        session = (a100_session(controller.config, profile, timeout=min(18, max(0, deadline-monotonic())))
+                   if profile.location == "a100" else nullcontext())
+        with session:
+            client = Inference(profile)
+            client.ready()
+            remaining = deadline-monotonic()-5
+            if remaining <= 0:
+                raise ValueError("source proposal budget expired before inference")
+            payload = {
+                "model": profile.model, "messages": messages,
+                "temperature": 0.25 if task.agent_role == "debugging" else 0,
+                "max_tokens": min(profile.output_tokens, 2048), "response_format": {"type": "json_object"},
+                **request_options(profile),
+            }
+            write_json(attempt / "proposal-request.json", payload)
+            response = request(profile.endpoint.rstrip("/") + "/chat/completions", "POST", payload,
+                               key=client.key(), timeout=min(45, remaining))
     write_json(attempt / "proposal-response.json", response)
     usage = response.get("usage") or {}
     tokens = {"input": usage.get("prompt_tokens"), "output": usage.get("completion_tokens"),
