@@ -2,7 +2,7 @@
 
 ## Current ledger handoff
 
-The Phase 5.2 closeout exhausted two local source-edit attempts per failing component. Integration remains blocked by framing, operand validation and balance's arithmetic ordering. Preserve the selected checkpoints and reused verified jobs. The [frozen benchmark](LEDGER-BENCHMARK.md) records that baseline without new inference and prepares the existing A100 coding profile for a separately authorized, matched six-request experiment. No remote dispatch is currently authorized. Freeze a verified executable before authoring a fresh sealed suite.
+The bounded Phase 5 finalization is complete. The local function-replacement trial exhausted six requests without an accepted correction. Preserve framing 4/7, validation 14/18 and the imported A100 balance 9/10 checkpoint, plus the archived verified dependencies. All three selected sources pass UBSan execution but remain behaviorally incomplete. See the [final handoff](PHASE5-HANDOFF.md) for exact failures, costs and commands. Further repair requires new bounded authorization. Keep integration gated and freeze a verified executable before authoring a fresh sealed suite.
 
 ## Lambda managed profile
 

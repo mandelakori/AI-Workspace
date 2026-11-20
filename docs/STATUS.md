@@ -1,12 +1,24 @@
 # Status as of 2026-11-20
 
+## Bounded Phase 5 finalization
+
+| Capability | Status | Evidence |
+| --- | --- | --- |
+| A100 balance checkpoint import | VERIFIED | Preserved SHA-256 `4426488d…324881e` and independently reproduced 9/10 public behavior with UBSan passing before the local campaign. Historical benchmark and run evidence stayed unchanged. |
+| Function-level replacement infrastructure | VERIFIED | Exact signature and function-span checks preserve unrelated source, reject extra scope and record hashes. Local-only requests retain public diagnostics, raw wire bodies, source and selection evidence. |
+| Local autonomous function repair | BLOCKED | Six requests, zero accepted corrections. Two unchanged responses, one protocol failure, two ties and one regression were rejected. Three changed functions compiled and passed UBSan without reaching full public correctness. |
+| Ledger integration and final grading | BLOCKED | Best components remain framing 4/7, validation 14/18 and imported balance 9/10. No integration attempt or new sealed suite followed failed component gates. |
+| Regression and stable handoff | VERIFIED | All 83 tests passed, including the existing 78. The direct fixture passed in job `85cf3fbe11b04349a648be433ed72783`. Best sources and verified dependency artifacts were archived with hashes. |
+
+See the [Phase 5 final handoff](PHASE5-HANDOFF.md) for rates, costs, remaining failures and continuation commands. Earlier sections retain historical measurements.
+
 ## Ledger benchmark preparation
 
 | Capability | Status | Evidence |
 | --- | --- | --- |
 | Frozen public repair benchmark | VERIFIED | Archived exact closeout starts, six original proposals and public contracts without rerunning inference. Bundle inventories and implementation hashes protect reproducibility. |
 | Separate evaluation stages | VERIFIED | Compilation, ordinary behavior, instrumented compilation and sanitizer execution have distinct receipts. Tests confirm sanitizer failures block promotion without changing compilation success. |
-| Existing A100 repair configuration | UNTESTED | Offline preparation uses the archived coding profile and matched six-request budget. Live availability and remote repair remain untested. Execution requires separate authorization. |
+| Existing A100 repair comparison | VERIFIED | The separately authorized six-request trial retained framing 4/7 and validation 14/18, and improved balance to 9/10 with UBSan passing. One partial correction was accepted; no component fully qualified. No further remote campaign is authorized. |
 | Benchmark baseline and regression | VERIFIED | Offline replay records six historical proposals, one compiler failure and one sanitizer failure, with zero new inference requests. All 78 tests passed, including the existing 73. Direct fixture job `6abf32b214dd49c1980272f0b4c80621` passed. |
 
 See the [benchmark workflow](LEDGER-BENCHMARK.md). Earlier closeout receipts and checkpoints remain preserved below.
