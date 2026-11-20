@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "ruff",
+    "format",
+    "--check",
+    "--no-cache",
+    "."
+  ],
+  "cwd": "",
+  "runner": "sha256:fc1854e6885153904be89d67c701cd012fd68e57523566405d184ce2a4fe05e1",
+  "code": 0,
+  "elapsed": 0.9220000000204891,
+  "stdout": "49 files already formatted\n",
+  "stderr": "",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true
+}

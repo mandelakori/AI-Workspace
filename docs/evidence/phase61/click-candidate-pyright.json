@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "pyright",
+    "--ignoreexternal",
+    "--verifytypes",
+    "click"
+  ],
+  "cwd": "",
+  "runner": "sha256:fc1854e6885153904be89d67c701cd012fd68e57523566405d184ce2a4fe05e1",
+  "code": 0,
+  "elapsed": 2.875,
+  "stdout": "Module name: \"click\"\nPackage directory: \"/work/src/click\"\nModule directory: \"/work/src/click\"\nPath of py.typed file: \"/work/src/click/py.typed\"\n\nPublic modules: 12\n   click\n   click.core\n   click.decorators\n   click.exceptions\n   click.formatting\n   click.globals\n   click.parser\n   click.shell_completion\n   click.termui\n   click.testing\n   click.types\n   click.utils\n\nSymbols used in public interface:\n\nSymbols exported by \"click\": 648\n  With known type: 648\n  With ambiguous type: 0\n  With unknown type: 0\n    (Ignoring unknown types imported from other packages)\n\nOther symbols referenced but not exported by \"click\": 66\n  With known type: 66\n  With ambiguous type: 0\n  With unknown type: 0\n\nSymbols without documentation:\n  Functions without docstring: 87\n  Functions without default param: 0\n  Classes without docstring: 15\n\nType completeness score: 100%\n\nCompleted in 1.706sec\n\n",
+  "stderr": "",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true
+}

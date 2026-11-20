@@ -1,0 +1,3 @@
+FROM aiwork-phase61-checks:local
+COPY wheels /wheels
+RUN python -m pip install --no-index --find-links=/wheels httpx[brotli,cli,http2,socks,zstd]==0.28.1 chardet==5.2.0 cryptography==44.0.0 trustme==1.2.0 uvicorn==0.32.1 pytest==8.3.4 trio==0.27.0 trio-typing==0.10.0

@@ -1,5 +1,18 @@
 # Status as of 2026-11-20
 
+## Phase 6.1 bounded autonomy preparation
+
+| Capability | Status | Evidence |
+| --- | --- | --- |
+| Windows CI repair | VERIFIED | Minimal resolved-path assertion fix `fc7e8e4`; both Windows and Ubuntu Actions jobs passed before Phase 6.1 branching. |
+| Focused inspection and public feedback | VERIFIED | Bounded staged-source MCP inspector, active-objective previews, symbol paging, source hashes and exception tails; six targeted tests. Existing local fixture completed without mid-run guidance. |
+| Controller regression | VERIFIED | 96 local tests, including Docker and installed OpenCode boundary coverage. Inspector successes are separated from public-check success; original smoke overcount and corrected recount are preserved. |
+| Click type/documentation checks | VERIFIED | Frozen candidate passes mypy, Pyright, cached-inventory Sphinx and lock checks. Ruff reports 15 issues and formatter would change types.py; both fail while the baseline passes. The artifact remains unchanged. |
+| HTTPX task preparation | VERIFIED | Pinned unfamiliar project, frozen specification/16 public checks and permission draft; unmodified baseline passes 75 selected upstream tests and 7/16 new requirements. No worker dispatched. |
+| Unassisted unfamiliar-feature acceptance | UNTESTED | Awaiting initial permissions/budget approval and sufficient execution capacity; no full campaign or matched comparison started. |
+
+See the [Phase 6.1 handoff](PHASE61.md). Historical Phase 6 delivery and evaluation material remain unchanged.
+
 ## Phase 6 real-world engineering
 
 | Capability | Status | Evidence |

@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "mypy",
+    "--cache-dir=/tmp/mypy"
+  ],
+  "cwd": "",
+  "runner": "sha256:fc1854e6885153904be89d67c701cd012fd68e57523566405d184ce2a4fe05e1",
+  "code": 0,
+  "elapsed": 4.327999999979511,
+  "stdout": "Success: no issues found in 26 source files\n",
+  "stderr": "",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true
+}

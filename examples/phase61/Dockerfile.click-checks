@@ -1,0 +1,5 @@
+FROM aiwork-phase6-click:20261120
+COPY wheels /wheels
+COPY requirements.txt /requirements.txt
+RUN python -m pip install --no-index --find-links=/wheels -r /requirements.txt
+ENV PYRIGHT_PYTHON_GLOBAL_NODE=on

@@ -1,0 +1,56 @@
+{
+  "job": "35d0e199c56949f0aae4d9d14e244d59",
+  "status": "verified",
+  "fixture": "existing conversion fixture; not unfamiliar-repository acceptance",
+  "metrics": {
+    "tool_calls": {
+      "read": 2,
+      "checks_focus": 2,
+      "edit": 1,
+      "checks_check": 1
+    },
+    "tool_errors": 2,
+    "tokens": {
+      "input": 5419,
+      "output": 472,
+      "reasoning": 0
+    },
+    "peak_reported_input_tokens": 2433,
+    "successful_public_mcp_checks": 3,
+    "gpu_samples": {
+      "before": [
+        {
+          "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+          "total_mib": 8151,
+          "free_mib": 7685
+        }
+      ],
+      "after": [
+        {
+          "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+          "total_mib": 8151,
+          "free_mib": 1456
+        }
+      ]
+    },
+    "inference_samples": {
+      "before": {
+        "resident": false
+      },
+      "after": {
+        "resident": true,
+        "model_vram_mib": 5199,
+        "configured_server_context": 8192
+      }
+    },
+    "reported_context_fraction": 0.297,
+    "effective_output_tokens_per_second": 13.832,
+    "inference_lanes": 1,
+    "lane_wait_seconds": 0.0,
+    "harness_seconds": 34.125
+  },
+  "actual_successful_public_checks": 1,
+  "metrics_note": "Original counter counted two successful inspections as checks. Raw evidence preserved; corrected recount is authoritative.",
+  "operator_mid_run_guidance": false,
+  "trace_sha256": "f27e8538d958ba5c8642adda583eddaf491828a9470af6ab92e6bef3fb956947"
+}

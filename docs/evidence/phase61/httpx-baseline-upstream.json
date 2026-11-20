@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "-p",
+    "anyio.pytest_plugin",
+    "-p",
+    "no:cacheprovider",
+    "tests/test_utils.py",
+    "tests/client/test_client.py"
+  ],
+  "cwd": "",
+  "runner": "sha256:d3521c3f00c0489a2c2ddccd1975469ee5658bac4e5a79fafd94a1f4f017ada3",
+  "code": 0,
+  "elapsed": 3.1089999999385327,
+  "stdout": "........................................................................ [ 96%]\n...                                                                      [100%]\n75 passed in 1.29s\n",
+  "stderr": "",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true
+}

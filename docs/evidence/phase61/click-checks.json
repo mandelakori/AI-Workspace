@@ -1,0 +1,102 @@
+{
+  "runner": "sha256:fc1854e6885153904be89d67c701cd012fd68e57523566405d184ce2a4fe05e1",
+  "checks": {
+    "baseline": {
+      "ruff": {
+        "passed": true,
+        "code": 0,
+        "elapsed": 1.077999999979511,
+        "timed_out": false,
+        "diagnostics": {}
+      },
+      "format": {
+        "passed": true,
+        "code": 0,
+        "elapsed": 0.9220000000204891,
+        "timed_out": false
+      },
+      "mypy": {
+        "passed": true,
+        "code": 0,
+        "elapsed": 4.327999999979511,
+        "timed_out": false
+      },
+      "pyright": {
+        "passed": true,
+        "code": 0,
+        "elapsed": 3.187999999965541,
+        "timed_out": false
+      },
+      "sphinx": {
+        "passed": false,
+        "code": 1,
+        "elapsed": 9.969000000040978,
+        "timed_out": false
+      },
+      "uv-lock": {
+        "passed": true,
+        "code": 0,
+        "elapsed": 0.8119999999180436,
+        "timed_out": false
+      },
+      "sphinx-cached": {
+        "passed": true,
+        "code": 0,
+        "elapsed": 10.26500000001397,
+        "timed_out": false
+      }
+    },
+    "candidate": {
+      "ruff": {
+        "passed": false,
+        "code": 1,
+        "elapsed": 0.9530000000959262,
+        "timed_out": false,
+        "diagnostics": {
+          "I001": 3,
+          "F401": 3,
+          "E501": 7,
+          "B007": 1,
+          "F841": 1
+        }
+      },
+      "format": {
+        "passed": false,
+        "code": 1,
+        "elapsed": 0.9530000000959262,
+        "timed_out": false
+      },
+      "mypy": {
+        "passed": true,
+        "code": 0,
+        "elapsed": 4.530999999959022,
+        "timed_out": false
+      },
+      "pyright": {
+        "passed": true,
+        "code": 0,
+        "elapsed": 2.875,
+        "timed_out": false
+      },
+      "sphinx": {
+        "passed": false,
+        "code": 1,
+        "elapsed": 9.905999999959022,
+        "timed_out": false
+      },
+      "uv-lock": {
+        "passed": true,
+        "code": 0,
+        "elapsed": 0.984000000054948,
+        "timed_out": false
+      },
+      "sphinx-cached": {
+        "passed": true,
+        "code": 0,
+        "elapsed": 10.280999999959022,
+        "timed_out": false
+      }
+    }
+  },
+  "frozen_unchanged": true
+}

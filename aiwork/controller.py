@@ -562,6 +562,7 @@ class Controller:
                     write_json(spec, {"checks": [asdict(c) for c in public],
                                       "setup": [asdict(c) for c in task.setup], "engineering": engineering,
                                       "write_roots": task.write_roots, "baseline": str(task.workspace),
+                                      "objective": task.objective,
                                       "workspace": str(work), "image": self.config.verification_image,
                                       "stop": str(self.config.state / "STOP"),
                                       "deadline": time() + max(0, deadline - monotonic())})
@@ -576,7 +577,11 @@ class Controller:
                     if engineering:
                         tools += f"Command menu: {json.dumps([c.argv for c in public])[:1500]}. "
                 if engineering:
-                    tools += "Use edit or write tools before giving a final answer. Keep intermediate narration brief. "
+                    tools += ("Use edit or write tools before giving a final answer. Keep intermediate narration brief. "
+                              "For OpenCode source inspection use checks_focus with path and optional Python symbol "
+                              "(Class.method) or line; follow next_line instead of repeating a whole-file read. "
+                              "Cycle within the tool budget: inspect, edit, run an approved public check, "
+                              "diagnose its concrete failure, repair and rerun. A failed check is not permission to abandon the objective. ")
                 role = ""
                 if task.agent_role == "implementation":
                     role = "Role: implementation. Use the interface and approved evidence to build the component.\n"

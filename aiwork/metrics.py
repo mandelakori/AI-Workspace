@@ -62,7 +62,8 @@ def summarize_trace(text: str, attempt: Path) -> dict:
     if mcp_path.exists():
         for line in mcp_path.read_text(encoding="utf-8").splitlines():
             try:
-                public_checks += json.loads(line).get("passed") is True
+                record = json.loads(line)
+                public_checks += record.get("tool") == "check" and record.get("passed") is True
             except (ValueError, AttributeError):
                 continue
     return {"tool_calls": tools, "tool_errors": errors,

@@ -1,5 +1,16 @@
 # Next steps
 
+## Phase 6.1 next approved work
+
+Review the [bounded handoff](PHASE61.md) and HTTPX permissions draft before any
+new measured trial. The CI failure is fixed and both original matrix jobs passed.
+Focused inspection passed its local hardware fixture; unfamiliar-repository
+completion remains untested. With sufficient budget, approve the frozen inputs,
+four write roots, model/image and cumulative direct/hierarchical limits. Prohibit
+mid-run implementation guidance and create private final inputs only after
+candidate freeze. Do not change the frozen Click artifact to address its newly
+measured style failures; preserve them as historical results.
+
 ## Current Phase 6 handoff
 
 Review the [Click feature patch and verification receipts](../deliverables/phase6/README.md).

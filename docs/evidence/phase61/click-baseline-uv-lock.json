@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "uv",
+    "--cache-dir=/tmp/uv",
+    "lock",
+    "--check",
+    "--offline"
+  ],
+  "cwd": "",
+  "runner": "sha256:fc1854e6885153904be89d67c701cd012fd68e57523566405d184ce2a4fe05e1",
+  "code": 0,
+  "elapsed": 0.8119999999180436,
+  "stdout": "",
+  "stderr": "Using CPython 3.12.16 interpreter at: /usr/local/bin/python3\nResolved 72 packages in 8ms\n",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true
+}

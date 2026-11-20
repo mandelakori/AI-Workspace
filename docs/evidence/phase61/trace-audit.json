@@ -1,0 +1,92 @@
+{
+  "sessions": [
+    {
+      "path": "controller/runs/4ead54bffa845841a8a637a4137864dd/attempt-001/agent.jsonl",
+      "sha256": "eacd18340aa3826239073b6db05674754d247116aab4c963f20b1226aa486740",
+      "read_calls": 12,
+      "same_window_repeats": 8,
+      "outputs_over_20000_characters": 9,
+      "largest_read_characters": 47325,
+      "explicit_abandoned_objective": false,
+      "trace_truncated": true
+    },
+    {
+      "path": "controller/runs/4ead54bffa845841a8a637a4137864dd/attempt-002/agent.jsonl",
+      "sha256": "c606bbaa86ceade04822bcf3ec579938bf6b024f0836267165618301b567d09e",
+      "read_calls": 7,
+      "same_window_repeats": 5,
+      "outputs_over_20000_characters": 5,
+      "largest_read_characters": 47325,
+      "explicit_abandoned_objective": false,
+      "trace_truncated": false
+    },
+    {
+      "path": "recovery-controller/runs/216131a0ec775f6c8918dc296a628649/attempt-001/agent.jsonl",
+      "sha256": "86d4e89f8fa01c42bcdbfac09fe96a0dc822371a1a341ac1302e1d4cad6ce282",
+      "read_calls": 23,
+      "same_window_repeats": 12,
+      "outputs_over_20000_characters": 7,
+      "largest_read_characters": 51248,
+      "explicit_abandoned_objective": false,
+      "trace_truncated": true
+    },
+    {
+      "path": "recovery-controller/runs/216131a0ec775f6c8918dc296a628649/attempt-002/agent.jsonl",
+      "sha256": "2e2ad799c14aed890d7b291806cb229896f2d4a9a1354109a22136d5348a78b9",
+      "read_calls": 10,
+      "same_window_repeats": 0,
+      "outputs_over_20000_characters": 0,
+      "largest_read_characters": 7901,
+      "explicit_abandoned_objective": false,
+      "trace_truncated": false
+    },
+    {
+      "path": "final-controller/runs/f742de2eded7408294adabe28ba87de9/attempt-001/agent.jsonl",
+      "sha256": "82e55556fc1bbdbaa27b17feb5fd001b8646238550563994cdc2227a902daf6b",
+      "read_calls": 4,
+      "same_window_repeats": 0,
+      "outputs_over_20000_characters": 0,
+      "largest_read_characters": 7603,
+      "explicit_abandoned_objective": true,
+      "trace_truncated": false
+    },
+    {
+      "path": "final-controller/runs/f742de2eded7408294adabe28ba87de9/attempt-002/agent.jsonl",
+      "sha256": "231c5acf229a7b984b480d1f7383a1c225d16663e986a64674ec30588aac7617",
+      "read_calls": 21,
+      "same_window_repeats": 15,
+      "outputs_over_20000_characters": 12,
+      "largest_read_characters": 51248,
+      "explicit_abandoned_objective": false,
+      "trace_truncated": false
+    },
+    {
+      "path": "goal-controller/runs/96214a2865474c76bb30b0ababc1c551/attempt-001/agent.jsonl",
+      "sha256": "b8d5088a67c5935eeb7304af568fb0cd94e095efcee1e42d36b82237d618700c",
+      "read_calls": 4,
+      "same_window_repeats": 0,
+      "outputs_over_20000_characters": 1,
+      "largest_read_characters": 51248,
+      "explicit_abandoned_objective": false,
+      "trace_truncated": false
+    },
+    {
+      "path": "goal-controller/runs/96214a2865474c76bb30b0ababc1c551/attempt-002/agent.jsonl",
+      "sha256": "6270bbe6549b77df94a10ec5422c3b4fae060cd4604aad254205352aa153e428",
+      "read_calls": 7,
+      "same_window_repeats": 1,
+      "outputs_over_20000_characters": 2,
+      "largest_read_characters": 51248,
+      "explicit_abandoned_objective": false,
+      "trace_truncated": false
+    }
+  ],
+  "totals": {
+    "read_calls": 88,
+    "same_window_repeats": 41,
+    "outputs_over_20000_characters": 36,
+    "explicit_abandoned_objective": 1,
+    "trace_truncated": 2
+  },
+  "interpretation": "Counts are lower bounds from two truncated traces. Same-window repeats may include legitimate rereads after edits; they are not all proven redundant."
+}

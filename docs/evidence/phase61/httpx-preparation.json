@@ -1,0 +1,77 @@
+{
+  "approval_digest": "032364929b38cfb12aa04dc6cfaae145848151631bcdb86cddf4dbec59ebe475",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "execution_allowed": false,
+  "source": "https://github.com/encode/httpx",
+  "base_commit": "26d48e0634e6ee9cdc0533996db289ce4b430177",
+  "feature_sha256": "06f1948ce3f59fe02503e0a3cd91fd6c8987adc41d3a9ddabf899aad0b7a355c",
+  "public_sha256": "532542411a986c14f0315947840c41bf9a520358a8931b2e69a1dc1e1d0dbab5",
+  "runner": "sha256:d3521c3f00c0489a2c2ddccd1975469ee5658bac4e5a79fafd94a1f4f017ada3",
+  "read_scope": "staged public HTTPX source, tests, docs, project files and FEATURE.md; no private verification",
+  "write_roots": [
+    "httpx/_utils.py",
+    "httpx/_client.py",
+    "tests/test_path_mounts.py",
+    "docs/advanced/transports.md"
+  ],
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "_public_checks.py"
+      ],
+      "timeout": 60,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    },
+    {
+      "argv": [
+        "python",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "anyio.pytest_plugin",
+        "-p",
+        "no:cacheprovider",
+        "tests/test_utils.py",
+        "tests/client/test_client.py"
+      ],
+      "timeout": 120,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    }
+  ],
+  "denied": [
+    "network",
+    "host shell",
+    "cloud/remote tools",
+    "credential access",
+    "changes to public checks or existing tests"
+  ],
+  "proposed_matched_budget": {
+    "total_worker_sessions": 2,
+    "overall_seconds_including_planning": 240,
+    "per_request_output_tokens": 2048,
+    "per_session_mcp_calls": 16,
+    "context": 8192,
+    "workers": 1
+  },
+  "budget_review": "Confirm cumulative deadline enforcement and cold/warm model protocol before dispatch. Tokens are measured, not claimed as an enforced total cap.",
+  "operator_policy": "Approve initial permissions, image, profile and budgets once. No mid-run implementation guidance; otherwise classify the trial as assisted.",
+  "final_evaluation": "Author new private inputs only after candidate freeze; no sealed feedback to a worker.",
+  "comparison": "NOT_RUN; no model calls in preparation and no runnable task manifest emitted",
+  "baseline_results": {
+    "public": {
+      "passed": false,
+      "receipt_sha256": "135da1a2739e07736d7cc6ebca4f8b7b722a6db0add1cf906f55f4abb52ec30b"
+    },
+    "upstream": {
+      "passed": true,
+      "receipt_sha256": "a0bddc8e4e6fd7d362e606da816430d8c79069a296d061d67333fed112a39996"
+    }
+  },
+  "baseline_ready": true
+}

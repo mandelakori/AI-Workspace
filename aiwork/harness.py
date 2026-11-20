@@ -94,6 +94,8 @@ class OpenCode:
             "\nComplete the task by editing the authorized files and running approved checks. "
             "This objective remains active across context changes.\n", encoding="utf-8")
         actions = ["read", "glob", "grep", "list", "todowrite"]
+        if task.mode == "engineering" and tool_spec and profile.context <= 8192:
+            actions.remove("read")  # Use the bounded public MCP source inspector.
         permissions = [rule("*", "*", "deny"), *(rule(action) for action in actions)]
         permissions.append(rule("external_directory", effect="deny"))
         # Controller checks the actual changed file set again before verification.
@@ -128,6 +130,7 @@ class OpenCode:
             permissions.append(rule("checks_check"))
             if task.mode == "engineering":
                 permissions.append(rule("checks_diff"))
+                permissions.append(rule("checks_focus"))
         env.update({
             "OPENCODE_CONFIG_CONTENT": json.dumps(config),
             "OPENCODE_DISABLE_PROJECT_CONFIG": "true",

@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import json
+import ast
+import hashlib
 import sys
 from pathlib import Path
 from time import time
@@ -9,7 +11,65 @@ from time import time
 from .changes import delta, git_patch, validate_changes
 from .schema import Check
 from .verify import pipeline
-from .workspace import inventory, snapshot
+from .workspace import contained, ignore, inventory, snapshot
+
+
+def focus(workspace: Path, args: dict) -> dict:
+    """Read a bounded public source window without exporting a whole file."""
+    if (not isinstance(args, dict) or set(args) - {"path", "line", "symbol"}
+            or not isinstance(args.get("path"), str)
+            or type(args.get("line", 1)) is not int or args.get("line", 1) < 1
+            or not isinstance(args.get("symbol", ""), str) or len(args.get("symbol", "")) > 160):
+        raise ValueError("focus requires a relative path and optional line or Python symbol")
+    name = args["path"]
+    if any(ignore(part) for part in name.split("/")):
+        raise ValueError("excluded inspection path")
+    path = contained(workspace, name)
+    if not path.is_file() or path.stat().st_size > 256 * 1024:
+        raise ValueError("inspection requires a text file no larger than 256 KiB")
+    with path.open("rb") as stream:
+        data = stream.read(256 * 1024 + 1)
+    if len(data) > 256 * 1024:
+        raise ValueError("inspection source grew beyond 256 KiB")
+    text = data.decode("utf-8")
+    lines = text.splitlines(keepends=True)
+    first = args.get("line", 1)
+    end = len(lines)
+    if args.get("symbol"):
+        found = []
+        def visit(nodes, prefix=""):
+            for node in nodes:
+                if isinstance(node, (ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
+                    qualified = prefix + node.name
+                    if qualified == args["symbol"]:
+                        found.append((min([node.lineno, *(d.lineno for d in node.decorator_list)]), node.end_lineno))
+                    visit(node.body, qualified + ".")
+        try:
+            visit(ast.parse(text).body)
+        except (SyntaxError, RecursionError) as error:
+            raise ValueError("symbol inspection requires parseable Python") from error
+        if len(found) != 1:
+            raise ValueError("Python symbol must match exactly once; use Class.method for methods")
+        symbol_first, end = found[0]
+        first = max(symbol_first, args.get("line", symbol_first))
+        if first > end:
+            raise ValueError("inspection line is past the selected symbol")
+    if first > max(1, len(lines)):
+        raise ValueError("inspection line is past EOF")
+    selected = []
+    size = 0
+    for line in lines[first-1:min(end, first+59)]:
+        width = len(line.encode("utf-8"))
+        if size + width > 3000:
+            break
+        selected.append(line)
+        size += width
+    if not selected and lines:
+        raise ValueError("source line exceeds the 3000-byte inspection budget")
+    following = first + len(selected)
+    return {"path": name, "sha256": hashlib.sha256(data).hexdigest(), "line": first,
+            "source": "".join(selected), "next_line": following if following <= end else None,
+            "total_lines": len(lines)}
 
 
 def serve(spec_path: Path) -> None:
@@ -45,6 +105,10 @@ def serve(spec_path: Path) -> None:
                 }, "required": ["index"], "additionalProperties": False},
             }] if checks else []
             if build:
+                available.append({"name": "focus", "description": "Inspect a public source window (60 lines, 3000 UTF-8 bytes), optionally by Class.method. Follow next_line to continue.",
+                                  "inputSchema": {"type": "object", "properties": {
+                                      "path": {"type": "string"}, "line": {"type": "integer", "minimum": 1},
+                                      "symbol": {"type": "string"}}, "required": ["path"], "additionalProperties": False}})
                 available.append({"name": "diff", "description": "Review a Git diff of current workspace edits.",
                                   "inputSchema": {"type": "object", "properties": {},
                                                   "additionalProperties": False}})
@@ -57,7 +121,8 @@ def serve(spec_path: Path) -> None:
             error = True
             if calls >= budget or (stop and stop.exists()):
                 value = {"error": "tool stopped or call limit reached"}
-            elif not ((name == "diff" and build and args == {}) or
+            elif not ((name == "focus" and build and isinstance(args, dict)) or
+                      (name == "diff" and build and args == {}) or
                       (name == "check" and isinstance(args, dict) and set(args) == {"index"}
                        and type(index) is int and 0 <= index < len(checks))):
                 value = {"error": "invalid tool or command index"}
@@ -67,7 +132,12 @@ def serve(spec_path: Path) -> None:
                     if build:
                         changed = delta(inventory(baseline), inventory(workspace))
                         validate_changes(changed, tuple(config["write_roots"]))
-                    if name == "diff":
+                    if name == "focus":
+                        value = {**focus(workspace, args), "objective": config.get("objective", "")[:1000],
+                                 "objective_truncated": len(config.get("objective", "")) > 1000,
+                                 "write_roots": config["write_roots"], "remaining_calls": budget-calls,
+                                 "passed": True, "stdout": "", "stderr": ""}
+                    elif name == "diff":
                         patch = git_patch(baseline, workspace, changed,
                                           spec_path.parent / f"agent-diff-{calls:02}")
                         patch_path = spec_path.parent / f"agent-diff-{calls:02}.patch"
@@ -79,8 +149,8 @@ def serve(spec_path: Path) -> None:
                         remaining = config.get("deadline", time() + 900) - time()
                         value = pipeline(setup, checks[index], check_root, spec_path.parent / "check-home",
                                          config["image"], timeout=remaining, stop=stop)
-                    value["stdout"] = value["stdout"][:4000]
-                    value["stderr"] = value["stderr"][:4000]
+                    value["stdout"] = value["stdout"][-4000:]
+                    value["stderr"] = value["stderr"][-4000:]
                     error = not value["passed"]
                 except (ValueError, OSError, RuntimeError) as exc:
                     value = {"error": str(exc)}
@@ -90,7 +160,7 @@ def serve(spec_path: Path) -> None:
                     value = {key: value[key] for key in ("passed", "code", "stdout", "stderr") if key in value}
                     value["stdout"] = value.get("stdout", "")[-450:]
                     value["stderr"] = value.get("stderr", "")[-900:]
-            response["result"] = {"content": [{"type": "text", "text": json.dumps(value)}], "isError": error}
+            response["result"] = {"content": [{"type": "text", "text": json.dumps(value, ensure_ascii=False)}], "isError": error}
         else:
             response["error"] = {"code": -32601, "message": "method unavailable"}
         print(json.dumps(response), flush=True)
