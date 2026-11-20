@@ -28,7 +28,8 @@ class HarnessContextTests(unittest.TestCase):
             config = json.loads(run.call_args.args[3]["OPENCODE_CONFIG_CONTENT"])
             instruction = Path(config["instructions"][0])
             text = instruction.read_text()
-            self.assertTrue(instruction.is_relative_to(artifacts))
+            # Windows runner temp paths can use an 8.3 alias; compare resolved paths.
+            self.assertTrue(instruction.is_relative_to(artifacts.resolve()))
             self.assertIn(goal, text)
             self.assertIn("module.py", text)
             self.assertNotIn("PRIVATE-CANARY", text)
