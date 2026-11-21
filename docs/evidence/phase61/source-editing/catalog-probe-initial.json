@@ -1,0 +1,82 @@
+{
+  "catalogs": [
+    [
+      "glob",
+      "grep"
+    ],
+    [],
+    [],
+    [
+      "glob",
+      "grep"
+    ],
+    [
+      "glob",
+      "grep"
+    ],
+    [
+      "glob",
+      "grep"
+    ],
+    [
+      "checks_check",
+      "checks_diff",
+      "checks_edit",
+      "checks_focus",
+      "glob",
+      "grep"
+    ],
+    [
+      "checks_check",
+      "checks_diff",
+      "checks_edit",
+      "checks_focus",
+      "glob",
+      "grep"
+    ],
+    [
+      "checks_check",
+      "checks_diff",
+      "checks_edit",
+      "checks_focus",
+      "glob",
+      "grep"
+    ],
+    [
+      "checks_check",
+      "checks_diff",
+      "checks_edit",
+      "checks_focus",
+      "glob",
+      "grep"
+    ],
+    [
+      "checks_check",
+      "checks_diff",
+      "checks_edit",
+      "checks_focus",
+      "glob",
+      "grep"
+    ],
+    [
+      "checks_check",
+      "checks_diff",
+      "checks_edit",
+      "checks_focus",
+      "glob",
+      "grep"
+    ],
+    [
+      "checks_check",
+      "checks_diff",
+      "checks_edit",
+      "checks_focus",
+      "glob",
+      "grep"
+    ]
+  ],
+  "first_request_scoped_tools": [],
+  "native_mutation_schemas_in_first_request": [],
+  "tools_issued_only_when_advertised": true,
+  "result_code": 0
+}

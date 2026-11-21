@@ -27,12 +27,17 @@ def write(path: Path, value: dict) -> None:
     temporary.replace(path)
 
 
-def create(state: Path, approval: str, arm: str, limits: dict | None = None) -> None:
+def create(state: Path, approval: str, arm: str, limits: dict | None = None, *, quotas: dict | None = None) -> None:
     state.mkdir(parents=True, exist_ok=False)
     limits = limits or PHASE_LIMITS
     if set(limits) != set(PHASE_LIMITS) or any(not 0 < limits[k] <= PHASE_LIMITS[k] for k in limits):
         raise ValueError("invalid phase allocations")
+    quotas = {'sessions':2,'planner_requests':1} if quotas is None else quotas
+    if (set(quotas)!={'sessions','planner_requests'} or any(type(v) is not int for v in quotas.values())
+            or not 0<=quotas['sessions']<=2 or not 0<=quotas['planner_requests']<=1):
+        raise ValueError('invalid measured quotas')
     write(state / FILE, {"approval": approval, "arm": arm, "sessions": 0, "planner_requests": 0,
+                        'quotas':quotas,
                         "phases": {key: {"limit": value, "status": "PENDING"} for key, value in limits.items()}})
 
 
@@ -96,7 +101,8 @@ def claim(kind: str, state: Path) -> None:
         if active["phase"] != "work":
             raise ValueError("independent grading cannot dispatch model work")
         data = json.loads(path.read_bytes())
-        key, limit = ("sessions", 2) if kind == "worker" else ("planner_requests", 1)
+        key = 'sessions' if kind=='worker' else 'planner_requests'
+        limit = data.get('quotas',{'sessions':2,'planner_requests':1})[key]
         if data[key] >= limit:
             raise ValueError(f"measured {kind} budget exhausted")
         data[key] += 1

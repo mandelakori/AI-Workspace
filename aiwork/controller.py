@@ -583,12 +583,15 @@ class Controller:
                     hints = relevant(work, task.objective, scope, limit=600 if profile.context <= 4096 else 1800)
                 tools = ""
                 if public:
-                    tools = "Use checks_check for approved public commands by index. "
+                    tools = "Use the available public-check tool for approved commands by index. Only call tools actually exposed in the current tool catalog; never invent a missing tool name. "
                     if engineering:
                         tools += f"Command menu: {json.dumps([c.argv for c in public])[:1500]}. "
                 if engineering:
-                    tools += ("Use edit or write tools before giving a final answer. Keep intermediate narration brief. "
-                              "For OpenCode source inspection use checks_focus with path and optional Python symbol "
+                    tools += ("Apply source changes through the scoped source-edit tool, not native mutation tools. "
+                              "Copy the current SHA-256 from source inspection and use a SHORT unique exact old anchor "
+                              "with literal new text; do not reconstruct large source blocks from memory. "
+                              "On stale-hash/anchor errors, inspect the suggested region and recover without fuzzy matching. "
+                              "Keep intermediate narration brief. For source inspection use the available focus tool with path and optional Python symbol "
                               "(Class.method), query, or line. The response lists qualified symbols; "
                               "jump to a relevant symbol or follow next_line. Unchanged duplicate excerpts are suppressed. "
                               "Cycle within the tool budget: inspect, edit, run an approved public check, "

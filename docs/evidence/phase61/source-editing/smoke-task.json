@@ -1,0 +1,75 @@
+{
+  "objective": "Implement Distance.metres(value, unit) for m, cm and km, preserving fractional values; unknown units raise ValueError. Only change distance.py; public tests stay read-only. This fixture includes an intentional edit-rejection drill: your FIRST source-edit request must be a replacement in distance.py using expected_sha256=0000000000000000000000000000000000000000000000000000000000000000. That deliberately stale fingerprint must be rejected without changing the file. Then inspect the current source at the suggested region, use its real SHA-256, apply your own correction with a short unique exact anchor, and run the public check. Use only tools actually present in the tool catalog. Do not finish before testing.",
+  "input_inventory": {
+    "distance.py": {
+      "bytes": 108,
+      "sha256": "8c4e5a658cea0d3ded075ac4f81456e39633514e735f0a080b666e2d748f6eda"
+    },
+    "tests/test_distance.py": {
+      "bytes": 424,
+      "sha256": "7ea8eed19655e3f90952d08c27f60b80b1471abf1227d8122df35a9c5d1825d7"
+    }
+  },
+  "write_roots": [
+    "distance.py"
+  ],
+  "command": [
+    "python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "timeout": 150,
+  "attempts": 1,
+  "controller_implementation_sha256": {
+    "__init__.py": "674dd2810ed1aa3fa82bafbb3daf7cd6ba9f7a0bc6ee1146683e588cad2ed741",
+    "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "adaptive.py": "10c0071bb9934c28ca2c95cbd4cc09b151dcaf35a9213572c2b9e646d06e04f8",
+    "benchmark.py": "cd44d2e8cbc137649334ff681b2671d202229b3c2c6e9f8bc2909747554f2e48",
+    "campaign.py": "74dc146871dd5657d18bda62867020b89c55a278b94e4ad694389a04ce77a255",
+    "changes.py": "2cb70357f7d3020100f7fc758d7a08382e40279c1608637a40d2f7ace3fdebeb",
+    "cli.py": "75fcd5c29f19069df8a638f45bb2cd1854958cfa0a0949471d6eeadc667c192b",
+    "cloud.py": "e2ba30954bcec14fb091a49d2b3bb7c6ef48b241a5fbd6b724f57f64798a97ec",
+    "component_source.py": "11b55f5198785ccab5d10dfe7cfabe2e61d69e3f83f5322dcc2f47c3115b8165",
+    "controller.py": "60d34ed0ef30f3d196f23fc8bd010b42f7a382dfdf4c0305cd1a81b0b2141fd3",
+    "draft.py": "82e8cabf9894026bc01bf702d0d5eee0d9c9c3500605e5ae4ee079a9fb149d6e",
+    "function_repair.py": "9e3a02bd749b2e364871d01fe6e7d4add1197b167cecf5f99410b6007dbdea4d",
+    "harness.py": "c9c500a10c2a838f8205d62caa7975bfdb8a9f1c88e35f99ed99a0d532f26878",
+    "hierarchy.py": "cb9dc37984e73268e964b4e4b660c3ca1eaa9feb5e398cff6481bb9afe74f453",
+    "http.py": "904eb91b3b4830aae36d959411394f08b397dc291adb1e5cccec6fe11d114e7d",
+    "httpx_benchmark.py": "d870a8d329acefdf4ce4ff314b7c05879084452041ace0d1529d55494fccd586",
+    "index.py": "0f23e8686fb498bc16874d6f46b07a5d8744ea22a7bee3a0db53d701db0528be",
+    "inference.py": "e4508799f6d910010b05b23899a714eba0d68caf273b76fea97c0bb84292ca42",
+    "lock.py": "28a360f7b479f004bd363d6b57db5e6f2d798f50a7f3b21e23df423eaca622a8",
+    "mcp.py": "8d7c6e3c1ab98c8177fea4bc935dcc38cf647eeb321b2c8b069ee9c96695192d",
+    "metrics.py": "f32d3ffd2ca18ba36f8af654f3604d8f34abf400fb1aecf1ff4d406db6b9d937",
+    "native.py": "778d35f01e391207650532909e68a226149b91b23162d4ac75a0f81766ef850e",
+    "native_feedback.py": "52a48248a03c48223adf274f4cc9cb47d4cd84aa101990e7e6e4ea8ecd162bc3",
+    "native_recovery.py": "cb23bb7aa7157e1e858d0ddd08ccee54488b7fe3655f3f2829a851838c0d2990",
+    "oracle.py": "cf0b5d022b47ee959ed4779318867cec73ea03b8858597b343ccb3afdbb17036",
+    "planner.py": "f0620f1842a62649bdb4fc8c95f63b4886ae90457e0be1ae450ef3d34799d8c5",
+    "process.py": "77dd2612aa9e7c898c033bbb876385fa1b86869f4f81a71c0282faf879ea45c2",
+    "project.py": "7d306b1e07270f2dbc2e5dd0632fa0c551e07f50d5fcd9e255a9bdf4a673bb12",
+    "rea_selection.py": "e9d1c516bfcc8a1e97c9cfd8a2dcf7a3e0a753ea05e8174e844f3ab1df22f8f8",
+    "remote.py": "167daef6d96ba6a122399268f22b033d0984be196aaaa87e7e4c546f37034647",
+    "repair_benchmark.py": "e7093c36be091a237becde36eca5b09275a95fd4b9b5ba677bba45aa39960e63",
+    "router.py": "b8a2368bea911e82ecf8e65f5cd8c7bd1f9df90f91140469e3a6149afa714cca",
+    "schema.py": "569cebd8b94588018a04965e52ddb829a9826cdd58959f52de23d8b1081adc60",
+    "selection.py": "3fd108028c45095ecfc06f6648c075fb58815ae8a6760541c047f94f819630d0",
+    "selfdev.py": "dadd0f87bdba508512fe6a115b65b4b8248c9bd058b92337b065737f60857954",
+    "source_edit.py": "4c68ede44ce1e508a40de46fbd9c8812eb31296468ade9d397484ae03fde117b",
+    "specialists.py": "474aef1e714fd392acf130298d169323dd3c9644491c64b645b5059ac9c6f094",
+    "state.py": "70a3e5c517126d7479065b2d86ade82b53decfd8ebf161d2e4debb334410427a",
+    "trial_budget.py": "1e0f5c05841dc7295d827dfaa04a742bafa60c3ff6508f8c85490305baf13a83",
+    "verify.py": "1350209bc5e02c774925a21e11d6a30414136fd458a4d486d4242c9c344c37e0",
+    "windows_job.py": "389c3a0eefa204985aaace091fda91b45db146fbde525b92fb37612a06d2cfcc",
+    "workflow.py": "20c833465a5fb67f6380004f881adbd79da5d3d2855aab4de7224a6eb344caec",
+    "workspace.py": "95157f8c652c08b0c775222e8c92f53de6bdcba7801f29be0b4997d14a3225a4"
+  },
+  "initial_protocol_requests_intentional_stale_hash": true,
+  "operator_mid_run_guidance": false,
+  "classification": "Self-authored fault-injection fixture, not unfamiliar-repository acceptance"
+}

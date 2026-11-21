@@ -2,6 +2,13 @@
 
 ## Phase 6.1 bounded autonomy preparation
 
+| Source editing recovery | Status | Evidence |
+| --- | --- | --- |
+| Scoped exact editing | VERIFIED | [Editing report](SOURCE-EDITING-RECOVERY.md): current hashes, unique short anchors, atomic commits, syntax checks and actionable rejections. Native mutation tools denied; full 132-test suite passes. |
+| Autonomous rejection recovery fixture | VERIFIED | One model session: rejected malformed edit → inspection → exact edit → public check; 1/4 to 4/4, controller rerun passes, 55.641 seconds. Prompted self-authored fixture only; live stale-hash branch was not reached. |
+| Clean provider completion | BLOCKED | Same fixture reports a provider stream missing finish_reason and harness exit 1, despite independently passing source/public checks. No timeout or extra model run; transport error remains unresolved. |
+| Single-arm HTTPX pilot | UNTESTED | Fresh direct-only review/digest remains PREPARED_NOT_AUTHORIZED. One 150-second attempt inside unchanged 20/180/40 reservations; no HTTPX dispatch. Historical evidence and quarantines preserved. |
+
 | Execution recovery | Status | Evidence |
 | --- | --- | --- |
 | Bounded source navigation and persistent objective | VERIFIED | [Recovery report](PHASE61-EXECUTION-RECOVERY.md): symbol discovery/query excerpts, duplicate suppression, writable-source ranking, reconnect quotas and public-test goal persistence. All 120 regressions pass. |

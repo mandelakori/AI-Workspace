@@ -12,6 +12,7 @@ from .schema import Check
 from .verify import pipeline
 from .workspace import contained, ignore, inventory, snapshot
 from .index import python_symbols
+from .source_edit import apply_edit, EditRejected
 
 
 def reserve_trial_call(spec: Path, limit: int) -> int:
@@ -111,6 +112,12 @@ def inspect_source(spec: Path, workspace: Path, args: dict) -> dict:
     with file_lock(path.with_suffix('.lock')):
         history=json.loads(path.read_bytes()) if path.exists() else []
         duplicate=key in history
+        recovery=spec.with_name('edit-reinspection.json')
+        if recovery.exists():
+            permit=json.loads(recovery.read_bytes())
+            if permit.get('path')==value['path'] and permit.get('sha256')==value['sha256'] and permit.get('remaining')==1:
+                duplicate=False;permit['remaining']=0;write(recovery,permit)
+                value['reinspection_after_edit_error']=True
         if not duplicate:
             history.append(key);write(path,history[-16:])
     if duplicate:
@@ -159,6 +166,10 @@ def serve(spec_path: Path) -> None:
                 available.append({"name": "diff", "description": "Review a Git diff of current workspace edits.",
                                   "inputSchema": {"type": "object", "properties": {},
                                                   "additionalProperties": False}})
+                available.append({"name":"edit","description":"Apply a SHORT exact source edit with current SHA-256 from focus. Modes replace/before/after require a unique literal old anchor, preserving all whitespace; new text is literal, including line endings. No fuzzy matching. create requires expected_sha256=absent and old empty. Errors return a source-region hint; reinspect and recover. Python results must parse.",
+                    "inputSchema":{"type":"object","properties":{k:{"type":"string"} for k in ['path','expected_sha256','old','new']}|
+                        {'mode':{'type':'string','enum':['replace','before','after','create']}},
+                        'required':['path','expected_sha256','old','new','mode'],'additionalProperties':False}})
             response["result"] = {"tools": available}
         elif method == "tools/call":
             params = message.get("params", {})
@@ -168,7 +179,7 @@ def serve(spec_path: Path) -> None:
             error = True
             if calls >= budget or (stop and stop.exists()):
                 value = {"error": "tool stopped or call limit reached"}
-            elif not ((name == "focus" and build and isinstance(args, dict)) or
+            elif not ((name in {"focus","edit"} and build and isinstance(args, dict)) or
                       (name == "diff" and build and args == {}) or
                       (name == "check" and isinstance(args, dict) and set(args) == {"index"}
                        and type(index) is int and 0 <= index < len(checks))):
@@ -179,7 +190,11 @@ def serve(spec_path: Path) -> None:
                     if build:
                         changed = delta(inventory(baseline), inventory(workspace))
                         validate_changes(changed, tuple(config["write_roots"]))
-                    if name == "focus":
+                    if name == 'edit':
+                        deadline=config.get('deadline',time()+900)
+                        if config.get('trial'):deadline=min(deadline,config['trial']['deadline'])
+                        value=apply_edit(workspace,tuple(config['write_roots']),args,spec_path.with_name('source-edit.lock'),deadline)
+                    elif name == "focus":
                         value = {**inspect_source(spec_path, workspace, args),
                                  "passed": True, "stdout": "", "stderr": ""}
                     elif name == "diff":
@@ -201,10 +216,19 @@ def serve(spec_path: Path) -> None:
                                      objective_truncated=len(config.get('objective',''))>1000,
                                      write_roots=config['write_roots'],remaining_calls=budget-calls)
                     error = not value["passed"]
+                except EditRejected as exc:
+                    value={**exc.diagnostic,'passed':False,'stdout':'','stderr':str(exc)}
+                    if exc.diagnostic.get('actual_sha256'):
+                        from .lock import file_lock
+                        from .trial_budget import write
+                        with file_lock(spec_path.with_name('source-navigation.lock')):
+                            write(spec_path.with_name('edit-reinspection.json'),{'path':exc.diagnostic['path'],
+                                'sha256':exc.diagnostic['actual_sha256'],'remaining':1})
                 except (ValueError, OSError, RuntimeError) as exc:
                     value = {"error": str(exc)}
                 with spec_path.with_name("mcp.jsonl").open("a", encoding="utf-8") as log:
-                    log.write(json.dumps({"tool": name, "index": index, "call": calls, **value}) + "\n")
+                    log.write(json.dumps({"tool": name, "index": index, "call": calls,
+                                          **({'arguments':args} if name=='edit' else {}), **value}) + "\n")
                 if build and name == "check" and "passed" in value:
                     value = {key: value[key] for key in ("passed", "code", "stdout", "stderr", "objective", "objective_truncated", "write_roots", "remaining_calls") if key in value}
                     value["stdout"] = value.get("stdout", "")[-450:]

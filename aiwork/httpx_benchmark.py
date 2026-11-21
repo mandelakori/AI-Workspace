@@ -70,7 +70,8 @@ def worker_contract(feature: str) -> tuple[str, str]:
             '\n\n'.join([*paragraphs[1:start],*paragraphs[end:]]))
 
 
-def prepare(review_path: Path, root: Path) -> dict:
+def prepare(review_path: Path, root: Path, *, single_arm: bool = False) -> dict:
+    arms=('direct',) if single_arm else ARMS
     original = json.loads(review_path.read_bytes())
     old_digest = original.pop('approval_digest')
     # Preserve the canonicalization used by the original Phase 6.1 review.
@@ -105,14 +106,14 @@ def prepare(review_path: Path, root: Path) -> dict:
     metadata = model_metadata(profile)  # Inventory only; no inference.
     original_docs = (source/'docs/advanced/transports.md').read_text(encoding='utf-8')
     starts = {}
-    for arm in ARMS:
+    for arm in arms:
         target = root/'arms'/arm/'input'
         snapshot(source,target,())
         shutil.copyfile(root/'assets/trial_score.py',target/'_trial_score.py')
         write_json(target/'_trial_policy.json',{'upstream':commands[1].argv,
                    'original_docs_text_sha256':hashlib.sha256(original_docs.encode()).hexdigest()})
         starts[arm] = inventory(target)
-    if starts['direct'] != starts['hierarchical']:
+    if not single_arm and starts['direct'] != starts['hierarchical']:
         raise ValueError('arm starting snapshots differ')
     probe_start = time()
     probe = invoke(Check(('python','-I','-c',
@@ -124,7 +125,7 @@ def prepare(review_path: Path, root: Path) -> dict:
         raise ValueError('image watchdog/clock preflight failed')
     implementation_objective, operator_notes=worker_contract((source/'FEATURE.md').read_text(encoding='utf-8'))
     manifest = {
-        'format':1,'status':'PREPARED_NOT_AUTHORIZED','execution_allowed':False,'bundle':str(root.resolve()),
+        'format':2,'arms':list(arms),'single_arm_pilot':single_arm,'status':'PREPARED_NOT_AUTHORIZED','execution_allowed':False,'bundle':str(root.resolve()),
         'source_commit':head,'original_review_digest':old_digest,
         'specification_sha256':original['feature_sha256'],'public_corpus_sha256':original['public_sha256'],
         'implementation_objective':implementation_objective,'operator_preparation_notes':operator_notes,
@@ -134,15 +135,16 @@ def prepare(review_path: Path, root: Path) -> dict:
         'execution_state':str(cfg.execution_state),'platform':platform.system(),'implementation_sha256':implementation(),
         'asset_inventory':inventory(root/'assets'),'write_roots':list(PATHS),
         'commands':[asdict(c) for c in commands],
-        'worker_policy':{'sessions':2,'planner_requests':1,'mcp_calls_per_session':16,'workers':1,
+        'worker_policy':{'sessions':1 if single_arm else 2,'planner_requests':0 if single_arm else 1,'mcp_calls_per_session':16,'workers':1,
                          'per_request_output_tokens':2048,'total_token_cap':None,
                          'retain_isolated_worker_source':True,
                          'native_shell':False,'network_in_verifier':False,'read_scope':'identical staged public inputs only'},
-        'phase_seconds':PHASE_LIMITS,'total_seconds_per_arm':240,'total_seconds_pair':480,
+        'phase_seconds':PHASE_LIMITS,'total_seconds_per_arm':240,'total_seconds_approved':240*len(arms),
+        'edit_policy':'Scoped MCP edits only; current SHA-256 and unique literal anchors, <=1200 old / <=3000 new bytes. Atomic writes; no fuzzy replacement or native mutation tools. Python results must parse. Catalog preflight consumes the existing attempt budget.',
         'clock_policy':'Cumulative execution reservations: warm/preflight 20 + engineering/public verification 180 + independent grading 40. No transfers, refunds, restarts or resumed worker sessions.',
         'cleanup_policy':'Warm phase forbids verification/container launches and has no container cleanup. Work/grade cleanup commands share one absolute 10-second allowance, without a shorter per-command cap. Only cancellation/owned-container deletion may run after a deadline. No new inference, tools or verification. Unknown ownership or cleanup failure quarantines the trial.',
         'provider_cancellation':'Owned clients are terminated at the deadline; the existing shared server is never killed. Backend cancellation latency is not measured during preparation. Inference interruption or a work/warm watchdog timeout quarantines the pair: no further arm/grade dispatch.',
-        'warm_protocol':{'order':list(ARMS),'neutral_requests_per_arm':1,'max_tokens':4,
+        'warm_protocol':{'order':list(arms),'neutral_requests_per_arm':1,'max_tokens':4,
                          'prompt':'Reply with exactly READY.','temperature':0,'reasoning_effort':profile.reasoning_effort,
                          'resident_context_required':8192,'fresh_harness_home':True,'no_restart_unload_or_model_changes':True,
                          'minimum_residency_ttl_seconds':185,
@@ -154,12 +156,16 @@ def prepare(review_path: Path, root: Path) -> dict:
         'sealed_policy':{'required_cases':24,'same_cases_both_arms':True,'author_after_all_work_closed':True,
                           'worker_feedback':False,'grader':'assets/sealed_probe.py','private_cases':'private/cases.json',
                           'expected_results_mounted':False},
-        'authorization':'Requires a separate operator grant naming this exact digest and both arms. No such grant is created by preparation.',
+        'authorization':'Requires a separate operator grant naming this exact digest and exactly the arms list. No such grant is created by preparation.',
         'mid_run_guidance':'Prohibited. Any operator implementation guidance invalidates the unassisted classification.',
         'probe':{'passed':True,'image_watchdog':observed['timeout'],'clock_within_host_roundtrip':True},
     }
+    if single_arm:
+        manifest['arm_recipes']={'direct':'One worker session, one attempt, 150-second attempt ceiling including setup and verification reserve; no planner or retry. Entire engineering/public selection remains within 180 seconds.'}
+        manifest['selection']=manifest['selection'].replace('Both arms: identical post-run','Post-run')
+        manifest['warm_protocol']['cache_limitation']='Neutral warm-up protocol; a single-arm pilot supports no architecture comparison or provider-cache purge claim.'
     manifest['approved_public_commands']=[asdict(c) for c in task(root,'direct',manifest).commands]
-    manifest['tasks']={arm:{**asdict(task(root,arm,manifest)),'workspace':f'arms/{arm}/input','verification_dir':None} for arm in ARMS}
+    manifest['tasks']={arm:{**asdict(task(root,arm,manifest)),'workspace':f'arms/{arm}/input','verification_dir':None} for arm in arms}
     write_json(root/'manifest.json',manifest)
     (root/'manifest.sha256').write_text(digest(manifest),encoding='ascii')
     return {'status':manifest['status'],'approval_digest':digest(manifest),'manifest':str(root/'manifest.json')}
@@ -169,11 +175,13 @@ def load(root: Path) -> dict:
     manifest=json.loads((root/'manifest.json').read_bytes())
     if digest(manifest)!=(root/'manifest.sha256').read_text().strip() or str(root.resolve())!=manifest['bundle']:
         raise ValueError('approval manifest identity changed')
+    if list(manifest.get('arms',ARMS)) not in [list(ARMS),['direct']]:
+        raise ValueError('unsupported approved arm scope')
     if implementation()!=manifest['implementation_sha256'] or inventory(root/'assets')!=manifest['asset_inventory']:
         raise ValueError('approved execution implementation changed')
     if inventory(root/'original-input')!=manifest['original_inventory']:
         raise ValueError('original frozen inputs changed')
-    for arm in ARMS:
+    for arm in manifest.get('arms',ARMS):
         if inventory(root/'arms'/arm/'input')!=manifest['starting_inventories'][arm]:
             raise ValueError('clean starting snapshot changed')
     if file_hash(Path(manifest['harness']['path']))!=manifest['harness']['sha256']:
@@ -184,7 +192,7 @@ def load(root: Path) -> dict:
 def authorize(root: Path, grant: Path) -> dict:
     manifest=load(root)
     approval=json.loads(grant.read_bytes())
-    if approval != {'approval_digest':digest(manifest),'authorize':list(ARMS),'operator_approved':True}:
+    if approval != {'approval_digest':digest(manifest),'authorize':list(manifest.get('arms',ARMS)),'operator_approved':True}:
         raise ValueError('explicit operator authorization for this manifest is required')
     return manifest
 
@@ -237,7 +245,8 @@ def task(root: Path, arm: str, manifest: dict) -> Task:
                 work,'agent','httpx-autonomy',tuple(sorted({name.split('/')[0] for name in manifest['starting_inventories'][arm]})),
                 (), (all_public,upstream,commands[4]), mode='engineering',write_roots=PATHS,
                 profile=profile['id'],location='local',agent_role='implementation',min_context=8192,
-                attempts=2 if arm=='direct' else 1,timeout=120,commands=commands,baseline_check=True)
+                attempts=1 if manifest.get('single_arm_pilot') else 2 if arm=='direct' else 1,
+                timeout=150 if manifest.get('single_arm_pilot') else 120,commands=commands,baseline_check=True)
 
 
 def task_file(value: Task, path: Path) -> None:
@@ -311,8 +320,8 @@ def work(root: Path, arm: str, manifest: dict) -> None:
         write_json(out/'selection-history.json',history)
 
 
-def closed(root: Path) -> None:
-    for arm in ARMS:
+def closed(root: Path, manifest: dict) -> None:
+    for arm in manifest.get('arms',ARMS):
         data=json.loads((root/'arms'/arm/'state'/FILE).read_bytes())
         if data['phases']['warm']['status']=='FAILED':continue
         if data['phases']['work']['status'] not in {'FINISHED','FAILED'}:
@@ -326,7 +335,7 @@ def sealed_match(row: dict, raw: dict) -> bool:
 
 
 def grade(root: Path, arm: str, cases: Path, manifest: dict) -> None:
-    closed(root)
+    closed(root,manifest)
     saved=json.loads((root/'arms'/arm/'frozen.json').read_bytes())
     if inventory(Path(saved['path']))!=saved['inventory']:raise ValueError('frozen candidate changed')
     rows=load_cases(cases)
@@ -356,22 +365,24 @@ def grade(root: Path, arm: str, cases: Path, manifest: dict) -> None:
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     sub=parser.add_subparsers(dest='action',required=True)
-    prep=sub.add_parser('prepare');prep.add_argument('review',type=Path);prep.add_argument('root',type=Path)
+    prep=sub.add_parser('prepare');prep.add_argument('review',type=Path);prep.add_argument('root',type=Path);prep.add_argument('--single-arm',action='store_true')
     for name in ['run','grade']:
         action=sub.add_parser(name);action.add_argument('root',type=Path);action.add_argument('--arm',choices=ARMS,required=True)
         action.add_argument('--authorization',type=Path,required=True)
         if name=='grade':action.add_argument('--cases',type=Path,required=True)
     internal=sub.add_parser('_phase');internal.add_argument('root',type=Path);internal.add_argument('arm',choices=ARMS);internal.add_argument('phase',choices=PHASE_LIMITS);internal.add_argument('--cases',type=Path)
     args=parser.parse_args();root=args.root.resolve()
-    if args.action=='prepare':print(json.dumps(prepare(args.review.resolve(),root),indent=2));return
+    if args.action=='prepare':print(json.dumps(prepare(args.review.resolve(),root,single_arm=args.single_arm),indent=2));return
     if args.action=='_phase':
         lease=current(root/'arms'/args.arm/'state')
         if not lease or lease['phase']!=args.phase:
             raise ValueError('internal phase requires its exact active budget lease')
         manifest=load(root)
+        if args.arm not in manifest.get('arms',ARMS):raise ValueError('arm is outside approved scope')
         {'warm':lambda:warm(root,args.arm,manifest),'work':lambda:work(root,args.arm,manifest),
          'grade':lambda:grade(root,args.arm,args.cases.resolve(),manifest)}[args.phase]();return
     manifest=authorize(root,args.authorization.resolve())
+    if args.arm not in manifest.get('arms',ARMS):raise ValueError('arm is outside approved scope')
     with file_lock(root/'pair.lock'):
         for path in root.glob('arms/*/state/'+FILE):
             if json.loads(path.read_bytes()).get('quarantined'):
@@ -382,18 +393,19 @@ def main():
                 direct=json.loads((root/'arms/direct/state'/FILE).read_bytes())
                 if direct['phases']['warm']['status']!='FAILED' and direct['phases']['work']['status'] not in {'FINISHED','FAILED'}:
                     raise ValueError('fixed arm order requires direct to close first')
-            create(state,digest(manifest),args.arm)
+            create(state,digest(manifest),args.arm,quotas={k:manifest['worker_policy'][k] for k in ['sessions','planner_requests']})
             for phase in ['warm','work']:
                 result=run_phase(state,phase,[sys.executable,'-m','aiwork.httpx_benchmark','_phase',str(root),args.arm,phase],Path(__file__).parents[1])
                 write_json(arm/(phase+'-process.json'),result)
                 if result['code'] or result['timed_out'] or not result['cleanup']['passed']:break
         else:
-            closed(root);cases=args.cases.resolve()
+            closed(root,manifest);cases=args.cases.resolve()
             if len(load_cases(cases))!=manifest['sealed_policy']['required_cases']:raise ValueError('sealed protocol requires exactly 24 cases')
             if cases != contained(root,'private/cases.json').resolve():
                 raise ValueError('sealed inputs require the approved private path')
-            cutoff=max([json.loads((root/'arms'/a/'frozen.json').read_bytes())['frozen_at'] for a in ARMS if (root/'arms'/a/'frozen.json').exists()]+
-                       [json.loads((root/'arms'/a/'state'/FILE).read_bytes())['phases']['work'].get('finished_utc',0) for a in ARMS])
+            arms=manifest.get('arms',ARMS)
+            cutoff=max([json.loads((root/'arms'/a/'frozen.json').read_bytes())['frozen_at'] for a in arms if (root/'arms'/a/'frozen.json').exists()]+
+                       [json.loads((root/'arms'/a/'state'/FILE).read_bytes())['phases']['work'].get('finished_utc',0) for a in arms])
             if cases.stat().st_mtime<=cutoff:raise ValueError('sealed inputs must be authored after all work closed')
             record=root/'sealed-input-hash.json';identity={'sha256':file_hash(cases),'count':len(load_cases(cases))}
             if record.exists() and json.loads(record.read_bytes())!=identity:raise ValueError('both arms require identical sealed cases')

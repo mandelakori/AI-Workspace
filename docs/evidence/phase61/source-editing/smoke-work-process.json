@@ -1,0 +1,12 @@
+{
+  "phase": "work",
+  "code": 0,
+  "elapsed": 55.64100000006147,
+  "timed_out": false,
+  "stdout": "",
+  "stderr": "",
+  "cleanup": {
+    "passed": true,
+    "removed": []
+  }
+}

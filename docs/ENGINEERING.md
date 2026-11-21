@@ -41,6 +41,16 @@ budget persists across reconnects, and inspection is not counted as a passing
 public test. The active objective remains available in harness instructions
 and public-tool responses.
 
+Use only names actually advertised by the runtime tool catalog: MCP registration
+can lag the initial provider request. OpenCode engineering mutations now use the
+scoped MCP source editor; native mutation tools are denied. Supply the current
+file SHA-256 from inspection, a short unique literal `old`, literal `new` and
+mode `replace`, `before` or `after`. `create` requires hash `absent` and empty old
+text, and never overwrites an existing file. Source whitespace is exact; fuzzy
+matching is never used. Errors provide a reason and reinspection hint. New edit
+arguments and before/after hashes are retained in the task's `mcp.jsonl`.
+See [source editing and its measured limitations](SOURCE-EDITING-RECOVERY.md).
+
 For measured trials, the phase deadline bounds all attempts, and quarantined or
 consumed phases cannot resume. Generic resume instructions elsewhere in this
 document do not override that restriction. See the

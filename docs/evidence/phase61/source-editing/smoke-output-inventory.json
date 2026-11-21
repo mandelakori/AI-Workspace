@@ -1,0 +1,10 @@
+{
+  "distance.py": {
+    "bytes": 329,
+    "sha256": "0bdf65213942c213a7434bb3ba0979aebe3a8d1a67c22001cc8d8251eb4f4467"
+  },
+  "tests/test_distance.py": {
+    "bytes": 424,
+    "sha256": "7ea8eed19655e3f90952d08c27f60b80b1471abf1227d8122df35a9c5d1825d7"
+  }
+}

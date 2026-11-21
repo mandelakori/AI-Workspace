@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "cwd": "",
+  "runner": "aiwork-engineering:phase3",
+  "code": 0,
+  "elapsed": 1.0780000000959262,
+  "stdout": "",
+  "stderr": "test_centimetres (test_distance.PublicDistance.test_centimetres) ... ok\ntest_kilometres (test_distance.PublicDistance.test_kilometres) ... ok\ntest_metres (test_distance.PublicDistance.test_metres) ... ok\ntest_unknown (test_distance.PublicDistance.test_unknown) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK\n",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true,
+  "classification": "pass"
+}

@@ -2,6 +2,14 @@
 
 ## Phase 6.1 next approved work
 
+Review [source-grounded editing recovery and the single-arm pilot budget](SOURCE-EDITING-RECOVERY.md).
+All 132 regressions pass and one local fixture recovered from a rejected edit
+to 4/4 public correctness. The provider/harness still reported an invalid stream
+and nonzero exit; the artifact passed independent public verification. The
+direct-only HTTPX pilot remains PREPARED_NOT_AUTHORIZED and requires its own
+digest approval. Do not execute any previous comparison or reuse an old grant.
+Earlier review instructions below are historical.
+
 The newly authorized recovery comparison is now **QUARANTINED**. Read the
 [result and preserved evidence](HTTPX-RECOVERY-COMPARISON-RESULT.md): navigation
 reached relevant code and two duplicate excerpts were suppressed, but both edit

@@ -44,8 +44,8 @@ class HarnessContextTests(unittest.TestCase):
             task = Task(goal, work, "agent", "test", (), ("module.py",), (Check(("{python}", "-V")),),
                         mode="engineering", write_roots=("module.py",), commands=(Check(("{python}", "-V")),))
             profile = Profile("local", "fixture", "http://127.0.0.1:9999/v1", context=8192)
-            with patch("aiwork.harness.run", return_value=Result(0, 0, "", "", False, False)) as run:
-                OpenCode("fixture").run_session(profile, task, work, artifacts, "Initial request", 10, None, None)
+            with patch("aiwork.harness.mcp_catalog",return_value={'passed':True,'tools':[]}),patch("aiwork.harness.run", return_value=Result(0, 0, "", "", False, False)) as run:
+                OpenCode("fixture").run_session(profile, task, work, artifacts, "Initial request", 10, artifacts/'tool.json', None)
             config = json.loads(run.call_args.args[3]["OPENCODE_CONFIG_CONTENT"])
             instruction = Path(config["instructions"][0])
             text = instruction.read_text()

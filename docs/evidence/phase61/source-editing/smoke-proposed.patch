@@ -1,0 +1,20 @@
+diff --git a/distance.py b/distance.py
+index 65b26165c0d384aadce9f1238956202c04bd595d..f9d67062620935023451cc32eb0eec30a50e345a 100644
+--- a/distance.py
++++ b/distance.py
+@@ -1,6 +1,12 @@
+ class Distance:
+     @staticmethod
+     def metres(value, unit):
+-        return (
+-            value
+-        )
++        unit = unit.lower()
++        if unit == 'm':
++            return value
++        elif unit == 'cm':
++            return value / 100.0
++        elif unit == 'km':
++            return value * 1000.0
++        else:
++            raise ValueError(f"Unknown unit: {unit}")

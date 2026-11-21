@@ -133,6 +133,24 @@ for kind,limit in [('worker',2),('planner',1)]:
         self.assertNotEqual(grade["code"],0)
         self.assertIn("cannot dispatch",grade["stderr"])
 
+    def test_single_worker_and_zero_planner_quota_persist(self):
+        create(self.state,'single-arm','direct',{'warm':3,'work':4,'grade':1},quotas={'sessions':1,'planner_requests':0})
+        run_phase(self.state,'warm',self.command('pass'),self.repo,containers=False)
+        source="""from pathlib import Path
+import os
+from aiwork.trial_budget import claim
+state=Path(os.environ['AIWORK_TRIAL_BUDGET']).parent
+claim('worker',state)
+for kind in ['worker','planner']:
+ try:claim(kind,state)
+ except ValueError:print(kind+' blocked')
+ else:raise AssertionError('quota exceeded')
+"""
+        result=run_phase(self.state,'work',self.command(source),self.repo,containers=False)
+        self.assertEqual(result['code'],0,result['stderr'])
+        self.assertIn('worker blocked',result['stdout'])
+        self.assertIn('planner blocked',result['stdout'])
+
     def test_crashed_reserved_phase_is_not_refunded_or_reinitialized(self):
         import hashlib
         create(self.state,"test","direct")
@@ -190,11 +208,15 @@ for kind,limit in [('worker',2),('planner',1)]:
                     f"invoke(Check(('python','-c','import time;time.sleep(30)'),timeout=30),Path({str(self.root)!r}),Path({str(self.root/'home')!r}),{image!r})")
             outcome=run_phase(self.state,"work",self.command(source),self.repo,containers=True)
             self.assertTrue(outcome["timed_out"] or outcome["code"]!=0)
-            self.assertTrue(outcome["cleanup"]["passed"],outcome)
             alive=subprocess.run(['docker','inspect','--format','{{.State.Running}}',other],capture_output=True,text=True,check=True)
             self.assertEqual(alive.stdout.strip(),'true')
             budget=json.loads((self.state/FILE).read_bytes());label=budget['phases']['work']['label']
             left=subprocess.run(['docker','ps','-aq','--filter','label=aiwork.trial='+label],capture_output=True,text=True,check=True)
             self.assertEqual(left.stdout.strip(),'')
+            if not outcome['cleanup']['passed']:
+                # --rm can remove the timed-out container between enumeration and inspect.
+                # The production contract must retain quarantine, even when it is now gone.
+                self.assertEqual(outcome['cleanup']['error'],'container ownership inspection failed')
+                self.assertTrue(budget['quarantined'])
         finally:
             subprocess.run(['docker','rm','-f',other],capture_output=True,check=False)

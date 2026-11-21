@@ -92,6 +92,9 @@ class OpenCode:
 
     def run_session(self, profile: Profile, task: Task, work: Path, artifacts: Path, prompt: str,
                     timeout: float, tool_spec: Path | None, stop: Path | None) -> Result:
+        started = monotonic()
+        if task.mode=='engineering' and not tool_spec:
+            raise ValueError('Engineering requires its scoped MCP source editor and public tools')
         env = environment(artifacts / "harness-home")
         key = Inference(profile).key()
         settings = {"baseURL": profile.endpoint.rstrip("/")}
@@ -116,7 +119,7 @@ class OpenCode:
         # V2 commonly normalizes mutation resources to absolute paths.
         allowed = task.deliverables if task.mode == "restricted" else tuple(
             f"{root}{suffix}" for root in task.write_roots for suffix in ("", "/**"))
-        for action in ("edit", "write", "patch"):
+        for action in (() if task.mode=='engineering' else ("edit", "write", "patch")):
             permissions.extend(rule(action, name) for name in allowed)
             permissions.extend(rule(action, (work / name).as_posix()) for name in allowed)
         config = {
@@ -145,6 +148,9 @@ class OpenCode:
             if task.mode == "engineering":
                 permissions.append(rule("checks_diff"))
                 permissions.append(rule("checks_focus"))
+                permissions.append(rule("checks_edit"))
+                catalog=mcp_catalog(tool_spec,artifacts/'catalog-home',min(3,max(0,timeout-(monotonic()-started))),stop)
+                (artifacts/'mcp-catalog.json').write_text(json.dumps(catalog),encoding='utf-8')
         env.update({
             "OPENCODE_CONFIG_CONTENT": json.dumps(config),
             "OPENCODE_DISABLE_PROJECT_CONFIG": "true",
@@ -153,7 +159,7 @@ class OpenCode:
             "GIT_CEILING_DIRECTORIES": str(work.parent),
         })
         return run([self.binary, "run", "--standalone", "--format", "json",
-                    "--model", config["model"], "--", prompt], work, timeout, env, stop,
+                    "--model", config["model"], "--", prompt], work, max(0,timeout-(monotonic()-started)), env, stop,
                    output_limit=8 * 1024 * 1024, stdout_path=artifacts / "agent-live.jsonl")
 
 
@@ -166,6 +172,23 @@ def tool_command(spec: Path) -> list[str]:
             "import sys; from pathlib import Path; sys.path.insert(0, sys.argv[1]); "
             "from aiwork.mcp import serve; serve(Path(sys.argv[2]))",
             str(Path(__file__).resolve().parent.parent), str(spec)]
+
+
+def mcp_catalog(spec: Path, home: Path, timeout: float, stop: Path | None) -> dict:
+    """Validate the scoped server without calling tools or spending model tokens."""
+    messages=[{'jsonrpc':'2.0','id':1,'method':'initialize'},
+              {'jsonrpc':'2.0','id':2,'method':'tools/list'}]
+    result=run(tool_command(spec),spec.parent,timeout,environment(home),stop,
+               stdin=('\n'.join(map(json.dumps,messages))+'\n').encode(),output_limit=65536)
+    rows=[json.loads(line) for line in result.stdout.splitlines() if line.strip()]
+    tools=next((r['result']['tools'] for r in rows if r.get('id')==2),'')
+    config=json.loads(spec.read_bytes())
+    expected=({'check'} if config['checks'] else set()) | ({'focus','diff','edit'} if config.get('engineering') else set())
+    if (result.code or result.timed_out or result.truncated or not isinstance(tools,list)
+            or {t['name'] for t in tools}!=expected):
+        raise RuntimeError('Scoped MCP catalog preflight failed; no inference session started')
+    return {'tools':tools,'elapsed':result.elapsed,'passed':True,
+            'limitation':'Server health/catalog verified; upstream asynchronous registration is not guaranteed by this preflight.'}
 
 
 def request_options(profile: Profile) -> dict:

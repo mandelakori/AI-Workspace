@@ -1,0 +1,90 @@
+{
+  ".aiwork\\phase61-editing\\rejected-edit-audit.json": {
+    "bytes": 3464,
+    "sha256": "67aebb8e458023501a2dfb9eb4e901431d80d8b77301693d8e16cd5ab3e74775"
+  },
+  ".aiwork\\phase61-editing\\catalog-probe.json": {
+    "bytes": 1433,
+    "sha256": "a0ac9a3ff5b1d2eb78a2dd9b014ef657164890a012904ea2a75b9a4965c9243f"
+  },
+  ".aiwork\\phase61-editing\\catalog-probe-initial.json": {
+    "bytes": 1312,
+    "sha256": "0f1deb6a511ee952e0e78ea262fac5078ec56eae930a0a1867df7772a5dac826"
+  },
+  ".aiwork\\phase61-editing\\regressions.log": {
+    "bytes": 20658,
+    "sha256": "db280fdc1006d70ef8834944d6dbbcae22d966045c0f829a93c697d0f788b61d"
+  },
+  ".aiwork\\phase61-editing\\regressions-initial.log": {
+    "bytes": 21483,
+    "sha256": "5e497f7e799d7247114fdcf8e965cf61709b59abebfd6b436a72cb95e69b6e58"
+  },
+  ".aiwork\\phase61-editing\\smoke\\result.json": {
+    "bytes": 275,
+    "sha256": "61b9a7136858583934b17651b8b48619708e51dbb85bf8c71e8561b71dda61b0"
+  },
+  ".aiwork\\phase61-editing\\smoke\\task-receipt.json": {
+    "bytes": 5297,
+    "sha256": "171359fbdb10aa632d8959b8b08d8544e0f2135ba5ad0c3dc2de3633d446c89b"
+  },
+  ".aiwork\\phase61-editing\\smoke\\work-process.json": {
+    "bytes": 189,
+    "sha256": "462c10a96ffc19fa7cccb2210362a396999919ce5a040c7f99356f9385ad03ab"
+  },
+  ".aiwork\\phase61-editing\\smoke\\controller\\runs\\73579e101a5949749ec779349a739229\\attempt-001\\agent-process.json": {
+    "bytes": 96,
+    "sha256": "6f6e3765683e9c4848a792836dcc8241b8debe5e0e88fbe109b744ab41de660b"
+  },
+  ".aiwork\\phase61-editing\\smoke\\controller\\runs\\73579e101a5949749ec779349a739229\\attempt-001\\agent-metrics.json": {
+    "bytes": 980,
+    "sha256": "81250802b8a8cf488f6714ed09e5ce39de431113390b95c10775925dfb42efec"
+  },
+  ".aiwork\\phase61-editing\\smoke\\controller\\runs\\73579e101a5949749ec779349a739229\\attempt-001\\evidence.json": {
+    "bytes": 1598,
+    "sha256": "a4bb19a6b49c1097328de8f6e85f206779d78b9cd6bbebe10cf4dcefd71fa27e"
+  },
+  ".aiwork\\phase61-editing\\smoke\\controller\\runs\\73579e101a5949749ec779349a739229\\attempt-001\\harness-budget.json": {
+    "bytes": 418,
+    "sha256": "323024fa2e66afb7796bef51dbf6e5e82057bc53454672d2f93b8f78c3f345ef"
+  },
+  ".aiwork\\phase61-editing\\smoke\\controller\\runs\\73579e101a5949749ec779349a739229\\attempt-001\\mcp-catalog.json": {
+    "bytes": 1824,
+    "sha256": "bcacb9ca20c7327adbcafe7d484b8a8635a52806274584d40d04f87f27d3d346"
+  },
+  ".aiwork\\phase61-editing\\smoke\\controller\\runs\\73579e101a5949749ec779349a739229\\attempt-001\\agent.jsonl": {
+    "bytes": 17616,
+    "sha256": "d85d597f09fdf3858b4e92b5a05c8512ecf280fe0eeb8599db0ba19265d50f79"
+  },
+  ".aiwork\\phase61-editing\\smoke\\controller\\runs\\73579e101a5949749ec779349a739229\\attempt-001\\agent-live.jsonl": {
+    "bytes": 17596,
+    "sha256": "0f2709391b0112122b4d180379fde2284cc3c64c946429a908aa5b08c56e47a5"
+  },
+  ".aiwork\\phase61-editing\\smoke\\controller\\runs\\73579e101a5949749ec779349a739229\\attempt-001\\mcp.jsonl": {
+    "bytes": 5057,
+    "sha256": "f000dc10191e5525f2447d5c5a80251cb81ee42df221bbb4cbbce49f0e04f1e3"
+  },
+  ".aiwork\\phase61-editing\\smoke\\controller\\runs\\73579e101a5949749ec779349a739229\\attempt-001\\proposed.patch": {
+    "bytes": 577,
+    "sha256": "1dfc45c161aa01e668023aa3ad5359ac5c820a0f26438ef9625f5f6499625d2e"
+  },
+  ".aiwork\\phase61-editing\\smoke\\controller\\runs\\73579e101a5949749ec779349a739229\\attempt-001\\baseline-check.json": {
+    "bytes": 2240,
+    "sha256": "7aff116bbc3506d645a169623f1e0f5b60cdd81d130e9afba942c6cd1ca6b64d"
+  },
+  ".aiwork\\phase61-editing\\smoke\\controller\\runs\\73579e101a5949749ec779349a739229\\attempt-001\\check-00.json": {
+    "bytes": 724,
+    "sha256": "3bf3cb4f823df0382e9c64bb317dd4550eef99393f2cd8beb854343174c74667"
+  },
+  ".aiwork\\phase61-editing\\smoke\\controller\\runs\\73579e101a5949749ec779349a739229\\attempt-001\\output-inventory.json": {
+    "bytes": 268,
+    "sha256": "fbf51ecff8e3bc1223723a192991c77a77cda8203d423d884a306cfc84d7b779"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\manifest.json": {
+    "bytes": 57657,
+    "sha256": "4a52d45cab634da8e7ae255eba851933286123a4d277f0187dfd5e315e19b531"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\manifest.sha256": {
+    "bytes": 64,
+    "sha256": "db1730d3a223b5a4201b349da4ef25a9f5fa1a82214aaf65a5382f5b970870ca"
+  }
+}

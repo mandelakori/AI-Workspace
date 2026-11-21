@@ -1,0 +1,187 @@
+{
+  "status": "SOURCE_EDIT_RECOVERY_PUBLIC_FIXTURE_VERIFIED_WITH_PROVIDER_ERROR",
+  "regressions": {
+    "run": 132,
+    "passed": 132,
+    "skipped": 0,
+    "seconds": 81.678
+  },
+  "development_failures": [
+    {
+      "stage": "targeted editor tests",
+      "cause": "Sandbox denied Windows hard-link creation. Windows creation now uses atomic no-overwrite rename, with competing-creator tests."
+    },
+    {
+      "stage": "initial full suite",
+      "run": 132,
+      "failures": 1,
+      "cause": "Docker auto-removal raced with inspect; production failed closed. Test now requires retained quarantine and empty owned set for that exact outcome. Original log preserved."
+    },
+    {
+      "stage": "initial inert catalog probe",
+      "cause": "Auxiliary provider requests have no tools; the inert server now treats these separately instead of demanding an agent tool catalog."
+    }
+  ],
+  "smoke": {
+    "result": {
+      "job": "73579e101a5949749ec779349a739229",
+      "status": "verified",
+      "detail": "all independent checks passed",
+      "artifacts": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\smoke\\controller\\runs\\73579e101a5949749ec779349a739229"
+    },
+    "worker_sessions": 1,
+    "max_work_seconds": 150,
+    "attempts": 1,
+    "public_initial": "1/4",
+    "public_final": "4/4",
+    "controller_public_rerun_passed": true,
+    "tool_sequence": [
+      {
+        "tool": "edit",
+        "code": "invalid_anchor",
+        "applied": null,
+        "passed": false
+      },
+      {
+        "tool": "focus",
+        "code": null,
+        "applied": null,
+        "passed": true
+      },
+      {
+        "tool": "edit",
+        "code": null,
+        "applied": true,
+        "passed": true
+      },
+      {
+        "tool": "check",
+        "code": 0,
+        "applied": null,
+        "passed": true
+      }
+    ],
+    "first_rejection": "invalid_anchor: empty old text. Intended stale hash supplied but stale-hash branch not reached. No writes occurred.",
+    "stale_hash_live_branch_exercised": false,
+    "stale_hash_deterministic_and_inert_tests_passed": true,
+    "input_inventory": {
+      "distance.py": {
+        "bytes": 108,
+        "sha256": "8c4e5a658cea0d3ded075ac4f81456e39633514e735f0a080b666e2d748f6eda"
+      },
+      "tests/test_distance.py": {
+        "bytes": 424,
+        "sha256": "7ea8eed19655e3f90952d08c27f60b80b1471abf1227d8122df35a9c5d1825d7"
+      }
+    },
+    "output_inventory": {
+      "distance.py": {
+        "bytes": 329,
+        "sha256": "0bdf65213942c213a7434bb3ba0979aebe3a8d1a67c22001cc8d8251eb4f4467"
+      },
+      "tests/test_distance.py": {
+        "bytes": 424,
+        "sha256": "7ea8eed19655e3f90952d08c27f60b80b1471abf1227d8122df35a9c5d1825d7"
+      }
+    },
+    "work_seconds": 55.64100000006147,
+    "metrics": {
+      "tool_calls": {
+        "checks_edit": 2,
+        "checks_focus": 1,
+        "checks_check": 1
+      },
+      "tool_errors": 1,
+      "tokens": {
+        "input": 4902,
+        "output": 597,
+        "reasoning": 0
+      },
+      "peak_reported_input_tokens": 3379,
+      "successful_public_mcp_checks": 1,
+      "gpu_samples": {
+        "before": [
+          {
+            "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+            "total_mib": 8151,
+            "free_mib": 7508
+          }
+        ],
+        "after": [
+          {
+            "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+            "total_mib": 8151,
+            "free_mib": 1279
+          }
+        ]
+      },
+      "inference_samples": {
+        "before": {
+          "resident": false
+        },
+        "after": {
+          "resident": true,
+          "model_vram_mib": 5199,
+          "configured_server_context": 8192
+        }
+      },
+      "reported_context_fraction": 0.4125,
+      "effective_output_tokens_per_second": 11.642,
+      "inference_lanes": 1,
+      "lane_wait_seconds": 0.0,
+      "harness_seconds": 51.281
+    },
+    "harness_process": {
+      "code": 1,
+      "elapsed": 51.28100000007544,
+      "timed_out": false,
+      "truncated": false
+    },
+    "provider_errors": [
+      {
+        "type": "error",
+        "timestamp": 1795222847942,
+        "sessionID": "ses_e04619ae8ffeAzanutsNcChWoo",
+        "error": {
+          "type": "provider.invalid-output",
+          "message": "OpenAI Chat stream ended without finish_reason",
+          "status": 200
+        }
+      }
+    ],
+    "worker_completed_usage_events": 4,
+    "cache_read_tokens_separate": 11126,
+    "cache_write_tokens_separate": 0,
+    "complete_provider_totals": "Unknown, including the invalid-output stream and possible auxiliary requests.",
+    "operator_initial_fault_instruction": true,
+    "operator_mid_run_guidance": false,
+    "operator_feature_source_fix": false,
+    "classification": "Self-authored prompted fault-injection fixture; not unfamiliar-repository completion"
+  },
+  "pilot": {
+    "status": "PREPARED_NOT_AUTHORIZED",
+    "approval_digest": "0281aec9e0da0fc5d20ae980cabcabda18236ad468881fa7d478311d478d6230",
+    "bundle": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot",
+    "arms": [
+      "direct"
+    ],
+    "phase_seconds": {
+      "warm": 20,
+      "work": 180,
+      "grade": 40
+    },
+    "attempt_seconds": 150,
+    "sessions": 1,
+    "planner_requests": 0,
+    "mcp_calls": 16,
+    "httpx_model_inference_requests": 0,
+    "httpx_worker_dispatches": 0,
+    "operator_grant_created": false,
+    "sealed_inputs_created": 0,
+    "old_grants_rejected": true
+  },
+  "previous_trials_and_evidence_unchanged": true,
+  "previous_quarantines_preserved": true,
+  "frozen_click_unchanged": true,
+  "main_ref": "cf50e89c2ca2ad21d86fda5473f5ad6edc0c2623"
+}

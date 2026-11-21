@@ -1,0 +1,114 @@
+{
+  "rejected_edit_analysis": [
+    {
+      "proposal": 1,
+      "old_string_sha256": "42d3f17fd62190d72b1dbc578686dfa649c96104c13c60d44175d44ac8cdcc43",
+      "old_string_occurrences": 0,
+      "first_mismatch_file_line": 169,
+      "proposed_character": ")",
+      "current_source_characters_before_closing_parenthesis": "'\\n            '",
+      "analysis_only_restoring_missing_line_break_and_indent_yields_unique_match": true,
+      "applied_to_source": false
+    },
+    {
+      "proposal": 2,
+      "old_string_sha256": "6e918eaf7d1130ecd5fbbd341cda72fe8fbe807447a706ccf76283e3297f493f",
+      "old_string_occurrences": 0,
+      "first_mismatch_file_line": 169,
+      "proposed_character": ")",
+      "current_source_characters_before_closing_parenthesis": "'\\n            '",
+      "analysis_only_restoring_missing_line_break_and_indent_yields_unique_match": true,
+      "applied_to_source": false
+    }
+  ],
+  "diagnostic_variants_never_written_or_given_to_workers": true,
+  "historical_mcp_connection_event": "timestamp=2026-11-20T23:27:03.886Z level=INFO run=fed891e7 message=\"mcp connected\" server=checks tools=3 http.span=927 role=server server=checks directory=\"C:\\\\Users\\\\mande\\\\AppData\\\\Local\\\\Temp\\\\aiwork-trial-b767886715a9435a8fee6e59984d4507-opencode-57ax4cvn\\\\workspace\" connectionID=b65f975a-9d8b-445c-a2f5-3cb00dc443d1",
+  "historical_connection_after_initial_agent_update": true,
+  "catalog_inert_probe": {
+    "catalogs": [
+      [
+        "glob",
+        "grep"
+      ],
+      [
+        "glob",
+        "grep"
+      ],
+      [
+        "glob",
+        "grep"
+      ],
+      [
+        "glob",
+        "grep"
+      ],
+      [
+        "glob",
+        "grep"
+      ],
+      [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus",
+        "glob",
+        "grep"
+      ],
+      [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus",
+        "glob",
+        "grep"
+      ],
+      [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus",
+        "glob",
+        "grep"
+      ],
+      [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus",
+        "glob",
+        "grep"
+      ],
+      [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus",
+        "glob",
+        "grep"
+      ],
+      [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus",
+        "glob",
+        "grep"
+      ],
+      [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus",
+        "glob",
+        "grep"
+      ]
+    ],
+    "first_request_scoped_tools": [],
+    "native_mutation_schemas_in_first_request": [],
+    "tools_issued_only_when_advertised": true,
+    "auxiliary_requests_without_tools": 1,
+    "scoped_tools_first_present_at_agent_request": 6,
+    "result_code": 0
+  },
+  "availability_conclusion": "Installed harness can issue an initial tools catalog with only glob/grep before MCP registration. Hard-coded checks_focus instructions could solicit an unadvertised tool. Native mutation tool schemas are now absent; scoped tools are used only after actual advertisement in the inert probe. Server preflight does not synchronize upstream registration."
+}

@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "cwd": "",
+  "runner": "aiwork-engineering:phase3",
+  "code": 1,
+  "elapsed": 1.0630000000819564,
+  "stdout": "",
+  "stderr": "test_centimetres (test_distance.PublicDistance.test_centimetres) ... FAIL\ntest_kilometres (test_distance.PublicDistance.test_kilometres) ... FAIL\ntest_metres (test_distance.PublicDistance.test_metres) ... ok\ntest_unknown (test_distance.PublicDistance.test_unknown) ... FAIL\n\n======================================================================\nFAIL: test_centimetres (test_distance.PublicDistance.test_centimetres)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/work/tests/test_distance.py\", line 6, in test_centimetres\n    def test_centimetres(self):self.assertEqual(Distance.metres(250, 'cm'), 2.5)\n                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 250 != 2.5\n\n======================================================================\nFAIL: test_kilometres (test_distance.PublicDistance.test_kilometres)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/work/tests/test_distance.py\", line 7, in test_kilometres\n    def test_kilometres(self):self.assertEqual(Distance.metres(1.25, 'km'), 1250)\n                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 1.25 != 1250\n\n======================================================================\nFAIL: test_unknown (test_distance.PublicDistance.test_unknown)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/work/tests/test_distance.py\", line 9, in test_unknown\n    with self.assertRaises(ValueError):Distance.metres(3, 'feet')\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n----------------------------------------------------------------------\nRan 4 tests in 0.013s\n\nFAILED (failures=3)\n",
+  "timed_out": false,
+  "truncated": false,
+  "passed": false,
+  "classification": "tests"
+}

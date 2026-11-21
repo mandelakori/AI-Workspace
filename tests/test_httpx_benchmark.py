@@ -62,7 +62,7 @@ class BenchmarkPreparationTests(unittest.TestCase):
         self.review=self.root/'review.json';self.review.write_text(json.dumps({'approval_digest':old,**review}))
         self.bundle=self.root/'bundle'
 
-    def prepare(self):
+    def prepare(self,**options):
         def git(args,**kwargs):return subprocess.CompletedProcess(args,0,'pinned' if args[1]=='rev-parse' else '', '')
         def probe(*args,**kwargs):return {'passed':True,'stdout':json.dumps({'timeout':'/usr/bin/timeout','utc':time()})}
         with (patch.object(benchmark.subprocess,'run',side_effect=git),
@@ -70,7 +70,7 @@ class BenchmarkPreparationTests(unittest.TestCase):
               patch.object(benchmark,'opencode_path',return_value=sys.executable),
               patch.object(benchmark,'model_metadata',return_value={'digest':'test-model'}) as model,
               patch.object(benchmark,'invoke',side_effect=probe)):
-            result=benchmark.prepare(self.review,self.bundle)
+            result=benchmark.prepare(self.review,self.bundle,**options)
         self.assertEqual(model.call_count,1)  # Mocked metadata, never an inference request.
         return result
 
@@ -93,6 +93,23 @@ class BenchmarkPreparationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,'authorization'):benchmark.authorize(self.bundle,grant)
         grant.write_text(json.dumps({'approval_digest':result['approval_digest'],'authorize':list(benchmark.ARMS),'operator_approved':True}))
         self.assertEqual(benchmark.authorize(self.bundle,grant)['status'],'PREPARED_NOT_AUTHORIZED')
+
+    def test_single_arm_pilot_requires_exact_scope_and_records_reviewed_budget(self):
+        result=self.prepare(single_arm=True);m=benchmark.load(self.bundle)
+        self.assertEqual(m['arms'],['direct'])
+        self.assertEqual(m['total_seconds_approved'],240)
+        self.assertEqual(m['phase_seconds'],{'warm':20,'work':180,'grade':40})
+        self.assertEqual((m['worker_policy']['sessions'],m['worker_policy']['planner_requests']),(1,0))
+        task=benchmark.task(self.bundle,'direct',m)
+        self.assertEqual((task.attempts,task.timeout),(1,150))
+        self.assertFalse((self.bundle/'arms/hierarchical').exists())
+        grant=self.root/'grant.json'
+        grant.write_text(json.dumps({'approval_digest':result['approval_digest'],'authorize':['direct','hierarchical'],'operator_approved':True}))
+        with self.assertRaises(ValueError):benchmark.authorize(self.bundle,grant)
+        grant.write_text(json.dumps({'approval_digest':result['approval_digest'],'authorize':['direct'],'operator_approved':True}))
+        with patch.object(sys,'argv',['benchmark','run',str(self.bundle),'--arm','hierarchical','--authorization',str(grant)]),patch.object(benchmark,'create') as dispatch:
+            with self.assertRaisesRegex(ValueError,'outside approved scope'):benchmark.main()
+        dispatch.assert_not_called()
 
     def test_input_drift_is_rejected_before_dispatch(self):
         self.prepare()
