@@ -158,6 +158,10 @@ class OpenCode:
             "OPENCODE_DISABLE_AUTOUPDATE": "true",
             "GIT_CEILING_DIRECTORIES": str(work.parent),
         })
+        if task.mode == 'engineering':
+            from .provider_gate import guarded_run
+            return guarded_run(self.binary, profile, work, artifacts, env, config, prompt,
+                               max(0,timeout-(monotonic()-started)), stop, key)
         return run([self.binary, "run", "--standalone", "--format", "json",
                     "--model", config["model"], "--", prompt], work, max(0,timeout-(monotonic()-started)), env, stop,
                    output_limit=8 * 1024 * 1024, stdout_path=artifacts / "agent-live.jsonl")

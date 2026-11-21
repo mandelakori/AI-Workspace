@@ -1,0 +1,12 @@
+[
+  {"id":"flat-reference","value":"hello ${USER}!","env":{"USER":"Ada"},"expected":"hello Ada!"},
+  {"id":"flat-default","value":"${NAME:-anonymous}","env":{},"expected":"anonymous"},
+  {"id":"nested-reference","value":"${NAME:-${USER}}","env":{"USER":"Ada"},"expected":"Ada"},
+  {"id":"nested-default","value":"${A:-${B:-fallback}}","env":{},"expected":"fallback"},
+  {"id":"unused-balanced-default","value":"${A:-${B:-fallback}}/tail","env":{"A":"set","B":"other"},"expected":"set/tail"},
+  {"id":"concatenated-default","value":"${ROOT:-srv-${ENV}-${ID}}","env":{"ENV":"dev","ID":"42"},"expected":"srv-dev-42"},
+  {"id":"three-level-default","value":"${A:-${B:-${C:-final}}}","env":{"C":"leaf"},"expected":"leaf"},
+  {"id":"present-empty-and-none","value":"${A:-${B}}|${C:-${D}}","env":{"A":"","B":"unused","C":null,"D":"unused"},"expected":"|"},
+  {"id":"environment-value-literal","value":"${A:-${B}}","env":{"A":"${UNEXPANDED}","B":"unused"},"expected":"${UNEXPANDED}"},
+  {"id":"dotenv-values-integration","stream":"NAME=web\nENV=qa\nFULL=${FULL:-${NAME}-${ENV}}\nROOT=prefix/${FULL}/x\n","expected":{"NAME":"web","ENV":"qa","FULL":"web-qa","ROOT":"prefix/web-qa/x"}}
+]

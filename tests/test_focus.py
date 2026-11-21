@@ -134,10 +134,10 @@ class FocusTests(unittest.TestCase):
         artifacts.mkdir()
         task = Task("Implement active objective",self.work,"agent","test",(),("module.py",),(Check(("{python}","-V")),),
                     mode="engineering",write_roots=("module.py",))
-        with patch("aiwork.harness.mcp_catalog",return_value={'passed':True,'tools':[]}),patch("aiwork.harness.run",return_value=Result(0,0,"","",False,False)) as run:
+        with patch("aiwork.harness.mcp_catalog",return_value={'passed':True,'tools':[]}),patch("aiwork.provider_gate.guarded_run",return_value=Result(0,0,"","",False,False)) as run:
             OpenCode("fixture").run_session(Profile("local","fixture","http://localhost:9999/v1",context=8192),
                 task,self.work,artifacts,"objective",10,artifacts/"tool.json",None)
-        permissions=json.loads(run.call_args.args[3]["OPENCODE_CONFIG_CONTENT"])["permissions"]
+        permissions=run.call_args.args[5]["permissions"]
         self.assertFalse(any(p["action"]=="read" and p["effect"]=="allow" for p in permissions))
         self.assertTrue(any(p["action"]=="checks_focus" and p["effect"]=="allow" for p in permissions))
         self.assertTrue(any(p['action']=='checks_edit' and p['effect']=='allow' for p in permissions))
