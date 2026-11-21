@@ -1,0 +1,19 @@
+test_accounting_failure_fails_closed_without_skipping_connection_cleanup (test_provider_gate.ProviderGateTests.test_accounting_failure_fails_closed_without_skipping_connection_cleanup) ... FAIL
+test_catalog_requires_all_tools_without_adding_permissions (test_provider_gate.ProviderGateTests.test_catalog_requires_all_tools_without_adding_permissions) ... ok
+test_exhausted_context_never_forwards_and_is_not_provider_failure (test_provider_gate.ProviderGateTests.test_exhausted_context_never_forwards_and_is_not_provider_failure) ... ok
+test_missing_catalog_latches_closed_and_never_reaches_backend (test_provider_gate.ProviderGateTests.test_missing_catalog_latches_closed_and_never_reaches_backend) ... ok
+test_scoped_catalog_refuses_unmetered_native_tools (test_provider_gate.ProviderGateTests.test_scoped_catalog_refuses_unmetered_native_tools) ... ok
+test_valid_catalog_forwards_request_bytes_unchanged (test_provider_gate.ProviderGateTests.test_valid_catalog_forwards_request_bytes_unchanged) ... ok
+
+======================================================================
+FAIL: test_accounting_failure_fails_closed_without_skipping_connection_cleanup (test_provider_gate.ProviderGateTests.test_accounting_failure_fails_closed_without_skipping_connection_cleanup)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\tests\test_provider_gate.py", line 96, in test_accounting_failure_fails_closed_without_skipping_connection_cleanup
+    self.assertFalse(gate.connections)
+AssertionError: {<socket.socket [closed] fd=-1, family=2, type=1, proto=0>} is not false
+
+----------------------------------------------------------------------
+Ran 6 tests in 2.729s
+
+FAILED (failures=1)

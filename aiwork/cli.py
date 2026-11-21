@@ -100,6 +100,8 @@ def parser() -> argparse.ArgumentParser:
     commands.add_parser("doctor", help="show Python, GPU and executable inventory")
     commands.add_parser("models", help="discover configured endpoints and model inventory")
     commands.add_parser("harnesses", help="show harness executable inventory")
+    context_plan = commands.add_parser('context-plan', help='plan bounded context from measurements; no inference or service changes')
+    context_plan.add_argument('configuration', type=Path, help='JSON with measurements and policy objects')
     commands.add_parser("tools", help="list built-in tools and configured specialist adapters")
     remote = commands.add_parser("a100", help="inspect SSH and manage scoped Lambda lifecycle")
     remote.add_argument("action", nargs="?", choices=["status", "plan", "instances", "types",
@@ -203,6 +205,11 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if args.config is not None and not args.config.is_file():
             raise ValueError(f"configuration file not found: {args.config}")
+        if args.command == 'context-plan':
+            from .context_planning import ContextMeasurements, plan_context
+            data = json.loads(args.configuration.read_bytes())
+            print_json(plan_context(ContextMeasurements(**data['measurements']), **data['policy']))
+            return 0
         cfg = Config.load(args.config or Path("aiwork.local.toml"))
         controller = Controller(cfg)
         if args.command == "project":
@@ -282,7 +289,10 @@ def main(argv: list[str] | None = None) -> int:
                         "opencode": opencode_path(cfg.opencode), "profiles": [p.id for p in cfg.profiles],
                         "verification_runner": runner_status(cfg.state, cfg.verification_image)})
         elif args.command == "harnesses":
-            print_json({"opencode": opencode_path(cfg.opencode), "qwen": qwen_command(cfg.qwen, cfg.state)})
+            from dataclasses import asdict
+            from .harness_contracts import ADAPTERS
+            print_json({"opencode": opencode_path(cfg.opencode), "qwen": qwen_command(cfg.qwen, cfg.state),
+                        'declared_capabilities':{name:asdict(value) for name,value in ADAPTERS.items()}})
         elif args.command == "tools":
             from .specialists import capabilities
             print_json({"preprocessing": ["inventory", "sha256", "python-symbols", "binary"],

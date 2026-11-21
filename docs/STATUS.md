@@ -1,5 +1,18 @@
 # Status as of 2026-11-21
 
+## Context and resource execution foundation
+
+| Capability / outcome | Status | Evidence |
+| --- | --- | --- |
+| Persistent task contract and context epochs | VERIFIED | [Foundation report](EXECUTION-FOUNDATION.md): installed inert provider, two actual compactions, source recovery, exact edit and passing public check without budget reset. |
+| Resource reservations and clean termination | VERIFIED | Durable category quotas and owned-cleanup receipts. Configurable production default 48 operations. Full regression: 162/162 pass including inert OpenCode and offline Docker, no skips. |
+| Portable engineering harness contract | VERIFIED | Capability admission and normalized receipts implemented. OpenCode inert conformance verified; Qwen engineering BLOCKED pending editor/provider integration. Pi, mini-SWE-agent and DeepSeek Harness UNTESTED, unimplemented. |
+| Context planning | VERIFIED | Deterministic planner/CLI tested with synthetic resource data. Hardware calibration and adaptive execution UNTESTED. |
+| Live-model improvement | UNTESTED | No real inference, campaign, remote operation or download in this phase. |
+
+Sections below describe historical checkpoints; consumed approvals and old
+preparation statuses do not authorize execution.
+
 ## Phase 6.1 benchmarking closed
 
 | Capability / outcome | Status | Evidence |

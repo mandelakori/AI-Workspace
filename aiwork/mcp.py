@@ -5,7 +5,7 @@ import json
 import hashlib
 import sys
 from pathlib import Path
-from time import time
+from time import time, monotonic
 
 from .changes import delta, git_patch, validate_changes
 from .schema import Check
@@ -13,6 +13,7 @@ from .verify import pipeline
 from .workspace import contained, ignore, inventory, snapshot
 from .index import python_symbols
 from .source_edit import apply_edit, EditRejected
+from .execution_context import ExecutionContext, ResourcePolicy, excerpt_key
 
 
 def reserve_trial_call(spec: Path, limit: int) -> int:
@@ -107,11 +108,17 @@ def inspect_source(spec: Path, workspace: Path, args: dict) -> dict:
     from .lock import file_lock
     from .trial_budget import write
     value=focus(workspace,args)
-    key=hashlib.sha256(json.dumps([value['path'],value['sha256'],value['line'],value['source']]).encode()).hexdigest()
+    key=excerpt_key(value)
+    context = ExecutionContext(spec)
+    managed = context.path.exists()
+    if managed:
+        epoch, duplicate = context.excerpt(key, value)
+        value.update(context_epoch=epoch, evidence_key=key)
     path=spec.with_name('source-navigation.json')
     with file_lock(path.with_suffix('.lock')):
         history=json.loads(path.read_bytes()) if path.exists() else []
-        duplicate=key in history
+        if not managed:
+            duplicate=key in history
         recovery=spec.with_name('edit-reinspection.json')
         if recovery.exists():
             permit=json.loads(recovery.read_bytes())
@@ -134,7 +141,11 @@ def serve(spec_path: Path) -> None:
     build = config.get("engineering", False)
     stop = Path(config["stop"]) if config.get("stop") else None
     baseline = Path(config["baseline"]) if build else None
-    budget = 16 if build else 6
+    context = ExecutionContext(spec_path)
+    if build and 'resources' in config:
+        context.initialize(ResourcePolicy(**config['resources']))
+    managed = build and context.path.exists()
+    budget = config.get('resources', {}).get('operations', 16) if build else 6
     calls = 0
     for line in iter(lambda: sys.stdin.buffer.readline(32769), b""):
         if len(line) > 32768:
@@ -186,7 +197,9 @@ def serve(spec_path: Path) -> None:
                 value = {"error": "invalid tool or command index"}
             else:
                 try:
-                    calls = reserve_trial_call(spec_path, budget) if build or config.get("trial") else calls + 1
+                    operation_start = monotonic()
+                    calls = (context.charge_tool(name) if managed else
+                             reserve_trial_call(spec_path, budget) if build or config.get("trial") else calls + 1)
                     if build:
                         changed = delta(inventory(baseline), inventory(workspace))
                         validate_changes(changed, tuple(config["write_roots"]))
@@ -226,11 +239,16 @@ def serve(spec_path: Path) -> None:
                                 'sha256':exc.diagnostic['actual_sha256'],'remaining':1})
                 except (ValueError, OSError, RuntimeError) as exc:
                     value = {"error": str(exc)}
+                finally:
+                    if managed:
+                        context.elapsed({'focus':'inspection','diff':'inspection','edit':'editing',
+                                         'check':'verification'}[name], monotonic()-operation_start)
+                        value['resource_status'] = context.summary()
                 with spec_path.with_name("mcp.jsonl").open("a", encoding="utf-8") as log:
                     log.write(json.dumps({"tool": name, "index": index, "call": calls,
                                           **({'arguments':args} if name=='edit' else {}), **value}) + "\n")
                 if build and name == "check" and "passed" in value:
-                    value = {key: value[key] for key in ("passed", "code", "stdout", "stderr", "objective", "objective_truncated", "write_roots", "remaining_calls") if key in value}
+                    value = {key: value[key] for key in ("passed", "code", "stdout", "stderr", "objective", "objective_truncated", "write_roots", "remaining_calls", "resource_status") if key in value}
                     value["stdout"] = value.get("stdout", "")[-450:]
                     value["stderr"] = value.get("stderr", "")[-900:]
             response["result"] = {"content": [{"type": "text", "text": json.dumps(value, ensure_ascii=False)}], "isError": error}

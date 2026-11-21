@@ -1,0 +1,52 @@
+{
+  "failed_closed": false,
+  "requests": [
+    {
+      "request": 1,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "3b5f18c3c10ae6c6ab363ec4cd03a123b4836d3fc36a7de01a03cb5c864b1632",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "724c6896f998ff7d7fc8c6d8e75dc4cbfd4635e736404c26306d5c4d9538c6eb",
+      "remaining_operations": 1,
+      "contract_bytes": 814,
+      "forwarded_sha256": "2925d729dc01af66002bf3bc47037257e18b3dda85bb3264f21330755043778d",
+      "upstream_status": 200,
+      "response_sha256": "1c07a212f0d189e7862b55419b798317c556571083ae4f3385a3aeca8a9199f6",
+      "elapsed": 0.0
+    },
+    {
+      "request": 2,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": false,
+      "body_sha256": "d33777fd48b3bc19524b9f1f7f3e0116b9059ee614d240160b6418077d481df6",
+      "resource_exhausted": "tool operations exhausted"
+    }
+  ],
+  "required": [
+    "checks_check",
+    "checks_diff",
+    "checks_edit",
+    "checks_focus"
+  ],
+  "request_rewriting": true,
+  "resource_exhausted": true,
+  "captured_bytes": 14417
+}

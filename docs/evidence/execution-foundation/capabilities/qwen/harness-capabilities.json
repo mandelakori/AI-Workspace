@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "adapter": "qwen",
+  "required": [
+    "scoped_tools",
+    "exact_hash_editor",
+    "provider_catalog_gate",
+    "persistent_contract",
+    "context_visibility",
+    "durable_resource_limits",
+    "owned_cleanup"
+  ],
+  "declared": {
+    "scoped_tools": true,
+    "exact_hash_editor": false,
+    "provider_catalog_gate": false,
+    "persistent_contract": false,
+    "context_visibility": false,
+    "durable_resource_limits": false,
+    "owned_cleanup": true
+  },
+  "missing": [
+    "exact_hash_editor",
+    "provider_catalog_gate",
+    "persistent_contract",
+    "context_visibility",
+    "durable_resource_limits"
+  ],
+  "admitted": false,
+  "verification": "declared; provider-facing gate and owned cleanup still required per session"
+}

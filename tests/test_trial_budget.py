@@ -214,9 +214,10 @@ for kind in ['worker','planner']:
             left=subprocess.run(['docker','ps','-aq','--filter','label=aiwork.trial='+label],capture_output=True,text=True,check=True)
             self.assertEqual(left.stdout.strip(),'')
             if not outcome['cleanup']['passed']:
-                # --rm can remove the timed-out container between enumeration and inspect.
+                # --rm can win between enumeration/inspect or race the explicit rm.
                 # The production contract must retain quarantine, even when it is now gone.
-                self.assertEqual(outcome['cleanup']['error'],'container ownership inspection failed')
+                self.assertRegex(outcome['cleanup']['error'],
+                    r'^(container ownership inspection failed|Error response from daemon: removal of container [a-f0-9]{12,64} is already in progress\s*)$')
                 self.assertTrue(budget['quarantined'])
         finally:
             subprocess.run(['docker','rm','-f',other],capture_output=True,check=False)

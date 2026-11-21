@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "adapter": "qwen",
+  "status": "capability_rejected",
+  "raw_exit_code": null,
+  "elapsed": 0,
+  "timed_out": false,
+  "cleanup_passed": null,
+  "provider_gate_passed": false,
+  "independent_verification": "not_started"
+}

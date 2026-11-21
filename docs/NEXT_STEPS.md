@@ -1,15 +1,18 @@
 # Next steps
 
-## Current handoff: review only
+## Current handoff: execution foundation
 
 **Phase 6.1 benchmarking is closed.** The [source-discovery comparison](DISCOVERY-EXPERIMENT-RESULT.md)
 quarantined B at the harness timeout and withheld A. The approval is consumed;
 do not resume, retry or dispatch another campaign. No sealed cases were authored.
 
-Review the [next development plan](NEXT-DEVELOPMENT-PLAN.md) for harness
-interchangeability, context-aware retrieval and resource-aware execution. It is
-not authorized for implementation or model execution. Existing implementation,
-historical evidence, frozen Click and main remain unchanged by this closeout.
+The [execution foundation](EXECUTION-FOUNDATION.md) implements context epochs,
+persistent provider-facing task contracts, resource reservations, clean exhaustion,
+capability admission and deterministic context planning. Installed inert-provider
+tests cover two compactions and edit/test recovery. No real model campaign was run.
+Prioritize Qwen conformance before a separately reviewed harness comparison. The
+guide identifies remaining unverified work and the proposed first live comparison.
+The [original development plan](NEXT-DEVELOPMENT-PLAN.md) remains historical.
 Earlier preparation/authorization instructions below are historical only.
 
 ## Phase 6.1 next approved work

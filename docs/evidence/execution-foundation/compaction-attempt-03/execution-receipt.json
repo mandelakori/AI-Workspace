@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "adapter": "opencode",
+  "status": "completed",
+  "raw_exit_code": 0,
+  "elapsed": 3.515999999945052,
+  "timed_out": false,
+  "cleanup_passed": true,
+  "provider_gate_passed": true,
+  "independent_verification": "pending"
+}

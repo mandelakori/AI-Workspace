@@ -1,0 +1,227 @@
+{
+  "schema": 1,
+  "base_commit": "a5c106a",
+  "branch": "phase61/autonomous-completion",
+  "real_model_requests": 0,
+  "remote_operations": 0,
+  "campaigns_launched": 0,
+  "baseline": {
+    "discovered": 146,
+    "passed": 138,
+    "skipped": 8,
+    "seconds": 56.41
+  },
+  "release": {
+    "discovered": 162,
+    "passed": 162,
+    "skipped": 0,
+    "seconds": 122.891,
+    "docker_image": "aiwork-engineering:phase3",
+    "log": "regressions-validated.log"
+  },
+  "inert_compaction": {
+    "context": 8192,
+    "model": "inert; all usage is synthetic",
+    "compactions": 2,
+    "primary_requests": 6,
+    "epochs": 2,
+    "tool_sequence": [
+      "focus",
+      "focus",
+      "focus",
+      "edit",
+      "check"
+    ],
+    "source_epochs": [
+      0,
+      1,
+      2
+    ],
+    "applied_edits": 1,
+    "public_checks_passed": 1,
+    "remaining_operations": 19,
+    "original_system_contains_objective": false,
+    "forwarded_system_contains_objective": true,
+    "contract_hashes": [
+      "c4f19352502e69e18af332471622063a1fe4ddd08080a0d0253d57b4588380ad"
+    ],
+    "harness": {
+      "schema": 1,
+      "adapter": "opencode",
+      "status": "completed",
+      "raw_exit_code": 0,
+      "elapsed": 3.969000000040978,
+      "timed_out": false,
+      "cleanup_passed": true,
+      "provider_gate_passed": true,
+      "independent_verification": "pending",
+      "resources": {
+        "epoch": 2,
+        "remaining_operations": 19,
+        "used": {
+          "inspection": 3,
+          "editing": 1,
+          "verification": 1,
+          "inference": 6,
+          "compaction": 2
+        },
+        "exhausted": "",
+        "policy": {
+          "operations": 24,
+          "edit_reserve": 2,
+          "verification_reserve": 2,
+          "model_requests": 16,
+          "compactions": 4,
+          "blocked_limit": 3
+        },
+        "seconds": {
+          "inference": 0.07699999993201345,
+          "inspection": 0.40699999989010394,
+          "compaction": 0.0,
+          "editing": 0.1720000000204891,
+          "verification": 0.3279999999795109,
+          "cleanup": 0.015999999945051968
+        },
+        "contract_sha256": "c4f19352502e69e18af332471622063a1fe4ddd08080a0d0253d57b4588380ad"
+      },
+      "provider_usage": {
+        "reported": [
+          {
+            "request": 1,
+            "category": "inference",
+            "usage": {
+              "prompt_tokens": 7600,
+              "completion_tokens": 50,
+              "total_tokens": 7650
+            }
+          },
+          {
+            "request": 2,
+            "category": "compaction",
+            "usage": {
+              "prompt_tokens": 1000,
+              "completion_tokens": 50,
+              "total_tokens": 1050
+            }
+          },
+          {
+            "request": 3,
+            "category": "inference",
+            "usage": {
+              "prompt_tokens": 7600,
+              "completion_tokens": 50,
+              "total_tokens": 7650
+            }
+          },
+          {
+            "request": 4,
+            "category": "compaction",
+            "usage": {
+              "prompt_tokens": 1000,
+              "completion_tokens": 50,
+              "total_tokens": 1050
+            }
+          },
+          {
+            "request": 5,
+            "category": "inference",
+            "usage": {
+              "prompt_tokens": 1000,
+              "completion_tokens": 50,
+              "total_tokens": 1050
+            }
+          },
+          {
+            "request": 6,
+            "category": "inference",
+            "usage": {
+              "prompt_tokens": 1000,
+              "completion_tokens": 50,
+              "total_tokens": 1050
+            }
+          },
+          {
+            "request": 7,
+            "category": "inference",
+            "usage": {
+              "prompt_tokens": 1000,
+              "completion_tokens": 50,
+              "total_tokens": 1050
+            }
+          },
+          {
+            "request": 8,
+            "category": "inference",
+            "usage": {
+              "prompt_tokens": 1000,
+              "completion_tokens": 50,
+              "total_tokens": 1050
+            }
+          }
+        ],
+        "unreported_requests": []
+      }
+    },
+    "evidence_directory": "validated-compaction"
+  },
+  "exhaustion": {
+    "schema": 1,
+    "adapter": "opencode",
+    "status": "resource_exhausted",
+    "raw_exit_code": 1,
+    "elapsed": 2.5320000000065193,
+    "timed_out": false,
+    "cleanup_passed": true,
+    "provider_gate_passed": true,
+    "independent_verification": "pending",
+    "resources": {
+      "epoch": 0,
+      "remaining_operations": 0,
+      "used": {
+        "inspection": 1,
+        "editing": 0,
+        "verification": 0,
+        "inference": 1,
+        "compaction": 0
+      },
+      "exhausted": "tool operations exhausted",
+      "policy": {
+        "operations": 1,
+        "edit_reserve": 0,
+        "verification_reserve": 0,
+        "model_requests": 64,
+        "compactions": 4,
+        "blocked_limit": 3
+      },
+      "seconds": {
+        "inference": 0.0,
+        "inspection": 0.015000000013969839,
+        "cleanup": 0.015999999945051968
+      },
+      "contract_sha256": "724c6896f998ff7d7fc8c6d8e75dc4cbfd4635e736404c26306d5c4d9538c6eb"
+    },
+    "provider_usage": {
+      "reported": [],
+      "unreported_requests": [
+        1
+      ]
+    }
+  },
+  "retained_failures": {
+    "baseline-regressions.log": "sandbox loopback access denied; successful bounded rerun retained",
+    "compaction": "first inert rejection, owned cleanup passed; next attempt identified ledger-lock contention",
+    "compaction-attempt-02": "ledger lock was nonblocking during overlapping stream finalization; bounded wait added",
+    "compaction-attempt-03": "test backend missed the update-checkpoint prompt; extra summary and incomplete scripted focus sequence",
+    "regressions.log": "one mock omitted now-required tool spec; fixture corrected",
+    "preservation-audit-path-error.json": "initial audit resolved published relative keys against repository root; corrected audit has zero discrepancies",
+    "accounting-review.log": "Accounting failure injection found stale closed-socket references; original owned socket is now removed from tracking even after HTTPConnection clears its socket field.",
+    "regressions-final-release.log": "Preserved pre-fix accounting assertion failure plus Docker auto-remove race. Production cleanup remained fail-closed; test now accepts both exact known race errors while requiring quarantine and ownership invariants."
+  },
+  "limitations": [
+    "No real-model competence claim",
+    "Qwen engineering rejected pending conformance",
+    "Adaptive context hardware calibration not performed",
+    "Exact upstream instruction omission not conclusively localized"
+  ],
+  "main_commit": "cf50e89c2ca2ad21d86fda5473f5ad6edc0c2623"
+}

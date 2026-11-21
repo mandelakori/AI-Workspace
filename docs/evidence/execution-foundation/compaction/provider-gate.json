@@ -1,0 +1,72 @@
+{
+  "failed_closed": true,
+  "requests": [
+    {
+      "request": 1,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "ac018a7c3733722401cb813cc4a05c99c890f02d2a582ffc71c768643ea8e297",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c4f19352502e69e18af332471622063a1fe4ddd08080a0d0253d57b4588380ad",
+      "remaining_operations": 24,
+      "forwarded_sha256": "2decde8a920e6c231674fa30048ebfebbe5a67a498c14cf9bbd6e89dbca2633b",
+      "upstream_status": 200,
+      "response_sha256": "124caad557c470137ca246e8bddc39a5f347ec731b64cead93062129b57dcd11",
+      "elapsed": 0.01600000006146729
+    },
+    {
+      "request": 2,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "fc1371080789de28e098eaae578908cd4e79ad6ad9551f42d3b62c61a37a7d6b",
+      "epoch": 1,
+      "category": "compaction",
+      "contract_sha256": "c4f19352502e69e18af332471622063a1fe4ddd08080a0d0253d57b4588380ad",
+      "remaining_operations": 23,
+      "forwarded_sha256": "8820156a35efd8b0b4a672aea0aa851e4d8f3767714cc1eaed9415be9924a262",
+      "upstream_status": 200,
+      "response_sha256": "e976d9da41eb4b12d013e1a825c233e6a77e3d7957eb94cddf20074e34229f8c",
+      "elapsed": 0.015999999945051968
+    },
+    {
+      "request": 3,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": false,
+      "body_sha256": "e10e3144ded151eaaf799c246a83da762a0353df8af016edd648777b03534b1d"
+    }
+  ],
+  "required": [
+    "checks_check",
+    "checks_diff",
+    "checks_edit",
+    "checks_focus"
+  ],
+  "request_rewriting": true,
+  "resource_exhausted": false,
+  "captured_bytes": 33888
+}

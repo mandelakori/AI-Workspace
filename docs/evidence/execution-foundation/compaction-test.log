@@ -1,0 +1,14 @@
+test_two_forced_compactions_then_exact_edit_and_public_check (test_context_compaction.ContextCompactionTests.test_two_forced_compactions_then_exact_edit_and_public_check) ... FAIL
+
+======================================================================
+FAIL: test_two_forced_compactions_then_exact_edit_and_public_check (test_context_compaction.ContextCompactionTests.test_two_forced_compactions_then_exact_edit_and_public_check)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\tests\test_context_compaction.py", line 79, in test_two_forced_compactions_then_exact_edit_and_public_check
+    self.assertEqual(result.code,0,result.stderr)
+AssertionError: 1 != 0 : 
+
+----------------------------------------------------------------------
+Ran 1 test in 3.668s
+
+FAILED (failures=1)

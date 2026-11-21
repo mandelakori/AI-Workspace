@@ -283,9 +283,17 @@ class Controller:
             except (OSError, TypeError, RuntimeError, ValueError, KeyError) as exc:
                 evidence = {"status": "blocked", "detail": str(exc)}
             evidence["elapsed"] = round(monotonic() - started, 3)
+            receipt_path = attempt / 'execution-receipt.json'
+            if receipt_path.exists():
+                receipt = json.loads(receipt_path.read_bytes())
+                receipt['independent_verification'] = evidence['status']
+                write_json(receipt_path, receipt)
             metrics = attempt / "agent-metrics.json"
             if metrics.exists():
                 evidence["agent"] = json.loads(metrics.read_text(encoding="utf-8"))
+                if receipt_path.exists():
+                    evidence['agent']['execution'] = receipt
+                    write_json(metrics, evidence['agent'])
             write_json(attempt / "evidence.json", evidence)
             self.state.record(row["id"], number + offset + 1, profile.id if profile else "direct", evidence)
             from .project import ProjectStore
@@ -528,6 +536,9 @@ class Controller:
             propose_source(self, task, profile, work, attempt, deadline, findings,
                            previous=previous if task.rank_public else "")
             return
+        if task.mode == 'engineering':
+            from .harness_contracts import admit
+            admit(profile.harness, attempt)  # Before endpoint readiness or remote admission.
         from .remote import a100_session
         from .trial_budget import public_limit
         binary = opencode_path(self.config.opencode) if profile.harness == "opencode" else None
@@ -575,6 +586,11 @@ class Controller:
                                       "setup": [asdict(c) for c in task.setup], "engineering": engineering,
                                       "write_roots": task.write_roots, "baseline": str(task.workspace),
                                       "objective": task.objective,
+                                      "resources": {"operations": task.tool_operations,
+                                                    "edit_reserve": task.edit_reserve,
+                                                    "verification_reserve": task.public_test_reserve,
+                                                    "model_requests": task.model_requests,
+                                                    "compactions": task.compaction_limit},
                                       "trial": public_limit(),
                                       "workspace": str(work), "image": self.config.verification_image,
                                       "stop": str(self.config.state / "STOP"),
@@ -637,6 +653,9 @@ class Controller:
                     "code": result.code, "elapsed": result.elapsed,
                     "timed_out": result.timed_out, "truncated": result.truncated})
                 metrics = summarize_trace(result.stdout, attempt)
+                receipt_path = attempt / 'execution-receipt.json'
+                if receipt_path.exists():
+                    metrics['execution'] = json.loads(receipt_path.read_bytes())
                 metrics["gpu_samples"] = {"before": readings, "after": self.gpu_sample(profile)}
                 if profile.engine == "ollama":
                     metrics["inference_samples"] = {"before": inference, "after": ollama_residency(profile)}

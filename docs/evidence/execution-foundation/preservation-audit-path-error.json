@@ -1,0 +1,17 @@
+{
+  "docs/evidence/phase61/httpx-editing-pilot/evidence-hashes.json": {
+    "matched": 25,
+    "missing": 0,
+    "mismatched": 0
+  },
+  "docs/evidence/phase61/discovery-result/evidence-hashes.json": {
+    "matched": 0,
+    "missing": 34,
+    "mismatched": 1
+  },
+  "frozen_click": {
+    "matched": 142,
+    "missing": 0,
+    "mismatched": 0
+  }
+}

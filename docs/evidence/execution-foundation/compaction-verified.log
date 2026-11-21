@@ -1,0 +1,6 @@
+test_two_forced_compactions_then_exact_edit_and_public_check (test_context_compaction.ContextCompactionTests.test_two_forced_compactions_then_exact_edit_and_public_check) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 5.620s
+
+OK

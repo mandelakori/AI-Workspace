@@ -1,0 +1,190 @@
+{
+  "failed_closed": false,
+  "requests": [
+    {
+      "request": 1,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "4d273b9333d3188f8a2b330d0e4019cfc10dbf50b483e9834353da1112656f6a",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c4f19352502e69e18af332471622063a1fe4ddd08080a0d0253d57b4588380ad",
+      "remaining_operations": 24,
+      "forwarded_sha256": "95ada8da6e45651f4292788f9ad866f89ebf6e1cd0bb0a921ca24ba060e9c46b",
+      "upstream_status": 200,
+      "response_sha256": "124caad557c470137ca246e8bddc39a5f347ec731b64cead93062129b57dcd11",
+      "elapsed": 0.0
+    },
+    {
+      "request": 2,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "451efc371465aaac16f3f8f494fc6eda40912d5cc88de4d129435f99551614f4",
+      "epoch": 1,
+      "category": "compaction",
+      "contract_sha256": "c4f19352502e69e18af332471622063a1fe4ddd08080a0d0253d57b4588380ad",
+      "remaining_operations": 23,
+      "forwarded_sha256": "2ac05155d7bbf48dca6b6fa764ed96c9d9cb6e51d31ef215f44ae5a7c5888624",
+      "upstream_status": 200,
+      "response_sha256": "19c93a1db5249d79ee0f1f837f071d5e2559a4a6b2408804f79b6b366eb5bf19",
+      "elapsed": 0.015999999945051968
+    },
+    {
+      "request": 3,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "6fd1f303004938c70749e8159b6de005a000f3b74d42bad0338f0074b5897aea",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "c4f19352502e69e18af332471622063a1fe4ddd08080a0d0253d57b4588380ad",
+      "remaining_operations": 23,
+      "forwarded_sha256": "91dbb3cd61c1f34c020f1bc38b3c9d993448d84f35d1e65e8171d26e473c686f",
+      "upstream_status": 200,
+      "response_sha256": "4fa80edc74fb053095b8830c73822d5bc106ac85ee3f145621589bcfe4b96f1d",
+      "elapsed": 0.015000000013969839
+    },
+    {
+      "request": 4,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "4672776c4fe0d63659411a8ba4666a50c3b82d4397695f9b037fc98647304988",
+      "epoch": 2,
+      "category": "compaction",
+      "contract_sha256": "c4f19352502e69e18af332471622063a1fe4ddd08080a0d0253d57b4588380ad",
+      "remaining_operations": 22,
+      "forwarded_sha256": "9d38aaad9273c33e89292ececae9248c5b3d6d132fcf849e177828cb143af14b",
+      "upstream_status": 200,
+      "response_sha256": "61e54969c4961668e0cca44e35d0c6128daa931ce1056a43b092ed9a45369a13",
+      "elapsed": 0.015000000013969839
+    },
+    {
+      "request": 5,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "44f23cf167fbb1f2112a565f96603f0fde7c5d49675c99d40b151798afc34628",
+      "epoch": 3,
+      "category": "compaction",
+      "contract_sha256": "c4f19352502e69e18af332471622063a1fe4ddd08080a0d0253d57b4588380ad",
+      "remaining_operations": 22,
+      "forwarded_sha256": "bc9143169d7e3af39e98027652c50e9f7f24ba48739257178eaafafb62d865e9",
+      "upstream_status": 200,
+      "response_sha256": "19c93a1db5249d79ee0f1f837f071d5e2559a4a6b2408804f79b6b366eb5bf19",
+      "elapsed": 0.0
+    },
+    {
+      "request": 6,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "6fd1f303004938c70749e8159b6de005a000f3b74d42bad0338f0074b5897aea",
+      "epoch": 3,
+      "category": "inference",
+      "contract_sha256": "c4f19352502e69e18af332471622063a1fe4ddd08080a0d0253d57b4588380ad",
+      "remaining_operations": 22,
+      "forwarded_sha256": "0b29a88630447da08563513ffcbb435295a5aa179f18423df8feaa38cc1eae03",
+      "upstream_status": 200,
+      "response_sha256": "3da98abf5bc587d9376529c4357c53de46be71d80b93cff2942070a2c511421a",
+      "elapsed": 0.015000000013969839
+    },
+    {
+      "request": 7,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "fe03bbc3121a584f69a37626c66087afb8292355c234f770c704f832206172df",
+      "epoch": 3,
+      "category": "inference",
+      "contract_sha256": "c4f19352502e69e18af332471622063a1fe4ddd08080a0d0253d57b4588380ad",
+      "remaining_operations": 21,
+      "forwarded_sha256": "0e419afb39314a159f68550421b3aa3f7f5abf1f65f58c30b13d3e190cd373e7",
+      "upstream_status": 200,
+      "response_sha256": "6ba44cac8c398426fe2a0ea6d48c517f2e88d1de65df13c3b558bc9a03c94cac",
+      "elapsed": 0.03100000007543713
+    },
+    {
+      "request": 8,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "f2cf34aaa01fda8d8c55770bf5284073899593f83d6c1eaf3c5cd38b657c7ea2",
+      "epoch": 3,
+      "category": "inference",
+      "contract_sha256": "c4f19352502e69e18af332471622063a1fe4ddd08080a0d0253d57b4588380ad",
+      "remaining_operations": 20,
+      "forwarded_sha256": "b380f5eb3a0d77c5df75afdaf947b7463858862af3da9ac9b686f205339c778a",
+      "upstream_status": 200,
+      "response_sha256": "46098bc9005f5c745d4fb7b58365c3b4de241bcf3c617af53afae43ddb2e3f3d",
+      "elapsed": 0.015000000013969839
+    }
+  ],
+  "required": [
+    "checks_check",
+    "checks_diff",
+    "checks_edit",
+    "checks_focus"
+  ],
+  "request_rewriting": true,
+  "resource_exhausted": false,
+  "captured_bytes": 111033
+}

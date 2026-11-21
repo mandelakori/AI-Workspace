@@ -1,0 +1,78 @@
+{
+  "contract": {
+    "objective": "Double the input",
+    "write_roots": [
+      "module.py"
+    ],
+    "public_checks": [
+      {
+        "argv": [
+          "{python}",
+          "-c",
+          "from module import calculate; assert calculate(3)==6"
+        ]
+      }
+    ],
+    "setup": [],
+    "deadline": null,
+    "policy": {
+      "operations": 24,
+      "edit_reserve": 2,
+      "verification_reserve": 2,
+      "model_requests": 16,
+      "compactions": 4,
+      "blocked_limit": 3
+    }
+  },
+  "contract_sha256": "c4f19352502e69e18af332471622063a1fe4ddd08080a0d0253d57b4588380ad",
+  "epoch": 1,
+  "visible": [],
+  "issued": [
+    "ea36faef96a6d3e743fa61df5274b259e29dbb37a4be385979d9dbab73140a29"
+  ],
+  "events": [
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c4f19352502e69e18af332471622063a1fe4ddd08080a0d0253d57b4588380ad",
+      "remaining_operations": 24,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "compaction",
+      "epoch": 1,
+      "evicted": []
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "compaction",
+      "contract_sha256": "c4f19352502e69e18af332471622063a1fe4ddd08080a0d0253d57b4588380ad",
+      "remaining_operations": 23,
+      "denied": ""
+    }
+  ],
+  "used": {
+    "inspection": 1,
+    "editing": 0,
+    "verification": 0,
+    "inference": 1,
+    "compaction": 1
+  },
+  "seconds": {
+    "inference": 0.01600000006146729,
+    "inspection": 0.0470000000204891,
+    "compaction": 0.015999999945051968,
+    "cleanup": 0.015999999945051968
+  },
+  "blocked": 0,
+  "exhausted": ""
+}

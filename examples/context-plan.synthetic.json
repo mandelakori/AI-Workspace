@@ -1,0 +1,24 @@
+{
+  "measurements": {
+    "model": "synthetic-not-a-hardware-measurement",
+    "provenance": "Deterministic example; replace with measurements for the exact model/cache/offload configuration",
+    "supported_max": 32768,
+    "available_vram_bytes": 8589934592,
+    "available_ram_bytes": 34359738368,
+    "resident_gpu_bytes": 5368709120,
+    "resident_cpu_bytes": 2147483648,
+    "kv_bytes_per_token": 32768,
+    "kv_gpu_fraction": 0.75,
+    "prefill_tokens_per_second": 1000,
+    "generation_tokens_per_second": 40
+  },
+  "policy": {
+    "candidates": [8192, 16384, 32768],
+    "hard_max": 32768,
+    "input_tokens": 9000,
+    "output_tokens": 1000,
+    "reserve_tokens": 500,
+    "deadline_seconds": 60,
+    "headroom": 0.15
+  }
+}

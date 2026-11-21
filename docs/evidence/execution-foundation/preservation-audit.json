@@ -1,0 +1,23 @@
+{
+  "note": "Relative published indexes resolve against their own directory; absolute local indexes resolve directly.",
+  "docs/evidence/phase61/httpx-editing-pilot/evidence-hashes.json": {
+    "matched": 25,
+    "missing": 0,
+    "mismatched": 0
+  },
+  "docs/evidence/phase61/discovery-result/evidence-hashes.json": {
+    "matched": 35,
+    "missing": 0,
+    "mismatched": 0
+  },
+  "docs/evidence/phase61/discovery-result/local-evidence-inventory.json": {
+    "matched": 305,
+    "missing": 0,
+    "mismatched": 0
+  },
+  "frozen_click": {
+    "matched": 142,
+    "missing": 0,
+    "mismatched": 0
+  }
+}

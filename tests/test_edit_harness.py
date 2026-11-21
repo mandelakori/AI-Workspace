@@ -115,7 +115,7 @@ class EditHarnessTests(unittest.TestCase):
             self.assertTrue(all(required<=set(c) for c in catalogs))
             gate=json.loads((artifacts/'provider-gate.json').read_bytes())
             self.assertFalse(gate['failed_closed'])
-            self.assertEqual(backend_hashes,[r['body_sha256'] for r in gate['requests']])
+            self.assertEqual(backend_hashes,[r['forwarded_sha256'] for r in gate['requests']])
             self.assertTrue(json.loads((artifacts/'catalog-readiness.json').read_bytes())['cleanup_passed'])
             diagnostic=Path(os.environ.get('AIWORK_TEST_CATALOG_EVIDENCE',artifacts/'catalog-probe.json'))
             from aiwork.httpx_benchmark import implementation

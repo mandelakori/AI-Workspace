@@ -85,6 +85,11 @@ class Task:
     source_patch: bool = False
     public_cases: str = ""
     attempt_limit: int = 0
+    tool_operations: int = 48
+    edit_reserve: int = 4
+    public_test_reserve: int = 4
+    model_requests: int = 64
+    compaction_limit: int = 4
 
     @classmethod
     def load(cls, path: Path) -> Task:
@@ -121,6 +126,9 @@ class Task:
 
     def validate(self) -> None:
         task = self
+        from .execution_context import ResourcePolicy
+        ResourcePolicy(task.tool_operations, task.edit_reserve, task.public_test_reserve,
+                       task.model_requests, task.compaction_limit)
         if (not isinstance(task.objective, str) or not task.objective.strip() or
             len(task.objective) > 8000 or not task.workspace.is_dir()):
             raise ValueError("task requires a workspace directory and bounded objective")

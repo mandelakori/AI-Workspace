@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "model": "synthetic-not-a-hardware-measurement",
+  "provenance": "Deterministic example; replace with measurements for the exact model/cache/offload configuration",
+  "measurements": {
+    "model": "synthetic-not-a-hardware-measurement",
+    "provenance": "Deterministic example; replace with measurements for the exact model/cache/offload configuration",
+    "supported_max": 32768,
+    "available_vram_bytes": 8589934592,
+    "available_ram_bytes": 34359738368,
+    "resident_gpu_bytes": 5368709120,
+    "resident_cpu_bytes": 2147483648,
+    "kv_bytes_per_token": 32768,
+    "kv_gpu_fraction": 0.75,
+    "prefill_tokens_per_second": 1000,
+    "generation_tokens_per_second": 40
+  },
+  "selected": 16384,
+  "candidates": [
+    {
+      "context": 8192,
+      "estimated_gpu_bytes": 5570035712.0,
+      "estimated_cpu_bytes": 2214592512.0,
+      "estimated_seconds": 34.0,
+      "rejected": [
+        "task context demand"
+      ]
+    },
+    {
+      "context": 16384,
+      "estimated_gpu_bytes": 5771362304.0,
+      "estimated_cpu_bytes": 2281701376.0,
+      "estimated_seconds": 34.0,
+      "rejected": []
+    },
+    {
+      "context": 32768,
+      "estimated_gpu_bytes": 6174015488.0,
+      "estimated_cpu_bytes": 2415919104.0,
+      "estimated_seconds": 34.0,
+      "rejected": []
+    }
+  ],
+  "applied": false,
+  "limitation": "Planning estimate only. Validate backend residency and measured performance before applying."
+}

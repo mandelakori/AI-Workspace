@@ -8,8 +8,10 @@ from time import monotonic
 from urllib.error import HTTPError
 from urllib.request import Request, build_opener, ProxyHandler
 import unittest
+from unittest.mock import patch
 
 from aiwork.provider_gate import catalog, ProviderGate, REQUIRED
+from aiwork.execution_context import ExecutionContext, ResourcePolicy
 
 
 class ProviderGateTests(unittest.TestCase):
@@ -50,4 +52,47 @@ class ProviderGateTests(unittest.TestCase):
                     with build_opener(ProxyHandler({})).open(req,timeout=2) as response:self.assertEqual(response.read(),b'{"ok":true}')
                 self.assertEqual(received,[raw])
                 self.assertFalse(gate.failed.is_set())
+            finally:backend.shutdown();thread.join()
+
+    def test_exhausted_context_never_forwards_and_is_not_provider_failure(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);spec=root/'tool.json'
+            spec.write_text(json.dumps({'objective':'Active goal','write_roots':['module.py'],'checks':[]}))
+            context=ExecutionContext(spec)
+            context.initialize(ResourcePolicy(operations=1,edit_reserve=0,verification_reserve=0))
+            context.charge_tool('focus')
+            with ProviderGate('http://127.0.0.1:1/v1','inert','',root,monotonic()+5,context=context) as gate:
+                req=Request(gate.endpoint+'/chat/completions',json.dumps(self.body()).encode(),
+                            headers={'Authorization':'Bearer '+gate.token})
+                with self.assertRaises(HTTPError) as caught:build_opener(ProxyHandler({})).open(req,timeout=2)
+                self.assertEqual(caught.exception.code,400)
+                self.assertIn(b'controller_resource_exhausted',caught.exception.read())
+                self.assertTrue(gate.exhausted.is_set())
+                self.assertFalse(gate.failed.is_set())
+                self.assertFalse(gate.receipts[0]['forwarded'])
+
+    def test_scoped_catalog_refuses_unmetered_native_tools(self):
+        self.assertFalse(catalog(self.body(REQUIRED|{'glob'}),scoped_only=True)['passed'])
+
+    def test_accounting_failure_fails_closed_without_skipping_connection_cleanup(self):
+        class Backend(BaseHTTPRequestHandler):
+            def log_message(self,*args):pass
+            def do_POST(self):
+                self.rfile.read(int(self.headers['Content-Length']))
+                self.send_response(200);self.end_headers();self.wfile.write(b'{"ok":true}')
+        with tempfile.TemporaryDirectory() as tmp,ThreadingHTTPServer(('127.0.0.1',0),Backend) as backend:
+            root=Path(tmp);spec=root/'tool.json'
+            spec.write_text(json.dumps({'objective':'Public objective','write_roots':['module.py'],'checks':[]}))
+            context=ExecutionContext(spec);context.initialize(ResourcePolicy())
+            thread=Thread(target=backend.serve_forever);thread.start()
+            try:
+                with patch.object(context,'elapsed',side_effect=TimeoutError('injected accounting failure')):
+                    with ProviderGate(f'http://127.0.0.1:{backend.server_port}/v1','inert','',root,
+                                      monotonic()+5,context=context) as gate:
+                        req=Request(gate.endpoint+'/chat/completions',json.dumps(self.body()).encode(),
+                                    headers={'Authorization':'Bearer '+gate.token})
+                        with build_opener(ProxyHandler({})).open(req,timeout=2) as response:response.read()
+                self.assertTrue(gate.failed.is_set())
+                self.assertFalse(gate.connections)
+                self.assertEqual(gate.receipts[0]['accounting_error'],'TimeoutError')
             finally:backend.shutdown();thread.join()

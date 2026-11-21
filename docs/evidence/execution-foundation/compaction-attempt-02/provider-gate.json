@@ -1,0 +1,73 @@
+{
+  "failed_closed": true,
+  "requests": [
+    {
+      "request": 1,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "2ff6790c4bfb856773973dfbfb219307336defcd959d4e55334bcd17006a41cc",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c4f19352502e69e18af332471622063a1fe4ddd08080a0d0253d57b4588380ad",
+      "remaining_operations": 24,
+      "forwarded_sha256": "d7b54676e9a23d424501306836df904d929e248b223f843f3be9cd7663f98cab",
+      "upstream_status": 200,
+      "response_sha256": "124caad557c470137ca246e8bddc39a5f347ec731b64cead93062129b57dcd11",
+      "elapsed": 0.0
+    },
+    {
+      "request": 2,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "fd0b4dc4c7696b43c63dc48919d1e45b73c8cf2f7ffa8c85889c7762b47edbde",
+      "epoch": 1,
+      "category": "compaction",
+      "contract_sha256": "c4f19352502e69e18af332471622063a1fe4ddd08080a0d0253d57b4588380ad",
+      "remaining_operations": 23,
+      "forwarded_sha256": "936abb8d8e2e21f82132114cc68c6aeda8eb4393e128e704f29f06a0a5b25754",
+      "upstream_status": 200,
+      "response_sha256": "e976d9da41eb4b12d013e1a825c233e6a77e3d7957eb94cddf20074e34229f8c",
+      "elapsed": 0.015999999945051968
+    },
+    {
+      "request": 3,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": false,
+      "body_sha256": "321440da4fd869cf787e0f515ea85bc360e87b7dcddfa7d423b05176f4e7d606",
+      "contract_error": "TimeoutError: resource is busy: execution-context.lock"
+    }
+  ],
+  "required": [
+    "checks_check",
+    "checks_diff",
+    "checks_edit",
+    "checks_focus"
+  ],
+  "request_rewriting": true,
+  "resource_exhausted": false,
+  "captured_bytes": 33888
+}

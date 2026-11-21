@@ -10,6 +10,20 @@
 
 The A100 scheduler runs in the controller. An A100-local harness daemon, a general MCP broker and a hard multi-tenant GPU allocator are extension points.
 
+## Context and resource foundation
+
+Engineering adapters must satisfy `harness_contracts.py` before endpoint admission.
+The OpenCode provider boundary repeats the controller-owned work order, verifies
+the scoped catalog and records incoming/forwarded hashes and per-request usage.
+`execution_context.py` shares provider-visible source epochs and persistent quotas
+with the MCP bridge. Eviction permits reinspection without replenishing budgets;
+reserved edit/public-test operations prevent exploration consuming every slot.
+Normalized receipts distinguish clean exhaustion, provider/ownership failures and
+the controller's independent verdict. Qwen engineering fails closed pending parity.
+`context_planning.py` plans bounded windows from explicit memory/cache/offload and
+latency measurements, without reconfiguring a backend. See the
+[verified foundation and remaining limitations](EXECUTION-FOUNDATION.md).
+
 ## Hierarchical engineering
 
 `hierarchy.py` registers a project with explicit component interfaces, selected public files, dependency artifacts and approved runner commands. The local planning coordinator and planning specialist reorganize these component IDs in a nested tree. An approval digest binds the tree to the registered policy, runner and profile. The existing workflow scheduler expands the tree into dependency jobs and validates the digests of their scoped handoffs. Separate deterministic analysis, testing and integration jobs produce evidence and verified artifacts. Implementers use the installed harness or a bounded local single-file proposal. A targeted retry switches the worker to the debugging role and preserves other verified jobs. [Phase 5 operator workflow](PHASE5.md)
