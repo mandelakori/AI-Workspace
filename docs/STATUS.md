@@ -2,6 +2,11 @@
 
 ## Phase 6.1 bounded autonomy preparation
 
+| Tool-contract diagnosis | Status | Evidence |
+| --- | --- | --- |
+| Saved pilot audit and deterministic conformance | VERIFIED | [Diagnosis and experiment design](TOOL-CONTRACT-DIAGNOSIS.md): noncontiguous/misindented anchor plus replacement-style payload in insertion mode; 15/16 MCP calls spent inspecting. Three synthetic tests added; full discovery 135 tests, 128 pass and seven opt-in integrations skipped. No inference or HTTPX changes; original evidence hashes verified. |
+| Model capacity and follow-up experiment | UNTESTED | No evidence isolates 9B size or 8K context as the primary cause. Provider-facing catalog readiness remains a comparison prerequisite; proposed small real-repository retrieval comparison is design only, without authorization or dispatch. |
+
 | Source editing recovery | Status | Evidence |
 | --- | --- | --- |
 | Scoped exact editing | VERIFIED | [Editing report](SOURCE-EDITING-RECOVERY.md): current hashes, unique short anchors, atomic commits, syntax checks and actionable rejections. Native mutation tools denied; full 132-test suite passes. |

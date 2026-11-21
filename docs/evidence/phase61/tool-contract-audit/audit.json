@@ -1,0 +1,470 @@
+{
+  "audited_commit": "1995687",
+  "execution": "READ_ONLY_AUDIT_AND_SYNTHETIC_TESTS_NO_MODEL_INFERENCE",
+  "historical_input_sha256": {
+    "tool-sequence.json": "315e1e28f1e1711e6e1933c64a3acf985c84491bd86b03a5728b8fa71de8219f",
+    "failed-edit.json": "2b75a403920b28bc0f48661d2d6917f8549f1de5eef1e058bb29a4d071ef4cee",
+    "agent.jsonl": "bafce05df75ef01804173ce57c349b05564c3e7ad5a2c17576de4d7328a806fa",
+    "mcp.jsonl": "3941dafaf3970e5db1fc998300295efdb3a11e20222888ea097cc8a53ec9b53f",
+    "agent-metrics.json": "a2e0322b4d7880a44e7a688761498a7e1387feb474d33dd9fab584a2ed108036",
+    "harness-budget.json": "e4054700f253153334f807f3b369f990d25df83643244b64c9fb8953c7792eb2",
+    "active-objective.md": "6635b81c12e6da582bd02d76f84317e0c0daa5978d609ef35c1cb6b200734a7f",
+    "outcome.json": "ee402a7662351cb92473db0fecd1c54e944191051fc1b8fecd11819fffd64f67"
+  },
+  "original_evidence_hashes_checked": 25,
+  "original_evidence_mismatches": [],
+  "sequence": [
+    {
+      "tool": "focus",
+      "timestamp": 1795243192312,
+      "input": {
+        "path": "httpx/_utils.py",
+        "query": "class URLPattern"
+      },
+      "status": "error",
+      "error": "No tool named \"focus\" is currently available. Please use a tool from the available tool list.",
+      "sequence": 1
+    },
+    {
+      "tool": "checks_focus",
+      "timestamp": 1795243198367,
+      "input": {
+        "path": "httpx/_utils.py",
+        "query": "class URLPattern"
+      },
+      "status": "completed",
+      "error": null,
+      "sequence": 2,
+      "mcp_operation": 1,
+      "duplicate_suppressed": false,
+      "reinspection_after_edit_error": false
+    },
+    {
+      "tool": "checks_focus",
+      "timestamp": 1795243200925,
+      "input": {
+        "path": "httpx/_utils.py",
+        "symbol": "URLPattern.matches"
+      },
+      "status": "completed",
+      "error": null,
+      "sequence": 3,
+      "mcp_operation": 2,
+      "duplicate_suppressed": false,
+      "reinspection_after_edit_error": false
+    },
+    {
+      "tool": "checks_focus",
+      "timestamp": 1795243203190,
+      "input": {
+        "path": "httpx/_urls.py",
+        "query": "class URL"
+      },
+      "status": "completed",
+      "error": null,
+      "sequence": 4,
+      "mcp_operation": 3,
+      "duplicate_suppressed": false,
+      "reinspection_after_edit_error": false
+    },
+    {
+      "tool": "checks_focus",
+      "timestamp": 1795243224088,
+      "input": {
+        "path": "httpx/_utils.py",
+        "query": "URLPattern matches method implementation"
+      },
+      "status": "error",
+      "error": "{\"error\": \"query did not match; open the path to discover symbols\"}",
+      "sequence": 5,
+      "mcp_operation": 4,
+      "duplicate_suppressed": false,
+      "reinspection_after_edit_error": false
+    },
+    {
+      "tool": "grep",
+      "timestamp": 1795243225874,
+      "input": {
+        "include": "*.py",
+        "pattern": "class URLPattern"
+      },
+      "status": "completed",
+      "error": null,
+      "sequence": 6
+    },
+    {
+      "tool": "checks_focus",
+      "timestamp": 1795243227369,
+      "input": {
+        "path": "httpx/_utils.py",
+        "line": 120
+      },
+      "status": "completed",
+      "error": null,
+      "sequence": 7,
+      "mcp_operation": 5,
+      "duplicate_suppressed": false,
+      "reinspection_after_edit_error": false
+    },
+    {
+      "tool": "checks_focus",
+      "timestamp": 1795243229752,
+      "input": {
+        "path": "httpx/_utils.py",
+        "line": 192
+      },
+      "status": "completed",
+      "error": null,
+      "sequence": 8,
+      "mcp_operation": 6,
+      "duplicate_suppressed": false,
+      "reinspection_after_edit_error": false
+    },
+    {
+      "tool": "checks_focus",
+      "timestamp": 1795243232304,
+      "input": {
+        "path": "httpx/_utils.py",
+        "line": 162
+      },
+      "status": "completed",
+      "error": null,
+      "sequence": 9,
+      "mcp_operation": 7,
+      "duplicate_suppressed": false,
+      "reinspection_after_edit_error": false
+    },
+    {
+      "tool": "grep",
+      "timestamp": 1795243235504,
+      "input": {
+        "include": "*.py",
+        "pattern": "class URL\\("
+      },
+      "status": "completed",
+      "error": null,
+      "sequence": 10
+    },
+    {
+      "tool": "glob",
+      "timestamp": 1795243237136,
+      "input": {
+        "limit": 5,
+        "path": "httpx",
+        "pattern": "*_urls.py"
+      },
+      "status": "completed",
+      "error": null,
+      "sequence": 11
+    },
+    {
+      "tool": "checks_focus",
+      "timestamp": 1795243238644,
+      "input": {
+        "path": "httpx/_urls.py",
+        "query": "path property or path attribute"
+      },
+      "status": "error",
+      "error": "{\"error\": \"query did not match; open the path to discover symbols\"}",
+      "sequence": 12,
+      "mcp_operation": 8,
+      "duplicate_suppressed": false,
+      "reinspection_after_edit_error": false
+    },
+    {
+      "tool": "grep",
+      "timestamp": 1795243240269,
+      "input": {
+        "include": "*.py",
+        "pattern": "class.*URL.*httpx"
+      },
+      "status": "completed",
+      "error": null,
+      "sequence": 13
+    },
+    {
+      "tool": "grep",
+      "timestamp": 1795243242035,
+      "input": {
+        "include": "*_urls.py",
+        "pattern": "def __init__",
+        "path": "httpx/_urls.py"
+      },
+      "status": "completed",
+      "error": null,
+      "sequence": 14
+    },
+    {
+      "tool": "checks_focus",
+      "timestamp": 1795243243555,
+      "input": {
+        "path": "httpx/_urls.py",
+        "line": 77
+      },
+      "status": "completed",
+      "error": null,
+      "sequence": 15,
+      "mcp_operation": 9,
+      "duplicate_suppressed": false,
+      "reinspection_after_edit_error": false
+    },
+    {
+      "tool": "checks_focus",
+      "timestamp": 1795243262991,
+      "input": {
+        "path": "httpx/_utils.py"
+      },
+      "status": "completed",
+      "error": null,
+      "sequence": 16,
+      "mcp_operation": 10,
+      "duplicate_suppressed": false,
+      "reinspection_after_edit_error": false
+    },
+    {
+      "tool": "checks_focus",
+      "timestamp": 1795243265089,
+      "input": {
+        "path": "httpx/_utils.py",
+        "symbol": "URLPattern"
+      },
+      "status": "completed",
+      "error": null,
+      "sequence": 17,
+      "mcp_operation": 11,
+      "duplicate_suppressed": true,
+      "reinspection_after_edit_error": false
+    },
+    {
+      "tool": "checks_focus",
+      "timestamp": 1795243266976,
+      "input": {
+        "path": "httpx/_utils.py",
+        "symbol": "URLPattern.__init__"
+      },
+      "status": "completed",
+      "error": null,
+      "sequence": 18,
+      "mcp_operation": 12,
+      "duplicate_suppressed": false,
+      "reinspection_after_edit_error": false
+    },
+    {
+      "tool": "checks_focus",
+      "timestamp": 1795243268998,
+      "input": {
+        "path": "httpx/_utils.py",
+        "symbol": "URLPattern.matches"
+      },
+      "status": "completed",
+      "error": null,
+      "sequence": 19,
+      "mcp_operation": 13,
+      "duplicate_suppressed": true,
+      "reinspection_after_edit_error": false
+    },
+    {
+      "tool": "checks_edit",
+      "timestamp": 1795243279696,
+      "input": {
+        "path": "httpx/_utils.py",
+        "expected_sha256": "fd355ea802afc4990a1ddcfb74579be2cd0b66a41781e1645d281f88704aff5a",
+        "mode": "after",
+        "old": "    self.host_regex: typing.Pattern[str] | None = None\n        elif url.host.startswith(\"*\"):\n            # *example.com should match \"www.example.com\" and \"example.com\"\n            domain = re.escape(url.host[1:])\n            self.host_regex = re.compile(f\"^(.+\\\\.)?{domain}$\")\n        else:\n            # example.com should match \"example.com\" but not \"www.example.com\"\n            domain = re.escape(url.host)\n            self.host_regex = re.compile(f\"^{domain}$\")\n",
+        "new": "    self.host_regex: typing.Pattern[str] | None = None\n        elif url.host.startswith(\"*\"):\n            # *example.com should match \"www.example.com\" and \"example.com\"\n            domain = re.escape(url.host[1:])\n            self.host_regex = re.compile(f\"^(.+\\\\.)?{domain}$\")\n        else:\n            # example.com should match \"example.com\" but not \"www.example.com\"\n            domain = re.escape(url.host)\n            self.host_regex = re.compile(f\"^{domain}$\")\n\n        # Store path from URL for prefix matching\n        self.path = url.path if url.path is not None else \"\""
+      },
+      "status": "error",
+      "error": "{\"code\": \"anchor_mismatch\", \"error\": \"Anchor must match exactly once, including indentation and line breaks. Use focus at the suggested region and copy a shorter unique anchor. No fuzzy replacement was attempted.\", \"unchanged\": true, \"path\": \"httpx/_utils.py\", \"actual_sha256\": \"fd355ea802afc4990a1ddcfb74579be2cd0b66a41781e1645d281f88704aff5a\", \"focus_arguments\": {\"path\": \"httpx/_utils.py\", \"line\": 178}, \"anchor_matches\": 0, \"more_matches\": false, \"matching_lines\": [], \"passed\": false, \"stdout\": \"\", \"stderr\": \"Anchor must match exactly once, including indentation and line breaks. Use focus at the suggested region and copy a shorter unique anchor. No fuzzy replacement was attempted.\"}",
+      "sequence": 20,
+      "mcp_operation": 14,
+      "duplicate_suppressed": false,
+      "reinspection_after_edit_error": false,
+      "edit_error_code": "anchor_mismatch"
+    },
+    {
+      "tool": "checks_focus",
+      "timestamp": 1795243281439,
+      "input": {
+        "path": "httpx/_utils.py",
+        "line": 178
+      },
+      "status": "completed",
+      "error": null,
+      "sequence": 21,
+      "mcp_operation": 15,
+      "duplicate_suppressed": false,
+      "reinspection_after_edit_error": true
+    },
+    {
+      "tool": "checks_focus",
+      "timestamp": 1795243304871,
+      "input": {
+        "path": "httpx/_urls.py"
+      },
+      "status": "completed",
+      "error": null,
+      "sequence": 22,
+      "mcp_operation": 16,
+      "duplicate_suppressed": false,
+      "reinspection_after_edit_error": false
+    },
+    {
+      "tool": "checks_focus",
+      "timestamp": 1795243307138,
+      "input": {
+        "path": "httpx/_urls.py",
+        "symbol": "URL"
+      },
+      "status": "error",
+      "error": "{\"error\": \"tool stopped or call limit reached\"}",
+      "sequence": 23,
+      "mcp_operation": null,
+      "rejected_by_call_limit": true
+    },
+    {
+      "tool": "checks_focus",
+      "timestamp": 1795243308659,
+      "input": {
+        "path": "httpx/_urls.py",
+        "line": 61
+      },
+      "status": "error",
+      "error": "{\"error\": \"tool stopped or call limit reached\"}",
+      "sequence": 24,
+      "mcp_operation": null,
+      "rejected_by_call_limit": true
+    },
+    {
+      "tool": "checks_focus",
+      "timestamp": 1795243310317,
+      "input": {
+        "path": "httpx/_urls.py",
+        "query": "path attribute"
+      },
+      "status": "error",
+      "error": "{\"error\": \"tool stopped or call limit reached\"}",
+      "sequence": 25,
+      "mcp_operation": null,
+      "rejected_by_call_limit": true
+    }
+  ],
+  "read_coverage": [
+    {
+      "call": 1,
+      "path": "httpx/_utils.py",
+      "line": 117,
+      "lines": 60,
+      "repeated_lines": 0,
+      "recovery": false
+    },
+    {
+      "call": 2,
+      "path": "httpx/_utils.py",
+      "line": 192,
+      "lines": 12,
+      "repeated_lines": 0,
+      "recovery": false
+    },
+    {
+      "call": 3,
+      "path": "httpx/_urls.py",
+      "line": 12,
+      "lines": 60,
+      "repeated_lines": 0,
+      "recovery": false
+    },
+    {
+      "call": 5,
+      "path": "httpx/_utils.py",
+      "line": 120,
+      "lines": 60,
+      "repeated_lines": 57,
+      "recovery": false
+    },
+    {
+      "call": 6,
+      "path": "httpx/_utils.py",
+      "line": 192,
+      "lines": 51,
+      "repeated_lines": 12,
+      "recovery": false
+    },
+    {
+      "call": 7,
+      "path": "httpx/_utils.py",
+      "line": 162,
+      "lines": 60,
+      "repeated_lines": 48,
+      "recovery": false
+    },
+    {
+      "call": 9,
+      "path": "httpx/_urls.py",
+      "line": 77,
+      "lines": 60,
+      "repeated_lines": 0,
+      "recovery": false
+    },
+    {
+      "call": 10,
+      "path": "httpx/_utils.py",
+      "line": 1,
+      "lines": 60,
+      "repeated_lines": 0,
+      "recovery": false
+    },
+    {
+      "call": 12,
+      "path": "httpx/_utils.py",
+      "line": 162,
+      "lines": 29,
+      "repeated_lines": 29,
+      "recovery": false
+    },
+    {
+      "call": 15,
+      "path": "httpx/_utils.py",
+      "line": 178,
+      "lines": 60,
+      "repeated_lines": 60,
+      "recovery": true
+    },
+    {
+      "call": 16,
+      "path": "httpx/_urls.py",
+      "line": 1,
+      "lines": 60,
+      "repeated_lines": 49,
+      "recovery": false
+    }
+  ],
+  "returned_source_lines": 572,
+  "repeated_returned_lines": 255,
+  "before_edit_returned_lines": 452,
+  "before_edit_repeated_lines": 146,
+  "failed_edit": {
+    "source_sha256": "fd355ea802afc4990a1ddcfb74579be2cd0b66a41781e1645d281f88704aff5a",
+    "expected_sha256": "fd355ea802afc4990a1ddcfb74579be2cd0b66a41781e1645d281f88704aff5a",
+    "old_occurrences": 0,
+    "first_anchor_line_indent": 4,
+    "actual_line_178_indent": 12,
+    "omitted_source_lines": [
+      179,
+      180,
+      181,
+      182
+    ],
+    "mode": "after",
+    "new_starts_with_old": true,
+    "successful_match_counterfactual": "after retains old; old+new would contain the anchor twice. No counterfactual HTTPX edit was applied."
+  },
+  "usage": {
+    "completed_steps": 25,
+    "peak_input_field": 5060,
+    "peak_output_field": 385,
+    "peak_cache_read_field": 6805,
+    "peak_sum_input_cache_fields": 7298,
+    "context_interpretation": "Recorded fields are not an independently measured full-context occupancy; cached-token accounting requires provider semantics."
+  },
+  "proposal_status": "DESIGN_ONLY_NOT_AUTHORIZED_NO_NEW_EXECUTION_BUNDLE"
+}

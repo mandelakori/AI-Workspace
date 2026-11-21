@@ -159,14 +159,14 @@ def serve(spec_path: Path) -> None:
                 }, "required": ["index"], "additionalProperties": False},
             }] if checks else []
             if build:
-                available.append({"name": "focus", "description": "Discover qualified symbols and read bounded source (60 lines, 3000 UTF-8 bytes). Use query to find a name/text or symbol=Class.method to jump. Follow next_line; unchanged repeated excerpts are suppressed.",
+                available.append({"name": "focus", "description": "Discover qualified symbols and read bounded source (60 lines, 3000 UTF-8 bytes). query is a case-insensitive literal substring of a qualified symbol or source line. Use symbol=Class.method for exact lookup. Follow next_line; unchanged repeated excerpts are suppressed.",
                                   "inputSchema": {"type": "object", "properties": {
                                       "path": {"type": "string"}, "line": {"type": "integer", "minimum": 1},
                                       "symbol": {"type": "string"}, "query": {"type":"string"}}, "required": ["path"], "additionalProperties": False}})
                 available.append({"name": "diff", "description": "Review a Git diff of current workspace edits.",
                                   "inputSchema": {"type": "object", "properties": {},
                                                   "additionalProperties": False}})
-                available.append({"name":"edit","description":"Apply a SHORT exact source edit with current SHA-256 from focus. Modes replace/before/after require a unique literal old anchor, preserving all whitespace; new text is literal, including line endings. No fuzzy matching. create requires expected_sha256=absent and old empty. Errors return a source-region hint; reinspect and recover. Python results must parse.",
+                available.append({"name":"edit","description":"Apply a SHORT exact source edit with current SHA-256 returned by source inspection. replace consumes old and inserts new. before/after KEEP old and insert new immediately before/after it; new is only the insertion, not old plus insertion. These modes require a unique literal old anchor, preserving all whitespace; new text is literal, including line endings. No fuzzy matching. create requires expected_sha256=absent and old empty. Errors return a source-region hint; reinspect and recover. Python results must parse.",
                     "inputSchema":{"type":"object","properties":{k:{"type":"string"} for k in ['path','expected_sha256','old','new']}|
                         {'mode':{'type':'string','enum':['replace','before','after','create']}},
                         'required':['path','expected_sha256','old','new','mode'],'additionalProperties':False}})
