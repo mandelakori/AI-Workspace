@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "adapter": "pi",
+  "status": "completed",
+  "raw_exit_code": 0,
+  "elapsed": 5.875,
+  "timed_out": false,
+  "cleanup_passed": true,
+  "provider_gate_passed": true,
+  "independent_verification": "pending",
+  "resources": {
+    "epoch": 2,
+    "remaining_operations": 27,
+    "used": {
+      "inspection": 3,
+      "editing": 1,
+      "verification": 1,
+      "inference": 6,
+      "compaction": 2
+    },
+    "exhausted": "",
+    "policy": {
+      "operations": 32,
+      "edit_reserve": 0,
+      "verification_reserve": 0,
+      "model_requests": 16,
+      "compactions": 4,
+      "blocked_limit": 3
+    },
+    "seconds": {
+      "inference": 0.07699999993201345,
+      "inspection": 0.09299999999348074,
+      "compaction": 0.03200000000651926,
+      "editing": 0.01600000006146729,
+      "verification": 0.1559999999590218,
+      "cleanup": null
+    },
+    "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e"
+  },
+  "provider_usage": {
+    "reported": [
+      {
+        "request": 1,
+        "category": "inference",
+        "usage": {
+          "prompt_tokens": 7600,
+          "completion_tokens": 50,
+          "total_tokens": 7650
+        }
+      },
+      {
+        "request": 2,
+        "category": "compaction",
+        "usage": {
+          "prompt_tokens": 1000,
+          "completion_tokens": 50,
+          "total_tokens": 1050
+        }
+      },
+      {
+        "request": 3,
+        "category": "inference",
+        "usage": {
+          "prompt_tokens": 7600,
+          "completion_tokens": 50,
+          "total_tokens": 7650
+        }
+      },
+      {
+        "request": 4,
+        "category": "compaction",
+        "usage": {
+          "prompt_tokens": 1000,
+          "completion_tokens": 50,
+          "total_tokens": 1050
+        }
+      },
+      {
+        "request": 5,
+        "category": "inference",
+        "usage": {
+          "prompt_tokens": 1000,
+          "completion_tokens": 50,
+          "total_tokens": 1050
+        }
+      },
+      {
+        "request": 6,
+        "category": "inference",
+        "usage": {
+          "prompt_tokens": 1000,
+          "completion_tokens": 50,
+          "total_tokens": 1050
+        }
+      },
+      {
+        "request": 7,
+        "category": "inference",
+        "usage": {
+          "prompt_tokens": 1000,
+          "completion_tokens": 50,
+          "total_tokens": 1050
+        }
+      },
+      {
+        "request": 8,
+        "category": "inference",
+        "usage": {
+          "prompt_tokens": 1000,
+          "completion_tokens": 50,
+          "total_tokens": 1050
+        }
+      }
+    ],
+    "unreported_requests": []
+  }
+}

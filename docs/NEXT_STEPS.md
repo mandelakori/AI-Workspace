@@ -1,6 +1,29 @@
 # Next steps
 
+## Current handoff: adaptive local execution
+
+Read the [measured calibration and implementation report](ADAPTIVE-LOCAL-EXECUTION.md).
+8K, 16K and 32K are measured; 64K was conservatively withheld. The experimental
+Pi adapter passes installed inert-provider conformance, including two compactions
+and cancellation. Full regression is 178/178. Qwen engineering remains blocked;
+it is not a dependency or the next prerequisite.
+
+The only prepared live work is the [matched OpenCode/Pi review](LOCAL-HARNESS-COMPARISON-REVIEW.md),
+**PREPARED_NOT_AUTHORIZED** for digest
+`26c715e373551595dd655c09ecdf72bb96a3057fee9d12eeeafe69d721b2e8e2`.
+Do not dispatch until separately approved. It reuses the pinned dotenv task to
+isolate harness changes; no new unfamiliar-task or hierarchy claim is permitted.
+Validate the manifest before any authorized execution; drift requires a new
+bundle/digest, not edits to the prepared one. All old approvals are historical.
+
+After that comparison, prioritize measured weaknesses and only then consider
+[mini-SWE-agent's minimal Python loop](HARNESS-COMPATIBILITY.md). DeepSeek needs
+plugin/security and small-context compaction review first. Preserve historical
+benchmarks, quarantine records, frozen Click and main.
+
 ## Current handoff: execution foundation
+
+Historical checkpoint; the current handoff above supersedes its Qwen-first priority.
 
 **Phase 6.1 benchmarking is closed.** The [source-discovery comparison](DISCOVERY-EXPERIMENT-RESULT.md)
 quarantined B at the harness timeout and withheld A. The approval is consumed;

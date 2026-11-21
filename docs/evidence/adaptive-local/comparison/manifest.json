@@ -1,0 +1,1441 @@
+{
+  "format": 1,
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "execution_allowed": false,
+  "kind": "local-harness-pair",
+  "bundle": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\adaptive-local\\comparison",
+  "arms": [
+    "opencode",
+    "pi"
+  ],
+  "execution_order": [
+    "pi",
+    "opencode"
+  ],
+  "randomization_seed": "a96823a75da9edf643fefcdece7ebde3",
+  "repository": "https://github.com/theskumar/python-dotenv",
+  "repository_commit": "4fbc6ff07215367ece731006855e732d1405992c",
+  "task_reuse": "Same frozen public problem as closed Phase 6.1; fresh workers/instances; no unfamiliar-task claim.",
+  "source_receipt_reference_sha256": "ff745997e1741bfd2792f65e506dfccbff8f75124307437725fd16519818f79b",
+  "original_inventory": {
+    ".bumpversion.cfg": {
+      "bytes": 105,
+      "sha256": "b4225c9bfd7c7dea85406541f85c2223c82255e3019547dbec49e7a542446dbe"
+    },
+    ".editorconfig": {
+      "bytes": 243,
+      "sha256": "91ca4c8ad16309579982341930d568d2790cd5716e0193ad6e066764ff85d2cc"
+    },
+    ".gitignore": {
+      "bytes": 1566,
+      "sha256": "92c064957359c2be81209629f6111dbf57f6b2826e72bfa808d76537fcecb5ec"
+    },
+    ".pre-commit-config.yaml": {
+      "bytes": 182,
+      "sha256": "d01478603c4961aa40eb5e27d6991fec2c41934f7482218a2014a49e8ffb6979"
+    },
+    "CHANGELOG.md": {
+      "bytes": 22214,
+      "sha256": "21d571a85c31357b3e420567a8688149945c559d8172f52acb4a76c045e897ba"
+    },
+    "CONTRIBUTING.md": {
+      "bytes": 700,
+      "sha256": "986854ef7b3868b0f15758221cd999adf6ab50bbf40e3da1689b085088e3a96a"
+    },
+    "FEATURE.md": {
+      "bytes": 2370,
+      "sha256": "9e208d705566d2a0518a292dc4200776b4f917b2c5cf9ed770708410e67b9157"
+    },
+    "LICENSE": {
+      "bytes": 1556,
+      "sha256": "80619b7049f08c81683ad0e01f08f257a840652dd71ee83146d36658c7d2c2b9"
+    },
+    "MANIFEST.in": {
+      "bytes": 311,
+      "sha256": "c765cc00183538cf8ad406f274adcf76e987c2670f9a8faea16c51b13d9a6ad0"
+    },
+    "Makefile": {
+      "bytes": 1352,
+      "sha256": "74d25e5e679cf6c217f1b6d142c7510311d472d4be93d7afc209cd6a874e64ea"
+    },
+    "README.md": {
+      "bytes": 7997,
+      "sha256": "7d06cf7aa8278a4416873e141b5510d99bcc46bd14b440221ef46eba74009441"
+    },
+    "RELEASING.md": {
+      "bytes": 2803,
+      "sha256": "df7efbaed1027a062d5bb5095d5bd6dc78b022437a0ad254ff453d411edc602a"
+    },
+    "_benchmark_checks.py": {
+      "bytes": 2927,
+      "sha256": "8a5a8c5efe120be13ab394ef6f1d2c1df1a98ed7b32585ed3847a877de8c0033"
+    },
+    "_public_cases.json": {
+      "bytes": 1177,
+      "sha256": "43fdad2ebedaac1006f6e7a0b07719f8935231724cc81303b1bf7095ce627673"
+    },
+    "mkdocs.yml": {
+      "bytes": 630,
+      "sha256": "83ab242553640d2cfaa0ce06cadee5f7e4352c7c24208d73158b4ba47f88fc9f"
+    },
+    "pyproject.toml": {
+      "bytes": 2166,
+      "sha256": "7041daba686d8a41f34509c56c069aa60c76000ba2e6951d1f1ff98bff7f3546"
+    },
+    "requirements-ci.txt": {
+      "bytes": 105,
+      "sha256": "1cea9ed71bce2ba9487a693118c9b5a03671dda4877d809fe3c0424c687f9129"
+    },
+    "requirements-docs.txt": {
+      "bytes": 130,
+      "sha256": "9bd719c05023386176dae93f187f1a3b46d457c18d10db5b424eead1fcb4b6e1"
+    },
+    "requirements.txt": {
+      "bytes": 83,
+      "sha256": "866b5215434fe1ac6e056fb4122a0a920a2fa5da0319caa90c2ae5d26add5b15"
+    },
+    "ruff.toml": {
+      "bytes": 178,
+      "sha256": "18b8cd8f263b6fb7b3f562e0fedffdb74ab25d43fd03cd85e868d43c70dda41e"
+    },
+    "tox.ini": {
+      "bytes": 1324,
+      "sha256": "b1fcf82d564de1e385a7b35eeebab1f4cbe6ddf7a863724612cd0fdf35bc4926"
+    },
+    "docs/changelog.md": {
+      "bytes": 15,
+      "sha256": "5b1ace6cbf670b5d35b515086985890d889090026e075bb900834cea4945afba"
+    },
+    "docs/contributing.md": {
+      "bytes": 18,
+      "sha256": "3b4a07b9c92d73f838166d1bc5907f6d4305d0661b13e4617d9820f4d21e7207"
+    },
+    "docs/index.md": {
+      "bytes": 12,
+      "sha256": "dbcc210d7f4962499db6d4cfa18658e26d05ee700c962a811cac911f095e22fd"
+    },
+    "docs/license.md": {
+      "bytes": 10,
+      "sha256": "1e881ecf2862d01e6e5bc2b861e46886d2a6fb01499c0c508a209a7271b13cf2"
+    },
+    "docs/reference.md": {
+      "bytes": 14,
+      "sha256": "acf20f0b6b9ee9f0af6b50e9ca0e67fe1f904c71f00b5c450bbdfaa121b3b2d4"
+    },
+    "src/dotenv/__init__.py": {
+      "bytes": 1230,
+      "sha256": "6e163e88aeb0c0765a996208e9e482b820165d435d9f64d016610eb97494ed23"
+    },
+    "src/dotenv/__main__.py": {
+      "bytes": 129,
+      "sha256": "3744612c6ee71c8aad9491f0c1ea48a3ecdb24f371f6c7b0082446639dbc87fe"
+    },
+    "src/dotenv/cli.py": {
+      "bytes": 7569,
+      "sha256": "cba5e82445206ce3a4d70f819e9093112ff80a5346cef3ec68a5da43fc3d5349"
+    },
+    "src/dotenv/ipython.py": {
+      "bytes": 1326,
+      "sha256": "74740177d3dc7425298466faed7c32dc6914a8c49d7fd5d4522358c53677b585"
+    },
+    "src/dotenv/main.py": {
+      "bytes": 16970,
+      "sha256": "fcb89122cd8756c43209f9052bb3c552dbe440d45493c762295c771f0d1ceaa8"
+    },
+    "src/dotenv/parser.py": {
+      "bytes": 5806,
+      "sha256": "75f68bfa9e63b6f504b7d23a605b66edbb578d5e3e7ba797ab78ffcbc0eb44ae"
+    },
+    "src/dotenv/py.typed": {
+      "bytes": 26,
+      "sha256": "f0f8f2675695a10a5156fb7bd66bafbaae6a13e8d315990af862c792175e6e67"
+    },
+    "src/dotenv/variables.py": {
+      "bytes": 2348,
+      "sha256": "083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f"
+    },
+    "src/dotenv/version.py": {
+      "bytes": 22,
+      "sha256": "5c1287f04d4b983c6fd3a537f72a8c05b5d96a93844458080840d866cfe446ca"
+    },
+    "tests/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests/conftest.py": {
+      "bytes": 279,
+      "sha256": "1cc31c9f8e8b5e076780d7469c8f35ff8088e37a25be0bc7e07b68e593beb443"
+    },
+    "tests/test_cli.py": {
+      "bytes": 14034,
+      "sha256": "0062597d337b332af0eef02812a5395c6d63626b796e6edbcf3d6270cd6d844b"
+    },
+    "tests/test_fifo_dotenv.py": {
+      "bytes": 743,
+      "sha256": "b69ecca75f9eb3969aa2cc2d49f66006cccae02da472805a3b3ad4c9fca8f8de"
+    },
+    "tests/test_ipython.py": {
+      "bytes": 2257,
+      "sha256": "aaa10084bffa00032ff6fe9f61c4a1975c77d4f102b4c1e18b6eea0433d93933"
+    },
+    "tests/test_is_interactive.py": {
+      "bytes": 8921,
+      "sha256": "2d4a6a5a4501bbd6c2860b39abeb9d5201a2de3d110347f74236098aa72f2a18"
+    },
+    "tests/test_lib.py": {
+      "bytes": 1122,
+      "sha256": "f75073c7317f7cda985b94531774578056519bf8dcb91aa7f3c60a7cf8872199"
+    },
+    "tests/test_main.py": {
+      "bytes": 27507,
+      "sha256": "3b2f4bf1ca0d0a87bfac8c14c7236b42b39f444dcc148f751ef7b3f65c89342a"
+    },
+    "tests/test_parser.py": {
+      "bytes": 20349,
+      "sha256": "570e2ed889602896f817f59de8b8920df61a4ad39dcab49a30dc182acf9f05ce"
+    },
+    "tests/test_utils.py": {
+      "bytes": 747,
+      "sha256": "82e06b9819adbc846b84717f9cc47ffff2dc99c77ebb0a22d93026326eac78a3"
+    },
+    "tests/test_variables.py": {
+      "bytes": 884,
+      "sha256": "facea37ceaca30b761c2128fa754ec32c1e50333f2ac1776f7f8063018aaa6fc"
+    },
+    "tests/test_zip_imports.py": {
+      "bytes": 2864,
+      "sha256": "9224bd859309409c62848bac6564eec0793aa6dffa091c9965ec6c4644a8ef04"
+    }
+  },
+  "starting_inventories": {
+    "opencode": {
+      ".bumpversion.cfg": {
+        "bytes": 105,
+        "sha256": "b4225c9bfd7c7dea85406541f85c2223c82255e3019547dbec49e7a542446dbe"
+      },
+      ".editorconfig": {
+        "bytes": 243,
+        "sha256": "91ca4c8ad16309579982341930d568d2790cd5716e0193ad6e066764ff85d2cc"
+      },
+      ".gitignore": {
+        "bytes": 1566,
+        "sha256": "92c064957359c2be81209629f6111dbf57f6b2826e72bfa808d76537fcecb5ec"
+      },
+      ".pre-commit-config.yaml": {
+        "bytes": 182,
+        "sha256": "d01478603c4961aa40eb5e27d6991fec2c41934f7482218a2014a49e8ffb6979"
+      },
+      "CHANGELOG.md": {
+        "bytes": 22214,
+        "sha256": "21d571a85c31357b3e420567a8688149945c559d8172f52acb4a76c045e897ba"
+      },
+      "CONTRIBUTING.md": {
+        "bytes": 700,
+        "sha256": "986854ef7b3868b0f15758221cd999adf6ab50bbf40e3da1689b085088e3a96a"
+      },
+      "FEATURE.md": {
+        "bytes": 2370,
+        "sha256": "9e208d705566d2a0518a292dc4200776b4f917b2c5cf9ed770708410e67b9157"
+      },
+      "LICENSE": {
+        "bytes": 1556,
+        "sha256": "80619b7049f08c81683ad0e01f08f257a840652dd71ee83146d36658c7d2c2b9"
+      },
+      "MANIFEST.in": {
+        "bytes": 311,
+        "sha256": "c765cc00183538cf8ad406f274adcf76e987c2670f9a8faea16c51b13d9a6ad0"
+      },
+      "Makefile": {
+        "bytes": 1352,
+        "sha256": "74d25e5e679cf6c217f1b6d142c7510311d472d4be93d7afc209cd6a874e64ea"
+      },
+      "README.md": {
+        "bytes": 7997,
+        "sha256": "7d06cf7aa8278a4416873e141b5510d99bcc46bd14b440221ef46eba74009441"
+      },
+      "RELEASING.md": {
+        "bytes": 2803,
+        "sha256": "df7efbaed1027a062d5bb5095d5bd6dc78b022437a0ad254ff453d411edc602a"
+      },
+      "_benchmark_checks.py": {
+        "bytes": 2927,
+        "sha256": "8a5a8c5efe120be13ab394ef6f1d2c1df1a98ed7b32585ed3847a877de8c0033"
+      },
+      "_public_cases.json": {
+        "bytes": 1177,
+        "sha256": "43fdad2ebedaac1006f6e7a0b07719f8935231724cc81303b1bf7095ce627673"
+      },
+      "mkdocs.yml": {
+        "bytes": 630,
+        "sha256": "83ab242553640d2cfaa0ce06cadee5f7e4352c7c24208d73158b4ba47f88fc9f"
+      },
+      "pyproject.toml": {
+        "bytes": 2166,
+        "sha256": "7041daba686d8a41f34509c56c069aa60c76000ba2e6951d1f1ff98bff7f3546"
+      },
+      "requirements-ci.txt": {
+        "bytes": 105,
+        "sha256": "1cea9ed71bce2ba9487a693118c9b5a03671dda4877d809fe3c0424c687f9129"
+      },
+      "requirements-docs.txt": {
+        "bytes": 130,
+        "sha256": "9bd719c05023386176dae93f187f1a3b46d457c18d10db5b424eead1fcb4b6e1"
+      },
+      "requirements.txt": {
+        "bytes": 83,
+        "sha256": "866b5215434fe1ac6e056fb4122a0a920a2fa5da0319caa90c2ae5d26add5b15"
+      },
+      "ruff.toml": {
+        "bytes": 178,
+        "sha256": "18b8cd8f263b6fb7b3f562e0fedffdb74ab25d43fd03cd85e868d43c70dda41e"
+      },
+      "tox.ini": {
+        "bytes": 1324,
+        "sha256": "b1fcf82d564de1e385a7b35eeebab1f4cbe6ddf7a863724612cd0fdf35bc4926"
+      },
+      "docs/changelog.md": {
+        "bytes": 15,
+        "sha256": "5b1ace6cbf670b5d35b515086985890d889090026e075bb900834cea4945afba"
+      },
+      "docs/contributing.md": {
+        "bytes": 18,
+        "sha256": "3b4a07b9c92d73f838166d1bc5907f6d4305d0661b13e4617d9820f4d21e7207"
+      },
+      "docs/index.md": {
+        "bytes": 12,
+        "sha256": "dbcc210d7f4962499db6d4cfa18658e26d05ee700c962a811cac911f095e22fd"
+      },
+      "docs/license.md": {
+        "bytes": 10,
+        "sha256": "1e881ecf2862d01e6e5bc2b861e46886d2a6fb01499c0c508a209a7271b13cf2"
+      },
+      "docs/reference.md": {
+        "bytes": 14,
+        "sha256": "acf20f0b6b9ee9f0af6b50e9ca0e67fe1f904c71f00b5c450bbdfaa121b3b2d4"
+      },
+      "src/dotenv/__init__.py": {
+        "bytes": 1230,
+        "sha256": "6e163e88aeb0c0765a996208e9e482b820165d435d9f64d016610eb97494ed23"
+      },
+      "src/dotenv/__main__.py": {
+        "bytes": 129,
+        "sha256": "3744612c6ee71c8aad9491f0c1ea48a3ecdb24f371f6c7b0082446639dbc87fe"
+      },
+      "src/dotenv/cli.py": {
+        "bytes": 7569,
+        "sha256": "cba5e82445206ce3a4d70f819e9093112ff80a5346cef3ec68a5da43fc3d5349"
+      },
+      "src/dotenv/ipython.py": {
+        "bytes": 1326,
+        "sha256": "74740177d3dc7425298466faed7c32dc6914a8c49d7fd5d4522358c53677b585"
+      },
+      "src/dotenv/main.py": {
+        "bytes": 16970,
+        "sha256": "fcb89122cd8756c43209f9052bb3c552dbe440d45493c762295c771f0d1ceaa8"
+      },
+      "src/dotenv/parser.py": {
+        "bytes": 5806,
+        "sha256": "75f68bfa9e63b6f504b7d23a605b66edbb578d5e3e7ba797ab78ffcbc0eb44ae"
+      },
+      "src/dotenv/py.typed": {
+        "bytes": 26,
+        "sha256": "f0f8f2675695a10a5156fb7bd66bafbaae6a13e8d315990af862c792175e6e67"
+      },
+      "src/dotenv/variables.py": {
+        "bytes": 2348,
+        "sha256": "083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f"
+      },
+      "src/dotenv/version.py": {
+        "bytes": 22,
+        "sha256": "5c1287f04d4b983c6fd3a537f72a8c05b5d96a93844458080840d866cfe446ca"
+      },
+      "tests/__init__.py": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "tests/conftest.py": {
+        "bytes": 279,
+        "sha256": "1cc31c9f8e8b5e076780d7469c8f35ff8088e37a25be0bc7e07b68e593beb443"
+      },
+      "tests/test_cli.py": {
+        "bytes": 14034,
+        "sha256": "0062597d337b332af0eef02812a5395c6d63626b796e6edbcf3d6270cd6d844b"
+      },
+      "tests/test_fifo_dotenv.py": {
+        "bytes": 743,
+        "sha256": "b69ecca75f9eb3969aa2cc2d49f66006cccae02da472805a3b3ad4c9fca8f8de"
+      },
+      "tests/test_ipython.py": {
+        "bytes": 2257,
+        "sha256": "aaa10084bffa00032ff6fe9f61c4a1975c77d4f102b4c1e18b6eea0433d93933"
+      },
+      "tests/test_is_interactive.py": {
+        "bytes": 8921,
+        "sha256": "2d4a6a5a4501bbd6c2860b39abeb9d5201a2de3d110347f74236098aa72f2a18"
+      },
+      "tests/test_lib.py": {
+        "bytes": 1122,
+        "sha256": "f75073c7317f7cda985b94531774578056519bf8dcb91aa7f3c60a7cf8872199"
+      },
+      "tests/test_main.py": {
+        "bytes": 27507,
+        "sha256": "3b2f4bf1ca0d0a87bfac8c14c7236b42b39f444dcc148f751ef7b3f65c89342a"
+      },
+      "tests/test_parser.py": {
+        "bytes": 20349,
+        "sha256": "570e2ed889602896f817f59de8b8920df61a4ad39dcab49a30dc182acf9f05ce"
+      },
+      "tests/test_utils.py": {
+        "bytes": 747,
+        "sha256": "82e06b9819adbc846b84717f9cc47ffff2dc99c77ebb0a22d93026326eac78a3"
+      },
+      "tests/test_variables.py": {
+        "bytes": 884,
+        "sha256": "facea37ceaca30b761c2128fa754ec32c1e50333f2ac1776f7f8063018aaa6fc"
+      },
+      "tests/test_zip_imports.py": {
+        "bytes": 2864,
+        "sha256": "9224bd859309409c62848bac6564eec0793aa6dffa091c9965ec6c4644a8ef04"
+      }
+    },
+    "pi": {
+      ".bumpversion.cfg": {
+        "bytes": 105,
+        "sha256": "b4225c9bfd7c7dea85406541f85c2223c82255e3019547dbec49e7a542446dbe"
+      },
+      ".editorconfig": {
+        "bytes": 243,
+        "sha256": "91ca4c8ad16309579982341930d568d2790cd5716e0193ad6e066764ff85d2cc"
+      },
+      ".gitignore": {
+        "bytes": 1566,
+        "sha256": "92c064957359c2be81209629f6111dbf57f6b2826e72bfa808d76537fcecb5ec"
+      },
+      ".pre-commit-config.yaml": {
+        "bytes": 182,
+        "sha256": "d01478603c4961aa40eb5e27d6991fec2c41934f7482218a2014a49e8ffb6979"
+      },
+      "CHANGELOG.md": {
+        "bytes": 22214,
+        "sha256": "21d571a85c31357b3e420567a8688149945c559d8172f52acb4a76c045e897ba"
+      },
+      "CONTRIBUTING.md": {
+        "bytes": 700,
+        "sha256": "986854ef7b3868b0f15758221cd999adf6ab50bbf40e3da1689b085088e3a96a"
+      },
+      "FEATURE.md": {
+        "bytes": 2370,
+        "sha256": "9e208d705566d2a0518a292dc4200776b4f917b2c5cf9ed770708410e67b9157"
+      },
+      "LICENSE": {
+        "bytes": 1556,
+        "sha256": "80619b7049f08c81683ad0e01f08f257a840652dd71ee83146d36658c7d2c2b9"
+      },
+      "MANIFEST.in": {
+        "bytes": 311,
+        "sha256": "c765cc00183538cf8ad406f274adcf76e987c2670f9a8faea16c51b13d9a6ad0"
+      },
+      "Makefile": {
+        "bytes": 1352,
+        "sha256": "74d25e5e679cf6c217f1b6d142c7510311d472d4be93d7afc209cd6a874e64ea"
+      },
+      "README.md": {
+        "bytes": 7997,
+        "sha256": "7d06cf7aa8278a4416873e141b5510d99bcc46bd14b440221ef46eba74009441"
+      },
+      "RELEASING.md": {
+        "bytes": 2803,
+        "sha256": "df7efbaed1027a062d5bb5095d5bd6dc78b022437a0ad254ff453d411edc602a"
+      },
+      "_benchmark_checks.py": {
+        "bytes": 2927,
+        "sha256": "8a5a8c5efe120be13ab394ef6f1d2c1df1a98ed7b32585ed3847a877de8c0033"
+      },
+      "_public_cases.json": {
+        "bytes": 1177,
+        "sha256": "43fdad2ebedaac1006f6e7a0b07719f8935231724cc81303b1bf7095ce627673"
+      },
+      "mkdocs.yml": {
+        "bytes": 630,
+        "sha256": "83ab242553640d2cfaa0ce06cadee5f7e4352c7c24208d73158b4ba47f88fc9f"
+      },
+      "pyproject.toml": {
+        "bytes": 2166,
+        "sha256": "7041daba686d8a41f34509c56c069aa60c76000ba2e6951d1f1ff98bff7f3546"
+      },
+      "requirements-ci.txt": {
+        "bytes": 105,
+        "sha256": "1cea9ed71bce2ba9487a693118c9b5a03671dda4877d809fe3c0424c687f9129"
+      },
+      "requirements-docs.txt": {
+        "bytes": 130,
+        "sha256": "9bd719c05023386176dae93f187f1a3b46d457c18d10db5b424eead1fcb4b6e1"
+      },
+      "requirements.txt": {
+        "bytes": 83,
+        "sha256": "866b5215434fe1ac6e056fb4122a0a920a2fa5da0319caa90c2ae5d26add5b15"
+      },
+      "ruff.toml": {
+        "bytes": 178,
+        "sha256": "18b8cd8f263b6fb7b3f562e0fedffdb74ab25d43fd03cd85e868d43c70dda41e"
+      },
+      "tox.ini": {
+        "bytes": 1324,
+        "sha256": "b1fcf82d564de1e385a7b35eeebab1f4cbe6ddf7a863724612cd0fdf35bc4926"
+      },
+      "docs/changelog.md": {
+        "bytes": 15,
+        "sha256": "5b1ace6cbf670b5d35b515086985890d889090026e075bb900834cea4945afba"
+      },
+      "docs/contributing.md": {
+        "bytes": 18,
+        "sha256": "3b4a07b9c92d73f838166d1bc5907f6d4305d0661b13e4617d9820f4d21e7207"
+      },
+      "docs/index.md": {
+        "bytes": 12,
+        "sha256": "dbcc210d7f4962499db6d4cfa18658e26d05ee700c962a811cac911f095e22fd"
+      },
+      "docs/license.md": {
+        "bytes": 10,
+        "sha256": "1e881ecf2862d01e6e5bc2b861e46886d2a6fb01499c0c508a209a7271b13cf2"
+      },
+      "docs/reference.md": {
+        "bytes": 14,
+        "sha256": "acf20f0b6b9ee9f0af6b50e9ca0e67fe1f904c71f00b5c450bbdfaa121b3b2d4"
+      },
+      "src/dotenv/__init__.py": {
+        "bytes": 1230,
+        "sha256": "6e163e88aeb0c0765a996208e9e482b820165d435d9f64d016610eb97494ed23"
+      },
+      "src/dotenv/__main__.py": {
+        "bytes": 129,
+        "sha256": "3744612c6ee71c8aad9491f0c1ea48a3ecdb24f371f6c7b0082446639dbc87fe"
+      },
+      "src/dotenv/cli.py": {
+        "bytes": 7569,
+        "sha256": "cba5e82445206ce3a4d70f819e9093112ff80a5346cef3ec68a5da43fc3d5349"
+      },
+      "src/dotenv/ipython.py": {
+        "bytes": 1326,
+        "sha256": "74740177d3dc7425298466faed7c32dc6914a8c49d7fd5d4522358c53677b585"
+      },
+      "src/dotenv/main.py": {
+        "bytes": 16970,
+        "sha256": "fcb89122cd8756c43209f9052bb3c552dbe440d45493c762295c771f0d1ceaa8"
+      },
+      "src/dotenv/parser.py": {
+        "bytes": 5806,
+        "sha256": "75f68bfa9e63b6f504b7d23a605b66edbb578d5e3e7ba797ab78ffcbc0eb44ae"
+      },
+      "src/dotenv/py.typed": {
+        "bytes": 26,
+        "sha256": "f0f8f2675695a10a5156fb7bd66bafbaae6a13e8d315990af862c792175e6e67"
+      },
+      "src/dotenv/variables.py": {
+        "bytes": 2348,
+        "sha256": "083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f"
+      },
+      "src/dotenv/version.py": {
+        "bytes": 22,
+        "sha256": "5c1287f04d4b983c6fd3a537f72a8c05b5d96a93844458080840d866cfe446ca"
+      },
+      "tests/__init__.py": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "tests/conftest.py": {
+        "bytes": 279,
+        "sha256": "1cc31c9f8e8b5e076780d7469c8f35ff8088e37a25be0bc7e07b68e593beb443"
+      },
+      "tests/test_cli.py": {
+        "bytes": 14034,
+        "sha256": "0062597d337b332af0eef02812a5395c6d63626b796e6edbcf3d6270cd6d844b"
+      },
+      "tests/test_fifo_dotenv.py": {
+        "bytes": 743,
+        "sha256": "b69ecca75f9eb3969aa2cc2d49f66006cccae02da472805a3b3ad4c9fca8f8de"
+      },
+      "tests/test_ipython.py": {
+        "bytes": 2257,
+        "sha256": "aaa10084bffa00032ff6fe9f61c4a1975c77d4f102b4c1e18b6eea0433d93933"
+      },
+      "tests/test_is_interactive.py": {
+        "bytes": 8921,
+        "sha256": "2d4a6a5a4501bbd6c2860b39abeb9d5201a2de3d110347f74236098aa72f2a18"
+      },
+      "tests/test_lib.py": {
+        "bytes": 1122,
+        "sha256": "f75073c7317f7cda985b94531774578056519bf8dcb91aa7f3c60a7cf8872199"
+      },
+      "tests/test_main.py": {
+        "bytes": 27507,
+        "sha256": "3b2f4bf1ca0d0a87bfac8c14c7236b42b39f444dcc148f751ef7b3f65c89342a"
+      },
+      "tests/test_parser.py": {
+        "bytes": 20349,
+        "sha256": "570e2ed889602896f817f59de8b8920df61a4ad39dcab49a30dc182acf9f05ce"
+      },
+      "tests/test_utils.py": {
+        "bytes": 747,
+        "sha256": "82e06b9819adbc846b84717f9cc47ffff2dc99c77ebb0a22d93026326eac78a3"
+      },
+      "tests/test_variables.py": {
+        "bytes": 884,
+        "sha256": "facea37ceaca30b761c2128fa754ec32c1e50333f2ac1776f7f8063018aaa6fc"
+      },
+      "tests/test_zip_imports.py": {
+        "bytes": 2864,
+        "sha256": "9224bd859309409c62848bac6564eec0793aa6dffa091c9965ec6c4644a8ef04"
+      }
+    }
+  },
+  "runner": "sha256:5c19bf11295cb95f58cdc0250c8f699292e453a05b9fdf3960346b3517fe1abf",
+  "public_corpus_sha256": "43fdad2ebedaac1006f6e7a0b07719f8935231724cc81303b1bf7095ce627673",
+  "baseline": {
+    "public": {
+      "passed": 2,
+      "total": 10,
+      "cases": [
+        {
+          "id": "flat-reference",
+          "passed": true,
+          "expected": "hello Ada!",
+          "actual": "hello Ada!"
+        },
+        {
+          "id": "flat-default",
+          "passed": true,
+          "expected": "anonymous",
+          "actual": "anonymous"
+        },
+        {
+          "id": "nested-reference",
+          "passed": false,
+          "expected": "Ada",
+          "actual": "${USER}"
+        },
+        {
+          "id": "nested-default",
+          "passed": false,
+          "expected": "fallback",
+          "actual": "${B:-fallback}"
+        },
+        {
+          "id": "unused-balanced-default",
+          "passed": false,
+          "expected": "set/tail",
+          "actual": "set}/tail"
+        },
+        {
+          "id": "concatenated-default",
+          "passed": false,
+          "expected": "srv-dev-42",
+          "actual": "srv-${ENV-42}"
+        },
+        {
+          "id": "three-level-default",
+          "passed": false,
+          "expected": "leaf",
+          "actual": "${B:-${C:-final}}"
+        },
+        {
+          "id": "present-empty-and-none",
+          "passed": false,
+          "expected": "|",
+          "actual": "}|}"
+        },
+        {
+          "id": "environment-value-literal",
+          "passed": false,
+          "expected": "${UNEXPANDED}",
+          "actual": "${UNEXPANDED}}"
+        },
+        {
+          "id": "dotenv-values-integration",
+          "passed": false,
+          "expected": {
+            "NAME": "web",
+            "ENV": "qa",
+            "FULL": "web-qa",
+            "ROOT": "prefix/web-qa/x"
+          },
+          "actual": {
+            "NAME": "web",
+            "ENV": "qa",
+            "FULL": "${NAME-qa}",
+            "ROOT": "prefix/${NAME-qa}/x"
+          }
+        }
+      ],
+      "source_sha256": "083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f"
+    },
+    "upstream": {
+      "argv": [
+        "python",
+        "_benchmark_checks.py",
+        "upstream"
+      ],
+      "cwd": "",
+      "runner": "sha256:5c19bf11295cb95f58cdc0250c8f699292e453a05b9fdf3960346b3517fe1abf",
+      "code": 0,
+      "elapsed": 11.734000000054948,
+      "stdout": "...............................s..............s......................... [ 24%]\n.............................ss..s...................................... [ 49%]\n........................................................................ [ 74%]\n........................................................................ [ 98%]\n...                                                                      [100%]\n=============================== warnings summary ===============================\ntests/test_ipython.py::test_ipython_existing_variable_no_override\ntests/test_ipython.py::test_ipython_existing_variable_override\ntests/test_ipython.py::test_ipython_new_variable\n  /usr/local/lib/python3.12/site-packages/IPython/paths.py:67: UserWarning: IPython parent '/root' is not a writable location, using a temp directory.\n    warn(\"IPython parent '{}' is not a writable location,\"\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nSKIPPED [1] tests/test_cli.py:205: Directory permissions are not enforced on Windows or for root.\nSKIPPED [1] tests/test_cli.py:384: Windows-specific lookup\nSKIPPED [1] tests/test_main.py:176: Root user can access files even with 000 permissions.\nSKIPPED [1] tests/test_main.py:199: Root user can access files even with 000 permissions.\nSKIPPED [1] tests/test_main.py:251: Directory permissions are not enforced on Windows or for root.\n286 passed, 5 skipped, 1 deselected, 3 warnings in 8.92s\n.                                                                        [100%]\n1 passed in 0.68s\n",
+      "stderr": "",
+      "timed_out": false,
+      "truncated": false,
+      "passed": true
+    },
+    "syntax": {
+      "argv": [
+        "python",
+        "_benchmark_checks.py",
+        "syntax"
+      ],
+      "cwd": "",
+      "runner": "sha256:5c19bf11295cb95f58cdc0250c8f699292e453a05b9fdf3960346b3517fe1abf",
+      "code": 0,
+      "elapsed": 1.2650000000139698,
+      "stdout": "{\"syntax_passed\": true, \"source_sha256\": \"083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f\"}\n",
+      "stderr": "",
+      "timed_out": false,
+      "truncated": false,
+      "passed": true
+    }
+  },
+  "profiles": {
+    "opencode": {
+      "id": "local-opencode",
+      "model": "qwen3.5:9b",
+      "endpoint": "http://127.0.0.1:11434/v1",
+      "engine": "ollama",
+      "harness": "opencode",
+      "location": "local",
+      "context": 16384,
+      "output_tokens": 2048,
+      "memory_mib": 0,
+      "quantization": "",
+      "source": "",
+      "tools": true,
+      "api_key_env": "",
+      "managed": false,
+      "reasoning_effort": "none",
+      "seed": 1729,
+      "harness_turns": 0,
+      "temperature": 0,
+      "local_calibration": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\adaptive-local\\calibration\\calibration.json",
+      "calibration_sha256": "7594e3150c4be3f8f380fa1e8a0b722692b0dedbbd2994aae331c66538fa797b",
+      "gpu_headroom_mib": 512,
+      "ram_headroom_mib": 2048,
+      "context_reserve_tokens": 512
+    },
+    "pi": {
+      "id": "local-pi",
+      "model": "qwen3.5:9b",
+      "endpoint": "http://127.0.0.1:11434/v1",
+      "engine": "ollama",
+      "harness": "pi",
+      "location": "local",
+      "context": 16384,
+      "output_tokens": 2048,
+      "memory_mib": 0,
+      "quantization": "",
+      "source": "",
+      "tools": true,
+      "api_key_env": "",
+      "managed": false,
+      "reasoning_effort": "none",
+      "seed": 1729,
+      "harness_turns": 0,
+      "temperature": 0,
+      "local_calibration": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\adaptive-local\\calibration\\calibration.json",
+      "calibration_sha256": "7594e3150c4be3f8f380fa1e8a0b722692b0dedbbd2994aae331c66538fa797b",
+      "gpu_headroom_mib": 512,
+      "ram_headroom_mib": 2048,
+      "context_reserve_tokens": 512
+    }
+  },
+  "opencode": {
+    "path": "C:\\Users\\mande\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+    "sha256": "d7b7a9fbc8c358d940fed638dde500820f8a1c967ff855b8619d3763345f5832"
+  },
+  "pi": {
+    "path": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent",
+    "version": "1.6.0",
+    "runtime_sha256": {
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\aiwork\\pi\\bridge.mjs": "9fc061b3628e3992f953037321ec26ce15bda398a0bd293bf21b18ddd11dbbd4",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\harnesses\\pi\\package-lock.json": "6aa6bf3bce96eeef2c7beb28e4053da32aef33c4d1ff12a282d3278b0a015430",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bun\\cli.js": "a73f6318c5b972c3d7cf56da950a90a0920ae6b8677ad769a9b6e9fe2ec9d627",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bun\\restore-sandbox-env.js": "4da13c33a00990deb64dc840eb52dacbf551ff11bf6f0f0392b04ffd602be239",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bun\\runtime-setup.js": "f1f423fa8b2ea7951747cce308c32cf2b932df5aee9bb76b260272ae343eee5f",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bun\\sandbox-env-setup.js": "8c975b87a65a2193fe32f4661d2f3a5b94da4a430865e30520906c2ae33f119d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\anthropic-messages-WAFIHSF7.js": "172141c74d19d0c15af47235e82757852a7c60aeb081bd9f925883eee270743d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\anthropic.js": "f76fb47980e8fd82a13fc356e420a9a2f554bba0fefd4eb3f5d97812583309a8",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\azure-openai-responses-EB4MRIM4.js": "ecbbcbf481ad5aa145b66d9a4accfb9377727de404bb33582aeb04985bbea9f5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\bedrock-converse-stream.js": "2b8bf43ffa57412ca1885cd572a1b31c529092fbab87fe4f6e8260910619d06e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-36QC74V4.js": "9d0bfdc1eaca5abb8f1796fdb9b256e981f7d429e99ce3aa3b9492fca7d1b5d0",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-5AGIVGSV.js": "5c90a831ae8d5f5aa8e66e2fa3c76b5e2f6046df80429172654385d23c6c9b73",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-6QGV3IWD.js": "8849fd570c6155bcea2df8962b65e6b1b01ed88c5c25a1b29fba535ca07df35a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-7CBJINYJ.js": "ba573c7e16ac49ca552f399dee4476b7bdc255212fd9a4bfda632158d1f37ef6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-7DDKXS2Q.js": "b5c1320c3a3648f71ce27577893cb1a538f139dc86f23c8f2669f576478175dc",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-7ZC4UXSL.js": "c5057baea590a53e2534934d8d86fe358705859839f9e393f1482442593f41d2",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-E6LJTZYC.js": "6129fa4537b28cfdc0669052d6f69d8b3563b52adc8c55132409ae3b3dbb7f97",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-EEBRZED2.js": "192c3f560e1ea67d0eab443b4ada6a2750ef02134e7fb021a5a31b7767948242",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-EVSO24NP.js": "36615d2b1a6ee2d322cf1cc8c4f55af28584e54bf11b495197ff4ed57c0cc128",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-F7LEMV2T.js": "2fe49cc8b3286eb9c8def0c29548b96a6cd534c8d6371d3d93e85564a6669fc7",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-FFMDRXC4.js": "cbc3f54b5179a1ce8c4608e06cb8da72463a9ed378713e6a6d455c2fc23081ac",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-I6HYYNH6.js": "c8c3b1e76871f55363fb0d872fedc3006acbcd7e6b62784e3eef70a28e47c6b4",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-IEBK4HQA.js": "6167a1ed49cb3d62d754218b4e4cef61e0809105404cbad5760b9ef126547d1e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-ILDLA2JW.js": "fa3dd17336658af6ca0beaf3f3f1f51dee77c6736dd5ba886022f5770a071522",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-INODY4DR.js": "43ad5faac32a69008fb0dce842f6fce14e2cca7f80328e5bcdc317e1130cb73c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-JXWJOIH4.js": "2857397f268829d29c5b22ff366e723ba9c98f2a13fc290ff64ffe921ba1686a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-KSDI5FD4.js": "5558c943edf1c00ca788788bc6b041d6a70a50ae7e646be2192ad399f1df7e34",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-L2ZPNLYD.js": "eeac72dce2d349ec26278d12cfc96e666a165e85fd4132a9fb1cdd2b8a893e3f",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-LPXNMA2W.js": "82078b13cabe692e5bb3495c1d1c2bd29b9290a1e5a4065234c507f4b668a8d9",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-LVVZS2NO.js": "536c349d1d8fcc0c0e550fde15978b1db87b45e9cc0ef23b035a485d4b8270f3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-LWG2CUTI.js": "f4d88372905d6642015e9d790a5f235c783708b9267d285fa7c91d17977e8f53",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-NRLRGOCX.js": "ac57b4a9126dc024fd5f64059d34d2a24a2f685d745c4ac9f35a79a9a3fd1dd6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-NRY4NBZW.js": "490b194b9ccbe02fe8fedbc542abe24d90f8da124c97a72ef21dd621719d7a32",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-NV3NPOPF.js": "d9ca2c28d9227cbd4a3805d97a1dc8e3c7294ab29e04d80bb77fbbea453e60d2",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-P5VHIEWH.js": "26d7d1663219cb5055cb04f70aad06bd876046ecc95a9bf7566d3c9b8e022c50",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-P7FPUEYA.js": "5e6e981a9554b58c73b7a586c8ef8916f503fb022fff32a9d0b2a318e9089b19",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-PGXDEOVV.js": "b6187ec855046de0f97de34bc7f4ad8057e9b9d51ff057f65acf6432d2373f37",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-PJACZCIR.js": "5aaa7984c9ef7e2db07b44323b0e21660926302599b1e76820a538a1d7ae538b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-PMRZO46Y.js": "9e0921ff9785b4ab3c1e0d8d00feb9cea6a6d2b0936b7a0ac7e9d7b0a0e9f58d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-PRRNXB7S.js": "87fdebf0992e87432f8bfb873e901cdc8eb2b473c5da3444650ef6d933f5f232",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-RCNEHRMW.js": "0f7e17576183c45224fa399b3b36b69a0516f603c2d55a15b2fe7e0524d8484a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-RDZVAGPR.js": "657242b8d4b3ab52369ceaf5374ea7e9da241cb64752142855eb99f32be7de81",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-TMTOQ7H7.js": "23eb2a77f71ee7e42cba6f9cf7557f8f8f2f80c9f3deb5d2ecd6d34bdb2aa5a3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-UTB4DTYQ.js": "956609841588139d975e018004d520ce4eee345fde5f948239a9f72a748fa91c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-X26YOAEH.js": "1dc7029d526f9d5e81429c9c26a691f7777f2062dcf1df06d1b6a99127fd4425",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-X6RQRO3L.js": "5343367144a055da1da0e9f9d323eb181e5ac016afb5cca573c1d61fb0aea473",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-XGGZYFNG.js": "e79117ae45c426c03f79c5a7495e9b6b09341d50cf8743835d021442491939a8",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-Y2YK7ZNS.js": "36753b83efd33a2a42bfe224ab2b437a16d23d027e62332a5af5004cc089db4d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-Y55SJART.js": "a89fabee8d170ff09ed3e3c0354eb56e72384a1e142fa08e5686975cbbdbf3e1",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-YOWSKVK7.js": "aa83c3e400b6d82ba87faba3efacfae7978451ad635a18c9aa7eb77cb885707c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\chunk-ZG74NES2.js": "75791fb8ea55039975147e848a7785c930a5a21dae79c3a2eb1120513fdf4de7",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\cli-6VYTH55I.js": "ec517916bbfdf33d11ee5e02a008888f76843e4f2e5290ea603a34e015414750",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\cloudflare-workers-ai-system-one-AMCR7QEI.js": "746a8df2931b31cfdc16b10da25a60c550aed9590893fd7a5c194de3b350ec3e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\codemode-worker.js": "e68f1da328891a985d6fbf6db72094688b4d8d0a1ea732e39a84a03e326b357a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\easter-egg-3d-7CBVPJQ3.js": "67f6540c731dba932e0009be5606cc6cb4af18e6b9ed2a907c573b6e6357b0e6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\execute-XDNPBEMU.js": "afb817ee9afffab0244b25fdda42e33d920591d589a1d146300bd8c0e300ae3e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\github-copilot.js": "32afebf1bfd0d965f67fb6ccf4f74fd750516309dd4d29a6d0f698b79e61bbdb",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\google-generative-ai-43M4N5LK.js": "3e161e38f98b8fbcfd361e43554518f3242182fd0e82765e96a6548fe616e04f",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\google-vertex-2B3PASK2.js": "3d553950f7384d50b8ca615fbb54ada15f3acf9270ba28c46cf113c57f48aa63",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\https-proxy-agent-LVOO5TPL.js": "6d2593a18653f9f6dfd06af44a9fce0a254981c5fe273f56691f8a7858cecdbc",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\image-resize-worker.js": "554367f8f1877b669efed456fcc07f7304a2fe80a89889e23d6ca119f859cac0",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\jiti-loader-GL4HJFAD.js": "be2d0f1bb460e726bf4e1df1c0d20955f673f1ffa192435fd65440aa6073f38f",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\jiti-static-loader-2RCDI6B4.js": "5e088689059655c592551fac8376f9bb9eef58d00b903a07260a8d13e62ed17c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\kimi-coding.js": "92615955d9595dec134dcc1f0906c0fb155014c22664eb339d1a1957a337292c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\lib-4AVRLBHM.js": "1ada30d2ddabb60ad5f86e95d7a13d7826ae737a81e8ad2da5efe90994f18c3a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\llama-cpp-classify-XXZYF3RR.js": "318db8cfc86b5780bc1f52a7f443e64942dee0e550664f08dd8ab74e4ba1103f",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\meta.js": "0bf7dd14521e13e6b3cc594aca9b4522bf8f3590691d093fce850cc0c62b7b39",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\mistral-conversations-E3D5ZQKB.js": "684123f7ab16426d15294755bcf7898cb7ae0a5e38203c695e28532c4fec59b8",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\multipart-parser-FMGQ7342.js": "73e0ee9663313882b6146146d8fe18ca677115bb8bd1ca4a8c37aba65bc7308a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\node-AUOGOBCN.js": "6f5759eda9ea48b430e4c41d59e36d8e27a8b860fa392f82943b44e1feaa47b4",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\node-KCMANYC2.js": "755da427e754c8fff14d7486e36fac29e9c20f777c72d5a648e46d71ebc62c53",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\openai-chatgpt.js": "47a5c6b7d31ccbd99c407d388f0453272514219770f1f0e89de3ef0211c70136",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\openai-codex-responses-MSQDSDUR.js": "190a1aad5b20b8ec7b28354bcc8c34cdf992a1c010263600ff5536ff79c0e98a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\openai-codex.js": "c52c5a3ff9088bcbf38e46399f079512d2693f91afc22d6038289dc15d82693d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\openai-completions-4IC6AGTR.js": "f5ddd858ee6eec2c991f05944568f0b3bace0ea0e57f06c6d534bf44d89c539a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\openai-decisions-LZ2RLVRX.js": "0c721d0807f147ff90ca43beadd00cf4286ea0533a07e6426596cb560d77b730",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\openai-responses-MCO3BHCC.js": "7c16c0f838020667faef6a3126f068af641c6cd902e81d95404ef4f2ecda9873",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\openrouter-images-SHUJ3VSG.js": "bf4453ce4a38e8a30f240c2bdfdae0fb8059b6b342db2cde5740b4502a0aef25",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\openrouter.js": "53a48b9b030a46029f2e0f185cbc01fa43cb88ba6f5f357745e28579a2d87aa6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\pi-messages-NIKOQ4O7.js": "937e8b7b31846c054fbf1c8753b543858111b4373ce21b4b1512ec2058e7cce5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\radius.js": "25b3334da1619c0a6766a35a2096514c66bc2c019efb34b8d0ce18e72ceeaade",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\runtime-F3SXQONS.js": "6b02471d14db5ee734b48c4057fa61111bed423e0ae8fdf1e9d383b92b81d796",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\src-QKGKDFSU.js": "78f9cd0e05f671111ec9d1722d7b7551864c3bd58c8f025d5c305495f288aa42",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\typesafe-system-one-R2CDUWNO.js": "614f808a9db38376eb0e8b8c785b8dbfef9545819a51d39c440ed5196fdced79",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\virtual-modules-BCJP5C7U.js": "e05dc29304f5adc434030b4f6faba76c107494aaec909723df87e3391f93433f",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\chunks\\xai.js": "1551bf9d2db9fec7be60b87c72e5b6b7163c828c1e39adfff31b146374332d9b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\cli-runtime.js": "f21d61c909b0398f3b153f68044d7e6125bc9eea73bb26128e16f7b77245667b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\cli.js": "e79626f2dd6f94aa45d30f3fa63cd84319a6eefcd150b353cfaf274366926774",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\index.js": "4bf870f6370fb78b6e22752c7e050cca3049affe88ee42931434c02575715f85",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\bundle\\rpc-entry.js": "c247f32381c9daf6df70f204be62f49555e18e3013780e36ebfbb86e8ed0de4d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\cli\\args.js": "8956ae0e02442e6ee32e0bb3b5216818e806cdb469104813425b25394da9953c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\cli\\auth-check.js": "15f1601346f1ee9da3d560b133fb65aa9654fa002a5474224913e6ca99517aed",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\cli\\auth-command.js": "615c460825f8c1774dfc726a854abcebe90df4c43e7ae23f0eee4250157e3850",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\cli\\auth-login.js": "31698fbf002d8dfc5eff1b65b2e853794635804bc1df12709e277e6465b24e8d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\cli\\auth-logout.js": "011f078f6f7432b01e45984c5ef9ebd4312e47dc03648908052e843d0f74b95f",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\cli\\auth-terminal.js": "42d2eb4c74dd4ba913919bc43f2ca1660f53e58f333612745839964c849c6f18",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\cli\\config-selector.js": "38a52f014e2a616bc19ceb62dd9adf6af611745bd5612f3e2297d274e41e8e6b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\cli\\credential-print.js": "3f40aaf4101369f9b55d342b0bdb7911fe5c092b4db1a5e48b09fc29fa8d8654",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\cli\\file-processor.js": "4946f4e3e193713135a4924982d31c9403190befd421b7be9893d0e5c65055ae",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\cli\\initial-message.js": "d15e1b6ff88ebf85944cce50f4eab219a36f3539e42a0ded19b8f5ff5308b29d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\cli\\list-models.js": "7775957478370706d9859b6c992b74b5f24e6807254dba1a53531132a9240bad",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\cli\\project-trust.js": "a71e512d81e49cb6f8e20b78677dce4b4ca19ee2c4b4c6f14a00411fb52bd3cc",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\cli\\session-picker.js": "2c237743eaa44a51682b7bb31a9c943727c868cd2e191ae20f33d2fb10b22d05",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\cli\\setup.js": "4a2a7a0dbf82e2e5d18cec90896b36cbedce78b3d09e78d4040ac94fa3fbeba8",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\cli\\startup-ui.js": "1d13c960b9b1347413254e9560875c96c536060591b543063d8840f2822cc34d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\cli.js": "8189b66abc4f9f431dbb70941dcba690d76d040de1fbfff212886be35a53639d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\config.js": "8d84a58d53f1bd4360188f787b56b16444c20e00452d075cdc77056054387926",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\agent-session-runtime.js": "d4a7b91eea5ca280870ebcf05dd8bfe67355dbb7136bd8365466ccae98685582",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\agent-session-services.js": "20b7aa4b0657b53fb522ea051df26f72901802e03cc06c89e0a8926388bca601",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\agent-session.js": "cd1c9fc3139e6dcd5320b55414aa5fdf12dbea32d4fd38da2c9a57be0d3677c3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\auth-guidance.js": "990e8295236ab4c87763b8e47e0ffa20c2958fd1827d17caf5ddf36d601e5fb4",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\auth-storage.js": "85c773c95be71695a27f5ed2f9f5bfaedc6c2ab3fe1fa7fcdf09707a3a73ce48",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\bash-executor.js": "26026611531b81a7fc317f0ae21d33426d279ba36fa26aa3fa2d714e5b2a37b8",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\bug-report-upload.js": "418fe5448f98c8f1effdf8c4de6772dcdf26a0290ad86b4732b2785903a3e518",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\bug-report.js": "9bcf5a3673e3fb2626976b8e3adb1c563f45a5bc45dab0cacb6fd0713ddf8d40",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\cache-stats.js": "b0f3f1030bbc42d4f941b397dd4a311be3a7dda071e97b94b9092a3aacb08fe3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\cache-warmer.js": "ffa689c2bfb3e452fcd59bfdd04daa4acaa0230725efac61ec294f79ad078750",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\client-identity.js": "6bd86440b910e96e512215d02a883677bd8562dba5e80951289b50e599dcb2d6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\compaction\\branch-summarization.js": "f514c832eda6d5598dfae947372f30c67c5e5429bd0bbf8a28de312b7746d0c9",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\compaction\\compaction.js": "f51e78ef1da66b5803fc91e185f07b968f8f989ab9326b7744958416aad3f6f6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\compaction\\index.js": "2ab40284c2650bf3c3f195442be00497f0ee3cb726ac47c29bfa4b3ae209697e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\compaction\\utils.js": "68409c9ac824176e86be7a3a922dbc77dae77da8b612039c235eac7de6c6931d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\crash-log.js": "c525de3ccfff300a096ad25f4709fb9c2be9c73e06805bf924af7937d5624fa5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\defaults.js": "13196dce2ddb143f6f4c28af2e34374f84004e50c7b71ba7b900e1acf84479b6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\diagnostics.js": "b84fc4bac1fa2a4554cbc33b8b20f56908a2de8c302e63178c2981bfd185dc08",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\event-bus.js": "f96a9a13071b2832955608387bf2482bcaf5310ce667f32f85a0d5bca44f08e3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\exec.js": "7301c1656cc47bcadc9211c757cec2268940d9f250e51e50935795835469646b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\experimental.js": "5f7bbd84272cd80462e57381d730b014691fe2a4edd6d885826defd23769de87",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\export-html\\ansi-to-html.js": "6c6ebc04b69de3f1867eb85b7add23415527a60f5895693635c4f2ef3497dd5f",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\export-html\\index.js": "9b7a893c46341d2557ba79dd88307797054577c8789665281d1dfb4134d347a3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\export-html\\template.js": "f04404c88e557a24c84d3e938d9f6b0521e2127c68ba401cc328315e59719417",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\export-html\\tool-renderer.js": "696f4987fec62b6721181832bef33cc9943bc95de727dbd4fd4589fc8e901c81",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\export-html\\vendor\\highlight.min.js": "837a6fa5b0c736b52bbde2b2b6190f305da3fc9ed41681db5321507057b5c846",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\export-html\\vendor\\marked-cjk-friendly.min.js": "93d2c938754cb24eef5b9ffecc268a98ef6beeb75dad614b0e874176aeeba565",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\export-html\\vendor\\marked.min.js": "438eedfcf932a414d0d0bfeea32dc365c063563b8ca713b4687fc8f8b501e5e4",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\extensions\\index.js": "9a99fd14edb60079a3c604d6045cbad7d461c3ba1ce88331f5d549372f14c46d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\extensions\\jiti-loader.js": "6b788f3d3f567f7f76f68c21c9327147572402452470fc22a8d89542ecaf57b0",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\extensions\\jiti-static-loader.js": "cef599ba10a21d50f93b2d284e0b41d464bc852a0d6c9b5e45e4048291e24dd0",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\extensions\\loader.js": "062931f1fcbea5a248040b3b1b2b1c83a6930e3c18d179e0c5cac910dcac576a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\extensions\\pi-ai-extension-view.js": "dd44b3076d4ca95193e7c985b6f210c4170f22715e42ba8a4916e4fd5f8d0125",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\extensions\\runner.js": "9066e23749ee3c07757bce70f293003281a180df5e7c8bc9dc829721769dfadc",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\extensions\\types.js": "447039081a7808371e07d85bacc719a11eea7b66f291b9949de33ef952a809fc",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\extensions\\virtual-modules.js": "941f8647becc71fd241eac0fb19d3206f38f055f85721e5215a8473832d42f5a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\extensions\\wrapper.js": "ea82999a05ca0af25ed31e76aaaba6e5ce6b99b5fcde3681f0d74766e4935247",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\footer-data-provider.js": "cb31fe6973228249ad0b02d4ec79509a1f7c7e63c2c15df35bb5d5100685f2ac",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\http-dispatcher.js": "f9aa2c81b0a5958ffba6368506f24c9b202904c234ada19494cdc9c4a1d0e97b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\index.js": "4540f33f90b5f15f28ce4d7fb02c00d888fac192b04dc7ca6cff0313d6a058d0",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\key-id-schema.js": "87a0cdcb0b8b7cdd45939b23862b2451d3505181fd6d38832abcc3cda97e37cc",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\keybindings-schema.js": "7b1ce599fbbb00c28942a076f9267ef26310a8817d8cb1b8ec30e2ba37780a4b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\keybindings.js": "56007fbf0585e999c52c3cb1f597bec5e4991bcccac0bd50d715a0bbace90d04",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\mcp-servers.js": "765393c93d0eda32c791edc801fe9f8a2f23526d061b7d960a20b882cf2c35da",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\messages.js": "8688b3f6eb28865f779cac998bd4754d1a4f08703200dfe0dd5a799aa0d42ef6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\model-config.js": "f03200776dbefa9171da850724e2e2eb20d865768feb0cb3f5b9e5f3260d13fe",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\model-registry.js": "588fa2d8df563fe0f41c99e54ecad1473cd325937b208cc1c3e103a8a032d0a1",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\model-resolver.js": "fb3603766945dd3aac98456a4cb1798cb0013428c6ea69fc44d43a26c2f63c90",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\model-runtime.js": "b17018cb70007a194f10b2aaf5ec3631329db20cf853ddc9ce4088e6b4373ab1",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\models-store.js": "acef4e29470ea2ed5adc4f8e8d4981e9214c79ebf4e7eba4ad705ff81da68ed4",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\nested-tool-calls.js": "62a69500b63b1967e350305aa5f6762345ceb397fe5c5e7f6e6ca6c8fc16c034",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\output-guard.js": "e860db94650c57e07582c300983671737bf9e796682193b498f75e3dd72e9024",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\package-manager.js": "db92df3588310524b388517bf90966eeaf60a3b60a98e63ae1dec7c1c387917b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\pi-ai-schemas.js": "1bb7c31c57b5af6282b406679c5bc2b10f1d5009b62491fb72f3c069cec98874",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\pi-manifest.js": "8dafb501cc0bba5482cfb8c5c90a4fa3b534acdd08abd4c8dc5df0c94d85e876",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\preferred-providers.js": "e2eeb5937c2a347fbaba57dfcce83e9f6bdaa2a1955f327b014c6f2ffdf50bd4",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\project-trust.js": "8000aac849fc2c876b9f5831346dca4033193e59fbf4a7dd886f4c2713e603f7",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\prompt-templates.js": "b99a3882ebdefd5b61b7d91a1a77b1a110baf60a8ed204e008e267e604a18b2d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\provider-composer.js": "98facdd61bdb741804f8f303c5b2661db7f40b64a8ec0ef4767df0d71ec03608",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\provider-matching.js": "bac10b2e516c04e40ec64f2726587bb96bfa328a5fa6050f2119e3801a53d552",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\radius-mcp.js": "84967f4698d4641028bc760f5cd019623544d6ebd8435e6d2f9b72efb461fd9f",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\radius.js": "77a176382cf428c011cd466320379e3de6a581a8622e9bd18a77b6284bfd7c3c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\remote-catalog-provider.js": "7e9fa34f69baa3218d6b4df6d645b5edc901914510469ef09f326a918694af4d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\resolve-config-value.js": "01fdb1673990635bb419c7418eefa298b6a1c6fbb3c6193d3b05a4902e51992d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\resource-loader.js": "86a7f4c1112f11a198ce2f23b4abfd1fb534a003ce0afa226b2b6de655a32295",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\runtime-credentials.js": "d89cc868493c450f4f0f3fc47b925048c6b3ca86bcab0b575338de5d9c5ac6db",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\sdk.js": "c43e4e1d49ac3ec4b9f48465bf2081bc5980b55f23d44040d02e9046dea45725",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\session-cwd.js": "28cca49f725acb3babbd7d19975dc7c6ce1092f8131024d12eec6ae6ecc32123",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\session-export.js": "cb5debe26dbad9fb650bffc70e2c5fb81fb773ae5e8d6ac5bb6a3d2179c6b47d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\session-manager.js": "2628f797997ea3a133573ff8f36a050cdc1d74d2d346b856f328e5e7da42aba1",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\settings-defaults.js": "e0567d94626f760007fd3511df8a4556c571d8e882b8fe8c2b69c87dbcb094e0",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\settings-diagnostics.js": "64f43563460c862bd0d94d408cb6a915428bd2413d1cf2a47c2c570a8a7f13c1",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\settings-manager.js": "66edb495ff9767e7f2ce0d2f4e2d102532e4b396ad7bc7c3c648c7c12c0fe71d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\settings-schema.js": "d6cd7270a3421b5ab435eae10f9d08ef0c6995ee63f64e300b52ad94de9dab22",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\skills.js": "806fe63a39cdb5ab6ff4dbbc917e24a3019ead482ede621518ffffc134de2b15",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\slash-commands.js": "093860b01a21d07ee53457e566f46f238d80f51634092713fae832184e7dbb88",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\source-info.js": "8785b8ea42e12023ed2b81c5af81eb9e96e964aac8cf76db1f250b07c9c83537",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\system-prompt.js": "5f68e89c31ba3d4d1af8ad2bfd0c7c548879d47ee6ab4aabee50a826100da32c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\telemetry.js": "e8c06bed2c216daeca853468232268f973f542156d231fa4ed68499a9f4946b5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\timings.js": "9bec37f6fcacd80ca07ad7bafdc6aec91821f691698aa9d81dcdd2d7d5b08531",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\bash.js": "afc4f829b3da2e7d8cc31296ccceb26bbc8e35018eb3f352791b651866cc2040",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\edit-diff.js": "d1a87b8fc68ae65843352f30ee8430a649177d47fb5a04480200620d7cc9cdfc",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\edit.js": "6e7fa99a8ac15e8a42d56158f52bd49c68a977a530a143f162858f755af572c5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\file-mutation-queue.js": "cd300f1ecae2b8d45a7c69011221f4f2e4e289865bf879df537c859889f26e5b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\find.js": "97dd507d15d0cb6b789ff1edfa792a672213015af3ebf56b9e7cc6fc39571190",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\grep.js": "99187a58f9aeae86c70889f7beeb0e8a516d831c87fe7068def84dc068ead922",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\index.js": "16a517a54e2aa1386fada22cbef63205ca11463394f95fd20d74bee6fb2898a3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\ls.js": "77ea89d293116dd791d3f7e7259dd6c4e2f75aef05060a3eba96f3e1d6a8ef5a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\output-accumulator.js": "994b10a6a8c04404de9f4546cf8b10ca4209b7d3964cae1b6b8c7643469c00be",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\path-utils.js": "76acb2622a7f4f54c871a553501340829580f0f9caad627e7dafb8aee8b449af",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\powershell.js": "81a5e0474add2ac13c1b7566d9f327b577f7b3379ab6469baa46e4614605e7f5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\read.js": "0fa71ef3202dbb88ad002d14cc211ab12ed1a6d2336ff07441810016027122bb",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\render-utils.js": "5e75cc6fe1282f49964ca226427ddece50804240fd694d4b80cc613269c004d9",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\renderers\\bash.js": "88d00a44f2958f57982d40712153bbf997b9122216f471866ef33a06799a4db8",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\renderers\\edit.js": "90ca50520751322cbfb72c43e2fd728ca01205858d6444d6abf4601ba31e51ba",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\renderers\\find.js": "19287d358bae49a8f1c72eab080c43668a83d808050bff36aa57af5d6b4f6497",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\renderers\\grep.js": "aa76091451d7643727ae633741f9b1b6cbac648c244ac8f14ec0b2dc8fa1ffd3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\renderers\\index.js": "e2f49f1778458397218f18227856e334457dd2a4c21ead9a892ce9349264efca",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\renderers\\ls.js": "581ec2783a2bf806ee84e983f54451c162a580767b8fd8a30ac3cf7f9b41dcca",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\renderers\\read.js": "96212bc17d5c7a5688e08e9b6210d4b1fb49e8418072b848962f9d07f707002d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\renderers\\write.js": "9881da7a47054144870a1ae91137225c47c11146ff12a10822486bd4b7b64ac8",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\tool-definition-wrapper.js": "02fe785c52294d14216605d40d5592ac2accd1a3125891523e2a6c87feb5810c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\truncate.js": "9ef2b624952e418207258418e3eda406a80f0e362ea1e442d38c482ffe838f74",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\tools\\write.js": "0e9daec15a5001cafe651db391aed63a463c346d29b60e6dc91ef09477fd22f5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\trust-manager.js": "c06b3eeaf4f613962d2ce36d03abf952e64a0bf706de67054a0340f4477937d4",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\usage-totals.js": "6cf252240be714ac04969d533a38129fca5cbb0dacf47c1cfb08d215cadd13d6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\core\\virtual-models.js": "83f1a9caa7bcd4cbf1ac84c157b0eeb2d5009f85a7f6f4265383b5e2edc323a5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\codemode\\execute.js": "18c746d8ec9ad52c17bae4357a374629d500823e7744281905c8a1faf9c17791",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\codemode\\execute.lazy.js": "57bf6e887990f539083658baa3616249900a5ad3bde0c73de8082bd1032dd85a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\codemode\\index.js": "7306902a1079689f601231d4c9bd3abb1d92ec388d202ff08920e4aee87343f4",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\codemode\\renderer.js": "fff4c8ae82fc420a0468e83e7a010b673db3f09dfa70f121f613b1dfdec94587",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\codemode\\tool.js": "6904d6b3ebb66e6d9b6eac5cce8f70c11d01ddc3a0a0422ba78645558476d319",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\codemode\\worker.js": "3f4e59ba9fdff9b68aa3d0bc91d67ce1a2a97c5a3d63b04112c2f2825d73b1fe",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\index.js": "ed7f805d46160c30db9be874b2350d0bd01f8b390f94a55ec1d8d4ed9474bf9b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\llama\\client.js": "c317fd8ef0c6cbdba2753d0ef5c54a77c936d35b7bc9f4bfb36aa4884e35ae33",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\llama\\huggingface.js": "bd50e60b011148d8c473429aaf51f0c69512d5d8f9acb522f7cf18092219a305",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\llama\\index.js": "446b17f49d6197de5aaa6548f78da5934e4e5dfc83acdeed7119a2971ce5e8c1",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\llama\\provider.js": "f43967c434de65510501b64bf2f23e60a120f6a5bdbe1ea397ff78ad74a052ec",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\llama\\ui.js": "3d25cd6cf2b53983d8d7b2959a2c8d6772dd54111cdb2b5381bddf8f3aa63199",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\mcp\\cli.js": "2e7121b30d2d53c47c9ecf6c0b00d00d0d1d0141d3607769b4a3cc03eae15be7",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\mcp\\cli.lazy.js": "a190720bc3fd329dbc717bd2820d96e0f010f2bc2f696cd0ba74b1997c8e1387",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\mcp\\config.js": "e87e326ffbe035c46f6707e2c65e2535c2892b2190c602d435f7114fdd1fb4cb",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\mcp\\index.js": "c6a894092332186687a19a4699bcf9d333307531b0c670ee19823f9787c44ef3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\mcp\\log.js": "ff4b4e8a80ee5b5c520b2463bb3e70b5e3479da718573882b3db2dbde185176a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\mcp\\oauth.js": "60b5c1fde162e01639a712c0f160c7833380dd9c32fc9983aeac688d3890e0e5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\mcp\\resources.js": "ac9930458bd134f11f3e3df61daadfda1d3d1ec5d6875814413800bb909fba77",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\mcp\\runtime.js": "1ed03790749c1c494f6ff3891652a4ad895cb25bf2ad4ed61202837c5e3055fb",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\mcp\\runtime.lazy.js": "13894a686efaca7aa2bf72dcbd3ec2e0bc56e9027b973576bffd72ec9753749d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\mcp\\tools.js": "534879e9dda6791393bdf81c7433577714bcf2b11e8cc5b8f7b888bd6334346d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\mcp\\ui.js": "86ff75b0975af586314a22d0a8b9fe159a33d07e610aac10372160b299522763",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\tool-search\\index.js": "1b989bcfd70485fc71535c33b3c1d02e12ec7450589e5b9da3fccbdf7f8451d7",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\extensions\\tool-search\\tool.js": "122024d58d7047d5a876c03abb64a4f74ad8efdd04a848f53eccc3dd5eb3d596",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\index.js": "4569157e6038be9840fa514db4b00a27fd0be9e3622cc7b49a281de6c027d7ff",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\main.js": "b63583f13649b79a9057f92e615c4ed098666a65deb362ed64eabab775eef253",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\migrations.js": "8514d2573b028baeba60635498a1c5f129a602abd203ea5c37a63df2eea3fb6b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\diagnostics-stderr.js": "0646251429422cfdc3d0aace7e8f5210f8296f365b648f9dac0c5df154d9c472",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\index.js": "42bd65ff8aee4f60dfcfcfb9db66772219281585cdbef845df747c8846618a87",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\bug-report.js": "a367a8873f46cffba53868b314d34cc013269c0d6f2efda62893e8de57c6693e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\chat-viewport.js": "77ff3d8a3f20950a95cc3b758ab04ee7cffdaba5a490a2390626e781ae30f70a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\armin.js": "1bd9393c24fab3ce80d976caa416d30b4a2095dd3bf9548c1455ab6976462a94",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\assistant-message.js": "e0eb20c46afce9bfe0294b2a4f8412312f2575c01344107f7a43ee4eccd71dd5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\auth-url.js": "a1f0b220b97462299118a66a3284961b6756f9fa623f07eacc4d89ee99609131",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\bash-execution.js": "88ba62ac0f3cd6808b087c30915ad4091af7f1746da2caa371b7f0de34fd234e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\bordered-loader.js": "2f85321883ecdbfded929b565542393c13b26361f0d02a6e239ea63f211222d8",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\branch-summary-message.js": "c609720bb2db8351ce69c71a1502ac33af6423185131d2dba9ce53d6744c178f",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\compaction-summary-message.js": "5431ee732f8a7c755aaf8aece8a62e59c1ef2762871382efb1e287d85ec84411",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\config-selector.js": "9aa517b4475cfaa2660385a50e51fc4a4db6e51e7e30e9434b94445394e2abaa",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\countdown-timer.js": "d488a8ab9f258038e8d6b1dd221067aafa741660b65967f0195caadb31f9e8c6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\custom-editor.js": "525e207f2da0a1bbda15dc529ed74b820971501ca6ae93d32c6590217e480573",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\custom-entry.js": "5ba8128eb920003a866624469a0c6fa61296c843b62b8a660ca674b5d3739286",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\custom-message.js": "be0e708c2cac61e49c1708d52e8adad7bdad80d7e08bd4dff26f65c40949e688",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\diff.js": "22df9374a924040b64d11537c7ecb4707252cdbd6d9a3a798a02e35e8c8e6c16",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\dynamic-border.js": "bf7d221ef1c6f2334a6a6b247a1554ebad018931417c651065689802ab7fd2e9",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\earendil-announcement.js": "4cad6d3b911979f13e6cf8cee0e495726f0e947b988c18554b8d263e02ca5eef",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\easter-egg-3d.js": "7b4359a79a1c7993f9b3f68e4f363a42484f077d0a1855dc749a4db00930be27",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\easter-egg-3d.lazy.js": "92daf5cec1f63702b8d216b14ff793b29cee942148bd3ded97be2e0ddb60f3b6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\extension-editor.js": "22277979d2dd3367ccab9f67635b734276f9ae3902f989cb8c2f44d9cd222849",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\extension-input.js": "b4400ff663adf7be626c0ce4e353174c54223458f3aec94d53cb033c98e29934",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\extension-selector.js": "61d1cf9c3798b75462530fbdf7499f04511994eac1b70140a3448651c9555ddf",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\first-time-setup.js": "7e68d672519dfdffd672982540ddb7b06f7e095fbf0d54a9ecd71bf04c69c00d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\footer.js": "55b8492fb4ccda5e8f53a3a1882f091157dd85e08c9577db2f05e36020b22b88",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\index.js": "bc203c853c4b60da341d8902e3c7f7141de7a9f8b86f6c4e301977573b2ec9c3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\keybinding-hints.js": "8f9fa24a06f2cb234d5a91967129c2a415b17a2c42229afe6f24b1b75ba7dd56",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\login-dialog.js": "84327aed0e8c57c4a49faabac91b453b0fb820d7d6b704752f88a7931bbc0d19",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\markdown-transform.js": "b2c110fde054302807495a356f5fb35c5c53d80141829b65044053ad4a66f444",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\mermaid.js": "df70cb25f665400846c098ece189c6bbe7fbc0ffd408ca024885b22bed231ae4",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\model-selector.js": "540e1aa66416ad2677977f061c4dc96fe6a42f0cdc364d559c0695080abaae56",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\oauth-selector.js": "fb145c6d754f62cbd4977cdefcb5000a58a06136f000bb6b551ca35634affdcb",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\pi-logo.js": "10b6164c7a4bf4d94bb9a3975f82131ab02f294b3d60ed7ee225c7c5bf3bdae2",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\provider-brand.js": "a1d715649899078e8b26c2e9ddb46e7f1f2b0a4fc00954261f2854ca7a32fa10",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\radius-login-selector.js": "33a69c8d03d77239af7ce94858b1d146e3ca9ff04b717c0ed60062da9897a00d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\scoped-models-selector.js": "4a2bdac5ac710294c3bc69dc51be6364e5f3a16b8dff8900e2dd8b8f44e45ea4",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\session-selector-search.js": "45104ee97cff4995f7e419e97af67152723e868823817ea511971e874c9fc137",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\session-selector.js": "73a4c82c0a2beac1bd4fea7678ea207c9b3aa6410896650472620490203fd89c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\settings-selector.js": "4d50aef1f9cc3579bcb1300f090036b590e5cc8fad0b32f63dc26ec282f11109",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\settings-submenu.js": "15c766d538e44d666e299db991708cdb5409dca55118fec6e1699152af7b03b5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\show-images-selector.js": "7d6649c2d890748a9d1a2d9d17f09874525aaf7adefec97a36c11bbd063b9ecd",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\skill-invocation-message.js": "badfbb24b7e34cba68130acdf208547f4fe65872aa1e8827973c2c3d09a6fe60",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\status-indicator.js": "bf3ba6649b4018d3c7a795911aa6417cb9399efad56667229ef91450ec60e0d9",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\theme-selector.js": "3681aa0b35fb3d72d09f6cceaeb19fa3cba7f98c32091c63138fbe051a99d37b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\themed-text.js": "575d5d432ebc394903dcfb148b2a7ac96d0bae5c2324dde10691f2413466d5e8",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\thinking-selector.js": "b440306cca077ee85929f608819e233649998a8f0b65c8db40eeb0cb14b12406",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\tool-execution.js": "d3a8bafd64d526ad1ace264b0d6e75a7fe099c1ad9ac0ccbd9eb8845235a29c9",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\tree-selector.js": "4547c857bf306aba6aac12b962779625fa04b1f225f1ea1ee858917c161c0fad",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\trust-selector.js": "e802fa526383a0b27b40db2fd74520caecc29bf12b2034b62c7cfd51ce3ebfcd",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\user-message-selector.js": "18e147c382db2da07dc295113a51cfe163a86aa7ba832808aae31f2364212720",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\user-message.js": "a8b42cbc8f6400c96d093a953f9b8b4ab7f3d712bc43f2e051a7c0f666ab02bf",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\components\\visual-truncate.js": "280fdcf2d05589fd3eba7a69b6d11f3fca310237ad5646833984303dae13ae29",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\external-editor.js": "7903f0d1ef8bcc4e40c7bb5242c2531ae04436c9e3dfc94516d58379b9a61ea2",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\interactive-mode.js": "8c98aa79a90070c5df772b308fcfe3643656ebcd6fc909b52c25a6aa98153129",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\model-catalog-refresh.js": "e9947a5e9330b6ace4bcdf15aaadbe304eb0adff2e0928386b87e55485d2f2be",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\model-search.js": "934ba6a0bd884263e92ca28c843461e2758836db6a5dbfdef3b5324b6a1a3df0",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\program-status-reporter.js": "df67168541ebcd4544f176b6976ac22aa30f6e68c7fb628338398201405e03d0",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\session-share.js": "8e0a02fd7622539c98a526436a9763fdea2ef8215328f8315b93301bd258640d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\theme\\system-theme.js": "da08e8d7d95fad032e08de47a2848c497a0d9c90a00955142936ba30f09d69e8",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\theme\\theme-controller.js": "a2eb66dbd859a12bdc5349731704d2fdcea4a3bd60b81091e42b4ea0f465de8e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\theme\\theme-schema.js": "ce89ff25f82a2b840fe5d0bd3efa6870a9efb4ccfd2911468358ae401904ef7a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\theme\\theme-tokens.js": "13e1374e108358de6ce88b332a58a76c01a80d8659106cdd65fc2dc150708742",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\theme\\theme.js": "7bd38c95978644387b95cb864e7d4826a3f7e8e7ba0f7c3dc6917a54c5f55497",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\interactive\\tui-renderer.js": "4c420a641ee6c0cb4b22677f97a11bc2da580b2b1f31ba56ac6f4e8df7bbd429",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\json-event.js": "5f3756470739fa4a1595feeaf1ce2dfd29e36a2cffd9e642f914fc23f540d606",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\print-mode.js": "d4f192fef55f16a7c1a3810ad65becd8021a38c4e56e79da35e70c8ee2a6c273",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\rpc\\jsonl.js": "049a9f8ca4242c79f1911ed977949e8d8906b4561f424c2729687f426fabaacf",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\rpc\\rpc-client.js": "6cbb7d183db13468af61af733013a97ee6f5547ccd44edb1f85647f8bd6f218c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\rpc\\rpc-mode.js": "d3c99c9da0590a49d82f6f78c06f7bd1c682e68212b9c2b89f6f61c06be0dd6e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\modes\\rpc\\rpc-types.js": "bda239004694b7a087b3d9984e417d1cb4decf0da4483f1604881385240ff374",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\package-manager-cli.js": "5337cd606e8bbf32987e3f104d2f41256afb7d8b8af6a6d8f5c81474a14853d6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\rpc-entry.js": "a515a6930662a74b4840fb220c3527545c169a84b17bdbae21d4a8ee6b8da30b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\abort.js": "597948e1f340dae1a5c0b6830395e1adce847122c00e6ceacb3e4cb94472684b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\ansi.js": "8218ad7cca4e4dbb0ac13f8b4decc78626ed87dc35cf7841ba34dbffd9db68b7",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\changelog.js": "f19ee8ad9cde13ce0c82ffc4c0952ef0a35e2735a56b784c887650ce012b2c1a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\child-process.js": "cfc7b3361e42b61ee75aecc2b436ff7462f7e4431b4b646da7166f3c5706c9b8",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\clipboard-command.js": "0217e7833c895a814f714b50b82482603168f27fe46424d67f6b57aecbf38114",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\clipboard-image.js": "0e0f313764903cbfbeda9ba255231114cd42c0064527f70225b96b2431554090",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\clipboard.js": "0b296fef43d637ac463a5be20702118400a73eec6fbf9fb6986c1febbb089909",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\exif-orientation.js": "56b7a7f9f9e6e357fd0d93f3245382e1a0fce795bda3aa8af94448182f09d475",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\flush-stdout.js": "180a28cddda4ce237b5f6482c9151fa72f2a64f47088e9ec3717eba913b2fd53",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\frontmatter.js": "3e1a0e99ecc419748d87202a342dd315160764cf8588551cefcf780208165da5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\fs-watch.js": "63dd709b28ea300f7200d236154f21ccc31a174a6052ca46a9be8064e2bd44e3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\git.js": "ff37bd23b2a2b39478e8f6959812ccc9c9b36ed87782894475b96945fb7bf35b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\html.js": "c66d54969546b4e1d67ecf074a2fbd6ef89c7c3b9bb81c8037e5785694ae844f",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\image-convert.js": "12387e0f5d6575e8037556b9703cdac7eee61584d7e1788bc6e24310612b8799",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\image-process.js": "275b252679b76476d7f83042a9771c77d46321b9d7a3e20e1f8365b2eff2254e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\image-resize-core.js": "3eac5f498141a6256aab4c318761edb95352f77602e7a89e26eaaff4d48789d6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\image-resize-worker.js": "7c1ba9a50b0631bfc382ae3a705bba112350aedfbcf0a7e6becc4d57ca2e0768",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\image-resize.js": "aac2288b292c9c036c23b898d194291b7bc14cc3c296da5df1c929aaf4e1f348",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\json.js": "af872ad0c998359d86a61b0b60079f39c2bb8aac94bfcc9e084db42c5b889782",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\management-http.js": "7c25b3d8d0f6069cfa9324bc9937a43849821dc4ab45e97c2988d85118832726",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\mime.js": "36bdb72fc40d809ab5f69e80ecd54651d4131661e92cf7dcec7b719f139badcf",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\open-browser.js": "32ad205bc422b5fce56ddaaa2bbc4d853e613ef9bfee9fa2f53bb2d38ab41a62",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\output-files.js": "a0a93a0d0a64565da7218bcc72e5a468434d9625112820586c4b97f54075775c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\paths.js": "1ec599ce7dc000d4684d66dfe0a1a17159fd8fcf04261a1c8aab5c33cb856043",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\photon.js": "37ec7989cc2a54a8498099c6b20c10c29c5455129b92222f492472c42e612406",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\pi-user-agent.js": "75f80240d4a3c63d4ac37e4a6cdef16d4d384667fcfb769897ad4359003f404f",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\shell.js": "57dd12450505faaf713b7cfeddff43ce8bd6238b3cfb755f87bdc83ee6134fc2",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\sleep.js": "927f6c162c69ca902c8ab3d35b96f8cef831448de364cf4d8054d32fec310de4",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\syntax-highlight.js": "e940f704f8527a3ed8f32f7c0882b6c86fefc1d47815c1104841eb9943df6ca4",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\terminal-question.js": "39bb32ac5ca060c578988754641257d893b22f456d00b358ad73b5670ad08245",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\text.js": "e5520be5740ddb7d67ebd09ef33ea2aee2e360925593ad3a7842b6534304a0f3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\tool-result-images.js": "455ca6c514d0b3da8342e3538ff94864a6ac295e2746a5b983788f9f17791042",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\tools-manager.js": "969ef1a6018c1e773b3c0a4be42642c7cf10cb07687f74004f458fb2262d9595",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\version-check.js": "0c1e8df5aea8f10869d2a1bd11b696498d35757e13427650754124d039422eb8",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\web-url.js": "fe03de0d966bc763aa3727aa2c8dbba82e81fe3356689cc02462c93f2da785c1",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\windows-self-update.js": "adf0360878e285988f8d74ceb2897ef8359b80a1c2fda4965aa2152de5382485",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\wsl.js": "d2201ad21e1adc5acbce11f8fc9ef865abe6d71071010f6cfbf169a086b1217a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent\\dist\\utils\\zip.js": "1ce5cceedf15c981717527cef36a530b4ffc40bba700a317e5c96a1d483e8744",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\anthropic-messages.js": "bc6b1e17d10ced22baa974097580efab5f647f2a306a27890d207259199b974b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\anthropic-messages.lazy.js": "8915ff69b112469fa7bf48f59eeae87bb3d82ce49d3fbddbb2acb1da9675cb39",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\azure-openai-config.js": "8a55ebc297d4def398a2e27c15d2a9f3f04ce52cd47f039f645f46e2eb74abc8",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\azure-openai-responses.js": "465b43563caceac531c36b712f72788066b23eb26ab11393b428306b1f23b636",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\azure-openai-responses.lazy.js": "7ed84bd0e2dcd46223cc741b4217051e88c4972c4482e2f12367e5e5e3361dd7",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\bedrock-converse-stream.js": "c71b8b3e960702a13a380c5d33c260b346c584a97290ab498498371c2d2ab433",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\bedrock-converse-stream.lazy.js": "c0627af43e438eac0d01d9853de71a0f16edf5f8be3c1640408c01352ef436ee",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\classifier-shared.js": "dfd09ec32e85be2ac1106a274e3eb57ec992617955dddf07d51e09ecfa4a04da",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\cloudflare-ai-binding.js": "4a0fba5a6cc07b1d8366cfb50a93e404a5157483a2250225477450843d2dc39d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\cloudflare-workers-ai-system-one.js": "5716639fed706375c8dd9040feb964617edebae16aeae902387682c0da04eb87",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\cloudflare-workers-ai-system-one.lazy.js": "12339f3ef1ebf42d4148098734c6e1035d704a58656f95f4cd601b1bb8f7e96c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\cloudflare.js": "5227d5b29a437d7371690dae10e04d704622692385738977a6f1c32f74f74298",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\constrained-sampling.js": "9a619022c698206e572ba650f9da0a35e762719507adc636d957c0546aaf4429",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\github-copilot-headers.js": "cd09a447ea282f5df02aab057f372d48ab95d72adb1d9d74510a2b5e1c7d78b3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\google-generative-ai.js": "417cd31d5d16eb75199c854bd0db120d2a35b104a8afa77599720c2be3afd77e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\google-generative-ai.lazy.js": "5bd07bbf12fc55c73b0e2a26770f192026036aff6d9e4e39a9edda57b214d0a0",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\google-shared.js": "ef423c1093c672796e87e3ac0f4d3797ebb57e6550c48c01f2d4ed164052719b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\google-vertex.js": "74ce0353f43f12e4a7bd8c947e84afd833a6b5a084e4aed01795b2a6780a5de4",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\google-vertex.lazy.js": "944686a19ce1563146a82464dc35532725c006ecff1b66a3e00e5cbce41fb170",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\lazy.js": "8b8cdd13fdc49ff6e1785ecbdc8e20e86206892a18079a4349ca2910afb4d4b4",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\llama-cpp-classify.js": "980cb1cc9e98e28f83731ab542dd66fe8c691503869e90a26018cc416ec6ec84",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\llama-cpp-classify.lazy.js": "6c84b196abf0adbe46acea77acb89dbe4f027122c95eb6165bdf4b7d713253c2",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\mistral-conversations.js": "89a328672625d840ebe615e22c96e358761ba321b797a422d717c6e2ceba8ed7",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\mistral-conversations.lazy.js": "df0028011c26593830914429185f22bc60fa942e86ac871faa361abd2eaaf83e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\openai-codex-responses.js": "0b791f5417669449c70d2e8a4cc9c3626b578c07f1c73abc455d6b69d15b50c6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\openai-codex-responses.lazy.js": "cc69ef7cb93175b8ae30e9b6f749cc5c978cd0c168d0bf379ed48a3d7e9c120a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\openai-completions.js": "1c03215f7eaeeb501cb06ebe0957116556ed16b7a67db02d1f9d30f59db2be3e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\openai-completions.lazy.js": "a3d37d272ed600ddae2a9b05884e1c11c65487c1d8aa30d0b19ba571ffc7ea76",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\openai-decisions.js": "d901beabd6898c402ea88be7c03dd5a4397911d9cd3734caee0643ec802901f3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\openai-decisions.lazy.js": "53ecd3713b1c3f1d4966e45618047acb3315aba420bd34c8c01a376b096c25c0",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\openai-prompt-cache.js": "cdb4c30de4e8918994e18556529077ee5d952db0d6960bb299a76f6d8d139d2a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\openai-responses-shared.js": "9cb668bc91df45533bbc5275b68e2430414d7dd7021f924819feec070f0e60c9",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\openai-responses.js": "c35b80b2eb7f84b0ea1d939784943038956aefec7b624ed7862ebe2fd9d40c4b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\openai-responses.lazy.js": "ff6755b78f76a83ab50aee5603eb8f5efd8b9608be449a535847d49c0be0f0ca",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\openrouter-images.js": "93984fa79cf11feb019870b1150c4532aca1525d518b1febe3f9d1e3aea621ba",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\openrouter-images.lazy.js": "0ae9c490e8050e8e958d076a9c7ecb21715aa8bc5f85127619d822ca10bc62a6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\pi-messages.js": "762c1f0ed385f88fa7005ac7ef80595aa92d6c280158eb80f02199c94f876a38",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\pi-messages.lazy.js": "857a77e2a89923a9c88c136bc06072b9c9577574dd01da97ce2966a646f7d430",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\simple-options.js": "7e80e985f50d968dfd4422ed501d87280236470bff996c8f05f18d220dce1e53",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\strict-tool-limits.js": "4fa8f0bf3c3bfcf2fca52c49d7c7e72ea2d8f52ba95fa8237f419806a695e6a8",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\system-one-shared.js": "392c6e7d279b016424ff44f9c1c4b4ce4068f3d132b5243461532c14dd83ed18",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\transform-messages.js": "5654d81fdacdf3f3e9ca9eb89c4dfa71b742b852163ecd49ba38307f876db63e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\typesafe-system-one.js": "0c708b9b8a80a4401d38b131f5d9f359d5e8c1b0d38753a6a808d2d624dc2c2a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\api\\typesafe-system-one.lazy.js": "9dff2f5316c78d265d02a1c908047bc890c4fa0b13769806f07f326d71adfac2",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\context.js": "5d0ea91a2fd2acf84e3b9717ce59e75006933c68d8efa91873894a9d963d41a0",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\credential-store.js": "7e47b1a35815d04d9798ba7d8b9870409eeb522c36752c97a4c67416caaf2358",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\helpers.js": "afa67f03895ace888d574c0c86c226cab35521cecc51fe4c0320ba710fb32a97",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\oauth\\anthropic.js": "835268caed5dab6a0c7f157c551ed59a00635c76305e6e0c41b579c41aa07bc5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\oauth\\callback-server.js": "2dda468f4937edcf7bb5e8528de4bf7753efbe5b48610a3f9ea47ff2c4908ede",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\oauth\\device-code.js": "8f197cc9af67be64b82939573d719d1b55388f96f2e53cb8c47f9618fc1297eb",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\oauth\\github-copilot.js": "22819bb759cbd2a9b846d1cfe8cf7ee9b93ccb8aecc70fc32f9a02daedd536a3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\oauth\\kimi-coding.js": "49d62d8a59e05e37ea6868c41784c52408797cb940dadc7b0de1cfb75176fcbd",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\oauth\\load.js": "d91ed193afe81b53026b5e1afad659ee9771b3562b89842f1fdbb0251d5217df",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\oauth\\meta.js": "ac46ea86a9eda96c8cb528cb5c89c97cbdd7b1b4e771290d8db23bd641e226d0",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\oauth\\openai-chatgpt.js": "4cf9fc758a07ffe4ee022326404b5dcc86767ee4154945c0417c7f95eaecdcc2",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\oauth\\openai-codex.js": "0b94a219ddb5982f0ee543ef03138ed0254ce6ee0a57c9d89d39c242e2eaf6f6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\oauth\\openrouter.js": "b69e807ed855095aa17b2c0d1a15f350c77e3a49f2a66853f227916daacb4703",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\oauth\\pkce.js": "d54668654e89d6fe6994a09a7f9399e732a411fcb31c99eb8b5e60349763708c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\oauth\\radius.js": "b067a81142c495c0077a04170cad5a1bc4218d1acffd97520b42aecc3df8a386",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\oauth\\trusted-url.js": "d9b646305f2ae986eb1743841e80a0461ce71b5b273d8a2d3322c03bd088b7c2",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\oauth\\xai.js": "d34783560dc2ac75d6e717b248136eb75a902fbd53b3e56fb9f2ec50c6c793d7",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\resolve.js": "3fcec09018831324d9c7fb02f4aea707e8a9e4fec5a2bdf1b3d84d716fd3091e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\auth\\types.js": "01ae2a5b120382f9a648ced7ee8507493a134f216d100fc61600c6c9738235d2",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\bedrock-provider.js": "96834cdb63f47c93cdb0cf13622c1ffa7b3d4b0866c46dc4b2a84ed1338c79b4",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\bun-oauth.js": "f1f860158642e327c06fc8c3b5d566f115d4924463673d22d8a07e8e056ae593",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\cache-warming.js": "22ec1ee804bfad2a15832a44e7c758a47456e9ccfd6ea7bddeaafe6157bb3995",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\cli.js": "537a6b379328181915327338beb9099f38529e799a0a50f2b301a43c3fa9e258",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\compat\\extension-oauth-types.js": "2c46620284590b553d57375ddac9aa1ef3361448a3db883c2c58793be68242e7",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\compat.js": "df55dca273cb2a7053187b7b29d0fe5b91966a5099ab02d2efe38bb31c3f9738",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\env-api-keys.js": "08f297d487f11a3de954fc9f94e3475c5c60fb54e6e15a8e5c643bad8980018b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\image-models.js": "281e5aeaaa5464a2a2761ced19c1ed4f9e486d9f5396fa7ce8f709e08e8135f8",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\images-api-registry.js": "f0c1987d73ba7e84ee398e70755e309d9ec813d724f2a3116f2376b1cd1b0ab7",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\images.js": "ba363450c047ac2573f1f65c60898b02b606c9258b9dd113755af5c1968a9915",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\index.js": "dae2e8973404eab96233f9c36a99f0981fbb14205f07fec1b0bcbc84f476fffe",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\lazy-bedrock-provider.js": "3ab398fefee3b596805a4db4c2e75f4678d341781929d0ba2d2d600537f6582d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\lazy-oauth.js": "03ce10cbaea01b178e5844a9b076933456bfefdb698ce3374c9cbea1f9d59d24",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\legacy-api-aliases.js": "1b0f1077431ce2d8eeea25172e721c58e6fc1c1a396a731ffb62f2b54672bd12",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\model-catalog.js": "dc494ba6ee6eaae2be181d8ad5b3247d0bb16c665ee34c26a27d71811935d200",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\models-store.js": "bbce61b3123d849c711a64051b37166a2180ba379bc6c8e20b360f08787d2b5d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\models.generated.js": "523505cb45698abc4f8073d6e64feefbde471fa7d7586962f95e2af7262d1777",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\models.js": "f23dda9e5a472f9556c9b834d924504b771af8275d17a49496100a4f4b91e2dc",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\oauth.js": "bcdee371a91250a4d60f56b272d03959c9f6c401e73c3a1065d0a0dd002eec1a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\all.js": "659c1eac079ce2bd0f695afa092c3aae16322bd25edb316cb0c2be225fc2badf",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\amazon-bedrock.js": "2529299b0e820465cb3bcbec1ef4d4f2e3513385084e25b80c0e4c016779fa2e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\amazon-bedrock.models.js": "74d55ec86b8b897dd748a2f8f2fce75a539434a723352f16279d512b0487684a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\ant-ling.js": "518587507d88641fa3ca4da014297b72a4d80900c21fe423bb513fd147836504",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\ant-ling.models.js": "84c0dcd8574d4afe72d871008a89de56274dc258696ab42d1077a768a7c7b075",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\anthropic.js": "55a84e43fa8ee4382c41aa6872985f098080eaf73a5b8aa4451d7ce6db8c131d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\anthropic.models.js": "ce70bb4ce4064362823edb4934a89f9f41c06fe385b61de08e1aa948392e47e0",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\azure.js": "365152aaae1ffde873497da5e3af4b93faebf2628ffb7a798c989be06bda7e71",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\azure.models.js": "84d521cf42c0fad8730bc457cb785722176b096df9e6129407772d468f732b24",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\baseten.js": "cf6a2d4b2ead54db5a44fe7231ca4a48df782c68c5e04a88388dcb2fb9cb5809",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\baseten.models.js": "69535143a7b40eb8647db1660711648325987b664a0a8d7cbf044c5b5c942511",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\cerebras.js": "54ad3fdb12d934bf06d69bfc7e586a7e038966eab579539583e02349860784cd",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\cerebras.models.js": "b36806464fdc12d50352b11adf5d613b08e06d0d0f53e404fb92ae7d92c885c8",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\cloudflare-ai-gateway.js": "e099b01f7df70041f7e9f5d3237f4da25eabef7e7015e77c13b465036e90ea59",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\cloudflare-ai-gateway.models.js": "da583d68cdbe2efd3db873e8d75218260b581a7f2c4264bc5fe39d66ed00ffb2",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\cloudflare-auth.js": "5a3aaf34dadc97773b77150be31b2327532dab92c8982c77ca8d32e1d84faa59",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\cloudflare-stream.js": "b815d17959fe76c2b916d16f74be51f6393939aaf640e865db514832e0fadbf4",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\cloudflare-workers-ai.js": "d07ebc882420d601fd54493deda1fac0a0c37c4f48a65dc7f3b93e93786969c5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\cloudflare-workers-ai.models.js": "26cc6745c56393030dac55414f0a04d6f48500c21f269dcbcc15cb7cbf13a72a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\compat-schema.js": "3aad400a8b4548a03be3d5be5e3aa3ec3e262f26f3773caabd26b3436add301c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\deepseek.js": "d0a155e9c724a36c60ebabd71c47e2f7e26799e1b8b7079a835e9ccec33378f0",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\deepseek.models.js": "96d23f1156d903719d87187a11616fa7f0f9463b4ca5484c5e6e36057d870d85",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\faux.js": "f9ec087321994cf3ffe15165a5745dc66caf1b1c29197817b82e6dba32148320",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\fireworks.js": "e5aaf35df7f54f7f1684cc18c464135f3f1bf0d4a169acff9c9e91ccaf39d0fd",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\fireworks.models.js": "9e04277934b19dcfbb3012782a7404c2007d49851fe4b9aa47532a8c1e37f527",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\github-copilot.js": "11dfe23fb74f3eae6f010fc341e81d28da555de5637071dfab356d29207de96e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\github-copilot.models.js": "e858fe39d313e7a235b16493c18d7f1e0538bc9349f8945eec0386bfcb1dcb7f",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\google-vertex.js": "26c13449ea7b57d40878742db956210e70af0c89638cb87a1d9b4739f2bac59a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\google-vertex.models.js": "8a84c8a4b4098399dbfa2f01bfb342cc07a7dab74a7ba9cfeed619dc153f9364",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\google.js": "a3593ee2fa77efa4f867e8ba2a8f3e1a947bf6e873552b92b554145e847e5df0",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\google.models.js": "cf10bc192daf6bc1727802f5099c3d12a48bcbfe7a498354dd9a040e69fc7762",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\groq.js": "25e580e96ab18f0eaff2791ceaa1384c2d5623b0da5e0376f5aff1ee17bc32b9",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\groq.models.js": "9a0e0a6cea69fa9aa927f8ed52206266a9e18a36b40dfd7ae2db94fc876833d1",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\huggingface.js": "0b98efc192c8b9bcfbfcfcd123bba32ebed01e003668f37384fbe25416b983f5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\huggingface.models.js": "a5313c8d0ecd6b127fbaf85efb70aca8f99ce8b7b0133a8df1af84ad2037f9cd",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\images\\register-builtins.js": "c29932ca6dd008a5421bb91e489341f14a8be7d408cbde71894cc15546d37377",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\kimi-coding.js": "aa4c115c5f57750281176a6d5d7a42e19689a5bef10dcfd11f4b4ae0e3f7c8cc",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\kimi-coding.models.js": "1bd7e6042dbad48330e4905cc28f1a78ee9ab374582f11ad510a3da0873f871a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\meta.js": "f0ba7b97a407336f30cfb230c4c32bece9e0fd23b0ebdbdae11503374e5ab44c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\meta.models.js": "bff5a7924e04988ec78decf645d62f4731c06d4d07c217a62e1dda9ff8ff72e2",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\minimax-cn.js": "a4287d33e5dc3b91b63c18a0dae07bb3f113b11a8f748343b073b098af84113f",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\minimax-cn.models.js": "bc4e43d7656e111639c608745ee9721b53240bebfa5cab6bb917aadf1956fa4d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\minimax.js": "db9842be5c86f9498355acdc12e58cc47c1c537d0bcb024d05fa2802e76f9802",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\minimax.models.js": "94f9ad085578873ebf596312438284f9bcf5c8a6a123d4e07979c17610bbb6e3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\mistral.js": "9f7861fb15beb9a42b8c3031ec5ba751c68f0bcd8ce258b0922a9e52c225f3a6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\mistral.models.js": "d790b9d691cc6d810a8841e37d7e7a82dbf38032e80d6e455364dd2230540746",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\model-schema.js": "a8013ceaedd0105cbd2af886779d62f2691fbe202b16588ef2a977f35fa5270e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\moonshotai-cn.js": "bb34cb02d69423877c2db14736918ee879b8a789d0f247bf92ed512714d7b078",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\moonshotai-cn.models.js": "d6ca5a6bfc7dc800695ff1e9c23049fc8deb68a4debaa4e448167635d1afbb77",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\moonshotai.js": "e8763b3bd10b596a1ad6963904b8fe82795cf6ba5a84fc24273e12976018a41c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\moonshotai.models.js": "21ea92f74e495252d223b1d01d034b6c50d12304b214bd918137b9785f1755fe",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\nvidia.js": "37cb9c92fd0523ddb7cb2a64d0a3549f81e2a9e7070c6d021897654d464aefb9",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\nvidia.models.js": "d02151599cc841c6301175d06ce6a7794fe362c7d248b2fc7b38c5ca8ee73e2e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\openai-codex.js": "769490a94a5bcb062c22e768cf0621c91fb1c5d6be3565e6a6fa765eeeabe674",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\openai-codex.models.js": "7936bb7da4138b7b3598e1f2788eeea1bea7dbec3c96ee2c64a982249456db0b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\openai.js": "9dc3881e858b0280e809ec04b8b17f22580fcb1871da2edf3cfbdfa3c13747b3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\openai.models.js": "5ecca7b91ac52df918ced1695c94ee247090bb5877fc211dfc8c64d09f89db9e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\opencode-go.js": "7c14ba02605949d7c937d89cad55e2e2eed81d13086728b4173c3d3640d5d6f5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\opencode-go.models.js": "2a6805fb41edd5e48ac401bd6a60c35b9d981a1d3630882d1f809a62929fd20a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\opencode-headers.js": "24b5878ceb19abaa3987c2526ac14afdd6fc1e796f6e187a49e71b058972a741",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\opencode.js": "04f3cacca930d54738fbd81b1cdbb9283b40706d74b37515d9561075a1fbb309",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\opencode.models.js": "77954b67447aaf5e649b9e332c385a2751fa04e1619e50b8282baca4792258f3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\openrouter-api.js": "3259b64988618c8839427173408c5d642a448c7aff3a502c019a73e839192e36",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\openrouter.js": "158f877d062114c8a283c2687ae4a30f8ba34ae43aea81de4b7f43a57e0f59f0",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\openrouter.models.js": "eb1097639997735d514cbe8bb7b175747b54f2847e275857fce68f79315ebf31",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\qwen-token-plan-cn.js": "79301d2375e2aa1b47e1e8a98657f3716d2cf7729e4263aa4354465e76776fe7",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\qwen-token-plan-cn.models.js": "d119dcda8d495bd00018514dfecd4d920180115056a738e1defc69eb2a9c1a42",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\qwen-token-plan-individual-cn.js": "51d071f113d725749ff3d955291ca1b28c9b8ed3d87a76f00ea5e517b93fdde0",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\qwen-token-plan-individual-cn.models.js": "240b4f7a71bad40b0cde26b0894ab0ccdb86bda253de0fa785cf3e4901ec4770",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\qwen-token-plan-individual.js": "b325260a8529a05e2fe82d5e45aba4847777bd2524a4c1f53658b786ea64e12e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\qwen-token-plan-individual.models.js": "44c6838b3a56138ca66ec9541937cb7cec6f4a9f697ba50e4a0af7f5829e7972",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\qwen-token-plan.js": "7e5b375cc62907685ee10b4f8125c3fd9e668f215d6d23f734bb4142d2b5d758",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\qwen-token-plan.models.js": "eba8420038da8787b58d254cdb906c42c5591eac27911611a73799f2c0fe0e33",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\radius-config.js": "304e7960b3520806d9e0d9b98915a3ffd2bf04a16a25d3dd2fbafbbc9ef946b9",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\radius.js": "9f5516e81b00b8aff7f986052eacf822d2c1dc9f78c8cbafbf4e2cf91e2b9d2b",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\radius.models.js": "52037865a46978a32bcbeb3c96384bbe9332686dbfb827cef455d2f077adf63a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\schema-builders.js": "33c299ca8a000cfdef6ac42994c45d10ed353e046037ef389a24c0baf78b7f8a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\together.js": "40a43f847c9320d1f46cc3df3a785f0bb4e246d5f49877d03f5242c033dd1528",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\together.models.js": "e6719ed1b6cc9ed2371fd2f0590b9cd7c076dc5177df2ce5f3cfab86e013161e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\typesafe.js": "83fc7cf71dc4fe705480c7494c3d624ddf3612f63818ec11434b2ad1e3e05460",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\typesafe.models.js": "d5ec8cd6a5455a4b6ad52c59d8368f85f5c44da64a0d3de9db3a0c1931c2ba80",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\vercel-ai-gateway.js": "ab6bdd6097782f102bbd81bac979e30199c368e76a01e2f34980404ce2ba727c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\vercel-ai-gateway.models.js": "8fc9e251cdbe9fd3737c82f37cc236cc1313431b543f41496a22e757a45e2ee9",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\xai.js": "e5d69e97c788ce044f6c225fb38c04ec5b04defa639c02abfb022b466a90b9e9",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\xai.models.js": "baed06118ee3d97e8969c9999f0c06a164ca0a5534c01a99fd99dbc54db444e5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\xiaomi-token-plan-ams.js": "fe4bfede6558715e94e5e8997dd51fbd176bab8e651a972fe3be667218605222",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\xiaomi-token-plan-ams.models.js": "a15c958ab381f04cc7f7be381540483a8c816f5e954bf0ead107bb407e578ac4",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\xiaomi-token-plan-cn.js": "201773161e1b98269671fd4f23b6b01d7d661fb029e2a6762e261c2a8cf0be09",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\xiaomi-token-plan-cn.models.js": "d9c6d38961661077ae40918c379031b22d3c700add5f55bf6de847efea027ddd",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\xiaomi-token-plan-sgp.js": "61019ea4bd04801c227f51b69ae7da4c3c64242124e2da0f89d9971bf50ed0cd",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\xiaomi-token-plan-sgp.models.js": "5d106a0560c32fb5b7aaf8551baa58e75c4711df9d332b88ed2143278445ef12",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\xiaomi.js": "e57526646b06815287d13fd320d23944e869c53e046dd4b9f4795b8240226587",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\xiaomi.models.js": "57742ce3e38bac583db502aa654ed86475a266ae091140f9616cd9389873ff8e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\zai-coding-cn.js": "3820dea6091183bafa6b0c37e2cca684fba6d50674f190db259b2765c70efa85",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\zai-coding-cn.models.js": "383554e8b492f87228c55f3dcedf4a6ce99ee226c49c8fbec045c8f20e3ffd8a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\zai.js": "d897597f9bd9749ccc674c34e5c3bb738d9b90911b04c7f7fc7bc66150d6ff40",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\providers\\zai.models.js": "2f802c6cfc18ebb275f18e136bafc345d5522e8d1e72f9a41c5df501d5d645ee",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\session-resources.js": "9228618eeaebc6b5a1746d28d1859b1e23f0f65e978dc9f6e20eb29d65b17e2a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\telemetry.js": "a641b38b2701ffc267a379e0a3f5ad8cde7e594de8792c260a2c8dffbc47fc2f",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\types.js": "01ae2a5b120382f9a648ced7ee8507493a134f216d100fc61600c6c9738235d2",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\abort-signals.js": "9f68d51e0862b3deafc21bc0349d652410a8b283688af72c937272cb7b87cdc5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\abort.js": "17326034a23e443ca216f0b6ecb73db1dfd36a06698643ef77dc3ba9401f0636",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\diagnostics.js": "698070e564b12f303927b0c28845a0ec51f2f3dd29434724dcdffddd31b0b469",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\error-body.js": "801ecb214fdd46b059454c515f09624c3c968eb669722dcec846b79017bd04f2",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\estimate.js": "b5b606011ab0dce2a5db309dd812c9b8ddd0bbcbc9416de699fb9cd087cc84d6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\event-stream.js": "fe0d774b75db25ff0149d4267884bc4fd34db82d53c26843758d0eda2467ce65",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\hash.js": "7dd6b602e479f30b32d1babeacb1fcb96bd234b13355991caa169013f7885d57",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\headers.js": "69a355967b3e735a9b22d46f4cf41b901eb2ce29c2c438b20d46de67668533c7",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\identity.js": "32b45824054a8a6125a7f3caedd9ff1c594f1a109fd2af4fa1b5729f4578ab62",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\json-parse.js": "ffb5960ed8ba38a01ea338e129dbca589088c211c9da623ffb61102a1d27ce56",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\model-operations.js": "56264f6289f4822db8bed91a2e47aee387bfa70383b724e58f6aa6b96a0f4358",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\models-error.js": "7c8f802c2c77671f4b1721a07f3fefd007a2b332b222cd644ba285b3a74d9693",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\node-http-proxy.js": "9f29307b06dd11207f7f1a30cf07801c9b12741f715b8c61b90807dfa730580a",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\oauth-page.js": "82ff736f89ccd7a5a780e97eba656aa73ee2a435eb231938b340ffd9167086c1",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\openrouter-cost.js": "b1a835e5a4f02fc4cd8e7cdf0492195123465a3c10d556385c2e5768f1bf2a58",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\overflow.js": "bc0b743fdbf33fe3dd2bb69b1838166ac0b6957f74051213fcaf336c11d041a3",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\provider-env.js": "e1f64c60f0fde39a3a649e541d8248a85fdeefe414ff8b4dddf5f1be962d47e6",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\provider-retry.js": "46da2f14c0f5d58164a44c1b2837d8ab7674ded3ae4c732d02ae62c87b39b939",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\retry.js": "9d3cc0710b597f07fd7be6feb106908b737f0e95bf3e47cb0f5ab45f54382605",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\sanitize-unicode.js": "77cb844b43f502cc24b25ef284ec5a6f6ac375ac994bcf688275848e1475bc80",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\sleep.js": "c09f7f9033a4516bfc3ec5796d587dea958c1bc0fc5d3fe4b847ca10bddbed4f",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\streaming-json.js": "3691cb5d87570a0f3491cb58df90ad6d6e345066d70d4bda89c986b5ec646baf",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\string-enum.js": "069199a4c608591902c42ffa782e47b7e4bec80a68cb85474000506b4885bd2c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\text.js": "f27664e8761b986b64adc7c5aedf98449f68aa6b6b94e9fae43aa05b0a73aa52",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\transcript.js": "f01f0d0350ad47b6b91ce5ff788a3321deb40f3a7ac657cce360a91e1590f74d",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\uuid.js": "4e444c68e031550dfd534bf2cf2f123ba5a1053dd0953005ee720ef4e0487bf5",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\validation.js": "5d26e3a8b3621d895f96f94b917b69c3ffc0f5b882cd1a899ed490ebca284e3f",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-ai\\dist\\utils\\version.js": "ae9cc4a8d71d75196f9346e3ed78c1eb9adfaa13695bca37519e7f341a2302ab",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-agent-core\\dist\\agent-loop.js": "804c6b15e67f265cb1fe5f09b4e0c7a3fd502e3e5f086ae0378ca6864436b75e",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-agent-core\\dist\\agent.js": "f45ae001e2b14fced8ae151f0a00303b5fbdb5fc4b25418d45de6a5546f48a8c",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-agent-core\\dist\\index.js": "40cb358d7f05594e9b67845a78ae50ad05e8375f0cfa8cee8a74801556c09afd",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-agent-core\\dist\\proxy.js": "63d2883b558225c72ea0a9eeb54e65eceddeb341a6b46ab173b1b4ae9b50eec2",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-agent-core\\dist\\stream-fn.js": "2218c37514f6bfd818bf7f054ff4d9e248da4e817cbf459457bc3d790b9c6e54",
+      "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-agent-core\\dist\\types.js": "01ae2a5b120382f9a648ced7ee8507493a134f216d100fc61600c6c9738235d2"
+    }
+  },
+  "inference_binary": {
+    "path": "C:\\Users\\mande\\AppData\\Local\\Programs\\Ollama\\ollama.EXE",
+    "sha256": "4ccefcbfecc50fb6526471adabbc20869dd614e29e351120b15083cb174b0b8a"
+  },
+  "calibration": {
+    "path": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\adaptive-local\\calibration\\calibration.json",
+    "sha256": "7594e3150c4be3f8f380fa1e8a0b722692b0dedbbd2994aae331c66538fa797b"
+  },
+  "initial_context_sha256": "da9261851e0cf65ae2e31f1eff08796761379e722834402274c6b1bb7ec7dd27",
+  "initial_context_utf8_bytes": 3471,
+  "execution_state": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork",
+  "implementation_sha256": {
+    "__init__.py": "674dd2810ed1aa3fa82bafbb3daf7cd6ba9f7a0bc6ee1146683e588cad2ed741",
+    "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "adaptive.py": "10c0071bb9934c28ca2c95cbd4cc09b151dcaf35a9213572c2b9e646d06e04f8",
+    "benchmark.py": "cd44d2e8cbc137649334ff681b2671d202229b3c2c6e9f8bc2909747554f2e48",
+    "campaign.py": "74dc146871dd5657d18bda62867020b89c55a278b94e4ad694389a04ce77a255",
+    "changes.py": "2cb70357f7d3020100f7fc758d7a08382e40279c1608637a40d2f7ace3fdebeb",
+    "cli.py": "9cb1259fbc1d490df7b4fe87771b8322be1d2b221ce8378d1fa12518e9406f5f",
+    "cloud.py": "e2ba30954bcec14fb091a49d2b3bb7c6ef48b241a5fbd6b724f57f64798a97ec",
+    "component_source.py": "11b55f5198785ccab5d10dfe7cfabe2e61d69e3f83f5322dcc2f47c3115b8165",
+    "context_planning.py": "800b949f3a2f9569e921d7ae78ba10eac95fef97020b50eb3c37403b6e6b3be2",
+    "controller.py": "6dab26fe37967f624d3fc22e7d5a6a9a35a16413a2df9f4539532b027bdd8d49",
+    "discovery_benchmark.py": "b772ea3cd9b54dd45f6be5ebc40feb36f6319df8172bf544d83175d55d6dfb0a",
+    "draft.py": "82e8cabf9894026bc01bf702d0d5eee0d9c9c3500605e5ae4ee079a9fb149d6e",
+    "execution_context.py": "75864ade379dd95cd5b732da436875f77b829a4f230012c6c1f67ff037152abe",
+    "function_repair.py": "9e3a02bd749b2e364871d01fe6e7d4add1197b167cecf5f99410b6007dbdea4d",
+    "harness.py": "6e10a4c99bff8c9b70556d80664c415984e157d842fc6b221b7b81888d1fd921",
+    "harness_comparison.py": "8ca80991c185256e9cab76fab7309b67a66d3c59b52113cc75cc8ab88c0ea244",
+    "harness_contracts.py": "5ecf388732cb879b6707436492f2a743bcf338ba00235b7dc4ca2ee82c6ef072",
+    "hierarchy.py": "cb9dc37984e73268e964b4e4b660c3ca1eaa9feb5e398cff6481bb9afe74f453",
+    "http.py": "904eb91b3b4830aae36d959411394f08b397dc291adb1e5cccec6fe11d114e7d",
+    "httpx_benchmark.py": "d870a8d329acefdf4ce4ff314b7c05879084452041ace0d1529d55494fccd586",
+    "index.py": "0f23e8686fb498bc16874d6f46b07a5d8744ea22a7bee3a0db53d701db0528be",
+    "inference.py": "e4508799f6d910010b05b23899a714eba0d68caf273b76fea97c0bb84292ca42",
+    "local_calibration.py": "3a94acbb128ddce387aad0d188f8c20e1d22ce95a58b082c261b92e8cdb61f91",
+    "local_runtime.py": "14cc02d06edc569ab4578145f860912529f6e931f69a4ac41b1823d33b1fedd6",
+    "lock.py": "28a360f7b479f004bd363d6b57db5e6f2d798f50a7f3b21e23df423eaca622a8",
+    "mcp.py": "1a3f102a7bfb2ab005f345d69334ea469e414f691b6aa2f069a45474ccf743d5",
+    "metrics.py": "f32d3ffd2ca18ba36f8af654f3604d8f34abf400fb1aecf1ff4d406db6b9d937",
+    "native.py": "778d35f01e391207650532909e68a226149b91b23162d4ac75a0f81766ef850e",
+    "native_feedback.py": "52a48248a03c48223adf274f4cc9cb47d4cd84aa101990e7e6e4ea8ecd162bc3",
+    "native_recovery.py": "cb23bb7aa7157e1e858d0ddd08ccee54488b7fe3655f3f2829a851838c0d2990",
+    "oracle.py": "cf0b5d022b47ee959ed4779318867cec73ea03b8858597b343ccb3afdbb17036",
+    "pi_harness.py": "11aecac6ac4a6e7d0d4fa2e3ff644f52bb007879d003c8fca996a544b6dcd3ae",
+    "planner.py": "f0620f1842a62649bdb4fc8c95f63b4886ae90457e0be1ae450ef3d34799d8c5",
+    "process.py": "77dd2612aa9e7c898c033bbb876385fa1b86869f4f81a71c0282faf879ea45c2",
+    "project.py": "7d306b1e07270f2dbc2e5dd0632fa0c551e07f50d5fcd9e255a9bdf4a673bb12",
+    "provider_gate.py": "432d2d7bf5722d16618153936d5fa66dbec06985909cc58f60d5c88c20c31ecd",
+    "rea_selection.py": "e9d1c516bfcc8a1e97c9cfd8a2dcf7a3e0a753ea05e8174e844f3ab1df22f8f8",
+    "remote.py": "167daef6d96ba6a122399268f22b033d0984be196aaaa87e7e4c546f37034647",
+    "repair_benchmark.py": "e7093c36be091a237becde36eca5b09275a95fd4b9b5ba677bba45aa39960e63",
+    "router.py": "b8a2368bea911e82ecf8e65f5cd8c7bd1f9df90f91140469e3a6149afa714cca",
+    "schema.py": "489803b60bd64f0dac411a3f271530892cc0f6860006ef2335ea6f9cc0b51e7f",
+    "selection.py": "3fd108028c45095ecfc06f6648c075fb58815ae8a6760541c047f94f819630d0",
+    "selfdev.py": "dadd0f87bdba508512fe6a115b65b4b8248c9bd058b92337b065737f60857954",
+    "source_edit.py": "4c68ede44ce1e508a40de46fbd9c8812eb31296468ade9d397484ae03fde117b",
+    "specialists.py": "474aef1e714fd392acf130298d169323dd3c9644491c64b645b5059ac9c6f094",
+    "state.py": "70a3e5c517126d7479065b2d86ade82b53decfd8ebf161d2e4debb334410427a",
+    "trial_budget.py": "f3cf26626e58ddf4b617a0fb49db0bbf2abe56b2e0d4e1b1df49774a958ca4d6",
+    "verify.py": "1350209bc5e02c774925a21e11d6a30414136fd458a4d486d4242c9c344c37e0",
+    "windows_job.py": "389c3a0eefa204985aaace091fda91b45db146fbde525b92fb37612a06d2cfcc",
+    "workflow.py": "20c833465a5fb67f6380004f881adbd79da5d3d2855aab4de7224a6eb344caec",
+    "workspace.py": "95157f8c652c08b0c775222e8c92f53de6bdcba7801f29be0b4997d14a3225a4"
+  },
+  "phase_limits": {
+    "warm": 5,
+    "work": 330,
+    "grade": 40
+  },
+  "attempt_seconds": 300,
+  "verification_reservation_seconds": 20,
+  "operations": 48,
+  "edit_reserve": 4,
+  "public_test_reserve": 4,
+  "model_requests": 64,
+  "compactions": 4,
+  "observed_input_tokens": 7440,
+  "context_reserve_tokens": 512,
+  "context_selection": "16K fixed for both; refuse rather than change context if current admission fails.",
+  "cold_protocol": "Fresh private server and harness home per arm; no generation warmup. Cold model load and observed first-prefill initialization overhead are charged inside the 300-second attempt. OS/driver caches are not purged.",
+  "permission_contract": {
+    "write_roots": [
+      "src/dotenv/variables.py",
+      "tests/test_nested_defaults.py"
+    ],
+    "tools": [
+      "checks_focus",
+      "checks_edit",
+      "checks_check",
+      "checks_diff"
+    ],
+    "native_mutation": false,
+    "shell": false,
+    "network": "owned loopback inference only; verification Docker offline"
+  },
+  "selection": "Final versus original using full public corpus, protected prior passes and upstream checks. Ties keep baseline; no sealed feedback. Intermediate snapshots preserved but not all ranked.",
+  "sealed_policy": {
+    "cases": 12,
+    "author_after_both_freeze": true,
+    "expectations_mounted": false,
+    "feedback_to_workers": false
+  },
+  "stop_policy": "Stop pair on interruption, failed catalog, unexpected provider/harness failure or failed cleanup; consumed trials cannot resume.",
+  "comparison_limitations": "One pair is exploratory. Report actual CPU offload, cache tokens and timing; no causal success-rate or hierarchy claim."
+}

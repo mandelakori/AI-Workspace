@@ -1,0 +1,50 @@
+{
+  "contract": {
+    "objective": "Inert cancellation",
+    "write_roots": [
+      "module.py"
+    ],
+    "public_checks": [
+      {
+        "argv": [
+          "{python}",
+          "-V"
+        ]
+      }
+    ],
+    "setup": [],
+    "deadline": null,
+    "policy": {
+      "operations": 8,
+      "edit_reserve": 0,
+      "verification_reserve": 0,
+      "model_requests": 64,
+      "compactions": 4,
+      "blocked_limit": 3
+    }
+  },
+  "contract_sha256": "70c0cde3c0b6baaa65f05d8d2ce9eb0572d19ef2a2702545621498526f81f24d",
+  "epoch": 0,
+  "visible": [],
+  "issued": {},
+  "events": [
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "70c0cde3c0b6baaa65f05d8d2ce9eb0572d19ef2a2702545621498526f81f24d",
+      "remaining_operations": 8,
+      "denied": ""
+    }
+  ],
+  "used": {
+    "inspection": 0,
+    "editing": 0,
+    "verification": 0,
+    "inference": 1,
+    "compaction": 0
+  },
+  "seconds": {},
+  "blocked": 0,
+  "exhausted": ""
+}

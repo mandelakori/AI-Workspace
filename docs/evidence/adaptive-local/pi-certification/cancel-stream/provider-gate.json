@@ -1,0 +1,38 @@
+{
+  "failed_closed": true,
+  "requests": [
+    {
+      "request": 1,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "2da221c1bf44d6c5620e115cc67ff5b98d97ec753746ebbc03faa3cec25ba98f",
+      "adapter_phase": "engineering",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "70c0cde3c0b6baaa65f05d8d2ce9eb0572d19ef2a2702545621498526f81f24d",
+      "remaining_operations": 8,
+      "contract_bytes": 810,
+      "forwarded_sha256": "632d4433e18a8ea53a3428c2ad10bc90707b771fb4ad974b174a4841f705cfc1",
+      "upstream_status": 200,
+      "error": "ConnectionAbortedError",
+      "elapsed": 0.2660000000614673
+    }
+  ],
+  "required": [
+    "checks_check",
+    "checks_diff",
+    "checks_edit",
+    "checks_focus"
+  ],
+  "request_rewriting": true,
+  "resource_exhausted": false,
+  "captured_bytes": 5875
+}

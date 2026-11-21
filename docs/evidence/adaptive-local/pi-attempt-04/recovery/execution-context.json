@@ -1,0 +1,186 @@
+{
+  "contract": {
+    "objective": "Double input",
+    "write_roots": [
+      "module.py"
+    ],
+    "public_checks": [
+      {
+        "argv": [
+          "{python}",
+          "-c",
+          "from module import calculate; assert calculate(3)==6"
+        ]
+      }
+    ],
+    "setup": [],
+    "deadline": null,
+    "policy": {
+      "operations": 32,
+      "edit_reserve": 0,
+      "verification_reserve": 0,
+      "model_requests": 16,
+      "compactions": 4,
+      "blocked_limit": 3
+    }
+  },
+  "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+  "epoch": 0,
+  "visible": [
+    "ea36faef96a6d3e743fa61df5274b259e29dbb37a4be385979d9dbab73140a29"
+  ],
+  "issued": {
+    "ea36faef96a6d3e743fa61df5274b259e29dbb37a4be385979d9dbab73140a29": {
+      "path": "module.py",
+      "sha256": "3197afc6bf6b46c02f1fe2f127bafaf80c117c65564e34af0dffc1f644818a5a",
+      "line": 1,
+      "next_line": null
+    }
+  },
+  "events": [
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 32,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 31,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 30,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 29,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 28,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 27,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 26,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 25,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "check",
+      "category": "verification",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 24,
+      "denied": ""
+    }
+  ],
+  "used": {
+    "inspection": 3,
+    "editing": 4,
+    "verification": 1,
+    "inference": 9,
+    "compaction": 0
+  },
+  "seconds": {
+    "inference": 0.04800000006798655,
+    "inspection": 0.04800000006798655,
+    "editing": 0.01600000006146729,
+    "verification": 0.125,
+    "cleanup": 0
+  },
+  "blocked": 0,
+  "exhausted": ""
+}

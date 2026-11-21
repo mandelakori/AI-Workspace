@@ -1,0 +1,47 @@
+{
+  "contexts": [
+    {
+      "context": 8192,
+      "status": "measured",
+      "detail": null,
+      "prefill_tokens_per_second": 2013.2438428048267,
+      "generation_tokens_per_second": 25.992734624535967,
+      "gpu_increment_bytes": 6532628480,
+      "ram_increment_bytes": 964857856
+    },
+    {
+      "context": 16384,
+      "status": "measured",
+      "detail": null,
+      "prefill_tokens_per_second": 1612.0652102413155,
+      "generation_tokens_per_second": 21.717847829148408,
+      "gpu_increment_bytes": 6581911552,
+      "ram_increment_bytes": 5435547648
+    },
+    {
+      "context": 32768,
+      "status": "measured",
+      "detail": null,
+      "prefill_tokens_per_second": 1293.436530809327,
+      "generation_tokens_per_second": 17.78881425462158,
+      "gpu_increment_bytes": 6770655232,
+      "ram_increment_bytes": 0
+    }
+  ],
+  "conditional64": {
+    "run": false,
+    "projected_gpu_bytes": 7148142592,
+    "projected_ram_bytes": 0,
+    "projected_long_request_seconds": 45.196624533455214,
+    "memory": {
+      "at": 658017.953,
+      "ram_total_bytes": 33413771264,
+      "ram_available_bytes": 5921624064,
+      "gpu_total_bytes": 8546942976,
+      "gpu_free_bytes": 7577010176,
+      "gpu_used_bytes": 698351616
+    },
+    "reason": "projected memory headroom or deadline insufficient"
+  },
+  "elapsed_seconds": 369.23399999993853
+}

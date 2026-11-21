@@ -1,0 +1,25 @@
+test_cancel_stream_closes_owned_job_and_relay (test_pi_harness.PiHarnessTests.test_cancel_stream_closes_owned_job_and_relay) ... ERROR
+
+======================================================================
+ERROR: test_cancel_stream_closes_owned_job_and_relay (test_pi_harness.PiHarnessTests.test_cancel_stream_closes_owned_job_and_relay)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\tests\test_pi_harness.py", line 33, in test_cancel_stream_closes_owned_job_and_relay
+    self.cancel()
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\tests\test_pi_harness.py", line 75, in cancel
+    result=Pi(executable('node'),sdk).execute(profile,task,work,artifacts,task.objective,18,spec,stop)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\aiwork\harness.py", line 73, in execute
+    result = self.run_session(profile, task, stage, artifacts, prompt,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\aiwork\pi_harness.py", line 53, in run_session
+    with ProviderGate(profile.endpoint,profile.model,Inference(profile).key(),artifacts,deadline,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\aiwork\provider_gate.py", line 249, in __exit__
+    raise CleanupFailure('provider relay cleanup failed')
+aiwork.provider_gate.CleanupFailure: provider relay cleanup failed
+
+----------------------------------------------------------------------
+Ran 1 test in 5.772s
+
+FAILED (errors=1)

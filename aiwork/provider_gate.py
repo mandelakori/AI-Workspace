@@ -10,6 +10,7 @@ import base64
 from contextlib import contextmanager
 import hashlib
 import http.client
+import io
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 import os
@@ -17,6 +18,8 @@ from pathlib import Path
 import re
 import secrets
 import subprocess
+import sys
+import traceback
 from threading import Event, Lock, Thread, current_thread
 import socket
 from time import monotonic, sleep
@@ -32,24 +35,64 @@ REQUIRED = frozenset({'checks_focus', 'checks_edit', 'checks_check', 'checks_dif
 NATIVE = frozenset({'glob', 'grep', 'list', 'todowrite'})
 
 
-def catalog(body: dict, allow_read: bool = False, scoped_only: bool = False) -> dict:
+class CleanupFailure(RuntimeError):
+    pass
+
+
+class CancellableReader(io.RawIOBase):
+    """SocketIO timeouts poison buffered readers. Poll recv directly instead.
+
+    Keep a normal SocketIO reference solely for socket lifetime management, so
+    HTTPConnection may close its reference on HTTP/1.0 responses as usual.
+    """
+    def __init__(self, sock, stop: Event, deadline: float):
+        super().__init__()
+        self.sock,self.stop,self.deadline=sock,stop,deadline
+        self.reference=sock.makefile('rb',buffering=0)
+
+    def readable(self):return True
+
+    def readinto(self, buffer):
+        while not self.stop.is_set():
+            remaining=self.deadline-monotonic()
+            if remaining<=0:raise TimeoutError('provider deadline expired')
+            self.sock.settimeout(min(.25,remaining))
+            try:return self.sock.recv_into(buffer)
+            except socket.timeout:continue
+        raise ConnectionAbortedError('controller cancelled owned provider stream')
+
+    def close(self):
+        self.reference.close()
+        super().close()
+
+
+class ResponseSocket:
+    def __init__(self,sock,stop,deadline):self.sock,self.stop,self.deadline=sock,stop,deadline
+    def makefile(self,mode):
+        if mode!='rb':raise ValueError('read-only provider response required')
+        return io.BufferedReader(CancellableReader(self.sock,self.stop,self.deadline))
+
+
+def catalog(body: dict, allow_read: bool = False, scoped_only: bool = False,
+            maintenance: bool = False) -> dict:
     tools = body.get('tools', [])
     if not isinstance(tools, list):
         tools = []
     names = [t.get('function', {}).get('name') for t in tools if isinstance(t, dict)]
-    allowed = REQUIRED if scoped_only else REQUIRED | NATIVE | ({'read'} if allow_read else set())
+    required = frozenset() if maintenance else REQUIRED
+    allowed = frozenset() if maintenance else REQUIRED if scoped_only else REQUIRED | NATIVE | ({'read'} if allow_read else set())
     valid = (all(isinstance(n, str) for n in names) and len(names) == len(tools)
              and len(names) == len(set(names)))
     offered = {n for n in names if isinstance(n, str)}
-    return {'offered': sorted(offered), 'missing': sorted(REQUIRED - offered),
+    return {'offered': sorted(offered), 'missing': sorted(required - offered),
             'unexpected': sorted(offered - allowed),
-            'passed': valid and REQUIRED <= offered and offered <= allowed}
+            'passed': valid and required <= offered and offered <= allowed}
 
 
 class ProviderGate:
     def __init__(self, endpoint: str, model: str, key: str, artifacts: Path,
                  deadline: float, allow_read: bool = False,
-                 context: ExecutionContext | None = None):
+                 context: ExecutionContext | None = None, pi_compaction: bool = False):
         self.upstream = urlsplit(endpoint.rstrip('/'))
         if (self.upstream.scheme not in {'http', 'https'} or not self.upstream.hostname
                 or self.upstream.username or self.upstream.password
@@ -58,7 +101,10 @@ class ProviderGate:
         self.model, self.key, self.artifacts = model, key, artifacts
         self.deadline, self.allow_read = deadline, allow_read
         self.context = context
+        self.pi_compaction = pi_compaction
+        self.primary_admitted = False
         self.exhausted = Event()
+        self.stopping = Event()
         self.token = secrets.token_urlsafe(32)
         self.failed = Event()
         self.lock = Lock()
@@ -109,7 +155,12 @@ class ProviderGate:
                     (gate.artifacts / f'provider-request-{number:03}.json').write_bytes(raw)
                     try:
                         body = json.loads(raw)
-                        check = catalog(body, gate.allow_read, bool(gate.context))
+                        phase = self.headers.get('X-AIWORK-Phase', '')
+                        maintenance = gate.pi_compaction and phase == 'compaction'
+                        check = catalog(body, gate.allow_read, bool(gate.context), maintenance)
+                        if gate.pi_compaction and (phase not in {'engineering','compaction'}
+                                                   or maintenance and not gate.primary_admitted):
+                            check['passed'] = False
                         admitted = (check['passed'] and body.get('model') == gate.model
                                     and not gate.failed.is_set() and monotonic() < gate.deadline)
                     except (ValueError, AttributeError):
@@ -117,6 +168,7 @@ class ProviderGate:
                         admitted = False
                     receipt = {'request': number, **check, 'forwarded': admitted,
                                'body_sha256': hashlib.sha256(raw).hexdigest()}
+                    if gate.pi_compaction:receipt['adapter_phase']=phase
                     gate.receipts.append(receipt)
                     if not admitted:
                         gate.failed.set(); gate.save()
@@ -125,13 +177,15 @@ class ProviderGate:
                         return
                     if gate.context:
                         try:
-                            body, trace = gate.context.provider_request(body)
+                            body, trace = gate.context.provider_request(body,
+                                ('compaction' if maintenance else 'inference') if gate.pi_compaction else None)
                             raw = json.dumps(body, ensure_ascii=False).encode('utf-8')
                             receipt.update(trace, forwarded_sha256=hashlib.sha256(raw).hexdigest())
                             (gate.artifacts / f'provider-forwarded-{number:03}.json').write_bytes(raw)
                             gate.captured += len(raw)
                             if gate.captured > 16 * 1024 * 1024:
                                 raise ValueError('provider evidence budget exhausted')
+                            if not maintenance:gate.primary_admitted=True
                         except ResourceExhausted as error:
                             receipt.update(forwarded=False, resource_exhausted=str(error))
                             gate.exhausted.set(); gate.save()
@@ -146,6 +200,7 @@ class ProviderGate:
                     gate.save()
                 connection = None
                 upstream_socket = None
+                response = None
                 request_started = monotonic()
                 response_path = gate.artifacts / f'provider-response-{number:03}.sse'
                 try:
@@ -154,6 +209,8 @@ class ProviderGate:
                     cls = http.client.HTTPSConnection if gate.upstream.scheme == 'https' else http.client.HTTPConnection
                     connection = cls(gate.upstream.hostname, gate.upstream.port,
                                      timeout=max(.01, gate.deadline - monotonic()))
+                    connection.response_class=lambda sock,**kwargs:http.client.HTTPResponse(
+                        ResponseSocket(sock,gate.stopping,gate.deadline),**kwargs)
                     headers = {'Content-Type': 'application/json'}
                     if gate.key: headers['Authorization'] = 'Bearer ' + gate.key
                     connection.request('POST', gate.upstream.path + '/chat/completions', raw, headers)
@@ -197,6 +254,7 @@ class ProviderGate:
                         except (OSError, ValueError, RuntimeError) as error:
                             gate.failed.set()
                             receipt['accounting_error'] = type(error).__name__
+                    if response is not None:response.close()
                     if connection is not None:
                         with gate.lock: gate.connections.discard(upstream_socket)
                         connection.close()
@@ -210,17 +268,26 @@ class ProviderGate:
         return self
 
     def __exit__(self, *args):
+        self.stopping.set()
         self.server.shutdown()
         with self.lock: connections = list(self.connections); handlers = list(self.handlers)
+        shutdown=[]
         for connection in connections:
-            try: connection.shutdown(socket.SHUT_RDWR)
-            except OSError: pass
+            item={'fd':connection.fileno(),'closed':getattr(connection,'_closed',None)}
+            try: connection.shutdown(socket.SHUT_RDWR);item['shutdown']=True
+            except OSError as error:item['error']=error.errno
+            shutdown.append(item)
+        write(self.artifacts/'relay-shutdown.json',{'owned_connections':shutdown})
         self.server.server_close(); self.thread.join(timeout=1)
         cleanup_deadline = monotonic()+2
         for handler in handlers: handler.join(timeout=max(0,cleanup_deadline-monotonic()))
         if any(h.is_alive() for h in handlers) or self.thread.is_alive():
             self.failed.set(); self.save()
-            raise RuntimeError('provider relay cleanup failed')
+            frames=sys._current_frames()
+            write(self.artifacts/'relay-cleanup-failure.json',{'threads':[
+                {'name':h.name,'stack':traceback.format_stack(frames[h.ident])}
+                for h in handlers if h.is_alive() and h.ident in frames]})
+            raise CleanupFailure('provider relay cleanup failed')
         self.save()
 
 
@@ -292,11 +359,11 @@ def guarded_run(binary, profile, work, artifacts, env, config, prompt, timeout, 
     except (OSError, RuntimeError, ValueError) as error:
         path = artifacts/'catalog-readiness.json'
         readiness = json.loads(path.read_bytes()) if path.exists() else {}
-        status = ('cleanup_failure' if readiness.get('cleanup_passed') is False
+        status = ('cleanup_failure' if isinstance(error,CleanupFailure) or readiness.get('cleanup_passed') is False
                   else 'interrupted' if isinstance(error, TimeoutError) else 'harness_failure')
         write(artifacts/'execution-receipt.json', {'schema':1, 'adapter':'opencode', 'status':status,
               'raw_exit_code':None, 'elapsed':monotonic()-started, 'timed_out':isinstance(error,TimeoutError),
-              'cleanup_passed':readiness.get('cleanup_passed'), 'provider_gate_passed':False,
+              'cleanup_passed':False if isinstance(error,CleanupFailure) else readiness.get('cleanup_passed'), 'provider_gate_passed':False,
               'independent_verification':'not_started', 'error_class':type(error).__name__})
         raise
 
@@ -321,14 +388,19 @@ def _guarded_run(binary, profile, work, artifacts, env, config, prompt, timeout,
     readiness = json.loads((artifacts/'catalog-readiness.json').read_bytes())
     if context:
         context.elapsed('cleanup', readiness['cleanup_seconds'])
+    return finish_execution('opencode', gate, result, context, artifacts, started, readiness['cleanup_passed'])
+
+
+def finish_execution(adapter, gate, result, context, artifacts, started, cleanup_passed):
+    """One receipt format and exhaustion semantics for both reviewed harnesses."""
     clean_exhaustion = (gate.exhausted.is_set() and not gate.failed.is_set()
-                        and not result.timed_out and not result.truncated and readiness['cleanup_passed'])
+                        and not result.timed_out and not result.truncated and cleanup_passed)
     status = ('interrupted' if result.timed_out else 'provider_failure' if gate.failed.is_set()
-              else 'resource_exhausted' if clean_exhaustion else 'completed' if result.code == 0
+              else 'resource_exhausted' if clean_exhaustion else 'completed' if result.code == 0 and not result.truncated
               else 'harness_failure')
-    write(artifacts/'execution-receipt.json', {'schema':1, 'adapter':'opencode', 'status':status,
+    write(artifacts/'execution-receipt.json', {'schema':1, 'adapter':adapter, 'status':status,
           'raw_exit_code':result.code, 'elapsed':monotonic()-started,
-          'timed_out':result.timed_out, 'cleanup_passed':readiness['cleanup_passed'],
+          'timed_out':result.timed_out, 'cleanup_passed':cleanup_passed,
           'provider_gate_passed':not gate.failed.is_set(), 'independent_verification':'pending',
           'resources':context.summary(),
           'provider_usage':{'reported':[{k:r[k] for k in ('request','category','usage')}

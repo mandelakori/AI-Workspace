@@ -1,0 +1,266 @@
+{
+  "failed_closed": false,
+  "requests": [
+    {
+      "request": 1,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "0ff5ab69cb8a40b1ad99a7d1b5dd35b39432e6ab90f0a905ccf2f326b63b0153",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 32,
+      "contract_bytes": 862,
+      "forwarded_sha256": "551e553acb1509af1a91785651e8294a141ebe3d1f7f0edb72f6ec7ab6099541",
+      "upstream_status": 200,
+      "response_sha256": "cd6d4539bbff54525146659bbf86e6f717c0a9e4bbfe5e82ed359fcd4434d8de",
+      "usage": {
+        "prompt_tokens": 1000,
+        "completion_tokens": 50,
+        "total_tokens": 1050
+      },
+      "elapsed": 0.0
+    },
+    {
+      "request": 2,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "1d974e7567adeb8fbf91ec94a3b81747cddd3497f48344886b45a5e7651c4482",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 31,
+      "contract_bytes": 862,
+      "forwarded_sha256": "c76c0cbd1e71a9aa9caa11d8cce1ffc341fe7d5d2cbf364ff8e9c45dc5402390",
+      "upstream_status": 200,
+      "response_sha256": "bea4fb343a33c70075bc3dfdb72f23750908a9d68a0184f54534de6c630ccdfd",
+      "usage": {
+        "prompt_tokens": 1000,
+        "completion_tokens": 50,
+        "total_tokens": 1050
+      },
+      "elapsed": 0.015999999945051968
+    },
+    {
+      "request": 3,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "b1f5013d3503fe37222d237f783e51771c566389edf978ff697a1ad71a7f5682",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 30,
+      "contract_bytes": 862,
+      "forwarded_sha256": "c749cb99940ec7aabccd36b5af10d763dea2fcec067874f24de8a88d572794fa",
+      "upstream_status": 200,
+      "response_sha256": "61e54969c4961668e0cca44e35d0c6128daa931ce1056a43b092ed9a45369a13",
+      "usage": {
+        "prompt_tokens": 1000,
+        "completion_tokens": 50,
+        "total_tokens": 1050
+      },
+      "elapsed": 0.0
+    },
+    {
+      "request": 4,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "dd9e5bd829b4d89d91484372d0568086400e50b19ddb8a540add2687dabc1b52",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 29,
+      "contract_bytes": 862,
+      "forwarded_sha256": "3fe1c9efdf2fb265779ef48fd5d88ff6a7aea0ba2fcceb74243b361f998e3a38",
+      "upstream_status": 200,
+      "response_sha256": "9e973b9d0a889922007ce6a35dcb8be5ff30dd7257545cbf85de3c1951139100",
+      "usage": {
+        "prompt_tokens": 1000,
+        "completion_tokens": 50,
+        "total_tokens": 1050
+      },
+      "elapsed": 0.015999999945051968
+    },
+    {
+      "request": 5,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "50d273cc61266ebd0d9a4f4f1d5ad024a66cd25085376df1977d243ea4222ba6",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 28,
+      "contract_bytes": 862,
+      "forwarded_sha256": "a623d880cebaad2de60b0be849ea28197afd29bf209b0f4d527e96006da19ef8",
+      "upstream_status": 200,
+      "response_sha256": "5b6596b20a38859a234097d6cc792545a48073a27be441511e5a55f626091f3f",
+      "usage": {
+        "prompt_tokens": 1000,
+        "completion_tokens": 50,
+        "total_tokens": 1050
+      },
+      "elapsed": 0.0
+    },
+    {
+      "request": 6,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "a7bc738516ee2cdb6cb6792ccc6ed370f6a3b343dc9dadfc68993e51bfc464db",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 27,
+      "contract_bytes": 862,
+      "forwarded_sha256": "4b41daec7e3aff058a26daa7a04480039d9091134302672b7e640b4c06e5abc7",
+      "upstream_status": 200,
+      "response_sha256": "b339b8ec4308b6fab764df42f44582bffb5a31afb12997f1e0624929d50cb0ef",
+      "usage": {
+        "prompt_tokens": 1000,
+        "completion_tokens": 50,
+        "total_tokens": 1050
+      },
+      "elapsed": 0.015999999945051968
+    },
+    {
+      "request": 7,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "826a0498a06ae2c88da99b556812b54201785627483c01355d27b5180d64843c",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 26,
+      "contract_bytes": 862,
+      "forwarded_sha256": "e019da603432283a39a0feab45fd58691f5721eef5be89333edcbf8e88dc6f53",
+      "upstream_status": 200,
+      "response_sha256": "83ecf3b3e3688f73eadfaf3564f80a1ad3e394e813627252ef89c827ad4c3320",
+      "usage": {
+        "prompt_tokens": 1000,
+        "completion_tokens": 50,
+        "total_tokens": 1050
+      },
+      "elapsed": 0.0
+    },
+    {
+      "request": 8,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "06bd14f62eaab1e62950464ed4b1a81ad6f64080f8f87d3e357b6ae1b77179d3",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 25,
+      "contract_bytes": 862,
+      "forwarded_sha256": "b45216061183bcaf19bd9768bf1a0d787d3e467b766def1ef56f2c7fd5027ee1",
+      "upstream_status": 200,
+      "response_sha256": "a36976881be595ba665d37cb66e8c7704a76bc2ec750d90c5d266d9203759bfc",
+      "usage": {
+        "prompt_tokens": 1000,
+        "completion_tokens": 50,
+        "total_tokens": 1050
+      },
+      "elapsed": 0.0
+    },
+    {
+      "request": 9,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "6259658b1729e61b19d9292fdd6215782c23e101f12c7193bd7123b28357348d",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 24,
+      "contract_bytes": 862,
+      "forwarded_sha256": "9e19d1fe9452d3e7d31bacd7b234c2cf0767c1b0bb5fc1e612a2750440024de4",
+      "upstream_status": 200,
+      "response_sha256": "a81635b9c91870ecc6256e7393f2d5652defad24488ce0791ffab01e230a96b2",
+      "usage": {
+        "prompt_tokens": 1000,
+        "completion_tokens": 50,
+        "total_tokens": 1050
+      },
+      "elapsed": 0.015999999945051968
+    }
+  ],
+  "required": [
+    "checks_check",
+    "checks_diff",
+    "checks_edit",
+    "checks_focus"
+  ],
+  "request_rewriting": true,
+  "resource_exhausted": false,
+  "captured_bytes": 162339
+}

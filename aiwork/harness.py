@@ -10,6 +10,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory, mkdtemp
 from time import monotonic
 from typing import Protocol
+from typing import ClassVar
 
 from .changes import delta, validate_changes
 from .inference import Inference
@@ -41,6 +42,7 @@ def opencode_path(configured: str = "") -> str | None:
 @dataclass(frozen=True)
 class OpenCode:
     binary: str
+    adapter: ClassVar[str] = 'opencode'
 
     def execute(self, profile: Profile, task: Task, work: Path, artifacts: Path,
                 prompt: str, timeout: float, tool_spec: Path | None = None,
@@ -50,8 +52,8 @@ class OpenCode:
         trial = current()
         # A deadline may kill the supervising Python process before source export.
         # Measured stages are therefore retained from creation, with an ownership receipt.
-        staging = (nullcontext(mkdtemp(prefix=trial["label"] + "-opencode-")) if trial
-                   else TemporaryDirectory(prefix="aiwork-opencode-"))
+        staging = (nullcontext(mkdtemp(prefix=trial["label"] + f"-{self.adapter}-")) if trial
+                   else TemporaryDirectory(prefix=f"aiwork-{self.adapter}-"))
         with staging as directory:
             isolated = Path(directory).resolve()
             if any((parent / ".git").exists() for parent in isolated.parents):
@@ -66,7 +68,7 @@ class OpenCode:
             if tool_spec:
                 policy = json.loads(tool_spec.read_bytes())
                 policy["workspace"] = str(stage)
-                tool_spec = artifacts / "opencode-tool.json"
+                tool_spec = artifacts / f"{self.adapter}-tool.json"
                 tool_spec.write_text(json.dumps(policy), encoding="utf-8")
             result = self.run_session(profile, task, stage, artifacts, prompt,
                                       max(0, timeout - (monotonic() - started)), tool_spec, stop)
@@ -84,9 +86,9 @@ class OpenCode:
                     receipt_path.write_text(json.dumps(receipt), encoding='utf-8')
                 raise
             if changed:
-                staged = artifacts / "opencode-output"
+                staged = artifacts / f"{self.adapter}-output"
                 snapshot(stage, staged, ())
-                previous = artifacts / "pre-opencode"
+                previous = artifacts / f"pre-{self.adapter}"
                 work.rename(previous)
                 try:
                     staged.rename(work)
@@ -210,6 +212,8 @@ def mcp_catalog(spec: Path, home: Path, timeout: float, stop: Path | None) -> di
 
 def request_options(profile: Profile) -> dict:
     options = {}
+    if profile.temperature is not None:
+        options['temperature']=profile.temperature
     if profile.reasoning_effort:
         options["reasoning_effort"] = profile.reasoning_effort
         if profile.engine == "llamacpp" and profile.reasoning_effort == "none":

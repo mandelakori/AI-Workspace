@@ -102,6 +102,12 @@ def parser() -> argparse.ArgumentParser:
     commands.add_parser("harnesses", help="show harness executable inventory")
     context_plan = commands.add_parser('context-plan', help='plan bounded context from measurements; no inference or service changes')
     context_plan.add_argument('configuration', type=Path, help='JSON with measurements and policy objects')
+    calibration=commands.add_parser('local-calibrate',help='bounded private Ollama calibration; dry run unless --apply')
+    calibration.add_argument('output',type=Path)
+    calibration.add_argument('--source',type=Path,required=True,help='existing Ollama model store; never modified')
+    calibration.add_argument('--model',default='qwen3.5:9b')
+    calibration.add_argument('--manifest',default='registry.ollama.ai/library/qwen3.5/9b')
+    calibration.add_argument('--apply',action='store_true')
     commands.add_parser("tools", help="list built-in tools and configured specialist adapters")
     remote = commands.add_parser("a100", help="inspect SSH and manage scoped Lambda lifecycle")
     remote.add_argument("action", nargs="?", choices=["status", "plan", "instances", "types",
@@ -210,6 +216,16 @@ def main(argv: list[str] | None = None) -> int:
             data = json.loads(args.configuration.read_bytes())
             print_json(plan_context(ContextMeasurements(**data['measurements']), **data['policy']))
             return 0
+        if args.command == 'local-calibrate':
+            from .local_calibration import DEFAULT_PLAN,calibrate,seal_report
+            if not args.apply:
+                print_json({'status':'DRY_RUN','plan':DEFAULT_PLAN,'source':args.source,'output':args.output})
+            else:
+                binary=executable('ollama')
+                if not binary:raise ValueError('existing Ollama executable unavailable')
+                calibrate(binary,args.source,args.manifest,args.model,args.output)
+                print_json(seal_report(args.output))
+            return 0
         cfg = Config.load(args.config or Path("aiwork.local.toml"))
         controller = Controller(cfg)
         if args.command == "project":
@@ -291,7 +307,9 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "harnesses":
             from dataclasses import asdict
             from .harness_contracts import ADAPTERS
+            from .pi_harness import pi_path
             print_json({"opencode": opencode_path(cfg.opencode), "qwen": qwen_command(cfg.qwen, cfg.state),
+                        'pi':pi_path(cfg.pi,cfg.state),
                         'declared_capabilities':{name:asdict(value) for name,value in ADAPTERS.items()}})
         elif args.command == "tools":
             from .specialists import capabilities

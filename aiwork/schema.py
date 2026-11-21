@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import re
+import math
 import tomllib
 from dataclasses import dataclass, field
 from pathlib import Path, PureWindowsPath
@@ -90,6 +91,7 @@ class Task:
     public_test_reserve: int = 4
     model_requests: int = 64
     compaction_limit: int = 4
+    context_input_tokens: int = 0
 
     @classmethod
     def load(cls, path: Path) -> Task:
@@ -129,6 +131,7 @@ class Task:
         from .execution_context import ResourcePolicy
         ResourcePolicy(task.tool_operations, task.edit_reserve, task.public_test_reserve,
                        task.model_requests, task.compaction_limit)
+        bounded('context_input_tokens',task.context_input_tokens,0,2_000_000)
         if (not isinstance(task.objective, str) or not task.objective.strip() or
             len(task.objective) > 8000 or not task.workspace.is_dir()):
             raise ValueError("task requires a workspace directory and bounded objective")
@@ -225,13 +228,28 @@ class Profile:
     reasoning_effort: str = ""
     seed: int | None = None
     harness_turns: int = 0
+    temperature: float | None = None
+    local_calibration: str = ''
+    calibration_sha256: str = ''
+    gpu_headroom_mib: int = 512
+    ram_headroom_mib: int = 2048
+    context_reserve_tokens: int = 512
 
     def validate(self) -> None:
+        if self.temperature is not None and (type(self.temperature) not in (int,float)
+                or not math.isfinite(self.temperature) or not 0<=self.temperature<=2):
+            raise ValueError('temperature must be finite and in 0..2')
+        if not isinstance(self.local_calibration,str) or self.local_calibration and (
+            self.engine!='ollama' or self.location!='local' or not re.fullmatch(r'[a-f0-9]{64}',self.calibration_sha256)):
+            raise ValueError('calibrated profiles require local Ollama and a pinned calibration hash')
+        bounded('gpu_headroom_mib',self.gpu_headroom_mib,0,8192)
+        bounded('ram_headroom_mib',self.ram_headroom_mib,0,131072)
+        bounded('context_reserve_tokens',self.context_reserve_tokens,0,65536)
         if not re.fullmatch(r"[a-zA-Z0-9_.-]{1,50}", self.id) or not self.model or len(self.model) > 512:
             raise ValueError("invalid profile ID or model")
         if self.engine not in {"openai", "ollama", "llamacpp", "vllm"}:
             raise ValueError(f"unsupported engine {self.engine}")
-        if self.location not in {"local", "a100"} or self.harness not in {"opencode", "qwen"}:
+        if self.location not in {"local", "a100"} or self.harness not in {"opencode", "qwen", "pi"}:
             raise ValueError("unsupported location or harness")
         if type(self.managed) is not bool or self.managed and self.location != "a100":
             raise ValueError("managed profiles require the A100 plane")
@@ -268,12 +286,16 @@ class Config:
     specialists: dict = field(default_factory=dict)
     verification_image: str = ""
     execution_state: Path | None = None
+    pi: str = ''
 
     @classmethod
     def load(cls, path: Path) -> Config:
         path = path.resolve()
         d = tomllib.loads(path.read_text(encoding="utf-8")) if path.is_file() else {}
-        profiles = tuple(Profile(**p) for p in d.pop("profiles", []))
+        items=d.pop('profiles',[])
+        for p in items:
+            if p.get('local_calibration'):p['local_calibration']=str((path.parent/p['local_calibration']).resolve())
+        profiles = tuple(Profile(**p) for p in items)
         if len(profiles) > 64:
             raise ValueError("a configuration supports up to 64 model profiles")
         if len({p.id for p in profiles}) != len(profiles):
@@ -285,6 +307,7 @@ class Config:
             settings["user_data_file"] = str((path.parent / settings["user_data_file"]).resolve())
         if d.get("execution_state"):
             d["execution_state"] = (path.parent / d["execution_state"]).resolve()
+        if d.get('pi'):d['pi']=str((path.parent/d['pi']).resolve())
         cfg = cls((path.parent / d.pop("state", ".aiwork")).resolve(), profiles, **d)
         bounded("local_slots", cfg.local_slots, 1, 16)
         bounded("a100_slots", cfg.a100_slots, 1, 1)

@@ -1,5 +1,13 @@
 # Architecture
 
+The [adaptive local execution implementation](ADAPTIVE-LOCAL-EXECUTION.md) adds an
+opt-in measured admission path and experimental pinned Pi SDK adapter. The same
+controller/MCP exact editor, contract epochs, category budgets and provider gate
+remain authoritative. Calibrated profiles select the smallest qualifying measured
+window below the operator maximum and launch a PID-checked private Ollama job;
+shared Ollama is not reconfigured. Inert conformance is verified; the live
+OpenCode/Pi comparison requires the [new exact approval](LOCAL-HARNESS-COMPARISON-REVIEW.md).
+
 1. `schema.py` loads the TOML operator contract. `workspace.py` snapshots selected files, refuses linked paths, excludes common credential and harness settings paths, and hashes the stage. Intake records build and test hints, Python function names and syntactic call references, and PE/ELF architecture metadata.
 2. `state.py` claims queued jobs atomically in SQLite. `router.py` ranks eligible profiles by a smoothed verified rate for the same category, preferred compute plane at the stated complexity, historical success time and stable ID. Overrides filter candidates. Jobs record ranked routes and attempt-level failures.
 3. Local and A100 schedulers gate execution with cross-process locks in the controller state directory. A100 dispatch serializes the shared model lane and opens a strict localhost-to-localhost SSH tunnel. The harness runs on Windows. Managed profiles can ask `cloud.py` to acquire and wait for one named Lambda instance. Cloud-init can restore a pre-staged persistent launcher/model and start a private listener.

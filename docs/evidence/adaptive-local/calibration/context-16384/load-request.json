@@ -1,0 +1,7 @@
+{
+  "model": "qwen3.5:9b",
+  "keep_alive": "3m",
+  "options": {
+    "num_ctx": 16384
+  }
+}

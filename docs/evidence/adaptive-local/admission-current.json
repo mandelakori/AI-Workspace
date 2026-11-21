@@ -1,0 +1,83 @@
+{
+  "130": {
+    "selected": null,
+    "demand": 10000,
+    "observed_input_tokens": 7440,
+    "memory": {
+      "at": 659040.625,
+      "ram_total_bytes": 33413771264,
+      "ram_available_bytes": 9282801664,
+      "gpu_total_bytes": 8546942976,
+      "gpu_free_bytes": 7526678528,
+      "gpu_used_bytes": 748683264
+    },
+    "deadline_seconds": 130,
+    "candidates": [
+      {
+        "context": 8192,
+        "rejected": [
+          "observed task demand",
+          "inference deadline"
+        ],
+        "estimated_request_seconds": 175.05845022367782,
+        "required_ram_bytes": 1471844186
+      },
+      {
+        "context": 16384,
+        "rejected": [
+          "inference deadline"
+        ],
+        "estimated_request_seconds": 195.49827298020605,
+        "required_ram_bytes": 5435547648
+      },
+      {
+        "context": 32768,
+        "rejected": [
+          "inference deadline"
+        ],
+        "estimated_request_seconds": 197.65138073272396,
+        "required_ram_bytes": 5435547648
+      }
+    ],
+    "gpu_headroom_mib": 512,
+    "ram_headroom_mib": 2048
+  },
+  "280": {
+    "selected": 16384,
+    "demand": 10000,
+    "observed_input_tokens": 7440,
+    "memory": {
+      "at": 659040.687,
+      "ram_total_bytes": 33413771264,
+      "ram_available_bytes": 9275310080,
+      "gpu_total_bytes": 8546942976,
+      "gpu_free_bytes": 7526678528,
+      "gpu_used_bytes": 748683264
+    },
+    "deadline_seconds": 280,
+    "candidates": [
+      {
+        "context": 8192,
+        "rejected": [
+          "observed task demand"
+        ],
+        "estimated_request_seconds": 175.05845022367782,
+        "required_ram_bytes": 1471844186
+      },
+      {
+        "context": 16384,
+        "rejected": [],
+        "estimated_request_seconds": 195.49827298020605,
+        "required_ram_bytes": 5435547648
+      },
+      {
+        "context": 32768,
+        "rejected": [],
+        "estimated_request_seconds": 197.65138073272396,
+        "required_ram_bytes": 5435547648
+      }
+    ],
+    "gpu_headroom_mib": 512,
+    "ram_headroom_mib": 2048
+  }
+}

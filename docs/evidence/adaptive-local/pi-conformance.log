@@ -1,0 +1,30 @@
+test_cancel_public_check_releases_descendant_lock (test_pi_harness.PiHarnessTests.test_cancel_public_check_releases_descendant_lock) ... ok
+test_cancel_stream_closes_owned_job_and_relay (test_pi_harness.PiHarnessTests.test_cancel_stream_closes_owned_job_and_relay) ... ERROR
+test_clean_resource_exhaustion_is_not_provider_failure (test_pi_harness.PiHarnessTests.test_clean_resource_exhaustion_is_not_provider_failure) ... ok
+test_missing_catalog_fails_before_inert_backend (test_pi_harness.PiHarnessTests.test_missing_catalog_fails_before_inert_backend) ... ok
+test_scoped_inspection_malformed_and_stale_edit_recovery_then_public_check (test_pi_harness.PiHarnessTests.test_scoped_inspection_malformed_and_stale_edit_recovery_then_public_check) ... ok
+test_two_actual_compactions_recover_evicted_source (test_pi_harness.PiHarnessTests.test_two_actual_compactions_recover_evicted_source) ... ok
+
+======================================================================
+ERROR: test_cancel_stream_closes_owned_job_and_relay (test_pi_harness.PiHarnessTests.test_cancel_stream_closes_owned_job_and_relay)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\tests\test_pi_harness.py", line 33, in test_cancel_stream_closes_owned_job_and_relay
+    self.cancel()
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\tests\test_pi_harness.py", line 75, in cancel
+    result=Pi(executable('node'),sdk).execute(profile,task,work,artifacts,task.objective,18,spec,stop)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\aiwork\harness.py", line 73, in execute
+    result = self.run_session(profile, task, stage, artifacts, prompt,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\aiwork\pi_harness.py", line 53, in run_session
+    with ProviderGate(profile.endpoint,profile.model,Inference(profile).key(),artifacts,deadline,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\aiwork\provider_gate.py", line 235, in __exit__
+    raise RuntimeError('provider relay cleanup failed')
+RuntimeError: provider relay cleanup failed
+
+----------------------------------------------------------------------
+Ran 6 tests in 29.262s
+
+FAILED (errors=1)

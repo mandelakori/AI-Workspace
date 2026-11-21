@@ -1,6 +1,22 @@
 # Status as of 2026-11-21
 
+## Adaptive local execution and Pi
+
+| Capability / outcome | Status | Evidence |
+| --- | --- | --- |
+| Local 8K / 16K / 32K calibration | VERIFIED | [Measured report](ADAPTIVE-LOCAL-EXECUTION.md): existing Qwen3.5-9B on RTX 5070 Laptop, six generations and three load-only calls, private PID-owned servers, raw responses and memory/offload logs. These are capacity probes, not engineering results. |
+| 64K capacity | UNTESTED | Conservative projected VRAM headroom withheld the conditional probe; not a claim of hardware impossibility. |
+| Measured-context admission | VERIFIED | SHA-pinned dataset, smallest qualifying measured window, current memory headroom and cold-request latency. Deterministic tests pass; automatic mid-session resizing is UNTESTED / not implemented. |
+| Experimental Pi adapter | VERIFIED | Pinned 1.6.0 installed SDK, four scoped tools, exact editor, persistent contracts, two actual compactions/source recovery, resource exhaustion and owned cancellation pass with inert providers. Live-model engineering capability is UNTESTED. |
+| Regression and packaging | VERIFIED | 178/178 tests pass, no skips, including installed inert harnesses and offline Docker. Offline wheel contains Pi bridge. Failed development attempts preserved. |
+| Matched OpenCode/Pi comparison | UNTESTED | [Exact review](LOCAL-HARNESS-COMPARISON-REVIEW.md), digest `26c715e373551595dd655c09ecdf72bb96a3057fee9d12eeeafe69d721b2e8e2`, PREPARED_NOT_AUTHORIZED. No worker or sealed suite dispatched. |
+| Other harnesses | BLOCKED | Qwen engineering still lacks conformance and is not required. mini-SWE-agent / DeepSeek are UNTESTED and unimplemented; [concrete integration review](HARNESS-COMPATIBILITY.md). |
+| Shared service and historical artifacts | VERIFIED | Shared Ollama preserved; no RAM clearing needed, model download, remote operation, deployment or main merge. Historical evidence and frozen Click checked separately. |
+
 ## Context and resource execution foundation
+
+This section records the preceding `c37a210` checkpoint; the table above supersedes
+its unimplemented Pi and uncalibrated-context entries.
 
 | Capability / outcome | Status | Evidence |
 | --- | --- | --- |

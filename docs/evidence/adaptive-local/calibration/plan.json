@@ -1,0 +1,32 @@
+{
+  "contexts": [
+    8192,
+    16384,
+    32768
+  ],
+  "conditional_context": 65536,
+  "requests_per_context": {
+    "load_only": 1,
+    "short_generation": 1,
+    "long_generation": 1
+  },
+  "max_generation_requests": 8,
+  "max_load_requests": 4,
+  "output_tokens": 128,
+  "request_seconds": 90,
+  "context_seconds": 210,
+  "total_seconds": 900,
+  "gpu_headroom_mib": 512,
+  "ram_headroom_mib": 2048,
+  "seed": 1729,
+  "temperature": 0,
+  "thinking": false,
+  "parallel": 1,
+  "cache_type": "f16",
+  "flash_attention": true,
+  "long_fraction": 0.75,
+  "model": "qwen3.5:9b",
+  "manifest": "registry.ollama.ai/library/qwen3.5/9b",
+  "source": "C:\\Users\\mande\\.ollama\\models",
+  "purpose": "synthetic capacity, not software engineering"
+}

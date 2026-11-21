@@ -1,0 +1,6 @@
+data: {"id": "inert", "object": "chat.completion.chunk", "created": 1, "model": "inert", "choices": [{"index": 0, "delta": {"role": "assistant", "tool_calls": [{"index": 0, "id": "action_4", "type": "function", "function": {"name": "checks_focus", "arguments": "{\"path\": \"module.py\"}"}}]}, "finish_reason": null}]}
+
+data: {"id": "inert", "object": "chat.completion.chunk", "created": 1, "model": "inert", "choices": [{"index": 0, "delta": {}, "finish_reason": "tool_calls"}], "usage": {"prompt_tokens": 1000, "completion_tokens": 50, "total_tokens": 1050}}
+
+data: [DONE]
+

@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "adapter": "pi",
+  "status": "interrupted",
+  "raw_exit_code": 1,
+  "elapsed": 3.73499999998603,
+  "timed_out": true,
+  "cleanup_passed": true,
+  "provider_gate_passed": true,
+  "independent_verification": "pending",
+  "resources": {
+    "epoch": 0,
+    "remaining_operations": 7,
+    "used": {
+      "inspection": 0,
+      "editing": 0,
+      "verification": 1,
+      "inference": 1,
+      "compaction": 0
+    },
+    "exhausted": "",
+    "policy": {
+      "operations": 8,
+      "edit_reserve": 0,
+      "verification_reserve": 0,
+      "model_requests": 64,
+      "compactions": 4,
+      "blocked_limit": 3
+    },
+    "seconds": {
+      "inference": 0.0,
+      "cleanup": null
+    },
+    "contract_sha256": "ebf09b6c4b2c28c57eeac9d36913c0c40dc4c2a8702ce21cf3ebe7fa7dd545fa"
+  },
+  "provider_usage": {
+    "reported": [],
+    "unreported_requests": [
+      1
+    ]
+  }
+}

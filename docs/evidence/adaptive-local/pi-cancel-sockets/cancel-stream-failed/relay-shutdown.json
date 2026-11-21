@@ -1,0 +1,14 @@
+{
+  "owned_connections": [
+    {
+      "fd": 928,
+      "closed": false,
+      "shutdown": true
+    },
+    {
+      "fd": 952,
+      "closed": true,
+      "shutdown": true
+    }
+  ]
+}

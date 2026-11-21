@@ -1,0 +1,43 @@
+# Optional measured local execution. Run from this checkout; no shared service changes.
+# Requires the preserved local calibration/model-store and scripts/Install-Pi.ps1.
+state = "../.aiwork/adaptive-work"
+execution_state = "../.aiwork"
+local_slots = 1
+pi = "../.aiwork/pi-dependency/node_modules/@earendil-works/pi-coding-agent"
+verification_image = "aiwork-engineering:phase3"
+
+[[profiles]]
+id = "measured-opencode"
+model = "qwen3.5:9b"
+endpoint = "http://127.0.0.1:11434/v1" # Replaced by an owned private endpoint.
+engine = "ollama"
+location = "local"
+harness = "opencode"
+context = 32768 # Operator maximum, not the automatically selected window.
+output_tokens = 2048
+temperature = 0
+seed = 1729
+reasoning_effort = "none"
+local_calibration = "../.aiwork/adaptive-local/calibration/calibration.json"
+calibration_sha256 = "7594e3150c4be3f8f380fa1e8a0b722692b0dedbbd2994aae331c66538fa797b"
+gpu_headroom_mib = 512
+ram_headroom_mib = 2048
+context_reserve_tokens = 512
+
+[[profiles]]
+id = "measured-pi"
+model = "qwen3.5:9b"
+endpoint = "http://127.0.0.1:11434/v1"
+engine = "ollama"
+location = "local"
+harness = "pi"
+context = 32768
+output_tokens = 2048
+temperature = 0
+seed = 1729
+reasoning_effort = "none"
+local_calibration = "../.aiwork/adaptive-local/calibration/calibration.json"
+calibration_sha256 = "7594e3150c4be3f8f380fa1e8a0b722692b0dedbbd2994aae331c66538fa797b"
+gpu_headroom_mib = 512
+ram_headroom_mib = 2048
+context_reserve_tokens = 512

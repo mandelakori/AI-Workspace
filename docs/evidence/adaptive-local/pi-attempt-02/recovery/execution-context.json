@@ -1,0 +1,44 @@
+{
+  "contract": {
+    "objective": "Double input",
+    "write_roots": [
+      "module.py"
+    ],
+    "public_checks": [
+      {
+        "argv": [
+          "{python}",
+          "-c",
+          "from module import calculate; assert calculate(3)==6"
+        ]
+      }
+    ],
+    "setup": [],
+    "deadline": null,
+    "policy": {
+      "operations": 32,
+      "edit_reserve": 0,
+      "verification_reserve": 0,
+      "model_requests": 16,
+      "compactions": 4,
+      "blocked_limit": 3
+    }
+  },
+  "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+  "epoch": 0,
+  "visible": [],
+  "issued": {},
+  "events": [],
+  "used": {
+    "inspection": 0,
+    "editing": 0,
+    "verification": 0,
+    "inference": 0,
+    "compaction": 0
+  },
+  "seconds": {
+    "cleanup": 0
+  },
+  "blocked": 0,
+  "exhausted": ""
+}

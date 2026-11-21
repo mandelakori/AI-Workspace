@@ -20,7 +20,8 @@ ADAPTERS = {
     'opencode': Capabilities(True, True, True, True, True, True, True),
     # Existing Qwen adapter uses native edit/write_file, and has no provider gate.
     'qwen': Capabilities(scoped_tools=True, owned_cleanup=True),
-    'pi': Capabilities(), 'mini-swe-agent': Capabilities(), 'deepseek-harness': Capabilities(),
+    'pi': Capabilities(True, True, True, True, True, True, True),
+    'mini-swe-agent': Capabilities(), 'deepseek-harness': Capabilities(),
 }
 
 

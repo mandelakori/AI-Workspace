@@ -132,7 +132,7 @@ class ExecutionContext:
                 s['issued'][key] = {k:value[k] for k in ('path','sha256','line','next_line')}
             return s['epoch'], duplicate
 
-    def provider_request(self, body: dict) -> tuple[dict, dict]:
+    def provider_request(self, body: dict, purpose: str | None = None) -> tuple[dict, dict]:
         """Validate visibility and add the immutable work order on EVERY request."""
         if (not isinstance(body.get('messages'), list) or not body['messages']
                 or any(not isinstance(m, dict) or not isinstance(m.get('role'), str)
@@ -157,7 +157,7 @@ class ExecutionContext:
         last_user = next((m.get('content', '') for m in reversed(body['messages'])
                           if m.get('role') == 'user'), '')
         # Classification is accounting only, never authority to replenish quotas.
-        summary = isinstance(last_user, str) and any(x in last_user.lower() for x in
+        summary = purpose == 'compaction' if purpose is not None else isinstance(last_user, str) and any(x in last_user.lower() for x in
                     ('consolidated summary', 'context checkpoint', 'conversation summary',
                      'summarize the conversation above', 'required summary template'))
         category = 'compaction' if summary else 'inference'

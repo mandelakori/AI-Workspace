@@ -1,0 +1,31 @@
+{
+  "checks": [
+    {
+      "reference": "docs/evidence/phase61/httpx-editing-pilot/evidence-hashes.json",
+      "files": 25,
+      "hashes_match": true
+    },
+    {
+      "reference": "docs/evidence/phase61/discovery-result/evidence-hashes.json",
+      "files": 35,
+      "hashes_match": true
+    },
+    {
+      "reference": "docs/evidence/phase61/discovery-result/local-evidence-inventory.json",
+      "files": 305,
+      "hashes_match": true
+    },
+    {
+      "reference": ".aiwork/phase6/final-freeze.json",
+      "files": 142,
+      "hashes_match": true
+    }
+  ],
+  "total": 507,
+  "main": "cf50e89c2ca2ad21d86fda5473f5ad6edc0c2623",
+  "main_unchanged": true,
+  "old_artifacts_written": false,
+  "real_engineering_comparison_executed": false,
+  "replacement_status": "PREPARED_NOT_AUTHORIZED",
+  "ram_clearing_performed": false
+}

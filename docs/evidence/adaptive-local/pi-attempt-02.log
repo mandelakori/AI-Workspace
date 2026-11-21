@@ -1,0 +1,47 @@
+test_clean_resource_exhaustion_is_not_provider_failure (test_pi_harness.PiHarnessTests.test_clean_resource_exhaustion_is_not_provider_failure) ... FAIL
+test_scoped_inspection_malformed_and_stale_edit_recovery_then_public_check (test_pi_harness.PiHarnessTests.test_scoped_inspection_malformed_and_stale_edit_recovery_then_public_check) ... FAIL
+test_two_actual_compactions_recover_evicted_source (test_pi_harness.PiHarnessTests.test_two_actual_compactions_recover_evicted_source) ... FAIL
+
+======================================================================
+FAIL: test_clean_resource_exhaustion_is_not_provider_failure (test_pi_harness.PiHarnessTests.test_clean_resource_exhaustion_is_not_provider_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\tests\test_pi_harness.py", line 26, in test_clean_resource_exhaustion_is_not_provider_failure
+    self.exercise(exhaust=True)
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\tests\test_pi_harness.py", line 91, in exercise
+    self.assertEqual(result.code,0,result.stderr or result.stdout[-2000:])
+AssertionError: 1 != 0 : r KEEP old and insert new immediately before/after it; new is only the insertion, not old plus insertion. These modes require a unique literal old anchor, preserving all whitespace; new text is literal, including line endings. No fuzzy matching. create requires expected_sha256=absent and old empty. Errors return a source-region hint; reinspect and recover. Python results must parse.","parameters":{"type":"object","properties":{"path":{"type":"string"},"expected_sha256":{"type":"string"},"old":{"type":"string"},"new":{"type":"string"},"mode":{"type":"string","enum":["replace","before","after","create"]}},"required":["path","expected_sha256","old","new","mode"],"additionalProperties":false}},{"name":"checks_focus","description":"Discover qualified symbols and read bounded source (60 lines, 3000 UTF-8 bytes). query is a case-insensitive literal substring of a qualified symbol or source line. Use symbol=Class.method for exact lookup. Follow next_line; unchanged repeated excerpts are suppressed.","parameters":{"type":"object","properties":{"path":{"type":"string"},"line":{"type":"integer","minimum":1},"symbol":{"type":"string"},"query":{"type":"string"}},"required":["path"],"additionalProperties":false}}]},{"role":"user","content":[{"type":"text","text":"Double input"}],"timestamp":1795262221810},{"role":"assistant","content":[],"api":"openai-completions","provider":"aiwork","model":"inert","usage":{"input":0,"output":0,"cacheRead":0,"cacheWrite":0,"totalTokens":0,"cost":{"input":0,"output":0,"cacheRead":0,"cacheWrite":0,"total":0}},"stopReason":"error","timestamp":1795262222094,"errorMessage":"400: {\"code\":\"required_tools_unavailable\",\"message\":\"Provider catalog or model failed the frozen guard\"}","durationMs":62,"thinkingLevel":"off"}],"willRetry":false}
+{"type":"agent_settled","aborted":false}
+{"type":"harness_error","stopReason":"error","error":"400: {\"code\":\"required_tools_unavailable\",\"message\":\"Provider catalog or model failed the frozen guard\"}"}
+
+
+======================================================================
+FAIL: test_scoped_inspection_malformed_and_stale_edit_recovery_then_public_check (test_pi_harness.PiHarnessTests.test_scoped_inspection_malformed_and_stale_edit_recovery_then_public_check)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\tests\test_pi_harness.py", line 20, in test_scoped_inspection_malformed_and_stale_edit_recovery_then_public_check
+    self.exercise()
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\tests\test_pi_harness.py", line 91, in exercise
+    self.assertEqual(result.code,0,result.stderr or result.stdout[-2000:])
+AssertionError: 1 != 0 : r KEEP old and insert new immediately before/after it; new is only the insertion, not old plus insertion. These modes require a unique literal old anchor, preserving all whitespace; new text is literal, including line endings. No fuzzy matching. create requires expected_sha256=absent and old empty. Errors return a source-region hint; reinspect and recover. Python results must parse.","parameters":{"type":"object","properties":{"path":{"type":"string"},"expected_sha256":{"type":"string"},"old":{"type":"string"},"new":{"type":"string"},"mode":{"type":"string","enum":["replace","before","after","create"]}},"required":["path","expected_sha256","old","new","mode"],"additionalProperties":false}},{"name":"checks_focus","description":"Discover qualified symbols and read bounded source (60 lines, 3000 UTF-8 bytes). query is a case-insensitive literal substring of a qualified symbol or source line. Use symbol=Class.method for exact lookup. Follow next_line; unchanged repeated excerpts are suppressed.","parameters":{"type":"object","properties":{"path":{"type":"string"},"line":{"type":"integer","minimum":1},"symbol":{"type":"string"},"query":{"type":"string"}},"required":["path"],"additionalProperties":false}}]},{"role":"user","content":[{"type":"text","text":"Double input"}],"timestamp":1795262225331},{"role":"assistant","content":[],"api":"openai-completions","provider":"aiwork","model":"inert","usage":{"input":0,"output":0,"cacheRead":0,"cacheWrite":0,"totalTokens":0,"cost":{"input":0,"output":0,"cacheRead":0,"cacheWrite":0,"total":0}},"stopReason":"error","timestamp":1795262225635,"errorMessage":"400: {\"code\":\"required_tools_unavailable\",\"message\":\"Provider catalog or model failed the frozen guard\"}","durationMs":32,"thinkingLevel":"off"}],"willRetry":false}
+{"type":"agent_settled","aborted":false}
+{"type":"harness_error","stopReason":"error","error":"400: {\"code\":\"required_tools_unavailable\",\"message\":\"Provider catalog or model failed the frozen guard\"}"}
+
+
+======================================================================
+FAIL: test_two_actual_compactions_recover_evicted_source (test_pi_harness.PiHarnessTests.test_two_actual_compactions_recover_evicted_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\tests\test_pi_harness.py", line 23, in test_two_actual_compactions_recover_evicted_source
+    self.exercise(compactions=True)
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\tests\test_pi_harness.py", line 91, in exercise
+    self.assertEqual(result.code,0,result.stderr or result.stdout[-2000:])
+AssertionError: 1 != 0 : r KEEP old and insert new immediately before/after it; new is only the insertion, not old plus insertion. These modes require a unique literal old anchor, preserving all whitespace; new text is literal, including line endings. No fuzzy matching. create requires expected_sha256=absent and old empty. Errors return a source-region hint; reinspect and recover. Python results must parse.","parameters":{"type":"object","properties":{"path":{"type":"string"},"expected_sha256":{"type":"string"},"old":{"type":"string"},"new":{"type":"string"},"mode":{"type":"string","enum":["replace","before","after","create"]}},"required":["path","expected_sha256","old","new","mode"],"additionalProperties":false}},{"name":"checks_focus","description":"Discover qualified symbols and read bounded source (60 lines, 3000 UTF-8 bytes). query is a case-insensitive literal substring of a qualified symbol or source line. Use symbol=Class.method for exact lookup. Follow next_line; unchanged repeated excerpts are suppressed.","parameters":{"type":"object","properties":{"path":{"type":"string"},"line":{"type":"integer","minimum":1},"symbol":{"type":"string"},"query":{"type":"string"}},"required":["path"],"additionalProperties":false}}]},{"role":"user","content":[{"type":"text","text":"Double input"}],"timestamp":1795262229154},{"role":"assistant","content":[],"api":"openai-completions","provider":"aiwork","model":"inert","usage":{"input":0,"output":0,"cacheRead":0,"cacheWrite":0,"totalTokens":0,"cost":{"input":0,"output":0,"cacheRead":0,"cacheWrite":0,"total":0}},"stopReason":"error","timestamp":1795262229447,"errorMessage":"400: {\"code\":\"required_tools_unavailable\",\"message\":\"Provider catalog or model failed the frozen guard\"}","durationMs":27,"thinkingLevel":"off"}],"willRetry":false}
+{"type":"agent_settled","aborted":false}
+{"type":"harness_error","stopReason":"error","error":"400: {\"code\":\"required_tools_unavailable\",\"message\":\"Provider catalog or model failed the frozen guard\"}"}
+
+
+----------------------------------------------------------------------
+Ran 3 tests in 10.997s
+
+FAILED (failures=3)

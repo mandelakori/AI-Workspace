@@ -1,0 +1,30 @@
+{
+  "failed_closed": true,
+  "requests": [
+    {
+      "request": 1,
+      "offered": [
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [
+        "checks_check"
+      ],
+      "unexpected": [],
+      "passed": false,
+      "forwarded": false,
+      "body_sha256": "b626af37e8a82b38a2e58bd653ffa99edd38e5054e5ff82121ccdd42505fc5df",
+      "adapter_phase": "engineering"
+    }
+  ],
+  "required": [
+    "checks_check",
+    "checks_diff",
+    "checks_edit",
+    "checks_focus"
+  ],
+  "request_rewriting": true,
+  "resource_exhausted": false,
+  "captured_bytes": 2180
+}

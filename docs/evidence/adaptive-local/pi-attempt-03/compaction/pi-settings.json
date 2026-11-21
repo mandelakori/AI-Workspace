@@ -1,0 +1,117 @@
+{
+  "sdk": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\pi-dependency\\node_modules\\@earendil-works\\pi-coding-agent",
+  "workspace": "C:\\Users\\mande\\AppData\\Local\\Temp\\aiwork-pi-rj06mpi7\\workspace",
+  "home": "C:\\Users\\mande\\AppData\\Local\\Temp\\tmpi0d91clu\\artifacts\\harness-home",
+  "endpoint": "http://127.0.0.1:58450/v1",
+  "model": "inert",
+  "context": 8192,
+  "output_tokens": 2048,
+  "deadline": 1795262385.7202826,
+  "keep_recent_tokens": 0,
+  "catalog": [
+    {
+      "name": "check",
+      "description": "Run an approved public command by index in a disposable copy.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 0
+          }
+        },
+        "required": [
+          "index"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "focus",
+      "description": "Discover qualified symbols and read bounded source (60 lines, 3000 UTF-8 bytes). query is a case-insensitive literal substring of a qualified symbol or source line. Use symbol=Class.method for exact lookup. Follow next_line; unchanged repeated excerpts are suppressed.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "line": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "symbol": {
+            "type": "string"
+          },
+          "query": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "diff",
+      "description": "Review a Git diff of current workspace edits.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "edit",
+      "description": "Apply a SHORT exact source edit with current SHA-256 returned by source inspection. replace consumes old and inserts new. before/after KEEP old and insert new immediately before/after it; new is only the insertion, not old plus insertion. These modes require a unique literal old anchor, preserving all whitespace; new text is literal, including line endings. No fuzzy matching. create requires expected_sha256=absent and old empty. Errors return a source-region hint; reinspect and recover. Python results must parse.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "expected_sha256": {
+            "type": "string"
+          },
+          "old": {
+            "type": "string"
+          },
+          "new": {
+            "type": "string"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "replace",
+              "before",
+              "after",
+              "create"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "expected_sha256",
+          "old",
+          "new",
+          "mode"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ],
+  "command": [
+    "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.venv\\Scripts\\python.exe",
+    "-B",
+    "-c",
+    "import sys; from pathlib import Path; sys.path.insert(0, sys.argv[1]); from aiwork.mcp import serve; serve(Path(sys.argv[2]))",
+    "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace",
+    "C:\\Users\\mande\\AppData\\Local\\Temp\\tmpi0d91clu\\artifacts\\pi-tool.json"
+  ],
+  "request_options": {
+    "reasoning_effort": "none",
+    "seed": 1729
+  },
+  "prompt": "Double input"
+}

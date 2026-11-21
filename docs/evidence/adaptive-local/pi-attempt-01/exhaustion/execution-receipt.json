@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "adapter": "pi",
+  "status": "harness_failure",
+  "raw_exit_code": 1,
+  "elapsed": 3.8589999999385327,
+  "timed_out": false,
+  "cleanup_passed": true,
+  "provider_gate_passed": true,
+  "independent_verification": "pending",
+  "resources": {
+    "epoch": 0,
+    "remaining_operations": 1,
+    "used": {
+      "inspection": 0,
+      "editing": 0,
+      "verification": 0,
+      "inference": 0,
+      "compaction": 0
+    },
+    "exhausted": "",
+    "policy": {
+      "operations": 1,
+      "edit_reserve": 0,
+      "verification_reserve": 0,
+      "model_requests": 16,
+      "compactions": 4,
+      "blocked_limit": 3
+    },
+    "seconds": {
+      "cleanup": 0
+    },
+    "contract_sha256": "12624054872918a5ed7dc2059a2d60e537d651fa1f4c7d0240ee6c4173a73a80"
+  },
+  "provider_usage": {
+    "reported": [],
+    "unreported_requests": []
+  }
+}

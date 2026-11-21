@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "adapter": "pi",
+  "status": "cleanup_failure",
+  "raw_exit_code": null,
+  "elapsed": 5.172000000020489,
+  "timed_out": false,
+  "cleanup_passed": false,
+  "provider_gate_passed": false,
+  "independent_verification": "not_started",
+  "error_class": "CleanupFailure"
+}

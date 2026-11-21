@@ -1,0 +1,38 @@
+{
+  "failed_closed": false,
+  "requests": [
+    {
+      "request": 1,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "537de68e2f2809463cabbfa6bb0b4e9c67f67a5da2deacd2834dd6a775a4875e",
+      "adapter_phase": "engineering",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "ebf09b6c4b2c28c57eeac9d36913c0c40dc4c2a8702ce21cf3ebe7fa7dd545fa",
+      "remaining_operations": 8,
+      "contract_bytes": 1149,
+      "forwarded_sha256": "37eac90756d583d73cf126cbfcc35b4ea152869b504b1c4db02d3ea157144c0a",
+      "upstream_status": 200,
+      "response_sha256": "c2168dd02fbee7ee9ae800e6713c1df5065bf14f01f3ed1123490f5a5d5c22c8",
+      "elapsed": 0.0
+    }
+  ],
+  "required": [
+    "checks_check",
+    "checks_diff",
+    "checks_edit",
+    "checks_focus"
+  ],
+  "request_rewriting": true,
+  "resource_exhausted": false,
+  "captured_bytes": 6758
+}

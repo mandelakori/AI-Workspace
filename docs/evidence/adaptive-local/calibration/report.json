@@ -1,0 +1,465 @@
+{
+  "model": "qwen3.5:9b",
+  "model_copy": {
+    "source": "C:\\Users\\mande\\.ollama\\models",
+    "destination": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\adaptive-local\\calibration\\model-store",
+    "manifest": "registry.ollama.ai/library/qwen3.5/9b",
+    "manifest_sha256": "85879493124988ce76ff36a6ac583504cc8d893727db6a0c4f9992a079e6ca49",
+    "blobs": {
+      "sha256:08f9698c1116d2ba3d2c1751f6e98919823e13bb28ff5eb7451c7bc9b40907c5": {
+        "bytes": 177,
+        "sha256": "08f9698c1116d2ba3d2c1751f6e98919823e13bb28ff5eb7451c7bc9b40907c5"
+      },
+      "sha256:f836f08f921193f4d6b6a6952dba0a6fb116759d26a757bcb395d570d73976ca": {
+        "bytes": 921704832,
+        "sha256": "f836f08f921193f4d6b6a6952dba0a6fb116759d26a757bcb395d570d73976ca"
+      },
+      "sha256:02d45dc1cf451ba2475ac33b301c2dd8f985abe4c182ce04a1f2f5bf0260278d": {
+        "bytes": 5629109120,
+        "sha256": "02d45dc1cf451ba2475ac33b301c2dd8f985abe4c182ce04a1f2f5bf0260278d"
+      },
+      "sha256:b507b9c2f6ca642bffcd06665ea7c91f235fd32daeefdf875a0f938db05fb315": {
+        "bytes": 13,
+        "sha256": "b507b9c2f6ca642bffcd06665ea7c91f235fd32daeefdf875a0f938db05fb315"
+      },
+      "sha256:50cbab8a892c5f2993b8c7351a99182507472def3b1374558308605d99b86b32": {
+        "bytes": 11343,
+        "sha256": "50cbab8a892c5f2993b8c7351a99182507472def3b1374558308605d99b86b32"
+      },
+      "sha256:9371364b27a52acac9d87f88bd93c9db1174d8d6ec57f6888925cdc1788871ff": {
+        "bytes": 65,
+        "sha256": "9371364b27a52acac9d87f88bd93c9db1174d8d6ec57f6888925cdc1788871ff"
+      },
+      "sha256:fdf5fd4cd409881fac86077d7be23e1cb1a4d1c0083108ff81ad557b3dfd7b01": {
+        "bytes": 470,
+        "sha256": "fdf5fd4cd409881fac86077d7be23e1cb1a4d1c0083108ff81ad557b3dfd7b01"
+      },
+      "sha256:56671c2ab9385f9cfcb404638e32cd62d88e3501d44822208363c010179a3c90": {
+        "bytes": 1088,
+        "sha256": "56671c2ab9385f9cfcb404638e32cd62d88e3501d44822208363c010179a3c90"
+      }
+    }
+  },
+  "contexts": [
+    {
+      "context": 8192,
+      "status": "measured",
+      "resident": {
+        "name": "qwen3.5:9b",
+        "model": "qwen3.5:9b",
+        "size": 6386069009,
+        "digest": "85879493124988ce76ff36a6ac583504cc8d893727db6a0c4f9992a079e6ca49",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": [
+            "qwen35"
+          ],
+          "parameter_size": "9.0B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-11-21T06:49:51.4243476-05:00",
+        "size_vram": 5451095735,
+        "context_length": 8192,
+        "runner": "llamacpp"
+      },
+      "short": {
+        "wall_seconds": 46.78099999995902,
+        "first_token_seconds": 41.85900000005495,
+        "visible": "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46",
+        "thinking": "",
+        "usage": {
+          "model": "qwen3.5:9b",
+          "created_at": "2026-11-21T11:47:38.2380793Z",
+          "done": true,
+          "done_reason": "length",
+          "total_duration": 46786249800,
+          "load_duration": 11049600,
+          "prompt_eval_count": 1033,
+          "prompt_eval_cached_count": 0,
+          "prompt_eval_duration": 41834776000,
+          "eval_count": 128,
+          "eval_duration": 4924453000
+        },
+        "prefill_tokens_per_second": 24.69237554899302,
+        "generation_tokens_per_second": 25.992734624535967
+      },
+      "long": {
+        "wall_seconds": 6.562000000034459,
+        "first_token_seconds": 3.156000000075437,
+        "visible": "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46",
+        "thinking": "",
+        "usage": {
+          "model": "qwen3.5:9b",
+          "created_at": "2026-11-21T11:47:44.7995336Z",
+          "done": true,
+          "done_reason": "length",
+          "total_duration": 6537020200,
+          "load_duration": 7340000,
+          "prompt_eval_count": 6183,
+          "prompt_eval_cached_count": 0,
+          "prompt_eval_duration": 3071163000,
+          "eval_count": 128,
+          "eval_duration": 3410678000
+        },
+        "prefill_tokens_per_second": 2013.2438428048267,
+        "generation_tokens_per_second": 37.52919507499682
+      },
+      "prefill_tokens_per_second": 2013.2438428048267,
+      "generation_tokens_per_second": 25.992734624535967,
+      "baseline": {
+        "at": 657661.203,
+        "ram_total_bytes": 33413771264,
+        "ram_available_bytes": 10509746176,
+        "gpu_total_bytes": 8546942976,
+        "gpu_free_bytes": 7796162560,
+        "gpu_used_bytes": 479199232
+      },
+      "gpu_increment_bytes": 6532628480,
+      "ram_increment_bytes": 964857856,
+      "allocation_evidence": [
+        "load_tensors:    CUDA_Host model buffer size =   821.47 MiB",
+        "llama_context: kv_unified            = false",
+        "llama_context:  CUDA_Host  output buffer size =     0.95 MiB",
+        "llama_kv_cache:      CUDA0 KV buffer size =   256.00 MiB",
+        "llama_kv_cache: size =  256.00 MiB (  8192 cells,   8 layers,  1/1 seqs), K (f16):  128.00 MiB, V (f16):  128.00 MiB",
+        "llama_kv_cache: n_rot_k = 0, n_embd_head_k_all = 256",
+        "llama_kv_cache: n_rot_v = 0, n_embd_head_k_all = 256",
+        "llama_memory_recurrent:        CPU RS buffer size =     4.19 MiB",
+        "llama_memory_recurrent:      CUDA0 RS buffer size =    46.06 MiB",
+        "llama_memory_recurrent: size =   50.25 MiB (     1 cells,  32 layers,  1 seqs  0 rs_seq), R (f32):    2.25 MiB, S (f32):   48.00 MiB, P (f32):    0.00 MiB",
+        "sched_reserve:      CUDA0 compute buffer size =   112.00 MiB",
+        "sched_reserve:  CUDA_Host compute buffer size =    40.12 MiB",
+        "cmn  common_init_: KV cache shifting is not supported for this context, disabling KV cache shifting",
+        "clip_model_loader: n_kv:         28",
+        "reserve_compute_meta:      CUDA0 compute buffer size =   248.10 MiB",
+        "reserve_compute_meta:        CPU compute buffer size =    24.93 MiB",
+        "srv    load_model: initializing, n_slots = 1, n_ctx_slot = 8192, kv_unified = 'false'",
+        "srv    load_model: prompt cache is enabled, size limit: 8192 MiB",
+        "srv    load_model: use `--cache-ram 0` to disable the prompt cache",
+        "srv          init: idle slots will be saved to prompt cache upon starting a new task",
+        "srv  get_availabl: updating prompt cache",
+        "srv        update:  - cache state: 0 prompts, 0.000 MiB (limits: 8192.000 MiB, 8192 tokens, 8589934592 est)",
+        "srv  get_availabl: prompt cache update took 0.50 ms",
+        "slot   operator(): id  0 | task 0 | cached n_tokens = 0, memory_seq_rm [0, end)",
+        "slot   operator(): id  0 | task 0 | cached n_tokens = 512, memory_seq_rm [512, end)",
+        "slot   operator(): id  0 | task 0 | cached n_tokens = 521, memory_seq_rm [521, end)",
+        "slot   operator(): id  0 | task 0 | cached n_tokens = 1029, memory_seq_rm [1029, end)",
+        "srv  get_availabl: updating prompt cache",
+        "srv        update:  - cache state: 1 prompts, 187.028 MiB (limits: 8192.000 MiB, 8192 tokens, 50808 est)",
+        "srv  get_availabl: prompt cache update took 24.66 ms",
+        "slot   operator(): id  0 | task 132 | forcing full prompt re-processing due to lack of cache data (likely due to SWA or hybrid/recurrent memory, see https://github.com/ggml-org/llama.cpp/pull/13194#issuecomment-2868343055)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 0, memory_seq_rm [0, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 512, memory_seq_rm [512, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 1024, memory_seq_rm [1024, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 1536, memory_seq_rm [1536, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 2048, memory_seq_rm [2048, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 2560, memory_seq_rm [2560, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 3072, memory_seq_rm [3072, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 3584, memory_seq_rm [3584, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 4096, memory_seq_rm [4096, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 4608, memory_seq_rm [4608, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 5120, memory_seq_rm [5120, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 5632, memory_seq_rm [5632, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 5671, memory_seq_rm [5671, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 6179, memory_seq_rm [6179, end)"
+      ]
+    },
+    {
+      "context": 16384,
+      "status": "measured",
+      "resident": {
+        "name": "qwen3.5:9b",
+        "model": "qwen3.5:9b",
+        "size": 6681756956,
+        "digest": "85879493124988ce76ff36a6ac583504cc8d893727db6a0c4f9992a079e6ca49",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": [
+            "qwen35"
+          ],
+          "parameter_size": "9.0B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-11-21T06:51:40.2992667-05:00",
+        "size_vram": 5392417422,
+        "context_length": 16384,
+        "runner": "llamacpp"
+      },
+      "short": {
+        "wall_seconds": 53.75,
+        "first_token_seconds": 47.85900000005495,
+        "visible": "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46",
+        "thinking": "",
+        "usage": {
+          "model": "qwen3.5:9b",
+          "created_at": "2026-11-21T11:49:34.0794689Z",
+          "done": true,
+          "done_reason": "length",
+          "total_duration": 53741289000,
+          "load_duration": 6974300,
+          "prompt_eval_count": 1033,
+          "prompt_eval_cached_count": 0,
+          "prompt_eval_duration": 47833548000,
+          "eval_count": 128,
+          "eval_duration": 5893770000
+        },
+        "prefill_tokens_per_second": 21.59572189794493,
+        "generation_tokens_per_second": 21.717847829148408
+      },
+      "long": {
+        "wall_seconds": 12.265999999945052,
+        "first_token_seconds": 7.780999999959022,
+        "visible": "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46",
+        "thinking": "",
+        "usage": {
+          "model": "qwen3.5:9b",
+          "created_at": "2026-11-21T11:49:46.3652727Z",
+          "done": true,
+          "done_reason": "length",
+          "total_duration": 12274801400,
+          "load_duration": 18244600,
+          "prompt_eval_count": 12327,
+          "prompt_eval_cached_count": 0,
+          "prompt_eval_duration": 7646713000,
+          "eval_count": 128,
+          "eval_duration": 4481024000
+        },
+        "prefill_tokens_per_second": 1612.0652102413155,
+        "generation_tokens_per_second": 28.564899451553934
+      },
+      "prefill_tokens_per_second": 1612.0652102413155,
+      "generation_tokens_per_second": 21.717847829148408,
+      "baseline": {
+        "at": 657776.593,
+        "ram_total_bytes": 33413771264,
+        "ram_available_bytes": 11017043968,
+        "gpu_total_bytes": 8546942976,
+        "gpu_free_bytes": 7795113984,
+        "gpu_used_bytes": 480247808
+      },
+      "gpu_increment_bytes": 6581911552,
+      "ram_increment_bytes": 5435547648,
+      "allocation_evidence": [
+        "cmn  common_init_: KV cache shifting is not supported for this context, disabling KV cache shifting",
+        "clip_model_loader: n_kv:         28",
+        "reserve_compute_meta:      CUDA0 compute buffer size =   248.10 MiB",
+        "reserve_compute_meta:        CPU compute buffer size =    24.93 MiB",
+        "srv    load_model: initializing, n_slots = 1, n_ctx_slot = 16384, kv_unified = 'false'",
+        "srv    load_model: prompt cache is enabled, size limit: 8192 MiB",
+        "srv    load_model: use `--cache-ram 0` to disable the prompt cache",
+        "srv          init: idle slots will be saved to prompt cache upon starting a new task",
+        "srv  get_availabl: updating prompt cache",
+        "srv        update:  - cache state: 0 prompts, 0.000 MiB (limits: 8192.000 MiB, 16384 tokens, 8589934592 est)",
+        "srv  get_availabl: prompt cache update took 0.01 ms",
+        "slot   operator(): id  0 | task 0 | cached n_tokens = 0, memory_seq_rm [0, end)",
+        "slot   operator(): id  0 | task 0 | cached n_tokens = 512, memory_seq_rm [512, end)",
+        "slot   operator(): id  0 | task 0 | cached n_tokens = 521, memory_seq_rm [521, end)",
+        "slot   operator(): id  0 | task 0 | cached n_tokens = 1029, memory_seq_rm [1029, end)",
+        "srv  get_availabl: updating prompt cache",
+        "srv        update:  - cache state: 1 prompts, 187.028 MiB (limits: 8192.000 MiB, 16384 tokens, 50808 est)",
+        "srv  get_availabl: prompt cache update took 58.89 ms",
+        "slot   operator(): id  0 | task 132 | forcing full prompt re-processing due to lack of cache data (likely due to SWA or hybrid/recurrent memory, see https://github.com/ggml-org/llama.cpp/pull/13194#issuecomment-2868343055)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 0, memory_seq_rm [0, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 512, memory_seq_rm [512, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 1024, memory_seq_rm [1024, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 1536, memory_seq_rm [1536, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 2048, memory_seq_rm [2048, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 2560, memory_seq_rm [2560, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 3072, memory_seq_rm [3072, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 3584, memory_seq_rm [3584, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 4096, memory_seq_rm [4096, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 4608, memory_seq_rm [4608, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 5120, memory_seq_rm [5120, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 5632, memory_seq_rm [5632, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 6144, memory_seq_rm [6144, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 6656, memory_seq_rm [6656, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 7168, memory_seq_rm [7168, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 7680, memory_seq_rm [7680, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 8192, memory_seq_rm [8192, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 8704, memory_seq_rm [8704, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 9216, memory_seq_rm [9216, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 9728, memory_seq_rm [9728, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 10240, memory_seq_rm [10240, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 10752, memory_seq_rm [10752, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 11264, memory_seq_rm [11264, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 11776, memory_seq_rm [11776, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 11815, memory_seq_rm [11815, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 12323, memory_seq_rm [12323, end)"
+      ]
+    },
+    {
+      "context": 32768,
+      "status": "measured",
+      "resident": {
+        "name": "qwen3.5:9b",
+        "model": "qwen3.5:9b",
+        "size": 7336078865,
+        "digest": "85879493124988ce76ff36a6ac583504cc8d893727db6a0c4f9992a079e6ca49",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": [
+            "qwen35"
+          ],
+          "parameter_size": "9.0B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-11-21T06:53:40.2065302-05:00",
+        "size_vram": 5565652663,
+        "context_length": 32768,
+        "runner": "llamacpp"
+      },
+      "short": {
+        "wall_seconds": 39.625,
+        "first_token_seconds": 32.438000000081956,
+        "visible": "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46",
+        "thinking": "",
+        "usage": {
+          "model": "qwen3.5:9b",
+          "created_at": "2026-11-21T11:51:19.8792253Z",
+          "done": true,
+          "done_reason": "length",
+          "total_duration": 39632162800,
+          "load_duration": 12929200,
+          "prompt_eval_count": 1033,
+          "prompt_eval_cached_count": 0,
+          "prompt_eval_duration": 32409382000,
+          "eval_count": 128,
+          "eval_duration": 7195533000
+        },
+        "prefill_tokens_per_second": 31.87348651078876,
+        "generation_tokens_per_second": 17.78881425462158
+      },
+      "long": {
+        "wall_seconds": 26.358999999938533,
+        "first_token_seconds": 19.18799999996554,
+        "visible": "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46",
+        "thinking": "",
+        "usage": {
+          "model": "qwen3.5:9b",
+          "created_at": "2026-11-21T11:51:46.2539081Z",
+          "done": true,
+          "done_reason": "length",
+          "total_duration": 26345567500,
+          "load_duration": 10408900,
+          "prompt_eval_count": 24615,
+          "prompt_eval_cached_count": 0,
+          "prompt_eval_duration": 19030698000,
+          "eval_count": 128,
+          "eval_duration": 7171527000
+        },
+        "prefill_tokens_per_second": 1293.436530809327,
+        "generation_tokens_per_second": 17.848360607162185
+      },
+      "prefill_tokens_per_second": 1293.436530809327,
+      "generation_tokens_per_second": 17.78881425462158,
+      "baseline": {
+        "at": 657898.093,
+        "ram_total_bytes": 33413771264,
+        "ram_available_bytes": 5562105856,
+        "gpu_total_bytes": 8546942976,
+        "gpu_free_bytes": 7696547840,
+        "gpu_used_bytes": 578813952
+      },
+      "gpu_increment_bytes": 6770655232,
+      "ram_increment_bytes": 0,
+      "allocation_evidence": [
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 2560, memory_seq_rm [2560, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 3072, memory_seq_rm [3072, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 3584, memory_seq_rm [3584, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 4096, memory_seq_rm [4096, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 4608, memory_seq_rm [4608, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 5120, memory_seq_rm [5120, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 5632, memory_seq_rm [5632, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 6144, memory_seq_rm [6144, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 6656, memory_seq_rm [6656, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 7168, memory_seq_rm [7168, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 7680, memory_seq_rm [7680, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 8192, memory_seq_rm [8192, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 8704, memory_seq_rm [8704, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 9216, memory_seq_rm [9216, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 9728, memory_seq_rm [9728, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 10240, memory_seq_rm [10240, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 10752, memory_seq_rm [10752, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 11264, memory_seq_rm [11264, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 11776, memory_seq_rm [11776, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 12288, memory_seq_rm [12288, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 12800, memory_seq_rm [12800, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 13312, memory_seq_rm [13312, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 13824, memory_seq_rm [13824, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 14336, memory_seq_rm [14336, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 14848, memory_seq_rm [14848, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 15360, memory_seq_rm [15360, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 15872, memory_seq_rm [15872, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 16384, memory_seq_rm [16384, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 16896, memory_seq_rm [16896, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 17408, memory_seq_rm [17408, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 17920, memory_seq_rm [17920, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 18432, memory_seq_rm [18432, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 18944, memory_seq_rm [18944, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 19456, memory_seq_rm [19456, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 19968, memory_seq_rm [19968, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 20480, memory_seq_rm [20480, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 20992, memory_seq_rm [20992, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 21504, memory_seq_rm [21504, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 22016, memory_seq_rm [22016, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 22528, memory_seq_rm [22528, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 23040, memory_seq_rm [23040, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 23552, memory_seq_rm [23552, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 24064, memory_seq_rm [24064, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 24103, memory_seq_rm [24103, end)",
+        "slot   operator(): id  0 | task 132 | cached n_tokens = 24611, memory_seq_rm [24611, end)"
+      ]
+    }
+  ],
+  "plan": {
+    "contexts": [
+      8192,
+      16384,
+      32768
+    ],
+    "conditional_context": 65536,
+    "requests_per_context": {
+      "load_only": 1,
+      "short_generation": 1,
+      "long_generation": 1
+    },
+    "max_generation_requests": 8,
+    "max_load_requests": 4,
+    "output_tokens": 128,
+    "request_seconds": 90,
+    "context_seconds": 210,
+    "total_seconds": 900,
+    "gpu_headroom_mib": 512,
+    "ram_headroom_mib": 2048,
+    "seed": 1729,
+    "temperature": 0,
+    "thinking": false,
+    "parallel": 1,
+    "cache_type": "f16",
+    "flash_attention": true,
+    "long_fraction": 0.75
+  },
+  "engineering_benchmark": false,
+  "elapsed_seconds": 369.23399999993853,
+  "conditional64": {
+    "run": false,
+    "projected_gpu_bytes": 7148142592,
+    "projected_ram_bytes": 0,
+    "projected_long_request_seconds": 45.196624533455214,
+    "memory": {
+      "at": 658017.953,
+      "ram_total_bytes": 33413771264,
+      "ram_available_bytes": 5921624064,
+      "gpu_total_bytes": 8546942976,
+      "gpu_free_bytes": 7577010176,
+      "gpu_used_bytes": 698351616
+    },
+    "reason": "projected memory headroom or deadline insufficient"
+  }
+}

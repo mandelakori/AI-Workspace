@@ -1,0 +1,236 @@
+{
+  "failed_closed": false,
+  "requests": [
+    {
+      "request": 1,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "c266736a4292eecb7ecdbf1bedc2a8b74d728502d9ed5923548062b0643210b9",
+      "adapter_phase": "engineering",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 32,
+      "contract_bytes": 862,
+      "forwarded_sha256": "798462f9aa57c0c80cfba4ec1acb244f94ac8e9aa28a0851e494b9511f164ae4",
+      "upstream_status": 200,
+      "response_sha256": "124caad557c470137ca246e8bddc39a5f347ec731b64cead93062129b57dcd11",
+      "usage": {
+        "prompt_tokens": 7600,
+        "completion_tokens": 50,
+        "total_tokens": 7650
+      },
+      "elapsed": 0.015000000013969839
+    },
+    {
+      "request": 2,
+      "offered": [],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "ee8757bb6ecef218b7d1c4b6d0fe27296f3ab33f6b5c4828165471c8fb86ba70",
+      "adapter_phase": "compaction",
+      "epoch": 1,
+      "category": "compaction",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 31,
+      "contract_bytes": 1009,
+      "forwarded_sha256": "f005042ceb2a2683bebafc3dfb2cc92ac6077faa1e2755bbe92758713761788f",
+      "upstream_status": 200,
+      "response_sha256": "e1ac7a1d907cfc064ce21b223c4e389121724504131d88ac355b4122f4bfd725",
+      "usage": {
+        "prompt_tokens": 1000,
+        "completion_tokens": 50,
+        "total_tokens": 1050
+      },
+      "elapsed": 0.01600000006146729
+    },
+    {
+      "request": 3,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "c770bd6029c64090ff23cd58d8a188691b7a58678ce06df39992c4ad4ae0174e",
+      "adapter_phase": "engineering",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 31,
+      "contract_bytes": 862,
+      "forwarded_sha256": "ae6f223f83b6902cf229edaee9bccda16368d3849b961ddfc4bed2289d2b39a5",
+      "upstream_status": 200,
+      "response_sha256": "4fa80edc74fb053095b8830c73822d5bc106ac85ee3f145621589bcfe4b96f1d",
+      "usage": {
+        "prompt_tokens": 7600,
+        "completion_tokens": 50,
+        "total_tokens": 7650
+      },
+      "elapsed": 0.015999999945051968
+    },
+    {
+      "request": 4,
+      "offered": [],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "21061d7d37f79539be947a5a9bcb290affd65c26376811c635f106f05d3903bb",
+      "adapter_phase": "compaction",
+      "epoch": 2,
+      "category": "compaction",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 30,
+      "contract_bytes": 1009,
+      "forwarded_sha256": "0e6a18929eb6bb88fbc2d57df56a060fe3c6f1ba441f457addd6e58182a48a9e",
+      "upstream_status": 200,
+      "response_sha256": "e1ac7a1d907cfc064ce21b223c4e389121724504131d88ac355b4122f4bfd725",
+      "usage": {
+        "prompt_tokens": 1000,
+        "completion_tokens": 50,
+        "total_tokens": 1050
+      },
+      "elapsed": 0.015999999945051968
+    },
+    {
+      "request": 5,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "5a6959ac22537a38cf99e3e1a41709729e259642ebcedbfd5335c5ea81fb3c12",
+      "adapter_phase": "engineering",
+      "epoch": 2,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 30,
+      "contract_bytes": 862,
+      "forwarded_sha256": "7c290fba0cc16bdba6c68d42ea424b0cf8475e501c3010d2eab5cff1458cf7a2",
+      "upstream_status": 200,
+      "response_sha256": "61e54969c4961668e0cca44e35d0c6128daa931ce1056a43b092ed9a45369a13",
+      "usage": {
+        "prompt_tokens": 1000,
+        "completion_tokens": 50,
+        "total_tokens": 1050
+      },
+      "elapsed": 0.015000000013969839
+    },
+    {
+      "request": 6,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "e1a24266130a0a95cefb9e64f00a41d0c6ed90f87c0ce9bcf5ec59f27b836d02",
+      "adapter_phase": "engineering",
+      "epoch": 2,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 29,
+      "contract_bytes": 862,
+      "forwarded_sha256": "95984f7f17bec0a6637707f814e37ec523f9d97a0796539519f269456d916357",
+      "upstream_status": 200,
+      "response_sha256": "3da98abf5bc587d9376529c4357c53de46be71d80b93cff2942070a2c511421a",
+      "usage": {
+        "prompt_tokens": 1000,
+        "completion_tokens": 50,
+        "total_tokens": 1050
+      },
+      "elapsed": 0.0
+    },
+    {
+      "request": 7,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "b911cdcad301ee0e5ea7533c9a750071e5d723304714e3b3835bc7b7111a168e",
+      "adapter_phase": "engineering",
+      "epoch": 2,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 28,
+      "contract_bytes": 862,
+      "forwarded_sha256": "ff2eac636f571b898456c013c32463525cf96982478ced3f56f7d98f3c4637af",
+      "upstream_status": 200,
+      "response_sha256": "6ba44cac8c398426fe2a0ea6d48c517f2e88d1de65df13c3b558bc9a03c94cac",
+      "usage": {
+        "prompt_tokens": 1000,
+        "completion_tokens": 50,
+        "total_tokens": 1050
+      },
+      "elapsed": 0.030999999959021807
+    },
+    {
+      "request": 8,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "77ed08cde7327301b14518aee086bfbc6066cc98888e44f1507b03034e4a5406",
+      "adapter_phase": "engineering",
+      "epoch": 2,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 27,
+      "contract_bytes": 862,
+      "forwarded_sha256": "af35cc2325c47d6cf6df6339a0cd0037486d9c98c11bb1c51d604b5eb1cbd06d",
+      "upstream_status": 200,
+      "response_sha256": "a81635b9c91870ecc6256e7393f2d5652defad24488ce0791ffab01e230a96b2",
+      "usage": {
+        "prompt_tokens": 1000,
+        "completion_tokens": 50,
+        "total_tokens": 1050
+      },
+      "elapsed": 0.0
+    }
+  ],
+  "required": [
+    "checks_check",
+    "checks_diff",
+    "checks_edit",
+    "checks_focus"
+  ],
+  "request_rewriting": true,
+  "resource_exhausted": false,
+  "captured_bytes": 86314
+}

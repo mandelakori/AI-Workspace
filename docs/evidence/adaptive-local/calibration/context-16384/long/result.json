@@ -1,0 +1,21 @@
+{
+  "wall_seconds": 12.265999999945052,
+  "first_token_seconds": 7.780999999959022,
+  "visible": "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46",
+  "thinking": "",
+  "usage": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-21T11:49:46.3652727Z",
+    "done": true,
+    "done_reason": "length",
+    "total_duration": 12274801400,
+    "load_duration": 18244600,
+    "prompt_eval_count": 12327,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 7646713000,
+    "eval_count": 128,
+    "eval_duration": 4481024000
+  },
+  "prefill_tokens_per_second": 1612.0652102413155,
+  "generation_tokens_per_second": 28.564899451553934
+}

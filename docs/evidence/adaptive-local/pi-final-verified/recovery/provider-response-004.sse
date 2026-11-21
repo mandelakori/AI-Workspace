@@ -1,0 +1,6 @@
+data: {"id": "inert", "object": "chat.completion.chunk", "created": 1, "model": "inert", "choices": [{"index": 0, "delta": {"role": "assistant", "tool_calls": [{"index": 0, "id": "action_3", "type": "function", "function": {"name": "checks_edit", "arguments": "{\"path\": \"module.py\", \"expected_sha256\": \"0000000000000000000000000000000000000000000000000000000000000000\", \"old\": \"return value\", \"new\": \"return value * 2\", \"mode\": \"replace\"}"}}]}, "finish_reason": null}]}
+
+data: {"id": "inert", "object": "chat.completion.chunk", "created": 1, "model": "inert", "choices": [{"index": 0, "delta": {}, "finish_reason": "tool_calls"}], "usage": {"prompt_tokens": 1000, "completion_tokens": 50, "total_tokens": 1050}}
+
+data: [DONE]
+

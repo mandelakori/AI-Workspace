@@ -1,0 +1,13 @@
+{
+  "failed_closed": false,
+  "requests": [],
+  "required": [
+    "checks_check",
+    "checks_diff",
+    "checks_edit",
+    "checks_focus"
+  ],
+  "request_rewriting": true,
+  "resource_exhausted": false,
+  "captured_bytes": 0
+}

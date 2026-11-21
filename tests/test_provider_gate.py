@@ -9,12 +9,28 @@ from urllib.error import HTTPError
 from urllib.request import Request, build_opener, ProxyHandler
 import unittest
 from unittest.mock import patch
+from time import sleep
 
 from aiwork.provider_gate import catalog, ProviderGate, REQUIRED
 from aiwork.execution_context import ExecutionContext, ResourcePolicy
 
 
 class ProviderGateTests(unittest.TestCase):
+    def test_slow_inert_prefill_survives_multiple_cancellation_poll_intervals(self):
+        class Backend(BaseHTTPRequestHandler):
+            def log_message(self,*args):pass
+            def do_POST(self):
+                self.rfile.read(int(self.headers['Content-Length']))
+                self.send_response(200);self.end_headers();sleep(.8);self.wfile.write(b'{"ok":true}')
+        with tempfile.TemporaryDirectory() as directory,ThreadingHTTPServer(('127.0.0.1',0),Backend) as backend:
+            thread=Thread(target=backend.serve_forever);thread.start()
+            try:
+                with ProviderGate(f'http://127.0.0.1:{backend.server_port}/v1','inert','',Path(directory),monotonic()+5) as gate:
+                    req=Request(gate.endpoint+'/chat/completions',json.dumps(self.body()).encode(),
+                                headers={'Authorization':'Bearer '+gate.token})
+                    with build_opener(ProxyHandler({})).open(req,timeout=3) as response:self.assertEqual(response.read(),b'{"ok":true}')
+                self.assertFalse(gate.failed.is_set())
+            finally:backend.shutdown();thread.join()
     def body(self, names=REQUIRED):
         return {'model':'inert','messages':[{'role':'user','content':'synthetic'}],
                 'tools':[{'type':'function','function':{'name':n,'parameters':{'type':'object'}}} for n in sorted(names)]}

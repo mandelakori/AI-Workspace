@@ -1,0 +1,170 @@
+{
+  "contract": {
+    "objective": "Double input",
+    "write_roots": [
+      "module.py"
+    ],
+    "public_checks": [
+      {
+        "argv": [
+          "{python}",
+          "-c",
+          "from module import calculate; assert calculate(3)==6"
+        ]
+      }
+    ],
+    "setup": [],
+    "deadline": null,
+    "policy": {
+      "operations": 32,
+      "edit_reserve": 0,
+      "verification_reserve": 0,
+      "model_requests": 16,
+      "compactions": 4,
+      "blocked_limit": 3
+    }
+  },
+  "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+  "epoch": 2,
+  "visible": [
+    "ea36faef96a6d3e743fa61df5274b259e29dbb37a4be385979d9dbab73140a29"
+  ],
+  "issued": {
+    "ea36faef96a6d3e743fa61df5274b259e29dbb37a4be385979d9dbab73140a29": {
+      "path": "module.py",
+      "sha256": "3197afc6bf6b46c02f1fe2f127bafaf80c117c65564e34af0dffc1f644818a5a",
+      "line": 1,
+      "next_line": null
+    }
+  },
+  "events": [
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 32,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "compaction",
+      "epoch": 1,
+      "evicted": []
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "compaction",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 31,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 31,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 1,
+      "denied": ""
+    },
+    {
+      "event": "compaction",
+      "epoch": 2,
+      "evicted": [
+        "ea36faef96a6d3e743fa61df5274b259e29dbb37a4be385979d9dbab73140a29"
+      ]
+    },
+    {
+      "event": "provider",
+      "epoch": 2,
+      "category": "compaction",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 30,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 2,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 30,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 2,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 2,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 29,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 2,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 2,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 28,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "check",
+      "category": "verification",
+      "epoch": 2,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 2,
+      "category": "inference",
+      "contract_sha256": "1f0198329bcce13ee1916dfa08b4dc8fc48297882049eb8969b1ad39ff4c6f8e",
+      "remaining_operations": 27,
+      "denied": ""
+    }
+  ],
+  "used": {
+    "inspection": 3,
+    "editing": 1,
+    "verification": 1,
+    "inference": 6,
+    "compaction": 2
+  },
+  "seconds": {
+    "inference": 0.030999999959021807,
+    "inspection": 0.06299999984912574,
+    "compaction": 0.01600000006146729,
+    "editing": 0.015000000013969839,
+    "verification": 0.15700000000651926,
+    "cleanup": 0
+  },
+  "blocked": 0,
+  "exhausted": ""
+}

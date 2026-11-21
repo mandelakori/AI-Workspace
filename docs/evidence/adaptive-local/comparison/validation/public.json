@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python",
+    "_benchmark_checks.py",
+    "public"
+  ],
+  "cwd": "",
+  "runner": "sha256:5c19bf11295cb95f58cdc0250c8f699292e453a05b9fdf3960346b3517fe1abf",
+  "code": 1,
+  "elapsed": 1.202999999979511,
+  "stdout": "{\"passed\": 2, \"total\": 10, \"cases\": [{\"id\": \"flat-reference\", \"passed\": true, \"expected\": \"hello Ada!\", \"actual\": \"hello Ada!\"}, {\"id\": \"flat-default\", \"passed\": true, \"expected\": \"anonymous\", \"actual\": \"anonymous\"}, {\"id\": \"nested-reference\", \"passed\": false, \"expected\": \"Ada\", \"actual\": \"${USER}\"}, {\"id\": \"nested-default\", \"passed\": false, \"expected\": \"fallback\", \"actual\": \"${B:-fallback}\"}, {\"id\": \"unused-balanced-default\", \"passed\": false, \"expected\": \"set/tail\", \"actual\": \"set}/tail\"}, {\"id\": \"concatenated-default\", \"passed\": false, \"expected\": \"srv-dev-42\", \"actual\": \"srv-${ENV-42}\"}, {\"id\": \"three-level-default\", \"passed\": false, \"expected\": \"leaf\", \"actual\": \"${B:-${C:-final}}\"}, {\"id\": \"present-empty-and-none\", \"passed\": false, \"expected\": \"|\", \"actual\": \"}|}\"}, {\"id\": \"environment-value-literal\", \"passed\": false, \"expected\": \"${UNEXPANDED}\", \"actual\": \"${UNEXPANDED}}\"}, {\"id\": \"dotenv-values-integration\", \"passed\": false, \"expected\": {\"NAME\": \"web\", \"ENV\": \"qa\", \"FULL\": \"web-qa\", \"ROOT\": \"prefix/web-qa/x\"}, \"actual\": {\"NAME\": \"web\", \"ENV\": \"qa\", \"FULL\": \"${NAME-qa}\", \"ROOT\": \"prefix/${NAME-qa}/x\"}}], \"source_sha256\": \"083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f\"}\n",
+  "stderr": "",
+  "timed_out": false,
+  "truncated": false,
+  "passed": false
+}

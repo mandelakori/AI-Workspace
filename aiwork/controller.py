@@ -17,6 +17,7 @@ from .inference import Inference, ollama_residency
 from .lock import file_lock
 from .metrics import summarize_trace
 from .oracle import load_cases
+from .process import executable
 from .router import Plane, gpu, routes
 from .schema import Check, Config, Profile, Task
 from .selection import CORPUS, compare, score
@@ -532,6 +533,8 @@ class Controller:
     def agent(self, task: Task, profile: Profile, work: Path, attempt: Path, deadline: float,
               previous: str, summary: dict, findings: str) -> None:
         if task.source_context:
+            if profile.local_calibration:
+                raise ValueError('calibrated execution requires a scoped harness, not the source proposal adapter')
             from .component_source import propose_source
             propose_source(self, task, profile, work, attempt, deadline, findings,
                            previous=previous if task.rank_public else "")
@@ -543,9 +546,11 @@ class Controller:
         from .trial_budget import public_limit
         binary = opencode_path(self.config.opencode) if profile.harness == "opencode" else None
         qwen = qwen_command(self.config.qwen, self.config.state) if profile.harness == "qwen" else None
-        if not binary and not qwen:
+        from .pi_harness import Pi, pi_path
+        pi = pi_path(self.config.pi, self.config.state) if profile.harness == 'pi' else None
+        if not binary and not qwen and not pi:
             raise ValueError(f"{profile.harness} harness unavailable for {profile.id}")
-        harness = OpenCode(binary) if binary else QwenCode(qwen)
+        harness = Pi(executable('node'),pi) if pi else OpenCode(binary) if binary else QwenCode(qwen)
         entered = monotonic()
         with self.planes[profile.location].reserve(profile, max(0, deadline - entered)):
             admitted = monotonic()
@@ -554,7 +559,11 @@ class Controller:
                              timeout=min(120 if not profile.managed else 900, max(0, deadline - monotonic())))
                 if profile.location == "a100" else nullcontext()
             )
-            with connection:
+            from .local_runtime import calibrated_runtime
+            runtime=(calibrated_runtime(profile,task,attempt,deadline) if profile.local_calibration
+                     else nullcontext(profile))
+            with connection, runtime as selected_profile:
+                profile=selected_profile
                 Inference(profile).ready()
                 readings = self.gpu_sample(profile)
                 inference = ollama_residency(profile) if profile.engine == "ollama" else None

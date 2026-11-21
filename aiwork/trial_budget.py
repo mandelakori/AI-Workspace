@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import os
 import re
 import secrets
@@ -27,10 +28,16 @@ def write(path: Path, value: dict) -> None:
     temporary.replace(path)
 
 
-def create(state: Path, approval: str, arm: str, limits: dict | None = None, *, quotas: dict | None = None) -> None:
+def create(state: Path, approval: str, arm: str, limits: dict | None = None, *, quotas: dict | None = None,
+           reviewed_caps: dict | None = None) -> None:
     state.mkdir(parents=True, exist_ok=False)
+    caps=PHASE_LIMITS if reviewed_caps is None else reviewed_caps
+    if (set(caps)!=set(PHASE_LIMITS) or any(type(v) is not int or not 1<=v<=3600 for v in caps.values())
+            or sum(caps.values())>7200):
+        raise ValueError('invalid reviewed phase caps')
     limits = limits or PHASE_LIMITS
-    if set(limits) != set(PHASE_LIMITS) or any(not 0 < limits[k] <= PHASE_LIMITS[k] for k in limits):
+    if set(limits) != set(PHASE_LIMITS) or any(type(limits[k]) not in (int,float) or not math.isfinite(limits[k])
+                                            or not 0 < limits[k] <= caps[k] for k in limits):
         raise ValueError("invalid phase allocations")
     quotas = {'sessions':2,'planner_requests':1} if quotas is None else quotas
     if (set(quotas)!={'sessions','planner_requests'} or any(type(v) is not int for v in quotas.values())
@@ -38,6 +45,7 @@ def create(state: Path, approval: str, arm: str, limits: dict | None = None, *, 
         raise ValueError('invalid measured quotas')
     write(state / FILE, {"approval": approval, "arm": arm, "sessions": 0, "planner_requests": 0,
                         'quotas':quotas,
+                        **({'reviewed_phase_caps':caps} if reviewed_caps is not None else {}),
                         "phases": {key: {"limit": value, "status": "PENDING"} for key, value in limits.items()}})
 
 
