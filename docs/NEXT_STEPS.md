@@ -2,6 +2,14 @@
 
 ## Phase 6.1 next approved work
 
+The authorized direct-only editing pilot is now **QUARANTINED**. Read the
+[result and preserved evidence](HTTPX-SINGLE-ARM-PILOT-RESULT.md). One edit
+was rejected for an exact-anchor mismatch; no source change or public-test call
+occurred. The MCP operation cap was reached, then the harness timed out. No
+sealed cases were created. This grant cannot be reused; preserve the frozen
+baseline and all prior trials. Earlier authorization/preparation instructions
+below are historical.
+
 Review [source-grounded editing recovery and the single-arm pilot budget](SOURCE-EDITING-RECOVERY.md).
 All 132 regressions pass and one local fixture recovered from a rejected edit
 to 4/4 public correctness. The provider/harness still reported an invalid stream

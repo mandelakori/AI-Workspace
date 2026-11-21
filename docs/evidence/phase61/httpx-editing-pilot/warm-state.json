@@ -1,0 +1,95 @@
+{
+  "before": {
+    "installed": [
+      {
+        "name": "aiwork-qwen35-phase4:8k",
+        "model": "aiwork-qwen35-phase4:8k",
+        "modified_at": "2026-11-17T02:37:53.7740955-05:00",
+        "size": 6550825565,
+        "digest": "5852b52876b93f88a1d3b8f6a9888e3f6f904a38dff024a18f28831f6cbc1048",
+        "details": {
+          "parent_model": "qwen3.5:9b",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": [
+            "qwen35"
+          ],
+          "parameter_size": "9.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 262144,
+          "embedding_length": 4096,
+          "runner": "llamacpp"
+        },
+        "capabilities": [
+          "completion",
+          "vision",
+          "tools",
+          "thinking"
+        ]
+      },
+      {
+        "name": "qwen3.5:9b",
+        "model": "qwen3.5:9b",
+        "modified_at": "2026-11-14T14:49:54.2659349-05:00",
+        "size": 6550825550,
+        "digest": "56671c2ab9385f9cfcb404638e32cd62d88e3501d44822208363c010179a3c90",
+        "details": {
+          "parent_model": "model.gguf",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": [
+            "qwen35"
+          ],
+          "parameter_size": "9.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 262144,
+          "embedding_length": 4096,
+          "runner": "llamacpp"
+        },
+        "capabilities": [
+          "completion",
+          "vision",
+          "tools",
+          "thinking"
+        ]
+      }
+    ],
+    "resident": []
+  },
+  "resident": {
+    "name": "aiwork-qwen35-phase4:8k",
+    "model": "aiwork-qwen35-phase4:8k",
+    "size": 6386069009,
+    "digest": "5852b52876b93f88a1d3b8f6a9888e3f6f904a38dff024a18f28831f6cbc1048",
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen35",
+      "families": [
+        "qwen35"
+      ],
+      "parameter_size": "9.0B",
+      "quantization_level": "Q4_K_M"
+    },
+    "expires_at": "2026-11-21T01:44:23.2662695-05:00",
+    "size_vram": 5451095735,
+    "context_length": 8192,
+    "runner": "llamacpp"
+  },
+  "protocol": {
+    "order": [
+      "direct"
+    ],
+    "neutral_requests_per_arm": 1,
+    "max_tokens": 4,
+    "prompt": "Reply with exactly READY.",
+    "temperature": 0,
+    "reasoning_effort": "none",
+    "resident_context_required": 8192,
+    "fresh_harness_home": true,
+    "no_restart_unload_or_model_changes": true,
+    "minimum_residency_ttl_seconds": 185,
+    "exclusive_operator_window_required": true,
+    "cache_limitation": "Neutral warm-up protocol; a single-arm pilot supports no architecture comparison or provider-cache purge claim."
+  }
+}

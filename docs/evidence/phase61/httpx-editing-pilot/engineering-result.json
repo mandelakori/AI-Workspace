@@ -1,0 +1,6 @@
+{
+  "job": "7dcfa4bae5a24a47bd3e3a0d6a3a0d9b",
+  "status": "blocked",
+  "detail": "harness failed or exceeded limits; see attempt logs",
+  "artifacts": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\state\\runs\\7dcfa4bae5a24a47bd3e3a0d6a3a0d9b"
+}

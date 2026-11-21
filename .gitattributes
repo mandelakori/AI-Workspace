@@ -7,3 +7,4 @@
 /docs/evidence/phase61/httpx-recovery-run/*.jsonl -text -whitespace
 /docs/evidence/phase61/source-editing/*.jsonl -text -whitespace
 /docs/evidence/phase61/source-editing/*.patch -text -whitespace
+/docs/evidence/phase61/httpx-editing-pilot/*.jsonl -text -whitespace

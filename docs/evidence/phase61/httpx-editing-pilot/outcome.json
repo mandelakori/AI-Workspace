@@ -1,0 +1,136 @@
+{
+  "status": "QUARANTINED",
+  "recorded_at": "2026-11-21T06:45:55.687378+00:00",
+  "approval_digest": "0281aec9e0da0fc5d20ae980cabcabda18236ad468881fa7d478311d478d6230",
+  "classification": "SINGLE_ARM_AUTONOMOUS_PILOT_NO_APPLIED_SOURCE_EDITS",
+  "reason": "inference client interrupted; backend cancellation latency unverified",
+  "direct": {
+    "worker_sessions": 1,
+    "attempts": 1,
+    "planner_requests": 0,
+    "source_edit_calls": 1,
+    "applied_edits": 0,
+    "edit_failure": "Current hash matched; old anchor had zero exact occurrences. No fuzzy replacement.",
+    "source_changed": false,
+    "worker_public_test_calls": 0,
+    "mcp_executed_calls": 16,
+    "mcp_focus_executed": 15,
+    "mcp_edit_executed": 1,
+    "mcp_budget_rejected_attempts": 3,
+    "initial_unavailable_tool_calls": 1,
+    "native_tool_calls": {
+      "glob": 1,
+      "grep": 4
+    },
+    "duplicate_excerpts_suppressed": 2,
+    "diagnostic_reinspection_followed": true,
+    "frozen_fallback": {
+      "path": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\frozen-6761f7fefe4798a5",
+      "inventory_sha256": "5d4e3c9e66ae2da5c42bd1d7a58ed6dd0131835f72ddd95ff3fb54282a10e038",
+      "model_source_delivery": false,
+      "public_passed": 7,
+      "public_total": 16,
+      "upstream_gate_passed": true,
+      "all_public_gates_passed": false,
+      "missing": [
+        "authored tests / documentation"
+      ]
+    },
+    "post_worker_public_or_upstream_rerun": false,
+    "regressions": "No source changes or candidate promotion; baseline identity retained.",
+    "independent_feature_verification": "NOT_RUN; quarantine prevents grading",
+    "candidate": null
+  },
+  "harness": {
+    "process": {
+      "code": 1,
+      "elapsed": 125.15599999995902,
+      "timed_out": true,
+      "truncated": false
+    },
+    "provider_stream_error_events": [],
+    "interpretation": "Exit 1 with watchdog timed_out=true. No explicit provider.invalid-output event observed; incomplete generation and backend cancellation remain unverified."
+  },
+  "usage": {
+    "warm": {
+      "prompt_tokens": 17,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens": 2,
+      "total_tokens": 19
+    },
+    "completed_worker_usage_events": 25,
+    "started_worker_steps": 26,
+    "worker_reported_tokens": {
+      "input": 29922,
+      "output": 1721,
+      "reasoning": 0
+    },
+    "cache_read_tokens_separate": 92295,
+    "cache_write_tokens_separate": 0,
+    "incomplete_usage": "Unknown for unfinished step and auxiliary/provider work not represented in trace. No complete provider total is claimed."
+  },
+  "phases": {
+    "warm": {
+      "limit": 20,
+      "status": "FINISHED",
+      "started_utc": 1795243149.5057893,
+      "deadline_utc": 1795243169.5057893,
+      "deadline_monotonic": 639278.421,
+      "label": "aiwork-trial-e8e97c0b121b498e8731ecd3dea3bb0a",
+      "finished_utc": 1795243163.3908963,
+      "execution_elapsed_with_termination": 13.891,
+      "cancellation_cleanup_seconds": 0.0,
+      "error": "",
+      "timed_out": false,
+      "cleanup": {
+        "passed": true,
+        "not_applicable": "warm phase forbids verification containers"
+      }
+    },
+    "work": {
+      "limit": 180,
+      "status": "FAILED",
+      "started_utc": 1795243163.4081283,
+      "deadline_utc": 1795243343.4081283,
+      "deadline_monotonic": 639452.328,
+      "label": "aiwork-trial-0bcf8ac3a91c47f59f32ddc9bb7f7499",
+      "finished_utc": 1795243312.4333246,
+      "execution_elapsed_with_termination": 148.812,
+      "cancellation_cleanup_seconds": 0.219,
+      "error": "",
+      "timed_out": false,
+      "cleanup": {
+        "passed": true,
+        "removed": []
+      }
+    },
+    "grade": {
+      "limit": 40,
+      "status": "PENDING"
+    }
+  },
+  "harness_budget": {
+    "configured_attempt_seconds": 150,
+    "remaining_attempt_seconds": 146.875,
+    "verification_reserve_seconds": 20,
+    "harness_allowance_seconds": 126.875,
+    "phase_limit": {
+      "label": "aiwork-trial-0bcf8ac3a91c47f59f32ddc9bb7f7499",
+      "deadline": 1795243343.4081283
+    },
+    "note": "Baseline/admission and staging consume the attempt; the outer phase also charges planning and final selection."
+  },
+  "wall_seconds_between_first_phase_start_and_close": 162.927535,
+  "hierarchical_executed": false,
+  "retries": 0,
+  "sealed_cases_authored": 0,
+  "independent_grade_executed": false,
+  "mid_run_implementation_guidance": false,
+  "operator_feature_source_corrections": false,
+  "additional_campaigns": 0,
+  "remote_inference": false,
+  "resumption_allowed": false,
+  "approved_implementation_inputs_permissions_model_image_and_budgets_unchanged": true
+}

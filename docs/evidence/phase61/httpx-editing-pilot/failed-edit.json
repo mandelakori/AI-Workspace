@@ -1,0 +1,38 @@
+{
+  "arguments": {
+    "path": "httpx/_utils.py",
+    "expected_sha256": "fd355ea802afc4990a1ddcfb74579be2cd0b66a41781e1645d281f88704aff5a",
+    "old": "    self.host_regex: typing.Pattern[str] | None = None\n        elif url.host.startswith(\"*\"):\n            # *example.com should match \"www.example.com\" and \"example.com\"\n            domain = re.escape(url.host[1:])\n            self.host_regex = re.compile(f\"^(.+\\\\.)?{domain}$\")\n        else:\n            # example.com should match \"example.com\" but not \"www.example.com\"\n            domain = re.escape(url.host)\n            self.host_regex = re.compile(f\"^{domain}$\")\n",
+    "new": "    self.host_regex: typing.Pattern[str] | None = None\n        elif url.host.startswith(\"*\"):\n            # *example.com should match \"www.example.com\" and \"example.com\"\n            domain = re.escape(url.host[1:])\n            self.host_regex = re.compile(f\"^(.+\\\\.)?{domain}$\")\n        else:\n            # example.com should match \"example.com\" but not \"www.example.com\"\n            domain = re.escape(url.host)\n            self.host_regex = re.compile(f\"^{domain}$\")\n\n        # Store path from URL for prefix matching\n        self.path = url.path if url.path is not None else \"\"",
+    "mode": "after"
+  },
+  "response": {
+    "tool": "edit",
+    "index": null,
+    "call": 14,
+    "arguments": {
+      "path": "httpx/_utils.py",
+      "expected_sha256": "fd355ea802afc4990a1ddcfb74579be2cd0b66a41781e1645d281f88704aff5a",
+      "old": "    self.host_regex: typing.Pattern[str] | None = None\n        elif url.host.startswith(\"*\"):\n            # *example.com should match \"www.example.com\" and \"example.com\"\n            domain = re.escape(url.host[1:])\n            self.host_regex = re.compile(f\"^(.+\\\\.)?{domain}$\")\n        else:\n            # example.com should match \"example.com\" but not \"www.example.com\"\n            domain = re.escape(url.host)\n            self.host_regex = re.compile(f\"^{domain}$\")\n",
+      "new": "    self.host_regex: typing.Pattern[str] | None = None\n        elif url.host.startswith(\"*\"):\n            # *example.com should match \"www.example.com\" and \"example.com\"\n            domain = re.escape(url.host[1:])\n            self.host_regex = re.compile(f\"^(.+\\\\.)?{domain}$\")\n        else:\n            # example.com should match \"example.com\" but not \"www.example.com\"\n            domain = re.escape(url.host)\n            self.host_regex = re.compile(f\"^{domain}$\")\n\n        # Store path from URL for prefix matching\n        self.path = url.path if url.path is not None else \"\"",
+      "mode": "after"
+    },
+    "code": "anchor_mismatch",
+    "error": "Anchor must match exactly once, including indentation and line breaks. Use focus at the suggested region and copy a shorter unique anchor. No fuzzy replacement was attempted.",
+    "unchanged": true,
+    "path": "httpx/_utils.py",
+    "actual_sha256": "fd355ea802afc4990a1ddcfb74579be2cd0b66a41781e1645d281f88704aff5a",
+    "focus_arguments": {
+      "path": "httpx/_utils.py",
+      "line": 178
+    },
+    "anchor_matches": 0,
+    "more_matches": false,
+    "matching_lines": [],
+    "passed": false,
+    "stdout": "",
+    "stderr": "Anchor must match exactly once, including indentation and line breaks. Use focus at the suggested region and copy a shorter unique anchor. No fuzzy replacement was attempted."
+  },
+  "old_anchor_occurrences": 0,
+  "applied": false
+}

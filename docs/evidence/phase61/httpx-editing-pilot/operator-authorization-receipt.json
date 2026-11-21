@@ -1,0 +1,11 @@
+{
+  "authorized_at": "2026-11-21T06:39:04.334594+00:00",
+  "grant": {
+    "approval_digest": "0281aec9e0da0fc5d20ae980cabcabda18236ad468881fa7d478311d478d6230",
+    "authorize": [
+      "direct"
+    ],
+    "operator_approved": true
+  },
+  "scope": "One direct-only pilot, one session/attempt, no planner/retry; frozen 20/180/40, attempt150, MCP16; stop on quarantine; no mid-run guidance or further campaigns."
+}

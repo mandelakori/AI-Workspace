@@ -1,0 +1,102 @@
+{
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\pilot-outcome.json": {
+    "bytes": 4865,
+    "sha256": "ee402a7662351cb92473db0fecd1c54e944191051fc1b8fecd11819fffd64f67"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\operator-approval.json": {
+    "bytes": 161,
+    "sha256": "f216e858b266cc9e95e9f900698e1410fa644eaf67a9a2fed310cff22080fa46"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\operator-authorization-receipt.json": {
+    "bytes": 422,
+    "sha256": "870585f37eeb59883fd397752b8aa1807931f3eb074329b027d03405db4d9273"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\warm-process.json": {
+    "bytes": 227,
+    "sha256": "65941ddf5d27429bc81ea7dd20d0749136a6e862023ee2a8e68b7c023f8f4c3e"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\warm-wire-request.json": {
+    "bytes": 171,
+    "sha256": "b9fdd2431c9645d7169c8ef8a05225c799dfd676a25914729506e1efb3f81a74"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\warm-wire-response.json": {
+    "bytes": 346,
+    "sha256": "70c7fbdaa61ef65390379491fc7192e0cfa9bfe56d79526eaf49a83cbec15257"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\warm-state.json": {
+    "bytes": 2783,
+    "sha256": "59febaa8e046e45629ac981c99666db047f889d3d8fad2c67ac871d17cf93580"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\work-process.json": {
+    "bytes": 1455,
+    "sha256": "6adfc5b2ee0897a499decc014cc4951224d8a55de0493570ed3ad86139c4f762"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\engineering-result.json": {
+    "bytes": 311,
+    "sha256": "190f7a69009d0e5e2d6a00cf9eb1ea3eedcb12c3fc8d5e16e6423cd6ba2bf526"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\frozen.json": {
+    "bytes": 43593,
+    "sha256": "6389be341a36c668ce25e183c26c37e095d570e698334883d48d0435cc60ec34"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\state\\runs\\7dcfa4bae5a24a47bd3e3a0d6a3a0d9b\\attempt-001\\agent-process.json": {
+    "bytes": 96,
+    "sha256": "3524bd88ef817671e547241ed15a6c2d48d97da31b78610a3f8d615b555c6353"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\state\\runs\\7dcfa4bae5a24a47bd3e3a0d6a3a0d9b\\attempt-001\\agent-metrics.json": {
+    "bytes": 1081,
+    "sha256": "a2e0322b4d7880a44e7a688761498a7e1387feb474d33dd9fab584a2ed108036"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\state\\runs\\7dcfa4bae5a24a47bd3e3a0d6a3a0d9b\\attempt-001\\harness-budget.json": {
+    "bytes": 412,
+    "sha256": "e4054700f253153334f807f3b369f990d25df83643244b64c9fb8953c7792eb2"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\state\\runs\\7dcfa4bae5a24a47bd3e3a0d6a3a0d9b\\attempt-001\\mcp-catalog.json": {
+    "bytes": 1824,
+    "sha256": "c058c1940c5617385ccd5537d6f71a1f1f7b2163f3a9c6540e141bdc992e22aa"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\state\\runs\\7dcfa4bae5a24a47bd3e3a0d6a3a0d9b\\attempt-001\\operator-task.md": {
+    "bytes": 2136,
+    "sha256": "6635b81c12e6da582bd02d76f84317e0c0daa5978d609ef35c1cb6b200734a7f"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\state\\runs\\7dcfa4bae5a24a47bd3e3a0d6a3a0d9b\\attempt-001\\agent.jsonl": {
+    "bytes": 158493,
+    "sha256": "bafce05df75ef01804173ce57c349b05564c3e7ad5a2c17576de4d7328a806fa"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\state\\runs\\7dcfa4bae5a24a47bd3e3a0d6a3a0d9b\\attempt-001\\agent-live.jsonl": {
+    "bytes": 158403,
+    "sha256": "e1f145f53dfdb848469955fb32a8f4bd19c113f8723dfb9c3255b8ead2e47bb2"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\state\\runs\\7dcfa4bae5a24a47bd3e3a0d6a3a0d9b\\attempt-001\\mcp.jsonl": {
+    "bytes": 56428,
+    "sha256": "3941dafaf3970e5db1fc998300295efdb3a11e20222888ea097cc8a53ec9b53f"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\state\\runs\\7dcfa4bae5a24a47bd3e3a0d6a3a0d9b\\attempt-001\\evidence.json": {
+    "bytes": 1329,
+    "sha256": "806541d5e86c80d84866f02a67e66d04f672cb34e826de900c0227e42b252b93"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\state\\runs\\7dcfa4bae5a24a47bd3e3a0d6a3a0d9b\\attempt-001\\trial-tool-calls.json": {
+    "bytes": 16,
+    "sha256": "982d34af869c002811f5d5f16ec2a63b4db6b16671a2de07b830f85b38bc947f"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\selection\\baseline-score.json": {
+    "bytes": 24340,
+    "sha256": "7d996fdc8151b100352abc8ef7d71b96012522f4e14a07739ebbb21ebc8ffec3"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\selection\\baseline-raw.json": {
+    "bytes": 6897,
+    "sha256": "6e8d9383d699335bdc29690bf682a3691857e75ae5c56788d2920061d286d4ff"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\archival\\source-receipt.json": {
+    "bytes": 18311,
+    "sha256": "e0f20c5bce194d01d0ebc784eea21a4db281bf719223feeec9c0a0da463694e4"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\archival\\failed-edit.json": {
+    "bytes": 3530,
+    "sha256": "2b75a403920b28bc0f48661d2d6917f8549f1de5eef1e058bb29a4d071ef4cee"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-editing\\httpx-pilot\\arms\\direct\\state\\runs\\7dcfa4bae5a24a47bd3e3a0d6a3a0d9b\\attempt-001\\baseline-check.json": {
+    "bytes": 7430,
+    "sha256": "9c0e57fd542e9da3acdca4ec3adc68f138ea61ba5b0703017603235381457a93"
+  }
+}
