@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python",
+    "_benchmark_checks.py",
+    "syntax"
+  ],
+  "cwd": "",
+  "runner": "sha256:5c19bf11295cb95f58cdc0250c8f699292e453a05b9fdf3960346b3517fe1abf",
+  "code": 0,
+  "elapsed": 1.8910000000614673,
+  "stdout": "{\"syntax_passed\": true, \"source_sha256\": \"083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f\"}\n",
+  "stderr": "",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true
+}

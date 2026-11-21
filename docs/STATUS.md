@@ -2,6 +2,12 @@
 
 ## Phase 6.1 bounded autonomy preparation
 
+| Controlled real-repository preparation | Status | Evidence |
+| --- | --- | --- |
+| Provider-facing catalog readiness | VERIFIED | [Review](DISCOVERY-EXPERIMENT-REVIEW.md): owned private OpenCode server and byte-preserving provider gate. Inert first request has all four scoped tools; missing-tool test forwards zero requests and cleans up. Output limit 2048 and disabled reasoning verified on the wire. Permissions and source-edit safeguards unchanged. |
+| New python-dotenv benchmark | VERIFIED | Pinned `4fbc6ff`, identical 47-file arms, ten public cases with 2/10 baseline; whole upstream suite 287 pass, five platform/root skips. Offline image, context excerpts, order B→A, resource protocol and implementation hashes frozen. Full regression discovery: 141 pass, five optional Docker skips. |
+| Measured A/B execution and independent acceptance | UNTESTED | PREPARED_NOT_AUTHORIZED, digest `ee17b4c45b8b82dccc1790a91dec1dead8c2983625121b86d785e743a39443d0`. No real inference, measured arm or twelve-case sealed suite. Context bytes measured; actual token cost awaits authorization. Prior HTTPX quarantine states, frozen Click and main remain unchanged. |
+
 | Tool-contract diagnosis | Status | Evidence |
 | --- | --- | --- |
 | Saved pilot audit and deterministic conformance | VERIFIED | [Diagnosis and experiment design](TOOL-CONTRACT-DIAGNOSIS.md): noncontiguous/misindented anchor plus replacement-style payload in insertion mode; 15/16 MCP calls spent inspecting. Three synthetic tests added; full discovery 135 tests, 128 pass and seven opt-in integrations skipped. No inference or HTTPX changes; original evidence hashes verified. |

@@ -2,6 +2,15 @@
 
 ## Phase 6.1 next approved work
 
+The current handoff is the [prepared source-discovery comparison](DISCOVERY-EXPERIMENT-REVIEW.md)
+against python-dotenv. Its first-request catalog blocker is verified with inert
+providers. It remains **PREPARED_NOT_AUTHORIZED** for digest
+`ee17b4c45b8b82dccc1790a91dec1dead8c2983625121b86d785e743a39443d0`.
+Review that manifest and grant exactly `["A", "B"]` only after explicit operator
+approval; its randomized execution order is B→A. No real inference or sealed
+acceptance cases were created during preparation. Earlier HTTPX instructions
+below are historical and confer no authority to restart a quarantined trial.
+
 The authorized direct-only editing pilot is now **QUARANTINED**. Read the
 [result and preserved evidence](HTTPX-SINGLE-ARM-PILOT-RESULT.md). One edit
 was rejected for an exact-anchor mismatch; no source change or public-test call

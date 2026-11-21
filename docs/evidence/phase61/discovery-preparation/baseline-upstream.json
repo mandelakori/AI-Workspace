@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python",
+    "_benchmark_checks.py",
+    "upstream"
+  ],
+  "cwd": "",
+  "runner": "sha256:5c19bf11295cb95f58cdc0250c8f699292e453a05b9fdf3960346b3517fe1abf",
+  "code": 0,
+  "elapsed": 20.25,
+  "stdout": "...............................s..............s......................... [ 24%]\n.............................ss..s...................................... [ 49%]\n........................................................................ [ 74%]\n........................................................................ [ 98%]\n...                                                                      [100%]\n=============================== warnings summary ===============================\ntests/test_ipython.py::test_ipython_existing_variable_no_override\ntests/test_ipython.py::test_ipython_existing_variable_override\ntests/test_ipython.py::test_ipython_new_variable\n  /usr/local/lib/python3.12/site-packages/IPython/paths.py:67: UserWarning: IPython parent '/root' is not a writable location, using a temp directory.\n    warn(\"IPython parent '{}' is not a writable location,\"\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nSKIPPED [1] tests/test_cli.py:205: Directory permissions are not enforced on Windows or for root.\nSKIPPED [1] tests/test_cli.py:384: Windows-specific lookup\nSKIPPED [1] tests/test_main.py:176: Root user can access files even with 000 permissions.\nSKIPPED [1] tests/test_main.py:199: Root user can access files even with 000 permissions.\nSKIPPED [1] tests/test_main.py:251: Directory permissions are not enforced on Windows or for root.\n286 passed, 5 skipped, 1 deselected, 3 warnings in 15.83s\n.                                                                        [100%]\n1 passed in 1.11s\n",
+  "stderr": "",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true
+}

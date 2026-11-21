@@ -1,0 +1,942 @@
+{
+  "format": 1,
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "execution_allowed": false,
+  "bundle": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark",
+  "arms": [
+    "A",
+    "B"
+  ],
+  "execution_order": [
+    "B",
+    "A"
+  ],
+  "randomization_seed": "2b650985881e48a5ea9e66f098c1aa74",
+  "repository": "https://github.com/theskumar/python-dotenv",
+  "repository_commit": "4fbc6ff07215367ece731006855e732d1405992c",
+  "issue": "https://github.com/theskumar/python-dotenv/issues/326",
+  "controller_commit": "0128db5280750f6031471a16bfa5dde642d6a9e0",
+  "platform": "Windows",
+  "profile": {
+    "id": "laptop-ollama-8k",
+    "model": "aiwork-qwen35-phase4:8k",
+    "endpoint": "http://127.0.0.1:11434/v1",
+    "engine": "ollama",
+    "harness": "opencode",
+    "location": "local",
+    "context": 8192,
+    "output_tokens": 2048,
+    "memory_mib": 0,
+    "quantization": "",
+    "source": "",
+    "tools": true,
+    "api_key_env": "",
+    "managed": false,
+    "reasoning_effort": "none",
+    "seed": null,
+    "harness_turns": 0
+  },
+  "model": {
+    "digest": "5852b52876b93f88a1d3b8f6a9888e3f6f904a38dff024a18f28831f6cbc1048",
+    "parameters": "num_ctx                        8192\npresence_penalty               1.5\ntemperature                    1\ntop_k                          20\ntop_p                          0.95",
+    "parameters_sha256": "9babe1ad0f1edf93f1c12d1d4733e30dbb04da8f5fcbef5d3abffcf1686a51ae",
+    "details": {
+      "parent_model": "qwen3.5:9b",
+      "format": "gguf",
+      "family": "qwen35",
+      "families": [
+        "qwen35"
+      ],
+      "parameter_size": "9.0B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 262144,
+      "embedding_length": 4096,
+      "runner": "llamacpp"
+    }
+  },
+  "harness": {
+    "path": "C:\\Users\\mande\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+    "sha256": "d7b7a9fbc8c358d940fed638dde500820f8a1c967ff855b8619d3763345f5832"
+  },
+  "runner": "sha256:5c19bf11295cb95f58cdc0250c8f699292e453a05b9fdf3960346b3517fe1abf",
+  "execution_state": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork",
+  "implementation_sha256": {
+    "__init__.py": "674dd2810ed1aa3fa82bafbb3daf7cd6ba9f7a0bc6ee1146683e588cad2ed741",
+    "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "adaptive.py": "10c0071bb9934c28ca2c95cbd4cc09b151dcaf35a9213572c2b9e646d06e04f8",
+    "benchmark.py": "cd44d2e8cbc137649334ff681b2671d202229b3c2c6e9f8bc2909747554f2e48",
+    "campaign.py": "74dc146871dd5657d18bda62867020b89c55a278b94e4ad694389a04ce77a255",
+    "changes.py": "2cb70357f7d3020100f7fc758d7a08382e40279c1608637a40d2f7ace3fdebeb",
+    "cli.py": "75fcd5c29f19069df8a638f45bb2cd1854958cfa0a0949471d6eeadc667c192b",
+    "cloud.py": "e2ba30954bcec14fb091a49d2b3bb7c6ef48b241a5fbd6b724f57f64798a97ec",
+    "component_source.py": "11b55f5198785ccab5d10dfe7cfabe2e61d69e3f83f5322dcc2f47c3115b8165",
+    "controller.py": "a76b0481300901dae5c04bd5d117f242822072df6e38a7c41660cde2eb7774e8",
+    "discovery_benchmark.py": "b772ea3cd9b54dd45f6be5ebc40feb36f6319df8172bf544d83175d55d6dfb0a",
+    "draft.py": "82e8cabf9894026bc01bf702d0d5eee0d9c9c3500605e5ae4ee079a9fb149d6e",
+    "function_repair.py": "9e3a02bd749b2e364871d01fe6e7d4add1197b167cecf5f99410b6007dbdea4d",
+    "harness.py": "7058ca8e982a4a3964de29287e679e3fc09c4a266cb2c90e2bdc0079f1682e3d",
+    "hierarchy.py": "cb9dc37984e73268e964b4e4b660c3ca1eaa9feb5e398cff6481bb9afe74f453",
+    "http.py": "904eb91b3b4830aae36d959411394f08b397dc291adb1e5cccec6fe11d114e7d",
+    "httpx_benchmark.py": "d870a8d329acefdf4ce4ff314b7c05879084452041ace0d1529d55494fccd586",
+    "index.py": "0f23e8686fb498bc16874d6f46b07a5d8744ea22a7bee3a0db53d701db0528be",
+    "inference.py": "e4508799f6d910010b05b23899a714eba0d68caf273b76fea97c0bb84292ca42",
+    "lock.py": "28a360f7b479f004bd363d6b57db5e6f2d798f50a7f3b21e23df423eaca622a8",
+    "mcp.py": "001fe156c08b2c64c971c8448e324b5294e3b970437948afc469d1e56aad0c55",
+    "metrics.py": "f32d3ffd2ca18ba36f8af654f3604d8f34abf400fb1aecf1ff4d406db6b9d937",
+    "native.py": "778d35f01e391207650532909e68a226149b91b23162d4ac75a0f81766ef850e",
+    "native_feedback.py": "52a48248a03c48223adf274f4cc9cb47d4cd84aa101990e7e6e4ea8ecd162bc3",
+    "native_recovery.py": "cb23bb7aa7157e1e858d0ddd08ccee54488b7fe3655f3f2829a851838c0d2990",
+    "oracle.py": "cf0b5d022b47ee959ed4779318867cec73ea03b8858597b343ccb3afdbb17036",
+    "planner.py": "f0620f1842a62649bdb4fc8c95f63b4886ae90457e0be1ae450ef3d34799d8c5",
+    "process.py": "77dd2612aa9e7c898c033bbb876385fa1b86869f4f81a71c0282faf879ea45c2",
+    "project.py": "7d306b1e07270f2dbc2e5dd0632fa0c551e07f50d5fcd9e255a9bdf4a673bb12",
+    "provider_gate.py": "e43d7970ed10db54c686cbee4eb24c8eb929c06d29c8a3eaf0ec2ab9a744965b",
+    "rea_selection.py": "e9d1c516bfcc8a1e97c9cfd8a2dcf7a3e0a753ea05e8174e844f3ab1df22f8f8",
+    "remote.py": "167daef6d96ba6a122399268f22b033d0984be196aaaa87e7e4c546f37034647",
+    "repair_benchmark.py": "e7093c36be091a237becde36eca5b09275a95fd4b9b5ba677bba45aa39960e63",
+    "router.py": "b8a2368bea911e82ecf8e65f5cd8c7bd1f9df90f91140469e3a6149afa714cca",
+    "schema.py": "569cebd8b94588018a04965e52ddb829a9826cdd58959f52de23d8b1081adc60",
+    "selection.py": "3fd108028c45095ecfc06f6648c075fb58815ae8a6760541c047f94f819630d0",
+    "selfdev.py": "dadd0f87bdba508512fe6a115b65b4b8248c9bd058b92337b065737f60857954",
+    "source_edit.py": "4c68ede44ce1e508a40de46fbd9c8812eb31296468ade9d397484ae03fde117b",
+    "specialists.py": "474aef1e714fd392acf130298d169323dd3c9644491c64b645b5059ac9c6f094",
+    "state.py": "70a3e5c517126d7479065b2d86ade82b53decfd8ebf161d2e4debb334410427a",
+    "trial_budget.py": "1e0f5c05841dc7295d827dfaa04a742bafa60c3ff6508f8c85490305baf13a83",
+    "verify.py": "1350209bc5e02c774925a21e11d6a30414136fd458a4d486d4242c9c344c37e0",
+    "windows_job.py": "389c3a0eefa204985aaace091fda91b45db146fbde525b92fb37612a06d2cfcc",
+    "workflow.py": "20c833465a5fb67f6380004f881adbd79da5d3d2855aab4de7224a6eb344caec",
+    "workspace.py": "95157f8c652c08b0c775222e8c92f53de6bdcba7801f29be0b4997d14a3225a4"
+  },
+  "starting_inventories": {
+    "A": {
+      ".bumpversion.cfg": {
+        "bytes": 105,
+        "sha256": "b4225c9bfd7c7dea85406541f85c2223c82255e3019547dbec49e7a542446dbe"
+      },
+      ".editorconfig": {
+        "bytes": 243,
+        "sha256": "91ca4c8ad16309579982341930d568d2790cd5716e0193ad6e066764ff85d2cc"
+      },
+      ".gitignore": {
+        "bytes": 1566,
+        "sha256": "92c064957359c2be81209629f6111dbf57f6b2826e72bfa808d76537fcecb5ec"
+      },
+      ".pre-commit-config.yaml": {
+        "bytes": 182,
+        "sha256": "d01478603c4961aa40eb5e27d6991fec2c41934f7482218a2014a49e8ffb6979"
+      },
+      "CHANGELOG.md": {
+        "bytes": 22214,
+        "sha256": "21d571a85c31357b3e420567a8688149945c559d8172f52acb4a76c045e897ba"
+      },
+      "CONTRIBUTING.md": {
+        "bytes": 700,
+        "sha256": "986854ef7b3868b0f15758221cd999adf6ab50bbf40e3da1689b085088e3a96a"
+      },
+      "FEATURE.md": {
+        "bytes": 2370,
+        "sha256": "9e208d705566d2a0518a292dc4200776b4f917b2c5cf9ed770708410e67b9157"
+      },
+      "LICENSE": {
+        "bytes": 1556,
+        "sha256": "80619b7049f08c81683ad0e01f08f257a840652dd71ee83146d36658c7d2c2b9"
+      },
+      "MANIFEST.in": {
+        "bytes": 311,
+        "sha256": "c765cc00183538cf8ad406f274adcf76e987c2670f9a8faea16c51b13d9a6ad0"
+      },
+      "Makefile": {
+        "bytes": 1352,
+        "sha256": "74d25e5e679cf6c217f1b6d142c7510311d472d4be93d7afc209cd6a874e64ea"
+      },
+      "README.md": {
+        "bytes": 7997,
+        "sha256": "7d06cf7aa8278a4416873e141b5510d99bcc46bd14b440221ef46eba74009441"
+      },
+      "RELEASING.md": {
+        "bytes": 2803,
+        "sha256": "df7efbaed1027a062d5bb5095d5bd6dc78b022437a0ad254ff453d411edc602a"
+      },
+      "_benchmark_checks.py": {
+        "bytes": 2927,
+        "sha256": "8a5a8c5efe120be13ab394ef6f1d2c1df1a98ed7b32585ed3847a877de8c0033"
+      },
+      "_public_cases.json": {
+        "bytes": 1177,
+        "sha256": "43fdad2ebedaac1006f6e7a0b07719f8935231724cc81303b1bf7095ce627673"
+      },
+      "mkdocs.yml": {
+        "bytes": 630,
+        "sha256": "83ab242553640d2cfaa0ce06cadee5f7e4352c7c24208d73158b4ba47f88fc9f"
+      },
+      "pyproject.toml": {
+        "bytes": 2166,
+        "sha256": "7041daba686d8a41f34509c56c069aa60c76000ba2e6951d1f1ff98bff7f3546"
+      },
+      "requirements-ci.txt": {
+        "bytes": 105,
+        "sha256": "1cea9ed71bce2ba9487a693118c9b5a03671dda4877d809fe3c0424c687f9129"
+      },
+      "requirements-docs.txt": {
+        "bytes": 130,
+        "sha256": "9bd719c05023386176dae93f187f1a3b46d457c18d10db5b424eead1fcb4b6e1"
+      },
+      "requirements.txt": {
+        "bytes": 83,
+        "sha256": "866b5215434fe1ac6e056fb4122a0a920a2fa5da0319caa90c2ae5d26add5b15"
+      },
+      "ruff.toml": {
+        "bytes": 178,
+        "sha256": "18b8cd8f263b6fb7b3f562e0fedffdb74ab25d43fd03cd85e868d43c70dda41e"
+      },
+      "tox.ini": {
+        "bytes": 1324,
+        "sha256": "b1fcf82d564de1e385a7b35eeebab1f4cbe6ddf7a863724612cd0fdf35bc4926"
+      },
+      "docs/changelog.md": {
+        "bytes": 15,
+        "sha256": "5b1ace6cbf670b5d35b515086985890d889090026e075bb900834cea4945afba"
+      },
+      "docs/contributing.md": {
+        "bytes": 18,
+        "sha256": "3b4a07b9c92d73f838166d1bc5907f6d4305d0661b13e4617d9820f4d21e7207"
+      },
+      "docs/index.md": {
+        "bytes": 12,
+        "sha256": "dbcc210d7f4962499db6d4cfa18658e26d05ee700c962a811cac911f095e22fd"
+      },
+      "docs/license.md": {
+        "bytes": 10,
+        "sha256": "1e881ecf2862d01e6e5bc2b861e46886d2a6fb01499c0c508a209a7271b13cf2"
+      },
+      "docs/reference.md": {
+        "bytes": 14,
+        "sha256": "acf20f0b6b9ee9f0af6b50e9ca0e67fe1f904c71f00b5c450bbdfaa121b3b2d4"
+      },
+      "src/dotenv/__init__.py": {
+        "bytes": 1230,
+        "sha256": "6e163e88aeb0c0765a996208e9e482b820165d435d9f64d016610eb97494ed23"
+      },
+      "src/dotenv/__main__.py": {
+        "bytes": 129,
+        "sha256": "3744612c6ee71c8aad9491f0c1ea48a3ecdb24f371f6c7b0082446639dbc87fe"
+      },
+      "src/dotenv/cli.py": {
+        "bytes": 7569,
+        "sha256": "cba5e82445206ce3a4d70f819e9093112ff80a5346cef3ec68a5da43fc3d5349"
+      },
+      "src/dotenv/ipython.py": {
+        "bytes": 1326,
+        "sha256": "74740177d3dc7425298466faed7c32dc6914a8c49d7fd5d4522358c53677b585"
+      },
+      "src/dotenv/main.py": {
+        "bytes": 16970,
+        "sha256": "fcb89122cd8756c43209f9052bb3c552dbe440d45493c762295c771f0d1ceaa8"
+      },
+      "src/dotenv/parser.py": {
+        "bytes": 5806,
+        "sha256": "75f68bfa9e63b6f504b7d23a605b66edbb578d5e3e7ba797ab78ffcbc0eb44ae"
+      },
+      "src/dotenv/py.typed": {
+        "bytes": 26,
+        "sha256": "f0f8f2675695a10a5156fb7bd66bafbaae6a13e8d315990af862c792175e6e67"
+      },
+      "src/dotenv/variables.py": {
+        "bytes": 2348,
+        "sha256": "083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f"
+      },
+      "src/dotenv/version.py": {
+        "bytes": 22,
+        "sha256": "5c1287f04d4b983c6fd3a537f72a8c05b5d96a93844458080840d866cfe446ca"
+      },
+      "tests/__init__.py": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "tests/conftest.py": {
+        "bytes": 279,
+        "sha256": "1cc31c9f8e8b5e076780d7469c8f35ff8088e37a25be0bc7e07b68e593beb443"
+      },
+      "tests/test_cli.py": {
+        "bytes": 14034,
+        "sha256": "0062597d337b332af0eef02812a5395c6d63626b796e6edbcf3d6270cd6d844b"
+      },
+      "tests/test_fifo_dotenv.py": {
+        "bytes": 743,
+        "sha256": "b69ecca75f9eb3969aa2cc2d49f66006cccae02da472805a3b3ad4c9fca8f8de"
+      },
+      "tests/test_ipython.py": {
+        "bytes": 2257,
+        "sha256": "aaa10084bffa00032ff6fe9f61c4a1975c77d4f102b4c1e18b6eea0433d93933"
+      },
+      "tests/test_is_interactive.py": {
+        "bytes": 8921,
+        "sha256": "2d4a6a5a4501bbd6c2860b39abeb9d5201a2de3d110347f74236098aa72f2a18"
+      },
+      "tests/test_lib.py": {
+        "bytes": 1122,
+        "sha256": "f75073c7317f7cda985b94531774578056519bf8dcb91aa7f3c60a7cf8872199"
+      },
+      "tests/test_main.py": {
+        "bytes": 27507,
+        "sha256": "3b2f4bf1ca0d0a87bfac8c14c7236b42b39f444dcc148f751ef7b3f65c89342a"
+      },
+      "tests/test_parser.py": {
+        "bytes": 20349,
+        "sha256": "570e2ed889602896f817f59de8b8920df61a4ad39dcab49a30dc182acf9f05ce"
+      },
+      "tests/test_utils.py": {
+        "bytes": 747,
+        "sha256": "82e06b9819adbc846b84717f9cc47ffff2dc99c77ebb0a22d93026326eac78a3"
+      },
+      "tests/test_variables.py": {
+        "bytes": 884,
+        "sha256": "facea37ceaca30b761c2128fa754ec32c1e50333f2ac1776f7f8063018aaa6fc"
+      },
+      "tests/test_zip_imports.py": {
+        "bytes": 2864,
+        "sha256": "9224bd859309409c62848bac6564eec0793aa6dffa091c9965ec6c4644a8ef04"
+      }
+    },
+    "B": {
+      ".bumpversion.cfg": {
+        "bytes": 105,
+        "sha256": "b4225c9bfd7c7dea85406541f85c2223c82255e3019547dbec49e7a542446dbe"
+      },
+      ".editorconfig": {
+        "bytes": 243,
+        "sha256": "91ca4c8ad16309579982341930d568d2790cd5716e0193ad6e066764ff85d2cc"
+      },
+      ".gitignore": {
+        "bytes": 1566,
+        "sha256": "92c064957359c2be81209629f6111dbf57f6b2826e72bfa808d76537fcecb5ec"
+      },
+      ".pre-commit-config.yaml": {
+        "bytes": 182,
+        "sha256": "d01478603c4961aa40eb5e27d6991fec2c41934f7482218a2014a49e8ffb6979"
+      },
+      "CHANGELOG.md": {
+        "bytes": 22214,
+        "sha256": "21d571a85c31357b3e420567a8688149945c559d8172f52acb4a76c045e897ba"
+      },
+      "CONTRIBUTING.md": {
+        "bytes": 700,
+        "sha256": "986854ef7b3868b0f15758221cd999adf6ab50bbf40e3da1689b085088e3a96a"
+      },
+      "FEATURE.md": {
+        "bytes": 2370,
+        "sha256": "9e208d705566d2a0518a292dc4200776b4f917b2c5cf9ed770708410e67b9157"
+      },
+      "LICENSE": {
+        "bytes": 1556,
+        "sha256": "80619b7049f08c81683ad0e01f08f257a840652dd71ee83146d36658c7d2c2b9"
+      },
+      "MANIFEST.in": {
+        "bytes": 311,
+        "sha256": "c765cc00183538cf8ad406f274adcf76e987c2670f9a8faea16c51b13d9a6ad0"
+      },
+      "Makefile": {
+        "bytes": 1352,
+        "sha256": "74d25e5e679cf6c217f1b6d142c7510311d472d4be93d7afc209cd6a874e64ea"
+      },
+      "README.md": {
+        "bytes": 7997,
+        "sha256": "7d06cf7aa8278a4416873e141b5510d99bcc46bd14b440221ef46eba74009441"
+      },
+      "RELEASING.md": {
+        "bytes": 2803,
+        "sha256": "df7efbaed1027a062d5bb5095d5bd6dc78b022437a0ad254ff453d411edc602a"
+      },
+      "_benchmark_checks.py": {
+        "bytes": 2927,
+        "sha256": "8a5a8c5efe120be13ab394ef6f1d2c1df1a98ed7b32585ed3847a877de8c0033"
+      },
+      "_public_cases.json": {
+        "bytes": 1177,
+        "sha256": "43fdad2ebedaac1006f6e7a0b07719f8935231724cc81303b1bf7095ce627673"
+      },
+      "mkdocs.yml": {
+        "bytes": 630,
+        "sha256": "83ab242553640d2cfaa0ce06cadee5f7e4352c7c24208d73158b4ba47f88fc9f"
+      },
+      "pyproject.toml": {
+        "bytes": 2166,
+        "sha256": "7041daba686d8a41f34509c56c069aa60c76000ba2e6951d1f1ff98bff7f3546"
+      },
+      "requirements-ci.txt": {
+        "bytes": 105,
+        "sha256": "1cea9ed71bce2ba9487a693118c9b5a03671dda4877d809fe3c0424c687f9129"
+      },
+      "requirements-docs.txt": {
+        "bytes": 130,
+        "sha256": "9bd719c05023386176dae93f187f1a3b46d457c18d10db5b424eead1fcb4b6e1"
+      },
+      "requirements.txt": {
+        "bytes": 83,
+        "sha256": "866b5215434fe1ac6e056fb4122a0a920a2fa5da0319caa90c2ae5d26add5b15"
+      },
+      "ruff.toml": {
+        "bytes": 178,
+        "sha256": "18b8cd8f263b6fb7b3f562e0fedffdb74ab25d43fd03cd85e868d43c70dda41e"
+      },
+      "tox.ini": {
+        "bytes": 1324,
+        "sha256": "b1fcf82d564de1e385a7b35eeebab1f4cbe6ddf7a863724612cd0fdf35bc4926"
+      },
+      "docs/changelog.md": {
+        "bytes": 15,
+        "sha256": "5b1ace6cbf670b5d35b515086985890d889090026e075bb900834cea4945afba"
+      },
+      "docs/contributing.md": {
+        "bytes": 18,
+        "sha256": "3b4a07b9c92d73f838166d1bc5907f6d4305d0661b13e4617d9820f4d21e7207"
+      },
+      "docs/index.md": {
+        "bytes": 12,
+        "sha256": "dbcc210d7f4962499db6d4cfa18658e26d05ee700c962a811cac911f095e22fd"
+      },
+      "docs/license.md": {
+        "bytes": 10,
+        "sha256": "1e881ecf2862d01e6e5bc2b861e46886d2a6fb01499c0c508a209a7271b13cf2"
+      },
+      "docs/reference.md": {
+        "bytes": 14,
+        "sha256": "acf20f0b6b9ee9f0af6b50e9ca0e67fe1f904c71f00b5c450bbdfaa121b3b2d4"
+      },
+      "src/dotenv/__init__.py": {
+        "bytes": 1230,
+        "sha256": "6e163e88aeb0c0765a996208e9e482b820165d435d9f64d016610eb97494ed23"
+      },
+      "src/dotenv/__main__.py": {
+        "bytes": 129,
+        "sha256": "3744612c6ee71c8aad9491f0c1ea48a3ecdb24f371f6c7b0082446639dbc87fe"
+      },
+      "src/dotenv/cli.py": {
+        "bytes": 7569,
+        "sha256": "cba5e82445206ce3a4d70f819e9093112ff80a5346cef3ec68a5da43fc3d5349"
+      },
+      "src/dotenv/ipython.py": {
+        "bytes": 1326,
+        "sha256": "74740177d3dc7425298466faed7c32dc6914a8c49d7fd5d4522358c53677b585"
+      },
+      "src/dotenv/main.py": {
+        "bytes": 16970,
+        "sha256": "fcb89122cd8756c43209f9052bb3c552dbe440d45493c762295c771f0d1ceaa8"
+      },
+      "src/dotenv/parser.py": {
+        "bytes": 5806,
+        "sha256": "75f68bfa9e63b6f504b7d23a605b66edbb578d5e3e7ba797ab78ffcbc0eb44ae"
+      },
+      "src/dotenv/py.typed": {
+        "bytes": 26,
+        "sha256": "f0f8f2675695a10a5156fb7bd66bafbaae6a13e8d315990af862c792175e6e67"
+      },
+      "src/dotenv/variables.py": {
+        "bytes": 2348,
+        "sha256": "083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f"
+      },
+      "src/dotenv/version.py": {
+        "bytes": 22,
+        "sha256": "5c1287f04d4b983c6fd3a537f72a8c05b5d96a93844458080840d866cfe446ca"
+      },
+      "tests/__init__.py": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "tests/conftest.py": {
+        "bytes": 279,
+        "sha256": "1cc31c9f8e8b5e076780d7469c8f35ff8088e37a25be0bc7e07b68e593beb443"
+      },
+      "tests/test_cli.py": {
+        "bytes": 14034,
+        "sha256": "0062597d337b332af0eef02812a5395c6d63626b796e6edbcf3d6270cd6d844b"
+      },
+      "tests/test_fifo_dotenv.py": {
+        "bytes": 743,
+        "sha256": "b69ecca75f9eb3969aa2cc2d49f66006cccae02da472805a3b3ad4c9fca8f8de"
+      },
+      "tests/test_ipython.py": {
+        "bytes": 2257,
+        "sha256": "aaa10084bffa00032ff6fe9f61c4a1975c77d4f102b4c1e18b6eea0433d93933"
+      },
+      "tests/test_is_interactive.py": {
+        "bytes": 8921,
+        "sha256": "2d4a6a5a4501bbd6c2860b39abeb9d5201a2de3d110347f74236098aa72f2a18"
+      },
+      "tests/test_lib.py": {
+        "bytes": 1122,
+        "sha256": "f75073c7317f7cda985b94531774578056519bf8dcb91aa7f3c60a7cf8872199"
+      },
+      "tests/test_main.py": {
+        "bytes": 27507,
+        "sha256": "3b2f4bf1ca0d0a87bfac8c14c7236b42b39f444dcc148f751ef7b3f65c89342a"
+      },
+      "tests/test_parser.py": {
+        "bytes": 20349,
+        "sha256": "570e2ed889602896f817f59de8b8920df61a4ad39dcab49a30dc182acf9f05ce"
+      },
+      "tests/test_utils.py": {
+        "bytes": 747,
+        "sha256": "82e06b9819adbc846b84717f9cc47ffff2dc99c77ebb0a22d93026326eac78a3"
+      },
+      "tests/test_variables.py": {
+        "bytes": 884,
+        "sha256": "facea37ceaca30b761c2128fa754ec32c1e50333f2ac1776f7f8063018aaa6fc"
+      },
+      "tests/test_zip_imports.py": {
+        "bytes": 2864,
+        "sha256": "9224bd859309409c62848bac6564eec0793aa6dffa091c9965ec6c4644a8ef04"
+      }
+    }
+  },
+  "original_inventory": {
+    ".bumpversion.cfg": {
+      "bytes": 105,
+      "sha256": "b4225c9bfd7c7dea85406541f85c2223c82255e3019547dbec49e7a542446dbe"
+    },
+    ".editorconfig": {
+      "bytes": 243,
+      "sha256": "91ca4c8ad16309579982341930d568d2790cd5716e0193ad6e066764ff85d2cc"
+    },
+    ".gitignore": {
+      "bytes": 1566,
+      "sha256": "92c064957359c2be81209629f6111dbf57f6b2826e72bfa808d76537fcecb5ec"
+    },
+    ".pre-commit-config.yaml": {
+      "bytes": 182,
+      "sha256": "d01478603c4961aa40eb5e27d6991fec2c41934f7482218a2014a49e8ffb6979"
+    },
+    "CHANGELOG.md": {
+      "bytes": 22214,
+      "sha256": "21d571a85c31357b3e420567a8688149945c559d8172f52acb4a76c045e897ba"
+    },
+    "CONTRIBUTING.md": {
+      "bytes": 700,
+      "sha256": "986854ef7b3868b0f15758221cd999adf6ab50bbf40e3da1689b085088e3a96a"
+    },
+    "FEATURE.md": {
+      "bytes": 2370,
+      "sha256": "9e208d705566d2a0518a292dc4200776b4f917b2c5cf9ed770708410e67b9157"
+    },
+    "LICENSE": {
+      "bytes": 1556,
+      "sha256": "80619b7049f08c81683ad0e01f08f257a840652dd71ee83146d36658c7d2c2b9"
+    },
+    "MANIFEST.in": {
+      "bytes": 311,
+      "sha256": "c765cc00183538cf8ad406f274adcf76e987c2670f9a8faea16c51b13d9a6ad0"
+    },
+    "Makefile": {
+      "bytes": 1352,
+      "sha256": "74d25e5e679cf6c217f1b6d142c7510311d472d4be93d7afc209cd6a874e64ea"
+    },
+    "README.md": {
+      "bytes": 7997,
+      "sha256": "7d06cf7aa8278a4416873e141b5510d99bcc46bd14b440221ef46eba74009441"
+    },
+    "RELEASING.md": {
+      "bytes": 2803,
+      "sha256": "df7efbaed1027a062d5bb5095d5bd6dc78b022437a0ad254ff453d411edc602a"
+    },
+    "_benchmark_checks.py": {
+      "bytes": 2927,
+      "sha256": "8a5a8c5efe120be13ab394ef6f1d2c1df1a98ed7b32585ed3847a877de8c0033"
+    },
+    "_public_cases.json": {
+      "bytes": 1177,
+      "sha256": "43fdad2ebedaac1006f6e7a0b07719f8935231724cc81303b1bf7095ce627673"
+    },
+    "mkdocs.yml": {
+      "bytes": 630,
+      "sha256": "83ab242553640d2cfaa0ce06cadee5f7e4352c7c24208d73158b4ba47f88fc9f"
+    },
+    "pyproject.toml": {
+      "bytes": 2166,
+      "sha256": "7041daba686d8a41f34509c56c069aa60c76000ba2e6951d1f1ff98bff7f3546"
+    },
+    "requirements-ci.txt": {
+      "bytes": 105,
+      "sha256": "1cea9ed71bce2ba9487a693118c9b5a03671dda4877d809fe3c0424c687f9129"
+    },
+    "requirements-docs.txt": {
+      "bytes": 130,
+      "sha256": "9bd719c05023386176dae93f187f1a3b46d457c18d10db5b424eead1fcb4b6e1"
+    },
+    "requirements.txt": {
+      "bytes": 83,
+      "sha256": "866b5215434fe1ac6e056fb4122a0a920a2fa5da0319caa90c2ae5d26add5b15"
+    },
+    "ruff.toml": {
+      "bytes": 178,
+      "sha256": "18b8cd8f263b6fb7b3f562e0fedffdb74ab25d43fd03cd85e868d43c70dda41e"
+    },
+    "tox.ini": {
+      "bytes": 1324,
+      "sha256": "b1fcf82d564de1e385a7b35eeebab1f4cbe6ddf7a863724612cd0fdf35bc4926"
+    },
+    "docs/changelog.md": {
+      "bytes": 15,
+      "sha256": "5b1ace6cbf670b5d35b515086985890d889090026e075bb900834cea4945afba"
+    },
+    "docs/contributing.md": {
+      "bytes": 18,
+      "sha256": "3b4a07b9c92d73f838166d1bc5907f6d4305d0661b13e4617d9820f4d21e7207"
+    },
+    "docs/index.md": {
+      "bytes": 12,
+      "sha256": "dbcc210d7f4962499db6d4cfa18658e26d05ee700c962a811cac911f095e22fd"
+    },
+    "docs/license.md": {
+      "bytes": 10,
+      "sha256": "1e881ecf2862d01e6e5bc2b861e46886d2a6fb01499c0c508a209a7271b13cf2"
+    },
+    "docs/reference.md": {
+      "bytes": 14,
+      "sha256": "acf20f0b6b9ee9f0af6b50e9ca0e67fe1f904c71f00b5c450bbdfaa121b3b2d4"
+    },
+    "src/dotenv/__init__.py": {
+      "bytes": 1230,
+      "sha256": "6e163e88aeb0c0765a996208e9e482b820165d435d9f64d016610eb97494ed23"
+    },
+    "src/dotenv/__main__.py": {
+      "bytes": 129,
+      "sha256": "3744612c6ee71c8aad9491f0c1ea48a3ecdb24f371f6c7b0082446639dbc87fe"
+    },
+    "src/dotenv/cli.py": {
+      "bytes": 7569,
+      "sha256": "cba5e82445206ce3a4d70f819e9093112ff80a5346cef3ec68a5da43fc3d5349"
+    },
+    "src/dotenv/ipython.py": {
+      "bytes": 1326,
+      "sha256": "74740177d3dc7425298466faed7c32dc6914a8c49d7fd5d4522358c53677b585"
+    },
+    "src/dotenv/main.py": {
+      "bytes": 16970,
+      "sha256": "fcb89122cd8756c43209f9052bb3c552dbe440d45493c762295c771f0d1ceaa8"
+    },
+    "src/dotenv/parser.py": {
+      "bytes": 5806,
+      "sha256": "75f68bfa9e63b6f504b7d23a605b66edbb578d5e3e7ba797ab78ffcbc0eb44ae"
+    },
+    "src/dotenv/py.typed": {
+      "bytes": 26,
+      "sha256": "f0f8f2675695a10a5156fb7bd66bafbaae6a13e8d315990af862c792175e6e67"
+    },
+    "src/dotenv/variables.py": {
+      "bytes": 2348,
+      "sha256": "083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f"
+    },
+    "src/dotenv/version.py": {
+      "bytes": 22,
+      "sha256": "5c1287f04d4b983c6fd3a537f72a8c05b5d96a93844458080840d866cfe446ca"
+    },
+    "tests/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests/conftest.py": {
+      "bytes": 279,
+      "sha256": "1cc31c9f8e8b5e076780d7469c8f35ff8088e37a25be0bc7e07b68e593beb443"
+    },
+    "tests/test_cli.py": {
+      "bytes": 14034,
+      "sha256": "0062597d337b332af0eef02812a5395c6d63626b796e6edbcf3d6270cd6d844b"
+    },
+    "tests/test_fifo_dotenv.py": {
+      "bytes": 743,
+      "sha256": "b69ecca75f9eb3969aa2cc2d49f66006cccae02da472805a3b3ad4c9fca8f8de"
+    },
+    "tests/test_ipython.py": {
+      "bytes": 2257,
+      "sha256": "aaa10084bffa00032ff6fe9f61c4a1975c77d4f102b4c1e18b6eea0433d93933"
+    },
+    "tests/test_is_interactive.py": {
+      "bytes": 8921,
+      "sha256": "2d4a6a5a4501bbd6c2860b39abeb9d5201a2de3d110347f74236098aa72f2a18"
+    },
+    "tests/test_lib.py": {
+      "bytes": 1122,
+      "sha256": "f75073c7317f7cda985b94531774578056519bf8dcb91aa7f3c60a7cf8872199"
+    },
+    "tests/test_main.py": {
+      "bytes": 27507,
+      "sha256": "3b2f4bf1ca0d0a87bfac8c14c7236b42b39f444dcc148f751ef7b3f65c89342a"
+    },
+    "tests/test_parser.py": {
+      "bytes": 20349,
+      "sha256": "570e2ed889602896f817f59de8b8920df61a4ad39dcab49a30dc182acf9f05ce"
+    },
+    "tests/test_utils.py": {
+      "bytes": 747,
+      "sha256": "82e06b9819adbc846b84717f9cc47ffff2dc99c77ebb0a22d93026326eac78a3"
+    },
+    "tests/test_variables.py": {
+      "bytes": 884,
+      "sha256": "facea37ceaca30b761c2128fa754ec32c1e50333f2ac1776f7f8063018aaa6fc"
+    },
+    "tests/test_zip_imports.py": {
+      "bytes": 2864,
+      "sha256": "9224bd859309409c62848bac6564eec0793aa6dffa091c9965ec6c4644a8ef04"
+    }
+  },
+  "specification_sha256": "9e208d705566d2a0518a292dc4200776b4f917b2c5cf9ed770708410e67b9157",
+  "public_corpus_sha256": "43fdad2ebedaac1006f6e7a0b07719f8935231724cc81303b1bf7095ce627673",
+  "context_file_sha256": "da9261851e0cf65ae2e31f1eff08796761379e722834402274c6b1bb7ec7dd27",
+  "catalog_proof_sha256": "8d579c09b59a49a1d9a9a9cc4f1e48daf71ab173d87e31a5cace11437e10117e",
+  "upfront_information": {
+    "sha256": "3c5d20267163ed9d94d84d5f85d3b16db2fcc49bc6db4773cc93a6586b7925f1",
+    "utf8_bytes": 3471,
+    "characters": 3471,
+    "lines": 118,
+    "initial_prompt_copies": 1,
+    "source_spans": [
+      {
+        "path": "src/dotenv/variables.py",
+        "sha256": "083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f",
+        "first": 1,
+        "last": 86
+      },
+      {
+        "path": "src/dotenv/main.py",
+        "sha256": "fcb89122cd8756c43209f9052bb3c552dbe440d45493c762295c771f0d1ceaa8",
+        "first": 333,
+        "last": 355
+      }
+    ],
+    "additional_prompt_text_utf8_bytes": 3525,
+    "additional_model_tokens": null,
+    "token_measurement": "After authorization, compare raw first-request provider prompt_tokens, including cached counts separately. No guessed tokenizer count or inference during preparation."
+  },
+  "arm_recipes": {
+    "A": "Common objective plus exact original source/interface excerpt once in initial prompt.",
+    "B": "Same objective and inputs; discover source through the same approved tools."
+  },
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "_benchmark_checks.py",
+        "public"
+      ],
+      "timeout": 40,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    },
+    {
+      "argv": [
+        "python",
+        "_benchmark_checks.py",
+        "upstream"
+      ],
+      "timeout": 40,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    },
+    {
+      "argv": [
+        "python",
+        "_benchmark_checks.py",
+        "authored"
+      ],
+      "timeout": 40,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    }
+  ],
+  "write_roots": [
+    "src/dotenv/variables.py",
+    "tests/test_nested_defaults.py"
+  ],
+  "controller_final_checks": [
+    "public",
+    "authored"
+  ],
+  "promotion_checks": [
+    "syntax",
+    "public",
+    "upstream",
+    "authored"
+  ],
+  "worker_policy": {
+    "sessions": 1,
+    "planner_requests": 0,
+    "attempts": 1,
+    "workers": 1,
+    "mcp_calls_per_session": 16,
+    "attempt_seconds": 150,
+    "native_mutation": false,
+    "native_shell": false,
+    "native_reads": [
+      "glob",
+      "grep",
+      "list",
+      "todowrite"
+    ],
+    "scoped_tools": [
+      "checks_focus",
+      "checks_edit",
+      "checks_check",
+      "checks_diff"
+    ]
+  },
+  "phase_seconds": {
+    "warm": 20,
+    "work": 180,
+    "grade": 40
+  },
+  "total_seconds_per_arm": 240,
+  "total_seconds_pair": 480,
+  "timing": "All readiness, baseline, routing, inference and public testing are charged. Controller reserves 20 seconds for final checks inside the 150-second attempt; harness receives at most the remaining 130 seconds, including its own setup. Post-worker selection remains inside the 180-second work phase.",
+  "catalog_policy": "Owned private OpenCode server; await this location MCP connected, then require all four scoped tools on every provider request before forwarding. Unexpected tools or model, missing/schemaless catalog, relay failure or nonzero harness exit stops and quarantines the pair. No schema/prompt/model argument rewriting; fixed session title prevents auxiliary title inference.",
+  "evidence_limits": {
+    "agent_stdout_bytes": 8388608,
+    "provider_wire_bytes": 16777216
+  },
+  "warm_protocol": {
+    "order": [
+      "B",
+      "A"
+    ],
+    "neutral_requests_per_arm": 1,
+    "max_tokens": 4,
+    "prompt": "Reply with exactly READY.",
+    "temperature": 0,
+    "reasoning_effort": "none",
+    "resident_context_required": 8192,
+    "minimum_residency_ttl_seconds": 185,
+    "fresh_harness_home": true,
+    "no_restart_unload_or_model_changes": true,
+    "exclusive_operator_window_required": true,
+    "cache_limitation": "No claim of purging all KV caches; preserve residency receipts and cache counters. One randomized pair is exploratory."
+  },
+  "selection": "Final in-policy candidate versus original baseline, using the same complete public corpus. Reject syntax failures, upstream regressions and lost public passes; deterministic ties keep baseline. Record authored-test status separately; retain all edit/check traces and intermediate public observations without claiming every intermediate snapshot was ranked.",
+  "milestones": {
+    "first_applied_edit_at_most": 8,
+    "first_public_test_at_most": 12
+  },
+  "completion": "All ten public cases, frozen whole upstream suite (documented platform skips), authored tests, twelve fresh sealed cases and both operation milestones; no scope violations or mid-run implementation guidance.",
+  "sealed_policy": {
+    "required_cases": 12,
+    "same_cases_both_arms": true,
+    "author_after_both_engineering_close_and_freeze": true,
+    "private_path": "private/cases.json",
+    "expectations_mounted": false,
+    "feedback_to_worker": false
+  },
+  "cleanup_policy": "Existing trial-budget ownership checks, container cleanup and interruption quarantine; private server owns a separate process group/job and relay sockets are closed. No extensions, resumes, retries or service changes.",
+  "baseline": {
+    "public": {
+      "passed": 2,
+      "total": 10,
+      "cases": [
+        {
+          "id": "flat-reference",
+          "passed": true,
+          "expected": "hello Ada!",
+          "actual": "hello Ada!"
+        },
+        {
+          "id": "flat-default",
+          "passed": true,
+          "expected": "anonymous",
+          "actual": "anonymous"
+        },
+        {
+          "id": "nested-reference",
+          "passed": false,
+          "expected": "Ada",
+          "actual": "${USER}"
+        },
+        {
+          "id": "nested-default",
+          "passed": false,
+          "expected": "fallback",
+          "actual": "${B:-fallback}"
+        },
+        {
+          "id": "unused-balanced-default",
+          "passed": false,
+          "expected": "set/tail",
+          "actual": "set}/tail"
+        },
+        {
+          "id": "concatenated-default",
+          "passed": false,
+          "expected": "srv-dev-42",
+          "actual": "srv-${ENV-42}"
+        },
+        {
+          "id": "three-level-default",
+          "passed": false,
+          "expected": "leaf",
+          "actual": "${B:-${C:-final}}"
+        },
+        {
+          "id": "present-empty-and-none",
+          "passed": false,
+          "expected": "|",
+          "actual": "}|}"
+        },
+        {
+          "id": "environment-value-literal",
+          "passed": false,
+          "expected": "${UNEXPANDED}",
+          "actual": "${UNEXPANDED}}"
+        },
+        {
+          "id": "dotenv-values-integration",
+          "passed": false,
+          "expected": {
+            "NAME": "web",
+            "ENV": "qa",
+            "FULL": "web-qa",
+            "ROOT": "prefix/web-qa/x"
+          },
+          "actual": {
+            "NAME": "web",
+            "ENV": "qa",
+            "FULL": "${NAME-qa}",
+            "ROOT": "prefix/${NAME-qa}/x"
+          }
+        }
+      ],
+      "source_sha256": "083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f"
+    },
+    "upstream": {
+      "argv": [
+        "python",
+        "_benchmark_checks.py",
+        "upstream"
+      ],
+      "cwd": "",
+      "runner": "sha256:5c19bf11295cb95f58cdc0250c8f699292e453a05b9fdf3960346b3517fe1abf",
+      "code": 0,
+      "elapsed": 20.25,
+      "stdout": "...............................s..............s......................... [ 24%]\n.............................ss..s...................................... [ 49%]\n........................................................................ [ 74%]\n........................................................................ [ 98%]\n...                                                                      [100%]\n=============================== warnings summary ===============================\ntests/test_ipython.py::test_ipython_existing_variable_no_override\ntests/test_ipython.py::test_ipython_existing_variable_override\ntests/test_ipython.py::test_ipython_new_variable\n  /usr/local/lib/python3.12/site-packages/IPython/paths.py:67: UserWarning: IPython parent '/root' is not a writable location, using a temp directory.\n    warn(\"IPython parent '{}' is not a writable location,\"\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nSKIPPED [1] tests/test_cli.py:205: Directory permissions are not enforced on Windows or for root.\nSKIPPED [1] tests/test_cli.py:384: Windows-specific lookup\nSKIPPED [1] tests/test_main.py:176: Root user can access files even with 000 permissions.\nSKIPPED [1] tests/test_main.py:199: Root user can access files even with 000 permissions.\nSKIPPED [1] tests/test_main.py:251: Directory permissions are not enforced on Windows or for root.\n286 passed, 5 skipped, 1 deselected, 3 warnings in 15.83s\n.                                                                        [100%]\n1 passed in 1.11s\n",
+      "stderr": "",
+      "timed_out": false,
+      "truncated": false,
+      "passed": true
+    },
+    "syntax": {
+      "argv": [
+        "python",
+        "_benchmark_checks.py",
+        "syntax"
+      ],
+      "cwd": "",
+      "runner": "sha256:5c19bf11295cb95f58cdc0250c8f699292e453a05b9fdf3960346b3517fe1abf",
+      "code": 0,
+      "elapsed": 1.8910000000614673,
+      "stdout": "{\"syntax_passed\": true, \"source_sha256\": \"083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f\"}\n",
+      "stderr": "",
+      "timed_out": false,
+      "truncated": false,
+      "passed": true
+    }
+  },
+  "authorization": "Separate explicit approval of this canonical digest and exactly [A,B]; no grant created by preparation."
+}

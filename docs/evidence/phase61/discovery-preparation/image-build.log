@@ -1,0 +1,98 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 405B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/aiwork-phase61-httpx:local
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 DONE 0.0s
+
+#5 [1/6] FROM docker.io/library/aiwork-phase61-httpx:local@sha256:d3521c3f00c0489a2c2ddccd1975469ee5658bac4e5a79fafd94a1f4f017ada3
+#5 resolve docker.io/library/aiwork-phase61-httpx:local@sha256:d3521c3f00c0489a2c2ddccd1975469ee5658bac4e5a79fafd94a1f4f017ada3 0.1s done
+#5 DONE 0.1s
+
+#4 [internal] load build context
+#4 transferring context: 83.79kB 0.0s done
+#4 DONE 0.1s
+
+#5 [1/6] FROM docker.io/library/aiwork-phase61-httpx:local@sha256:d3521c3f00c0489a2c2ddccd1975469ee5658bac4e5a79fafd94a1f4f017ada3
+#5 CACHED
+
+#6 [2/6] COPY wheels /opt/wheels
+#6 DONE 0.1s
+
+#7 [3/6] COPY requirements.lock /opt/requirements.lock
+#7 DONE 0.1s
+
+#8 [4/6] RUN python -m pip install --no-index --find-links=/opt/wheels --require-hashes -r /opt/requirements.lock
+#8 0.861 Looking in links: /opt/wheels
+#8 0.877 Processing /opt/wheels/asttokens-3.0.2-py3-none-any.whl (from -r /opt/requirements.lock (line 1))
+#8 0.884 Processing /opt/wheels/colorama-0.4.6-py2.py3-none-any.whl (from -r /opt/requirements.lock (line 2))
+#8 0.890 Processing /opt/wheels/executing-2.3.0-py3-none-any.whl (from -r /opt/requirements.lock (line 3))
+#8 0.897 Requirement already satisfied: iniconfig==2.3.1 in /usr/local/lib/python3.12/site-packages (from -r /opt/requirements.lock (line 4)) (2.3.1)
+#8 0.899 Processing /opt/wheels/ipython-9.18.1-py3-none-any.whl (from -r /opt/requirements.lock (line 5))
+#8 0.912 Processing /opt/wheels/ipython_pygments_lexers-1.1.1-py3-none-any.whl (from -r /opt/requirements.lock (line 6))
+#8 0.917 Processing /opt/wheels/jedi-0.20.1-py2.py3-none-any.whl (from -r /opt/requirements.lock (line 7))
+#8 0.967 Processing /opt/wheels/matplotlib_inline-0.2.2-py3-none-any.whl (from -r /opt/requirements.lock (line 8))
+#8 0.973 Requirement already satisfied: packaging==26.3 in /usr/local/lib/python3.12/site-packages (from -r /opt/requirements.lock (line 9)) (26.3)
+#8 0.976 Processing /opt/wheels/parso-0.8.7-py2.py3-none-any.whl (from -r /opt/requirements.lock (line 10))
+#8 0.984 Processing /opt/wheels/pexpect-4.9.0-py2.py3-none-any.whl (from -r /opt/requirements.lock (line 11))
+#8 0.988 Requirement already satisfied: pluggy==1.7.0 in /usr/local/lib/python3.12/site-packages (from -r /opt/requirements.lock (line 12)) (1.7.0)
+#8 0.990 Processing /opt/wheels/prompt_toolkit-3.0.53-py3-none-any.whl (from -r /opt/requirements.lock (line 13))
+#8 0.995 Processing /opt/wheels/psutil-7.1.1-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (from -r /opt/requirements.lock (line 14))
+#8 1.004 Processing /opt/wheels/ptyprocess-0.7.0-py2.py3-none-any.whl (from -r /opt/requirements.lock (line 15))
+#8 1.009 Processing /opt/wheels/pure_eval-0.2.4-py3-none-any.whl (from -r /opt/requirements.lock (line 16))
+#8 1.012 Requirement already satisfied: Pygments==2.21.0 in /usr/local/lib/python3.12/site-packages (from -r /opt/requirements.lock (line 17)) (2.21.0)
+#8 1.015 Processing /opt/wheels/pytest-9.0.3-py3-none-any.whl (from -r /opt/requirements.lock (line 18))
+#8 1.022 Processing /opt/wheels/setuptools-80.9.0-py3-none-any.whl (from -r /opt/requirements.lock (line 19))
+#8 1.059 Processing /opt/wheels/stack_data-0.6.3-py3-none-any.whl (from -r /opt/requirements.lock (line 20))
+#8 1.066 Processing /opt/wheels/traitlets-5.16.1-py3-none-any.whl (from -r /opt/requirements.lock (line 21))
+#8 1.073 Processing /opt/wheels/wcwidth-0.9.4-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (from -r /opt/requirements.lock (line 22))
+#8 1.080 Processing /opt/wheels/wheel-0.45.1-py3-none-any.whl (from -r /opt/requirements.lock (line 23))
+#8 1.332 Installing collected packages: pure_eval, ptyprocess, wheel, wcwidth, traitlets, setuptools, pytest, psutil, pexpect, parso, ipython_pygments_lexers, executing, colorama, asttokens, stack-data, prompt_toolkit, matplotlib-inline, jedi, ipython
+#8 3.224   Attempting uninstall: pytest
+#8 3.232     Found existing installation: pytest 8.3.4
+#8 3.266     Uninstalling pytest-8.3.4:
+#8 5.136       Successfully uninstalled pytest-8.3.4
+#8 10.14 Successfully installed asttokens-3.0.2 colorama-0.4.6 executing-2.3.0 ipython-9.18.1 ipython_pygments_lexers-1.1.1 jedi-0.20.1 matplotlib-inline-0.2.2 parso-0.8.7 pexpect-4.9.0 prompt_toolkit-3.0.53 psutil-7.1.1 ptyprocess-0.7.0 pure_eval-0.2.4 pytest-9.0.3 setuptools-80.9.0 stack-data-0.6.3 traitlets-5.16.1 wcwidth-0.9.4 wheel-0.45.1
+#8 10.14 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#8 DONE 10.6s
+
+#9 [5/6] COPY upstream /opt/upstream
+#9 DONE 0.2s
+
+#10 [6/6] RUN python -m pip install --no-index --no-deps --no-build-isolation /opt/upstream
+#10 0.784 Processing /opt/upstream
+#10 0.792   Preparing metadata (pyproject.toml): started
+#10 1.420   Preparing metadata (pyproject.toml): finished with status 'done'
+#10 1.429 Building wheels for collected packages: python-dotenv
+#10 1.440   Building wheel for python-dotenv (pyproject.toml): started
+#10 2.069   Building wheel for python-dotenv (pyproject.toml): finished with status 'done'
+#10 2.071   Created wheel for python-dotenv: filename=python_dotenv-1.2.4-py3-none-any.whl size=24255 sha256=f80c64ae55a9715f1812235348b620f0bbc23432a765617527358e0720a2cb06
+#10 2.071   Stored in directory: /tmp/pip-ephem-wheel-cache-7m3yrsjd/wheels/38/b3/39/e54c1f08b1d1242d3da9821a9188f3c7b59c65d17dd08dd1c0
+#10 2.080 Successfully built python-dotenv
+#10 2.081 Installing collected packages: python-dotenv
+#10 2.149 Successfully installed python-dotenv-1.2.4
+#10 2.150 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#10 DONE 2.3s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 3.4s done
+#11 exporting manifest sha256:cb4c332c7d7193cfccdd5d53301d89377343b897b84f58517934daae7277d7cd 0.0s done
+#11 exporting config sha256:954ade8495bf216df04c33268f58b984ee1c74678565e20c2208e4b66a21ddfe 0.0s done
+#11 exporting attestation manifest sha256:9a2508772e4928402179e200fdd035d8ca6d15f9dbd7dae8c910ff3577135695
+#11 exporting attestation manifest sha256:9a2508772e4928402179e200fdd035d8ca6d15f9dbd7dae8c910ff3577135695 0.1s done
+#11 exporting manifest list sha256:5c19bf11295cb95f58cdc0250c8f699292e453a05b9fdf3960346b3517fe1abf 0.0s done
+#11 naming to docker.io/library/aiwork-discovery-dotenv:phase61
+#11 naming to docker.io/library/aiwork-discovery-dotenv:phase61 done
+#11 unpacking to docker.io/library/aiwork-discovery-dotenv:phase61
+#11 unpacking to docker.io/library/aiwork-discovery-dotenv:phase61 5.2s done
+#11 DONE 9.0s

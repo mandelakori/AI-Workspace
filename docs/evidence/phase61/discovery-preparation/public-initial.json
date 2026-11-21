@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python",
+    "_benchmark_checks.py",
+    "public"
+  ],
+  "cwd": "",
+  "runner": "aiwork-discovery-dotenv:phase61",
+  "code": 2,
+  "elapsed": 1.140999999945052,
+  "stdout": "",
+  "stderr": "python: can't open file '/work/_benchmark_checks.py': [Errno 2] No such file or directory\n",
+  "timed_out": false,
+  "truncated": false,
+  "passed": false
+}

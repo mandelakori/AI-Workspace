@@ -1,0 +1,77 @@
+{
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "digest": "ee17b4c45b8b82dccc1790a91dec1dead8c2983625121b86d785e743a39443d0",
+  "real_model_inference_requests": 0,
+  "measured_arms_started": 0,
+  "sealed_cases_authored": 0,
+  "regressions": {
+    "discovered": 146,
+    "passed": 141,
+    "skipped": 5,
+    "failures": 0,
+    "seconds": 116.4
+  },
+  "baseline": {
+    "public_passed": 2,
+    "public_total": 10,
+    "upstream_passed": 287,
+    "upstream_skipped": 5
+  },
+  "input_archive": {
+    "path": "deliverables/phase61-discovery/frozen-input.zip",
+    "sha256": "6f5f3d3ed55943498bd825d511baa340ca225db86e532872ccb31e55aaeff6c2"
+  },
+  "development_diagnostics": [
+    {
+      "kind": "public source clone",
+      "failure": "Sandbox DNS denied; explicitly authorized public clone succeeded outside the network sandbox."
+    },
+    {
+      "kind": "private server API probe",
+      "failure": "Loopback denied in sandbox; inert probes rerun with loopback access. Initial empty/pending MCP list demonstrated the registration race."
+    },
+    {
+      "kind": "ephemeral test credential",
+      "failure": "An initial diagnostic printed the newly owned localhost server password. That server was closed; no existing credentials were used. New diagnostic files were redacted, and production capture redacts the generated value before writing."
+    },
+    {
+      "kind": "Dockerfile",
+      "failure": "Bare FROM sha256 was interpreted as a registry name. Used the positively identified existing local base tag and froze its digest."
+    },
+    {
+      "kind": "offline wheel staging",
+      "failure": "Windows marker resolution omitted Linux pexpect/ptyprocess; both added to the hash-locked offline wheel set."
+    },
+    {
+      "kind": "baseline mount",
+      "failure": "Relative bind paths were incorrect; raw failed receipts retained, final benchmark uses absolute resolved paths."
+    },
+    {
+      "kind": "upstream temp fixtures",
+      "failure": "Default /tmp is noexec; all-bind workaround passed but was slow. Final recipe runs the one unchanged executable-fixture test on the disposable bind mount and every other test on tmpfs. Missing temp-parent failure also retained."
+    },
+    {
+      "kind": "provider settings test",
+      "failure": "Assertion initially expected max_tokens; pinned SDK uses max_completion_tokens=2048. Disabled reasoning and unchanged request bytes verified."
+    }
+  ],
+  "sha256": {
+    "baseline-public.json": "b60b9a1f2369fd94827b0a098ab18931590e57acb35cd455228e29b423272d14",
+    "baseline-syntax.json": "a3b1f48921085c868b9bc5f64060911731afce4f63e61f25afb22379a99cbea4",
+    "baseline-upstream.json": "49c4b50be19a0a591790700bf7dbb0c52d17ac0545875d4a5e43d39114e12b8b",
+    "catalog-negative.json": "13b01264c7d1c2b84714e30d71a3097274c7e5b237996f7f911f649f097c5f42",
+    "catalog-ready.json": "8d579c09b59a49a1d9a9a9cc4f1e48daf71ab173d87e31a5cace11437e10117e",
+    "image-build.log": "5f50cc074681530cf3fcab96199e61f19e40e69176c72560fb6060e282531d08",
+    "manifest.json": "26a57c831599a7bd221fa8d1c30c0410efee3a488351382c2526b96c0e2e9f58",
+    "manifest.sha256": "530d8a1d4c11efa069e55bf59e5c1f7d6dc01cd14cafb2ed9b607ca929b05f39",
+    "operator-approval.example.json": "c1f97a221e95249f980eae429b7606fd31713176376077852524b8b36b04e6a2",
+    "provider-settings.json": "92cd1556e04311dca4f973e56f4699ad4d4b546e768cedfb2ab8ee7dedc2162a",
+    "public-initial.json": "e806ffb5ad3e0c436c501b47c46f7584371f9464480bd00bcfabe12cc4d89d7d",
+    "regressions.log": "517c70f3f2fae9223f949c2e84b2927407edd40512d6f0a37fe2ec1ceb36a423",
+    "upfront-context.json": "da9261851e0cf65ae2e31f1eff08796761379e722834402274c6b1bb7ec7dd27",
+    "upstream-all-temp-bind-passed.json": "59baa0e4a0383bc507913ac3159752b9a2955e5a1f437d7eaf2659b74bb60baf",
+    "upstream-initial.json": "c52e565f039e7ea103f0305e78a26518bda0f9c1333e44d0b0e1e910d94d5122",
+    "upstream-missing-temp-parent.json": "b4437821bbe083badd8bab138aa73df54bb2ddf643bc0ef727e20f15237480f7",
+    "upstream-noexec-failure.json": "bdcaac0d9c3ece2b0f8151caac5458566511e95865ce604b0386221117178da4"
+  }
+}

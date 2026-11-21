@@ -1,0 +1,51 @@
+{
+  "gate": {
+    "failed_closed": true,
+    "requests": [
+      {
+        "request": 1,
+        "offered": [
+          "checks_diff",
+          "checks_edit",
+          "checks_focus",
+          "glob",
+          "grep"
+        ],
+        "missing": [
+          "checks_check"
+        ],
+        "unexpected": [],
+        "passed": false,
+        "forwarded": false,
+        "body_sha256": "c5e3a6c70f9b7d218b582d06e681a574a1b5967f256e0850119f5ce4e0aac963"
+      }
+    ],
+    "required": [
+      "checks_check",
+      "checks_diff",
+      "checks_edit",
+      "checks_focus"
+    ],
+    "request_rewriting": false,
+    "captured_bytes": 5358
+  },
+  "backend_requests": 0,
+  "harness_code": 1,
+  "readiness": {
+    "ready": true,
+    "owned": true,
+    "private_server": true,
+    "pid": 70824,
+    "elapsed": 2.11,
+    "servers": [
+      {
+        "name": "checks",
+        "status": {
+          "status": "connected"
+        }
+      }
+    ],
+    "cleanup_passed": true,
+    "elapsed_total": 2.657
+  }
+}
