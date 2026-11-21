@@ -1,5 +1,14 @@
 # Status as of 2026-11-21
 
+## Phase 6.1 benchmarking closed
+
+| Capability / outcome | Status | Evidence |
+| --- | --- | --- |
+| Approved source-discovery comparison | BLOCKED | [Final result](DISCOVERY-EXPERIMENT-RESULT.md): B quarantined after the inner harness timeout; A withheld. Zero edits, zero executed worker tests, no candidate and no sealed cases. Unchanged 47-file baseline retained; no retries or further benchmarking. |
+| Provider registration and ownership | VERIFIED | All 32 requests carried the four required tools. Private readiness and cleanup passed. Final gate failure was transport abort at timeout, not a missing catalog. |
+| Context/cache failure diagnosis | VERIFIED | Two raw compaction calls removed source from following requests while the unchanged-window guard suppressed reinspection. All source had been obtained by MCP operation 3. Sixteen slots spent on focus/diff; twelve later attempts refused. Full API usage reconciles 29 primary and two summary completions. |
+| Next development stage | UNTESTED | [Review-only plan](NEXT-DEVELOPMENT-PLAN.md): interchangeable harness contracts, context-epoch retrieval and resource-aware termination. No implementation, new campaign, remote operation or next-phase approval exists. |
+
 ## Phase 6.1 bounded autonomy preparation
 
 | Controlled real-repository preparation | Status | Evidence |

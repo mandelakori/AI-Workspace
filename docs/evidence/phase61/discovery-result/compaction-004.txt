@@ -1,0 +1,35 @@
+## Objective
+- Implement nested `${NAME:-default}` expansion in python-dotenv to resolve defaults that reference other variables or contain further nested defaults
+- Support up to 8 levels of nesting for balanced expressions
+
+## Requirements
+- Preserve existing flat-variable, literal, equality/hash and public Atom/Variable/parse_variables interfaces
+- Handle present empty string and None as empty without selecting default
+- Absent variable without default resolves to empty
+- Work through dotenv_values(stream=...) including values referencing previously defined entries
+- Do not change environment precedence or read/write host environment files
+- Only edit: src/dotenv/variables.py, tests/test_nested_defaults.py
+- Use approved source-edit tool with current SHA-256 and unique exact anchors
+
+## Decisions
+- Need to inspect Variable class implementation in src/dotenv/variables.py to understand current resolve logic before modifying
+
+## Work State
+### Completed
+- Inspected src/dotenv/variables.py structure (Atom, Literal, Variable classes and parse_variables function)
+- Reviewed failing test cases from public command: nested-reference, nested-default, unused-balanced-default, concatenated-default, three-level-default, present-empty-and-none, environment-value-literal, dotenv-values-integration
+
+### Active
+- Need to implement nested default resolution in Variable class resolve method
+
+### Blocked
+- Implementation not yet written; need exact anchor points from file inspection
+
+## Next Move
+1. Inspect full src/dotenv/variables.py to identify edit locations and SHA-256 anchor
+2. Implement nested default parsing logic that recursively resolves ${OTHER} references in defaults
+3. Write regression tests in tests/test_nested_defaults.py for the new behavior
+
+## Relevant Files
+- `src/dotenv/variables.py`: Main implementation file for Variable class and parse_variables function - needs to be modified to support nested defaults
+- `tests/test_nested_defaults.py`: New test file for regression tests on nested default behavior

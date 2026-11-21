@@ -1,0 +1,39 @@
+## Objective
+- Implement nested `${NAME:-default}` expansion in python-dotenv to resolve defaults containing variable references and further nested defaults (up to 8 levels)
+
+## Requirements
+- Preserve existing flat-variable, literal, equality/hash and public Atom/Variable/parse_variables interfaces
+- Handle present empty string and None as empty without selecting default
+- Absent variable without default resolves to empty
+- Work through dotenv_values(stream=...) including values referencing previously defined entries
+- Do not change environment precedence or read/write host environment files
+- Only edit: src/dotenv/variables.py, tests/test_nested_defaults.py
+
+## Decisions
+- Need to inspect Variable class implementation in src/dotenv/variables.py to understand current resolve logic before modifying
+
+## Work State
+### Completed
+- Inspected full structure of src/dotenv/variables.py (Atom, Literal, Variable classes and parse_variables function)
+- Reviewed failing test cases: nested-reference, nested-default, unused-balanced-default, concatenated-default, three-level-default, present-empty-and-none, environment-value-literal, dotenv-values-integration
+
+### Active
+- Need to implement nested default resolution in Variable class resolve method
+- Implementation not yet written; need exact anchor points and SHA-256 for source edits
+
+### Blocked
+- Cannot proceed without implementing the nested default parsing logic in the Variable.resolve method
+
+## Next Move
+1. Modify Variable.resolve method in src/dotenv/variables.py to recursively resolve ${OTHER} references in defaults with up to 8 levels of nesting
+2. Write regression tests in tests/test_nested_defaults.py for the new behavior
+3. Run existing test suite to verify changes don't break existing functionality
+
+## Relevant Files
+- `src/dotenv/variables.py`: Main implementation file containing Atom, Literal, Variable classes and parse_variables function - needs modification to support nested defaults (current SHA-256: 083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f)
+- `tests/test_nested_defaults.py`: New test file for regression tests on nested default behavior
+
+## Important Context
+- The Variable class currently has a simple resolve method that takes env mapping and returns the value or default
+- Nested defaults need to be resolved by parsing ${NAME} or ${NAME:-default} patterns within default strings
+- Resolution must happen recursively, tracking depth up to 8 levels

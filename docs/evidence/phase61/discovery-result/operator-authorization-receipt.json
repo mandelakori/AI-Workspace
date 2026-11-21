@@ -1,0 +1,16 @@
+{
+  "approval_digest": "ee17b4c45b8b82dccc1790a91dec1dead8c2983625121b86d785e743a39443d0",
+  "authorize": [
+    "A",
+    "B"
+  ],
+  "execution_order": [
+    "B",
+    "A"
+  ],
+  "recorded_at": "2026-11-21T10:06:59.265853+00:00",
+  "source": "Explicit operator approval in this conversation",
+  "limits_unchanged": true,
+  "one_comparison_only": true,
+  "post_experiment": "Stop Phase 6.1 benchmarking; prepare next development plan only."
+}

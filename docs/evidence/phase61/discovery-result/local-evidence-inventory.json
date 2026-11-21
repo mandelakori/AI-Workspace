@@ -1,0 +1,1222 @@
+{
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\engineering-result.json": {
+    "bytes": 301,
+    "sha256": "53dcf449be15c49fefbb0016c232de18d202a6389346fa81efcbdac179571667"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\.bumpversion.cfg": {
+    "bytes": 105,
+    "sha256": "b4225c9bfd7c7dea85406541f85c2223c82255e3019547dbec49e7a542446dbe"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\.editorconfig": {
+    "bytes": 243,
+    "sha256": "91ca4c8ad16309579982341930d568d2790cd5716e0193ad6e066764ff85d2cc"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\.gitignore": {
+    "bytes": 1566,
+    "sha256": "92c064957359c2be81209629f6111dbf57f6b2826e72bfa808d76537fcecb5ec"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\.pre-commit-config.yaml": {
+    "bytes": 182,
+    "sha256": "d01478603c4961aa40eb5e27d6991fec2c41934f7482218a2014a49e8ffb6979"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\_benchmark_checks.py": {
+    "bytes": 2927,
+    "sha256": "8a5a8c5efe120be13ab394ef6f1d2c1df1a98ed7b32585ed3847a877de8c0033"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\_public_cases.json": {
+    "bytes": 1177,
+    "sha256": "43fdad2ebedaac1006f6e7a0b07719f8935231724cc81303b1bf7095ce627673"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\CHANGELOG.md": {
+    "bytes": 22214,
+    "sha256": "21d571a85c31357b3e420567a8688149945c559d8172f52acb4a76c045e897ba"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\CONTRIBUTING.md": {
+    "bytes": 700,
+    "sha256": "986854ef7b3868b0f15758221cd999adf6ab50bbf40e3da1689b085088e3a96a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\docs\\changelog.md": {
+    "bytes": 15,
+    "sha256": "5b1ace6cbf670b5d35b515086985890d889090026e075bb900834cea4945afba"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\docs\\contributing.md": {
+    "bytes": 18,
+    "sha256": "3b4a07b9c92d73f838166d1bc5907f6d4305d0661b13e4617d9820f4d21e7207"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\docs\\index.md": {
+    "bytes": 12,
+    "sha256": "dbcc210d7f4962499db6d4cfa18658e26d05ee700c962a811cac911f095e22fd"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\docs\\license.md": {
+    "bytes": 10,
+    "sha256": "1e881ecf2862d01e6e5bc2b861e46886d2a6fb01499c0c508a209a7271b13cf2"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\docs\\reference.md": {
+    "bytes": 14,
+    "sha256": "acf20f0b6b9ee9f0af6b50e9ca0e67fe1f904c71f00b5c450bbdfaa121b3b2d4"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\FEATURE.md": {
+    "bytes": 2370,
+    "sha256": "9e208d705566d2a0518a292dc4200776b4f917b2c5cf9ed770708410e67b9157"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\LICENSE": {
+    "bytes": 1556,
+    "sha256": "80619b7049f08c81683ad0e01f08f257a840652dd71ee83146d36658c7d2c2b9"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\Makefile": {
+    "bytes": 1352,
+    "sha256": "74d25e5e679cf6c217f1b6d142c7510311d472d4be93d7afc209cd6a874e64ea"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\MANIFEST.in": {
+    "bytes": 311,
+    "sha256": "c765cc00183538cf8ad406f274adcf76e987c2670f9a8faea16c51b13d9a6ad0"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\mkdocs.yml": {
+    "bytes": 630,
+    "sha256": "83ab242553640d2cfaa0ce06cadee5f7e4352c7c24208d73158b4ba47f88fc9f"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\pyproject.toml": {
+    "bytes": 2166,
+    "sha256": "7041daba686d8a41f34509c56c069aa60c76000ba2e6951d1f1ff98bff7f3546"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\README.md": {
+    "bytes": 7997,
+    "sha256": "7d06cf7aa8278a4416873e141b5510d99bcc46bd14b440221ef46eba74009441"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\RELEASING.md": {
+    "bytes": 2803,
+    "sha256": "df7efbaed1027a062d5bb5095d5bd6dc78b022437a0ad254ff453d411edc602a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\requirements-ci.txt": {
+    "bytes": 105,
+    "sha256": "1cea9ed71bce2ba9487a693118c9b5a03671dda4877d809fe3c0424c687f9129"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\requirements-docs.txt": {
+    "bytes": 130,
+    "sha256": "9bd719c05023386176dae93f187f1a3b46d457c18d10db5b424eead1fcb4b6e1"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\requirements.txt": {
+    "bytes": 83,
+    "sha256": "866b5215434fe1ac6e056fb4122a0a920a2fa5da0319caa90c2ae5d26add5b15"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\ruff.toml": {
+    "bytes": 178,
+    "sha256": "18b8cd8f263b6fb7b3f562e0fedffdb74ab25d43fd03cd85e868d43c70dda41e"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\src\\dotenv\\__init__.py": {
+    "bytes": 1230,
+    "sha256": "6e163e88aeb0c0765a996208e9e482b820165d435d9f64d016610eb97494ed23"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\src\\dotenv\\__main__.py": {
+    "bytes": 129,
+    "sha256": "3744612c6ee71c8aad9491f0c1ea48a3ecdb24f371f6c7b0082446639dbc87fe"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\src\\dotenv\\cli.py": {
+    "bytes": 7569,
+    "sha256": "cba5e82445206ce3a4d70f819e9093112ff80a5346cef3ec68a5da43fc3d5349"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\src\\dotenv\\ipython.py": {
+    "bytes": 1326,
+    "sha256": "74740177d3dc7425298466faed7c32dc6914a8c49d7fd5d4522358c53677b585"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\src\\dotenv\\main.py": {
+    "bytes": 16970,
+    "sha256": "fcb89122cd8756c43209f9052bb3c552dbe440d45493c762295c771f0d1ceaa8"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\src\\dotenv\\parser.py": {
+    "bytes": 5806,
+    "sha256": "75f68bfa9e63b6f504b7d23a605b66edbb578d5e3e7ba797ab78ffcbc0eb44ae"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\src\\dotenv\\py.typed": {
+    "bytes": 26,
+    "sha256": "f0f8f2675695a10a5156fb7bd66bafbaae6a13e8d315990af862c792175e6e67"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\src\\dotenv\\variables.py": {
+    "bytes": 2348,
+    "sha256": "083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\src\\dotenv\\version.py": {
+    "bytes": 22,
+    "sha256": "5c1287f04d4b983c6fd3a537f72a8c05b5d96a93844458080840d866cfe446ca"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\tests\\__init__.py": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\tests\\conftest.py": {
+    "bytes": 279,
+    "sha256": "1cc31c9f8e8b5e076780d7469c8f35ff8088e37a25be0bc7e07b68e593beb443"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\tests\\test_cli.py": {
+    "bytes": 14034,
+    "sha256": "0062597d337b332af0eef02812a5395c6d63626b796e6edbcf3d6270cd6d844b"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\tests\\test_fifo_dotenv.py": {
+    "bytes": 743,
+    "sha256": "b69ecca75f9eb3969aa2cc2d49f66006cccae02da472805a3b3ad4c9fca8f8de"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\tests\\test_ipython.py": {
+    "bytes": 2257,
+    "sha256": "aaa10084bffa00032ff6fe9f61c4a1975c77d4f102b4c1e18b6eea0433d93933"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\tests\\test_is_interactive.py": {
+    "bytes": 8921,
+    "sha256": "2d4a6a5a4501bbd6c2860b39abeb9d5201a2de3d110347f74236098aa72f2a18"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\tests\\test_lib.py": {
+    "bytes": 1122,
+    "sha256": "f75073c7317f7cda985b94531774578056519bf8dcb91aa7f3c60a7cf8872199"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\tests\\test_main.py": {
+    "bytes": 27507,
+    "sha256": "3b2f4bf1ca0d0a87bfac8c14c7236b42b39f444dcc148f751ef7b3f65c89342a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\tests\\test_parser.py": {
+    "bytes": 20349,
+    "sha256": "570e2ed889602896f817f59de8b8920df61a4ad39dcab49a30dc182acf9f05ce"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\tests\\test_utils.py": {
+    "bytes": 747,
+    "sha256": "82e06b9819adbc846b84717f9cc47ffff2dc99c77ebb0a22d93026326eac78a3"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\tests\\test_variables.py": {
+    "bytes": 884,
+    "sha256": "facea37ceaca30b761c2128fa754ec32c1e50333f2ac1776f7f8063018aaa6fc"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\tests\\test_zip_imports.py": {
+    "bytes": 2864,
+    "sha256": "9224bd859309409c62848bac6564eec0793aa6dffa091c9965ec6c4644a8ef04"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\input\\tox.ini": {
+    "bytes": 1324,
+    "sha256": "b1fcf82d564de1e385a7b35eeebab1f4cbe6ddf7a863724612cd0fdf35bc4926"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\dispatch.lock": {
+    "bytes": 1,
+    "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\projects.sqlite3": {
+    "bytes": 32768,
+    "sha256": "a0978e798222cc0d74c6de1457a1b0b6db2dc842e12fad8ec16e4850552c777e"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\admission.json": {
+    "bytes": 386,
+    "sha256": "4a936a21a34a96f7c652be0ad444970ea299d70316762aea82e06467cd7c4d0e"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\agent-diff-10\\repo\\.git\\config": {
+    "bytes": 130,
+    "sha256": "05becdb83bb897f6103c8d91439e2e9092144edf5b3955a746fce4975c12bfdc"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\agent-diff-10\\repo\\.git\\HEAD": {
+    "bytes": 23,
+    "sha256": "f6f2b945f6c411b02ba3da9c7ace88dcf71b6af65ba2e0d89aa82900042b5a10"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\agent-diff-10\\repo\\.git\\index": {
+    "bytes": 65,
+    "sha256": "8a99f56bd3599f16165eb30aa3c8c626923a7d63855907a5b97b98b5c6cdea2b"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\agent-diff-10\\repo\\.git\\objects\\4b\\825dc642cb6eb9a060e54bf8d69288fbee4904": {
+    "bytes": 15,
+    "sha256": "e72602cad67ed061ec84b13e92568f873172efac19a512a1b561dbf54e2c8426"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\agent-diff-10.patch": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\agent-live.jsonl": {
+    "bytes": 132469,
+    "sha256": "d7fe6b776a05f4a7e261e5087138d59877aab92be727708e57facceb22305f8d"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\agent-metrics.json": {
+    "bytes": 1073,
+    "sha256": "d9c1c80fd0de76ba4bfe6aceb6ef3b11b59f63f9554facfd09606fe31bcb8f46"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\agent-process.json": {
+    "bytes": 96,
+    "sha256": "8eb30b0e7a48366c47a5bd375b75604c06425260a9edcf2adc70a5b8f74cf0b8"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\agent.jsonl": {
+    "bytes": 132585,
+    "sha256": "dc98cbecdf8367b5e1534795f5f74c1557cd12d690b8e0bcf75ee79ad14585ef"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\agent.stderr.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\.bumpversion.cfg": {
+    "bytes": 105,
+    "sha256": "b4225c9bfd7c7dea85406541f85c2223c82255e3019547dbec49e7a542446dbe"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\.editorconfig": {
+    "bytes": 243,
+    "sha256": "91ca4c8ad16309579982341930d568d2790cd5716e0193ad6e066764ff85d2cc"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\.gitignore": {
+    "bytes": 1566,
+    "sha256": "92c064957359c2be81209629f6111dbf57f6b2826e72bfa808d76537fcecb5ec"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\.pre-commit-config.yaml": {
+    "bytes": 182,
+    "sha256": "d01478603c4961aa40eb5e27d6991fec2c41934f7482218a2014a49e8ffb6979"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\_benchmark_checks.py": {
+    "bytes": 2927,
+    "sha256": "8a5a8c5efe120be13ab394ef6f1d2c1df1a98ed7b32585ed3847a877de8c0033"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\_public_cases.json": {
+    "bytes": 1177,
+    "sha256": "43fdad2ebedaac1006f6e7a0b07719f8935231724cc81303b1bf7095ce627673"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\CHANGELOG.md": {
+    "bytes": 22214,
+    "sha256": "21d571a85c31357b3e420567a8688149945c559d8172f52acb4a76c045e897ba"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\CONTRIBUTING.md": {
+    "bytes": 700,
+    "sha256": "986854ef7b3868b0f15758221cd999adf6ab50bbf40e3da1689b085088e3a96a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\docs\\changelog.md": {
+    "bytes": 15,
+    "sha256": "5b1ace6cbf670b5d35b515086985890d889090026e075bb900834cea4945afba"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\docs\\contributing.md": {
+    "bytes": 18,
+    "sha256": "3b4a07b9c92d73f838166d1bc5907f6d4305d0661b13e4617d9820f4d21e7207"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\docs\\index.md": {
+    "bytes": 12,
+    "sha256": "dbcc210d7f4962499db6d4cfa18658e26d05ee700c962a811cac911f095e22fd"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\docs\\license.md": {
+    "bytes": 10,
+    "sha256": "1e881ecf2862d01e6e5bc2b861e46886d2a6fb01499c0c508a209a7271b13cf2"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\docs\\reference.md": {
+    "bytes": 14,
+    "sha256": "acf20f0b6b9ee9f0af6b50e9ca0e67fe1f904c71f00b5c450bbdfaa121b3b2d4"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\FEATURE.md": {
+    "bytes": 2370,
+    "sha256": "9e208d705566d2a0518a292dc4200776b4f917b2c5cf9ed770708410e67b9157"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\LICENSE": {
+    "bytes": 1556,
+    "sha256": "80619b7049f08c81683ad0e01f08f257a840652dd71ee83146d36658c7d2c2b9"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\Makefile": {
+    "bytes": 1352,
+    "sha256": "74d25e5e679cf6c217f1b6d142c7510311d472d4be93d7afc209cd6a874e64ea"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\MANIFEST.in": {
+    "bytes": 311,
+    "sha256": "c765cc00183538cf8ad406f274adcf76e987c2670f9a8faea16c51b13d9a6ad0"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\mkdocs.yml": {
+    "bytes": 630,
+    "sha256": "83ab242553640d2cfaa0ce06cadee5f7e4352c7c24208d73158b4ba47f88fc9f"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\pyproject.toml": {
+    "bytes": 2166,
+    "sha256": "7041daba686d8a41f34509c56c069aa60c76000ba2e6951d1f1ff98bff7f3546"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\README.md": {
+    "bytes": 7997,
+    "sha256": "7d06cf7aa8278a4416873e141b5510d99bcc46bd14b440221ef46eba74009441"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\RELEASING.md": {
+    "bytes": 2803,
+    "sha256": "df7efbaed1027a062d5bb5095d5bd6dc78b022437a0ad254ff453d411edc602a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\requirements-ci.txt": {
+    "bytes": 105,
+    "sha256": "1cea9ed71bce2ba9487a693118c9b5a03671dda4877d809fe3c0424c687f9129"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\requirements-docs.txt": {
+    "bytes": 130,
+    "sha256": "9bd719c05023386176dae93f187f1a3b46d457c18d10db5b424eead1fcb4b6e1"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\requirements.txt": {
+    "bytes": 83,
+    "sha256": "866b5215434fe1ac6e056fb4122a0a920a2fa5da0319caa90c2ae5d26add5b15"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\ruff.toml": {
+    "bytes": 178,
+    "sha256": "18b8cd8f263b6fb7b3f562e0fedffdb74ab25d43fd03cd85e868d43c70dda41e"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\src\\dotenv\\__init__.py": {
+    "bytes": 1230,
+    "sha256": "6e163e88aeb0c0765a996208e9e482b820165d435d9f64d016610eb97494ed23"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\src\\dotenv\\__main__.py": {
+    "bytes": 129,
+    "sha256": "3744612c6ee71c8aad9491f0c1ea48a3ecdb24f371f6c7b0082446639dbc87fe"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\src\\dotenv\\cli.py": {
+    "bytes": 7569,
+    "sha256": "cba5e82445206ce3a4d70f819e9093112ff80a5346cef3ec68a5da43fc3d5349"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\src\\dotenv\\ipython.py": {
+    "bytes": 1326,
+    "sha256": "74740177d3dc7425298466faed7c32dc6914a8c49d7fd5d4522358c53677b585"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\src\\dotenv\\main.py": {
+    "bytes": 16970,
+    "sha256": "fcb89122cd8756c43209f9052bb3c552dbe440d45493c762295c771f0d1ceaa8"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\src\\dotenv\\parser.py": {
+    "bytes": 5806,
+    "sha256": "75f68bfa9e63b6f504b7d23a605b66edbb578d5e3e7ba797ab78ffcbc0eb44ae"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\src\\dotenv\\py.typed": {
+    "bytes": 26,
+    "sha256": "f0f8f2675695a10a5156fb7bd66bafbaae6a13e8d315990af862c792175e6e67"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\src\\dotenv\\variables.py": {
+    "bytes": 2348,
+    "sha256": "083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\src\\dotenv\\version.py": {
+    "bytes": 22,
+    "sha256": "5c1287f04d4b983c6fd3a537f72a8c05b5d96a93844458080840d866cfe446ca"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\tests\\__init__.py": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\tests\\conftest.py": {
+    "bytes": 279,
+    "sha256": "1cc31c9f8e8b5e076780d7469c8f35ff8088e37a25be0bc7e07b68e593beb443"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\tests\\test_cli.py": {
+    "bytes": 14034,
+    "sha256": "0062597d337b332af0eef02812a5395c6d63626b796e6edbcf3d6270cd6d844b"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\tests\\test_fifo_dotenv.py": {
+    "bytes": 743,
+    "sha256": "b69ecca75f9eb3969aa2cc2d49f66006cccae02da472805a3b3ad4c9fca8f8de"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\tests\\test_ipython.py": {
+    "bytes": 2257,
+    "sha256": "aaa10084bffa00032ff6fe9f61c4a1975c77d4f102b4c1e18b6eea0433d93933"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\tests\\test_is_interactive.py": {
+    "bytes": 8921,
+    "sha256": "2d4a6a5a4501bbd6c2860b39abeb9d5201a2de3d110347f74236098aa72f2a18"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\tests\\test_lib.py": {
+    "bytes": 1122,
+    "sha256": "f75073c7317f7cda985b94531774578056519bf8dcb91aa7f3c60a7cf8872199"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\tests\\test_main.py": {
+    "bytes": 27507,
+    "sha256": "3b2f4bf1ca0d0a87bfac8c14c7236b42b39f444dcc148f751ef7b3f65c89342a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\tests\\test_parser.py": {
+    "bytes": 20349,
+    "sha256": "570e2ed889602896f817f59de8b8920df61a4ad39dcab49a30dc182acf9f05ce"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\tests\\test_utils.py": {
+    "bytes": 747,
+    "sha256": "82e06b9819adbc846b84717f9cc47ffff2dc99c77ebb0a22d93026326eac78a3"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\tests\\test_variables.py": {
+    "bytes": 884,
+    "sha256": "facea37ceaca30b761c2128fa754ec32c1e50333f2ac1776f7f8063018aaa6fc"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\tests\\test_zip_imports.py": {
+    "bytes": 2864,
+    "sha256": "9224bd859309409c62848bac6564eec0793aa6dffa091c9965ec6c4644a8ef04"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check\\tox.ini": {
+    "bytes": 1324,
+    "sha256": "b1fcf82d564de1e385a7b35eeebab1f4cbe6ddf7a863724612cd0fdf35bc4926"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\baseline-check.json": {
+    "bytes": 1753,
+    "sha256": "57c6e9e388b670b1c13521d1894e4ac2341a0c97499742371a1dff17999bdd52"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\catalog-readiness.json": {
+    "bytes": 262,
+    "sha256": "271fc27a6460272811b92d5855fbbf2ed7461efb14f11012c8c231de3d9f6def"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\evidence.json": {
+    "bytes": 1319,
+    "sha256": "e13e0285811bd2a93008ccacd950a271bc900c4e89849f58488c1ae3388a40f5"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\harness-budget.json": {
+    "bytes": 411,
+    "sha256": "26b9bcc98a5f8101dc7fc42d8a34da73f2abc1ae1b94c9d89a207d118dfa662c"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\harness-home\\.bun-2827800786-3cba9b8dc4fa4e45.node": {
+    "bytes": 518144,
+    "sha256": "a8199cf7b6c5102267a5889f80321a4cc92e631d7504c474d32a35b4d440f315"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\harness-home\\.bun-2827800786-e1cd43857cefa531.dll": {
+    "bytes": 6393896,
+    "sha256": "fdb66f6bfb2b19f1f85b1b0be65409d4f9ec243ee435cbbc63b8a7479cfc18ff"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\harness-home\\data\\opencode\\log\\opencode.log": {
+    "bytes": 15342,
+    "sha256": "752a51db54b39c1123592285c74739f8ea060ba321188ed3c1cdd9f36f155d13"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\harness-home\\data\\opencode\\opencode.db": {
+    "bytes": 344064,
+    "sha256": "ddacb680679f199566cfe16d40f75392f68dcfc793ac117a307a9b308253a123"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\harness-home\\data\\opencode\\opencode.db-shm": {
+    "bytes": 32768,
+    "sha256": "aff546c74a3a07a4daca4e37a52aea3732ea5d6cae114ef2e1b888bf58abde5b"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\harness-home\\data\\opencode\\opencode.db-wal": {
+    "bytes": 4140632,
+    "sha256": "92df146fdc167e42cbec9d7668891dccb211d671210f97fe3d8c04f2c3729bc9"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\mcp-catalog.json": {
+    "bytes": 2031,
+    "sha256": "36c93ba344ac3cac904a350b3430bd191b6406984e85577eaa1371e546756e3b"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\mcp.jsonl": {
+    "bytes": 39439,
+    "sha256": "be4f328584dea50f90d4ac7cfbf71092717cc0bfbe6b5f4d7cc6bfd7347dd1fc"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\opencode-tool.json": {
+    "bytes": 3528,
+    "sha256": "82ce5392c31910c4b69994ed627fab5441934e35e7c7996390e91079cce6cfca"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\operator-task.md": {
+    "bytes": 2831,
+    "sha256": "43193867b8eba3660e90622cd6142ef2f75b6a05342adaab0e4da3cabae38761"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\private-server.log": {
+    "bytes": 842,
+    "sha256": "83b6a76e5447eafcd833be5c2b559423db15d90cdb0cd9e02ccdb86b70c60a1a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-gate.json": {
+    "bytes": 15823,
+    "sha256": "b214c41544580fdd39abb4524ab95aa864a28d987141a465fe41db5580a307fb"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-001.json": {
+    "bytes": 22181,
+    "sha256": "0b727bbe7929fac9fa69b5f7d210db9c06560657a1144371c05e67df96126ea6"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-002.json": {
+    "bytes": 25710,
+    "sha256": "352bde18258f207e88d5825e08fa26a5e7069229a7ebb1db8d1e9fb7d7392ea4"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-003.json": {
+    "bytes": 30310,
+    "sha256": "e26e120d001036e15b08df5a948561ae62b1c7bc760a312712482e427aac2b02"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-004.json": {
+    "bytes": 29760,
+    "sha256": "5193d4a415842e56fe0fefe738070b6b984c63b9e154eaa0dee7ce427889f0bb"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-005.json": {
+    "bytes": 8140,
+    "sha256": "834954ece1580f41027e2bd536a277b9cf3dde28e241ab4fb9ac52b3dd220e1a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-006.json": {
+    "bytes": 11269,
+    "sha256": "0845f9691c0238e708cad4345226374cc2364ab6376ffa38fa89295e8dde15f7"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-007.json": {
+    "bytes": 14676,
+    "sha256": "dfb55be7d62ec56ae7720c1f84c5539b45ee7b4d3609d7388b73d93554ab8e14"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-008.json": {
+    "bytes": 18428,
+    "sha256": "ac64e253894cc3fd33d6075fd9785940a9e8775bb54af9f85ff120e6158cdd6e"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-009.json": {
+    "bytes": 21653,
+    "sha256": "5d967cef847d5d493d0ecbbffa217fd7ce9ec4c7281be07da4e03965c896c4d6"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-010.json": {
+    "bytes": 25042,
+    "sha256": "7663c29da5b39664ab07abb97da092cd837fc2636b391c377c06d6307b7db087"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-011.json": {
+    "bytes": 28086,
+    "sha256": "f88ca0f91d2a1a1c5c43b9628a72eb0384e8866d1b3b0f0be19e2daa95cbf52d"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-012.json": {
+    "bytes": 22612,
+    "sha256": "ddce16682f68ff8799ef9143a35c18ef6f5e25191de5ec6722d62962202ac19e"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-013.json": {
+    "bytes": 8574,
+    "sha256": "01d12de16858dfbb9d84c6d5287abeba91fdbb3c6d9e082bfdd10726ec02e147"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-014.json": {
+    "bytes": 9190,
+    "sha256": "609175db618eaeba37716be8b3a59613b20fa3dcf7b800f8a961f519e7343dff"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-015.json": {
+    "bytes": 12191,
+    "sha256": "4be80730cd83e696b6c342591970e5ab13fe6c5e5b6a9e2f774eb810a761c2c3"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-016.json": {
+    "bytes": 15946,
+    "sha256": "e9bdcab886bbdffda6f3d609e36da1f4e94fea5770d482bd50bc031c1159e3d2"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-017.json": {
+    "bytes": 16813,
+    "sha256": "58a41a93d323760c00dac925f530b75eee6ac652a3f293f52567c27672a883f8"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-018.json": {
+    "bytes": 19832,
+    "sha256": "1900b6ac530638c3ea14678849dc1f045f2bc4c2477514157a6cfe79ec6c8652"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-019.json": {
+    "bytes": 22888,
+    "sha256": "6bcbe3300ba4671c76cc6a40b6b56c9394889a6be32345e0224c99b804739a78"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-020.json": {
+    "bytes": 23407,
+    "sha256": "ac96dcb66b31f8a0bc7358683dad7222d6e7ca7820dc818439abb492bb628a7f"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-021.json": {
+    "bytes": 23868,
+    "sha256": "a460e8b88ea08aafb99ab9c6b042863845bbf35217bb6fd4e87a79f43dbf4d30"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-022.json": {
+    "bytes": 24348,
+    "sha256": "e9e9154471622ff493c4bd2ea9b9765d45076f73b64971316f1ad429c1da697a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-023.json": {
+    "bytes": 24747,
+    "sha256": "8d6c8a69a0268dcda171a9c0f38ead6e6b7a101b1f432f97c1d4bd5e8c6b3dca"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-024.json": {
+    "bytes": 25194,
+    "sha256": "d9b40872ffa41540abbf45d9e688ad26aedc76415f5a73354d026a2ee844b35d"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-025.json": {
+    "bytes": 25577,
+    "sha256": "d248b369387e4220f4bc9db4ee5b9da5705bfb29f7c37ee06db7f60ff716d1d1"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-026.json": {
+    "bytes": 26116,
+    "sha256": "8dc1dad5ab665b9120045ec2075fbd3a1a777c143a06ee6f6f574ef8bd06a803"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-027.json": {
+    "bytes": 26627,
+    "sha256": "11a4190adcb6f7553d9e5f3b804ddc4da1c5d13aff6c5d55cdc6cb338ca99e78"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-028.json": {
+    "bytes": 27095,
+    "sha256": "e094d0c1303512de374e78bb9f2f478804dc8563ff0126c00140a22f4aa412b8"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-029.json": {
+    "bytes": 27562,
+    "sha256": "a00edc92671d38c5b9ef30c33bb232a212b6ac3722fc8e5e2089bef0eb7c578b"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-030.json": {
+    "bytes": 28068,
+    "sha256": "37fb48577051087132f7ef5f9f619cd04fda0ef281c4f95e65a96fd4ab306a5b"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-031.json": {
+    "bytes": 28554,
+    "sha256": "67f87a3846430aa014351fad9fe6ff272eac776b29bf80b506a82576899609be"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-request-032.json": {
+    "bytes": 29118,
+    "sha256": "0dbe0f39963a67f779d6eefb5609c28bce1ca4c72556aa2b671663bda18d377b"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-001.sse": {
+    "bytes": 8100,
+    "sha256": "12ba251ea5899d5a9bb4a45dd009bb23beb2fe2eb60b53e321b0ea43ff1f9904"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-002.sse": {
+    "bytes": 4064,
+    "sha256": "b11c567b9be28aea2249fdf98199da1acf6ecf11111133911214f183f288a293"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-003.sse": {
+    "bytes": 3155,
+    "sha256": "c0d130b628fe7148256897b6ef8fed5dcdce574852d0b80f3e008c11995e0702"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-004.sse": {
+    "bytes": 83503,
+    "sha256": "b459f5a1dc46cc5b32ab2c7371a9e6c10d216c1f782b1b84fb263807c5368f7f"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-005.sse": {
+    "bytes": 8054,
+    "sha256": "45f97ee05403c20364ec62db2503d20ecae9b9e64d302b4598f290fc0ff0d166"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-006.sse": {
+    "bytes": 4281,
+    "sha256": "87a9f223b942bcd5a102840f8d1dea4592d3c068ae90d2e4c77d37184fa75e94"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-007.sse": {
+    "bytes": 6465,
+    "sha256": "b310d2585b8b05e0dd88d84249f394c21e12ceb14c3cb8bac7942f093da7c570"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-008.sse": {
+    "bytes": 4740,
+    "sha256": "f1da8798570b67ba3844764627d7d10e5aa086dd08957cdab0f69d1a4f360d77"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-009.sse": {
+    "bytes": 1173,
+    "sha256": "9d522e9b03f6d6b3b4dfa5479751a1a30dcf0667b57048f4c6632ecf3ba20902"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-010.sse": {
+    "bytes": 4480,
+    "sha256": "0e828afa52be92b457685e35debecae43426c30e8aeeb0ccb81bdf5b05526341"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-011.sse": {
+    "bytes": 4005,
+    "sha256": "e649b4309b135b466f64eb52a4d3c22b6a56a2259c4bf00fc16531cee1132f06"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-012.sse": {
+    "bytes": 110974,
+    "sha256": "cd1f0d6d6f305a20071de82a0866a68210cb37956173fdf5a92248e08c16cca3"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-013.sse": {
+    "bytes": 8956,
+    "sha256": "3a86b689dcf7d5b06eee7d73ce6e14b82d5b6c041534ee4eaa72d319b5918588"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-014.sse": {
+    "bytes": 2694,
+    "sha256": "6f3f9d47ca6a4727cbf6612a938bc21af422edce2fc984841507a9532b9dd55a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-015.sse": {
+    "bytes": 4278,
+    "sha256": "b59fcdfd2283d56dcf8c9f7230f2454da175d94894280545b965073fcc588eb6"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-016.sse": {
+    "bytes": 4335,
+    "sha256": "b20e92117651e2f7f23701ee52b508ce53ad8ec6202aaa0b33f7865ecb01498a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-017.sse": {
+    "bytes": 2942,
+    "sha256": "2d8c595f940eec7e2ea41d4695def9bbbc6e543a63b7dff94ecb4ca27215cc3a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-018.sse": {
+    "bytes": 4709,
+    "sha256": "af2efc11b55a5ee64f42c5120a3d00f0efa3ca7294a0639b294ee750cf999bb8"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-019.sse": {
+    "bytes": 6076,
+    "sha256": "dbb98dada7455001ac3cd95d25f157e87370d859d5930a6f791af341a0084171"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-020.sse": {
+    "bytes": 5384,
+    "sha256": "25f055c89e898ab0d2ca2d8de18726409fda236d56b1f08bbe7ee2ef5245f789"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-021.sse": {
+    "bytes": 5401,
+    "sha256": "638b9508f8c08e110103c2f32dc6479ed927c9c44396eac527d26d3fd66e611e"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-022.sse": {
+    "bytes": 4010,
+    "sha256": "5b109b1bec869db286539d8fb41e4c4bb6697178e1f166610b0de954675c222b"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-023.sse": {
+    "bytes": 4046,
+    "sha256": "8cdb944d404ddbcdd828e338a8bf5d21f6f879a19f386e7d5916895e3bb378fb"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-024.sse": {
+    "bytes": 2907,
+    "sha256": "a0709d16bba86c0506f3c79563665cca0f3d695cc26781601d35f422450a9f11"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-025.sse": {
+    "bytes": 8295,
+    "sha256": "5f2d172bfe95c6d66729564225782a8e911dd699e5091a2e5dd171f55e898b45"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-026.sse": {
+    "bytes": 6079,
+    "sha256": "02e298548cbfdfe578cbfd389a37291d68b600bddcd0e4c3a33caa7301a0a55b"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-027.sse": {
+    "bytes": 5389,
+    "sha256": "52894c279b065c69798c3bd5f56c82a15b0168fac34f425a9a40000a4cd8dff4"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-028.sse": {
+    "bytes": 5171,
+    "sha256": "247fab823a6884ab1fb07a9a59e9e9eea137b55eedebb3b9721b3c6d5110d840"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-029.sse": {
+    "bytes": 6736,
+    "sha256": "85ec46b2e51997063f4c47b4458c3b809687e77ee10cb54a58a6bd89ed121b45"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-030.sse": {
+    "bytes": 5845,
+    "sha256": "ef22aef3d2bffee563e840b6a02bd064130bef933775b3f42aaa40532714cb9a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-031.sse": {
+    "bytes": 5487,
+    "sha256": "dc7e4e49ea758f510757a000f28e17175c8118b23bb9c8724d91f8fdcd9640f9"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\provider-response-032.sse": {
+    "bytes": 4024,
+    "sha256": "be524d35ae216d1605ab32cb4aabcd9895e0e5b325f6959d87669c9b178f6cc5"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\retained-stage.json": {
+    "bytes": 357,
+    "sha256": "205e2bef845bb199451b1ac9972876c4db5454f49c80648718733eb47d02df3d"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\role.json": {
+    "bytes": 32,
+    "sha256": "3125361fa15eeccfd22ec8b917c98729d9392a52b7ae9033efa761feaa4ff79f"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\route.json": {
+    "bytes": 515,
+    "sha256": "9101ad2be1685d5d1ecf488bdce6a0e8333292b04098d7881665168dfd19da65"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\source-navigation.json": {
+    "bytes": 562,
+    "sha256": "1cc9dbdecd3c235432446a5348e97e9e5c981bf8ce23793ffa91901b49e90611"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\source-navigation.lock": {
+    "bytes": 1,
+    "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\tool.json": {
+    "bytes": 3903,
+    "sha256": "f0b257e7dc2fac00a73f75be1fbc9e3e16e2fd959bf4fcef8c99171d2fd60c5e"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\trial-tool-calls.json": {
+    "bytes": 16,
+    "sha256": "982d34af869c002811f5d5f16ec2a63b4db6b16671a2de07b830f85b38bc947f"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\trial-tool-calls.lock": {
+    "bytes": 1,
+    "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\.bumpversion.cfg": {
+    "bytes": 105,
+    "sha256": "b4225c9bfd7c7dea85406541f85c2223c82255e3019547dbec49e7a542446dbe"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\.editorconfig": {
+    "bytes": 243,
+    "sha256": "91ca4c8ad16309579982341930d568d2790cd5716e0193ad6e066764ff85d2cc"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\.gitignore": {
+    "bytes": 1566,
+    "sha256": "92c064957359c2be81209629f6111dbf57f6b2826e72bfa808d76537fcecb5ec"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\.pre-commit-config.yaml": {
+    "bytes": 182,
+    "sha256": "d01478603c4961aa40eb5e27d6991fec2c41934f7482218a2014a49e8ffb6979"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\_benchmark_checks.py": {
+    "bytes": 2927,
+    "sha256": "8a5a8c5efe120be13ab394ef6f1d2c1df1a98ed7b32585ed3847a877de8c0033"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\_public_cases.json": {
+    "bytes": 1177,
+    "sha256": "43fdad2ebedaac1006f6e7a0b07719f8935231724cc81303b1bf7095ce627673"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\CHANGELOG.md": {
+    "bytes": 22214,
+    "sha256": "21d571a85c31357b3e420567a8688149945c559d8172f52acb4a76c045e897ba"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\CONTRIBUTING.md": {
+    "bytes": 700,
+    "sha256": "986854ef7b3868b0f15758221cd999adf6ab50bbf40e3da1689b085088e3a96a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\docs\\changelog.md": {
+    "bytes": 15,
+    "sha256": "5b1ace6cbf670b5d35b515086985890d889090026e075bb900834cea4945afba"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\docs\\contributing.md": {
+    "bytes": 18,
+    "sha256": "3b4a07b9c92d73f838166d1bc5907f6d4305d0661b13e4617d9820f4d21e7207"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\docs\\index.md": {
+    "bytes": 12,
+    "sha256": "dbcc210d7f4962499db6d4cfa18658e26d05ee700c962a811cac911f095e22fd"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\docs\\license.md": {
+    "bytes": 10,
+    "sha256": "1e881ecf2862d01e6e5bc2b861e46886d2a6fb01499c0c508a209a7271b13cf2"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\docs\\reference.md": {
+    "bytes": 14,
+    "sha256": "acf20f0b6b9ee9f0af6b50e9ca0e67fe1f904c71f00b5c450bbdfaa121b3b2d4"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\FEATURE.md": {
+    "bytes": 2370,
+    "sha256": "9e208d705566d2a0518a292dc4200776b4f917b2c5cf9ed770708410e67b9157"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\LICENSE": {
+    "bytes": 1556,
+    "sha256": "80619b7049f08c81683ad0e01f08f257a840652dd71ee83146d36658c7d2c2b9"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\Makefile": {
+    "bytes": 1352,
+    "sha256": "74d25e5e679cf6c217f1b6d142c7510311d472d4be93d7afc209cd6a874e64ea"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\MANIFEST.in": {
+    "bytes": 311,
+    "sha256": "c765cc00183538cf8ad406f274adcf76e987c2670f9a8faea16c51b13d9a6ad0"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\mkdocs.yml": {
+    "bytes": 630,
+    "sha256": "83ab242553640d2cfaa0ce06cadee5f7e4352c7c24208d73158b4ba47f88fc9f"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\pyproject.toml": {
+    "bytes": 2166,
+    "sha256": "7041daba686d8a41f34509c56c069aa60c76000ba2e6951d1f1ff98bff7f3546"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\README.md": {
+    "bytes": 7997,
+    "sha256": "7d06cf7aa8278a4416873e141b5510d99bcc46bd14b440221ef46eba74009441"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\RELEASING.md": {
+    "bytes": 2803,
+    "sha256": "df7efbaed1027a062d5bb5095d5bd6dc78b022437a0ad254ff453d411edc602a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\requirements-ci.txt": {
+    "bytes": 105,
+    "sha256": "1cea9ed71bce2ba9487a693118c9b5a03671dda4877d809fe3c0424c687f9129"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\requirements-docs.txt": {
+    "bytes": 130,
+    "sha256": "9bd719c05023386176dae93f187f1a3b46d457c18d10db5b424eead1fcb4b6e1"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\requirements.txt": {
+    "bytes": 83,
+    "sha256": "866b5215434fe1ac6e056fb4122a0a920a2fa5da0319caa90c2ae5d26add5b15"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\ruff.toml": {
+    "bytes": 178,
+    "sha256": "18b8cd8f263b6fb7b3f562e0fedffdb74ab25d43fd03cd85e868d43c70dda41e"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\src\\dotenv\\__init__.py": {
+    "bytes": 1230,
+    "sha256": "6e163e88aeb0c0765a996208e9e482b820165d435d9f64d016610eb97494ed23"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\src\\dotenv\\__main__.py": {
+    "bytes": 129,
+    "sha256": "3744612c6ee71c8aad9491f0c1ea48a3ecdb24f371f6c7b0082446639dbc87fe"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\src\\dotenv\\cli.py": {
+    "bytes": 7569,
+    "sha256": "cba5e82445206ce3a4d70f819e9093112ff80a5346cef3ec68a5da43fc3d5349"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\src\\dotenv\\ipython.py": {
+    "bytes": 1326,
+    "sha256": "74740177d3dc7425298466faed7c32dc6914a8c49d7fd5d4522358c53677b585"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\src\\dotenv\\main.py": {
+    "bytes": 16970,
+    "sha256": "fcb89122cd8756c43209f9052bb3c552dbe440d45493c762295c771f0d1ceaa8"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\src\\dotenv\\parser.py": {
+    "bytes": 5806,
+    "sha256": "75f68bfa9e63b6f504b7d23a605b66edbb578d5e3e7ba797ab78ffcbc0eb44ae"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\src\\dotenv\\py.typed": {
+    "bytes": 26,
+    "sha256": "f0f8f2675695a10a5156fb7bd66bafbaae6a13e8d315990af862c792175e6e67"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\src\\dotenv\\variables.py": {
+    "bytes": 2348,
+    "sha256": "083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\src\\dotenv\\version.py": {
+    "bytes": 22,
+    "sha256": "5c1287f04d4b983c6fd3a537f72a8c05b5d96a93844458080840d866cfe446ca"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\tests\\__init__.py": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\tests\\conftest.py": {
+    "bytes": 279,
+    "sha256": "1cc31c9f8e8b5e076780d7469c8f35ff8088e37a25be0bc7e07b68e593beb443"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\tests\\test_cli.py": {
+    "bytes": 14034,
+    "sha256": "0062597d337b332af0eef02812a5395c6d63626b796e6edbcf3d6270cd6d844b"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\tests\\test_fifo_dotenv.py": {
+    "bytes": 743,
+    "sha256": "b69ecca75f9eb3969aa2cc2d49f66006cccae02da472805a3b3ad4c9fca8f8de"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\tests\\test_ipython.py": {
+    "bytes": 2257,
+    "sha256": "aaa10084bffa00032ff6fe9f61c4a1975c77d4f102b4c1e18b6eea0433d93933"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\tests\\test_is_interactive.py": {
+    "bytes": 8921,
+    "sha256": "2d4a6a5a4501bbd6c2860b39abeb9d5201a2de3d110347f74236098aa72f2a18"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\tests\\test_lib.py": {
+    "bytes": 1122,
+    "sha256": "f75073c7317f7cda985b94531774578056519bf8dcb91aa7f3c60a7cf8872199"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\tests\\test_main.py": {
+    "bytes": 27507,
+    "sha256": "3b2f4bf1ca0d0a87bfac8c14c7236b42b39f444dcc148f751ef7b3f65c89342a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\tests\\test_parser.py": {
+    "bytes": 20349,
+    "sha256": "570e2ed889602896f817f59de8b8920df61a4ad39dcab49a30dc182acf9f05ce"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\tests\\test_utils.py": {
+    "bytes": 747,
+    "sha256": "82e06b9819adbc846b84717f9cc47ffff2dc99c77ebb0a22d93026326eac78a3"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\tests\\test_variables.py": {
+    "bytes": 884,
+    "sha256": "facea37ceaca30b761c2128fa754ec32c1e50333f2ac1776f7f8063018aaa6fc"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\tests\\test_zip_imports.py": {
+    "bytes": 2864,
+    "sha256": "9224bd859309409c62848bac6564eec0793aa6dffa091c9965ec6c4644a8ef04"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\attempt-001\\workspace\\tox.ini": {
+    "bytes": 1324,
+    "sha256": "b1fcf82d564de1e385a7b35eeebab1f4cbe6ddf7a863724612cd0fdf35bc4926"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\.bumpversion.cfg": {
+    "bytes": 105,
+    "sha256": "b4225c9bfd7c7dea85406541f85c2223c82255e3019547dbec49e7a542446dbe"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\.editorconfig": {
+    "bytes": 243,
+    "sha256": "91ca4c8ad16309579982341930d568d2790cd5716e0193ad6e066764ff85d2cc"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\.gitignore": {
+    "bytes": 1566,
+    "sha256": "92c064957359c2be81209629f6111dbf57f6b2826e72bfa808d76537fcecb5ec"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\.pre-commit-config.yaml": {
+    "bytes": 182,
+    "sha256": "d01478603c4961aa40eb5e27d6991fec2c41934f7482218a2014a49e8ffb6979"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\_benchmark_checks.py": {
+    "bytes": 2927,
+    "sha256": "8a5a8c5efe120be13ab394ef6f1d2c1df1a98ed7b32585ed3847a877de8c0033"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\_public_cases.json": {
+    "bytes": 1177,
+    "sha256": "43fdad2ebedaac1006f6e7a0b07719f8935231724cc81303b1bf7095ce627673"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\CHANGELOG.md": {
+    "bytes": 22214,
+    "sha256": "21d571a85c31357b3e420567a8688149945c559d8172f52acb4a76c045e897ba"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\CONTRIBUTING.md": {
+    "bytes": 700,
+    "sha256": "986854ef7b3868b0f15758221cd999adf6ab50bbf40e3da1689b085088e3a96a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\docs\\changelog.md": {
+    "bytes": 15,
+    "sha256": "5b1ace6cbf670b5d35b515086985890d889090026e075bb900834cea4945afba"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\docs\\contributing.md": {
+    "bytes": 18,
+    "sha256": "3b4a07b9c92d73f838166d1bc5907f6d4305d0661b13e4617d9820f4d21e7207"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\docs\\index.md": {
+    "bytes": 12,
+    "sha256": "dbcc210d7f4962499db6d4cfa18658e26d05ee700c962a811cac911f095e22fd"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\docs\\license.md": {
+    "bytes": 10,
+    "sha256": "1e881ecf2862d01e6e5bc2b861e46886d2a6fb01499c0c508a209a7271b13cf2"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\docs\\reference.md": {
+    "bytes": 14,
+    "sha256": "acf20f0b6b9ee9f0af6b50e9ca0e67fe1f904c71f00b5c450bbdfaa121b3b2d4"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\FEATURE.md": {
+    "bytes": 2370,
+    "sha256": "9e208d705566d2a0518a292dc4200776b4f917b2c5cf9ed770708410e67b9157"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\LICENSE": {
+    "bytes": 1556,
+    "sha256": "80619b7049f08c81683ad0e01f08f257a840652dd71ee83146d36658c7d2c2b9"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\Makefile": {
+    "bytes": 1352,
+    "sha256": "74d25e5e679cf6c217f1b6d142c7510311d472d4be93d7afc209cd6a874e64ea"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\MANIFEST.in": {
+    "bytes": 311,
+    "sha256": "c765cc00183538cf8ad406f274adcf76e987c2670f9a8faea16c51b13d9a6ad0"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\mkdocs.yml": {
+    "bytes": 630,
+    "sha256": "83ab242553640d2cfaa0ce06cadee5f7e4352c7c24208d73158b4ba47f88fc9f"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\pyproject.toml": {
+    "bytes": 2166,
+    "sha256": "7041daba686d8a41f34509c56c069aa60c76000ba2e6951d1f1ff98bff7f3546"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\README.md": {
+    "bytes": 7997,
+    "sha256": "7d06cf7aa8278a4416873e141b5510d99bcc46bd14b440221ef46eba74009441"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\RELEASING.md": {
+    "bytes": 2803,
+    "sha256": "df7efbaed1027a062d5bb5095d5bd6dc78b022437a0ad254ff453d411edc602a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\requirements-ci.txt": {
+    "bytes": 105,
+    "sha256": "1cea9ed71bce2ba9487a693118c9b5a03671dda4877d809fe3c0424c687f9129"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\requirements-docs.txt": {
+    "bytes": 130,
+    "sha256": "9bd719c05023386176dae93f187f1a3b46d457c18d10db5b424eead1fcb4b6e1"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\requirements.txt": {
+    "bytes": 83,
+    "sha256": "866b5215434fe1ac6e056fb4122a0a920a2fa5da0319caa90c2ae5d26add5b15"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\ruff.toml": {
+    "bytes": 178,
+    "sha256": "18b8cd8f263b6fb7b3f562e0fedffdb74ab25d43fd03cd85e868d43c70dda41e"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\src\\dotenv\\__init__.py": {
+    "bytes": 1230,
+    "sha256": "6e163e88aeb0c0765a996208e9e482b820165d435d9f64d016610eb97494ed23"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\src\\dotenv\\__main__.py": {
+    "bytes": 129,
+    "sha256": "3744612c6ee71c8aad9491f0c1ea48a3ecdb24f371f6c7b0082446639dbc87fe"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\src\\dotenv\\cli.py": {
+    "bytes": 7569,
+    "sha256": "cba5e82445206ce3a4d70f819e9093112ff80a5346cef3ec68a5da43fc3d5349"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\src\\dotenv\\ipython.py": {
+    "bytes": 1326,
+    "sha256": "74740177d3dc7425298466faed7c32dc6914a8c49d7fd5d4522358c53677b585"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\src\\dotenv\\main.py": {
+    "bytes": 16970,
+    "sha256": "fcb89122cd8756c43209f9052bb3c552dbe440d45493c762295c771f0d1ceaa8"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\src\\dotenv\\parser.py": {
+    "bytes": 5806,
+    "sha256": "75f68bfa9e63b6f504b7d23a605b66edbb578d5e3e7ba797ab78ffcbc0eb44ae"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\src\\dotenv\\py.typed": {
+    "bytes": 26,
+    "sha256": "f0f8f2675695a10a5156fb7bd66bafbaae6a13e8d315990af862c792175e6e67"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\src\\dotenv\\variables.py": {
+    "bytes": 2348,
+    "sha256": "083d2a5cebefa41deae51a4140c0fda97eaf1d7ed2c96f92ba2c063054a5b74f"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\src\\dotenv\\version.py": {
+    "bytes": 22,
+    "sha256": "5c1287f04d4b983c6fd3a537f72a8c05b5d96a93844458080840d866cfe446ca"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\tests\\__init__.py": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\tests\\conftest.py": {
+    "bytes": 279,
+    "sha256": "1cc31c9f8e8b5e076780d7469c8f35ff8088e37a25be0bc7e07b68e593beb443"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\tests\\test_cli.py": {
+    "bytes": 14034,
+    "sha256": "0062597d337b332af0eef02812a5395c6d63626b796e6edbcf3d6270cd6d844b"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\tests\\test_fifo_dotenv.py": {
+    "bytes": 743,
+    "sha256": "b69ecca75f9eb3969aa2cc2d49f66006cccae02da472805a3b3ad4c9fca8f8de"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\tests\\test_ipython.py": {
+    "bytes": 2257,
+    "sha256": "aaa10084bffa00032ff6fe9f61c4a1975c77d4f102b4c1e18b6eea0433d93933"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\tests\\test_is_interactive.py": {
+    "bytes": 8921,
+    "sha256": "2d4a6a5a4501bbd6c2860b39abeb9d5201a2de3d110347f74236098aa72f2a18"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\tests\\test_lib.py": {
+    "bytes": 1122,
+    "sha256": "f75073c7317f7cda985b94531774578056519bf8dcb91aa7f3c60a7cf8872199"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\tests\\test_main.py": {
+    "bytes": 27507,
+    "sha256": "3b2f4bf1ca0d0a87bfac8c14c7236b42b39f444dcc148f751ef7b3f65c89342a"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\tests\\test_parser.py": {
+    "bytes": 20349,
+    "sha256": "570e2ed889602896f817f59de8b8920df61a4ad39dcab49a30dc182acf9f05ce"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\tests\\test_utils.py": {
+    "bytes": 747,
+    "sha256": "82e06b9819adbc846b84717f9cc47ffff2dc99c77ebb0a22d93026326eac78a3"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\tests\\test_variables.py": {
+    "bytes": 884,
+    "sha256": "facea37ceaca30b761c2128fa754ec32c1e50333f2ac1776f7f8063018aaa6fc"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\tests\\test_zip_imports.py": {
+    "bytes": 2864,
+    "sha256": "9224bd859309409c62848bac6564eec0793aa6dffa091c9965ec6c4644a8ef04"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\baseline\\tox.ini": {
+    "bytes": 1324,
+    "sha256": "b1fcf82d564de1e385a7b35eeebab1f4cbe6ddf7a863724612cd0fdf35bc4926"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\intake.json": {
+    "bytes": 44509,
+    "sha256": "d2e97e8e10a09555dba3959a7efa6ae5e7409edec931abc16f8b535c92960fd2"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\result.json": {
+    "bytes": 306,
+    "sha256": "d5e53e24f5dfb8b0f4eae4a538be71d69348b4562abe1bc01c608888aae24778"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\routing.json": {
+    "bytes": 85,
+    "sha256": "b8514460e9dad712fa652aa35e375c40c914c5fb21ac976b364df9ed689f7df1"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\task.json": {
+    "bytes": 4754,
+    "sha256": "8c6b1340cb85c30a2d0c26f0f9064fe69cf36e61db5095768a9cf1c58eb26835"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e\\worker.lock": {
+    "bytes": 1,
+    "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\state.sqlite3": {
+    "bytes": 20480,
+    "sha256": "41141d465653b487e0b4ad31d9dc027e4dd537d68ea627f5a18e1e525fae4728"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\trial-budget.json": {
+    "bytes": 1658,
+    "sha256": "268b7652fd66f1329a84eb36deab49de1aa8bb50cbc289dbba945561467c179b"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\trial-budget.lock": {
+    "bytes": 1,
+    "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\warm-process.json": {
+    "bytes": 227,
+    "sha256": "6d08f217aefe4bb2816d6ce13b329e03d53b8f21edce457a7976544f2fe6dd0c"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\warm-request.json": {
+    "bytes": 220,
+    "sha256": "fcb5a319f485930c1d4f1e239384d93bfa21852fe05713f0df41431b09d0851f"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\warm-response.json": {
+    "bytes": 502,
+    "sha256": "8927bb4144ed2a8cd53ec44b745c5cf41edb28e6c80ccad73ca57d44460afae0"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\warm-state.json": {
+    "bytes": 2797,
+    "sha256": "c4a842bf71af2321f0ee94ac9512054f2723f77e4bb895812bd2400bddc08ea1"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\warm-wire-request.json": {
+    "bytes": 171,
+    "sha256": "b9fdd2431c9645d7169c8ef8a05225c799dfd676a25914729506e1efb3f81a74"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\warm-wire-response.json": {
+    "bytes": 346,
+    "sha256": "23d11bc972d19d717e850a0b69d4e9a7b6366138f2b355bb394a7aa5744063cb"
+  },
+  "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\work-process.json": {
+    "bytes": 1284,
+    "sha256": "d3152a37255ffbabc0e4cd86af600cc889aa7ea9311835b040161ce29e81a8d7"
+  }
+}

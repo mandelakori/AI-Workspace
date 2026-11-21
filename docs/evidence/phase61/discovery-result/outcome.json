@@ -1,0 +1,728 @@
+{
+  "status": "QUARANTINED",
+  "phase61_benchmarking": "CLOSED_NO_FURTHER_CAMPAIGNS",
+  "approval_digest": "ee17b4c45b8b82dccc1790a91dec1dead8c2983625121b86d785e743a39443d0",
+  "recorded_at": "2026-11-21T10:21:37.003147+00:00",
+  "execution_order": [
+    "B",
+    "A"
+  ],
+  "arms": {
+    "B": {
+      "status": "QUARANTINED",
+      "worker_sessions": 1,
+      "attempts": 1,
+      "planner_requests": 0,
+      "applied_edits": 0,
+      "edit_requests": 0,
+      "executed_worker_public_tests": 0,
+      "public_test_requests": 1,
+      "first_edit_operation": null,
+      "first_test_operation": null,
+      "source_unchanged": true,
+      "authored_test_present": false,
+      "new_candidate": null,
+      "baseline_public": "2/10 (pre-worker); identical source retained",
+      "post_worker_upstream": "NOT_RUN",
+      "sealed": "NOT_RUN"
+    },
+    "A": {
+      "status": "NOT_STARTED",
+      "worker_sessions": 0,
+      "candidate": null,
+      "public": "NOT_RUN",
+      "upstream": "NOT_RUN",
+      "sealed": "NOT_RUN"
+    }
+  },
+  "grading": {
+    "sealed_cases_authored": 0,
+    "grade_phase_entered": false,
+    "reason": "Both engineering phases did not close cleanly."
+  },
+  "catalog": {
+    "readiness_passed": true,
+    "all_requests_valid_catalog": true,
+    "provider_requests": 32,
+    "last_transport_error": "ConnectionAbortedError",
+    "cleanup_passed": true
+  },
+  "tools": {
+    "raw": {
+      "checks_focus": 25,
+      "checks_diff": 2,
+      "grep": 1,
+      "checks_check": 1
+    },
+    "admitted_mcp": {
+      "focus": 15,
+      "diff": 1
+    },
+    "mcp_operations": 16,
+    "quota_rejections": 12,
+    "query_errors": 2,
+    "tool_errors": 14
+  },
+  "timing": {
+    "warm_process_seconds": 18.01500000001397,
+    "work_process_seconds": 133.64000000001397,
+    "work_cleanup_seconds": 0.391,
+    "harness_seconds": 118.39099999994505,
+    "wall_warm_start_to_work_close_seconds": 152.0963,
+    "outer_engineering_timed_out": false,
+    "inner_harness_timed_out": true,
+    "top_level_cli_exit_code": 0,
+    "work_phase_exit_code": 1,
+    "harness_exit_code": 1
+  },
+  "usage": {
+    "engineering_requests": 32,
+    "completed_raw_usage_receipts": 31,
+    "incomplete_requests": [
+      32
+    ],
+    "engineering_completed": {
+      "prompt_including_cache": 172506,
+      "cached_prompt": 140416,
+      "uncached_prompt": 32090,
+      "completion": 2663,
+      "total": 175169
+    },
+    "implementation_completed": {
+      "prompt_including_cache": 159335,
+      "cached_prompt": 138862,
+      "uncached_prompt": 20473,
+      "completion": 1735,
+      "total": 161070
+    },
+    "compaction_completed": {
+      "prompt_including_cache": 13171,
+      "cached_prompt": 1554,
+      "uncached_prompt": 11617,
+      "completion": 928,
+      "total": 14099
+    },
+    "warm": {
+      "prompt_tokens": 17,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens": 2,
+      "total_tokens": 19
+    },
+    "known_including_warm": {
+      "prompt_including_cache": 172523,
+      "cached_prompt": 140416,
+      "uncached_prompt": 32107,
+      "completion": 2665,
+      "total": 175188
+    },
+    "maximum_reported_prompt_tokens": 7440,
+    "first_prompt_tokens": 5086,
+    "first_prompt_delta_A_minus_B": null,
+    "provider_reasoning_token_details": "Not separately reported; harness records zero; every outgoing request sets reasoning_effort=none."
+  },
+  "milestones_and_overlap": {
+    "first_successful_edit_operation": null,
+    "first_public_test_operation": null,
+    "first_edit_seconds_from_engineering_start": null,
+    "first_test_seconds_from_engineering_start": null,
+    "edit_by_8": false,
+    "test_by_12": false,
+    "edit_rejections": 0,
+    "duplicates_suppressed": 5,
+    "diagnostic_reinspections": 0,
+    "returned_source_lines": 195,
+    "unchanged_version_tool_overlap_lines": 109,
+    "lines_repeating_upfront_evidence": 0,
+    "harness_metrics": [
+      {
+        "tool_calls": {
+          "checks_focus": 25,
+          "checks_diff": 2,
+          "grep": 1,
+          "checks_check": 1
+        },
+        "tool_errors": 14,
+        "tokens": {
+          "input": 20473,
+          "output": 1735,
+          "reasoning": 0
+        },
+        "peak_reported_input_tokens": 5086,
+        "successful_public_mcp_checks": 0,
+        "gpu_samples": {
+          "before": [
+            {
+              "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+              "total_mib": 8151,
+              "free_mib": 2392
+            }
+          ],
+          "after": [
+            {
+              "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+              "total_mib": 8151,
+              "free_mib": 2382
+            }
+          ]
+        },
+        "inference_samples": {
+          "before": {
+            "resident": true,
+            "model_vram_mib": 4810,
+            "configured_server_context": 8192
+          },
+          "after": {
+            "resident": true,
+            "model_vram_mib": 4810,
+            "configured_server_context": 8192
+          }
+        },
+        "reported_context_fraction": 0.6208,
+        "effective_output_tokens_per_second": 14.655,
+        "inference_lanes": 1,
+        "lane_wait_seconds": 0.0,
+        "harness_seconds": 118.391
+      }
+    ],
+    "raw_provider_usage": [
+      {
+        "response": "provider-response-001.sse",
+        "last_usage": {
+          "prompt_tokens": 5086,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens": 77,
+          "total_tokens": 5163
+        }
+      },
+      {
+        "response": "provider-response-002.sse",
+        "last_usage": {
+          "prompt_tokens": 6024,
+          "prompt_tokens_details": {
+            "cached_tokens": 5082
+          },
+          "completion_tokens": 57,
+          "total_tokens": 6081
+        }
+      },
+      {
+        "response": "provider-response-003.sse",
+        "last_usage": {
+          "prompt_tokens": 7254,
+          "prompt_tokens_details": {
+            "cached_tokens": 6020
+          },
+          "completion_tokens": 54,
+          "total_tokens": 7308
+        }
+      },
+      {
+        "response": "provider-response-004.sse",
+        "last_usage": {
+          "prompt_tokens": 7074,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens": 399,
+          "total_tokens": 7473
+        }
+      },
+      {
+        "response": "provider-response-005.sse",
+        "last_usage": {
+          "prompt_tokens": 2066,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens": 64,
+          "total_tokens": 2130
+        }
+      },
+      {
+        "response": "provider-response-006.sse",
+        "last_usage": {
+          "prompt_tokens": 2900,
+          "prompt_tokens_details": {
+            "cached_tokens": 2062
+          },
+          "completion_tokens": 59,
+          "total_tokens": 2959
+        }
+      },
+      {
+        "response": "provider-response-007.sse",
+        "last_usage": {
+          "prompt_tokens": 3819,
+          "prompt_tokens_details": {
+            "cached_tokens": 2896
+          },
+          "completion_tokens": 70,
+          "total_tokens": 3889
+        }
+      },
+      {
+        "response": "provider-response-008.sse",
+        "last_usage": {
+          "prompt_tokens": 4825,
+          "prompt_tokens_details": {
+            "cached_tokens": 3815
+          },
+          "completion_tokens": 61,
+          "total_tokens": 4886
+        }
+      },
+      {
+        "response": "provider-response-009.sse",
+        "last_usage": {
+          "prompt_tokens": 5695,
+          "prompt_tokens_details": {
+            "cached_tokens": 4821
+          },
+          "completion_tokens": 44,
+          "total_tokens": 5739
+        }
+      },
+      {
+        "response": "provider-response-010.sse",
+        "last_usage": {
+          "prompt_tokens": 6612,
+          "prompt_tokens_details": {
+            "cached_tokens": 5691
+          },
+          "completion_tokens": 59,
+          "total_tokens": 6671
+        }
+      },
+      {
+        "response": "provider-response-011.sse",
+        "last_usage": {
+          "prompt_tokens": 7440,
+          "prompt_tokens_details": {
+            "cached_tokens": 6608
+          },
+          "completion_tokens": 29,
+          "total_tokens": 7469
+        }
+      },
+      {
+        "response": "provider-response-012.sse",
+        "last_usage": {
+          "prompt_tokens": 6097,
+          "prompt_tokens_details": {
+            "cached_tokens": 1554
+          },
+          "completion_tokens": 529,
+          "total_tokens": 6626
+        }
+      },
+      {
+        "response": "provider-response-013.sse",
+        "last_usage": {
+          "prompt_tokens": 2196,
+          "prompt_tokens_details": {
+            "cached_tokens": 1554
+          },
+          "completion_tokens": 80,
+          "total_tokens": 2276
+        }
+      },
+      {
+        "response": "provider-response-014.sse",
+        "last_usage": {
+          "prompt_tokens": 2320,
+          "prompt_tokens_details": {
+            "cached_tokens": 2192
+          },
+          "completion_tokens": 40,
+          "total_tokens": 2360
+        }
+      },
+      {
+        "response": "provider-response-015.sse",
+        "last_usage": {
+          "prompt_tokens": 3129,
+          "prompt_tokens_details": {
+            "cached_tokens": 2316
+          },
+          "completion_tokens": 59,
+          "total_tokens": 3188
+        }
+      },
+      {
+        "response": "provider-response-016.sse",
+        "last_usage": {
+          "prompt_tokens": 4131,
+          "prompt_tokens_details": {
+            "cached_tokens": 3125
+          },
+          "completion_tokens": 80,
+          "total_tokens": 4211
+        }
+      },
+      {
+        "response": "provider-response-017.sse",
+        "last_usage": {
+          "prompt_tokens": 4393,
+          "prompt_tokens_details": {
+            "cached_tokens": 4127
+          },
+          "completion_tokens": 53,
+          "total_tokens": 4446
+        }
+      },
+      {
+        "response": "provider-response-018.sse",
+        "last_usage": {
+          "prompt_tokens": 5214,
+          "prompt_tokens_details": {
+            "cached_tokens": 4389
+          },
+          "completion_tokens": 58,
+          "total_tokens": 5272
+        }
+      },
+      {
+        "response": "provider-response-019.sse",
+        "last_usage": {
+          "prompt_tokens": 6041,
+          "prompt_tokens_details": {
+            "cached_tokens": 5210
+          },
+          "completion_tokens": 69,
+          "total_tokens": 6110
+        }
+      },
+      {
+        "response": "provider-response-020.sse",
+        "last_usage": {
+          "prompt_tokens": 6154,
+          "prompt_tokens_details": {
+            "cached_tokens": 6037
+          },
+          "completion_tokens": 63,
+          "total_tokens": 6217
+        }
+      },
+      {
+        "response": "provider-response-021.sse",
+        "last_usage": {
+          "prompt_tokens": 6256,
+          "prompt_tokens_details": {
+            "cached_tokens": 6150
+          },
+          "completion_tokens": 72,
+          "total_tokens": 6328
+        }
+      },
+      {
+        "response": "provider-response-022.sse",
+        "last_usage": {
+          "prompt_tokens": 6367,
+          "prompt_tokens_details": {
+            "cached_tokens": 6252
+          },
+          "completion_tokens": 29,
+          "total_tokens": 6396
+        }
+      },
+      {
+        "response": "provider-response-023.sse",
+        "last_usage": {
+          "prompt_tokens": 6435,
+          "prompt_tokens_details": {
+            "cached_tokens": 6363
+          },
+          "completion_tokens": 58,
+          "total_tokens": 6493
+        }
+      },
+      {
+        "response": "provider-response-024.sse",
+        "last_usage": {
+          "prompt_tokens": 6532,
+          "prompt_tokens_details": {
+            "cached_tokens": 6431
+          },
+          "completion_tokens": 35,
+          "total_tokens": 6567
+        }
+      },
+      {
+        "response": "provider-response-025.sse",
+        "last_usage": {
+          "prompt_tokens": 6606,
+          "prompt_tokens_details": {
+            "cached_tokens": 6528
+          },
+          "completion_tokens": 74,
+          "total_tokens": 6680
+        }
+      },
+      {
+        "response": "provider-response-026.sse",
+        "last_usage": {
+          "prompt_tokens": 6719,
+          "prompt_tokens_details": {
+            "cached_tokens": 6602
+          },
+          "completion_tokens": 64,
+          "total_tokens": 6783
+        }
+      },
+      {
+        "response": "provider-response-027.sse",
+        "last_usage": {
+          "prompt_tokens": 6822,
+          "prompt_tokens_details": {
+            "cached_tokens": 6715
+          },
+          "completion_tokens": 61,
+          "total_tokens": 6883
+        }
+      },
+      {
+        "response": "provider-response-028.sse",
+        "last_usage": {
+          "prompt_tokens": 6922,
+          "prompt_tokens_details": {
+            "cached_tokens": 6818
+          },
+          "completion_tokens": 60,
+          "total_tokens": 6982
+        }
+      },
+      {
+        "response": "provider-response-029.sse",
+        "last_usage": {
+          "prompt_tokens": 7021,
+          "prompt_tokens_details": {
+            "cached_tokens": 6918
+          },
+          "completion_tokens": 67,
+          "total_tokens": 7088
+        }
+      },
+      {
+        "response": "provider-response-030.sse",
+        "last_usage": {
+          "prompt_tokens": 7127,
+          "prompt_tokens_details": {
+            "cached_tokens": 7017
+          },
+          "completion_tokens": 63,
+          "total_tokens": 7190
+        }
+      },
+      {
+        "response": "provider-response-031.sse",
+        "last_usage": {
+          "prompt_tokens": 7229,
+          "prompt_tokens_details": {
+            "cached_tokens": 7123
+          },
+          "completion_tokens": 76,
+          "total_tokens": 7305
+        }
+      },
+      {
+        "response": "provider-response-032.sse",
+        "last_usage": null
+      }
+    ],
+    "first_provider_prompt_tokens": 5086
+  },
+  "source_coverage": [
+    {
+      "operation": 1,
+      "tool": "focus",
+      "source_lines_obtained": 17,
+      "already_inspected": false,
+      "error": null
+    },
+    {
+      "operation": 2,
+      "tool": "focus",
+      "source_lines_obtained": 77,
+      "already_inspected": false,
+      "error": null
+    },
+    {
+      "operation": 3,
+      "tool": "focus",
+      "source_lines_obtained": 86,
+      "already_inspected": false,
+      "error": null
+    },
+    {
+      "operation": 4,
+      "tool": "focus",
+      "source_lines_obtained": 86,
+      "already_inspected": true,
+      "error": null
+    },
+    {
+      "operation": 5,
+      "tool": "focus",
+      "source_lines_obtained": 86,
+      "already_inspected": false,
+      "error": null
+    },
+    {
+      "operation": 6,
+      "tool": "focus",
+      "source_lines_obtained": 86,
+      "already_inspected": false,
+      "error": null
+    },
+    {
+      "operation": 7,
+      "tool": "focus",
+      "source_lines_obtained": 86,
+      "already_inspected": false,
+      "error": null
+    },
+    {
+      "operation": 8,
+      "tool": "focus",
+      "source_lines_obtained": 86,
+      "already_inspected": false,
+      "error": null
+    },
+    {
+      "operation": 9,
+      "tool": "focus",
+      "source_lines_obtained": 86,
+      "already_inspected": true,
+      "error": null
+    },
+    {
+      "operation": 10,
+      "tool": "diff",
+      "source_lines_obtained": 86,
+      "already_inspected": false,
+      "error": null
+    },
+    {
+      "operation": 11,
+      "tool": "focus",
+      "source_lines_obtained": 86,
+      "already_inspected": false,
+      "error": "query did not match; open the path to discover symbols"
+    },
+    {
+      "operation": 12,
+      "tool": "focus",
+      "source_lines_obtained": 86,
+      "already_inspected": true,
+      "error": null
+    },
+    {
+      "operation": 13,
+      "tool": "focus",
+      "source_lines_obtained": 86,
+      "already_inspected": false,
+      "error": null
+    },
+    {
+      "operation": 14,
+      "tool": "focus",
+      "source_lines_obtained": 86,
+      "already_inspected": true,
+      "error": null
+    },
+    {
+      "operation": 15,
+      "tool": "focus",
+      "source_lines_obtained": 86,
+      "already_inspected": true,
+      "error": null
+    },
+    {
+      "operation": 16,
+      "tool": "focus",
+      "source_lines_obtained": 86,
+      "already_inspected": false,
+      "error": "query did not match; open the path to discover symbols"
+    }
+  ],
+  "context_observations": [
+    {
+      "request": 1,
+      "system_characters": 1785,
+      "task_header_in_system": false,
+      "source_markers": {
+        "def parse_variables": false,
+        "result = env.get": false,
+        "(?P<default>": false
+      }
+    },
+    {
+      "request": 3,
+      "system_characters": 1785,
+      "task_header_in_system": false,
+      "source_markers": {
+        "def parse_variables": true,
+        "result = env.get": false,
+        "(?P<default>": true
+      }
+    },
+    {
+      "request": 4,
+      "system_characters": 1785,
+      "task_header_in_system": false,
+      "source_markers": {
+        "def parse_variables": true,
+        "result = env.get": true,
+        "(?P<default>": true
+      }
+    },
+    {
+      "request": 5,
+      "system_characters": 1785,
+      "task_header_in_system": false,
+      "source_markers": {
+        "def parse_variables": false,
+        "result = env.get": false,
+        "(?P<default>": false
+      }
+    },
+    {
+      "request": 11,
+      "system_characters": 1785,
+      "task_header_in_system": false,
+      "source_markers": {
+        "def parse_variables": true,
+        "result = env.get": true,
+        "(?P<default>": false
+      }
+    },
+    {
+      "request": 12,
+      "system_characters": 1785,
+      "task_header_in_system": false,
+      "source_markers": {
+        "def parse_variables": true,
+        "result = env.get": true,
+        "(?P<default>": false
+      }
+    },
+    {
+      "request": 13,
+      "system_characters": 1785,
+      "task_header_in_system": false,
+      "source_markers": {
+        "def parse_variables": false,
+        "result = env.get": false,
+        "(?P<default>": false
+      }
+    }
+  ],
+  "interpretation": "Registration passed. Two compactions removed verbatim source; the unchanged-window cache still suppressed reinspection. Worker also wasted calls and continued after quota. No matched retrieval comparison or intrinsic model-capability conclusion is possible.",
+  "mid_run_implementation_guidance": false,
+  "implementation_changed": false,
+  "new_plan": "REVIEW_ONLY_NOT_AUTHORIZED"
+}

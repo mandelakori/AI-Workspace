@@ -1,0 +1,2 @@
+# Captured data may contain CRLF/trailing spaces; preserve exact bytes for audit.
+* -text -whitespace

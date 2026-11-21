@@ -1,0 +1,12 @@
+{
+  "phase": "work",
+  "code": 1,
+  "elapsed": 133.64000000001397,
+  "timed_out": false,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\r\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\r\n  File \"<frozen runpy>\", line 88, in _run_code\r\n  File \"C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\aiwork\\discovery_benchmark.py\", line 364, in <module>\r\n    if __name__=='__main__':main()\r\n                            ^^^^^^\r\n  File \"C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\aiwork\\discovery_benchmark.py\", line 338, in main\r\n    {'warm':warm,'work':work,'grade':grade}[args.phase](root,args.arm,manifest);return\r\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\aiwork\\discovery_benchmark.py\", line 270, in work\r\n    quarantine(cfg.state,'catalog, harness or inference interruption failure');raise ValueError('comparison stopped before candidate grading')\r\n                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nValueError: comparison stopped before candidate grading\r\n",
+  "cleanup": {
+    "passed": true,
+    "removed": []
+  }
+}

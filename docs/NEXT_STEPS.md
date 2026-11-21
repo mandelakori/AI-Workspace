@@ -1,5 +1,17 @@
 # Next steps
 
+## Current handoff: review only
+
+**Phase 6.1 benchmarking is closed.** The [source-discovery comparison](DISCOVERY-EXPERIMENT-RESULT.md)
+quarantined B at the harness timeout and withheld A. The approval is consumed;
+do not resume, retry or dispatch another campaign. No sealed cases were authored.
+
+Review the [next development plan](NEXT-DEVELOPMENT-PLAN.md) for harness
+interchangeability, context-aware retrieval and resource-aware execution. It is
+not authorized for implementation or model execution. Existing implementation,
+historical evidence, frozen Click and main remain unchanged by this closeout.
+Earlier preparation/authorization instructions below are historical only.
+
 ## Phase 6.1 next approved work
 
 The current handoff is the [prepared source-discovery comparison](DISCOVERY-EXPERIMENT-REVIEW.md)

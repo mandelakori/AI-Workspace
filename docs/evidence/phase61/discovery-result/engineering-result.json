@@ -1,0 +1,6 @@
+{
+  "job": "919e106b71894bb29e2f1aa136183b4e",
+  "status": "blocked",
+  "detail": "harness failed or exceeded limits; see attempt logs",
+  "artifacts": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\phase61-discovery\\benchmark\\arms\\B\\state\\runs\\919e106b71894bb29e2f1aa136183b4e"
+}

@@ -1,0 +1,401 @@
+[
+  {
+    "sequence": 1,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "symbol": "parse_variables"
+    },
+    "status": "completed",
+    "error": null,
+    "time": {
+      "start": 1795255664844,
+      "end": 1795255665013
+    }
+  },
+  {
+    "sequence": 2,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "line": 1
+    },
+    "status": "completed",
+    "error": null,
+    "time": {
+      "start": 1795255667406,
+      "end": 1795255667616
+    }
+  },
+  {
+    "sequence": 3,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "line": 61
+    },
+    "status": "completed",
+    "error": null,
+    "time": {
+      "start": 1795255670118,
+      "end": 1795255670283
+    }
+  },
+  {
+    "sequence": 4,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py"
+    },
+    "status": "completed",
+    "error": null,
+    "time": {
+      "start": 1795255690217,
+      "end": 1795255690399
+    }
+  },
+  {
+    "sequence": 5,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "line": 68
+    },
+    "status": "completed",
+    "error": null,
+    "time": {
+      "start": 1795255692979,
+      "end": 1795255693152
+    }
+  },
+  {
+    "sequence": 6,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "symbol": "Variable"
+    },
+    "status": "completed",
+    "error": null,
+    "time": {
+      "start": 1795255695927,
+      "end": 1795255696121
+    }
+  },
+  {
+    "sequence": 7,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "symbol": "Atom"
+    },
+    "status": "completed",
+    "error": null,
+    "time": {
+      "start": 1795255698830,
+      "end": 1795255699042
+    }
+  },
+  {
+    "sequence": 8,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "symbol": "Literal"
+    },
+    "status": "completed",
+    "error": null,
+    "time": {
+      "start": 1795255701137,
+      "end": 1795255701337
+    }
+  },
+  {
+    "sequence": 9,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "line": 1
+    },
+    "status": "completed",
+    "error": null,
+    "time": {
+      "start": 1795255703919,
+      "end": 1795255704144
+    }
+  },
+  {
+    "sequence": 10,
+    "tool": "checks_diff",
+    "arguments": {},
+    "status": "completed",
+    "error": null,
+    "time": {
+      "start": 1795255705765,
+      "end": 1795255707000
+    }
+  },
+  {
+    "sequence": 11,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "query": "resolve method"
+    },
+    "status": "error",
+    "error": "{\"error\": \"query did not match; open the path to discover symbols\"}",
+    "time": {
+      "start": 1795255729635,
+      "end": 1795255729805
+    }
+  },
+  {
+    "sequence": 12,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py"
+    },
+    "status": "completed",
+    "error": null,
+    "time": {
+      "start": 1795255731317,
+      "end": 1795255731565
+    }
+  },
+  {
+    "sequence": 13,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "line": 60
+    },
+    "status": "completed",
+    "error": null,
+    "time": {
+      "start": 1795255734195,
+      "end": 1795255734493
+    }
+  },
+  {
+    "sequence": 14,
+    "tool": "grep",
+    "arguments": {
+      "include": "*.py",
+      "path": "src/dotenv/variables.py",
+      "pattern": "^import|^from|^class|def parse_variables"
+    },
+    "status": "completed",
+    "error": null,
+    "time": {
+      "start": 1795255737737,
+      "end": 1795255737927
+    }
+  },
+  {
+    "sequence": 15,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "line": 1
+    },
+    "status": "completed",
+    "error": null,
+    "time": {
+      "start": 1795255739941,
+      "end": 1795255740211
+    }
+  },
+  {
+    "sequence": 16,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "query": ""
+    },
+    "status": "completed",
+    "error": null,
+    "time": {
+      "start": 1795255742685,
+      "end": 1795255742866
+    }
+  },
+  {
+    "sequence": 17,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "query": "import re from abc"
+    },
+    "status": "error",
+    "error": "{\"error\": \"query did not match; open the path to discover symbols\"}",
+    "time": {
+      "start": 1795255745909,
+      "end": 1795255746114
+    }
+  },
+  {
+    "sequence": 18,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "line": 1
+    },
+    "status": "error",
+    "error": "{\"error\": \"tool stopped or call limit reached\"}",
+    "time": {
+      "start": 1795255748429,
+      "end": 1795255748475
+    }
+  },
+  {
+    "sequence": 19,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "query": "",
+      "line": 1
+    },
+    "status": "error",
+    "error": "{\"error\": \"tool stopped or call limit reached\"}",
+    "time": {
+      "start": 1795255751006,
+      "end": 1795255751058
+    }
+  },
+  {
+    "sequence": 20,
+    "tool": "checks_diff",
+    "arguments": {},
+    "status": "error",
+    "error": "{\"error\": \"tool stopped or call limit reached\"}",
+    "time": {
+      "start": 1795255752243,
+      "end": 1795255752293
+    }
+  },
+  {
+    "sequence": 21,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "line": 18
+    },
+    "status": "error",
+    "error": "{\"error\": \"tool stopped or call limit reached\"}",
+    "time": {
+      "start": 1795255754343,
+      "end": 1795255754398
+    }
+  },
+  {
+    "sequence": 22,
+    "tool": "checks_check",
+    "arguments": {
+      "index": 0
+    },
+    "status": "error",
+    "error": "{\"error\": \"tool stopped or call limit reached\"}",
+    "time": {
+      "start": 1795255755764,
+      "end": 1795255755810
+    }
+  },
+  {
+    "sequence": 23,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "query": ""
+    },
+    "status": "error",
+    "error": "{\"error\": \"tool stopped or call limit reached\"}",
+    "time": {
+      "start": 1795255758354,
+      "end": 1795255758402
+    }
+  },
+  {
+    "sequence": 24,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "query": ""
+    },
+    "status": "error",
+    "error": "{\"error\": \"tool stopped or call limit reached\"}",
+    "time": {
+      "start": 1795255760714,
+      "end": 1795255760752
+    }
+  },
+  {
+    "sequence": 25,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "query": ""
+    },
+    "status": "error",
+    "error": "{\"error\": \"tool stopped or call limit reached\"}",
+    "time": {
+      "start": 1795255762970,
+      "end": 1795255763013
+    }
+  },
+  {
+    "sequence": 26,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "query": ""
+    },
+    "status": "error",
+    "error": "{\"error\": \"tool stopped or call limit reached\"}",
+    "time": {
+      "start": 1795255765178,
+      "end": 1795255765238
+    }
+  },
+  {
+    "sequence": 27,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "query": ""
+    },
+    "status": "error",
+    "error": "{\"error\": \"tool stopped or call limit reached\"}",
+    "time": {
+      "start": 1795255767816,
+      "end": 1795255767883
+    }
+  },
+  {
+    "sequence": 28,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "query": ""
+    },
+    "status": "error",
+    "error": "{\"error\": \"tool stopped or call limit reached\"}",
+    "time": {
+      "start": 1795255770441,
+      "end": 1795255770493
+    }
+  },
+  {
+    "sequence": 29,
+    "tool": "checks_focus",
+    "arguments": {
+      "path": "src/dotenv/variables.py",
+      "query": "class Atom class Literal class Variable def parse_variables import re from abc typing"
+    },
+    "status": "error",
+    "error": "{\"error\": \"tool stopped or call limit reached\"}",
+    "time": {
+      "start": 1795255773363,
+      "end": 1795255773440
+    }
+  }
+]

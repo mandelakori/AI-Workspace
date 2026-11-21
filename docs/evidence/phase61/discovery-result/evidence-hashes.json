@@ -1,0 +1,142 @@
+{
+  ".gitattributes": {
+    "bytes": 102,
+    "sha256": "de526b0982fa7449048128992c9843811f5a2af4109220713ff10f7c9fcff3b7"
+  },
+  "agent-live.jsonl": {
+    "bytes": 132469,
+    "sha256": "d7fe6b776a05f4a7e261e5087138d59877aab92be727708e57facceb22305f8d"
+  },
+  "agent-metrics.json": {
+    "bytes": 1073,
+    "sha256": "d9c1c80fd0de76ba4bfe6aceb6ef3b11b59f63f9554facfd09606fe31bcb8f46"
+  },
+  "agent-process.json": {
+    "bytes": 96,
+    "sha256": "8eb30b0e7a48366c47a5bd375b75604c06425260a9edcf2adc70a5b8f74cf0b8"
+  },
+  "agent.jsonl": {
+    "bytes": 132585,
+    "sha256": "dc98cbecdf8367b5e1534795f5f74c1557cd12d690b8e0bcf75ee79ad14585ef"
+  },
+  "baseline-check.json": {
+    "bytes": 1753,
+    "sha256": "57c6e9e388b670b1c13521d1894e4ac2341a0c97499742371a1dff17999bdd52"
+  },
+  "catalog-readiness.json": {
+    "bytes": 262,
+    "sha256": "271fc27a6460272811b92d5855fbbf2ed7461efb14f11012c8c231de3d9f6def"
+  },
+  "compaction-004.txt": {
+    "bytes": 2038,
+    "sha256": "f5583e869ea7649bffa28f1af64e8b1d6c4910a19dd7fc9aa25af1991b439ebd"
+  },
+  "compaction-012.txt": {
+    "bytes": 2468,
+    "sha256": "55915ecc4ffbb48373b56f441154b0b274f52f089924b7b6c39cb0609040757f"
+  },
+  "engineering-result.json": {
+    "bytes": 301,
+    "sha256": "53dcf449be15c49fefbb0016c232de18d202a6389346fa81efcbdac179571667"
+  },
+  "evidence.json": {
+    "bytes": 1319,
+    "sha256": "e13e0285811bd2a93008ccacd950a271bc900c4e89849f58488c1ae3388a40f5"
+  },
+  "harness-budget.json": {
+    "bytes": 411,
+    "sha256": "26b9bcc98a5f8101dc7fc42d8a34da73f2abc1ae1b94c9d89a207d118dfa662c"
+  },
+  "local-evidence-inventory.json": {
+    "bytes": 87041,
+    "sha256": "da45e59d869d1c10bec690a4d01548b84000558941f8ff81c42f11d23635357e"
+  },
+  "mcp.jsonl": {
+    "bytes": 39439,
+    "sha256": "be4f328584dea50f90d4ac7cfbf71092717cc0bfbe6b5f4d7cc6bfd7347dd1fc"
+  },
+  "operator-approval.json": {
+    "bytes": 159,
+    "sha256": "3a2e52b4fa807ca0fe00c38cc92e48f5b535b8b32115c2948695d9d3d4b61563"
+  },
+  "operator-authorization-receipt.json": {
+    "bytes": 439,
+    "sha256": "5a381ad9259f644155508d4c440f1538fc8c7b18fe87a22eb30e14da29b80ed6"
+  },
+  "operator-task.md": {
+    "bytes": 2831,
+    "sha256": "43193867b8eba3660e90622cd6142ef2f75b6a05342adaab0e4da3cabae38761"
+  },
+  "outcome.json": {
+    "bytes": 18800,
+    "sha256": "c91c303856c9e0fcfdd9ddd1dab7c446955ec82dfaf72f19428685295a568439"
+  },
+  "private-server.log": {
+    "bytes": 842,
+    "sha256": "83b6a76e5447eafcd833be5c2b559423db15d90cdb0cd9e02ccdb86b70c60a1a"
+  },
+  "provider-gate.json": {
+    "bytes": 15823,
+    "sha256": "b214c41544580fdd39abb4524ab95aa864a28d987141a465fe41db5580a307fb"
+  },
+  "provider-usage.json": {
+    "bytes": 12833,
+    "sha256": "a10297714780c7be37fb606ca3a867c22d7e1e6b6d0a2825cd637e3699b67ad0"
+  },
+  "provider-wire-inventory.json": {
+    "bytes": 8866,
+    "sha256": "05ba4a067533ec65d7e54a2dc49adbeb16ff9c3793c83e20ee1353a6e15e8a59"
+  },
+  "provider-wire.zip": {
+    "bytes": 193840,
+    "sha256": "99697f53e959b423c48d76b969a1ea4bb4fdf430c5b61466bf031c764ff9ccfa"
+  },
+  "retained-stage.json": {
+    "bytes": 357,
+    "sha256": "205e2bef845bb199451b1ac9972876c4db5454f49c80648718733eb47d02df3d"
+  },
+  "source-receipt.json": {
+    "bytes": 7206,
+    "sha256": "ff745997e1741bfd2792f65e506dfccbff8f75124307437725fd16519818f79b"
+  },
+  "tool-sequence.json": {
+    "bytes": 8357,
+    "sha256": "401ea16412c1a8ecaa405bf7868f44687d95c4346b7e5d6daf0370090337b4f1"
+  },
+  "trial-budget.json": {
+    "bytes": 1658,
+    "sha256": "268b7652fd66f1329a84eb36deab49de1aa8bb50cbc289dbba945561467c179b"
+  },
+  "trial-tool-calls.json": {
+    "bytes": 16,
+    "sha256": "982d34af869c002811f5d5f16ec2a63b4db6b16671a2de07b830f85b38bc947f"
+  },
+  "warm-process.json": {
+    "bytes": 227,
+    "sha256": "6d08f217aefe4bb2816d6ce13b329e03d53b8f21edce457a7976544f2fe6dd0c"
+  },
+  "warm-request.json": {
+    "bytes": 220,
+    "sha256": "fcb5a319f485930c1d4f1e239384d93bfa21852fe05713f0df41431b09d0851f"
+  },
+  "warm-response.json": {
+    "bytes": 502,
+    "sha256": "8927bb4144ed2a8cd53ec44b745c5cf41edb28e6c80ccad73ca57d44460afae0"
+  },
+  "warm-state.json": {
+    "bytes": 2797,
+    "sha256": "c4a842bf71af2321f0ee94ac9512054f2723f77e4bb895812bd2400bddc08ea1"
+  },
+  "warm-wire-request.json": {
+    "bytes": 171,
+    "sha256": "b9fdd2431c9645d7169c8ef8a05225c799dfd676a25914729506e1efb3f81a74"
+  },
+  "warm-wire-response.json": {
+    "bytes": 346,
+    "sha256": "23d11bc972d19d717e850a0b69d4e9a7b6366138f2b355bb394a7aa5744063cb"
+  },
+  "work-process.json": {
+    "bytes": 1284,
+    "sha256": "d3152a37255ffbabc0e4cd86af600cc889aa7ea9311835b040161ce29e81a8d7"
+  }
+}

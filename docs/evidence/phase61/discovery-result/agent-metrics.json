@@ -1,0 +1,49 @@
+{
+  "tool_calls": {
+    "checks_focus": 25,
+    "checks_diff": 2,
+    "grep": 1,
+    "checks_check": 1
+  },
+  "tool_errors": 14,
+  "tokens": {
+    "input": 20473,
+    "output": 1735,
+    "reasoning": 0
+  },
+  "peak_reported_input_tokens": 5086,
+  "successful_public_mcp_checks": 0,
+  "gpu_samples": {
+    "before": [
+      {
+        "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+        "total_mib": 8151,
+        "free_mib": 2392
+      }
+    ],
+    "after": [
+      {
+        "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+        "total_mib": 8151,
+        "free_mib": 2382
+      }
+    ]
+  },
+  "inference_samples": {
+    "before": {
+      "resident": true,
+      "model_vram_mib": 4810,
+      "configured_server_context": 8192
+    },
+    "after": {
+      "resident": true,
+      "model_vram_mib": 4810,
+      "configured_server_context": 8192
+    }
+  },
+  "reported_context_fraction": 0.6208,
+  "effective_output_tokens_per_second": 14.655,
+  "inference_lanes": 1,
+  "lane_wait_seconds": 0.0,
+  "harness_seconds": 118.391
+}
