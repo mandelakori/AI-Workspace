@@ -1,0 +1,144 @@
+{
+  "failed_closed": false,
+  "requests": [
+    {
+      "request": 1,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "cad4a0989897f405cf2e280677c13a78a190b1a7c35e781d79d574602e02e6fb",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 24,
+      "contract_bytes": 900,
+      "forwarded_sha256": "eb5b007e62ff00251b356de2f6fd4d20a2fe29a6457ddef6fb543db8579c73b5",
+      "upstream_status": 200,
+      "response_sha256": "9a0af1b4c868ef84d90cf9499cf54653a14b01d79eaba3ab754f4df7395f1ead",
+      "elapsed": 0.0
+    },
+    {
+      "request": 2,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "82e42e45a362d85ae925101a3d59c6bcc059dd45406f682eacba86d0959f38fa",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 23,
+      "contract_bytes": 900,
+      "forwarded_sha256": "1ce9fca1881f8b10f23f598b353d97fed5cf634387593a82ac8a9ee304ada6fd",
+      "upstream_status": 200,
+      "response_sha256": "fa10d6b2cbef07fa51ad912312695bb67fc72c9553a01aae4a0787f48af2fe7d",
+      "elapsed": 0.0
+    },
+    {
+      "request": 3,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "9a60eb8d7c8580f7ef2b1517b4a2c60b8720aa254bf497213c6851a87a02331d",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 22,
+      "contract_bytes": 900,
+      "forwarded_sha256": "e4da5267c1dbf1d3fc8656909a911959b2a55e17685c67f9d31b95ffa1a9be85",
+      "upstream_status": 200,
+      "response_sha256": "ba9d83f048f675ebc8d802ebe6b034244c8272c9d6f586efcde41dc6dc056725",
+      "elapsed": 0.0
+    },
+    {
+      "request": 4,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "8cf79ba46e59b9fe91efa2ef20ad0d5531d2faa854339f9c097a27d4ae9ac1f4",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 21,
+      "contract_bytes": 900,
+      "forwarded_sha256": "72caf2fa0407405015230313b76097724c46a488231f9e0b9bc6e1611e26460c",
+      "upstream_status": 200,
+      "response_sha256": "2d22018d9e9a8264d41f3d3a9c5768296f73153fb23c221d059bd1961066a8be",
+      "elapsed": 0.0
+    },
+    {
+      "request": 5,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": true,
+      "body_sha256": "b84605ffb640907e856d23e3d8c446463d1d1419dee331646a9a62160145b25c",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 20,
+      "contract_bytes": 900,
+      "forwarded_sha256": "70bde8dcd6f554d4a74b44381e3ad38dee67413ef6d4a04e5d52eb8d1f75f351",
+      "upstream_status": 200,
+      "response_sha256": "22fd2fabc860ffa21785c98f6e718665624e5756c839630584d580d62ceb5d8f",
+      "elapsed": 0.0
+    },
+    {
+      "request": 6,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "forwarded": false,
+      "body_sha256": "d91f2ca116c48f35a863d9bfd7f9d5c6df6a3c5c899a35f9a69a55b42158c1de",
+      "resource_exhausted": "repeated equivalent source-edit failures exhausted recovery"
+    }
+  ],
+  "required": [
+    "checks_check",
+    "checks_diff",
+    "checks_edit",
+    "checks_focus"
+  ],
+  "request_rewriting": true,
+  "resource_exhausted": true,
+  "captured_bytes": 104079
+}

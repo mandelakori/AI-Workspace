@@ -1,5 +1,18 @@
 # Status as of 2026-11-22
 
+## Milestone E: deterministic editor recovery
+
+| Capability / outcome | Status | Evidence |
+| --- | --- | --- |
+| Conservative EOL and inspected locations | VERIFIED | [Correction report](A100-SOURCE-EDITING-RECOVERY.md): current hash, uniform LF/CRLF adaptation, exact inspected line windows, no fuzzy selection or unrelated byte changes. Mixed endings, CRLF splitting, stale/unissued locations and syntax failures rejected. |
+| Saved proposal replay | VERIFIED | 37 isolated replays: 11 apply (six distinct arguments, two resulting hashes), 24 ambiguous +one nonexistent +one empty rejected. Application/syntax only; feature behavior UNTESTED. |
+| Bounded recovery and installed tools | VERIFIED | Inert installed OpenCode/MCP completes inspect/edit/recovery/public-test; fourth equivalent failure in a separate fixture stops forwarding as clean exhaustion. Counters survive reconnect; cleanup passes. Final suite: 207/207, zero skips; [verification receipt](evidence/editor-recovery/verification.json). |
+| Preservation | VERIFIED | 2,675 indexed historical entries unchanged, including both consumed/quarantined trials, frozen Click and unauthorized Pi comparison; main unchanged. No inference, remote operation, download or new trial preparation. |
+| Live autonomous feature completion after correction | UNTESTED | Requires a fresh hash-bound bundle and separate approval. Old grants cannot be reused; no new live trial prepared or executed. |
+
+The following sections retain historical results and preparation states. Neither
+historical PREPARED entry authorizes reuse of a consumed grant.
+
 ## Milestone E: approved duration-expiry trial outcome
 
 | Capability / outcome | Status | Evidence |

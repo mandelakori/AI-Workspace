@@ -1,0 +1,1253 @@
+{
+  "summary": {
+    "kind": "deterministic_saved_proposal_replay_not_feature_evaluation",
+    "source_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+    "trace_sha256": "219209ae0b818fceb10771af42171a07d63c479f5b7cb28e2d78643b10ad9d0c",
+    "archive_sha256": "bc2423a3160c0b854e6c5c8a10270558bc41a2182ac024f18eebacae86412bbb",
+    "proposals": 37,
+    "outcomes": {
+      "applied": 11,
+      "ambiguous_anchor": 24,
+      "invalid_anchor": 1,
+      "anchor_mismatch": 1
+    },
+    "accepted_calls": [
+      8,
+      9,
+      12,
+      14,
+      15,
+      17,
+      20,
+      22,
+      27,
+      29,
+      32
+    ],
+    "unique_accepted_argument_objects": 6,
+    "unique_accepted_source_hashes": 2,
+    "each_proposal_starts_from_identical_original": true,
+    "unrelated_bytes_preserved": true,
+    "behavioral_correctness": "NOT_EVALUATED",
+    "inference_requests": 0,
+    "seconds": 1.0
+  },
+  "proposals": [
+    {
+      "original_call": 8,
+      "original_code": "anchor_mismatch",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "    @t.overload\n    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:",
+        "new": "    @t.overload\n    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:",
+        "mode": "replace"
+      },
+      "proposal_sha256": "f1ef1b072658100ad372de4512eee3f69f8eaa1183fd0b4a774cdfec0adcbb77",
+      "outcome": "applied",
+      "receipt": {
+        "path": "src/itsdangerous/timed.py",
+        "before_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "sha256": "1b24237f474e144a2221358387d940dc0a0d2ce2553a17abd8aef776cab32871",
+        "newline": "CRLF",
+        "anchor_newline_adapted": true,
+        "matched_bytes": [
+          1950,
+          2566
+        ],
+        "mode": "replace",
+        "line": 56,
+        "applied": true,
+        "passed": true,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": "proposal-08.py",
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 9,
+      "original_code": "anchor_mismatch",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:",
+        "new": "        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:",
+        "mode": "replace"
+      },
+      "proposal_sha256": "7f39666bfe0ccbfc484b40d26137d0f1f086f7ace8cee484879caf5569fa1ea6",
+      "outcome": "applied",
+      "receipt": {
+        "path": "src/itsdangerous/timed.py",
+        "before_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "sha256": "1b24237f474e144a2221358387d940dc0a0d2ce2553a17abd8aef776cab32871",
+        "newline": "CRLF",
+        "anchor_newline_adapted": true,
+        "matched_bytes": [
+          2054,
+          2566
+        ],
+        "mode": "replace",
+        "line": 60,
+        "applied": true,
+        "passed": true,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": "proposal-09.py",
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 11,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "        max_age: int | None = None,",
+        "new": "        max_age: int | float | timedelta | None = None,",
+        "mode": "replace"
+      },
+      "proposal_sha256": "718ec8739e4742c1de712219b42f6eab022c23f96c90c50744d7bb5f4a9b8ccc",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 12,
+      "original_code": "anchor_mismatch",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:",
+        "new": "        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:",
+        "mode": "replace"
+      },
+      "proposal_sha256": "7f39666bfe0ccbfc484b40d26137d0f1f086f7ace8cee484879caf5569fa1ea6",
+      "outcome": "applied",
+      "receipt": {
+        "path": "src/itsdangerous/timed.py",
+        "before_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "sha256": "1b24237f474e144a2221358387d940dc0a0d2ce2553a17abd8aef776cab32871",
+        "newline": "CRLF",
+        "anchor_newline_adapted": true,
+        "matched_bytes": [
+          2054,
+          2566
+        ],
+        "mode": "replace",
+        "line": 60,
+        "applied": true,
+        "passed": true,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": "proposal-12.py",
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 13,
+      "original_code": "invalid_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "76d4f8be5a54b538d4115397049e13ca24c2b955102587458d66b1c546c3a587",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "invalid_anchor",
+        "error": "Existing files require a SHA-256 from focus and nonempty exact old text. Creation requires absent and empty old.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py"
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 14,
+      "original_code": "anchor_mismatch",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "    @t.overload\n    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...",
+        "new": "    @t.overload\n    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...",
+        "mode": "replace"
+      },
+      "proposal_sha256": "af51010a27099a94d2dd27ade2c62fd96e7676caaed2da9dd9e8bcaba0c5dfec",
+      "outcome": "applied",
+      "receipt": {
+        "path": "src/itsdangerous/timed.py",
+        "before_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "sha256": "31fd0f1238a845df93105ee74f43f3ca037f57411173d8f2f5d15712a570f139",
+        "newline": "CRLF",
+        "anchor_newline_adapted": true,
+        "matched_bytes": [
+          1950,
+          2163
+        ],
+        "mode": "replace",
+        "line": 56,
+        "applied": true,
+        "passed": true,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": "proposal-14.py",
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 15,
+      "original_code": "anchor_mismatch",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "    @t.overload\n    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...",
+        "new": "    @t.overload\n    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...",
+        "mode": "replace"
+      },
+      "proposal_sha256": "af51010a27099a94d2dd27ade2c62fd96e7676caaed2da9dd9e8bcaba0c5dfec",
+      "outcome": "applied",
+      "receipt": {
+        "path": "src/itsdangerous/timed.py",
+        "before_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "sha256": "31fd0f1238a845df93105ee74f43f3ca037f57411173d8f2f5d15712a570f139",
+        "newline": "CRLF",
+        "anchor_newline_adapted": true,
+        "matched_bytes": [
+          1950,
+          2163
+        ],
+        "mode": "replace",
+        "line": 56,
+        "applied": true,
+        "passed": true,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": "proposal-15.py",
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 16,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "        max_age: int | None = None,",
+        "new": "        max_age: int | float | timedelta | None = None,",
+        "mode": "replace"
+      },
+      "proposal_sha256": "718ec8739e4742c1de712219b42f6eab022c23f96c90c50744d7bb5f4a9b8ccc",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 17,
+      "original_code": "anchor_mismatch",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "    @t.overload\n    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:",
+        "new": "    @t.overload\n    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:",
+        "mode": "replace"
+      },
+      "proposal_sha256": "f1ef1b072658100ad372de4512eee3f69f8eaa1183fd0b4a774cdfec0adcbb77",
+      "outcome": "applied",
+      "receipt": {
+        "path": "src/itsdangerous/timed.py",
+        "before_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "sha256": "1b24237f474e144a2221358387d940dc0a0d2ce2553a17abd8aef776cab32871",
+        "newline": "CRLF",
+        "anchor_newline_adapted": true,
+        "matched_bytes": [
+          1950,
+          2566
+        ],
+        "mode": "replace",
+        "line": 56,
+        "applied": true,
+        "passed": true,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": "proposal-17.py",
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 19,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | ",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "d6f6c025f8aa3f30992ea380e077a005a706d5515c89c8f16ac7b9faf7e292b6",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": true,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          109,
+          160
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 20,
+      "original_code": "anchor_mismatch",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,",
+        "new": "        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,",
+        "mode": "replace"
+      },
+      "proposal_sha256": "af67ce7a4fd46876b1dadbbd1ec27183a01c5773cfa0df3963e3c89fd552f39e",
+      "outcome": "applied",
+      "receipt": {
+        "path": "src/itsdangerous/timed.py",
+        "before_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "sha256": "31fd0f1238a845df93105ee74f43f3ca037f57411173d8f2f5d15712a570f139",
+        "newline": "CRLF",
+        "anchor_newline_adapted": true,
+        "matched_bytes": [
+          2018,
+          2142
+        ],
+        "mode": "replace",
+        "line": 59,
+        "applied": true,
+        "passed": true,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": "proposal-20.py",
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 21,
+      "original_code": "anchor_mismatch",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "        signed_value: str | bytes,\\r\\n        max_age: int | None = None,\\r\\n        return_timestamp: t.Literal[False] = False,\\r\\n",
+        "new": "        signed_value: str | bytes,\\r\\n        max_age: int | float | timedelta | None = None,\\r\\n        return_timestamp: t.Literal[False] = False,\\r\\n",
+        "mode": "replace"
+      },
+      "proposal_sha256": "ff409787df38068110dfef12b469020f5e8e167837ba4e9c09a287d8c68f5d82",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "anchor_mismatch",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 0,
+        "more_matches": false,
+        "matching_lines": []
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 22,
+      "original_code": "anchor_mismatch",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:\n        \"\"\"Works like the regular :meth:`.Signer.unsign` but can also\n        validate the time. See the base docstring of the class for\n        the general behavior. If ``return_timestamp`` is ``True`` the\n        timestamp of the signature will be returned as an aware\n        :class:`datetime.datetime` object in UTC.\n\n        .. versionchanged:: 2.0\n            The timestamp is returned as a timezone-aware ``datetime``\n            in UTC rather than a naive ``datetime`` assumed to be UTC.\n        \"\"\"",
+        "new": "        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:\n        \"\"\"Works like the regular :meth:`.Signer.unsign` but can also\n        validate the time. See the base docstring of the class for\n        the general behavior. If ``return_timestamp`` is ``True`` the\n        timestamp of the signature will be returned as an aware\n        :class:`datetime.datetime` object in UTC.\n\n        .. versionchanged:: 2.0\n            The timestamp is returned as a timezone-aware ``datetime``\n            in UTC rather than a naive ``datetime`` assumed to be UTC.\n        \"\"\"",
+        "mode": "replace"
+      },
+      "proposal_sha256": "b4e0ac95d0ddaca085134a2f92951a8bb21f3808a316b7d75a0344ab4cd1b77b",
+      "outcome": "applied",
+      "receipt": {
+        "path": "src/itsdangerous/timed.py",
+        "before_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "sha256": "1b24237f474e144a2221358387d940dc0a0d2ce2553a17abd8aef776cab32871",
+        "newline": "CRLF",
+        "anchor_newline_adapted": true,
+        "matched_bytes": [
+          2054,
+          3084
+        ],
+        "mode": "replace",
+        "line": 60,
+        "applied": true,
+        "passed": true,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": "proposal-22.py",
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 23,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 26,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "        max_age: int | None = None,",
+        "new": "        max_age: int | float | timedelta | None = None,",
+        "mode": "replace"
+      },
+      "proposal_sha256": "718ec8739e4742c1de712219b42f6eab022c23f96c90c50744d7bb5f4a9b8ccc",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 27,
+      "original_code": "anchor_mismatch",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...",
+        "new": "    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...",
+        "mode": "replace"
+      },
+      "proposal_sha256": "052c93400368a671ea6c7a8b2be6536d8e52c6428e38b9e5b4defe030ef3b510",
+      "outcome": "applied",
+      "receipt": {
+        "path": "src/itsdangerous/timed.py",
+        "before_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "sha256": "31fd0f1238a845df93105ee74f43f3ca037f57411173d8f2f5d15712a570f139",
+        "newline": "CRLF",
+        "anchor_newline_adapted": true,
+        "matched_bytes": [
+          1967,
+          2163
+        ],
+        "mode": "replace",
+        "line": 57,
+        "applied": true,
+        "passed": true,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": "proposal-27.py",
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 28,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 29,
+      "original_code": "anchor_mismatch",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...",
+        "new": "    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...",
+        "mode": "replace"
+      },
+      "proposal_sha256": "052c93400368a671ea6c7a8b2be6536d8e52c6428e38b9e5b4defe030ef3b510",
+      "outcome": "applied",
+      "receipt": {
+        "path": "src/itsdangerous/timed.py",
+        "before_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "sha256": "31fd0f1238a845df93105ee74f43f3ca037f57411173d8f2f5d15712a570f139",
+        "newline": "CRLF",
+        "anchor_newline_adapted": true,
+        "matched_bytes": [
+          1967,
+          2163
+        ],
+        "mode": "replace",
+        "line": 57,
+        "applied": true,
+        "passed": true,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": "proposal-29.py",
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 30,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 31,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 32,
+      "original_code": "anchor_mismatch",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:",
+        "new": "        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:",
+        "mode": "replace"
+      },
+      "proposal_sha256": "7f39666bfe0ccbfc484b40d26137d0f1f086f7ace8cee484879caf5569fa1ea6",
+      "outcome": "applied",
+      "receipt": {
+        "path": "src/itsdangerous/timed.py",
+        "before_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "sha256": "1b24237f474e144a2221358387d940dc0a0d2ce2553a17abd8aef776cab32871",
+        "newline": "CRLF",
+        "anchor_newline_adapted": true,
+        "matched_bytes": [
+          2054,
+          2566
+        ],
+        "mode": "replace",
+        "line": 60,
+        "applied": true,
+        "passed": true,
+        "stdout": "",
+        "stderr": ""
+      },
+      "candidate": "proposal-32.py",
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 33,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 34,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 35,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 36,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 37,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 38,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 39,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 40,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 41,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 42,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 43,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 44,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 45,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 46,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 47,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    },
+    {
+      "original_call": 48,
+      "original_code": "ambiguous_anchor",
+      "arguments": {
+        "path": "src/itsdangerous/timed.py",
+        "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "old": "int | None = None,",
+        "new": "float | timedelta | ",
+        "mode": "before"
+      },
+      "proposal_sha256": "ce72324c8863ecfeb0daf71eaf5f19ff2ab0c51e064553dfa9c9cdb2f646ca68",
+      "outcome": "rejected",
+      "receipt": {
+        "code": "ambiguous_anchor",
+        "error": "Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.",
+        "unchanged": true,
+        "path": "src/itsdangerous/timed.py",
+        "actual_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+        "focus_arguments": {
+          "path": "src/itsdangerous/timed.py",
+          "line": 1
+        },
+        "anchor_matches": 5,
+        "more_matches": false,
+        "matching_lines": [
+          60,
+          68,
+          75,
+          188,
+          225
+        ]
+      },
+      "unrelated_bytes_preserved": true
+    }
+  ]
+}

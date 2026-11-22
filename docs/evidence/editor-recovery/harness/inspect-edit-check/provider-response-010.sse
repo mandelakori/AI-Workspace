@@ -1,0 +1,6 @@
+data: {"id": "inert", "object": "chat.completion.chunk", "created": 1, "model": "inert", "choices": [{"index": 0, "delta": {"role": "assistant", "content": "Scripted conformance complete."}, "finish_reason": null}]}
+
+data: {"id": "inert", "object": "chat.completion.chunk", "created": 1, "model": "inert", "choices": [{"index": 0, "delta": {}, "finish_reason": "stop"}]}
+
+data: [DONE]
+

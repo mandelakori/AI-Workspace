@@ -1,0 +1,146 @@
+{
+  "contract": {
+    "objective": "Scripted edit conformance only",
+    "write_roots": [
+      "module.py"
+    ],
+    "public_checks": [
+      {
+        "argv": [
+          "{python}",
+          "-c",
+          "from module import first,second; assert first(3)==6; assert second(3)==4"
+        ]
+      }
+    ],
+    "setup": [],
+    "deadline": null,
+    "policy": {
+      "operations": 24,
+      "edit_reserve": 2,
+      "verification_reserve": 2,
+      "model_requests": 16,
+      "compactions": 4,
+      "blocked_limit": 3
+    }
+  },
+  "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+  "epoch": 0,
+  "visible": [
+    "a78bfc56b1b5a2ca16d2ef39580cbe28fe445a46ce82631dff9dbbb7905040f4"
+  ],
+  "issued": {
+    "a78bfc56b1b5a2ca16d2ef39580cbe28fe445a46ce82631dff9dbbb7905040f4": {
+      "path": "module.py",
+      "sha256": "347ac469a81d6ffb2d0020f7b4a209256049d58c62678907876b505b16400dfd",
+      "line": 1,
+      "next_line": null
+    }
+  },
+  "events": [
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 24,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 23,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 22,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 21,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 20,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "edit_recovery_exhausted",
+      "fingerprint": "6bbf55ef412e5aefdcaa4d30f334b4eebd17a29afa67e66a6b7c8c699e6b10bb",
+      "count": 4,
+      "epoch": 0
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 19,
+      "denied": "repeated equivalent source-edit failures exhausted recovery"
+    }
+  ],
+  "used": {
+    "inspection": 1,
+    "editing": 4,
+    "verification": 0,
+    "inference": 5,
+    "compaction": 0
+  },
+  "seconds": {
+    "inference": 0.0,
+    "inspection": 0.015000000013969839,
+    "editing": 0.39099999994505197,
+    "cleanup": 0.015999999945051968
+  },
+  "blocked": 0,
+  "exhausted": "repeated equivalent source-edit failures exhausted recovery"
+}

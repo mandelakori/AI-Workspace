@@ -1,0 +1,276 @@
+{
+  "kind": "scripted_inert_conformance_not_autonomous_repair",
+  "harness": {
+    "code": 0,
+    "elapsed": 4.061999999918044,
+    "stdout": "{\"type\":\"step_start\",\"timestamp\":1795344735798,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e29e36001gdo0tdjkWFbFBF\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e29e18001J0jcitZN8akTg8\",\"type\":\"step-start\"}}\r\n{\"type\":\"tool_use\",\"timestamp\":1795344735858,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"partID\":\"prt_202e29e39001s0fVk6v6oGYeWr\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e29e18001J0jcitZN8akTg8\",\"type\":\"tool\",\"id\":\"recovery_0\",\"tool\":\"checks_focus\",\"state\":{\"status\":\"completed\",\"input\":{\"path\":\"module.py\"},\"output\":\"{\\\"path\\\": \\\"module.py\\\", \\\"sha256\\\": \\\"347ac469a81d6ffb2d0020f7b4a209256049d58c62678907876b505b16400dfd\\\", \\\"line\\\": 1, \\\"source\\\": \\\"def first(value):\\\\r\\\\n    return value\\\\r\\\\n\\\\r\\\\ndef second(value):\\\\r\\\\n    return value\\\\r\\\\n\\\", \\\"next_line\\\": null, \\\"total_lines\\\": 5, \\\"selected_symbol\\\": \\\"\\\", \\\"symbols\\\": [{\\\"symbol\\\": \\\"first\\\", \\\"line\\\": 1, \\\"end_line\\\": 2, \\\"kind\\\": \\\"function\\\"}, {\\\"symbol\\\": \\\"second\\\", \\\"line\\\": 4, \\\"end_line\\\": 5, \\\"kind\\\": \\\"function\\\"}], \\\"symbols_truncated\\\": false, \\\"context_epoch\\\": 0, \\\"evidence_key\\\": \\\"a78bfc56b1b5a2ca16d2ef39580cbe28fe445a46ce82631dff9dbbb7905040f4\\\", \\\"passed\\\": true, \\\"stdout\\\": \\\"\\\", \\\"stderr\\\": \\\"\\\", \\\"objective\\\": \\\"Scripted edit conformance only\\\", \\\"objective_truncated\\\": false, \\\"write_roots\\\": [\\\"module.py\\\"], \\\"remaining_calls\\\": 23, \\\"resource_status\\\": {\\\"epoch\\\": 0, \\\"remaining_operations\\\": 23, \\\"used\\\": {\\\"inspection\\\": 1, \\\"editing\\\": 0, \\\"verification\\\": 0, \\\"inference\\\": 1, \\\"compaction\\\": 0}, \\\"exhausted\\\": \\\"\\\", \\\"policy\\\": {\\\"operations\\\": 24, \\\"edit_reserve\\\": 2, \\\"verification_reserve\\\": 2, \\\"model_requests\\\": 16, \\\"compactions\\\": 4, \\\"blocked_limit\\\": 3}, \\\"seconds\\\": {\\\"inference\\\": 0.0, \\\"inspection\\\": 0.015999999945051968}, \\\"contract_sha256\\\": \\\"c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa\\\"}}\",\"title\":\"checks_focus\",\"metadata\":{\"metadata\":{\"truncated\":false},\"content\":[{\"type\":\"text\",\"text\":\"{\\\"path\\\": \\\"module.py\\\", \\\"sha256\\\": \\\"347ac469a81d6ffb2d0020f7b4a209256049d58c62678907876b505b16400dfd\\\", \\\"line\\\": 1, \\\"source\\\": \\\"def first(value):\\\\r\\\\n    return value\\\\r\\\\n\\\\r\\\\ndef second(value):\\\\r\\\\n    return value\\\\r\\\\n\\\", \\\"next_line\\\": null, \\\"total_lines\\\": 5, \\\"selected_symbol\\\": \\\"\\\", \\\"symbols\\\": [{\\\"symbol\\\": \\\"first\\\", \\\"line\\\": 1, \\\"end_line\\\": 2, \\\"kind\\\": \\\"function\\\"}, {\\\"symbol\\\": \\\"second\\\", \\\"line\\\": 4, \\\"end_line\\\": 5, \\\"kind\\\": \\\"function\\\"}], \\\"symbols_truncated\\\": false, \\\"context_epoch\\\": 0, \\\"evidence_key\\\": \\\"a78bfc56b1b5a2ca16d2ef39580cbe28fe445a46ce82631dff9dbbb7905040f4\\\", \\\"passed\\\": true, \\\"stdout\\\": \\\"\\\", \\\"stderr\\\": \\\"\\\", \\\"objective\\\": \\\"Scripted edit conformance only\\\", \\\"objective_truncated\\\": false, \\\"write_roots\\\": [\\\"module.py\\\"], \\\"remaining_calls\\\": 23, \\\"resource_status\\\": {\\\"epoch\\\": 0, \\\"remaining_operations\\\": 23, \\\"used\\\": {\\\"inspection\\\": 1, \\\"editing\\\": 0, \\\"verification\\\": 0, \\\"inference\\\": 1, \\\"compaction\\\": 0}, \\\"exhausted\\\": \\\"\\\", \\\"policy\\\": {\\\"operations\\\": 24, \\\"edit_reserve\\\": 2, \\\"verification_reserve\\\": 2, \\\"model_requests\\\": 16, \\\"compactions\\\": 4, \\\"blocked_limit\\\": 3}, \\\"seconds\\\": {\\\"inference\\\": 0.0, \\\"inspection\\\": 0.015999999945051968}, \\\"contract_sha256\\\": \\\"c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa\\\"}}\"}],\"providerCall\":{\"executed\":false},\"providerResult\":{\"executed\":false},\"rawInput\":\"{\\\"path\\\": \\\"module.py\\\"}\"},\"time\":{\"start\":1795344735801,\"end\":1795344735858}}}}\r\n{\"type\":\"step_finish\",\"timestamp\":1795344735861,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e29e75001ogZqIOdTwrtSiA\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e29e18001J0jcitZN8akTg8\",\"type\":\"step-finish\",\"reason\":\"tool-calls\",\"cost\":0,\"tokens\":{\"input\":0,\"output\":0,\"reasoning\":0,\"cache\":{\"read\":0,\"write\":0}}}}\r\n{\"type\":\"step_start\",\"timestamp\":1795344735894,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e29e96001M6XjeRtKvO4mWj\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e29e7d001sODwwgulwEr0eo\",\"type\":\"step-start\"}}\r\n{\"type\":\"tool_use\",\"timestamp\":1795344735937,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"partID\":\"prt_202e29e99001kIffds2Bt0Q3fh\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e29e7d001sODwwgulwEr0eo\",\"type\":\"tool\",\"id\":\"recovery_1\",\"tool\":\"checks_edit\",\"state\":{\"status\":\"completed\",\"input\":{\"path\":\"module.py\",\"expected_sha256\":\"347ac469a81d6ffb2d0020f7b4a209256049d58c62678907876b505b16400dfd\",\"old\":\"def first(value):\\n    return value\\n\",\"new\":\"def first(value):\\n    return value * 2\\n\",\"mode\":\"replace\"},\"output\":\"{\\\"path\\\": \\\"module.py\\\", \\\"before_sha256\\\": \\\"347ac469a81d6ffb2d0020f7b4a209256049d58c62678907876b505b16400dfd\\\", \\\"sha256\\\": \\\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\\\", \\\"newline\\\": \\\"CRLF\\\", \\\"anchor_newline_adapted\\\": true, \\\"matched_bytes\\\": [0, 37], \\\"mode\\\": \\\"replace\\\", \\\"line\\\": 1, \\\"applied\\\": true, \\\"passed\\\": true, \\\"stdout\\\": \\\"\\\", \\\"stderr\\\": \\\"\\\", \\\"objective\\\": \\\"Scripted edit conformance only\\\", \\\"objective_truncated\\\": false, \\\"write_roots\\\": [\\\"module.py\\\"], \\\"remaining_calls\\\": 22, \\\"resource_status\\\": {\\\"epoch\\\": 0, \\\"remaining_operations\\\": 22, \\\"used\\\": {\\\"inspection\\\": 1, \\\"editing\\\": 1, \\\"verification\\\": 0, \\\"inference\\\": 2, \\\"compaction\\\": 0}, \\\"exhausted\\\": \\\"\\\", \\\"policy\\\": {\\\"operations\\\": 24, \\\"edit_reserve\\\": 2, \\\"verification_reserve\\\": 2, \\\"model_requests\\\": 16, \\\"compactions\\\": 4, \\\"blocked_limit\\\": 3}, \\\"seconds\\\": {\\\"inference\\\": 0.0, \\\"inspection\\\": 0.015999999945051968, \\\"editing\\\": 0.015000000013969839}, \\\"contract_sha256\\\": \\\"c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa\\\"}}\",\"title\":\"checks_edit\",\"metadata\":{\"metadata\":{\"truncated\":false},\"content\":[{\"type\":\"text\",\"text\":\"{\\\"path\\\": \\\"module.py\\\", \\\"before_sha256\\\": \\\"347ac469a81d6ffb2d0020f7b4a209256049d58c62678907876b505b16400dfd\\\", \\\"sha256\\\": \\\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\\\", \\\"newline\\\": \\\"CRLF\\\", \\\"anchor_newline_adapted\\\": true, \\\"matched_bytes\\\": [0, 37], \\\"mode\\\": \\\"replace\\\", \\\"line\\\": 1, \\\"applied\\\": true, \\\"passed\\\": true, \\\"stdout\\\": \\\"\\\", \\\"stderr\\\": \\\"\\\", \\\"objective\\\": \\\"Scripted edit conformance only\\\", \\\"objective_truncated\\\": false, \\\"write_roots\\\": [\\\"module.py\\\"], \\\"remaining_calls\\\": 22, \\\"resource_status\\\": {\\\"epoch\\\": 0, \\\"remaining_operations\\\": 22, \\\"used\\\": {\\\"inspection\\\": 1, \\\"editing\\\": 1, \\\"verification\\\": 0, \\\"inference\\\": 2, \\\"compaction\\\": 0}, \\\"exhausted\\\": \\\"\\\", \\\"policy\\\": {\\\"operations\\\": 24, \\\"edit_reserve\\\": 2, \\\"verification_reserve\\\": 2, \\\"model_requests\\\": 16, \\\"compactions\\\": 4, \\\"blocked_limit\\\": 3}, \\\"seconds\\\": {\\\"inference\\\": 0.0, \\\"inspection\\\": 0.015999999945051968, \\\"editing\\\": 0.015000000013969839}, \\\"contract_sha256\\\": \\\"c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa\\\"}}\"}],\"providerCall\":{\"executed\":false},\"providerResult\":{\"executed\":false},\"rawInput\":\"{\\\"path\\\": \\\"module.py\\\", \\\"expected_sha256\\\": \\\"347ac469a81d6ffb2d0020f7b4a209256049d58c62678907876b505b16400dfd\\\", \\\"old\\\": \\\"def first(value):\\\\n    return value\\\\n\\\", \\\"new\\\": \\\"def first(value):\\\\n    return value * 2\\\\n\\\", \\\"mode\\\": \\\"replace\\\"}\"},\"time\":{\"start\":1795344735897,\"end\":1795344735937}}}}\r\n{\"type\":\"step_finish\",\"timestamp\":1795344735939,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e29ec3001Bz2D39oveFBSV1\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e29e7d001sODwwgulwEr0eo\",\"type\":\"step-finish\",\"reason\":\"tool-calls\",\"cost\":0,\"tokens\":{\"input\":0,\"output\":0,\"reasoning\":0,\"cache\":{\"read\":0,\"write\":0}}}}\r\n{\"type\":\"step_start\",\"timestamp\":1795344735969,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e29ee1001JU0Tmtn9XRBZlu\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e29ecb001OWS07jVg0Bwuic\",\"type\":\"step-start\"}}\r\n{\"type\":\"tool_use\",\"timestamp\":1795344736031,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"partID\":\"prt_202e29ee4001yX97EEqWHwZg1Z\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e29ecb001OWS07jVg0Bwuic\",\"type\":\"tool\",\"id\":\"recovery_2\",\"tool\":\"checks_focus\",\"state\":{\"status\":\"completed\",\"input\":{\"path\":\"module.py\"},\"output\":\"{\\\"path\\\": \\\"module.py\\\", \\\"sha256\\\": \\\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\\\", \\\"line\\\": 1, \\\"source\\\": \\\"def first(value):\\\\r\\\\n    return value * 2\\\\r\\\\n\\\\r\\\\ndef second(value):\\\\r\\\\n    return value\\\\r\\\\n\\\", \\\"next_line\\\": null, \\\"total_lines\\\": 5, \\\"selected_symbol\\\": \\\"\\\", \\\"symbols\\\": [{\\\"symbol\\\": \\\"first\\\", \\\"line\\\": 1, \\\"end_line\\\": 2, \\\"kind\\\": \\\"function\\\"}, {\\\"symbol\\\": \\\"second\\\", \\\"line\\\": 4, \\\"end_line\\\": 5, \\\"kind\\\": \\\"function\\\"}], \\\"symbols_truncated\\\": false, \\\"context_epoch\\\": 0, \\\"evidence_key\\\": \\\"f8c74959cadb2c3246c0208a0e76db771923cfe12790b82a8247ed236f61ebee\\\", \\\"passed\\\": true, \\\"stdout\\\": \\\"\\\", \\\"stderr\\\": \\\"\\\", \\\"objective\\\": \\\"Scripted edit conformance only\\\", \\\"objective_truncated\\\": false, \\\"write_roots\\\": [\\\"module.py\\\"], \\\"remaining_calls\\\": 21, \\\"resource_status\\\": {\\\"epoch\\\": 0, \\\"remaining_operations\\\": 21, \\\"used\\\": {\\\"inspection\\\": 2, \\\"editing\\\": 1, \\\"verification\\\": 0, \\\"inference\\\": 3, \\\"compaction\\\": 0}, \\\"exhausted\\\": \\\"\\\", \\\"policy\\\": {\\\"operations\\\": 24, \\\"edit_reserve\\\": 2, \\\"verification_reserve\\\": 2, \\\"model_requests\\\": 16, \\\"compactions\\\": 4, \\\"blocked_limit\\\": 3}, \\\"seconds\\\": {\\\"inference\\\": 0.0, \\\"inspection\\\": 0.030999999959021807, \\\"editing\\\": 0.015000000013969839}, \\\"contract_sha256\\\": \\\"c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa\\\"}}\",\"title\":\"checks_focus\",\"metadata\":{\"metadata\":{\"truncated\":false},\"content\":[{\"type\":\"text\",\"text\":\"{\\\"path\\\": \\\"module.py\\\", \\\"sha256\\\": \\\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\\\", \\\"line\\\": 1, \\\"source\\\": \\\"def first(value):\\\\r\\\\n    return value * 2\\\\r\\\\n\\\\r\\\\ndef second(value):\\\\r\\\\n    return value\\\\r\\\\n\\\", \\\"next_line\\\": null, \\\"total_lines\\\": 5, \\\"selected_symbol\\\": \\\"\\\", \\\"symbols\\\": [{\\\"symbol\\\": \\\"first\\\", \\\"line\\\": 1, \\\"end_line\\\": 2, \\\"kind\\\": \\\"function\\\"}, {\\\"symbol\\\": \\\"second\\\", \\\"line\\\": 4, \\\"end_line\\\": 5, \\\"kind\\\": \\\"function\\\"}], \\\"symbols_truncated\\\": false, \\\"context_epoch\\\": 0, \\\"evidence_key\\\": \\\"f8c74959cadb2c3246c0208a0e76db771923cfe12790b82a8247ed236f61ebee\\\", \\\"passed\\\": true, \\\"stdout\\\": \\\"\\\", \\\"stderr\\\": \\\"\\\", \\\"objective\\\": \\\"Scripted edit conformance only\\\", \\\"objective_truncated\\\": false, \\\"write_roots\\\": [\\\"module.py\\\"], \\\"remaining_calls\\\": 21, \\\"resource_status\\\": {\\\"epoch\\\": 0, \\\"remaining_operations\\\": 21, \\\"used\\\": {\\\"inspection\\\": 2, \\\"editing\\\": 1, \\\"verification\\\": 0, \\\"inference\\\": 3, \\\"compaction\\\": 0}, \\\"exhausted\\\": \\\"\\\", \\\"policy\\\": {\\\"operations\\\": 24, \\\"edit_reserve\\\": 2, \\\"verification_reserve\\\": 2, \\\"model_requests\\\": 16, \\\"compactions\\\": 4, \\\"blocked_limit\\\": 3}, \\\"seconds\\\": {\\\"inference\\\": 0.0, \\\"inspection\\\": 0.030999999959021807, \\\"editing\\\": 0.015000000013969839}, \\\"contract_sha256\\\": \\\"c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa\\\"}}\"}],\"providerCall\":{\"executed\":false},\"providerResult\":{\"executed\":false},\"rawInput\":\"{\\\"path\\\": \\\"module.py\\\"}\"},\"time\":{\"start\":1795344735972,\"end\":1795344736031}}}}\r\n{\"type\":\"step_finish\",\"timestamp\":1795344736034,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e29f22001hsD6jkSjplmuvo\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e29ecb001OWS07jVg0Bwuic\",\"type\":\"step-finish\",\"reason\":\"tool-calls\",\"cost\":0,\"tokens\":{\"input\":0,\"output\":0,\"reasoning\":0,\"cache\":{\"read\":0,\"write\":0}}}}\r\n{\"type\":\"step_start\",\"timestamp\":1795344736065,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e29f4000123CRjBeeRgUwoV\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e29f2a0013dkujZC0KiSysy\",\"type\":\"step-start\"}}\r\n{\"type\":\"tool_use\",\"timestamp\":1795344736100,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"partID\":\"prt_202e29f43001B4fzvtSBaJajir\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e29f2a0013dkujZC0KiSysy\",\"type\":\"tool\",\"id\":\"recovery_3\",\"tool\":\"checks_edit\",\"state\":{\"status\":\"error\",\"input\":{\"path\":\"module.py\",\"expected_sha256\":\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\",\"old\":\"return value\",\"new\":\"return value + 1\",\"mode\":\"replace\"},\"error\":\"{\\\"path\\\": \\\"module.py\\\", \\\"actual_sha256\\\": \\\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\\\", \\\"focus_arguments\\\": {\\\"path\\\": \\\"module.py\\\", \\\"line\\\": 1}, \\\"code\\\": \\\"ambiguous_anchor\\\", \\\"error\\\": \\\"Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.\\\", \\\"unchanged\\\": true, \\\"anchor_matches\\\": 2, \\\"more_matches\\\": false, \\\"matching_lines\\\": [2, 5], \\\"failure_fingerprint\\\": \\\"5d3fd23624a1f72c4be8ed556622580b399cdd633120e046b1ad70bc7aa80526\\\", \\\"equivalent_failures\\\": 1, \\\"passed\\\": false, \\\"stdout\\\": \\\"\\\", \\\"stderr\\\": \\\"Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.\\\", \\\"resource_status\\\": {\\\"epoch\\\": 0, \\\"remaining_operations\\\": 20, \\\"used\\\": {\\\"inspection\\\": 2, \\\"editing\\\": 2, \\\"verification\\\": 0, \\\"inference\\\": 4, \\\"compaction\\\": 0}, \\\"exhausted\\\": \\\"\\\", \\\"policy\\\": {\\\"operations\\\": 24, \\\"edit_reserve\\\": 2, \\\"verification_reserve\\\": 2, \\\"model_requests\\\": 16, \\\"compactions\\\": 4, \\\"blocked_limit\\\": 3}, \\\"seconds\\\": {\\\"inference\\\": 0.0, \\\"inspection\\\": 0.030999999959021807, \\\"editing\\\": 0.015000000013969839}, \\\"contract_sha256\\\": \\\"c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa\\\"}}\",\"metadata\":{\"providerCall\":{\"executed\":false},\"providerResult\":{\"executed\":false},\"rawInput\":\"{\\\"path\\\": \\\"module.py\\\", \\\"expected_sha256\\\": \\\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\\\", \\\"old\\\": \\\"return value\\\", \\\"new\\\": \\\"return value + 1\\\", \\\"mode\\\": \\\"replace\\\"}\"},\"time\":{\"start\":1795344736067,\"end\":1795344736100}}}}\r\n{\"type\":\"step_finish\",\"timestamp\":1795344736102,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e29f660010YpDcZZHhbXluV\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e29f2a0013dkujZC0KiSysy\",\"type\":\"step-finish\",\"reason\":\"tool-calls\",\"cost\":0,\"tokens\":{\"input\":0,\"output\":0,\"reasoning\":0,\"cache\":{\"read\":0,\"write\":0}}}}\r\n{\"type\":\"step_start\",\"timestamp\":1795344736133,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e29f85001r7oDPf3pZbbm3b\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e29f6d001UHw9f5IsvR36Pd\",\"type\":\"step-start\"}}\r\n{\"type\":\"tool_use\",\"timestamp\":1795344736353,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"partID\":\"prt_202e29f8700184fOHnBn10DG6O\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e29f6d001UHw9f5IsvR36Pd\",\"type\":\"tool\",\"id\":\"recovery_4\",\"tool\":\"checks_edit\",\"state\":{\"status\":\"error\",\"input\":{\"path\":\"module.py\",\"expected_sha256\":\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\",\"old\":\"return value\",\"new\":\"return value + 1\",\"mode\":\"replace\"},\"error\":\"{\\\"path\\\": \\\"module.py\\\", \\\"actual_sha256\\\": \\\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\\\", \\\"focus_arguments\\\": {\\\"path\\\": \\\"module.py\\\", \\\"line\\\": 1}, \\\"code\\\": \\\"ambiguous_anchor\\\", \\\"error\\\": \\\"Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.\\\", \\\"unchanged\\\": true, \\\"anchor_matches\\\": 2, \\\"more_matches\\\": false, \\\"matching_lines\\\": [2, 5], \\\"failure_fingerprint\\\": \\\"5d3fd23624a1f72c4be8ed556622580b399cdd633120e046b1ad70bc7aa80526\\\", \\\"equivalent_failures\\\": 2, \\\"passed\\\": false, \\\"stdout\\\": \\\"\\\", \\\"stderr\\\": \\\"Anchor must match exactly once. Use a unique exact anchor or focus evidence_key with a location line/end_line narrowing the inspected region. Only uniform LF/CRLF adaptation is allowed; no fuzzy replacement.\\\", \\\"resource_status\\\": {\\\"epoch\\\": 0, \\\"remaining_operations\\\": 19, \\\"used\\\": {\\\"inspection\\\": 2, \\\"editing\\\": 3, \\\"verification\\\": 0, \\\"inference\\\": 5, \\\"compaction\\\": 0}, \\\"exhausted\\\": \\\"\\\", \\\"policy\\\": {\\\"operations\\\": 24, \\\"edit_reserve\\\": 2, \\\"verification_reserve\\\": 2, \\\"model_requests\\\": 16, \\\"compactions\\\": 4, \\\"blocked_limit\\\": 3}, \\\"seconds\\\": {\\\"inference\\\": 0.0, \\\"inspection\\\": 0.030999999959021807, \\\"editing\\\": 0.18700000003445894}, \\\"contract_sha256\\\": \\\"c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa\\\"}}\",\"metadata\":{\"providerCall\":{\"executed\":false},\"providerResult\":{\"executed\":false},\"rawInput\":\"{\\\"path\\\": \\\"module.py\\\", \\\"expected_sha256\\\": \\\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\\\", \\\"old\\\": \\\"return value\\\", \\\"new\\\": \\\"return value + 1\\\", \\\"mode\\\": \\\"replace\\\"}\"},\"time\":{\"start\":1795344736135,\"end\":1795344736353}}}}\r\n{\"type\":\"step_finish\",\"timestamp\":1795344736356,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e2a064001cF8Nrz3vRyxTzU\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e29f6d001UHw9f5IsvR36Pd\",\"type\":\"step-finish\",\"reason\":\"tool-calls\",\"cost\":0,\"tokens\":{\"input\":0,\"output\":0,\"reasoning\":0,\"cache\":{\"read\":0,\"write\":0}}}}\r\n{\"type\":\"step_start\",\"timestamp\":1795344736386,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e2a082001QPP5TD2r5FbZ67\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e2a06b001rXRW8rUGr9QfZn\",\"type\":\"step-start\"}}\r\n{\"type\":\"tool_use\",\"timestamp\":1795344736600,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"partID\":\"prt_202e2a085001KsEu8o0kChimKd\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e2a06b001rXRW8rUGr9QfZn\",\"type\":\"tool\",\"id\":\"recovery_5\",\"tool\":\"checks_edit\",\"state\":{\"status\":\"error\",\"input\":{\"path\":\"module.py\",\"expected_sha256\":\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\",\"old\":\"return value\",\"new\":\"return value + 1\",\"mode\":\"replace\"},\"error\":\"{\\\"path\\\": \\\"module.py\\\", \\\"actual_sha256\\\": \\\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\\\", \\\"focus_arguments\\\": {\\\"path\\\": \\\"module.py\\\", \\\"line\\\": 1}, \\\"code\\\": \\\"repeated_edit_failure\\\", \\\"error\\\": \\\"Repeated equivalent edit failure on unchanged source. Reinspect and use a DIFFERENT unique anchor or inspected location. Repeating again stops this session; reinspection does not reset this counter.\\\", \\\"unchanged\\\": true, \\\"anchor_matches\\\": 2, \\\"more_matches\\\": false, \\\"matching_lines\\\": [2, 5], \\\"failure_fingerprint\\\": \\\"5d3fd23624a1f72c4be8ed556622580b399cdd633120e046b1ad70bc7aa80526\\\", \\\"equivalent_failures\\\": 3, \\\"original_code\\\": \\\"ambiguous_anchor\\\", \\\"passed\\\": false, \\\"stdout\\\": \\\"\\\", \\\"stderr\\\": \\\"Repeated equivalent edit failure on unchanged source. Reinspect and use a DIFFERENT unique anchor or inspected location. Repeating again stops this session; reinspection does not reset this counter.\\\", \\\"resource_status\\\": {\\\"epoch\\\": 0, \\\"remaining_operations\\\": 18, \\\"used\\\": {\\\"inspection\\\": 2, \\\"editing\\\": 4, \\\"verification\\\": 0, \\\"inference\\\": 6, \\\"compaction\\\": 0}, \\\"exhausted\\\": \\\"\\\", \\\"policy\\\": {\\\"operations\\\": 24, \\\"edit_reserve\\\": 2, \\\"verification_reserve\\\": 2, \\\"model_requests\\\": 16, \\\"compactions\\\": 4, \\\"blocked_limit\\\": 3}, \\\"seconds\\\": {\\\"inference\\\": 0.01600000006146729, \\\"inspection\\\": 0.030999999959021807, \\\"editing\\\": 0.375}, \\\"contract_sha256\\\": \\\"c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa\\\"}}\",\"metadata\":{\"providerCall\":{\"executed\":false},\"providerResult\":{\"executed\":false},\"rawInput\":\"{\\\"path\\\": \\\"module.py\\\", \\\"expected_sha256\\\": \\\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\\\", \\\"old\\\": \\\"return value\\\", \\\"new\\\": \\\"return value + 1\\\", \\\"mode\\\": \\\"replace\\\"}\"},\"time\":{\"start\":1795344736389,\"end\":1795344736600}}}}\r\n{\"type\":\"step_finish\",\"timestamp\":1795344736603,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e2a15b001t0nmCCzs5PLvCS\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e2a06b001rXRW8rUGr9QfZn\",\"type\":\"step-finish\",\"reason\":\"tool-calls\",\"cost\":0,\"tokens\":{\"input\":0,\"output\":0,\"reasoning\":0,\"cache\":{\"read\":0,\"write\":0}}}}\r\n{\"type\":\"step_start\",\"timestamp\":1795344736653,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e2a18d001vWHOpgf3PSiLTY\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e2a163001HeOfe9HltJ3Y2j\",\"type\":\"step-start\"}}\r\n{\"type\":\"tool_use\",\"timestamp\":1795344736885,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"partID\":\"prt_202e2a18f0010K7Ho1mAWoVTG9\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e2a163001HeOfe9HltJ3Y2j\",\"type\":\"tool\",\"id\":\"recovery_6\",\"tool\":\"checks_focus\",\"state\":{\"status\":\"completed\",\"input\":{\"path\":\"module.py\"},\"output\":\"{\\\"path\\\": \\\"module.py\\\", \\\"sha256\\\": \\\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\\\", \\\"line\\\": 1, \\\"source\\\": \\\"def first(value):\\\\r\\\\n    return value * 2\\\\r\\\\n\\\\r\\\\ndef second(value):\\\\r\\\\n    return value\\\\r\\\\n\\\", \\\"next_line\\\": null, \\\"total_lines\\\": 5, \\\"selected_symbol\\\": \\\"\\\", \\\"symbols\\\": [{\\\"symbol\\\": \\\"first\\\", \\\"line\\\": 1, \\\"end_line\\\": 2, \\\"kind\\\": \\\"function\\\"}, {\\\"symbol\\\": \\\"second\\\", \\\"line\\\": 4, \\\"end_line\\\": 5, \\\"kind\\\": \\\"function\\\"}], \\\"symbols_truncated\\\": false, \\\"context_epoch\\\": 0, \\\"evidence_key\\\": \\\"f8c74959cadb2c3246c0208a0e76db771923cfe12790b82a8247ed236f61ebee\\\", \\\"reinspection_after_edit_error\\\": true, \\\"passed\\\": true, \\\"stdout\\\": \\\"\\\", \\\"stderr\\\": \\\"\\\", \\\"objective\\\": \\\"Scripted edit conformance only\\\", \\\"objective_truncated\\\": false, \\\"write_roots\\\": [\\\"module.py\\\"], \\\"remaining_calls\\\": 17, \\\"resource_status\\\": {\\\"epoch\\\": 0, \\\"remaining_operations\\\": 17, \\\"used\\\": {\\\"inspection\\\": 3, \\\"editing\\\": 4, \\\"verification\\\": 0, \\\"inference\\\": 7, \\\"compaction\\\": 0}, \\\"exhausted\\\": \\\"\\\", \\\"policy\\\": {\\\"operations\\\": 24, \\\"edit_reserve\\\": 2, \\\"verification_reserve\\\": 2, \\\"model_requests\\\": 16, \\\"compactions\\\": 4, \\\"blocked_limit\\\": 3}, \\\"seconds\\\": {\\\"inference\\\": 0.04800000006798655, \\\"inspection\\\": 0.2339999999385327, \\\"editing\\\": 0.375}, \\\"contract_sha256\\\": \\\"c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa\\\"}}\",\"title\":\"checks_focus\",\"metadata\":{\"metadata\":{\"truncated\":false},\"content\":[{\"type\":\"text\",\"text\":\"{\\\"path\\\": \\\"module.py\\\", \\\"sha256\\\": \\\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\\\", \\\"line\\\": 1, \\\"source\\\": \\\"def first(value):\\\\r\\\\n    return value * 2\\\\r\\\\n\\\\r\\\\ndef second(value):\\\\r\\\\n    return value\\\\r\\\\n\\\", \\\"next_line\\\": null, \\\"total_lines\\\": 5, \\\"selected_symbol\\\": \\\"\\\", \\\"symbols\\\": [{\\\"symbol\\\": \\\"first\\\", \\\"line\\\": 1, \\\"end_line\\\": 2, \\\"kind\\\": \\\"function\\\"}, {\\\"symbol\\\": \\\"second\\\", \\\"line\\\": 4, \\\"end_line\\\": 5, \\\"kind\\\": \\\"function\\\"}], \\\"symbols_truncated\\\": false, \\\"context_epoch\\\": 0, \\\"evidence_key\\\": \\\"f8c74959cadb2c3246c0208a0e76db771923cfe12790b82a8247ed236f61ebee\\\", \\\"reinspection_after_edit_error\\\": true, \\\"passed\\\": true, \\\"stdout\\\": \\\"\\\", \\\"stderr\\\": \\\"\\\", \\\"objective\\\": \\\"Scripted edit conformance only\\\", \\\"objective_truncated\\\": false, \\\"write_roots\\\": [\\\"module.py\\\"], \\\"remaining_calls\\\": 17, \\\"resource_status\\\": {\\\"epoch\\\": 0, \\\"remaining_operations\\\": 17, \\\"used\\\": {\\\"inspection\\\": 3, \\\"editing\\\": 4, \\\"verification\\\": 0, \\\"inference\\\": 7, \\\"compaction\\\": 0}, \\\"exhausted\\\": \\\"\\\", \\\"policy\\\": {\\\"operations\\\": 24, \\\"edit_reserve\\\": 2, \\\"verification_reserve\\\": 2, \\\"model_requests\\\": 16, \\\"compactions\\\": 4, \\\"blocked_limit\\\": 3}, \\\"seconds\\\": {\\\"inference\\\": 0.04800000006798655, \\\"inspection\\\": 0.2339999999385327, \\\"editing\\\": 0.375}, \\\"contract_sha256\\\": \\\"c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa\\\"}}\"}],\"providerCall\":{\"executed\":false},\"providerResult\":{\"executed\":false},\"rawInput\":\"{\\\"path\\\": \\\"module.py\\\"}\"},\"time\":{\"start\":1795344736655,\"end\":1795344736885}}}}\r\n{\"type\":\"step_finish\",\"timestamp\":1795344736888,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e2a278001tt7XRz7swPPUp6\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e2a163001HeOfe9HltJ3Y2j\",\"type\":\"step-finish\",\"reason\":\"tool-calls\",\"cost\":0,\"tokens\":{\"input\":0,\"output\":0,\"reasoning\":0,\"cache\":{\"read\":0,\"write\":0}}}}\r\n{\"type\":\"step_start\",\"timestamp\":1795344736921,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e2a299001w0u14L43uvGMSu\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e2a27f001xySsJdsWJcTzYL\",\"type\":\"step-start\"}}\r\n{\"type\":\"tool_use\",\"timestamp\":1795344737136,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"partID\":\"prt_202e2a29b001WlwdrfsASyfYKI\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e2a27f001xySsJdsWJcTzYL\",\"type\":\"tool\",\"id\":\"recovery_7\",\"tool\":\"checks_edit\",\"state\":{\"status\":\"completed\",\"input\":{\"path\":\"module.py\",\"expected_sha256\":\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\",\"old\":\"return value\",\"new\":\"return value + 1\",\"mode\":\"replace\",\"location\":{\"evidence_key\":\"f8c74959cadb2c3246c0208a0e76db771923cfe12790b82a8247ed236f61ebee\",\"line\":5}},\"output\":\"{\\\"path\\\": \\\"module.py\\\", \\\"before_sha256\\\": \\\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\\\", \\\"sha256\\\": \\\"c2b2b080d7123274fc741b3289de44d3d1cc9701e2de6bb299a786cd618731e1\\\", \\\"newline\\\": \\\"CRLF\\\", \\\"anchor_newline_adapted\\\": false, \\\"matched_bytes\\\": [67, 79], \\\"mode\\\": \\\"replace\\\", \\\"line\\\": 5, \\\"applied\\\": true, \\\"passed\\\": true, \\\"stdout\\\": \\\"\\\", \\\"stderr\\\": \\\"\\\", \\\"objective\\\": \\\"Scripted edit conformance only\\\", \\\"objective_truncated\\\": false, \\\"write_roots\\\": [\\\"module.py\\\"], \\\"remaining_calls\\\": 16, \\\"resource_status\\\": {\\\"epoch\\\": 0, \\\"remaining_operations\\\": 16, \\\"used\\\": {\\\"inspection\\\": 3, \\\"editing\\\": 5, \\\"verification\\\": 0, \\\"inference\\\": 8, \\\"compaction\\\": 0}, \\\"exhausted\\\": \\\"\\\", \\\"policy\\\": {\\\"operations\\\": 24, \\\"edit_reserve\\\": 2, \\\"verification_reserve\\\": 2, \\\"model_requests\\\": 16, \\\"compactions\\\": 4, \\\"blocked_limit\\\": 3}, \\\"seconds\\\": {\\\"inference\\\": 0.04800000006798655, \\\"inspection\\\": 0.2339999999385327, \\\"editing\\\": 0.5629999999655411}, \\\"contract_sha256\\\": \\\"c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa\\\"}}\",\"title\":\"checks_edit\",\"metadata\":{\"metadata\":{\"truncated\":false},\"content\":[{\"type\":\"text\",\"text\":\"{\\\"path\\\": \\\"module.py\\\", \\\"before_sha256\\\": \\\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\\\", \\\"sha256\\\": \\\"c2b2b080d7123274fc741b3289de44d3d1cc9701e2de6bb299a786cd618731e1\\\", \\\"newline\\\": \\\"CRLF\\\", \\\"anchor_newline_adapted\\\": false, \\\"matched_bytes\\\": [67, 79], \\\"mode\\\": \\\"replace\\\", \\\"line\\\": 5, \\\"applied\\\": true, \\\"passed\\\": true, \\\"stdout\\\": \\\"\\\", \\\"stderr\\\": \\\"\\\", \\\"objective\\\": \\\"Scripted edit conformance only\\\", \\\"objective_truncated\\\": false, \\\"write_roots\\\": [\\\"module.py\\\"], \\\"remaining_calls\\\": 16, \\\"resource_status\\\": {\\\"epoch\\\": 0, \\\"remaining_operations\\\": 16, \\\"used\\\": {\\\"inspection\\\": 3, \\\"editing\\\": 5, \\\"verification\\\": 0, \\\"inference\\\": 8, \\\"compaction\\\": 0}, \\\"exhausted\\\": \\\"\\\", \\\"policy\\\": {\\\"operations\\\": 24, \\\"edit_reserve\\\": 2, \\\"verification_reserve\\\": 2, \\\"model_requests\\\": 16, \\\"compactions\\\": 4, \\\"blocked_limit\\\": 3}, \\\"seconds\\\": {\\\"inference\\\": 0.04800000006798655, \\\"inspection\\\": 0.2339999999385327, \\\"editing\\\": 0.5629999999655411}, \\\"contract_sha256\\\": \\\"c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa\\\"}}\"}],\"providerCall\":{\"executed\":false},\"providerResult\":{\"executed\":false},\"rawInput\":\"{\\\"path\\\": \\\"module.py\\\", \\\"expected_sha256\\\": \\\"8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447\\\", \\\"old\\\": \\\"return value\\\", \\\"new\\\": \\\"return value + 1\\\", \\\"mode\\\": \\\"replace\\\", \\\"location\\\": {\\\"evidence_key\\\": \\\"f8c74959cadb2c3246c0208a0e76db771923cfe12790b82a8247ed236f61ebee\\\", \\\"line\\\": 5}}\"},\"time\":{\"start\":1795344736923,\"end\":1795344737136}}}}\r\n{\"type\":\"step_finish\",\"timestamp\":1795344737138,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e2a372001PmeBchR7bjxsRQ\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e2a27f001xySsJdsWJcTzYL\",\"type\":\"step-finish\",\"reason\":\"tool-calls\",\"cost\":0,\"tokens\":{\"input\":0,\"output\":0,\"reasoning\":0,\"cache\":{\"read\":0,\"write\":0}}}}\r\n{\"type\":\"step_start\",\"timestamp\":1795344737175,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e2a3970012by4x7OlSsCw9J\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e2a379001flU2HZRa311bVq\",\"type\":\"step-start\"}}\r\n{\"type\":\"tool_use\",\"timestamp\":1795344737548,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"partID\":\"prt_202e2a39a001kO6eJM8RTpulp4\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e2a379001flU2HZRa311bVq\",\"type\":\"tool\",\"id\":\"recovery_8\",\"tool\":\"checks_check\",\"state\":{\"status\":\"completed\",\"input\":{\"index\":0},\"output\":\"{\\\"passed\\\": true, \\\"code\\\": 0, \\\"stdout\\\": \\\"\\\", \\\"stderr\\\": \\\"\\\", \\\"objective\\\": \\\"Scripted edit conformance only\\\", \\\"objective_truncated\\\": false, \\\"write_roots\\\": [\\\"module.py\\\"], \\\"remaining_calls\\\": 15, \\\"resource_status\\\": {\\\"epoch\\\": 0, \\\"remaining_operations\\\": 15, \\\"used\\\": {\\\"inspection\\\": 3, \\\"editing\\\": 5, \\\"verification\\\": 1, \\\"inference\\\": 9, \\\"compaction\\\": 0}, \\\"exhausted\\\": \\\"\\\", \\\"policy\\\": {\\\"operations\\\": 24, \\\"edit_reserve\\\": 2, \\\"verification_reserve\\\": 2, \\\"model_requests\\\": 16, \\\"compactions\\\": 4, \\\"blocked_limit\\\": 3}, \\\"seconds\\\": {\\\"inference\\\": 0.04800000006798655, \\\"inspection\\\": 0.2339999999385327, \\\"editing\\\": 0.5629999999655411, \\\"verification\\\": 0.3279999999795109}, \\\"contract_sha256\\\": \\\"c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa\\\"}}\",\"title\":\"checks_check\",\"metadata\":{\"metadata\":{\"truncated\":false},\"content\":[{\"type\":\"text\",\"text\":\"{\\\"passed\\\": true, \\\"code\\\": 0, \\\"stdout\\\": \\\"\\\", \\\"stderr\\\": \\\"\\\", \\\"objective\\\": \\\"Scripted edit conformance only\\\", \\\"objective_truncated\\\": false, \\\"write_roots\\\": [\\\"module.py\\\"], \\\"remaining_calls\\\": 15, \\\"resource_status\\\": {\\\"epoch\\\": 0, \\\"remaining_operations\\\": 15, \\\"used\\\": {\\\"inspection\\\": 3, \\\"editing\\\": 5, \\\"verification\\\": 1, \\\"inference\\\": 9, \\\"compaction\\\": 0}, \\\"exhausted\\\": \\\"\\\", \\\"policy\\\": {\\\"operations\\\": 24, \\\"edit_reserve\\\": 2, \\\"verification_reserve\\\": 2, \\\"model_requests\\\": 16, \\\"compactions\\\": 4, \\\"blocked_limit\\\": 3}, \\\"seconds\\\": {\\\"inference\\\": 0.04800000006798655, \\\"inspection\\\": 0.2339999999385327, \\\"editing\\\": 0.5629999999655411, \\\"verification\\\": 0.3279999999795109}, \\\"contract_sha256\\\": \\\"c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa\\\"}}\"}],\"providerCall\":{\"executed\":false},\"providerResult\":{\"executed\":false},\"rawInput\":\"{\\\"index\\\": 0}\"},\"time\":{\"start\":1795344737178,\"end\":1795344737548}}}}\r\n{\"type\":\"step_finish\",\"timestamp\":1795344737550,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e2a50e001RnnDDV9F9PUrzm\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e2a379001flU2HZRa311bVq\",\"type\":\"step-finish\",\"reason\":\"tool-calls\",\"cost\":0,\"tokens\":{\"input\":0,\"output\":0,\"reasoning\":0,\"cache\":{\"read\":0,\"write\":0}}}}\r\n{\"type\":\"text\",\"timestamp\":1795344737588,\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"part\":{\"id\":\"prt_202e2a515001SZojtXk0hCENMA_text-0\",\"sessionID\":\"ses_dfd1d620fffe7KTcTliKspcuoA\",\"messageID\":\"msg_202e2a515001SZojtXk0hCENMA\",\"type\":\"text\",\"text\":\"Scripted conformance complete.\",\"time\":{\"start\":1795344737564,\"end\":1795344737588}}}\r\n",
+    "stderr": "",
+    "timed_out": false,
+    "truncated": false
+  },
+  "inert_requests": 10,
+  "real_inference_requests": 0,
+  "real_model_tokens": 0,
+  "controller_context": {
+    "contract": {
+      "objective": "Scripted edit conformance only",
+      "write_roots": [
+        "module.py"
+      ],
+      "public_checks": [
+        {
+          "argv": [
+            "{python}",
+            "-c",
+            "from module import first,second; assert first(3)==6; assert second(3)==4"
+          ]
+        }
+      ],
+      "setup": [],
+      "deadline": null,
+      "policy": {
+        "operations": 24,
+        "edit_reserve": 2,
+        "verification_reserve": 2,
+        "model_requests": 16,
+        "compactions": 4,
+        "blocked_limit": 3
+      }
+    },
+    "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+    "epoch": 0,
+    "visible": [
+      "a78bfc56b1b5a2ca16d2ef39580cbe28fe445a46ce82631dff9dbbb7905040f4",
+      "f8c74959cadb2c3246c0208a0e76db771923cfe12790b82a8247ed236f61ebee"
+    ],
+    "issued": {
+      "a78bfc56b1b5a2ca16d2ef39580cbe28fe445a46ce82631dff9dbbb7905040f4": {
+        "path": "module.py",
+        "sha256": "347ac469a81d6ffb2d0020f7b4a209256049d58c62678907876b505b16400dfd",
+        "line": 1,
+        "next_line": null
+      },
+      "f8c74959cadb2c3246c0208a0e76db771923cfe12790b82a8247ed236f61ebee": {
+        "path": "module.py",
+        "sha256": "8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447",
+        "line": 1,
+        "next_line": null
+      }
+    },
+    "events": [
+      {
+        "event": "provider",
+        "epoch": 0,
+        "category": "inference",
+        "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+        "remaining_operations": 24,
+        "denied": ""
+      },
+      {
+        "event": "tool",
+        "tool": "focus",
+        "category": "inspection",
+        "epoch": 0,
+        "denied": ""
+      },
+      {
+        "event": "provider",
+        "epoch": 0,
+        "category": "inference",
+        "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+        "remaining_operations": 23,
+        "denied": ""
+      },
+      {
+        "event": "tool",
+        "tool": "edit",
+        "category": "editing",
+        "epoch": 0,
+        "denied": ""
+      },
+      {
+        "event": "provider",
+        "epoch": 0,
+        "category": "inference",
+        "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+        "remaining_operations": 22,
+        "denied": ""
+      },
+      {
+        "event": "tool",
+        "tool": "focus",
+        "category": "inspection",
+        "epoch": 0,
+        "denied": ""
+      },
+      {
+        "event": "provider",
+        "epoch": 0,
+        "category": "inference",
+        "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+        "remaining_operations": 21,
+        "denied": ""
+      },
+      {
+        "event": "tool",
+        "tool": "edit",
+        "category": "editing",
+        "epoch": 0,
+        "denied": ""
+      },
+      {
+        "event": "provider",
+        "epoch": 0,
+        "category": "inference",
+        "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+        "remaining_operations": 20,
+        "denied": ""
+      },
+      {
+        "event": "tool",
+        "tool": "edit",
+        "category": "editing",
+        "epoch": 0,
+        "denied": ""
+      },
+      {
+        "event": "provider",
+        "epoch": 0,
+        "category": "inference",
+        "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+        "remaining_operations": 19,
+        "denied": ""
+      },
+      {
+        "event": "tool",
+        "tool": "edit",
+        "category": "editing",
+        "epoch": 0,
+        "denied": ""
+      },
+      {
+        "event": "provider",
+        "epoch": 0,
+        "category": "inference",
+        "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+        "remaining_operations": 18,
+        "denied": ""
+      },
+      {
+        "event": "tool",
+        "tool": "focus",
+        "category": "inspection",
+        "epoch": 0,
+        "denied": ""
+      },
+      {
+        "event": "provider",
+        "epoch": 0,
+        "category": "inference",
+        "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+        "remaining_operations": 17,
+        "denied": ""
+      },
+      {
+        "event": "tool",
+        "tool": "edit",
+        "category": "editing",
+        "epoch": 0,
+        "denied": ""
+      },
+      {
+        "event": "provider",
+        "epoch": 0,
+        "category": "inference",
+        "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+        "remaining_operations": 16,
+        "denied": ""
+      },
+      {
+        "event": "tool",
+        "tool": "check",
+        "category": "verification",
+        "epoch": 0,
+        "denied": ""
+      },
+      {
+        "event": "provider",
+        "epoch": 0,
+        "category": "inference",
+        "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+        "remaining_operations": 15,
+        "denied": ""
+      }
+    ],
+    "used": {
+      "inspection": 3,
+      "editing": 5,
+      "verification": 1,
+      "inference": 10,
+      "compaction": 0
+    },
+    "seconds": {
+      "inference": 0.04800000006798655,
+      "inspection": 0.2339999999385327,
+      "editing": 0.5629999999655411,
+      "verification": 0.3279999999795109,
+      "cleanup": 0.015000000013969839
+    },
+    "blocked": 0,
+    "exhausted": ""
+  },
+  "receipt": {
+    "schema": 1,
+    "adapter": "opencode",
+    "status": "completed",
+    "raw_exit_code": 0,
+    "elapsed": 4.030999999959022,
+    "timed_out": false,
+    "cleanup_passed": true,
+    "provider_gate_passed": true,
+    "independent_verification": "pending",
+    "resources": {
+      "epoch": 0,
+      "remaining_operations": 15,
+      "used": {
+        "inspection": 3,
+        "editing": 5,
+        "verification": 1,
+        "inference": 10,
+        "compaction": 0
+      },
+      "exhausted": "",
+      "policy": {
+        "operations": 24,
+        "edit_reserve": 2,
+        "verification_reserve": 2,
+        "model_requests": 16,
+        "compactions": 4,
+        "blocked_limit": 3
+      },
+      "seconds": {
+        "inference": 0.04800000006798655,
+        "inspection": 0.2339999999385327,
+        "editing": 0.5629999999655411,
+        "verification": 0.3279999999795109,
+        "cleanup": 0.015000000013969839
+      },
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa"
+    },
+    "provider_usage": {
+      "reported": [],
+      "unreported_requests": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  }
+}

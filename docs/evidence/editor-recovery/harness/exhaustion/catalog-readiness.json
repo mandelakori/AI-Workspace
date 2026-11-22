@@ -1,0 +1,18 @@
+{
+  "ready": true,
+  "owned": true,
+  "private_server": true,
+  "pid": 54876,
+  "elapsed": 1.485,
+  "servers": [
+    {
+      "name": "checks",
+      "status": {
+        "status": "connected"
+      }
+    }
+  ],
+  "cleanup_passed": true,
+  "elapsed_total": 2.61,
+  "cleanup_seconds": 0.015999999945051968
+}

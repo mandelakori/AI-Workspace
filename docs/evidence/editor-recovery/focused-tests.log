@@ -1,0 +1,20 @@
+test_all_37_preserved_proposals_on_independent_disposable_copies (test_editor_recovery.EditorRecoveryTests.test_all_37_preserved_proposals_on_independent_disposable_copies) ... ok
+test_ambiguity_is_not_removed_by_newline_adaptation (test_editor_recovery.EditorRecoveryTests.test_ambiguity_is_not_removed_by_newline_adaptation) ... ok
+test_crlf_on_lf_and_insertions_keep_source_convention (test_editor_recovery.EditorRecoveryTests.test_crlf_on_lf_and_insertions_keep_source_convention) ... ok
+test_equivalent_failure_warns_then_stops_provider_and_preserves_budget (test_editor_recovery.EditorRecoveryTests.test_equivalent_failure_warns_then_stops_provider_and_preserves_budget) ... ok
+test_exact_anchor_cannot_split_crlf_and_adaptation_keeps_byte_limits (test_editor_recovery.EditorRecoveryTests.test_exact_anchor_cannot_split_crlf_and_adaptation_keeps_byte_limits) ... ok
+test_forged_inspection_content_and_uninspected_lines_fail (test_editor_recovery.EditorRecoveryTests.test_forged_inspection_content_and_uninspected_lines_fail) ... ok
+test_grounded_location_changes_only_selected_duplicate (test_editor_recovery.EditorRecoveryTests.test_grounded_location_changes_only_selected_duplicate) ... ok
+test_location_cannot_resolve_ambiguity_within_window_or_bypass_syntax_hash (test_editor_recovery.EditorRecoveryTests.test_location_cannot_resolve_ambiguity_within_window_or_bypass_syntax_hash) ... ok
+test_location_exact_bytes_unicode_offsets_and_eol_adaptation (test_editor_recovery.EditorRecoveryTests.test_location_exact_bytes_unicode_offsets_and_eol_adaptation) ... ok
+test_location_requires_issued_unchanged_exact_inspection (test_editor_recovery.EditorRecoveryTests.test_location_requires_issued_unchanged_exact_inspection) ... ok
+test_mcp_reconnect_preserves_failure_counts_and_exact_accounting (test_editor_recovery.EditorRecoveryTests.test_mcp_reconnect_preserves_failure_counts_and_exact_accounting) ... ok
+test_mixed_bare_cr_and_malformed_multiline_fail_closed (test_editor_recovery.EditorRecoveryTests.test_mixed_bare_cr_and_malformed_multiline_fail_closed) ... ok
+test_single_line_anchor_new_multiline_and_eof_fragment (test_editor_recovery.EditorRecoveryTests.test_single_line_anchor_new_multiline_and_eof_fragment) ... ok
+test_unique_multiline_lf_on_crlf_replaces_only_verified_span (test_editor_recovery.EditorRecoveryTests.test_unique_multiline_lf_on_crlf_replaces_only_verified_span) ... ok
+test_warning_allows_different_verified_strategy_and_source_versions (test_editor_recovery.EditorRecoveryTests.test_warning_allows_different_verified_strategy_and_source_versions) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 3.538s
+
+OK

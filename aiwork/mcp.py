@@ -116,6 +116,10 @@ def inspect_source(spec: Path, workspace: Path, args: dict) -> dict:
         value.update(context_epoch=epoch, evidence_key=key)
     path=spec.with_name('source-navigation.json')
     with file_lock(path.with_suffix('.lock')):
+        if not managed:
+            evidence=spec.parent/'source-excerpts';evidence.mkdir(exist_ok=True)
+            if not (evidence/f'{key}.json').exists():write(evidence/f'{key}.json',value)
+            value['evidence_key']=key
         history=json.loads(path.read_bytes()) if path.exists() else []
         if not managed:
             duplicate=key in history
@@ -130,6 +134,48 @@ def inspect_source(spec: Path, workspace: Path, args: dict) -> dict:
     if duplicate:
         value.update(source='',already_inspected=True,
                      navigation_hint='Unchanged excerpt already supplied. Select a listed symbol, use query or next_line, or edit and run a public check.')
+    return value
+
+
+def edit_failure(spec: Path, workspace: Path, roots: tuple[str, ...], args: dict, diagnostic: dict) -> dict:
+    """Durable circuit breaker for equivalent failures on unchanged source.
+
+    Changing insertion text/mode cannot repair an ambiguous/missing anchor.
+    Reinspection is allowed but does not refund repetitions or tool budgets.
+    """
+    from .lock import file_lock
+    from .trial_budget import write
+    try:
+        name=args['path'];validate_changes([name],roots)
+        path=contained(workspace,name)
+        with path.open('rb') as stream:data=stream.read(256*1024+1)
+        if len(data)>256*1024:return diagnostic
+        current=hashlib.sha256(data).hexdigest()
+        if diagnostic.get('actual_sha256',current)!=current:return diagnostic
+        identity={k:args.get(k) for k in ('path','expected_sha256','old','location')}
+        if isinstance(identity['old'],str):identity['old']=identity['old'].replace('\r\n','\n')
+        identity.update(source_sha256=current,code=diagnostic['code'])
+        if diagnostic['code'] not in {'anchor_mismatch','ambiguous_anchor','invalid_anchor'}:
+            identity.update(mode=args.get('mode'),new=args.get('new'))
+        fingerprint=hashlib.sha256(json.dumps(identity,sort_keys=True).encode()).hexdigest()
+    except (KeyError,ValueError,OSError,TypeError):return diagnostic
+    ledger=spec.with_name('edit-recovery.json')
+    with file_lock(ledger.with_suffix('.lock')):
+        entries=json.loads(ledger.read_bytes()) if ledger.exists() else {}
+        count=entries.get(fingerprint,0)+1;entries[fingerprint]=count;write(ledger,entries)
+    value={'path':name,'actual_sha256':current,'focus_arguments':{'path':name,'line':1},
+           **diagnostic,'failure_fingerprint':fingerprint,'equivalent_failures':count}
+    if count>=3:
+        value.update(original_code=diagnostic['code'],code='repeated_edit_failure',
+            error='Repeated equivalent edit failure on unchanged source. Reinspect and use a DIFFERENT unique anchor or inspected location. Repeating again stops this session; reinspection does not reset this counter.')
+    if count>=4:
+        reason='repeated equivalent source-edit failures exhausted recovery'
+        value.update(code='edit_recovery_exhausted',error=reason,recovery_exhausted=True)
+        context=ExecutionContext(spec)
+        if context.path.exists():
+            with context.state() as state:
+                state['exhausted']=state['exhausted'] or reason
+                state['events'].append({'event':'edit_recovery_exhausted','fingerprint':fingerprint,'count':count,'epoch':state['epoch']})
     return value
 
 
@@ -177,9 +223,12 @@ def serve(spec_path: Path) -> None:
                 available.append({"name": "diff", "description": "Review a Git diff of current workspace edits.",
                                   "inputSchema": {"type": "object", "properties": {},
                                                   "additionalProperties": False}})
-                available.append({"name":"edit","description":"Apply a SHORT exact source edit with current SHA-256 returned by source inspection. replace consumes old and inserts new. before/after KEEP old and insert new immediately before/after it; new is only the insertion, not old plus insertion. These modes require a unique literal old anchor, preserving all whitespace; new text is literal, including line endings. No fuzzy matching. create requires expected_sha256=absent and old empty. Errors return a source-region hint; reinspect and recover. Python results must parse.",
+                available.append({"name":"edit","description":"Apply a SHORT source edit with current SHA-256 from focus. replace consumes old and inserts new. before/after KEEP old; new is ONLY the insertion. old must match uniquely; uniform LF/CRLF is adapted to source endings, never fuzzy matched. For repeated anchors supply location={evidence_key: focus.evidence_key, line: inspected line, end_line: optional inclusive last line}; old must match exactly once within those inspected lines. Stale hashes/locations fail. After three equivalent failures use a DIFFERENT unique anchor or inspected location; another equivalent failure stops inference, even after reinspection. create requires expected_sha256=absent and old empty. Python results must parse.",
                     "inputSchema":{"type":"object","properties":{k:{"type":"string"} for k in ['path','expected_sha256','old','new']}|
-                        {'mode':{'type':'string','enum':['replace','before','after','create']}},
+                        {'mode':{'type':'string','enum':['replace','before','after','create']},
+                         'location':{'type':'object','properties':{'evidence_key':{'type':'string','pattern':'^[a-f0-9]{64}$'},
+                             'line':{'type':'integer','minimum':1},'end_line':{'type':'integer','minimum':1}},
+                             'required':['evidence_key','line'],'additionalProperties':False}},
                         'required':['path','expected_sha256','old','new','mode'],'additionalProperties':False}})
             response["result"] = {"tools": available}
         elif method == "tools/call":
@@ -200,13 +249,17 @@ def serve(spec_path: Path) -> None:
                     operation_start = monotonic()
                     calls = (context.charge_tool(name) if managed else
                              reserve_trial_call(spec_path, budget) if build or config.get("trial") else calls + 1)
+                    if not managed and spec_path.with_name('edit-recovery.json').exists() and any(
+                            n>=4 for n in json.loads(spec_path.with_name('edit-recovery.json').read_bytes()).values()):
+                        raise ValueError('repeated equivalent source-edit failures exhausted recovery')
                     if build:
                         changed = delta(inventory(baseline), inventory(workspace))
                         validate_changes(changed, tuple(config["write_roots"]))
                     if name == 'edit':
                         deadline=config.get('deadline',time()+900)
                         if config.get('trial'):deadline=min(deadline,config['trial']['deadline'])
-                        value=apply_edit(workspace,tuple(config['write_roots']),args,spec_path.with_name('source-edit.lock'),deadline)
+                        value=apply_edit(workspace,tuple(config['write_roots']),args,spec_path.with_name('source-edit.lock'),deadline,
+                                         inspections=spec_path.parent/'source-excerpts')
                     elif name == "focus":
                         value = {**inspect_source(spec_path, workspace, args),
                                  "passed": True, "stdout": "", "stderr": ""}
@@ -230,13 +283,14 @@ def serve(spec_path: Path) -> None:
                                      write_roots=config['write_roots'],remaining_calls=budget-calls)
                     error = not value["passed"]
                 except EditRejected as exc:
-                    value={**exc.diagnostic,'passed':False,'stdout':'','stderr':str(exc)}
-                    if exc.diagnostic.get('actual_sha256'):
+                    diagnostic=edit_failure(spec_path,workspace,tuple(config['write_roots']),args,exc.diagnostic)
+                    value={**diagnostic,'passed':False,'stdout':'','stderr':diagnostic['error']}
+                    if value.get('actual_sha256'):
                         from .lock import file_lock
                         from .trial_budget import write
                         with file_lock(spec_path.with_name('source-navigation.lock')):
-                            write(spec_path.with_name('edit-reinspection.json'),{'path':exc.diagnostic['path'],
-                                'sha256':exc.diagnostic['actual_sha256'],'remaining':1})
+                            write(spec_path.with_name('edit-reinspection.json'),{'path':value['path'],
+                                'sha256':value['actual_sha256'],'remaining':1})
                 except (ValueError, OSError, RuntimeError) as exc:
                     value = {"error": str(exc)}
                 finally:

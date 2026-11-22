@@ -53,7 +53,9 @@ class SourceEditTests(unittest.TestCase):
         source=b'def calculate(value):\r\n    return value\r\n';self.path.write_bytes(source)
         self.apply(self.args('    return value\r\n','    if value is None:\r\n        return 0\r\n','before'))
         self.assertEqual(self.path.read_bytes(),b'def calculate(value):\r\n    if value is None:\r\n        return 0\r\n    return value\r\n')
-        with self.assertRaises(EditRejected):self.apply(self.args('    return value\n','bad'))
+        result=self.apply(self.args('    return value\n','    return value * 2\n'))
+        self.assertTrue(result['anchor_newline_adapted'])
+        self.assertTrue(self.path.read_bytes().endswith(b'    return value * 2\r\n'))
 
     def test_syntax_scope_size_and_deadline_failures_preserve_bytes(self):
         source=self.path.read_bytes()

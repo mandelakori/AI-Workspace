@@ -1,5 +1,22 @@
 # Next steps
 
+## Current handoff: deterministic source-editing recovery
+
+[Editor recovery](A100-SOURCE-EDITING-RECOVERY.md) implements conservative LF/CRLF
+compatibility, inspected hash-bound line locations and durable repeated-failure
+exhaustion. The saved 37 proposals replay as 11 safe applications and 26
+rejections; these are two distinct resulting sources, not verified feature
+repairs. Installed inert OpenCode/MCP demonstrates an edit/public-test sequence
+and clean inference stopping. No live model tokens or remote operations ran.
+
+Review the final verification receipt and code. Only a new user-authorized
+preparation may produce a fresh hash-bound engineering trial; no bundle or digest
+was prepared here. Model use of the revised editor and ItsDangerous completion
+remain untested. Do not resume either quarantined trial or reuse consumed
+`150b82...` / `0534cc79...` grants. Keep original Milestone E priority, then the
+existing REA/Ghidra, routing and final acceptance work. Pi/OpenCode stays
+unauthorized. The sections below are historical and do not authorize dispatch.
+
 ## Current outcome: second approved A100 trial consumed and quarantined
 
 The [ItsDangerous execution result](A100-DURATION-TRIAL-RESULT.md) is **FAIL**:

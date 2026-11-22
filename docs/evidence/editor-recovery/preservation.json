@@ -1,0 +1,72 @@
+{
+  "historical_indexes": [
+    {
+      "index": "docs/evidence/phase61/httpx-editing-pilot/evidence-hashes.json",
+      "index_sha256": "b8a1e553c81015875be1bb639c749274684e922b5122ca19703e1c4eeeb1f585",
+      "entries": 25,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/phase61/discovery-result/evidence-hashes.json",
+      "index_sha256": "4da2cd8dfbacff9cc8d117880c8493d72a0d5f70b735fcd798976ab7bc3e5a31",
+      "entries": 35,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/phase61/discovery-result/local-evidence-inventory.json",
+      "index_sha256": "da45e59d869d1c10bec690a4d01548b84000558941f8ff81c42f11d23635357e",
+      "entries": 305,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/adaptive-local/evidence-hashes.json",
+      "index_sha256": "80badca08faa298fca99298a7499f303ca93cdad4cb3b500838e1762a6f3fcf5",
+      "entries": 907,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/milestone-e-a100/evidence-hashes.json",
+      "index_sha256": "739019b3b11c4ac5878f749163689b19c5e15c4f74ef7d8642108fa9cd47859f",
+      "entries": 37,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/milestone-e-a100-result/evidence-hashes.json",
+      "index_sha256": "7dfc5f943bafe125582e84b4e43b3f2fca157cefa6f0b9e12344c996f4dffae5",
+      "entries": 52,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/milestone-e-a100-result/local-evidence-inventory.json",
+      "index_sha256": "c2adb44af19208b2b9922183cf1d545a372776358c8c9e1e8da0f9fa7207d518",
+      "entries": 326,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/a100-system-contract-fix/evidence-hashes.json",
+      "index_sha256": "26a71e6b20c490038ba2bea8d0af45ec059d3fa35c18bfa1c112d4b762b45fc1",
+      "entries": 97,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/a100-duration-trial-result/evidence-hashes.json",
+      "index_sha256": "e72ae05745dcc7fb4a8ee4a8113cffee42b6b4d3430d48441ccb7203c9000b14",
+      "entries": 209,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/a100-duration-trial-result/local-evidence-inventory.json",
+      "index_sha256": "607c1c3acc2ceac9a56e6e32db9f3c3625e0c1d22d62e79f905243900a8ad9e0",
+      "entries": 540,
+      "mismatches": []
+    },
+    {
+      "index": ".aiwork/phase6/final-freeze.json:inventory",
+      "entries": 142,
+      "mismatches": []
+    }
+  ],
+  "entries_checked": 2675,
+  "main_commit": "cf50e89c2ca2ad21d86fda5473f5ad6edc0c2623",
+  "all_preserved": true
+}

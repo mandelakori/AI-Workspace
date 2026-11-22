@@ -1,0 +1,113 @@
+{
+  "base_commit": "bfa28c057780b03640e4e606976bdb4a11e5760d",
+  "branch": "phase61/autonomous-completion",
+  "full_regressions": {
+    "passed": 207,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 144.596
+  },
+  "baseline": {
+    "passed": 190,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 135.095,
+    "direct": {
+      "job": "801b7a550b9246ac8648402a837915df",
+      "status": "verified",
+      "detail": "all independent checks passed",
+      "artifacts": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\editor-recovery\\direct-state\\runs\\801b7a550b9246ac8648402a837915df"
+    }
+  },
+  "focused_recovery_regressions": {
+    "passed": 15,
+    "failed": 0,
+    "skipped": 0
+  },
+  "fixtures": {
+    "inspect-edit-check": {
+      "kind": "scripted_inert_conformance_not_autonomous_repair",
+      "harness_seconds": 4.061999999918044,
+      "normalized_exit_code": 0,
+      "raw_exit_code": 0,
+      "status": "completed",
+      "cleanup_passed": true,
+      "provider_gate_passed": true,
+      "inert_requests": 10,
+      "real_model_tokens": 0,
+      "resources": {
+        "inspection": 3,
+        "editing": 5,
+        "verification": 1,
+        "inference": 10,
+        "compaction": 0
+      }
+    },
+    "exhaustion": {
+      "kind": "scripted_inert_conformance_not_autonomous_repair",
+      "harness_seconds": 3.10999999998603,
+      "normalized_exit_code": 0,
+      "raw_exit_code": 1,
+      "status": "resource_exhausted",
+      "cleanup_passed": true,
+      "provider_gate_passed": true,
+      "inert_requests": 5,
+      "real_model_tokens": 0,
+      "resources": {
+        "inspection": 1,
+        "editing": 4,
+        "verification": 0,
+        "inference": 5,
+        "compaction": 0
+      }
+    }
+  },
+  "saved_replay": {
+    "kind": "deterministic_saved_proposal_replay_not_feature_evaluation",
+    "source_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+    "trace_sha256": "219209ae0b818fceb10771af42171a07d63c479f5b7cb28e2d78643b10ad9d0c",
+    "archive_sha256": "bc2423a3160c0b854e6c5c8a10270558bc41a2182ac024f18eebacae86412bbb",
+    "proposals": 37,
+    "outcomes": {
+      "applied": 11,
+      "ambiguous_anchor": 24,
+      "invalid_anchor": 1,
+      "anchor_mismatch": 1
+    },
+    "accepted_calls": [
+      8,
+      9,
+      12,
+      14,
+      15,
+      17,
+      20,
+      22,
+      27,
+      29,
+      32
+    ],
+    "unique_accepted_argument_objects": 6,
+    "unique_accepted_source_hashes": 2,
+    "each_proposal_starts_from_identical_original": true,
+    "unrelated_bytes_preserved": true,
+    "behavioral_correctness": "NOT_EVALUATED",
+    "inference_requests": 0,
+    "seconds": 1.0
+  },
+  "implementation_and_test_sha256": {
+    "aiwork/source_edit.py": "2778a3efbbfa36627dead74bb97e32fe7218ec39941d7b3cdb13ae9f0bf6b7f5",
+    "aiwork/mcp.py": "b135457bde38c7f4846369a0fcac06e5e240540f640bdf552c5db302725dddae",
+    "aiwork/execution_context.py": "9e3180c60a72c9c533b5a57f4fd0d090ac33e2ed35a41dc655379af0a7386a19",
+    "aiwork/harness.py": "6e10a4c99bff8c9b70556d80664c415984e157d842fc6b221b7b81888d1fd921",
+    "scripts/replay_source_edits.py": "a2d76519ff8d26a3264d735b1b33ef3981b9c089c619d9ccd8085526972b0a60",
+    "tests/test_source_edit.py": "0353f16352ca437dd6715d4736f88b473307d4f13215c706376c1b8d4131b512",
+    "tests/test_editor_recovery.py": "8f81673029689b5b5afde9eb7a7c24617b4548ff6616f43567ba854bf9777d23",
+    "tests/test_editor_recovery_harness.py": "b299918fae9ed418eb6414c8b10f888d1b78531528c6c5ae54168d42dafcd39a"
+  },
+  "real_inference_requests": 0,
+  "new_live_trial_prepared": false,
+  "editor_deterministic_acceptance": "PASS",
+  "live_autonomous_completion": "UNTESTED",
+  "opencode_version": "opencode v2.0.27"
+}
