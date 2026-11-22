@@ -1,0 +1,6 @@
+test_full_pinned_template_reproduces_failure_and_accepts_corrected_cycles (test_system_contract.SystemContractTests.test_full_pinned_template_reproduces_failure_and_accepts_corrected_cycles) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.939s
+
+OK

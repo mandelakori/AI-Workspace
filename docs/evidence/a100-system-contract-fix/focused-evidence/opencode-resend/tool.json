@@ -1,0 +1,1 @@
+{"workspace": "C:\\Users\\mande\\AppData\\Local\\Temp\\tmp68ou07g7\\work", "baseline": "C:\\Users\\mande\\AppData\\Local\\Temp\\tmp68ou07g7\\work", "engineering": true, "objective": "Inert failure only", "write_roots": ["module.py"], "image": "", "checks": [{"argv": ["{python}", "-V"]}]}

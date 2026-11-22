@@ -16,6 +16,32 @@ from aiwork.execution_context import ExecutionContext, ResourcePolicy
 
 
 class ProviderGateTests(unittest.TestCase):
+    def test_upstream_failure_latches_and_records_same_and_changed_body_resends(self):
+        received=[]
+        class Backend(BaseHTTPRequestHandler):
+            def log_message(self,*args):pass
+            def do_POST(self):
+                received.append(self.rfile.read(int(self.headers['Content-Length'])))
+                self.send_response(500);self.end_headers();self.wfile.write(b'{"error":"synthetic"}')
+        with tempfile.TemporaryDirectory() as tmp,ThreadingHTTPServer(('127.0.0.1',0),Backend) as backend:
+            thread=Thread(target=backend.serve_forever);thread.start()
+            try:
+                root=Path(tmp);spec=root/'tool.json'
+                spec.write_text(json.dumps({'objective':'Keep goal','write_roots':['module.py'],'checks':[]}))
+                context=ExecutionContext(spec);context.initialize(ResourcePolicy())
+                with ProviderGate(f'http://127.0.0.1:{backend.server_port}/v1','inert','',root,monotonic()+8,context=context) as gate:
+                    for i,body in enumerate([self.body(),self.body(),{**self.body(),'temperature':0}]):
+                        req=Request(gate.endpoint+'/chat/completions',json.dumps(body).encode(),headers={'Authorization':'Bearer '+gate.token})
+                        with self.assertRaises(HTTPError) as caught:build_opener(ProxyHandler({})).open(req,timeout=2)
+                        self.assertEqual(caught.exception.code,500 if i==0 else 400)
+                        if i:self.assertEqual(json.loads(caught.exception.read())['error']['code'],'controller_failure_latched')
+                self.assertEqual(len(received),1)
+                self.assertEqual([r['forwarded'] for r in gate.receipts],[True,False,False])
+                self.assertEqual(gate.receipts[1]['retry_of'],1);self.assertIsNone(gate.receipts[2]['retry_of'])
+                self.assertEqual(context.summary()['used']['inference'],1)
+                self.assertEqual(context.summary()['remaining_operations'],48)
+            finally:backend.shutdown();thread.join()
+
     def test_slow_inert_prefill_survives_multiple_cancellation_poll_intervals(self):
         class Backend(BaseHTTPRequestHandler):
             def log_message(self,*args):pass

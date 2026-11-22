@@ -134,11 +134,23 @@ class ExecutionContext:
 
     def provider_request(self, body: dict, purpose: str | None = None) -> tuple[dict, dict]:
         """Validate visibility and add the immutable work order on EVERY request."""
-        if (not isinstance(body.get('messages'), list) or not body['messages']
+        if (not isinstance(body, dict) or not isinstance(body.get('messages'), list) or not body['messages']
                 or any(not isinstance(m, dict) or not isinstance(m.get('role'), str)
+                       or m['role'] not in {'system','user','assistant','tool'}
                        or not isinstance(m.get('content', ''), (str, list, type(None)))
                        for m in body['messages'])):
             raise ValueError('invalid provider messages')
+        messages = body['messages']
+        if any(m['role'] == 'system' for m in messages[1:]):
+            raise ValueError('only one initial system message is supported')
+        initial = messages[0] if messages[0]['role'] == 'system' else None
+        if initial is not None:
+            content = initial.get('content')
+            if (any(k in initial for k in ('tool_calls','tool_call_id','function_call'))
+                    or not (isinstance(content, str) or isinstance(content, list) and all(
+                        isinstance(part, dict) and set(part) == {'type','text'}
+                        and part['type'] == 'text' and isinstance(part['text'], str) for part in content))):
+                raise ValueError('initial system message must contain only text instructions')
         visible = set()
         for message in body.get('messages', []):
             if message.get('role') != 'tool':
@@ -197,7 +209,15 @@ class ExecutionContext:
             instruction += ('\nThis request is context maintenance only: return the requested summary, '
                             'do not call tools. Preserve the active objective for resumed engineering.')
         trace['contract_bytes'] = len(instruction.encode('utf-8'))
-        return {**body, 'messages': [{'role': 'system', 'content': instruction}, *body['messages']]}, trace
+        if initial is None:
+            forwarded = [{'role': 'system', 'content': instruction}, *messages]
+        else:
+            # Keep the controller authoritative without adding a second system
+            # message. Preserve the original instructions/metadata verbatim.
+            content = (instruction + '\n\n' + initial['content'] if isinstance(initial['content'], str)
+                       else [{'type':'text', 'text':instruction + '\n\n'}, *initial['content']])
+            forwarded = [{**initial, 'content':content}, *messages[1:]]
+        return {**body, 'messages': forwarded}, trace
 
 
 def excerpt_key(value: dict) -> str:

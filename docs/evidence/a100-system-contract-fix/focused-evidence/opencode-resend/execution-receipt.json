@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "adapter": "opencode",
+  "status": "provider_failure",
+  "raw_exit_code": 1,
+  "elapsed": 4.25,
+  "timed_out": false,
+  "cleanup_passed": true,
+  "provider_gate_passed": false,
+  "independent_verification": "pending",
+  "resources": {
+    "epoch": 0,
+    "remaining_operations": 16,
+    "used": {
+      "inspection": 0,
+      "editing": 0,
+      "verification": 0,
+      "inference": 1,
+      "compaction": 0
+    },
+    "exhausted": "",
+    "policy": {
+      "operations": 16,
+      "edit_reserve": 0,
+      "verification_reserve": 0,
+      "model_requests": 64,
+      "compactions": 4,
+      "blocked_limit": 3
+    },
+    "seconds": {
+      "inference": 0.015999999945051968,
+      "cleanup": 0.01600000006146729
+    },
+    "contract_sha256": "20d712b971d01be6f049a4ea2d6d3a96b220176b607a2c4621534eda6fcf93f9"
+  },
+  "provider_usage": {
+    "reported": [],
+    "unreported_requests": [
+      1
+    ]
+  }
+}

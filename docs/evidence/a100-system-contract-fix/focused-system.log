@@ -1,0 +1,12 @@
+test_installed_opencode_resend_never_reaches_failed_provider (test_system_contract.OpenCodeResendTests.test_installed_opencode_resend_never_reaches_failed_provider) ... ok
+test_ambiguous_or_nontext_layouts_fail_before_charging_context (test_system_contract.SystemContractTests.test_ambiguous_or_nontext_layouts_fail_before_charging_context) ... ok
+test_compaction_and_resumed_requests_keep_contract_and_cumulative_budgets (test_system_contract.SystemContractTests.test_compaction_and_resumed_requests_keep_contract_and_cumulative_budgets) ... ok
+test_exact_captured_request_merges_without_mutating_or_truncating (test_system_contract.SystemContractTests.test_exact_captured_request_merges_without_mutating_or_truncating) ... ok
+test_full_pinned_template_reproduces_failure_and_accepts_corrected_cycles (test_system_contract.SystemContractTests.test_full_pinned_template_reproduces_failure_and_accepts_corrected_cycles) ... ok
+test_missing_system_gets_one_initial_contract (test_system_contract.SystemContractTests.test_missing_system_gets_one_initial_contract) ... ok
+test_text_parts_and_system_metadata_are_preserved_in_full (test_system_contract.SystemContractTests.test_text_parts_and_system_metadata_are_preserved_in_full) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 6.358s
+
+OK

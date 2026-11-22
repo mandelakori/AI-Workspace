@@ -153,6 +153,7 @@ class ProviderGate:
                     number = gate.count
                     gate.captured += len(raw)
                     (gate.artifacts / f'provider-request-{number:03}.json').write_bytes(raw)
+                    failure_latched = gate.failed.is_set()
                     try:
                         body = json.loads(raw)
                         phase = self.headers.get('X-AIWORK-Phase', '')
@@ -169,11 +170,16 @@ class ProviderGate:
                     receipt = {'request': number, **check, 'forwarded': admitted,
                                'body_sha256': hashlib.sha256(raw).hexdigest()}
                     if gate.pi_compaction:receipt['adapter_phase']=phase
+                    if failure_latched:
+                        receipt.update(blocked_reason='failure_latched', retry_of=next(
+                            (r['request'] for r in gate.receipts if r['body_sha256']==receipt['body_sha256']), None))
                     gate.receipts.append(receipt)
                     if not admitted:
                         gate.failed.set(); gate.save()
                         self.send_response(400); self.send_header('Content-Type', 'application/json'); self.end_headers()
-                        self.wfile.write(b'{"error":{"code":"required_tools_unavailable","message":"Provider catalog or model failed the frozen guard"}}')
+                        error = ({'code':'controller_failure_latched', 'message':'Prior provider or guard failure; retries are prohibited for this session'}
+                                 if failure_latched else {'code':'required_tools_unavailable','message':'Provider catalog or model failed the frozen guard'})
+                        self.wfile.write(json.dumps({'error':error}).encode())
                         return
                     if gate.context:
                         try:
@@ -218,12 +224,12 @@ class ProviderGate:
                     with gate.lock:
                         if upstream_socket is not None: gate.connections.add(upstream_socket)
                     response = connection.getresponse()
+                    receipt['upstream_status'] = response.status
+                    if response.status >= 400:
+                        gate.failed.set()  # Latch before the SDK can observe/retry the error.
                     self.send_response(response.status)
                     self.send_header('Content-Type', response.getheader('Content-Type', 'application/json'))
                     self.send_header('Connection', 'close'); self.end_headers()
-                    receipt['upstream_status'] = response.status
-                    if response.status >= 400:
-                        gate.failed.set()
                     with response_path.open('wb') as stream:
                         while monotonic() < gate.deadline:
                             block = response.read1(65536)

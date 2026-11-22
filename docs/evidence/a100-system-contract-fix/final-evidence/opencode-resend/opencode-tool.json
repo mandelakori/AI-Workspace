@@ -1,0 +1,1 @@
+{"workspace": "C:\\Users\\mande\\AppData\\Local\\Temp\\aiwork-opencode-89skdlgw\\workspace", "baseline": "C:\\Users\\mande\\AppData\\Local\\Temp\\tmpop_b4s70\\work", "engineering": true, "objective": "Inert failure only", "write_roots": ["module.py"], "image": "", "checks": [{"argv": ["{python}", "-V"]}]}

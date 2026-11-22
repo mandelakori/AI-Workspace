@@ -1,0 +1,33 @@
+{
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "approval_digest": "0534cc79d14abfe300f187b5ebf7a4728d89106558a925f16cce3d75fa214644",
+  "same_frozen_fields": [
+    "pristine_inventory",
+    "input_inventory",
+    "profile",
+    "request_options",
+    "ssh",
+    "endpoint_identity",
+    "opencode",
+    "runner",
+    "asset_hashes",
+    "phase_limits",
+    "worker",
+    "permissions",
+    "cache_protocol",
+    "independent_evaluation",
+    "completion",
+    "stop_policy",
+    "selection"
+  ],
+  "changed_controller_files": [
+    "execution_context.py",
+    "provider_gate.py"
+  ],
+  "consumed_approval_rejected": true,
+  "worker_sessions_dispatched": 0,
+  "real_model_requests": 0,
+  "sealed_cases_created": 0,
+  "public_baseline": 3,
+  "upstream_passed": true
+}

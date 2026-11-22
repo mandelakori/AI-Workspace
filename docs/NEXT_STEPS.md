@@ -1,6 +1,21 @@
 # Next steps
 
+## Current handoff: corrected message layout, fresh A100 preparation
+
+The [single-system contract correction](A100-SYSTEM-CONTRACT-FIX.md) passes
+190/190 regressions and offline rendering against the pinned Qwen template.
+The fresh `.aiwork/a100-system-repair/itsdangerous-trial` bundle remains
+**PREPARED_NOT_AUTHORIZED**, digest
+`0534cc79d14abfe300f187b5ebf7a4728d89106558a925f16cce3d75fa214644`.
+No new engineering trial or model-token generation ran. Obtain separate approval
+for exactly `["a100-existing"]`; the model, context, task and budgets are unchanged.
+Do not reuse the consumed `150b82...` grant. Unsupported layouts fail closed;
+the SDK resend is blocked at the controller boundary and accurately recorded.
+
 ## Current outcome: approved A100 trial quarantined
+
+Historical failed trial; the correction above supersedes its unimplemented-fix
+instructions, while its quarantine and consumed authorization remain unchanged.
 
 The original Milestone E [ItsDangerous trial result](A100-ENGINEERING-RESULT.md)
 is **FAIL — infrastructure**, not a model-capability verdict. Its single forwarded

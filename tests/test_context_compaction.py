@@ -140,4 +140,6 @@ class ContextCompactionTests(unittest.TestCase):
             self.assertTrue(any(r['tool']=='check' and r['passed'] for r in records))
             self.assertIn(b'return value * 2',(work/'module.py').read_bytes())
             self.assertTrue(all('Double the input' in b['messages'][0]['content'] for b in requests))
+            self.assertTrue(all([m['role'] for m in b['messages']].count('system')==1
+                                and b['messages'][0]['role']=='system' for b in requests))
             self.assertTrue(json.loads((artifacts/'catalog-readiness.json').read_bytes())['cleanup_passed'])

@@ -1,0 +1,53 @@
+{
+  "contract": {
+    "objective": "Inert failure only",
+    "write_roots": [
+      "module.py"
+    ],
+    "public_checks": [
+      {
+        "argv": [
+          "{python}",
+          "-V"
+        ]
+      }
+    ],
+    "setup": [],
+    "deadline": null,
+    "policy": {
+      "operations": 16,
+      "edit_reserve": 0,
+      "verification_reserve": 0,
+      "model_requests": 64,
+      "compactions": 4,
+      "blocked_limit": 3
+    }
+  },
+  "contract_sha256": "20d712b971d01be6f049a4ea2d6d3a96b220176b607a2c4621534eda6fcf93f9",
+  "epoch": 0,
+  "visible": [],
+  "issued": {},
+  "events": [
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "20d712b971d01be6f049a4ea2d6d3a96b220176b607a2c4621534eda6fcf93f9",
+      "remaining_operations": 16,
+      "denied": ""
+    }
+  ],
+  "used": {
+    "inspection": 0,
+    "editing": 0,
+    "verification": 0,
+    "inference": 1,
+    "compaction": 0
+  },
+  "seconds": {
+    "inference": 0.015999999945051968,
+    "cleanup": 0.01600000006146729
+  },
+  "blocked": 0,
+  "exhausted": ""
+}

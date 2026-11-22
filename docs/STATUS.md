@@ -1,8 +1,20 @@
 # Status as of 2026-11-22
 
+## Milestone E: corrected single-system task contract
+
+| Capability / outcome | Status | Evidence |
+| --- | --- | --- |
+| Persistent task-contract normalization | VERIFIED | [Correction report](A100-SYSTEM-CONTRACT-FIX.md): complete contract and original instructions in one initial system message, including compaction/resume. Missing system handled; ambiguous/nontext layouts rejected before accounting. Other payload fields and budgets preserved. |
+| Exact captured Qwen-template regression | VERIFIED | Historical failure reproduced; seven corrected vectors render through full pinned template in existing offline Jinja image, with exact-byte fixture check. No real model tokens. Live llama.cpp acceptance remains UNTESTED. |
+| Retry boundary and regression suite | VERIFIED | Real installed OpenCode against inert HTTP 500 attempts one resend; only one request reaches fake upstream, blocked resend linked to request 1. 190/190 regressions pass without skips; direct fixture VERIFIED. |
+| Fresh ItsDangerous approval bundle | UNTESTED | PREPARED_NOT_AUTHORIZED, digest `0534cc79d14abfe300f187b5ebf7a4728d89106558a925f16cce3d75fa214644`; same A100/64K/task/permissions/budgets, baseline 3/12 public and 297/297 upstream. No live worker dispatched or sealed cases authored. |
+| Original failed trial and historical evidence | VERIFIED | Consumed `150b82...` trial and all 326 local evidence hashes unchanged. No remote service/model modification, unrelated development or main merge. |
+
 ## Original Milestone E: A100 autonomous engineering readiness
 
-The approved trial is consumed; [execution result](A100-ENGINEERING-RESULT.md).
+Historical readiness and first trial. The approved trial is consumed;
+[execution result](A100-ENGINEERING-RESULT.md). The correction above supersedes
+its pending-fix state; it does not authorize another execution.
 
 | Capability / outcome | Status | Evidence |
 | --- | --- | --- |

@@ -1,0 +1,78 @@
+{
+  "contract": {
+    "objective": "Inert exhaustion check",
+    "write_roots": [
+      "module.py"
+    ],
+    "public_checks": [
+      {
+        "argv": [
+          "{python}",
+          "-V"
+        ]
+      }
+    ],
+    "setup": [],
+    "deadline": null,
+    "policy": {
+      "operations": 1,
+      "edit_reserve": 0,
+      "verification_reserve": 0,
+      "model_requests": 64,
+      "compactions": 4,
+      "blocked_limit": 3
+    }
+  },
+  "contract_sha256": "724c6896f998ff7d7fc8c6d8e75dc4cbfd4635e736404c26306d5c4d9538c6eb",
+  "epoch": 0,
+  "visible": [
+    "7998611fcc9a16ecfe2587b3921e382f7398f55aacb16896102d60f06a05a45e"
+  ],
+  "issued": {
+    "7998611fcc9a16ecfe2587b3921e382f7398f55aacb16896102d60f06a05a45e": {
+      "path": "module.py",
+      "sha256": "f05a65413338d4d74cc2e7115db156601cfcb7838936e091cb74c7ecf0609277",
+      "line": 1,
+      "next_line": null
+    }
+  },
+  "events": [
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "724c6896f998ff7d7fc8c6d8e75dc4cbfd4635e736404c26306d5c4d9538c6eb",
+      "remaining_operations": 1,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "724c6896f998ff7d7fc8c6d8e75dc4cbfd4635e736404c26306d5c4d9538c6eb",
+      "remaining_operations": 0,
+      "denied": "tool operations exhausted"
+    }
+  ],
+  "used": {
+    "inspection": 1,
+    "editing": 0,
+    "verification": 0,
+    "inference": 1,
+    "compaction": 0
+  },
+  "seconds": {
+    "inference": 0.015000000013969839,
+    "inspection": 0.015999999945051968,
+    "cleanup": 0.015999999945051968
+  },
+  "blocked": 0,
+  "exhausted": "tool operations exhausted"
+}

@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "python",
+    "render.py"
+  ],
+  "cwd": "",
+  "runner": "sha256:fc1854e6885153904be89d67c701cd012fd68e57523566405d184ce2a4fe05e1",
+  "code": 0,
+  "elapsed": 0.75,
+  "stdout": "{\"renderer\": \"Jinja2 3.1.6\", \"model_tokens_generated\": 0, \"results\": [{\"name\": \"exact-historical-failure\", \"accepted\": false, \"expected_error\": \"System message must be at the beginning.\"}, {\"name\": \"initial\", \"accepted\": true, \"rendered_sha256\": \"78676d41246f0ac85623fad9d840a880fb071d40439280ec4d1a3f5e04766049\"}, {\"name\": \"compaction-1\", \"accepted\": true, \"rendered_sha256\": \"4b141004eedd7cbad6001b3921206a207e0982836a2e2040e7926207480cae06\"}, {\"name\": \"resumed-1\", \"accepted\": true, \"rendered_sha256\": \"5484e74875c6f090f10bd71f9462c68936e644f404fce80e1e6f3f463c459138\"}, {\"name\": \"compaction-2\", \"accepted\": true, \"rendered_sha256\": \"3cb434b5f25ce511fdc9defeda5fb844860134b405a66e2d48139266e5e31256\"}, {\"name\": \"resumed-2\", \"accepted\": true, \"rendered_sha256\": \"b2f4204d0516cb76d663a6e29f8546edf1fd15dab02c2f0bb4f6aeb5391090ce\"}, {\"name\": \"missing-system\", \"accepted\": true, \"rendered_sha256\": \"ff4edd6b4971f0350bdfe5d9872db9566df3902eb375af039cd86e30d17a08d5\"}, {\"name\": \"text-parts\", \"accepted\": true, \"rendered_sha256\": \"9e5d9dd3fa217271f6797cfb60f55a7f43130aca39bbb215baa0b8e7b69d3878\"}]}\n",
+  "stderr": "",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true
+}
