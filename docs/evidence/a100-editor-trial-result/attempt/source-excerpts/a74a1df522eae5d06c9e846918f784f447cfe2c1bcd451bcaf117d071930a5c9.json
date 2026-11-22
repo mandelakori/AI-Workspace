@@ -1,0 +1,54 @@
+{
+  "path": "tests/test_itsdangerous/test_timedelta_max_age.py",
+  "sha256": "979a5ebb6b8161283fad530cec3a1056228df6b3f796ac09590e16b736e61df2",
+  "line": 50,
+  "source": "    def test_timedelta_exact_boundary(self) -> None:\n        signer = TimestampSigner(secret_key=\"test-key\")\n        signed = signer.sign(b\"hello\")\n        result = signer.unsign(signed, max_age=datetime.timedelta(seconds=3600))\n        assert result == b\"hello\"",
+  "next_line": null,
+  "total_lines": 54,
+  "selected_symbol": "",
+  "symbols": [
+    {
+      "symbol": "TestTimestampSignerTimedelta",
+      "line": 16,
+      "end_line": 54,
+      "kind": "class"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_valid_signature",
+      "line": 19,
+      "end_line": 23,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_expired",
+      "line": 25,
+      "end_line": 30,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_zero_duration",
+      "line": 32,
+      "end_line": 36,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_negative_duration",
+      "line": 38,
+      "end_line": 42,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_fractional_seconds",
+      "line": 44,
+      "end_line": 48,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_exact_boundary",
+      "line": 50,
+      "end_line": 54,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": false
+}

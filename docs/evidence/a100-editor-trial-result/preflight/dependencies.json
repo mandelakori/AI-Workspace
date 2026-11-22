@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python",
+    "-c",
+    "import sys,json,importlib.metadata as m; print(json.dumps({\"python\":sys.version,\"packages\":{n:m.version(n) for n in [\"pytest\",\"freezegun\",\"python-dateutil\",\"six\"]}}))"
+  ],
+  "cwd": "",
+  "runner": "sha256:00d3d7e3d1e32064b5bf313cc788fb91945c0c5fa000856513f490f2c8087645",
+  "code": 0,
+  "elapsed": 6.907000000006519,
+  "stdout": "{\"python\": \"3.12.16 (main, Nov  5 2026, 07:58:20) [GCC 14.2.0]\", \"packages\": {\"pytest\": \"9.0.3\", \"freezegun\": \"1.5.5\", \"python-dateutil\": \"2.9.0.post0\", \"six\": \"1.17.0\"}}\n",
+  "stderr": "",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true
+}

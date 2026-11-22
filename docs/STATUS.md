@@ -1,5 +1,18 @@
 # Status as of 2026-11-22
 
+## Milestone E: editor-recovery trial outcome
+
+| Capability / outcome | Status | Evidence |
+| --- | --- | --- |
+| Autonomous source editing | VERIFIED | [Execution report](A100-EDITOR-TRIAL-RESULT.md): 12 accepted edits, 5 MCP rejections; seven newline adaptations and 3/3 inspected-location edits. First edit operation 6; first public test operation 16. No operator source corrections or guidance. |
+| Exported public/upstream correctness | VERIFIED | Controller verifies 12/12 public against 3/12 baseline and 297/297 upstream. Worker syntax/interfaces pass. This is finite public evidence, not independent acceptance. |
+| Complete autonomous delivery | BLOCKED | Authored tests 19 pass/9 fail; docs unchanged. Local 16 MiB provider-evidence cap cuts request 45, normalized provider_failure; work FAILED/root quarantine, no timeout. Digest `de9bdcda...` consumed, no frozen candidate or sealed grade. |
+| Usage / cleanup | VERIFIED | 45 forwarded requests, one compaction, 47/96 MCP operations. 44 complete API receipts: 1127464 tokens; final usage unknown. Harness 663.468 s, trial 691.987 s; owned cleanup and read-only A100 healthy/idle postflight pass. |
+| Preservation / stop | VERIFIED | 2872 historical indexed entries, 140 approved bundle files and main unchanged; no core/task implementation change, retry, editor-repair cycle or new trial preparation. Prior 207/207 regression receipt remains historical. |
+
+The preparation below is historical: its digest is consumed and cannot authorize
+another execution. No replacement trial is prepared.
+
 ## Milestone E: fresh editor-recovery trial preparation
 
 | Capability / outcome | Status | Evidence |

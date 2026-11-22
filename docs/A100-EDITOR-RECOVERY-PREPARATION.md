@@ -1,5 +1,9 @@
 # Milestone E: historical grades and fresh A100 preparation
 
+**Historical preparation at `05271bd`.** This digest was subsequently approved
+and consumed once. Read the [quarantined execution outcome](A100-EDITOR-TRIAL-RESULT.md).
+The preparation details below do not authorize reuse or resume.
+
 **PREPARED_NOT_AUTHORIZED. No model inference or worker dispatch.** Continue from
 `321e426`; no controller, harness, feature asset or target implementation changed.
 The two consumed/quarantined ItsDangerous trials remain immutable.

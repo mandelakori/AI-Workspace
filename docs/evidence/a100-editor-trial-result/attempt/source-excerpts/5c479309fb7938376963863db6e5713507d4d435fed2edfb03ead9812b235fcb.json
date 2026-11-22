@@ -1,0 +1,72 @@
+{
+  "path": "tests/test_itsdangerous/test_timedelta_max_age.py",
+  "sha256": "dce19790079e99120f1bae63c784c39a36e260900b8b7c8a49213606ce09f6ec",
+  "line": 168,
+  "source": "        assert result == \"hello\"\n\n    def test_timedelta_expired(self) -> None:\n        ser = URLSafeTimedSerializer(secret_key=\"test-key\")\n        signed = ser.dumps(\"hello\")\n        time.sleep(1.1)\n        with pytest.raises(SignatureExpired):\n            ser.loads(signed, max_age=datetime.timedelta(seconds=1))\n\n    def test_timedelta_loads_unsafe_valid(self) -> None:\n        ser = URLSafeTimedSerializer(secret_key=\"test-key\")\n        signed = ser.dumps(\"hello\")\n        valid, payload = ser.loads_unsafe(\n            signed, max_age=datetime.timedelta(seconds=10)\n        )\n        assert valid is True\n        assert payload == \"hello\"\n\n    def test_timedelta_loads_unsafe_expired(self) -> None:\n        ser = URLSafeTimedSerializer(secret_key=\"test-key\")\n        signed = ser.dumps(\"hello\")\n        time.sleep(1.1)\n        valid, payload = ser.loads_unsafe(\n            signed, max_age=datetime.timedelta(seconds=1)\n        )\n        assert valid is False\n\n    def test_timedelta_fractional(self) -> None:\n        ser = URLSafeTimedSerializer(secret_key=\"test-key\")\n        signed = ser.dumps(\"hello\")\n        result = ser.loads(signed, max_age=datetime.timedelta(milliseconds=500))\n        assert result == \"hello\"\n\n    def test_timedelta_negative(self) -> None:\n        ser = URLSafeTimedSerializer(secret_key=\"test-key\")\n        signed = ser.dumps(\"hello\")\n        with pytest.raises(SignatureExpired):\n            ser.loads(signed, max_age=datetime.timedelta(seconds=-1))\n\n    def test_timedelta_key_rotation(self) -> None:\n        \"\"\"Key rotation should work with timedelta max_age.\"\"\"\n        ser = TimedSerializer(secret_key=[\"key1\", \"key2\"])\n        signed = ser.dumps(\"hello\")\n        result = ser.loads(signed, max_age=datetime.timedelta(seconds=10))\n        assert result == \"hello\"\n\n    def test_timedelta_key_rotation_second_key(self) -> None:\n        \"\"\"Key rotation with second key should work with timedelta.\"\"\"\n        ser = TimedSerializer(secret_key=[\"key1\", \"key2\"])\n        signer = TimestampSigner(secret_key=\"key2\")\n        from itsdangerous.encoding import base64_encode, int_to_bytes\n\n        ts = signer.get_timestamp()\n        ts_bytes = base64_encode(int_to_bytes(ts))\n        sep = signer.sep.encode()\n        value = ser.dumps(\"hello\").encode()\n        to_sign = value + sep + ts_bytes\n        sig = signer.get_signature(to_sign)\n        signed = (to_sign + sep + sig).decode()\n\n",
+  "next_line": 228,
+  "total_lines": 229,
+  "selected_symbol": "",
+  "symbols": [
+    {
+      "symbol": "TestTimestampSignerTimedelta",
+      "line": 16,
+      "end_line": 106,
+      "kind": "class"
+    },
+    {
+      "symbol": "TestTimedSerializerTimedelta",
+      "line": 108,
+      "end_line": 159,
+      "kind": "class"
+    },
+    {
+      "symbol": "TestURLSafeTimedSerializerTimedelta",
+      "line": 161,
+      "end_line": 229,
+      "kind": "class"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_valid_signature",
+      "line": 19,
+      "end_line": 23,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_expired",
+      "line": 25,
+      "end_line": 30,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_zero_duration",
+      "line": 32,
+      "end_line": 36,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_negative_duration",
+      "line": 38,
+      "end_line": 42,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_fractional_seconds",
+      "line": 44,
+      "end_line": 48,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_exact_boundary",
+      "line": 50,
+      "end_line": 54,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_future_timestamp_invalid",
+      "line": 55,
+      "end_line": 68,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": true
+}

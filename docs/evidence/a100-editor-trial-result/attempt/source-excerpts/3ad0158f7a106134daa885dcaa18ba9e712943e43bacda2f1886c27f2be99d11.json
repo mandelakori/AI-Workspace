@@ -1,0 +1,72 @@
+{
+  "path": "tests/test_itsdangerous/test_timedelta_max_age.py",
+  "sha256": "e29d5b9fd720f4f24cfa88b77bb135bb933b74bba0e6a81d81b8f70d6471cd94",
+  "line": 155,
+  "source": "    def test_timedelta_zero(self) -> None:\n        ser = TimedSerializer(secret_key=\"test-key\")\n        signed = ser.dumps(\"hello\")\n        with pytest.raises(SignatureExpired):\n            ser.loads(signed, max_age=datetime.timedelta(seconds=0))",
+  "next_line": null,
+  "total_lines": 159,
+  "selected_symbol": "",
+  "symbols": [
+    {
+      "symbol": "TestTimestampSignerTimedelta",
+      "line": 16,
+      "end_line": 106,
+      "kind": "class"
+    },
+    {
+      "symbol": "TestTimedSerializerTimedelta",
+      "line": 108,
+      "end_line": 159,
+      "kind": "class"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_valid_signature",
+      "line": 19,
+      "end_line": 23,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_expired",
+      "line": 25,
+      "end_line": 30,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_zero_duration",
+      "line": 32,
+      "end_line": 36,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_negative_duration",
+      "line": 38,
+      "end_line": 42,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_fractional_seconds",
+      "line": 44,
+      "end_line": 48,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_exact_boundary",
+      "line": 50,
+      "end_line": 54,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_future_timestamp_invalid",
+      "line": 55,
+      "end_line": 68,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_return_timestamp",
+      "line": 70,
+      "end_line": 77,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": true
+}

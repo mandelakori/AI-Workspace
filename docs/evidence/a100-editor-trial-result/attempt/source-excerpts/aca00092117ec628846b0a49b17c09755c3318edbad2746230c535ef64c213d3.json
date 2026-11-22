@@ -1,0 +1,84 @@
+{
+  "path": "src/itsdangerous/serializer.py",
+  "sha256": "63c30599269bdc92c690bdd631b8ae6cc648dbb63998c766c3542292872047be",
+  "line": 280,
+  "source": "        implementation uses the :class:`.Signer` base class.\r\n        \"\"\"\r\n        if salt is None:\r\n            salt = self.salt\r\n\r\n        return self.signer(self.secret_keys, salt=salt, **self.signer_kwargs)\r\n\r\n    def iter_unsigners(self, salt: str | bytes | None = None) -> cabc.Iterator[Signer]:\r\n        \"\"\"Iterates over all signers to be tried for unsigning. Starts\r\n        with the configured signer, then constructs each signer\r\n        specified in ``fallback_signers``.\r\n        \"\"\"\r\n        if salt is None:\r\n            salt = self.salt\r\n\r\n        yield self.make_signer(salt)\r\n\r\n        for fallback in self.fallback_signers:\r\n            if isinstance(fallback, dict):\r\n                kwargs = fallback\r\n                fallback = self.signer\r\n            elif isinstance(fallback, tuple):\r\n                fallback, kwargs = fallback\r\n            else:\r\n                kwargs = self.signer_kwargs\r\n\r\n            for secret_key in self.secret_keys:\r\n                yield fallback(secret_key, salt=salt, **kwargs)\r\n\r\n    def dumps(self, obj: t.Any, salt: str | bytes | None = None) -> _TSerialized:\r\n        \"\"\"Returns a signed string serialized with the internal\r\n        serializer. The return value can be either a byte or unicode\r\n        string depending on the format of the internal serializer.\r\n        \"\"\"\r\n        payload = want_bytes(self.dump_payload(obj))\r\n        rv = self.make_signer(salt).sign(payload)\r\n\r\n        if self.is_text_serializer:\r\n            return rv.decode(\"utf-8\")  # type: ignore[return-value]\r\n\r\n        return rv  # type: ignore[return-value]\r\n\r\n    def dump(self, obj: t.Any, f: t.IO[t.Any], salt: str | bytes | None = None) -> None:\r\n        \"\"\"Like :meth:`dumps` but dumps into a file. The file handle has\r\n        to be compatible with what the internal serializer expects.\r\n        \"\"\"\r\n        f.write(self.dumps(obj, salt))\r\n\r\n    def loads(\r\n        self, s: str | bytes, salt: str | bytes | None = None, **kwargs: t.Any\r\n    ) -> t.Any:\r\n        \"\"\"Reverse of :meth:`dumps`. Raises :exc:`.BadSignature` if the\r\n        signature validation fails.\r\n        \"\"\"\r\n        s = want_bytes(s)\r\n        last_exception = None\r\n\r\n        for signer in self.iter_unsigners(salt):\r\n            try:\r\n                return self.load_payload(signer.unsign(s))\r\n",
+  "next_line": 340,
+  "total_lines": 404,
+  "selected_symbol": "",
+  "symbols": [
+    {
+      "symbol": "_PDataSerializer",
+      "line": 24,
+      "end_line": 29,
+      "kind": "class"
+    },
+    {
+      "symbol": "Serializer",
+      "line": 40,
+      "end_line": 404,
+      "kind": "class"
+    },
+    {
+      "symbol": "is_text_serializer",
+      "line": 33,
+      "end_line": 37,
+      "kind": "function"
+    },
+    {
+      "symbol": "_PDataSerializer.loads",
+      "line": 25,
+      "end_line": 25,
+      "kind": "function"
+    },
+    {
+      "symbol": "_PDataSerializer.dumps",
+      "line": 29,
+      "end_line": 29,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.__init__",
+      "line": 107,
+      "end_line": 120,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.__init__",
+      "line": 123,
+      "end_line": 136,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.__init__",
+      "line": 139,
+      "end_line": 153,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.__init__",
+      "line": 158,
+      "end_line": 171,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.__init__",
+      "line": 174,
+      "end_line": 188,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.__init__",
+      "line": 190,
+      "end_line": 234,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.secret_key",
+      "line": 236,
+      "end_line": 241,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": true
+}

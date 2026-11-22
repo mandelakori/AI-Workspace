@@ -1,0 +1,72 @@
+{
+  "path": "tests/test_itsdangerous/test_timedelta_max_age.py",
+  "sha256": "dce19790079e99120f1bae63c784c39a36e260900b8b7c8a49213606ce09f6ec",
+  "line": 1,
+  "source": "\"\"\"Tests for datetime.timedelta support in max_age arguments.\"\"\"\n\nfrom __future__ import annotations\n\nimport datetime\nimport time\n\nimport pytest\n\nfrom itsdangerous import TimestampSigner\nfrom itsdangerous import TimedSerializer\nfrom itsdangerous.exc import SignatureExpired\nfrom itsdangerous.url_safe import URLSafeTimedSerializer\n\n\nclass TestTimestampSignerTimedelta:\n    \"\"\"Tests for TimestampSigner with timedelta max_age.\"\"\"\n\n    def test_timedelta_valid_signature(self) -> None:\n        signer = TimestampSigner(secret_key=\"test-key\")\n        signed = signer.sign(b\"hello\")\n        result = signer.unsign(signed, max_age=datetime.timedelta(seconds=10))\n        assert result == b\"hello\"\n\n    def test_timedelta_expired(self) -> None:\n        signer = TimestampSigner(secret_key=\"test-key\")\n        signed = signer.sign(b\"hello\")\n        time.sleep(1.1)\n        with pytest.raises(SignatureExpired):\n            signer.unsign(signed, max_age=datetime.timedelta(seconds=1))\n\n    def test_timedelta_zero_duration(self) -> None:\n        signer = TimestampSigner(secret_key=\"test-key\")\n        signed = signer.sign(b\"hello\")\n        with pytest.raises(SignatureExpired):\n            signer.unsign(signed, max_age=datetime.timedelta(seconds=0))\n\n    def test_timedelta_negative_duration(self) -> None:\n        signer = TimestampSigner(secret_key=\"test-key\")\n        signed = signer.sign(b\"hello\")\n        with pytest.raises(SignatureExpired):\n            signer.unsign(signed, max_age=datetime.timedelta(seconds=-1))\n\n    def test_timedelta_fractional_seconds(self) -> None:\n        signer = TimestampSigner(secret_key=\"test-key\")\n        signed = signer.sign(b\"hello\")\n        result = signer.unsign(signed, max_age=datetime.timedelta(milliseconds=500))\n        assert result == b\"hello\"\n\n    def test_timedelta_exact_boundary(self) -> None:\n        signer = TimestampSigner(secret_key=\"test-key\")\n        signed = signer.sign(b\"hello\")\n        result = signer.unsign(signed, max_age=datetime.timedelta(seconds=3600))\n        assert result == b\"hello\"\n    def test_timedelta_future_timestamp_invalid(self) -> None:\n        signer = TimestampSigner(secret_key=\"test-key\")\n        future_ts = int(time.time()) + 10000\n        from itsdangerous.encoding import base64_encode, int_to_bytes\n\n        ts_bytes = base64_encode(int_to_bytes(future_ts))\n",
+  "next_line": 61,
+  "total_lines": 229,
+  "selected_symbol": "",
+  "symbols": [
+    {
+      "symbol": "TestTimestampSignerTimedelta",
+      "line": 16,
+      "end_line": 106,
+      "kind": "class"
+    },
+    {
+      "symbol": "TestTimedSerializerTimedelta",
+      "line": 108,
+      "end_line": 159,
+      "kind": "class"
+    },
+    {
+      "symbol": "TestURLSafeTimedSerializerTimedelta",
+      "line": 161,
+      "end_line": 229,
+      "kind": "class"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_valid_signature",
+      "line": 19,
+      "end_line": 23,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_expired",
+      "line": 25,
+      "end_line": 30,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_zero_duration",
+      "line": 32,
+      "end_line": 36,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_negative_duration",
+      "line": 38,
+      "end_line": 42,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_fractional_seconds",
+      "line": 44,
+      "end_line": 48,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_exact_boundary",
+      "line": 50,
+      "end_line": 54,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_future_timestamp_invalid",
+      "line": 55,
+      "end_line": 68,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": true
+}

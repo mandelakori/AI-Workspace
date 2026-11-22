@@ -1,0 +1,13 @@
+{
+  "approval_digest": "de9bdcda4c591eaf1b2a93927477b3159e4da9f1b480c844ed93abacf46a07e3",
+  "manifest_and_implementation_valid": true,
+  "original_140_files_verified": true,
+  "catalog_unchanged": true,
+  "dependencies_match": true,
+  "endpoint_identity_matches": true,
+  "idle_slot_required": true,
+  "owned_forward_closed": true,
+  "historical_candidates_used": false,
+  "generation_requests": 0,
+  "dispatch_permitted_by_operator": true
+}

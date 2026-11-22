@@ -1,5 +1,20 @@
 # Next steps
 
+## Current outcome: consumed trial, partial progress, quarantine
+
+[A100 execution](A100-EDITOR-TRIAL-RESULT.md) applied 12 autonomous edits, including
+three successful location-based repairs. Controller public verification improved
+3/12 to 12/12; upstream 297/297 passes. Authored tests fail (19 pass/9 fail), docs
+remain unchanged, and a local 16 MiB provider-evidence cap cuts request 45 before
+the attempt deadline. Overall FAIL/quarantined; no frozen candidate or sealed grade.
+
+Digest `de9bdcda...` is consumed. Do not retry, resume or grade its bundle. No new
+trial, editor repair or replacement digest is prepared. Review trace-budget
+compatibility/classification and model test-diagnosis/workflow limitations before
+authorizing further work. Preserve all three quarantined A100 trials, original
+Milestone E, main and the unauthorized Pi comparison. Stop here; historical
+handoffs below do not authorize dispatch.
+
 ## Current handoff: fresh unauthorized A100 trial
 
 [Editor-recovery preparation](A100-EDITOR-RECOVERY-PREPARATION.md) is verified and

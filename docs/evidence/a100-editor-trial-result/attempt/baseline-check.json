@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "python",
+    "_aiwork_checks.py",
+    "public"
+  ],
+  "cwd": "",
+  "runner": "sha256:00d3d7e3d1e32064b5bf313cc788fb91945c0c5fa000856513f490f2c8087645",
+  "code": 1,
+  "elapsed": 1.0160000000614673,
+  "stdout": "{\"passed\": 3, \"total\": 12, \"cases\": [{\"id\": \"integer-compatible\", \"passed\": true, \"expected\": \"accepted\", \"observed\": {\"result\": \"accepted\", \"payload_ok\": true, \"timestamp_ok\": true}}, {\"id\": \"none-compatible\", \"passed\": true, \"expected\": \"accepted\", \"observed\": {\"result\": \"accepted\", \"payload_ok\": true, \"timestamp_ok\": true}}, {\"id\": \"invalid-signature-first\", \"passed\": true, \"expected\": \"bad-signature\", \"observed\": {\"result\": \"bad-signature\"}}, {\"id\": \"duration-active\", \"passed\": false, \"expected\": \"accepted\", \"observed\": {\"result\": \"error\", \"error\": \"TypeError\", \"detail\": \"'>' not supported between instances of 'int' and 'datetime.timedelta'\"}}, {\"id\": \"duration-expired-metadata\", \"passed\": false, \"expected\": \"expired\", \"observed\": {\"result\": \"error\", \"error\": \"TypeError\", \"detail\": \"'>' not supported between instances of 'int' and 'datetime.timedelta'\"}}, {\"id\": \"duration-exact-boundary\", \"passed\": false, \"expected\": \"accepted\", \"observed\": {\"result\": \"error\", \"error\": \"TypeError\", \"detail\": \"'>' not supported between instances of 'int' and 'datetime.timedelta'\"}}, {\"id\": \"fraction-retained-accept\", \"passed\": false, \"expected\": \"accepted\", \"observed\": {\"result\": \"error\", \"error\": \"TypeError\", \"detail\": \"'>' not supported between instances of 'int' and 'datetime.timedelta'\"}}, {\"id\": \"fraction-retained-reject\", \"passed\": false, \"expected\": \"expired\", \"observed\": {\"result\": \"error\", \"error\": \"TypeError\", \"detail\": \"'>' not supported between instances of 'int' and 'datetime.timedelta'\"}}, {\"id\": \"negative-duration\", \"passed\": false, \"expected\": \"invalid\", \"observed\": {\"result\": \"error\", \"error\": \"TypeError\", \"detail\": \"'>' not supported between instances of 'int' and 'datetime.timedelta'\"}}, {\"id\": \"future-timestamp\", \"passed\": false, \"expected\": \"expired\", \"observed\": {\"result\": \"error\", \"error\": \"TypeError\", \"detail\": \"'>' not supported between instances of 'int' and 'datetime.timedelta'\"}}, {\"id\": \"serializer-key-rotation-timestamp\", \"passed\": false, \"expected\": \"accepted\", \"observed\": {\"result\": \"error\", \"error\": \"TypeError\", \"detail\": \"'>' not supported between instances of 'int' and 'datetime.timedelta'\"}}, {\"id\": \"urlsafe-unsafe-expired\", \"passed\": false, \"expected\": \"unsafe-expired\", \"observed\": {\"result\": \"error\", \"error\": \"TypeError\", \"detail\": \"'>' not supported between instances of 'int' and 'datetime.timedelta'\"}}]}\n",
+  "stderr": "",
+  "timed_out": false,
+  "truncated": false,
+  "passed": false,
+  "classification": "command"
+}

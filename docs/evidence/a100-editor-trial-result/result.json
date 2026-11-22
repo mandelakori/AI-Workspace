@@ -1,0 +1,6 @@
+{
+  "job": "6eb5cb48132b4123a72cd0033e4c1777",
+  "status": "failed",
+  "detail": "check 2 failed (tests)\nfuture_timestamp_invalid\nFAILED tests/test_itsdangerous/test_timedelta_max_age.py::TestTimestampSignerTimedelta::test_timedelta_validate_expired\nFAILED tests/test_itsdangerous/test_timedelta_max_age.py::TestTimedSerializerTimedelta::test_timedelta_expired\nFAILED tests/test_itsdangerous/test_timedelta_max_age.py::TestTimedSerializerTimedelta::test_timedelta_loads_unsafe_expired\nFAILED tests/test_itsdangerous/test_timedelta_max_age.py::TestTimedSerializerTimedelta::test_timedelta_zero\nFAILED tests/test_itsdangerous/test_timedelta_max_age.py::TestURLSafeTimedSerializerTimedelta::test_timedelta_expired\nFAILED tests/test_itsdangerous/test_timedelta_max_age.py::TestURLSafeTimedSerializerTimedelta::test_timedelta_loads_unsafe_expired\nFAILED tests/test_itsdangerous/test_timedelta_max_age.py::TestURLSafeTimedSerializerTimedelta::test_timedelta_key_rotation_second_key\n9 failed, 19 passed in 7.59s\n\n",
+  "artifacts": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\a100-editor-recovery\\itsdangerous-trial\\state\\runs\\6eb5cb48132b4123a72cd0033e4c1777"
+}

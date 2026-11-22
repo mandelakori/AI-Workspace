@@ -1,0 +1,140 @@
+{
+  "approval_digest": "de9bdcda4c591eaf1b2a93927477b3159e4da9f1b480c844ed93abacf46a07e3",
+  "job": "6eb5cb48132b4123a72cd0033e4c1777",
+  "assessment": "FAIL_QUARANTINED_WITH_PARTIAL_AUTONOMOUS_FEATURE_PROGRESS",
+  "immediate_cause": "controller provider-evidence capture budget exhausted during request 45; proxy stream cut, normalized provider_failure",
+  "captured_counter_bytes": 16777435,
+  "capture_limit_bytes": 16777216,
+  "archived_provider_bytes": 16777066,
+  "worker_status": "provider_failure",
+  "harness_exit": 1,
+  "harness_timed_out": false,
+  "work_phase": "FAILED",
+  "accepted_edit_count": 12,
+  "accepted_by_path": {
+    "src/itsdangerous/timed.py": 8,
+    "tests/test_itsdangerous/test_timedelta_max_age.py": 4
+  },
+  "mcp_rejected_edit_count": 5,
+  "mcp_rejection_classes": {
+    "edit_too_large": 2,
+    "invalid_anchor": 1,
+    "syntax_error": 1,
+    "ambiguous_anchor": 1
+  },
+  "harness_incomplete_edits_at_output_limit": 2,
+  "harness_stream_aborted_edits": 1,
+  "initiated_edit_calls": 20,
+  "first_edit": {
+    "mcp_operation": 6,
+    "path": "src/itsdangerous/timed.py",
+    "seconds_from_trial_start": 40.731926679611206,
+    "newline_adapted": true
+  },
+  "first_public_test": {
+    "mcp_operation": 16,
+    "index": 0,
+    "passed": true,
+    "seconds_from_trial_start": 147.09092664718628
+  },
+  "newline_adapted_edits": 7,
+  "location_attempts": [
+    {
+      "operation": 28,
+      "applied": true,
+      "location": {
+        "evidence_key": "a74a1df522eae5d06c9e846918f784f447cfe2c1bcd451bcaf117d071930a5c9",
+        "line": 54,
+        "end_line": 54
+      }
+    },
+    {
+      "operation": 30,
+      "applied": true,
+      "location": {
+        "evidence_key": "c254510844fd0d6cc671e2b8f4df330d434d8ec6910c1f083ced5db09053d78f",
+        "line": 106,
+        "end_line": 106
+      }
+    },
+    {
+      "operation": 32,
+      "applied": true,
+      "location": {
+        "evidence_key": "3ad0158f7a106134daa885dcaa18ba9e712943e43bacda2f1886c27f2be99d11",
+        "line": 159,
+        "end_line": 159
+      }
+    }
+  ],
+  "public": {
+    "baseline": 3,
+    "exported_candidate": 12,
+    "total": 12,
+    "controller_verified": true,
+    "regressions": 0
+  },
+  "upstream": {
+    "passed": 297,
+    "failed": 0,
+    "controller_verified": true
+  },
+  "authored": {
+    "passed": 19,
+    "failed": 9,
+    "controller_verified": true,
+    "last_worker_passed": 18,
+    "last_worker_failed": 10
+  },
+  "interfaces": {
+    "worker_passed": true,
+    "controller_post_checks": "not reached after authored failure"
+  },
+  "syntax": {
+    "worker_passed": true
+  },
+  "documentation_modified": false,
+  "frozen_candidate": false,
+  "sealed_cases_created": 0,
+  "sealed_grade": "NOT_PERMITTED_AFTER_QUARANTINE",
+  "changed_paths": [
+    "src/itsdangerous/timed.py",
+    "tests/test_itsdangerous/test_timedelta_max_age.py"
+  ],
+  "exported_inventory_sha256": "76444eb8bfcca33c4d51e299afeec2f68e72e3a01acdcab7ea17719fb3217a00",
+  "model_requests": {
+    "forwarded": 45,
+    "inference": 44,
+    "compaction": 1,
+    "complete_usage": 44,
+    "unreported_requests": [
+      45
+    ]
+  },
+  "api_usage": {
+    "prompt_tokens": 1104506,
+    "completion_tokens": 22958,
+    "total_tokens": 1127464
+  },
+  "reported_cached_prompt_tokens": 25311,
+  "server_reasoning_token_counter": "not provided",
+  "sdk_reported_reasoning_tokens": 0,
+  "peak_reported_prompt_tokens": 51233,
+  "tool_operations": {
+    "focus": 23,
+    "edit": 17,
+    "check": 7
+  },
+  "total_mcp_operations": 47,
+  "context_epochs": 1,
+  "compactions": 1,
+  "harness_seconds": 663.4679999999935,
+  "warm_seconds": 4.985,
+  "work_seconds": 686.75,
+  "trial_seconds_to_quarantine": 691.9868106842041,
+  "cleanup_passed": true,
+  "postflight_healthy_idle": true,
+  "all_forwarded_settings_verified": 45,
+  "new_trial_prepared": false,
+  "implementation_changes": false
+}

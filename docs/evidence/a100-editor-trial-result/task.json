@@ -1,0 +1,169 @@
+{
+  "objective": "# ItsDangerous: duration-valued signature expiry\n\nImplement support for `datetime.timedelta` values in the `max_age` argument of\n`TimestampSigner.unsign`, `TimestampSigner.validate`, `TimedSerializer.loads` and\n`TimedSerializer.loads_unsafe`, including inherited URL-safe timed serializers.\nThis is an API convenience for applications whose expiry configuration already\nuses durations. Preserve integer-second and `None` behavior and the signed-token\nformat. No new runtime dependencies.\n\nDuration-valued limits must retain fractional seconds and accept negative and zero\ndurations with the same expiry rules as equivalent second-valued limits. An age\nequal to the limit is valid; an older age is expired. A future signature remains\ninvalid whenever a finite age limit is supplied. Preserve signature validation\nbefore age validation, exception classes, payload/date metadata, UTC timestamps,\nkey rotation, custom signers and unsafe-load return semantics. Do not broaden\nunrelated invalid-input acceptance or change cryptographic algorithms.\n\nUpdate all relevant public annotations (including overloads), docstrings and\n`docs/timed.rst`. Add meaningful regression tests in\n`tests/test_itsdangerous/test_timedelta_max_age.py`. Run the public cases, interface\nchecks and existing upstream suite. Inspect the authorized source yourself; the\ncontroller supplies requirements and public diagnostics, not implementation code.\n\nOnly these paths may change:\n\n- `src/itsdangerous/timed.py`\n- `docs/timed.rst`\n- `tests/test_itsdangerous/test_timedelta_max_age.py`\n\nAll other repository files and the frozen public verifier/cases are read-only.\nUse only the advertised scoped tools and approved check indices. Complete the\nactive implementation objective within the single worker session; no retry or\nmid-run operator implementation guidance is available. Final acceptance material\nis inaccessible to this session.\n",
+  "workspace": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\a100-editor-recovery\\itsdangerous-trial\\input",
+  "kind": "agent",
+  "category": "milestone-e-itsdangerous",
+  "inputs": [
+    ".devcontainer",
+    ".editorconfig",
+    ".gitignore",
+    ".pre-commit-config.yaml",
+    ".readthedocs.yaml",
+    "CHANGES.rst",
+    "FEATURE.md",
+    "LICENSE.txt",
+    "README.md",
+    "_aiwork_checks.py",
+    "_aiwork_public.json",
+    "docs",
+    "pyproject.toml",
+    "src",
+    "tests",
+    "uv.lock"
+  ],
+  "deliverables": [],
+  "checks": [
+    {
+      "argv": [
+        "python",
+        "_aiwork_checks.py",
+        "public"
+      ],
+      "timeout": 45,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    },
+    {
+      "argv": [
+        "python",
+        "_aiwork_checks.py",
+        "upstream"
+      ],
+      "timeout": 45,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    },
+    {
+      "argv": [
+        "python",
+        "_aiwork_checks.py",
+        "authored"
+      ],
+      "timeout": 45,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    },
+    {
+      "argv": [
+        "python",
+        "_aiwork_checks.py",
+        "interfaces"
+      ],
+      "timeout": 45,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    },
+    {
+      "argv": [
+        "python",
+        "_aiwork_checks.py",
+        "syntax"
+      ],
+      "timeout": 45,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    }
+  ],
+  "location": "a100",
+  "profile": "a100-existing",
+  "complexity": 4,
+  "timeout": 720,
+  "attempts": 1,
+  "agent_checks": false,
+  "specialist": "",
+  "verification_dir": null,
+  "mode": "engineering",
+  "write_roots": [
+    "src/itsdangerous/timed.py",
+    "docs/timed.rst",
+    "tests/test_itsdangerous/test_timedelta_max_age.py"
+  ],
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "_aiwork_checks.py",
+        "public"
+      ],
+      "timeout": 45,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    },
+    {
+      "argv": [
+        "python",
+        "_aiwork_checks.py",
+        "upstream"
+      ],
+      "timeout": 45,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    },
+    {
+      "argv": [
+        "python",
+        "_aiwork_checks.py",
+        "authored"
+      ],
+      "timeout": 45,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    },
+    {
+      "argv": [
+        "python",
+        "_aiwork_checks.py",
+        "interfaces"
+      ],
+      "timeout": 45,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    },
+    {
+      "argv": [
+        "python",
+        "_aiwork_checks.py",
+        "syntax"
+      ],
+      "timeout": 45,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    }
+  ],
+  "setup": [],
+  "baseline_check": true,
+  "min_context": 32768,
+  "preferred_profile": "",
+  "rank_public": false,
+  "agent_role": "",
+  "source_context": [],
+  "source_patch": false,
+  "public_cases": "",
+  "attempt_limit": 0,
+  "tool_operations": 96,
+  "edit_reserve": 8,
+  "public_test_reserve": 8,
+  "model_requests": 64,
+  "compaction_limit": 4,
+  "context_input_tokens": 0
+}

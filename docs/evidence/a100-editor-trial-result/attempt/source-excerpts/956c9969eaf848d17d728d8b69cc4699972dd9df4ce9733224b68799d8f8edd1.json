@@ -1,0 +1,84 @@
+{
+  "path": "src/itsdangerous/timed.py",
+  "sha256": "310f16c4dab5c5bd5570a80a3676d21c261a5d6cf16fb5f1e713836cf38a916a",
+  "line": 145,
+  "source": "                    # 32-bit raises OverflowError\r\n                    raise BadTimeSignature(\r\n                        \"Malformed timestamp\", payload=value\r\n                    ) from exc\r\n\r\n            raise BadTimeSignature(str(sig_error), payload=value, date_signed=ts_dt)\r\n\r\n        # Signature was okay but the timestamp is actually not there or\r\n        # malformed. Should not happen, but we handle it anyway.\r\n        if ts_int is None:\r\n            raise BadTimeSignature(\"Malformed timestamp\", payload=value)\r\n\r\n        # Check timestamp is not older than max_age\r\n        if max_age is not None:\r\n            age = self.get_timestamp() - ts_int\r\n\r\n            if age > max_age:\r\n                raise SignatureExpired(\r\n                    f\"Signature age {age} > {max_age} seconds\",\r\n                    payload=value,\r\n                    date_signed=self.timestamp_to_datetime(ts_int),\r\n                )\r\n\r\n            if age < 0:\r\n                raise SignatureExpired(\r\n                    f\"Signature age {age} < 0 seconds\",\r\n                    payload=value,\r\n                    date_signed=self.timestamp_to_datetime(ts_int),\r\n                )\r\n\r\n        if return_timestamp:\r\n            return value, self.timestamp_to_datetime(ts_int)\r\n\r\n        return value\r\n\r\n    def validate(self, signed_value: str | bytes, max_age: int | None = None) -> bool:\r\n        \"\"\"Only validates the given signed value. Returns ``True`` if\r\n        the signature exists and is valid.\"\"\"\r\n        try:\r\n            self.unsign(signed_value, max_age=max_age)\r\n            return True\r\n        except BadSignature:\r\n            return False\r\n\r\n\r\nclass TimedSerializer(Serializer[_TSerialized]):\r\n    \"\"\"Uses :class:`TimestampSigner` instead of the default\r\n    :class:`.Signer`.\r\n    \"\"\"\r\n\r\n    default_signer: type[TimestampSigner] = TimestampSigner  # pyright: ignore\r\n\r\n    def iter_unsigners(\r\n        self, salt: str | bytes | None = None\r\n    ) -> cabc.Iterator[TimestampSigner]:\r\n        return t.cast(\"cabc.Iterator[TimestampSigner]\", super().iter_unsigners(salt))\r\n\r\n    # TODO: Signature is incompatible because parameters were added\r\n    #  before salt.\r\n\r\n",
+  "next_line": 205,
+  "total_lines": 248,
+  "selected_symbol": "",
+  "symbols": [
+    {
+      "symbol": "TimestampSigner",
+      "line": 36,
+      "end_line": 187,
+      "kind": "class"
+    },
+    {
+      "symbol": "TimedSerializer",
+      "line": 190,
+      "end_line": 248,
+      "kind": "class"
+    },
+    {
+      "symbol": "_max_age_to_seconds",
+      "line": 23,
+      "end_line": 33,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.get_timestamp",
+      "line": 43,
+      "end_line": 47,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.timestamp_to_datetime",
+      "line": 49,
+      "end_line": 57,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.sign",
+      "line": 59,
+      "end_line": 65,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 70,
+      "end_line": 76,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 78,
+      "end_line": 84,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 86,
+      "end_line": 178,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.validate",
+      "line": 180,
+      "end_line": 187,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.iter_unsigners",
+      "line": 197,
+      "end_line": 200,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.loads",
+      "line": 205,
+      "end_line": 240,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": true
+}

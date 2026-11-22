@@ -1,0 +1,611 @@
+{
+  "tool_calls": {
+    "checks_focus": 23,
+    "checks_edit": 20,
+    "checks_check": 7
+  },
+  "tool_errors": 11,
+  "tokens": {
+    "input": 1027962,
+    "output": 21874,
+    "reasoning": 0
+  },
+  "peak_reported_input_tokens": 48758,
+  "successful_public_mcp_checks": 4,
+  "execution": {
+    "schema": 1,
+    "adapter": "opencode",
+    "status": "provider_failure",
+    "raw_exit_code": 1,
+    "elapsed": 663.4679999999935,
+    "timed_out": false,
+    "cleanup_passed": true,
+    "provider_gate_passed": false,
+    "independent_verification": "failed",
+    "resources": {
+      "epoch": 1,
+      "remaining_operations": 49,
+      "used": {
+        "inspection": 23,
+        "editing": 17,
+        "verification": 7,
+        "inference": 44,
+        "compaction": 1
+      },
+      "exhausted": "",
+      "policy": {
+        "operations": 96,
+        "edit_reserve": 8,
+        "verification_reserve": 8,
+        "model_requests": 64,
+        "compactions": 4,
+        "blocked_limit": 3
+      },
+      "seconds": {
+        "inference": 593.6709999998566,
+        "inspection": 2.9870000003138557,
+        "editing": 1.4999999998835847,
+        "verification": 28.076999999932013,
+        "compaction": 28.625,
+        "cleanup": 0.01600000006146729
+      },
+      "contract_sha256": "069e445d156f4ad625d3ca8596d491631270ae052903dc71e05dfa166b8dd08e"
+    },
+    "provider_usage": {
+      "reported": [
+        {
+          "request": 1,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 114,
+            "prompt_tokens": 5537,
+            "total_tokens": 5651,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 2,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 62,
+            "prompt_tokens": 9059,
+            "total_tokens": 9121,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 3,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 46,
+            "prompt_tokens": 10807,
+            "total_tokens": 10853,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 4,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 59,
+            "prompt_tokens": 12507,
+            "total_tokens": 12566,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 5,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 327,
+            "prompt_tokens": 14208,
+            "total_tokens": 14535,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 6,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 296,
+            "prompt_tokens": 15255,
+            "total_tokens": 15551,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 7,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 526,
+            "prompt_tokens": 16272,
+            "total_tokens": 16798,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 8,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 461,
+            "prompt_tokens": 17525,
+            "total_tokens": 17986,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 9,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 69,
+            "prompt_tokens": 18715,
+            "total_tokens": 18784,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 10,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 434,
+            "prompt_tokens": 20447,
+            "total_tokens": 20881,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 11,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 290,
+            "prompt_tokens": 21601,
+            "total_tokens": 21891,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 12,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 64,
+            "prompt_tokens": 22613,
+            "total_tokens": 22677,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 13,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 505,
+            "prompt_tokens": 24379,
+            "total_tokens": 24884,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 14,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 373,
+            "prompt_tokens": 25610,
+            "total_tokens": 25983,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 15,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 44,
+            "prompt_tokens": 26706,
+            "total_tokens": 26750,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 16,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 118,
+            "prompt_tokens": 27449,
+            "total_tokens": 27567,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 17,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 2504,
+            "prompt_tokens": 29993,
+            "total_tokens": 32497,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 18,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 1129,
+            "prompt_tokens": 32899,
+            "total_tokens": 34028,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 19,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 593,
+            "prompt_tokens": 34431,
+            "total_tokens": 35024,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 20,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 692,
+            "prompt_tokens": 35714,
+            "total_tokens": 36406,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 21,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 720,
+            "prompt_tokens": 36973,
+            "total_tokens": 37693,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 22,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 75,
+            "prompt_tokens": 38256,
+            "total_tokens": 38331,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 23,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 706,
+            "prompt_tokens": 39408,
+            "total_tokens": 40114,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 24,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 793,
+            "prompt_tokens": 40741,
+            "total_tokens": 41534,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 25,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 77,
+            "prompt_tokens": 42284,
+            "total_tokens": 42361,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 26,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 747,
+            "prompt_tokens": 43552,
+            "total_tokens": 44299,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 27,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 61,
+            "prompt_tokens": 45054,
+            "total_tokens": 45115,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 28,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 944,
+            "prompt_tokens": 46289,
+            "total_tokens": 47233,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 29,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 43,
+            "prompt_tokens": 47993,
+            "total_tokens": 48036,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 30,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 145,
+            "prompt_tokens": 48758,
+            "total_tokens": 48903,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 31,
+          "category": "compaction",
+          "usage": {
+            "completion_tokens": 1084,
+            "prompt_tokens": 51233,
+            "total_tokens": 52317,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 32,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 44,
+            "prompt_tokens": 3398,
+            "total_tokens": 3442,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 33,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 87,
+            "prompt_tokens": 4175,
+            "total_tokens": 4262,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 34,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 60,
+            "prompt_tokens": 7680,
+            "total_tokens": 7740,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 35,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 46,
+            "prompt_tokens": 9503,
+            "total_tokens": 9549,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 36,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 113,
+            "prompt_tokens": 11220,
+            "total_tokens": 11333,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 37,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 50,
+            "prompt_tokens": 14825,
+            "total_tokens": 14875,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 38,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 50,
+            "prompt_tokens": 16629,
+            "total_tokens": 16679,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 39,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 66,
+            "prompt_tokens": 18444,
+            "total_tokens": 18510,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 40,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 57,
+            "prompt_tokens": 19841,
+            "total_tokens": 19898,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 41,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 46,
+            "prompt_tokens": 21725,
+            "total_tokens": 21771,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 42,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 46,
+            "prompt_tokens": 23543,
+            "total_tokens": 23589,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 43,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 4096,
+            "prompt_tokens": 25315,
+            "total_tokens": 29411,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            }
+          }
+        },
+        {
+          "request": 44,
+          "category": "inference",
+          "usage": {
+            "completion_tokens": 4096,
+            "prompt_tokens": 25940,
+            "total_tokens": 30036,
+            "prompt_tokens_details": {
+              "cached_tokens": 25311
+            }
+          }
+        }
+      ],
+      "unreported_requests": [
+        45
+      ]
+    }
+  },
+  "gpu_samples": {
+    "before": [
+      {
+        "name": "NVIDIA A100-SXM4-40GB",
+        "total_mib": 40960,
+        "free_mib": 10144
+      }
+    ],
+    "after": [
+      {
+        "name": "NVIDIA A100-SXM4-40GB",
+        "total_mib": 40960,
+        "free_mib": 10144
+      }
+    ]
+  },
+  "reported_context_fraction": 0.744,
+  "effective_output_tokens_per_second": 32.968,
+  "inference_lanes": 1,
+  "lane_wait_seconds": 0.0,
+  "harness_seconds": 663.5
+}

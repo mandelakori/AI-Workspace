@@ -1,0 +1,72 @@
+{
+  "path": "tests/test_itsdangerous/test_timedelta_max_age.py",
+  "sha256": "7671f98b38f22e9fc01bec440993a610310ebae2e225f7ff9ad3a7f8c7d289b4",
+  "line": 100,
+  "source": "        assert result == b\"hello\"\n\n    def test_timedelta_float_seconds(self) -> None:\n        signer = TimestampSigner(secret_key=\"test-key\")\n        signed = signer.sign(b\"hello\")\n        result = signer.unsign(signed, max_age=10.5)\n        assert result == b\"hello\"",
+  "next_line": null,
+  "total_lines": 106,
+  "selected_symbol": "",
+  "symbols": [
+    {
+      "symbol": "TestTimestampSignerTimedelta",
+      "line": 16,
+      "end_line": 106,
+      "kind": "class"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_valid_signature",
+      "line": 19,
+      "end_line": 23,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_expired",
+      "line": 25,
+      "end_line": 30,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_zero_duration",
+      "line": 32,
+      "end_line": 36,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_negative_duration",
+      "line": 38,
+      "end_line": 42,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_fractional_seconds",
+      "line": 44,
+      "end_line": 48,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_exact_boundary",
+      "line": 50,
+      "end_line": 54,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_future_timestamp_invalid",
+      "line": 55,
+      "end_line": 68,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_return_timestamp",
+      "line": 70,
+      "end_line": 77,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSignerTimedelta.test_timedelta_validate_true",
+      "line": 79,
+      "end_line": 82,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": true
+}

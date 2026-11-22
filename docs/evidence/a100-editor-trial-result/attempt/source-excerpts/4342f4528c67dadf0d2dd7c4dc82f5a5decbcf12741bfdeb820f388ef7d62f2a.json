@@ -1,0 +1,84 @@
+{
+  "path": "src/itsdangerous/timed.py",
+  "sha256": "ae3b668bbe11e29c3152d7aaae9c3f11f94d6602f894ad833c05b11b963fb3a2",
+  "line": 185,
+  "source": "    ) -> bool:\r\n        \"\"\"Only validates the given signed value. Returns ``True`` if\r\n        the signature exists and is valid.\r\n\r\n        .. versionchanged:: 2.4\r\n            ``max_age`` can be a :class:`datetime.timedelta`.\r\n        \"\"\"\r\n        try:\r\n            self.unsign(signed_value, max_age=max_age)\r\n            return True\r\n        except BadSignature:\r\n            return False\r\n\r\n\r\nclass TimedSerializer(Serializer[_TSerialized]):\r\n    \"\"\"Uses :class:`TimestampSigner` instead of the default\r\n    :class:`.Signer`.\r\n    \"\"\"\r\n\r\n    default_signer: type[TimestampSigner] = TimestampSigner  # pyright: ignore\r\n\r\n    def iter_unsigners(\r\n        self, salt: str | bytes | None = None\r\n    ) -> cabc.Iterator[TimestampSigner]:\r\n        return t.cast(\"cabc.Iterator[TimestampSigner]\", super().iter_unsigners(salt))\r\n\r\n    # TODO: Signature is incompatible because parameters were added\r\n    #  before salt.\r\n\r\n    def loads(  # type: ignore[override]\r\n        self,\r\n        s: str | bytes,\r\n        max_age: int | float | timedelta | None = None,\r\n        return_timestamp: bool = False,\r\n        salt: str | bytes | None = None,\r\n    ) -> t.Any:\r\n        \"\"\"Reverse of :meth:`dumps`, raises :exc:`.BadSignature` if the\r\n        signature validation fails. If a ``max_age`` is provided it will\r\n        ensure the signature is not older than that time in seconds. In\r\n        case the signature is outdated, :exc:`.SignatureExpired` is\r\n        raised. All arguments are forwarded to the signer's\r\n        :meth:`~TimestampSigner.unsign` method.\r\n\r\n        .. versionchanged:: 2.4\r\n            ``max_age`` can be a :class:`datetime.timedelta`.\r\n        \"\"\"\r\n        s = want_bytes(s)\r\n        last_exception = None\r\n\r\n        for signer in self.iter_unsigners(salt):\r\n            try:\r\n                base64d, timestamp = signer.unsign(\r\n                    s, max_age=max_age, return_timestamp=True\r\n                )\r\n                payload = self.load_payload(base64d)\r\n\r\n                if return_timestamp:\r\n                    return payload, timestamp\r\n\r\n                return payload\r\n",
+  "next_line": 245,
+  "total_lines": 266,
+  "selected_symbol": "",
+  "symbols": [
+    {
+      "symbol": "TimestampSigner",
+      "line": 36,
+      "end_line": 196,
+      "kind": "class"
+    },
+    {
+      "symbol": "TimedSerializer",
+      "line": 199,
+      "end_line": 266,
+      "kind": "class"
+    },
+    {
+      "symbol": "_max_age_to_seconds",
+      "line": 23,
+      "end_line": 33,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.get_timestamp",
+      "line": 43,
+      "end_line": 47,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.timestamp_to_datetime",
+      "line": 49,
+      "end_line": 57,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.sign",
+      "line": 59,
+      "end_line": 65,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 70,
+      "end_line": 76,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 78,
+      "end_line": 84,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 86,
+      "end_line": 179,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.validate",
+      "line": 181,
+      "end_line": 196,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.iter_unsigners",
+      "line": 206,
+      "end_line": 209,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.loads",
+      "line": 214,
+      "end_line": 252,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": true
+}

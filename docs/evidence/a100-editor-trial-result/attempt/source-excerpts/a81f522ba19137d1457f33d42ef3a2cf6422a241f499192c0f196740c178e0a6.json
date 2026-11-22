@@ -1,0 +1,84 @@
+{
+  "path": "src/itsdangerous/timed.py",
+  "sha256": "ae3b668bbe11e29c3152d7aaae9c3f11f94d6602f894ad833c05b11b963fb3a2",
+  "line": 252,
+  "source": "        raise t.cast(BadSignature, last_exception)\r\n\r\n    def loads_unsafe(  # type: ignore[override]\r\n        self,\r\n        s: str | bytes,\r\n        max_age: int | float | timedelta | None = None,\r\n        salt: str | bytes | None = None,\r\n    ) -> tuple[bool, t.Any]:\r\n        \"\"\"Reverse of :meth:`dumps`, but does not raise on bad signature.\r\n        Instead returns a tuple of ``(valid: bool, payload: Any)``.\r\n\r\n        .. versionchanged:: 2.4\r\n            ``max_age`` can be a :class:`datetime.timedelta`.\r\n        \"\"\"\r\n        return self._loads_unsafe_impl(s, salt, load_kwargs={\"max_age\": max_age})\r\n",
+  "next_line": null,
+  "total_lines": 266,
+  "selected_symbol": "",
+  "symbols": [
+    {
+      "symbol": "TimestampSigner",
+      "line": 36,
+      "end_line": 196,
+      "kind": "class"
+    },
+    {
+      "symbol": "TimedSerializer",
+      "line": 199,
+      "end_line": 266,
+      "kind": "class"
+    },
+    {
+      "symbol": "_max_age_to_seconds",
+      "line": 23,
+      "end_line": 33,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.get_timestamp",
+      "line": 43,
+      "end_line": 47,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.timestamp_to_datetime",
+      "line": 49,
+      "end_line": 57,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.sign",
+      "line": 59,
+      "end_line": 65,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 70,
+      "end_line": 76,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 78,
+      "end_line": 84,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 86,
+      "end_line": 179,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.validate",
+      "line": 181,
+      "end_line": 196,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.iter_unsigners",
+      "line": 206,
+      "end_line": 209,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.loads",
+      "line": 214,
+      "end_line": 252,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": true
+}

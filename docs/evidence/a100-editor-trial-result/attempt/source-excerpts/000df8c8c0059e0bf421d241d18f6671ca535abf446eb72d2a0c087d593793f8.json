@@ -1,0 +1,84 @@
+{
+  "path": "src/itsdangerous/serializer.py",
+  "sha256": "63c30599269bdc92c690bdd631b8ae6cc648dbb63998c766c3542292872047be",
+  "line": 340,
+  "source": "            except BadSignature as err:\r\n                last_exception = err\r\n\r\n        raise t.cast(BadSignature, last_exception)\r\n\r\n    def load(self, f: t.IO[t.Any], salt: str | bytes | None = None) -> t.Any:\r\n        \"\"\"Like :meth:`loads` but loads from a file.\"\"\"\r\n        return self.loads(f.read(), salt)\r\n\r\n    def loads_unsafe(\r\n        self, s: str | bytes, salt: str | bytes | None = None\r\n    ) -> tuple[bool, t.Any]:\r\n        \"\"\"Like :meth:`loads` but without verifying the signature. This\r\n        is potentially very dangerous to use depending on how your\r\n        serializer works. The return value is ``(signature_valid,\r\n        payload)`` instead of just the payload. The first item will be a\r\n        boolean that indicates if the signature is valid. This function\r\n        never fails.\r\n\r\n        Use it for debugging only and if you know that your serializer\r\n        module is not exploitable (for example, do not use it with a\r\n        pickle serializer).\r\n\r\n        .. versionadded:: 0.15\r\n        \"\"\"\r\n        return self._loads_unsafe_impl(s, salt)\r\n\r\n    def _loads_unsafe_impl(\r\n        self,\r\n        s: str | bytes,\r\n        salt: str | bytes | None,\r\n        load_kwargs: dict[str, t.Any] | None = None,\r\n        load_payload_kwargs: dict[str, t.Any] | None = None,\r\n    ) -> tuple[bool, t.Any]:\r\n        \"\"\"Low level helper function to implement :meth:`loads_unsafe`\r\n        in serializer subclasses.\r\n        \"\"\"\r\n        if load_kwargs is None:\r\n            load_kwargs = {}\r\n\r\n        try:\r\n            return True, self.loads(s, salt=salt, **load_kwargs)\r\n        except BadSignature as e:\r\n            if e.payload is None:\r\n                return False, None\r\n\r\n            if load_payload_kwargs is None:\r\n                load_payload_kwargs = {}\r\n\r\n            try:\r\n                return (\r\n                    False,\r\n                    self.load_payload(e.payload, **load_payload_kwargs),\r\n                )\r\n            except BadPayload:\r\n                return False, None\r\n\r\n    def load_unsafe(\r\n        self, f: t.IO[t.Any], salt: str | bytes | None = None\r\n    ) -> tuple[bool, t.Any]:\r\n",
+  "next_line": 400,
+  "total_lines": 404,
+  "selected_symbol": "",
+  "symbols": [
+    {
+      "symbol": "_PDataSerializer",
+      "line": 24,
+      "end_line": 29,
+      "kind": "class"
+    },
+    {
+      "symbol": "Serializer",
+      "line": 40,
+      "end_line": 404,
+      "kind": "class"
+    },
+    {
+      "symbol": "is_text_serializer",
+      "line": 33,
+      "end_line": 37,
+      "kind": "function"
+    },
+    {
+      "symbol": "_PDataSerializer.loads",
+      "line": 25,
+      "end_line": 25,
+      "kind": "function"
+    },
+    {
+      "symbol": "_PDataSerializer.dumps",
+      "line": 29,
+      "end_line": 29,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.__init__",
+      "line": 107,
+      "end_line": 120,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.__init__",
+      "line": 123,
+      "end_line": 136,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.__init__",
+      "line": 139,
+      "end_line": 153,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.__init__",
+      "line": 158,
+      "end_line": 171,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.__init__",
+      "line": 174,
+      "end_line": 188,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.__init__",
+      "line": 190,
+      "end_line": 234,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.secret_key",
+      "line": 236,
+      "end_line": 241,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": true
+}

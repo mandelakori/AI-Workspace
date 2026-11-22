@@ -1,0 +1,375 @@
+diff --git a/src/itsdangerous/timed.py b/src/itsdangerous/timed.py
+index ab721b31f3f173364b291786c935661024ee56ee..d51cb24cd96c963ecbe9a98d63ba53ff7b046c78 100644
+--- a/src/itsdangerous/timed.py
++++ b/src/itsdangerous/timed.py
+@@ -4,6 +4,7 @@ import collections.abc as cabc
+ import time
+ import typing as t
+ from datetime import datetime
++from datetime import timedelta
+ from datetime import timezone
+ 
+ from .encoding import base64_decode
+@@ -19,6 +20,19 @@ from .serializer import Serializer
+ from .signer import Signer
+ 
+ 
++def _max_age_to_seconds(max_age: int | float | timedelta | None) -> float | None:
++    """Convert a max_age argument to seconds as a float.
++
++    Accepts ``int``, ``float``, or ``datetime.timedelta`` values.
++    Returns ``None`` when ``max_age`` is ``None``.
++    """
++    if max_age is None:
++        return None
++    if isinstance(max_age, timedelta):
++        return max_age.total_seconds()
++    return float(max_age)
++
++
+ class TimestampSigner(Signer):
+     """Works like the regular :class:`.Signer` but also records the time
+     of the signing and can be used to expire signatures. The
+@@ -57,7 +71,7 @@ class TimestampSigner(Signer):
+     def unsign(  # pyright: ignore
+         self,
+         signed_value: str | bytes,
+-        max_age: int | None = None,
++        max_age: int | float | timedelta | None = None,
+         return_timestamp: t.Literal[False] = False,
+     ) -> bytes: ...
+ 
+@@ -65,14 +79,14 @@ class TimestampSigner(Signer):
+     def unsign(
+         self,
+         signed_value: str | bytes,
+-        max_age: int | None = None,
++        max_age: int | float | timedelta | None = None,
+         return_timestamp: t.Literal[True] = True,
+     ) -> tuple[bytes, datetime]: ...
+ 
+     def unsign(
+         self,
+         signed_value: str | bytes,
+-        max_age: int | None = None,
++        max_age: int | float | timedelta | None = None,
+         return_timestamp: bool = False,
+     ) -> tuple[bytes, datetime] | bytes:
+         """Works like the regular :meth:`.Signer.unsign` but can also
+@@ -81,6 +95,12 @@ class TimestampSigner(Signer):
+         timestamp of the signature will be returned as an aware
+         :class:`datetime.datetime` object in UTC.
+ 
++        The ``max_age`` argument can be an integer or float number of
++        seconds, or a :class:`datetime.timedelta` object representing
++        the maximum age of the signature.
++
++        .. versionchanged:: 2.4
++            ``max_age`` can be a :class:`datetime.timedelta`.
+         .. versionchanged:: 2.0
+             The timestamp is returned as a timezone-aware ``datetime``
+             in UTC rather than a naive ``datetime`` assumed to be UTC.
+@@ -137,10 +157,11 @@ class TimestampSigner(Signer):
+         # Check timestamp is not older than max_age
+         if max_age is not None:
+             age = self.get_timestamp() - ts_int
++            max_age_secs = _max_age_to_seconds(max_age)
+ 
+-            if age > max_age:
++            if age > max_age_secs:
+                 raise SignatureExpired(
+-                    f"Signature age {age} > {max_age} seconds",
++                    f"Signature age {age} > {max_age_secs} seconds",
+                     payload=value,
+                     date_signed=self.timestamp_to_datetime(ts_int),
+                 )
+@@ -157,9 +178,17 @@ class TimestampSigner(Signer):
+ 
+         return value
+ 
+-    def validate(self, signed_value: str | bytes, max_age: int | None = None) -> bool:
++    def validate(
++        self,
++        signed_value: str | bytes,
++        max_age: int | float | timedelta | None = None,
++    ) -> bool:
+         """Only validates the given signed value. Returns ``True`` if
+-        the signature exists and is valid."""
++        the signature exists and is valid.
++
++        .. versionchanged:: 2.4
++            ``max_age`` can be a :class:`datetime.timedelta`.
++        """
+         try:
+             self.unsign(signed_value, max_age=max_age)
+             return True
+@@ -185,7 +214,7 @@ class TimedSerializer(Serializer[_TSerialized]):
+     def loads(  # type: ignore[override]
+         self,
+         s: str | bytes,
+-        max_age: int | None = None,
++        max_age: int | float | timedelta | None = None,
+         return_timestamp: bool = False,
+         salt: str | bytes | None = None,
+     ) -> t.Any:
+@@ -195,6 +224,9 @@ class TimedSerializer(Serializer[_TSerialized]):
+         case the signature is outdated, :exc:`.SignatureExpired` is
+         raised. All arguments are forwarded to the signer's
+         :meth:`~TimestampSigner.unsign` method.
++
++        .. versionchanged:: 2.4
++            ``max_age`` can be a :class:`datetime.timedelta`.
+         """
+         s = want_bytes(s)
+         last_exception = None
+@@ -222,7 +254,13 @@ class TimedSerializer(Serializer[_TSerialized]):
+     def loads_unsafe(  # type: ignore[override]
+         self,
+         s: str | bytes,
+-        max_age: int | None = None,
++        max_age: int | float | timedelta | None = None,
+         salt: str | bytes | None = None,
+     ) -> tuple[bool, t.Any]:
++        """Reverse of :meth:`dumps`, but does not raise on bad signature.
++        Instead returns a tuple of ``(valid: bool, payload: Any)``.
++
++        .. versionchanged:: 2.4
++            ``max_age`` can be a :class:`datetime.timedelta`.
++        """
+         return self._loads_unsafe_impl(s, salt, load_kwargs={"max_age": max_age})
+diff --git a/tests/test_itsdangerous/test_timedelta_max_age.py b/tests/test_itsdangerous/test_timedelta_max_age.py
+new file mode 100644
+index 0000000000000000000000000000000000000000..64292a2001c24074858fbda11687b6dc560e6ef7
+--- /dev/null
++++ b/tests/test_itsdangerous/test_timedelta_max_age.py
+@@ -0,0 +1,229 @@
++"""Tests for datetime.timedelta support in max_age arguments."""
++
++from __future__ import annotations
++
++import datetime
++import time
++
++import pytest
++
++from itsdangerous import TimestampSigner
++from itsdangerous import TimedSerializer
++from itsdangerous.exc import SignatureExpired
++from itsdangerous.url_safe import URLSafeTimedSerializer
++
++
++class TestTimestampSignerTimedelta:
++    """Tests for TimestampSigner with timedelta max_age."""
++
++    def test_timedelta_valid_signature(self) -> None:
++        signer = TimestampSigner(secret_key="test-key")
++        signed = signer.sign(b"hello")
++        result = signer.unsign(signed, max_age=datetime.timedelta(seconds=10))
++        assert result == b"hello"
++
++    def test_timedelta_expired(self) -> None:
++        signer = TimestampSigner(secret_key="test-key")
++        signed = signer.sign(b"hello")
++        time.sleep(1.1)
++        with pytest.raises(SignatureExpired):
++            signer.unsign(signed, max_age=datetime.timedelta(seconds=1))
++
++    def test_timedelta_zero_duration(self) -> None:
++        signer = TimestampSigner(secret_key="test-key")
++        signed = signer.sign(b"hello")
++        with pytest.raises(SignatureExpired):
++            signer.unsign(signed, max_age=datetime.timedelta(seconds=0))
++
++    def test_timedelta_negative_duration(self) -> None:
++        signer = TimestampSigner(secret_key="test-key")
++        signed = signer.sign(b"hello")
++        with pytest.raises(SignatureExpired):
++            signer.unsign(signed, max_age=datetime.timedelta(seconds=-1))
++
++    def test_timedelta_fractional_seconds(self) -> None:
++        signer = TimestampSigner(secret_key="test-key")
++        signed = signer.sign(b"hello")
++        result = signer.unsign(signed, max_age=datetime.timedelta(milliseconds=500))
++        assert result == b"hello"
++
++    def test_timedelta_exact_boundary(self) -> None:
++        signer = TimestampSigner(secret_key="test-key")
++        signed = signer.sign(b"hello")
++        result = signer.unsign(signed, max_age=datetime.timedelta(seconds=3600))
++        assert result == b"hello"
++    def test_timedelta_future_timestamp_invalid(self) -> None:
++        signer = TimestampSigner(secret_key="test-key")
++        future_ts = int(time.time()) + 10000
++        from itsdangerous.encoding import base64_encode, int_to_bytes
++
++        ts_bytes = base64_encode(int_to_bytes(future_ts))
++        sep = signer.sep.encode()
++        value = b"hello"
++        to_sign = value + sep + ts_bytes
++        sig = signer.get_signature(to_sign)
++        signed = to_sign + sep + sig
++
++        with pytest.raises(SignatureExpired):
++            signer.unsign(signed, max_age=datetime.timedelta(seconds=10))
++
++    def test_timedelta_return_timestamp(self) -> None:
++        signer = TimestampSigner(secret_key="test-key")
++        signed = signer.sign(b"hello")
++        result, ts = signer.unsign(
++            signed, max_age=datetime.timedelta(seconds=10), return_timestamp=True
++        )
++        assert result == b"hello"
++        assert ts.tzinfo is not None
++
++    def test_timedelta_validate_true(self) -> None:
++        signer = TimestampSigner(secret_key="test-key")
++        signed = signer.sign(b"hello")
++        assert signer.validate(signed, max_age=datetime.timedelta(seconds=10)) is True
++
++    def test_timedelta_validate_expired(self) -> None:
++        signer = TimestampSigner(secret_key="test-key")
++        signed = signer.sign(b"hello")
++        time.sleep(1.1)
++        assert signer.validate(signed, max_age=datetime.timedelta(seconds=1)) is False
++
++    def test_timedelta_preserves_int_behavior(self) -> None:
++        signer = TimestampSigner(secret_key="test-key")
++        signed = signer.sign(b"hello")
++        result = signer.unsign(signed, max_age=10)
++        assert result == b"hello"
++
++    def test_timedelta_preserves_none_behavior(self) -> None:
++        signer = TimestampSigner(secret_key="test-key")
++        signed = signer.sign(b"hello")
++        result = signer.unsign(signed, max_age=None)
++        assert result == b"hello"
++
++    def test_timedelta_float_seconds(self) -> None:
++        signer = TimestampSigner(secret_key="test-key")
++        signed = signer.sign(b"hello")
++        result = signer.unsign(signed, max_age=10.5)
++        assert result == b"hello"
++
++class TestTimedSerializerTimedelta:
++    """Tests for TimedSerializer with timedelta max_age."""
++
++    def test_timedelta_valid(self) -> None:
++        ser = TimedSerializer(secret_key="test-key")
++        signed = ser.dumps("hello")
++        result = ser.loads(signed, max_age=datetime.timedelta(seconds=10))
++        assert result == "hello"
++
++    def test_timedelta_expired(self) -> None:
++        ser = TimedSerializer(secret_key="test-key")
++        signed = ser.dumps("hello")
++        time.sleep(1.1)
++        with pytest.raises(SignatureExpired):
++            ser.loads(signed, max_age=datetime.timedelta(seconds=1))
++
++    def test_timedelta_loads_unsafe_valid(self) -> None:
++        ser = TimedSerializer(secret_key="test-key")
++        signed = ser.dumps("hello")
++        valid, payload = ser.loads_unsafe(
++            signed, max_age=datetime.timedelta(seconds=10)
++        )
++        assert valid is True
++        assert payload == "hello"
++
++    def test_timedelta_loads_unsafe_expired(self) -> None:
++        ser = TimedSerializer(secret_key="test-key")
++        signed = ser.dumps("hello")
++        time.sleep(1.1)
++        valid, payload = ser.loads_unsafe(
++            signed, max_age=datetime.timedelta(seconds=1)
++        )
++        assert valid is False
++
++    def test_timedelta_loads_unsafe_bad_signature(self) -> None:
++        ser = TimedSerializer(secret_key="test-key")
++        valid, payload = ser.loads_unsafe(
++            "invalid-signature", max_age=datetime.timedelta(seconds=10)
++        )
++        assert valid is False
++
++    def test_timedelta_fractional(self) -> None:
++        ser = TimedSerializer(secret_key="test-key")
++        signed = ser.dumps("hello")
++        result = ser.loads(signed, max_age=datetime.timedelta(milliseconds=500))
++        assert result == "hello"
++
++    def test_timedelta_zero(self) -> None:
++        ser = TimedSerializer(secret_key="test-key")
++        signed = ser.dumps("hello")
++        with pytest.raises(SignatureExpired):
++            ser.loads(signed, max_age=datetime.timedelta(seconds=0))
++
++class TestURLSafeTimedSerializerTimedelta:
++    """Tests for URLSafeTimedSerializer with timedelta max_age."""
++
++    def test_timedelta_valid(self) -> None:
++        ser = URLSafeTimedSerializer(secret_key="test-key")
++        signed = ser.dumps("hello")
++        result = ser.loads(signed, max_age=datetime.timedelta(seconds=10))
++        assert result == "hello"
++
++    def test_timedelta_expired(self) -> None:
++        ser = URLSafeTimedSerializer(secret_key="test-key")
++        signed = ser.dumps("hello")
++        time.sleep(1.1)
++        with pytest.raises(SignatureExpired):
++            ser.loads(signed, max_age=datetime.timedelta(seconds=1))
++
++    def test_timedelta_loads_unsafe_valid(self) -> None:
++        ser = URLSafeTimedSerializer(secret_key="test-key")
++        signed = ser.dumps("hello")
++        valid, payload = ser.loads_unsafe(
++            signed, max_age=datetime.timedelta(seconds=10)
++        )
++        assert valid is True
++        assert payload == "hello"
++
++    def test_timedelta_loads_unsafe_expired(self) -> None:
++        ser = URLSafeTimedSerializer(secret_key="test-key")
++        signed = ser.dumps("hello")
++        time.sleep(1.1)
++        valid, payload = ser.loads_unsafe(
++            signed, max_age=datetime.timedelta(seconds=1)
++        )
++        assert valid is False
++
++    def test_timedelta_fractional(self) -> None:
++        ser = URLSafeTimedSerializer(secret_key="test-key")
++        signed = ser.dumps("hello")
++        result = ser.loads(signed, max_age=datetime.timedelta(milliseconds=500))
++        assert result == "hello"
++
++    def test_timedelta_negative(self) -> None:
++        ser = URLSafeTimedSerializer(secret_key="test-key")
++        signed = ser.dumps("hello")
++        with pytest.raises(SignatureExpired):
++            ser.loads(signed, max_age=datetime.timedelta(seconds=-1))
++
++    def test_timedelta_key_rotation(self) -> None:
++        """Key rotation should work with timedelta max_age."""
++        ser = TimedSerializer(secret_key=["key1", "key2"])
++        signed = ser.dumps("hello")
++        result = ser.loads(signed, max_age=datetime.timedelta(seconds=10))
++        assert result == "hello"
++
++    def test_timedelta_key_rotation_second_key(self) -> None:
++        """Key rotation with second key should work with timedelta."""
++        ser = TimedSerializer(secret_key=["key1", "key2"])
++        signer = TimestampSigner(secret_key="key2")
++        from itsdangerous.encoding import base64_encode, int_to_bytes
++
++        ts = signer.get_timestamp()
++        ts_bytes = base64_encode(int_to_bytes(ts))
++        sep = signer.sep.encode()
++        value = ser.dumps("hello").encode()
++        to_sign = value + sep + ts_bytes
++        sig = signer.get_signature(to_sign)
++        signed = (to_sign + sep + sig).decode()
++
++        result = ser.loads(signed, max_age=datetime.timedelta(seconds=10))
++        assert result == "hello"
+\ No newline at end of file

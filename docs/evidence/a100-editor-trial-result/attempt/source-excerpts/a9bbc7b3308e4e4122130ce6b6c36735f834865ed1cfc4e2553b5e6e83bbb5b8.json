@@ -1,0 +1,84 @@
+{
+  "path": "src/itsdangerous/serializer.py",
+  "sha256": "63c30599269bdc92c690bdd631b8ae6cc648dbb63998c766c3542292872047be",
+  "line": 1,
+  "source": "from __future__ import annotations\r\n\r\nimport collections.abc as cabc\r\nimport json\r\nimport typing as t\r\n\r\nfrom .encoding import want_bytes\r\nfrom .exc import BadPayload\r\nfrom .exc import BadSignature\r\nfrom .signer import _make_keys_list\r\nfrom .signer import Signer\r\n\r\nif t.TYPE_CHECKING:\r\n    import typing_extensions as te\r\n\r\n    # This should be either be str or bytes. To avoid having to specify the\r\n    # bound type, it falls back to a union if structural matching fails.\r\n    _TSerialized = te.TypeVar(\"_TSerialized\", bound=str | bytes, default=str | bytes)\r\nelse:\r\n    # Still available at runtime on Python < 3.13, but without the default.\r\n    _TSerialized = t.TypeVar(\"_TSerialized\", bound=str | bytes)\r\n\r\n\r\nclass _PDataSerializer(t.Protocol[_TSerialized]):\r\n    def loads(self, payload: _TSerialized, /) -> t.Any: ...\r\n    # A signature with additional arguments is not handled correctly by type\r\n    # checkers right now, so an overload is used below for serializers that\r\n    # don't match this strict protocol.\r\n    def dumps(self, obj: t.Any, /) -> _TSerialized: ...\r\n\r\n\r\n# Use TypeIs once it's available in typing_extensions or 3.13.\r\ndef is_text_serializer(\r\n    serializer: _PDataSerializer[t.Any],\r\n) -> te.TypeGuard[_PDataSerializer[str]]:\r\n    \"\"\"Checks whether a serializer generates text or binary.\"\"\"\r\n    return isinstance(serializer.dumps({}), str)\r\n\r\n\r\nclass Serializer(t.Generic[_TSerialized]):\r\n    \"\"\"A serializer wraps a :class:`~itsdangerous.signer.Signer` to\r\n    enable serializing and securely signing data other than bytes. It\r\n    can unsign to verify that the data hasn't been changed.\r\n\r\n    The serializer provides :meth:`dumps` and :meth:`loads`, similar to\r\n    :mod:`json`, and by default uses :mod:`json` internally to serialize\r\n    the data to bytes.\r\n\r\n    The secret key should be a random string of ``bytes`` and should not\r\n    be saved to code or version control. Different salts should be used\r\n    to distinguish signing in different contexts. See :doc:`/concepts`\r\n    for information about the security of the secret key and salt.\r\n\r\n    :param secret_key: The secret key to sign and verify with. Can be a\r\n        list of keys, oldest to newest, to support key rotation.\r\n    :param salt: Extra key to combine with ``secret_key`` to distinguish\r\n        signatures in different contexts.\r\n    :param serializer: An object that provides ``dumps`` and ``loads``\r\n        methods for serializing data to a string. Defaults to\r\n        :attr:`default_serializer`, which defaults to :mod:`json`.\r\n",
+  "next_line": 61,
+  "total_lines": 404,
+  "selected_symbol": "",
+  "symbols": [
+    {
+      "symbol": "_PDataSerializer",
+      "line": 24,
+      "end_line": 29,
+      "kind": "class"
+    },
+    {
+      "symbol": "Serializer",
+      "line": 40,
+      "end_line": 404,
+      "kind": "class"
+    },
+    {
+      "symbol": "is_text_serializer",
+      "line": 33,
+      "end_line": 37,
+      "kind": "function"
+    },
+    {
+      "symbol": "_PDataSerializer.loads",
+      "line": 25,
+      "end_line": 25,
+      "kind": "function"
+    },
+    {
+      "symbol": "_PDataSerializer.dumps",
+      "line": 29,
+      "end_line": 29,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.__init__",
+      "line": 107,
+      "end_line": 120,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.__init__",
+      "line": 123,
+      "end_line": 136,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.__init__",
+      "line": 139,
+      "end_line": 153,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.__init__",
+      "line": 158,
+      "end_line": 171,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.__init__",
+      "line": 174,
+      "end_line": 188,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.__init__",
+      "line": 190,
+      "end_line": 234,
+      "kind": "function"
+    },
+    {
+      "symbol": "Serializer.secret_key",
+      "line": 236,
+      "end_line": 241,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": true
+}

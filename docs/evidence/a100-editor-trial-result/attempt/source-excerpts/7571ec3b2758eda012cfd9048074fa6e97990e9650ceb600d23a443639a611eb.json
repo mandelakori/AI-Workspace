@@ -1,0 +1,84 @@
+{
+  "path": "src/itsdangerous/timed.py",
+  "sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+  "line": 132,
+  "source": "        # Signature was okay but the timestamp is actually not there or\r\n        # malformed. Should not happen, but we handle it anyway.\r\n        if ts_int is None:\r\n            raise BadTimeSignature(\"Malformed timestamp\", payload=value)\r\n\r\n        # Check timestamp is not older than max_age\r\n        if max_age is not None:\r\n            age = self.get_timestamp() - ts_int\r\n\r\n            if age > max_age:\r\n                raise SignatureExpired(\r\n                    f\"Signature age {age} > {max_age} seconds\",\r\n                    payload=value,\r\n                    date_signed=self.timestamp_to_datetime(ts_int),\r\n                )\r\n\r\n            if age < 0:\r\n                raise SignatureExpired(\r\n                    f\"Signature age {age} < 0 seconds\",\r\n                    payload=value,\r\n                    date_signed=self.timestamp_to_datetime(ts_int),\r\n                )\r\n\r\n        if return_timestamp:\r\n            return value, self.timestamp_to_datetime(ts_int)\r\n\r\n        return value\r\n\r\n    def validate(self, signed_value: str | bytes, max_age: int | None = None) -> bool:\r\n        \"\"\"Only validates the given signed value. Returns ``True`` if\r\n        the signature exists and is valid.\"\"\"\r\n        try:\r\n            self.unsign(signed_value, max_age=max_age)\r\n            return True\r\n        except BadSignature:\r\n            return False\r\n\r\n\r\nclass TimedSerializer(Serializer[_TSerialized]):\r\n    \"\"\"Uses :class:`TimestampSigner` instead of the default\r\n    :class:`.Signer`.\r\n    \"\"\"\r\n\r\n    default_signer: type[TimestampSigner] = TimestampSigner  # pyright: ignore\r\n\r\n    def iter_unsigners(\r\n        self, salt: str | bytes | None = None\r\n    ) -> cabc.Iterator[TimestampSigner]:\r\n        return t.cast(\"cabc.Iterator[TimestampSigner]\", super().iter_unsigners(salt))\r\n\r\n    # TODO: Signature is incompatible because parameters were added\r\n    #  before salt.\r\n\r\n    def loads(  # type: ignore[override]\r\n        self,\r\n        s: str | bytes,\r\n        max_age: int | None = None,\r\n        return_timestamp: bool = False,\r\n        salt: str | bytes | None = None,\r\n    ) -> t.Any:\r\n",
+  "next_line": 192,
+  "total_lines": 228,
+  "selected_symbol": "",
+  "symbols": [
+    {
+      "symbol": "TimestampSigner",
+      "line": 22,
+      "end_line": 167,
+      "kind": "class"
+    },
+    {
+      "symbol": "TimedSerializer",
+      "line": 170,
+      "end_line": 228,
+      "kind": "class"
+    },
+    {
+      "symbol": "TimestampSigner.get_timestamp",
+      "line": 29,
+      "end_line": 33,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.timestamp_to_datetime",
+      "line": 35,
+      "end_line": 43,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.sign",
+      "line": 45,
+      "end_line": 51,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 56,
+      "end_line": 62,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 64,
+      "end_line": 70,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 72,
+      "end_line": 158,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.validate",
+      "line": 160,
+      "end_line": 167,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.iter_unsigners",
+      "line": 177,
+      "end_line": 180,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.loads",
+      "line": 185,
+      "end_line": 220,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.loads_unsafe",
+      "line": 222,
+      "end_line": 228,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": false
+}
