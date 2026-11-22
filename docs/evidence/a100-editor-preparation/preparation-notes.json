@@ -1,0 +1,9 @@
+{
+  "initial_readiness_setup_failure": {
+    "exception": "FileNotFoundError",
+    "reason": "Read-only inspection began before its new parent directory was created by the parallel setup command. Failed at out.mkdir, before SSH or endpoint access.",
+    "resolution": "Created the parent, then ran the unchanged inspection command successfully.",
+    "inference_requests": 0
+  },
+  "no_execution_retries": "No engineering session was dispatched or retried."
+}

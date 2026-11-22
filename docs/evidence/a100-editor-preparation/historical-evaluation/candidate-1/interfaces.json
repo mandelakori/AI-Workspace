@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python",
+    "_aiwork_checks.py",
+    "interfaces"
+  ],
+  "cwd": "",
+  "runner": "sha256:00d3d7e3d1e32064b5bf313cc788fb91945c0c5fa000856513f490f2c8087645",
+  "code": 1,
+  "elapsed": 0.9220000000204891,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/work/_aiwork_checks.py\", line 86, in <module>\n    if __name__=='__main__':raise SystemExit(main())\n                                             ^^^^^^\n  File \"/work/_aiwork_checks.py\", line 71, in main\n    if action=='interfaces':return interfaces()\n                                   ^^^^^^^^^^^^\n  File \"/work/_aiwork_checks.py\", line 63, in interfaces\n    annotation=typing.get_type_hints(item)['max_age']\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/typing.py\", line 2315, in get_type_hints\n    hints[name] = _eval_type(value, globalns, localns, type_params)\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/typing.py\", line 415, in _eval_type\n    return t._evaluate(globalns, localns, type_params, recursive_guard=recursive_guard)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/typing.py\", line 947, in _evaluate\n    eval(self.__forward_code__, globalns, localns),\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<string>\", line 1, in <module>\nNameError: name 'timedelta' is not defined\n",
+  "timed_out": false,
+  "truncated": false,
+  "passed": false
+}

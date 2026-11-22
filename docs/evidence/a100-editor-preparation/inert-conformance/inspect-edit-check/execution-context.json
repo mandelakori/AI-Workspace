@@ -1,0 +1,208 @@
+{
+  "contract": {
+    "objective": "Scripted edit conformance only",
+    "write_roots": [
+      "module.py"
+    ],
+    "public_checks": [
+      {
+        "argv": [
+          "{python}",
+          "-c",
+          "from module import first,second; assert first(3)==6; assert second(3)==4"
+        ]
+      }
+    ],
+    "setup": [],
+    "deadline": null,
+    "policy": {
+      "operations": 24,
+      "edit_reserve": 2,
+      "verification_reserve": 2,
+      "model_requests": 16,
+      "compactions": 4,
+      "blocked_limit": 3
+    }
+  },
+  "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+  "epoch": 0,
+  "visible": [
+    "a78bfc56b1b5a2ca16d2ef39580cbe28fe445a46ce82631dff9dbbb7905040f4",
+    "f8c74959cadb2c3246c0208a0e76db771923cfe12790b82a8247ed236f61ebee"
+  ],
+  "issued": {
+    "a78bfc56b1b5a2ca16d2ef39580cbe28fe445a46ce82631dff9dbbb7905040f4": {
+      "path": "module.py",
+      "sha256": "347ac469a81d6ffb2d0020f7b4a209256049d58c62678907876b505b16400dfd",
+      "line": 1,
+      "next_line": null
+    },
+    "f8c74959cadb2c3246c0208a0e76db771923cfe12790b82a8247ed236f61ebee": {
+      "path": "module.py",
+      "sha256": "8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447",
+      "line": 1,
+      "next_line": null
+    }
+  },
+  "events": [
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 24,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 23,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 22,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 21,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 20,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 19,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 18,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 17,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 16,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "check",
+      "category": "verification",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa",
+      "remaining_operations": 15,
+      "denied": ""
+    }
+  ],
+  "used": {
+    "inspection": 3,
+    "editing": 5,
+    "verification": 1,
+    "inference": 10,
+    "compaction": 0
+  },
+  "seconds": {
+    "inference": 0.046999999904073775,
+    "inspection": 0.21799999999348074,
+    "editing": 0.39000000001396984,
+    "verification": 0.3440000000409782,
+    "cleanup": 0.01600000006146729
+  },
+  "blocked": 0,
+  "exhausted": ""
+}

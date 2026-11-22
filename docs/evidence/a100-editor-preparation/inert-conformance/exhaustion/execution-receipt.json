@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "adapter": "opencode",
+  "status": "resource_exhausted",
+  "raw_exit_code": 1,
+  "elapsed": 2.859000000054948,
+  "timed_out": false,
+  "cleanup_passed": true,
+  "provider_gate_passed": true,
+  "independent_verification": "pending",
+  "resources": {
+    "epoch": 0,
+    "remaining_operations": 19,
+    "used": {
+      "inspection": 1,
+      "editing": 4,
+      "verification": 0,
+      "inference": 5,
+      "compaction": 0
+    },
+    "exhausted": "repeated equivalent source-edit failures exhausted recovery",
+    "policy": {
+      "operations": 24,
+      "edit_reserve": 2,
+      "verification_reserve": 2,
+      "model_requests": 16,
+      "compactions": 4,
+      "blocked_limit": 3
+    },
+    "seconds": {
+      "inference": 0.046999999904073775,
+      "inspection": 0.015000000013969839,
+      "editing": 0.21799999999348074,
+      "cleanup": 0.01600000006146729
+    },
+    "contract_sha256": "c7f61babd35698c95dce79eef0366d2cac715b67e3e57b20fdb78c2bd5dc25aa"
+  },
+  "provider_usage": {
+    "reported": [],
+    "unreported_requests": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  }
+}

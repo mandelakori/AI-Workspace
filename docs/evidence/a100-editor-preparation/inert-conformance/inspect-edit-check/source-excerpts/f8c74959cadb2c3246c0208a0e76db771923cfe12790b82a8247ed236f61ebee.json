@@ -1,0 +1,24 @@
+{
+  "path": "module.py",
+  "sha256": "8cf8bb0d91f17a1c4b4b0ceedd2219ae7eca0530cf04d640a501004d2adb8447",
+  "line": 1,
+  "source": "def first(value):\r\n    return value * 2\r\n\r\ndef second(value):\r\n    return value\r\n",
+  "next_line": null,
+  "total_lines": 5,
+  "selected_symbol": "",
+  "symbols": [
+    {
+      "symbol": "first",
+      "line": 1,
+      "end_line": 2,
+      "kind": "function"
+    },
+    {
+      "symbol": "second",
+      "line": 4,
+      "end_line": 5,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": false
+}

@@ -1,0 +1,40 @@
+{
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "approval_digest": "de9bdcda4c591eaf1b2a93927477b3159e4da9f1b480c844ed93abacf46a07e3",
+  "same_frozen_fields": [
+    "pristine_inventory",
+    "input_inventory",
+    "profile",
+    "request_options",
+    "ssh",
+    "endpoint_identity",
+    "opencode",
+    "runner",
+    "asset_hashes",
+    "phase_limits",
+    "worker",
+    "permissions",
+    "cache_protocol",
+    "independent_evaluation",
+    "completion",
+    "stop_policy",
+    "selection"
+  ],
+  "changed_controller_files": [
+    "mcp.py",
+    "source_edit.py"
+  ],
+  "catalog_sha256": "2dc60a4f2cd0a8c316540565bb6948c250e4508359645421b4437389a38865ae",
+  "catalog_passed": true,
+  "location_schema_and_recovery_description_verified": true,
+  "fresh_start_equals_original": true,
+  "historical_candidates_used": false,
+  "historical_results_exposed_to_worker": false,
+  "consumed_approvals_rejected": true,
+  "unapproved_example_rejected": true,
+  "worker_sessions_dispatched": 0,
+  "real_model_requests": 0,
+  "sealed_cases_created": 0,
+  "endpoint_current_identity_matches": true,
+  "owned_forward_closed": true
+}

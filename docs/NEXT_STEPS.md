@@ -1,5 +1,21 @@
 # Next steps
 
+## Current handoff: fresh unauthorized A100 trial
+
+[Editor-recovery preparation](A100-EDITOR-RECOVERY-PREPARATION.md) is verified and
+**PREPARED_NOT_AUTHORIZED**. Bundle `.aiwork/a100-editor-recovery/itsdangerous-trial`;
+digest `de9bdcda4c591eaf1b2a93927477b3159e4da9f1b480c844ed93abacf46a07e3`.
+Require separate approval for exactly `["a100-existing"]`, then revalidate every
+frozen dependency, implementation/source hash, endpoint identity and idle slot.
+No live inference or worker was dispatched. Do not reuse consumed approvals.
+
+Both historical replay sources grade 3/12 public and 297/297 upstream, with syntax
+passing and no gains/regressions. They are not promoted and must stay outside
+future starting sources/prompts. Fresh trial input remains byte-identical to the
+original clean source and public evidence. All 207 regressions pass without skips.
+Keep original Milestone E; stop here pending approval. The handoffs below are
+historical and do not authorize dispatch.
+
 ## Current handoff: deterministic source-editing recovery
 
 [Editor recovery](A100-SOURCE-EDITING-RECOVERY.md) implements conservative LF/CRLF

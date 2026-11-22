@@ -1,5 +1,15 @@
 # Status as of 2026-11-22
 
+## Milestone E: fresh editor-recovery trial preparation
+
+| Capability / outcome | Status | Evidence |
+| --- | --- | --- |
+| Historical replay source grades | VERIFIED | [Preparation report](A100-EDITOR-RECOVERY-PREPARATION.md): two distinct sources each pass syntax, 3/12 public and 297/297 upstream; zero gains or regressions. Interface checks fail, authored tests absent. Historical offline proposals only; neither promoted nor supplied to workers. |
+| Editor and infrastructure readiness | VERIFIED | 207/207 regressions, zero skips, 155.271 s; installed inert OpenCode edit/public-test and bounded-exhaustion conformance, scoped catalog/schema checks, consumed-grant rejection. |
+| Fresh immutable preparation | VERIFIED | `.aiwork/a100-editor-recovery/itsdangerous-trial`, PREPARED_NOT_AUTHORIZED; digest `de9bdcda4c591eaf1b2a93927477b3159e4da9f1b480c844ed93abacf46a07e3`. Original clean input, specification, corpus, A100/64K profile and limits unchanged; corrected editor bound by implementation hashes. |
+| Existing endpoint snapshot | VERIFIED | Read-only inspection: original model/template/build identity, one idle 131072-token slot, zero generation requests, owned forward closed. Recheck before authorized dispatch; no new model-file hash claimed. |
+| Autonomous feature completion after recovery | UNTESTED | No real model tokens, worker dispatch, candidate freeze or sealed cases. Both old trials remain quarantined/consumed; main and historical evidence unchanged. |
+
 ## Milestone E: deterministic editor recovery
 
 | Capability / outcome | Status | Evidence |
