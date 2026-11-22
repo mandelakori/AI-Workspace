@@ -1,0 +1,22 @@
+test_accounting_failure_fails_closed_without_skipping_connection_cleanup (test_provider_gate.ProviderGateTests.test_accounting_failure_fails_closed_without_skipping_connection_cleanup) ... ok
+test_catalog_requires_all_tools_without_adding_permissions (test_provider_gate.ProviderGateTests.test_catalog_requires_all_tools_without_adding_permissions) ... ok
+test_exhausted_context_never_forwards_and_is_not_provider_failure (test_provider_gate.ProviderGateTests.test_exhausted_context_never_forwards_and_is_not_provider_failure) ... ok
+test_missing_catalog_latches_closed_and_never_reaches_backend (test_provider_gate.ProviderGateTests.test_missing_catalog_latches_closed_and_never_reaches_backend) ... ok
+test_scoped_catalog_refuses_unmetered_native_tools (test_provider_gate.ProviderGateTests.test_scoped_catalog_refuses_unmetered_native_tools) ... ok
+test_slow_inert_prefill_survives_multiple_cancellation_poll_intervals (test_provider_gate.ProviderGateTests.test_slow_inert_prefill_survives_multiple_cancellation_poll_intervals) ... ok
+test_upstream_failure_latches_and_records_same_and_changed_body_resends (test_provider_gate.ProviderGateTests.test_upstream_failure_latches_and_records_same_and_changed_body_resends) ... FAIL
+test_valid_catalog_forwards_request_bytes_unchanged (test_provider_gate.ProviderGateTests.test_valid_catalog_forwards_request_bytes_unchanged) ... ok
+
+======================================================================
+FAIL: test_upstream_failure_latches_and_records_same_and_changed_body_resends (test_provider_gate.ProviderGateTests.test_upstream_failure_latches_and_records_same_and_changed_body_resends)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\tests\test_provider_gate.py", line 40, in test_upstream_failure_latches_and_records_same_and_changed_body_resends
+    self.assertEqual(gate.receipts[1]['retry_of'],1);self.assertIsNone(gate.receipts[2]['retry_of'])
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 3 is not None
+
+----------------------------------------------------------------------
+Ran 8 tests in 5.330s
+
+FAILED (failures=1)

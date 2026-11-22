@@ -1,0 +1,8 @@
+pristine [('numeric-string', {'error': 'TypeError'}), ('numeric-bytes', {'error': 'TypeError'}), ('nan-string', {'error': 'TypeError'}), ('large-integer', {'error': 'SignatureExpired'}), ('large-integer', {'result': 'accepted'})]
+clock 0.125 t_timedelta_max_age.py::TestURLSafeTimedSerializerTimedelta::test_timedelta_key_rotation_second_key
+10 failed, 18 passed in 0.93s
+
+clock 0.95 st_timedelta_max_age.py::TestURLSafeTimedSerializerTimedelta::test_timedelta_key_rotation_second_key
+4 failed, 24 passed in 0.79s
+
+candidate [('numeric-string', {'result': 'accepted'}), ('numeric-bytes', {'result': 'accepted'}), ('nan-string', {'result': 'accepted'}), ('large-integer', {'result': 'accepted'}), ('large-integer', {'error': 'SignatureExpired'})]

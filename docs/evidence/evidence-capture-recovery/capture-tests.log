@@ -1,0 +1,14 @@
+test_cancelled_stream_keeps_hash_and_closes_owned_connections (test_evidence_capture.CaptureGateTests.test_cancelled_stream_keeps_hash_and_closes_owned_connections) ... ok
+test_full_saved_streams_replayed_twice_exceed_observed_trial_size (test_evidence_capture.CaptureGateTests.test_full_saved_streams_replayed_twice_exceed_observed_trial_size) ... ok
+test_incoming_and_rewritten_limits_stop_before_forwarding_with_attribution (test_evidence_capture.CaptureGateTests.test_incoming_and_rewritten_limits_stop_before_forwarding_with_attribution) ... ok
+test_storage_failure_is_local_evidence_failure_and_never_forwards (test_evidence_capture.CaptureGateTests.test_storage_failure_is_local_evidence_failure_and_never_forwards) ... ok
+test_stream_exhaustion_preserves_exact_prefix_and_normalizes_cleanly (test_evidence_capture.CaptureGateTests.test_stream_exhaustion_preserves_exact_prefix_and_normalizes_cleanly) ... ok
+test_exact_writes_do_not_overwrite_or_exceed_limit (test_evidence_capture.CaptureTests.test_exact_writes_do_not_overwrite_or_exceed_limit) ... ok
+test_partial_disk_write_is_accounted_hashed_and_classified (test_evidence_capture.CaptureTests.test_partial_disk_write_is_accounted_hashed_and_classified) ... ok
+test_reservations_limit_disk_headroom_and_release_unused_bytes (test_evidence_capture.CaptureTests.test_reservations_limit_disk_headroom_and_release_unused_bytes) ... ok
+test_usage_parsing_is_incremental_and_oversized_lines_do_not_grow_memory (test_evidence_capture.CaptureTests.test_usage_parsing_is_incremental_and_oversized_lines_do_not_grow_memory) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 13.835s
+
+OK

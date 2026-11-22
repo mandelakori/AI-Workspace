@@ -1,0 +1,326 @@
+{
+  "receipt": {
+    "argv": [
+      "python",
+      "_diagnose.py"
+    ],
+    "cwd": "",
+    "runner": "sha256:00d3d7e3d1e32064b5bf313cc788fb91945c0c5fa000856513f490f2c8087645",
+    "code": 0,
+    "elapsed": 0.9059999999590218,
+    "stdout": "{\"kind\": \"OPEN_OFFLINE_DIAGNOSTICS_NOT_SEALED_ACCEPTANCE\", \"probes\": [{\"api\": \"signer\", \"probe\": \"zero-equality\", \"observed\": {\"result\": \"accepted\"}}, {\"api\": \"signer\", \"probe\": \"sleep-low-phase\", \"observed\": {\"result\": \"accepted\"}}, {\"api\": \"signer\", \"probe\": \"sleep-high-phase\", \"observed\": {\"error\": \"SignatureExpired\"}}, {\"api\": \"signer\", \"probe\": \"integer-equality\", \"observed\": {\"result\": \"accepted\"}}, {\"api\": \"signer\", \"probe\": \"integer-expired\", \"observed\": {\"error\": \"SignatureExpired\"}}, {\"api\": \"validate\", \"probe\": \"zero-equality\", \"observed\": {\"result\": true}}, {\"api\": \"validate\", \"probe\": \"sleep-low-phase\", \"observed\": {\"result\": true}}, {\"api\": \"validate\", \"probe\": \"sleep-high-phase\", \"observed\": {\"result\": false}}, {\"api\": \"validate\", \"probe\": \"integer-equality\", \"observed\": {\"result\": true}}, {\"api\": \"validate\", \"probe\": \"integer-expired\", \"observed\": {\"result\": false}}, {\"api\": \"serializer\", \"probe\": \"zero-equality\", \"observed\": {\"result\": \"accepted\"}}, {\"api\": \"serializer\", \"probe\": \"sleep-low-phase\", \"observed\": {\"result\": \"accepted\"}}, {\"api\": \"serializer\", \"probe\": \"sleep-high-phase\", \"observed\": {\"error\": \"SignatureExpired\"}}, {\"api\": \"serializer\", \"probe\": \"integer-equality\", \"observed\": {\"result\": \"accepted\"}}, {\"api\": \"serializer\", \"probe\": \"integer-expired\", \"observed\": {\"error\": \"SignatureExpired\"}}, {\"api\": \"serializer-unsafe\", \"probe\": \"zero-equality\", \"observed\": {\"result\": true}}, {\"api\": \"serializer-unsafe\", \"probe\": \"sleep-low-phase\", \"observed\": {\"result\": true}}, {\"api\": \"serializer-unsafe\", \"probe\": \"sleep-high-phase\", \"observed\": {\"result\": false}}, {\"api\": \"serializer-unsafe\", \"probe\": \"integer-equality\", \"observed\": {\"result\": true}}, {\"api\": \"serializer-unsafe\", \"probe\": \"integer-expired\", \"observed\": {\"result\": false}}, {\"api\": \"urlsafe\", \"probe\": \"zero-equality\", \"observed\": {\"result\": \"accepted\"}}, {\"api\": \"urlsafe\", \"probe\": \"sleep-low-phase\", \"observed\": {\"result\": \"accepted\"}}, {\"api\": \"urlsafe\", \"probe\": \"sleep-high-phase\", \"observed\": {\"error\": \"SignatureExpired\"}}, {\"api\": \"urlsafe\", \"probe\": \"integer-equality\", \"observed\": {\"result\": \"accepted\"}}, {\"api\": \"urlsafe\", \"probe\": \"integer-expired\", \"observed\": {\"error\": \"SignatureExpired\"}}, {\"api\": \"urlsafe-unsafe\", \"probe\": \"zero-equality\", \"observed\": {\"result\": true}}, {\"api\": \"urlsafe-unsafe\", \"probe\": \"sleep-low-phase\", \"observed\": {\"result\": true}}, {\"api\": \"urlsafe-unsafe\", \"probe\": \"sleep-high-phase\", \"observed\": {\"result\": false}}, {\"api\": \"urlsafe-unsafe\", \"probe\": \"integer-equality\", \"observed\": {\"result\": true}}, {\"api\": \"urlsafe-unsafe\", \"probe\": \"integer-expired\", \"observed\": {\"result\": false}}, {\"api\": \"signer\", \"probe\": \"numeric-string\", \"observed\": {\"result\": \"accepted\"}}, {\"api\": \"signer\", \"probe\": \"numeric-bytes\", \"observed\": {\"result\": \"accepted\"}}, {\"api\": \"signer\", \"probe\": \"nan-string\", \"observed\": {\"result\": \"accepted\"}}, {\"api\": \"signer\", \"probe\": \"infinite-string\", \"observed\": {\"result\": \"accepted\"}}, {\"api\": \"signer\", \"probe\": \"nonnumeric-string\", \"observed\": {\"error\": \"ValueError\"}}, {\"api\": \"signer\", \"probe\": \"float-only-object\", \"observed\": {\"result\": \"accepted\"}}, {\"api\": \"signer\", \"probe\": \"large-integer\", \"limit\": 9007199254740995, \"age\": 9007199254740996, \"observed\": {\"result\": \"accepted\"}}, {\"api\": \"signer\", \"probe\": \"large-integer\", \"limit\": 9007199254740993, \"age\": 9007199254740993, \"observed\": {\"error\": \"SignatureExpired\"}}], \"interfaces\": [{\"name\": \"TimestampSigner.unsign\", \"duration\": true, \"parameters\": \"(self, signed_value: 'str | bytes', max_age: 'int | float | timedelta | None' = None, return_timestamp: 'bool' = False) -> 'tuple[bytes, datetime] | bytes'\"}, {\"name\": \"TimestampSigner.unsign\", \"duration\": true, \"parameters\": \"(self, signed_value: 'str | bytes', max_age: 'int | float | timedelta | None' = None, return_timestamp: 't.Literal[False]' = False) -> 'bytes'\"}, {\"name\": \"TimestampSigner.unsign\", \"duration\": true, \"parameters\": \"(self, signed_value: 'str | bytes', max_age: 'int | float | timedelta | None' = None, return_timestamp: 't.Literal[True]' = True) -> 'tuple[bytes, datetime]'\"}, {\"name\": \"TimestampSigner.validate\", \"duration\": true, \"parameters\": \"(self, signed_value: 'str | bytes', max_age: 'int | float | timedelta | None' = None) -> 'bool'\"}, {\"name\": \"TimedSerializer.loads\", \"duration\": true, \"parameters\": \"(self, s: 'str | bytes', max_age: 'int | float | timedelta | None' = None, return_timestamp: 'bool' = False, salt: 'str | bytes | None' = None) -> 't.Any'\"}, {\"name\": \"TimedSerializer.loads_unsafe\", \"duration\": true, \"parameters\": \"(self, s: 'str | bytes', max_age: 'int | float | timedelta | None' = None, salt: 'str | bytes | None' = None) -> 'tuple[bool, t.Any]'\"}], \"separator_type\": \"bytes\", \"separator_encode\": \"AttributeError\"}\n",
+    "stderr": "",
+    "timed_out": false,
+    "truncated": false,
+    "passed": true
+  },
+  "observations": {
+    "kind": "OPEN_OFFLINE_DIAGNOSTICS_NOT_SEALED_ACCEPTANCE",
+    "probes": [
+      {
+        "api": "signer",
+        "probe": "zero-equality",
+        "observed": {
+          "result": "accepted"
+        }
+      },
+      {
+        "api": "signer",
+        "probe": "sleep-low-phase",
+        "observed": {
+          "result": "accepted"
+        }
+      },
+      {
+        "api": "signer",
+        "probe": "sleep-high-phase",
+        "observed": {
+          "error": "SignatureExpired"
+        }
+      },
+      {
+        "api": "signer",
+        "probe": "integer-equality",
+        "observed": {
+          "result": "accepted"
+        }
+      },
+      {
+        "api": "signer",
+        "probe": "integer-expired",
+        "observed": {
+          "error": "SignatureExpired"
+        }
+      },
+      {
+        "api": "validate",
+        "probe": "zero-equality",
+        "observed": {
+          "result": true
+        }
+      },
+      {
+        "api": "validate",
+        "probe": "sleep-low-phase",
+        "observed": {
+          "result": true
+        }
+      },
+      {
+        "api": "validate",
+        "probe": "sleep-high-phase",
+        "observed": {
+          "result": false
+        }
+      },
+      {
+        "api": "validate",
+        "probe": "integer-equality",
+        "observed": {
+          "result": true
+        }
+      },
+      {
+        "api": "validate",
+        "probe": "integer-expired",
+        "observed": {
+          "result": false
+        }
+      },
+      {
+        "api": "serializer",
+        "probe": "zero-equality",
+        "observed": {
+          "result": "accepted"
+        }
+      },
+      {
+        "api": "serializer",
+        "probe": "sleep-low-phase",
+        "observed": {
+          "result": "accepted"
+        }
+      },
+      {
+        "api": "serializer",
+        "probe": "sleep-high-phase",
+        "observed": {
+          "error": "SignatureExpired"
+        }
+      },
+      {
+        "api": "serializer",
+        "probe": "integer-equality",
+        "observed": {
+          "result": "accepted"
+        }
+      },
+      {
+        "api": "serializer",
+        "probe": "integer-expired",
+        "observed": {
+          "error": "SignatureExpired"
+        }
+      },
+      {
+        "api": "serializer-unsafe",
+        "probe": "zero-equality",
+        "observed": {
+          "result": true
+        }
+      },
+      {
+        "api": "serializer-unsafe",
+        "probe": "sleep-low-phase",
+        "observed": {
+          "result": true
+        }
+      },
+      {
+        "api": "serializer-unsafe",
+        "probe": "sleep-high-phase",
+        "observed": {
+          "result": false
+        }
+      },
+      {
+        "api": "serializer-unsafe",
+        "probe": "integer-equality",
+        "observed": {
+          "result": true
+        }
+      },
+      {
+        "api": "serializer-unsafe",
+        "probe": "integer-expired",
+        "observed": {
+          "result": false
+        }
+      },
+      {
+        "api": "urlsafe",
+        "probe": "zero-equality",
+        "observed": {
+          "result": "accepted"
+        }
+      },
+      {
+        "api": "urlsafe",
+        "probe": "sleep-low-phase",
+        "observed": {
+          "result": "accepted"
+        }
+      },
+      {
+        "api": "urlsafe",
+        "probe": "sleep-high-phase",
+        "observed": {
+          "error": "SignatureExpired"
+        }
+      },
+      {
+        "api": "urlsafe",
+        "probe": "integer-equality",
+        "observed": {
+          "result": "accepted"
+        }
+      },
+      {
+        "api": "urlsafe",
+        "probe": "integer-expired",
+        "observed": {
+          "error": "SignatureExpired"
+        }
+      },
+      {
+        "api": "urlsafe-unsafe",
+        "probe": "zero-equality",
+        "observed": {
+          "result": true
+        }
+      },
+      {
+        "api": "urlsafe-unsafe",
+        "probe": "sleep-low-phase",
+        "observed": {
+          "result": true
+        }
+      },
+      {
+        "api": "urlsafe-unsafe",
+        "probe": "sleep-high-phase",
+        "observed": {
+          "result": false
+        }
+      },
+      {
+        "api": "urlsafe-unsafe",
+        "probe": "integer-equality",
+        "observed": {
+          "result": true
+        }
+      },
+      {
+        "api": "urlsafe-unsafe",
+        "probe": "integer-expired",
+        "observed": {
+          "result": false
+        }
+      },
+      {
+        "api": "signer",
+        "probe": "numeric-string",
+        "observed": {
+          "result": "accepted"
+        }
+      },
+      {
+        "api": "signer",
+        "probe": "numeric-bytes",
+        "observed": {
+          "result": "accepted"
+        }
+      },
+      {
+        "api": "signer",
+        "probe": "nan-string",
+        "observed": {
+          "result": "accepted"
+        }
+      },
+      {
+        "api": "signer",
+        "probe": "infinite-string",
+        "observed": {
+          "result": "accepted"
+        }
+      },
+      {
+        "api": "signer",
+        "probe": "nonnumeric-string",
+        "observed": {
+          "error": "ValueError"
+        }
+      },
+      {
+        "api": "signer",
+        "probe": "float-only-object",
+        "observed": {
+          "result": "accepted"
+        }
+      },
+      {
+        "api": "signer",
+        "probe": "large-integer",
+        "limit": 9007199254740995,
+        "age": 9007199254740996,
+        "observed": {
+          "result": "accepted"
+        }
+      },
+      {
+        "api": "signer",
+        "probe": "large-integer",
+        "limit": 9007199254740993,
+        "age": 9007199254740993,
+        "observed": {
+          "error": "SignatureExpired"
+        }
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "TimestampSigner.unsign",
+        "duration": true,
+        "parameters": "(self, signed_value: 'str | bytes', max_age: 'int | float | timedelta | None' = None, return_timestamp: 'bool' = False) -> 'tuple[bytes, datetime] | bytes'"
+      },
+      {
+        "name": "TimestampSigner.unsign",
+        "duration": true,
+        "parameters": "(self, signed_value: 'str | bytes', max_age: 'int | float | timedelta | None' = None, return_timestamp: 't.Literal[False]' = False) -> 'bytes'"
+      },
+      {
+        "name": "TimestampSigner.unsign",
+        "duration": true,
+        "parameters": "(self, signed_value: 'str | bytes', max_age: 'int | float | timedelta | None' = None, return_timestamp: 't.Literal[True]' = True) -> 'tuple[bytes, datetime]'"
+      },
+      {
+        "name": "TimestampSigner.validate",
+        "duration": true,
+        "parameters": "(self, signed_value: 'str | bytes', max_age: 'int | float | timedelta | None' = None) -> 'bool'"
+      },
+      {
+        "name": "TimedSerializer.loads",
+        "duration": true,
+        "parameters": "(self, s: 'str | bytes', max_age: 'int | float | timedelta | None' = None, return_timestamp: 'bool' = False, salt: 'str | bytes | None' = None) -> 't.Any'"
+      },
+      {
+        "name": "TimedSerializer.loads_unsafe",
+        "duration": true,
+        "parameters": "(self, s: 'str | bytes', max_age: 'int | float | timedelta | None' = None, salt: 'str | bytes | None' = None) -> 'tuple[bool, t.Any]'"
+      }
+    ],
+    "separator_type": "bytes",
+    "separator_encode": "AttributeError"
+  }
+}

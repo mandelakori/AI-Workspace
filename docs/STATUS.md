@@ -1,5 +1,15 @@
 # Status as of 2026-11-22
 
+## Milestone E: evidence capture correction and offline diagnosis
+
+| Capability / outcome | Status | Evidence |
+| --- | --- | --- |
+| Bounded capture policy | VERIFIED | [Correction report](EVIDENCE-CAPTURE-RECOVERY.md): 64 MiB default payload, 32 MiB disk headroom, 16 MiB metadata and 1024 admitted request ceiling; reserve before reads, archive before relay, incremental hashes, explicit partial receipts and durable resource exhaustion. Historical 16 MiB limits unchanged. |
+| Replay and conformance | VERIFIED | 30418686 bytes /264 files /88 inert HTTP replays complete with all hashes checked. Intentional 4096-byte and installed OpenCode 262144-byte caps stop cleanly as resource exhaustion. Final regressions 220/220, zero skips, 173.987 s. No model tokens. |
+| Nine failed authored tests | VERIFIED | Two incorrect zero-age assertions, five timing-sensitive tests, two bytes API mistakes; an additional timing test can also fail. Controlled clocks produce 18/28 versus 24/28 on unchanged tests. Open diagnostics only, no sealed cases. |
+| Preserved candidate completeness | BLOCKED | Still 12/12 public, 297/297 upstream, syntax and 6/6 duration annotations; offline probes reveal new invalid-input acceptance and integer-limit precision regressions. Required docs unchanged. No repairs/promotion. |
+| Live execution after correction | UNTESTED | No inference, remote operation, new trial preparation or approval digest. Existing quarantine/consumed grant, historical evidence, main and roadmap preserved. Review required before further work. |
+
 ## Milestone E: editor-recovery trial outcome
 
 | Capability / outcome | Status | Evidence |

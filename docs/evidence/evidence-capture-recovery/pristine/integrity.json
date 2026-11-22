@@ -1,0 +1,9 @@
+{
+  "original_inventory_sha256": "ab4df651d5cead6622791837e1375f8d3168980c7dc7259a1641150f812feb55",
+  "original_file_count": 45,
+  "all_original_bytes_unchanged": true,
+  "additional_diagnostic_drivers": [
+    "_diagnose.py",
+    "_authored_clock.py"
+  ]
+}

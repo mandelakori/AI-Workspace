@@ -1,0 +1,56 @@
+{
+  "kind": "NO INFERENCE; OPEN OFFLINE DIAGNOSTICS; NOT SEALED ACCEPTANCE",
+  "historical_capture": {
+    "incoming": 4013320,
+    "forwarded": 4192802,
+    "responses": 8570944
+  },
+  "historical_archived_total": 16777066,
+  "historical_counter": 16777435,
+  "historical_unarchived_counted_chunk": 369,
+  "historical_limit": 16777216,
+  "new_default_payload_limit": 67108864,
+  "default_disk_headroom": 33554432,
+  "metadata_limit": 16777216,
+  "request_attribution_limit": 1024,
+  "worst_disk_payload_plus_atomic_ledger_bound": 100663296,
+  "projected_64_requests_at_observed_mean_bytes": 23861240.888888888,
+  "configured_limit_is_not_a_guarantee_for_every_maximum_context_and_output_combination": true,
+  "full_regressions": {
+    "passed": 220,
+    "failed": 0,
+    "skipped": 0,
+    "seconds": 173.987
+  },
+  "baseline": {
+    "passed": 207,
+    "seconds": 152.888,
+    "direct": "verified"
+  },
+  "new_regressions": {
+    "capture": 12,
+    "installed_inert_harness": 1
+  },
+  "production_candidate_repaired": false,
+  "promoted": false,
+  "sealed_cases_created": 0,
+  "candidate_source_sha256": "ae3b668bbe11e29c3152d7aaae9c3f11f94d6602f894ad833c05b11b963fb3a2",
+  "doc_file_changed": false,
+  "duration_annotations": 6,
+  "annotation_sites": 6,
+  "independent_open_probes_per_copy": 38,
+  "new_production_defects": [
+    "numeric strings/bytes/nan strings and float-only objects newly accepted",
+    "nonnumeric string changes TypeError to ValueError",
+    "large integer limits lose precision and flip expiry decisions both ways"
+  ],
+  "model_requests": 0,
+  "remote_operations": 0,
+  "new_live_trial_prepared": false,
+  "implementation_sha256": {
+    "aiwork/provider_gate.py": "d5a10119c1349749a011a4c1bc43f731198a58413a05e62b712a7670466d39ba",
+    "aiwork/evidence_capture.py": "d3f6d4840a343133cf6f6b48ceddeb2d62cecb0d2c2ffd3381f91936587e9739",
+    "tests/test_evidence_capture.py": "a1fd4a5d8a7ab0ea368a9e724eb6caf644b884afdc10678c2bc78ab3f88619c9",
+    "tests/test_capture_harness.py": "db4dfb1dfe5dd3db0602de155da4a163fe3761e5c1798e9a6da836fc53f598e2"
+  }
+}

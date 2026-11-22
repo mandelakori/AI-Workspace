@@ -1,0 +1,6 @@
+test_capture_exhaustion_is_clean_resource_stop_not_provider_failure (test_capture_harness.CaptureHarnessTests.test_capture_exhaustion_is_clean_resource_stop_not_provider_failure) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 4.836s
+
+OK

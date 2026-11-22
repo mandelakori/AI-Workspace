@@ -1,0 +1,61 @@
+{
+  "kind": "open offline diagnosis; not sealed acceptance",
+  "historical_failures": [
+    {
+      "test": "TestTimestampSignerTimedelta.test_timedelta_zero_duration",
+      "classification": "incorrect_assertion",
+      "reason": "Zero elapsed integer seconds equals zero limit; equality is valid."
+    },
+    {
+      "test": "TestTimestampSignerTimedelta.test_timedelta_future_timestamp_invalid",
+      "classification": "test_implementation_error",
+      "reason": "sep is bytes; .encode() raises before production validation."
+    },
+    {
+      "test": "TestTimestampSignerTimedelta.test_timedelta_validate_expired",
+      "classification": "timing_sensitive",
+      "reason": "sleep(1.1) can give integer age 1, equal to valid limit 1."
+    },
+    {
+      "test": "TestTimedSerializerTimedelta.test_timedelta_expired",
+      "classification": "timing_sensitive",
+      "reason": "Integer age after sleep(1.1) depends on starting clock fraction."
+    },
+    {
+      "test": "TestTimedSerializerTimedelta.test_timedelta_loads_unsafe_expired",
+      "classification": "timing_sensitive",
+      "reason": "Unsafe valid flag remains true at equal age/limit."
+    },
+    {
+      "test": "TestTimedSerializerTimedelta.test_timedelta_zero",
+      "classification": "incorrect_assertion",
+      "reason": "Zero-age equality is accepted by frozen specification."
+    },
+    {
+      "test": "TestURLSafeTimedSerializerTimedelta.test_timedelta_expired",
+      "classification": "timing_sensitive",
+      "reason": "Integer age after sleep(1.1) depends on starting clock fraction."
+    },
+    {
+      "test": "TestURLSafeTimedSerializerTimedelta.test_timedelta_loads_unsafe_expired",
+      "classification": "timing_sensitive",
+      "reason": "Unsafe valid flag remains true at equal age/limit."
+    },
+    {
+      "test": "TestURLSafeTimedSerializerTimedelta.test_timedelta_key_rotation_second_key",
+      "classification": "test_implementation_error",
+      "reason": "sep is bytes; .encode() raises before key-rotation behavior is tested."
+    }
+  ],
+  "additional_timing_sensitive_test": "TestTimestampSignerTimedelta.test_timedelta_expired; historical controller passed, controlled low-phase fails",
+  "controlled_clock_results": {
+    "0.125": {
+      "passed": 18,
+      "failed": 10
+    },
+    "0.95": {
+      "passed": 24,
+      "failed": 4
+    }
+  }
+}

@@ -20,7 +20,7 @@ import secrets
 import subprocess
 import sys
 import traceback
-from threading import Event, Lock, Thread, current_thread
+from threading import Event, RLock, Lock, Thread, current_thread
 import socket
 from time import monotonic, sleep
 from urllib.parse import urlsplit
@@ -30,6 +30,8 @@ from .http import NoRedirect
 from .process import owned_process, run, Result
 from .trial_budget import write
 from .execution_context import ExecutionContext, ResourceExhausted
+from .evidence_capture import (EvidenceCapture, EvidenceExhausted, EvidenceIOError,
+                               UsageLines, DEFAULT_CAPTURE_BYTES, DEFAULT_HEADROOM_BYTES)
 
 REQUIRED = frozenset({'checks_focus', 'checks_edit', 'checks_check', 'checks_diff'})
 NATIVE = frozenset({'glob', 'grep', 'list', 'todowrite'})
@@ -92,7 +94,8 @@ def catalog(body: dict, allow_read: bool = False, scoped_only: bool = False,
 class ProviderGate:
     def __init__(self, endpoint: str, model: str, key: str, artifacts: Path,
                  deadline: float, allow_read: bool = False,
-                 context: ExecutionContext | None = None, pi_compaction: bool = False):
+                 context: ExecutionContext | None = None, pi_compaction: bool = False,
+                 capture_limit: int | None = None, disk_headroom: int = DEFAULT_HEADROOM_BYTES):
         self.upstream = urlsplit(endpoint.rstrip('/'))
         if (self.upstream.scheme not in {'http', 'https'} or not self.upstream.hostname
                 or self.upstream.username or self.upstream.password
@@ -107,26 +110,55 @@ class ProviderGate:
         self.stopping = Event()
         self.token = secrets.token_urlsafe(32)
         self.failed = Event()
-        self.lock = Lock()
+        self.lock = RLock()
         self.count = 0
-        self.captured = 0
+        self.capture = EvidenceCapture(artifacts, DEFAULT_CAPTURE_BYTES if capture_limit is None else capture_limit, disk_headroom)
+        self.exhaustion_reason = ''
+        self.failure_kind = ''
+        self.unadmitted_requests = 0
         self.receipts = []
         self.connections = set()
         self.handlers = set()
 
     def save(self):
-        write(self.artifacts / 'provider-gate.json', {
+        capture=self.capture.summary()
+        ledger={
             'failed_closed': self.failed.is_set(), 'requests': self.receipts,
             'required': sorted(REQUIRED), 'request_rewriting': bool(self.context),
             'resource_exhausted': self.exhausted.is_set(),
-            'captured_bytes': self.captured,
-        })
+            'captured_bytes': capture['captured_bytes'], 'evidence':capture,
+            'exhaustion_reason':self.exhaustion_reason,'failure_kind':self.failure_kind,
+            'request_limit':1024,'unadmitted_requests':self.unadmitted_requests,
+            'metadata_limit_bytes':16*1024*1024,
+        }
+        if len(json.dumps(ledger,indent=2).encode())>16*1024*1024:
+            self.exhausted.set();self.exhaustion_reason='provider evidence metadata limit exhausted'
+            if self.context:
+                with self.context.state() as state:state['exhausted']=state['exhausted'] or self.exhaustion_reason
+            # Keep the last complete ledger, plus an explicit bounded closure record.
+            write(self.artifacts/'provider-evidence-exhaustion.json',{
+                'reason':self.exhaustion_reason,'requests_seen':self.count,'last_complete_ledger_preserved':True})
+            raise EvidenceExhausted(self.exhaustion_reason)
+        try:write(self.artifacts / 'provider-gate.json', ledger)
+        except OSError as error:raise EvidenceIOError('provider evidence ledger write failed') from error
+
+    def evidence_exhausted(self, receipt, error):
+        self.exhausted.set();self.exhaustion_reason=str(error)
+        receipt.update(resource_exhausted=str(error),error_class='controller_evidence_exhausted')
+        if self.context:
+            with self.context.state() as state:
+                state['exhausted']=state['exhausted'] or str(error)
+        self.save()
 
     def __enter__(self):
         gate = self
 
         class Handler(BaseHTTPRequestHandler):
             def log_message(self, *args): pass
+
+            def resource_error(self, message):
+                self.send_response(400);self.send_header('Content-Type','application/json');self.end_headers()
+                self.wfile.write(json.dumps({'error':{'code':'controller_resource_exhausted','message':message}}).encode())
 
             def setup(self):
                 super().setup()
@@ -144,15 +176,31 @@ class ProviderGate:
                 with gate.lock:
                     if not secrets.compare_digest(self.headers.get('Authorization', ''), 'Bearer ' + gate.token):
                         self.send_error(401); return
-                    size = int(self.headers.get('Content-Length', '-1'))
-                    if (self.path != '/v1/chat/completions' or not 0 < size <= 2_097_152
-                            or gate.captured + size > 16 * 1024 * 1024):
+                    try:size = int(self.headers.get('Content-Length', '-1'))
+                    except ValueError:size=-1
+                    if (self.path != '/v1/chat/completions' or not 0 < size <= 2_097_152):
                         gate.failed.set(); gate.save(); self.send_error(400); return
-                    raw = self.rfile.read(size)
+                    if gate.count>=1024 or gate.exhausted.is_set():
+                        gate.unadmitted_requests+=1
+                        gate.evidence_exhausted({},EvidenceExhausted(gate.exhaustion_reason or 'provider evidence request-attribution limit exhausted'))
+                        self.resource_error('Evidence session closed; request not read or forwarded');return
                     gate.count += 1
                     number = gate.count
-                    gate.captured += len(raw)
-                    (gate.artifacts / f'provider-request-{number:03}.json').write_bytes(raw)
+                    receipt={'request':number,'forwarded':False,'declared_request_bytes':size}
+                    gate.receipts.append(receipt)
+                    try:
+                        with gate.capture.reserve(size,exact=True) as lease:
+                            raw=self.rfile.read(size)
+                            filename=f'provider-request-{number:03}.json'
+                            with gate.capture.open(filename) as stream:gate.capture.append(filename,stream,raw,lease)
+                            if len(raw)!=size:raise OSError('incomplete provider request')
+                            gate.capture.complete(filename)
+                    except EvidenceExhausted as error:
+                        gate.evidence_exhausted(receipt,error)
+                        self.resource_error(str(error));return
+                    except (OSError,ValueError) as error:
+                        gate.failed.set();gate.failure_kind='evidence_failure';receipt['capture_error']=type(error).__name__
+                        gate.save();self.send_error(400);return
                     failure_latched = gate.failed.is_set()
                     try:
                         body = json.loads(raw)
@@ -167,13 +215,14 @@ class ProviderGate:
                     except (ValueError, AttributeError):
                         check = {'passed': False, 'offered': [], 'missing': sorted(REQUIRED)}
                         admitted = False
-                    receipt = {'request': number, **check, 'forwarded': admitted,
-                               'body_sha256': hashlib.sha256(raw).hexdigest()}
+                    # Full catalogs remain in captured bodies; bound metadata on malformed input.
+                    metadata={k:([str(n).encode('ascii','backslashreplace')[:80].decode('ascii') for n in v[:16]] if isinstance(v,list) else v) for k,v in check.items()}
+                    receipt.update(**metadata,forwarded=False,body_sha256=hashlib.sha256(raw).hexdigest())
+                    if any(metadata[k]!=v for k,v in check.items()):receipt['catalog_summary_truncated']=True
                     if gate.pi_compaction:receipt['adapter_phase']=phase
                     if failure_latched:
                         receipt.update(blocked_reason='failure_latched', retry_of=next(
-                            (r['request'] for r in gate.receipts if r['body_sha256']==receipt['body_sha256']), None))
-                    gate.receipts.append(receipt)
+                            (r['request'] for r in gate.receipts if r['request']<number and r.get('body_sha256')==receipt['body_sha256']), None))
                     if not admitted:
                         gate.failed.set(); gate.save()
                         self.send_response(400); self.send_header('Content-Type', 'application/json'); self.end_headers()
@@ -187,11 +236,11 @@ class ProviderGate:
                                 ('compaction' if maintenance else 'inference') if gate.pi_compaction else None)
                             raw = json.dumps(body, ensure_ascii=False).encode('utf-8')
                             receipt.update(trace, forwarded_sha256=hashlib.sha256(raw).hexdigest())
-                            (gate.artifacts / f'provider-forwarded-{number:03}.json').write_bytes(raw)
-                            gate.captured += len(raw)
-                            if gate.captured > 16 * 1024 * 1024:
-                                raise ValueError('provider evidence budget exhausted')
+                            gate.capture.store(f'provider-forwarded-{number:03}.json',raw)
                             if not maintenance:gate.primary_admitted=True
+                        except EvidenceExhausted as error:
+                            gate.evidence_exhausted(receipt,error)
+                            self.resource_error(str(error));return
                         except ResourceExhausted as error:
                             receipt.update(forwarded=False, resource_exhausted=str(error))
                             gate.exhausted.set(); gate.save()
@@ -202,6 +251,7 @@ class ProviderGate:
                         except (ValueError, OSError, RuntimeError) as error:
                             receipt['forwarded'] = False
                             receipt['contract_error'] = type(error).__name__ + ': ' + str(error)
+                            if isinstance(error,EvidenceIOError):gate.failure_kind='evidence_failure'
                             gate.failed.set(); gate.save(); self.send_error(400); return
                     gate.save()
                 connection = None
@@ -209,6 +259,7 @@ class ProviderGate:
                 response = None
                 request_started = monotonic()
                 response_path = gate.artifacts / f'provider-response-{number:03}.sse'
+                parser=UsageLines();complete=False
                 try:
                     if monotonic() >= gate.deadline:
                         raise TimeoutError('provider deadline expired before dispatch')
@@ -220,6 +271,7 @@ class ProviderGate:
                     headers = {'Content-Type': 'application/json'}
                     if gate.key: headers['Authorization'] = 'Bearer ' + gate.key
                     connection.request('POST', gate.upstream.path + '/chat/completions', raw, headers)
+                    receipt['forwarded']=True
                     upstream_socket = connection.sock
                     with gate.lock:
                         if upstream_socket is not None: gate.connections.add(upstream_socket)
@@ -230,29 +282,35 @@ class ProviderGate:
                     self.send_response(response.status)
                     self.send_header('Content-Type', response.getheader('Content-Type', 'application/json'))
                     self.send_header('Connection', 'close'); self.end_headers()
-                    with response_path.open('wb') as stream:
+                    with gate.capture.open(response_path.name) as stream:
                         while monotonic() < gate.deadline:
-                            block = response.read1(65536)
-                            if not block: break
-                            with gate.lock:
-                                gate.captured += len(block)
-                                if gate.captured > 16 * 1024 * 1024:
-                                    raise ValueError('provider evidence budget exhausted')
-                            stream.write(block); stream.flush()
+                            if response.isclosed():
+                                if response.length not in (None,0):raise http.client.IncompleteRead(b'',response.length)
+                                complete=True;break
+                            with gate.capture.reserve(65536) as lease:
+                                block = response.read1(lease[0])
+                                if not block:
+                                    if response.length not in (None,0):raise http.client.IncompleteRead(b'',response.length)
+                                    complete=True;break
+                                gate.capture.append(response_path.name,stream,block,lease)
+                            parser.feed(block)
                             self.wfile.write(block); self.wfile.flush()
                         else: raise TimeoutError('provider deadline expired')
-                    receipt['response_sha256'] = hashlib.sha256(response_path.read_bytes()).hexdigest()
-                    for line in response_path.read_bytes().splitlines():
-                        if not line.startswith(b'data:'): continue
-                        try:
-                            event = json.loads(line[5:])
-                            if isinstance(event.get('usage'), dict): receipt['usage'] = event['usage']
-                        except (ValueError, AttributeError): pass
+                    if complete:gate.capture.complete(response_path.name)
+                    parser.finish()
+                except EvidenceExhausted as error:
+                    with gate.lock:gate.evidence_exhausted(receipt,error)
+                    self.close_connection=True
                 except (OSError, ValueError, http.client.HTTPException) as error:
                     gate.failed.set()
+                    if isinstance(error,EvidenceIOError):gate.failure_kind='evidence_failure'
                     receipt['error'] = type(error).__name__
                     self.close_connection = True
                 finally:
+                    evidence=gate.capture.summary()['files'].get(response_path.name)
+                    if evidence:receipt.update(response_sha256=evidence['sha256'],response_bytes=evidence['bytes'],response_complete=evidence['complete'])
+                    if parser.usage is not None:receipt['usage']=parser.usage
+                    if parser.oversized:receipt['usage_parse_oversized_line']=True
                     receipt['elapsed'] = monotonic()-request_started
                     if gate.context:
                         try:
@@ -366,6 +424,8 @@ def guarded_run(binary, profile, work, artifacts, env, config, prompt, timeout, 
         path = artifacts/'catalog-readiness.json'
         readiness = json.loads(path.read_bytes()) if path.exists() else {}
         status = ('cleanup_failure' if isinstance(error,CleanupFailure) or readiness.get('cleanup_passed') is False
+                  else 'resource_exhausted' if isinstance(error,EvidenceExhausted)
+                  else 'evidence_failure' if isinstance(error,EvidenceIOError)
                   else 'interrupted' if isinstance(error, TimeoutError) else 'harness_failure')
         write(artifacts/'execution-receipt.json', {'schema':1, 'adapter':'opencode', 'status':status,
               'raw_exit_code':None, 'elapsed':monotonic()-started, 'timed_out':isinstance(error,TimeoutError),
@@ -401,13 +461,14 @@ def finish_execution(adapter, gate, result, context, artifacts, started, cleanup
     """One receipt format and exhaustion semantics for both reviewed harnesses."""
     clean_exhaustion = (gate.exhausted.is_set() and not gate.failed.is_set()
                         and not result.timed_out and not result.truncated and cleanup_passed)
-    status = ('interrupted' if result.timed_out else 'provider_failure' if gate.failed.is_set()
+    status = ('interrupted' if result.timed_out else (gate.failure_kind or 'provider_failure') if gate.failed.is_set()
               else 'resource_exhausted' if clean_exhaustion else 'completed' if result.code == 0 and not result.truncated
               else 'harness_failure')
     write(artifacts/'execution-receipt.json', {'schema':1, 'adapter':adapter, 'status':status,
           'raw_exit_code':result.code, 'elapsed':monotonic()-started,
           'timed_out':result.timed_out, 'cleanup_passed':cleanup_passed,
           'provider_gate_passed':not gate.failed.is_set(), 'independent_verification':'pending',
+          'exhaustion_reason':gate.exhaustion_reason,'evidence':gate.capture.summary(),
           'resources':context.summary(),
           'provider_usage':{'reported':[{k:r[k] for k in ('request','category','usage')}
                                         for r in gate.receipts if 'usage' in r],

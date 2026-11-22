@@ -1,5 +1,21 @@
 # Next steps
 
+## Current handoff: review capture correction and candidate defects
+
+[Capture recovery](EVIDENCE-CAPTURE-RECOVERY.md) passes 220/220 regressions and a
+30.4 MB inert replay; configured evidence exhaustion now stops as a durable
+resource limit with exact retained-byte accounting. No model inference or new
+trial preparation occurred. Review the measured 64 MiB policy before approving
+any later execution; all consumed trial manifests/limits remain immutable.
+
+The unrepaired historical candidate still passes 12/12 public and 297 upstream,
+but open diagnostics demonstrate new invalid-type acceptance and large-integer
+rounding regressions. Its nine historical test failures split into incorrect
+assertions, clock-sensitive assumptions and test implementation errors; docs are
+missing. It remains unpromoted. No reserved sealed cases were authored or run.
+Stop here pending review; do not resume the quarantined bundle, reuse its digest,
+launch a repair campaign or prepare another live trial automatically.
+
 ## Current outcome: consumed trial, partial progress, quarantine
 
 [A100 execution](A100-EDITOR-TRIAL-RESULT.md) applied 12 autonomous edits, including

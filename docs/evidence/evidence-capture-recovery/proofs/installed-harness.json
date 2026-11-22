@@ -1,0 +1,147 @@
+{
+  "kind": "inert no model",
+  "harness": {
+    "code": 0,
+    "elapsed": 4.594000000040978,
+    "stdout": "{\"type\":\"step_start\",\"timestamp\":1795355827282,\"sessionID\":\"ses_dfc74240fffedyzbfagRwGa7P1\",\"part\":{\"id\":\"prt_2038bdc52001YP0Dw1nS6vP8GK\",\"sessionID\":\"ses_dfc74240fffedyzbfagRwGa7P1\",\"messageID\":\"msg_2038bdc17001wazlo5VIXwSUc6\",\"type\":\"step-start\"}}\r\n{\"type\":\"error\",\"timestamp\":1795355829618,\"sessionID\":\"ses_dfc74240fffedyzbfagRwGa7P1\",\"error\":{\"type\":\"provider.invalid-request\",\"message\":\"Evidence session closed; request not read or forwarded\",\"status\":400,\"response\":{\"body\":\"{\\\"error\\\": {\\\"code\\\": \\\"controller_resource_exhausted\\\", \\\"message\\\": \\\"Evidence session closed; request not read or forwarded\\\"}}\"}}}\r\n",
+    "stderr": "",
+    "timed_out": false,
+    "truncated": false
+  },
+  "execution": {
+    "schema": 1,
+    "adapter": "opencode",
+    "status": "resource_exhausted",
+    "raw_exit_code": 1,
+    "elapsed": 4.577999999979511,
+    "timed_out": false,
+    "cleanup_passed": true,
+    "provider_gate_passed": true,
+    "independent_verification": "pending",
+    "exhaustion_reason": "provider evidence byte limit or disk headroom exhausted",
+    "evidence": {
+      "limit_bytes": 262144,
+      "headroom_bytes": 33554432,
+      "captured_bytes": 262144,
+      "reserved_bytes": 0,
+      "files": {
+        "provider-request-001.json": {
+          "bytes": 4297,
+          "sha256": "b3c0b23b5578107d7ddd4a7037b5258d957b26a6e5cf40e916d8d7c4b86ece4a",
+          "complete": true
+        },
+        "provider-forwarded-001.json": {
+          "bytes": 5324,
+          "sha256": "8016d068e8d3d76e4da36e0c9a5e2985a346b272a035a8f6693b5e175709ddf9",
+          "complete": true
+        },
+        "provider-response-001.sse": {
+          "bytes": 252523,
+          "sha256": "f90379e2e02853c401a5ffb2f78b6e2f1184d87a464e1398543d32e8ae306fae",
+          "complete": false
+        }
+      }
+    },
+    "resources": {
+      "epoch": 0,
+      "remaining_operations": 24,
+      "used": {
+        "inspection": 0,
+        "editing": 0,
+        "verification": 0,
+        "inference": 1,
+        "compaction": 0
+      },
+      "exhausted": "provider evidence byte limit or disk headroom exhausted",
+      "policy": {
+        "operations": 24,
+        "edit_reserve": 2,
+        "verification_reserve": 2,
+        "model_requests": 64,
+        "compactions": 4,
+        "blocked_limit": 3
+      },
+      "seconds": {
+        "inference": 0.01600000006146729,
+        "cleanup": 0.015999999945051968
+      },
+      "contract_sha256": "e428516659adacb0559ee408fb3021e99a6800bcdaf5374cc82480131b26e63d"
+    },
+    "provider_usage": {
+      "reported": [],
+      "unreported_requests": [
+        1
+      ]
+    }
+  },
+  "gate": {
+    "failed_closed": false,
+    "requests": [
+      {
+        "request": 1,
+        "forwarded": true,
+        "declared_request_bytes": 4297,
+        "offered": [
+          "checks_check",
+          "checks_diff",
+          "checks_edit",
+          "checks_focus"
+        ],
+        "missing": [],
+        "unexpected": [],
+        "passed": true,
+        "body_sha256": "b3c0b23b5578107d7ddd4a7037b5258d957b26a6e5cf40e916d8d7c4b86ece4a",
+        "epoch": 0,
+        "category": "inference",
+        "contract_sha256": "e428516659adacb0559ee408fb3021e99a6800bcdaf5374cc82480131b26e63d",
+        "remaining_operations": 24,
+        "contract_bytes": 818,
+        "forwarded_sha256": "8016d068e8d3d76e4da36e0c9a5e2985a346b272a035a8f6693b5e175709ddf9",
+        "upstream_status": 200,
+        "resource_exhausted": "provider evidence byte limit or disk headroom exhausted",
+        "error_class": "controller_evidence_exhausted",
+        "response_sha256": "f90379e2e02853c401a5ffb2f78b6e2f1184d87a464e1398543d32e8ae306fae",
+        "response_bytes": 252523,
+        "response_complete": false,
+        "elapsed": 0.01600000006146729
+      }
+    ],
+    "required": [
+      "checks_check",
+      "checks_diff",
+      "checks_edit",
+      "checks_focus"
+    ],
+    "request_rewriting": true,
+    "resource_exhausted": true,
+    "captured_bytes": 262144,
+    "evidence": {
+      "limit_bytes": 262144,
+      "headroom_bytes": 33554432,
+      "captured_bytes": 262144,
+      "reserved_bytes": 0,
+      "files": {
+        "provider-request-001.json": {
+          "bytes": 4297,
+          "sha256": "b3c0b23b5578107d7ddd4a7037b5258d957b26a6e5cf40e916d8d7c4b86ece4a",
+          "complete": true
+        },
+        "provider-forwarded-001.json": {
+          "bytes": 5324,
+          "sha256": "8016d068e8d3d76e4da36e0c9a5e2985a346b272a035a8f6693b5e175709ddf9",
+          "complete": true
+        },
+        "provider-response-001.sse": {
+          "bytes": 252523,
+          "sha256": "f90379e2e02853c401a5ffb2f78b6e2f1184d87a464e1398543d32e8ae306fae",
+          "complete": false
+        }
+      }
+    },
+    "exhaustion_reason": "provider evidence byte limit or disk headroom exhausted",
+    "failure_kind": "",
+    "request_limit": 1024,
+    "unadmitted_requests": 1,
+    "metadata_limit_bytes": 16777216
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python",
+    "_aiwork_checks.py",
+    "public"
+  ],
+  "cwd": "",
+  "runner": "sha256:00d3d7e3d1e32064b5bf313cc788fb91945c0c5fa000856513f490f2c8087645",
+  "code": 0,
+  "elapsed": 1.0469999999040738,
+  "stdout": "{\"passed\": 12, \"total\": 12, \"cases\": [{\"id\": \"integer-compatible\", \"passed\": true, \"expected\": \"accepted\", \"observed\": {\"result\": \"accepted\", \"payload_ok\": true, \"timestamp_ok\": true}}, {\"id\": \"none-compatible\", \"passed\": true, \"expected\": \"accepted\", \"observed\": {\"result\": \"accepted\", \"payload_ok\": true, \"timestamp_ok\": true}}, {\"id\": \"invalid-signature-first\", \"passed\": true, \"expected\": \"bad-signature\", \"observed\": {\"result\": \"bad-signature\"}}, {\"id\": \"duration-active\", \"passed\": true, \"expected\": \"accepted\", \"observed\": {\"result\": \"accepted\", \"payload_ok\": true, \"timestamp_ok\": true}}, {\"id\": \"duration-expired-metadata\", \"passed\": true, \"expected\": \"expired\", \"observed\": {\"result\": \"expired\", \"metadata_ok\": true}}, {\"id\": \"duration-exact-boundary\", \"passed\": true, \"expected\": \"accepted\", \"observed\": {\"result\": \"accepted\", \"payload_ok\": true, \"timestamp_ok\": true}}, {\"id\": \"fraction-retained-accept\", \"passed\": true, \"expected\": \"accepted\", \"observed\": {\"result\": \"accepted\", \"payload_ok\": true, \"timestamp_ok\": true}}, {\"id\": \"fraction-retained-reject\", \"passed\": true, \"expected\": \"expired\", \"observed\": {\"result\": \"expired\", \"metadata_ok\": true}}, {\"id\": \"negative-duration\", \"passed\": true, \"expected\": \"invalid\", \"observed\": {\"result\": \"invalid\"}}, {\"id\": \"future-timestamp\", \"passed\": true, \"expected\": \"expired\", \"observed\": {\"result\": \"expired\", \"metadata_ok\": true}}, {\"id\": \"serializer-key-rotation-timestamp\", \"passed\": true, \"expected\": \"accepted\", \"observed\": {\"result\": \"accepted\", \"payload_ok\": true, \"timestamp_ok\": true}}, {\"id\": \"urlsafe-unsafe-expired\", \"passed\": true, \"expected\": \"unsafe-expired\", \"observed\": {\"result\": \"unsafe-expired\", \"payload_ok\": true}}]}\n",
+  "stderr": "",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true
+}
