@@ -2,13 +2,16 @@
 
 ## Original Milestone E: A100 autonomous engineering readiness
 
+The approved trial is consumed; [execution result](A100-ENGINEERING-RESULT.md).
+
 | Capability / outcome | Status | Evidence |
 | --- | --- | --- |
 | Existing A100 and loaded model | VERIFIED | [Readiness report](A100-ENGINEERING-READINESS.md): SSH, health/models/props, Qwen3.6 35B-A3B Q6_K derivative, A100 40960 MiB, one idle 131072-token slot. Server-reported identity; no fresh weight-file hash. |
 | Existing SSH / controller / verifier route | VERIFIED | Test-owned tunnel opened and closed; dedicated 64K OpenCode profile and explicit A100-only task route; four inert guard tests. No core controller/editor/harness change required. |
 | Fresh ItsDangerous baseline | VERIFIED | Pinned `672971d`, 3/12 public cases, syntax passes, 297/297 original upstream tests pass without skips; offline image and all inputs frozen. No operator-written production correction. |
 | Regression suite | VERIFIED | 178 baseline and expanded 182/182 pass with installed inert harnesses and offline Docker, no skips. Final four trial guards rerun after review. |
-| Proposed autonomous A100 feature trial | UNTESTED | PREPARED_NOT_AUTHORIZED, digest `150b82b49ebf8235fb0482d70bbcb75d3e3e1556334dd44406f5af3d69fab4af`; zero worker/inference dispatches, no sealed inputs authored. |
+| Autonomous A100 feature trial | BLOCKED | QUARANTINED after one forwarded request: HTTP 500 from the strict Qwen template because the controller added a second system message. Zero edits/worker tests; no candidate or sealed cases. Digest `150b82b49ebf8235fb0482d70bbcb75d3e3e1556334dd44406f5af3d69fab4af` consumed; no resume/retry. |
+| Failure containment and preservation | VERIFIED | All four tools were advertised. Gate blocked OpenCode's automatic resend; owned cleanup and unchanged source independently checked. No model completion/usage counters returned, so coding capability remains UNTESTED. Prior full regression remains 182/182; no implementation changed in this execution. |
 | Roadmap and preservation | VERIFIED | Original A–E retained; current priority coding reliability, then REA/Ghidra, routing and final acceptance. Pi/OpenCode remains unauthorized. No cloud lifecycle/bootstrap/service/storage/model changes or main merge. |
 
 ## Adaptive local execution and Pi

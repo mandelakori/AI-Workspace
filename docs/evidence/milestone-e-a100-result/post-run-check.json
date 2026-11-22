@@ -1,0 +1,22 @@
+{
+  "at": 1795338436.3269136,
+  "owned_processes": [
+    {
+      "pid": 35536,
+      "running": false,
+      "open_process_error": 87
+    },
+    {
+      "pid": 2028,
+      "running": false,
+      "open_process_error": 87
+    }
+  ],
+  "local_forward_port_listening": false,
+  "worker_workspace_equals_frozen_input": true,
+  "input_still_matches": true,
+  "pristine_source_still_matches": true,
+  "scope_changes": [],
+  "candidate_frozen": false,
+  "sealed_cases_created": false
+}

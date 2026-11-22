@@ -1,0 +1,6 @@
+{
+  "grading_guard_rejected": true,
+  "reason": "engineering did not close cleanly; no grading",
+  "execution_marker_present": true,
+  "quarantine_marker_present": true
+}

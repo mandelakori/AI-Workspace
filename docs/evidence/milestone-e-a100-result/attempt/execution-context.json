@@ -1,0 +1,104 @@
+{
+  "contract": {
+    "objective": "# ItsDangerous: duration-valued signature expiry\n\nImplement support for `datetime.timedelta` values in the `max_age` argument of\n`TimestampSigner.unsign`, `TimestampSigner.validate`, `TimedSerializer.loads` and\n`TimedSerializer.loads_unsafe`, including inherited URL-safe timed serializers.\nThis is an API convenience for applications whose expiry configuration already\nuses durations. Preserve integer-second and `None` behavior and the signed-token\nformat. No new runtime dependencies.\n\nDuration-valued limits must retain fractional seconds and accept negative and zero\ndurations with the same expiry rules as equivalent second-valued limits. An age\nequal to the limit is valid; an older age is expired. A future signature remains\ninvalid whenever a finite age limit is supplied. Preserve signature validation\nbefore age validation, exception classes, payload/date metadata, UTC timestamps,\nkey rotation, custom signers and unsafe-load return semantics. Do not broaden\nunrelated invalid-input acceptance or change cryptographic algorithms.\n\nUpdate all relevant public annotations (including overloads), docstrings and\n`docs/timed.rst`. Add meaningful regression tests in\n`tests/test_itsdangerous/test_timedelta_max_age.py`. Run the public cases, interface\nchecks and existing upstream suite. Inspect the authorized source yourself; the\ncontroller supplies requirements and public diagnostics, not implementation code.\n\nOnly these paths may change:\n\n- `src/itsdangerous/timed.py`\n- `docs/timed.rst`\n- `tests/test_itsdangerous/test_timedelta_max_age.py`\n\nAll other repository files and the frozen public verifier/cases are read-only.\nUse only the advertised scoped tools and approved check indices. Complete the\nactive implementation objective within the single worker session; no retry or\nmid-run operator implementation guidance is available. Final acceptance material\nis inaccessible to this session.\n",
+    "write_roots": [
+      "src/itsdangerous/timed.py",
+      "docs/timed.rst",
+      "tests/test_itsdangerous/test_timedelta_max_age.py"
+    ],
+    "public_checks": [
+      {
+        "argv": [
+          "python",
+          "_aiwork_checks.py",
+          "public"
+        ],
+        "timeout": 45,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      },
+      {
+        "argv": [
+          "python",
+          "_aiwork_checks.py",
+          "upstream"
+        ],
+        "timeout": 45,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      },
+      {
+        "argv": [
+          "python",
+          "_aiwork_checks.py",
+          "authored"
+        ],
+        "timeout": 45,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      },
+      {
+        "argv": [
+          "python",
+          "_aiwork_checks.py",
+          "interfaces"
+        ],
+        "timeout": 45,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      },
+      {
+        "argv": [
+          "python",
+          "_aiwork_checks.py",
+          "syntax"
+        ],
+        "timeout": 45,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      }
+    ],
+    "setup": [],
+    "deadline": 1795338996.7772994,
+    "policy": {
+      "operations": 96,
+      "edit_reserve": 8,
+      "verification_reserve": 8,
+      "model_requests": 64,
+      "compactions": 4,
+      "blocked_limit": 3
+    }
+  },
+  "contract_sha256": "e156eed34c3115f0e6f7af00429d18a3b4c4902299983529fe0aaa3c58ad6265",
+  "epoch": 0,
+  "visible": [],
+  "issued": {},
+  "events": [
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "e156eed34c3115f0e6f7af00429d18a3b4c4902299983529fe0aaa3c58ad6265",
+      "remaining_operations": 96,
+      "denied": ""
+    }
+  ],
+  "used": {
+    "inspection": 0,
+    "editing": 0,
+    "verification": 0,
+    "inference": 1,
+    "compaction": 0
+  },
+  "seconds": {
+    "inference": 0.3119999999180436,
+    "cleanup": 0.015999999945051968
+  },
+  "blocked": 0,
+  "exhausted": ""
+}

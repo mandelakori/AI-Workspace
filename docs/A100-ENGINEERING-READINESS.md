@@ -1,5 +1,10 @@
 # Original Milestone E — A100 autonomous engineering readiness
 
+**Historical preparation at `de38d35`.** The exact trial was subsequently approved,
+executed once and quarantined on a provider/template incompatibility. Read the
+[execution result](A100-ENGINEERING-RESULT.md); the approval is consumed and this
+trial must not resume. Preparation facts and the frozen review below are retained.
+
 2026-11-22, starting at `8c2a417` on `phase61/autonomous-completion`.
 The original Milestones A–E remain authoritative. This is experimental evaluation
 inside Milestone E, not a new phase, harness survey or architecture redesign.

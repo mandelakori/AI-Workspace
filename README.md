@@ -5,8 +5,10 @@ AI Workspace runs manifests for software development, testing and bounded static
 Current position: **original Milestone E, experimental evaluation**. Prioritize
 [autonomous coding on the existing A100](docs/A100-ENGINEERING-READINESS.md), then
 the existing REA/Ghidra workbench, measured routing and final acceptance. The fresh
-ItsDangerous trial is prepared for separate approval; no worker has been dispatched.
-The Pi/OpenCode comparison remains unauthorized.
+ItsDangerous trial was approved and **quarantined before any model completion**;
+the [result](docs/A100-ENGINEERING-RESULT.md) identifies a controller/template
+message-layout blocker. Do not retry or resume it. The Pi/OpenCode comparison
+remains unauthorized.
 
 ## Windows first run
 

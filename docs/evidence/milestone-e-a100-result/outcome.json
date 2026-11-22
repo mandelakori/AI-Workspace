@@ -1,0 +1,102 @@
+{
+  "status": "QUARANTINED",
+  "assessment": "FAIL_INFRASTRUCTURE_BEFORE_MODEL_COMPLETION",
+  "approval_digest": "150b82b49ebf8235fb0482d70bbcb75d3e3e1556334dd44406f5af3d69fab4af",
+  "worker_sessions": 1,
+  "planner_requests": 0,
+  "attempts": 1,
+  "source_edits": 0,
+  "worker_public_test_calls": 0,
+  "controller_baseline_public": {
+    "passed": 3,
+    "total": 12
+  },
+  "worker_upstream_tests": "NOT_RUN",
+  "prepared_upstream_baseline": {
+    "passed": 297,
+    "skips": 0
+  },
+  "authored_tests": 0,
+  "independent_acceptance": "NOT_CREATED_NOT_GRADED",
+  "candidate": "NOT_PRODUCED",
+  "provider": {
+    "local_posts": 2,
+    "a100_requests_forwarded": 1,
+    "automatic_resend_blocked": 1,
+    "first_http_status": 500,
+    "raw_harness_exit": 1,
+    "response_elapsed_seconds": 0.3119999999180436,
+    "usage": null,
+    "visible_completion": null,
+    "reasoning_tokens": null,
+    "cache_tokens": null,
+    "output_ceiling_sent": 4096,
+    "reasoning_effort": "none",
+    "enable_thinking": false
+  },
+  "context": {
+    "configured_harness": 65536,
+    "server_slot": 131072,
+    "epoch": 0,
+    "compactions": 0,
+    "prompt_tokens_reported": null
+  },
+  "resources": {
+    "epoch": 0,
+    "remaining_operations": 96,
+    "used": {
+      "inspection": 0,
+      "editing": 0,
+      "verification": 0,
+      "inference": 1,
+      "compaction": 0
+    },
+    "exhausted": "",
+    "policy": {
+      "operations": 96,
+      "edit_reserve": 8,
+      "verification_reserve": 8,
+      "model_requests": 64,
+      "compactions": 4,
+      "blocked_limit": 3
+    },
+    "seconds": {
+      "inference": 0.3119999999180436,
+      "cleanup": 0.015999999945051968
+    },
+    "contract_sha256": "e156eed34c3115f0e6f7af00429d18a3b4c4902299983529fe0aaa3c58ad6265"
+  },
+  "timing": {
+    "warm_phase_seconds": 4.797,
+    "work_phase_seconds": 14.625,
+    "work_cleanup_seconds": 0.218,
+    "harness_seconds": 4.98499999998603,
+    "trial_start_to_quarantine_phase_end_seconds": 19.675381183624268
+  },
+  "cleanup_passed": true,
+  "scope_violation": false,
+  "timeout": false,
+  "grade_phase": "PENDING",
+  "quarantine_marker_exists": true,
+  "phase_ledger_quarantined_field": false,
+  "cause": {
+    "incoming_roles": [
+      "system",
+      "user"
+    ],
+    "forwarded_roles": [
+      "system",
+      "system",
+      "user"
+    ],
+    "template_guard_line": 85,
+    "failing_system_message_index": 1,
+    "message": "System message must be at the beginning.",
+    "classification": "controller task-contract insertion incompatible with strict active Qwen chat template",
+    "not_a_missing_tool_catalog": true,
+    "not_a_model_coding_capability_result": true
+  },
+  "model_or_service_changes": false,
+  "worker_resumed": false,
+  "sealed_feedback_exposed": false
+}

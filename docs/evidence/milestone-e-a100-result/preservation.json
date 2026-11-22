@@ -1,0 +1,39 @@
+{
+  "historical_evidence": [
+    {
+      "reference": "docs/evidence/phase61/httpx-editing-pilot/evidence-hashes.json",
+      "entries_checked": 25,
+      "matched": true
+    },
+    {
+      "reference": "docs/evidence/phase61/discovery-result/evidence-hashes.json",
+      "entries_checked": 35,
+      "matched": true
+    },
+    {
+      "reference": "docs/evidence/phase61/discovery-result/local-evidence-inventory.json",
+      "entries_checked": 305,
+      "matched": true
+    },
+    {
+      "reference": ".aiwork/phase6/final-freeze.json",
+      "entries_checked": 142,
+      "matched": true
+    },
+    {
+      "reference": "docs/evidence/adaptive-local/evidence-hashes.json",
+      "entries_checked": 907,
+      "matched": true
+    },
+    {
+      "reference": "docs/evidence/milestone-e-a100/evidence-hashes.json",
+      "entries_checked": 37,
+      "matched": true
+    }
+  ],
+  "main": "cf50e89c2ca2ad21d86fda5473f5ad6edc0c2623",
+  "main_unchanged": true,
+  "frozen_approval_manifest_unchanged": true,
+  "new_model_or_remote_mutations": false,
+  "candidate_or_sealed_artifacts_created": false
+}

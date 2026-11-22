@@ -1,6 +1,24 @@
 # Next steps
 
+## Current outcome: approved A100 trial quarantined
+
+The original Milestone E [ItsDangerous trial result](A100-ENGINEERING-RESULT.md)
+is **FAIL — infrastructure**, not a model-capability verdict. Its single forwarded
+request failed because contract insertion produced two system messages and the
+active Qwen template accepts a system message only in the first position. No
+source edits or worker tests occurred; no candidate or sealed cases exist.
+
+Digest `150b82b49ebf8235fb0482d70bbcb75d3e3e1556334dd44406f5af3d69fab4af`
+is consumed. Do not retry, resume, grade or reuse its bundle. The next required
+review concerns the smallest contract/message-layout correction and inert
+conformance, including the observed blocked SDK resend. No fix or new campaign
+was implemented/prepared in this execution. Obtain fresh approval before any
+subsequent trial. Keep the Pi/OpenCode comparison unauthorized.
+
 ## Current priority: original Milestone E, A100 autonomous coding
+
+The preparation instructions in this section are historical; the outcome above
+supersedes their PREPARED_NOT_AUTHORIZED state and proposed execution instructions.
 
 The original Milestones A–E remain authoritative; historical phase labels below
 do not introduce a new roadmap. Read the [A100 readiness and exact trial review](A100-ENGINEERING-READINESS.md).

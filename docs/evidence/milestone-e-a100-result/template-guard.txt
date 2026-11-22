@@ -1,0 +1,8 @@
+81: {%- for message in messages %}
+82:     {%- set content = render_content(message.content, true)|trim %}
+83:     {%- if message.role == "system" %}
+84:         {%- if not loop.first %}
+85:             {{- raise_exception('System message must be at the beginning.') }}
+86:         {%- endif %}
+87:     {%- elif message.role == "user" %}
+88:         {{- '<|im_start|>' + message.role + '\n' + content + '<|im_end|>' + '\n' }}

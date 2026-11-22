@@ -1,0 +1,70 @@
+{
+  "tool_calls": {},
+  "tool_errors": 0,
+  "tokens": null,
+  "peak_reported_input_tokens": null,
+  "successful_public_mcp_checks": 0,
+  "execution": {
+    "schema": 1,
+    "adapter": "opencode",
+    "status": "provider_failure",
+    "raw_exit_code": 1,
+    "elapsed": 4.98499999998603,
+    "timed_out": false,
+    "cleanup_passed": true,
+    "provider_gate_passed": false,
+    "independent_verification": "blocked",
+    "resources": {
+      "epoch": 0,
+      "remaining_operations": 96,
+      "used": {
+        "inspection": 0,
+        "editing": 0,
+        "verification": 0,
+        "inference": 1,
+        "compaction": 0
+      },
+      "exhausted": "",
+      "policy": {
+        "operations": 96,
+        "edit_reserve": 8,
+        "verification_reserve": 8,
+        "model_requests": 64,
+        "compactions": 4,
+        "blocked_limit": 3
+      },
+      "seconds": {
+        "inference": 0.3119999999180436,
+        "cleanup": 0.015999999945051968
+      },
+      "contract_sha256": "e156eed34c3115f0e6f7af00429d18a3b4c4902299983529fe0aaa3c58ad6265"
+    },
+    "provider_usage": {
+      "reported": [],
+      "unreported_requests": [
+        1
+      ]
+    }
+  },
+  "gpu_samples": {
+    "before": [
+      {
+        "name": "NVIDIA A100-SXM4-40GB",
+        "total_mib": 40960,
+        "free_mib": 10144
+      }
+    ],
+    "after": [
+      {
+        "name": "NVIDIA A100-SXM4-40GB",
+        "total_mib": 40960,
+        "free_mib": 10144
+      }
+    ]
+  },
+  "reported_context_fraction": null,
+  "effective_output_tokens_per_second": null,
+  "inference_lanes": 1,
+  "lane_wait_seconds": 0.0,
+  "harness_seconds": 5.0
+}

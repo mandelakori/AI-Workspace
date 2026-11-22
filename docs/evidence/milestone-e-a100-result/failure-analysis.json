@@ -1,0 +1,16 @@
+{
+  "incoming_roles": [
+    "system",
+    "user"
+  ],
+  "forwarded_roles": [
+    "system",
+    "system",
+    "user"
+  ],
+  "original_messages_preserved_after_prepend": true,
+  "template_sha256": "e84f32a23fdda27689f868aa4a1a5621f41133e51a48d7f3efcbea2839574259",
+  "template_rejects_nonfirst_system": true,
+  "offending_message_index": 1,
+  "error_response_sha256": "d598189c3fd2ff5cbb3885ebcd178d8e67dd280cbb18c6ea0c673cd2e0a8f84f"
+}
