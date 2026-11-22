@@ -1,6 +1,25 @@
 # Next steps
 
+## Current outcome: second approved A100 trial consumed and quarantined
+
+The [ItsDangerous execution result](A100-DURATION-TRIAL-RESULT.md) is **FAIL**:
+the first inference, one compaction and resumed inference succeeded, but all
+37 edit proposals were rejected and the harness deadline interrupted the attempt.
+No source delivery, feature-public test, upstream run or sealed evaluation exists.
+The worker ran only a passing syntax check on unchanged source.
+
+Digest `0534cc79d14abfe300f187b5ebf7a4728d89106558a925f16cce3d75fa214644`
+is consumed. Do not retry, resume or grade its bundle. Saved traces identify LF
+anchors against CRLF source and repeated ambiguous anchors as the edit-application
+blocker. No fix, new campaign, harness comparison or fresh manifest was prepared.
+Any subsequent development or experiment requires a new user instruction/review.
+Keep the original Milestone E priority and all prior quarantines; Pi/OpenCode
+remains unauthorized.
+
 ## Current handoff: corrected message layout, fresh A100 preparation
+
+Historical preparation; the approved execution outcome above supersedes its
+PREPARED_NOT_AUTHORIZED state and proposed approval instructions.
 
 The [single-system contract correction](A100-SYSTEM-CONTRACT-FIX.md) passes
 190/190 regressions and offline rendering against the pinned Qwen template.

@@ -1,5 +1,11 @@
 # Milestone E: single-system task-contract correction
 
+**Historical correction and preparation at `84933e1`.** Digest `0534cc79...` was
+subsequently approved and executed once. Its initial inference, compaction and
+resumed requests succeeded, but no source edits were accepted before the deadline.
+Read the [consumed, quarantined trial result](A100-DURATION-TRIAL-RESULT.md).
+The preparation below is preserved and no longer authorizes execution.
+
 ## Changed files
 
 - `aiwork/execution_context.py`: merge the complete authoritative contract before

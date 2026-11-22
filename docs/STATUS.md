@@ -1,6 +1,19 @@
 # Status as of 2026-11-22
 
+## Milestone E: approved duration-expiry trial outcome
+
+| Capability / outcome | Status | Evidence |
+| --- | --- | --- |
+| First live inference and persistent contract | VERIFIED | [Execution result](A100-DURATION-TRIAL-RESULT.md): first request HTTP 200 with usage/tool call. All 51 forwarded requests retain one initial system message and both instruction sets. One compaction and three subsequent completed inference calls succeed. |
+| Autonomous feature delivery | BLOCKED | Zero accepted edits from 37 proposals. Controller public baseline 3/12; worker ran syntax only. No authored tests, upstream execution, frozen candidate or sealed grade. Harness deadline interruption quarantined the trial; `0534cc79...` consumed. |
+| Failure evidence | VERIFIED | Eleven otherwise unique multiline anchors differ in LF/CRLF representation; 24 anchors match multiple sites; one empty and one other nonexistent anchor. Raw model arguments equal MCP arguments; source hashes current and unchanged. No corrective edits applied by operator. |
+| Usage and cleanup | VERIFIED | 50 usage receipts report 1487659 tokens; final request usage unknown. 51/96 tool operations, one compaction, 714.012 s trial wall time. Owned cleanup passes; later read-only A100 postflight healthy/idle. Remote cancellation latency UNTESTED. |
+| Preservation | VERIFIED | No platform/target implementation, remote service/model/storage or main changes. Historical evidence and previous quarantine preserved. No subsequent development, new manifest, model campaign or Pi/OpenCode comparison dispatched. |
+
 ## Milestone E: corrected single-system task contract
+
+Historical correction/preparation. The new execution result above supersedes its
+prepared and live-inference-untested entries; the consumed bundle cannot resume.
 
 | Capability / outcome | Status | Evidence |
 | --- | --- | --- |

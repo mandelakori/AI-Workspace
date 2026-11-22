@@ -1,0 +1,1 @@
+{"python": "3.12.16 (main, Nov  5 2026, 07:58:20) [GCC 14.2.0]", "packages": {"pytest": "9.0.3", "freezegun": "1.5.5", "python-dateutil": "2.9.0.post0", "six": "1.17.0"}}

@@ -1,0 +1,15 @@
+{
+  "gpu": [
+    {
+      "name": "NVIDIA A100-SXM4-40GB",
+      "total_mib": 40960,
+      "free_mib": 10144
+    }
+  ],
+  "inference": null,
+  "minimum_free_mib": 0,
+  "profile_context": 65536,
+  "effective_context": 65536,
+  "minimum_context": 32768,
+  "admitted": true
+}

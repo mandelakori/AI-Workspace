@@ -1,0 +1,516 @@
+[
+  {
+    "response": "provider-response-001.sse",
+    "name": "checks_focus",
+    "arguments": {
+      "path": "src/itsdangerous/timed.py",
+      "symbol": "TimestampSigner"
+    }
+  },
+  {
+    "response": "provider-response-001.sse",
+    "name": "checks_focus",
+    "arguments": {
+      "path": "src/itsdangerous/timed.py",
+      "symbol": "TimedSerializer"
+    }
+  },
+  {
+    "response": "provider-response-002.sse",
+    "name": "checks_focus",
+    "arguments": {
+      "path": "src/itsdangerous/timed.py",
+      "line": 72
+    }
+  },
+  {
+    "response": "provider-response-003.sse",
+    "name": "checks_focus",
+    "arguments": {
+      "path": "src/itsdangerous/timed.py",
+      "line": 132
+    }
+  },
+  {
+    "response": "provider-response-004.sse",
+    "name": "checks_focus",
+    "arguments": {
+      "path": "src/itsdangerous/url_safe.py",
+      "symbol": "URLSafeTimedSerializer"
+    }
+  },
+  {
+    "response": "provider-response-005.sse",
+    "name": "checks_focus",
+    "arguments": {
+      "path": "docs/timed.rst"
+    }
+  },
+  {
+    "response": "provider-response-005.sse",
+    "name": "checks_focus",
+    "arguments": {
+      "path": "tests/test_itsdangerous/test_timed.py",
+      "line": 1
+    }
+  },
+  {
+    "response": "provider-response-006.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "path": "src/itsdangerous/timed.py",
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "replace",
+      "old": "    @t.overload\n    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:",
+      "new": "    @t.overload\n    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:"
+    }
+  },
+  {
+    "response": "provider-response-007.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "replace",
+      "old": "        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:",
+      "path": "src/itsdangerous/timed.py",
+      "new": "        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:"
+    }
+  },
+  {
+    "response": "provider-response-008.sse",
+    "name": "checks_focus",
+    "arguments": {
+      "path": "src/itsdangerous/timed.py",
+      "line": 56
+    }
+  },
+  {
+    "response": "provider-response-009.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "replace",
+      "new": "        max_age: int | float | timedelta | None = None,",
+      "old": "        max_age: int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-010.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "replace",
+      "new": "        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:",
+      "old": "        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-011.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-012.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "replace",
+      "new": "    @t.overload\n    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...",
+      "old": "    @t.overload\n    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-013.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "replace",
+      "new": "    @t.overload\n    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...",
+      "old": "    @t.overload\n    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-014.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "replace",
+      "new": "        max_age: int | float | timedelta | None = None,",
+      "old": "        max_age: int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-015.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "replace",
+      "new": "    @t.overload\n    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:",
+      "old": "    @t.overload\n    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-016.sse",
+    "name": "checks_diff",
+    "arguments": {}
+  },
+  {
+    "response": "provider-response-017.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | ",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-018.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "replace",
+      "new": "        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,",
+      "old": "        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-019.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "replace",
+      "new": "        signed_value: str | bytes,\\r\\n        max_age: int | float | timedelta | None = None,\\r\\n        return_timestamp: t.Literal[False] = False,\\r\\n",
+      "old": "        signed_value: str | bytes,\\r\\n        max_age: int | None = None,\\r\\n        return_timestamp: t.Literal[False] = False,\\r\\n",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-020.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "replace",
+      "new": "        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:\n        \"\"\"Works like the regular :meth:`.Signer.unsign` but can also\n        validate the time. See the base docstring of the class for\n        the general behavior. If ``return_timestamp`` is ``True`` the\n        timestamp of the signature will be returned as an aware\n        :class:`datetime.datetime` object in UTC.\n\n        .. versionchanged:: 2.0\n            The timestamp is returned as a timezone-aware ``datetime``\n            in UTC rather than a naive ``datetime`` assumed to be UTC.\n        \"\"\"",
+      "old": "        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:\n        \"\"\"Works like the regular :meth:`.Signer.unsign` but can also\n        validate the time. See the base docstring of the class for\n        the general behavior. If ``return_timestamp`` is ``True`` the\n        timestamp of the signature will be returned as an aware\n        :class:`datetime.datetime` object in UTC.\n\n        .. versionchanged:: 2.0\n            The timestamp is returned as a timezone-aware ``datetime``\n            in UTC rather than a naive ``datetime`` assumed to be UTC.\n        \"\"\"",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-021.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-022.sse",
+    "name": "checks_focus",
+    "arguments": {
+      "path": "src/itsdangerous/timed.py",
+      "symbol": "TimestampSigner.unsign"
+    }
+  },
+  {
+    "response": "provider-response-023.sse",
+    "name": "checks_check",
+    "arguments": {
+      "index": 4
+    }
+  },
+  {
+    "response": "provider-response-024.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "replace",
+      "new": "        max_age: int | float | timedelta | None = None,",
+      "old": "        max_age: int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-025.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "replace",
+      "new": "    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...",
+      "old": "    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-026.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-027.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "replace",
+      "new": "    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...",
+      "old": "    def unsign(  # pyright: ignore\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-028.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-029.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-030.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "replace",
+      "new": "        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | float | timedelta | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:",
+      "old": "        max_age: int | None = None,\n        return_timestamp: t.Literal[False] = False,\n    ) -> bytes: ...\n\n    @t.overload\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: t.Literal[True] = True,\n    ) -> tuple[bytes, datetime]: ...\n\n    def unsign(\n        self,\n        signed_value: str | bytes,\n        max_age: int | None = None,\n        return_timestamp: bool = False,\n    ) -> tuple[bytes, datetime] | bytes:",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-031.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-032.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-033.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-034.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-035.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-036.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-037.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-038.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-039.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-040.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-041.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-042.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-043.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-044.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-045.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-046.sse",
+    "name": "checks_edit",
+    "arguments": {
+      "expected_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "mode": "before",
+      "new": "float | timedelta | ",
+      "old": "int | None = None,",
+      "path": "src/itsdangerous/timed.py"
+    }
+  },
+  {
+    "response": "provider-response-048.sse",
+    "name": "checks_focus",
+    "arguments": {
+      "path": "src/itsdangerous/timed.py",
+      "line": 1
+    }
+  },
+  {
+    "response": "provider-response-049.sse",
+    "name": "checks_focus",
+    "arguments": {
+      "path": "src/itsdangerous/timed.py",
+      "line": 56
+    }
+  },
+  {
+    "response": "provider-response-050.sse",
+    "name": "checks_focus",
+    "arguments": {
+      "path": "src/itsdangerous/timed.py",
+      "line": 116
+    }
+  }
+]

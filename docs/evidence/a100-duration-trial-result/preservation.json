@@ -1,0 +1,57 @@
+{
+  "historical_indexes": [
+    {
+      "reference": "docs/evidence/phase61/httpx-editing-pilot/evidence-hashes.json",
+      "entries": 25,
+      "matched": true
+    },
+    {
+      "reference": "docs/evidence/phase61/discovery-result/evidence-hashes.json",
+      "entries": 35,
+      "matched": true
+    },
+    {
+      "reference": "docs/evidence/phase61/discovery-result/local-evidence-inventory.json",
+      "entries": 305,
+      "matched": true
+    },
+    {
+      "reference": ".aiwork/phase6/final-freeze.json",
+      "entries": 142,
+      "matched": true
+    },
+    {
+      "reference": "docs/evidence/adaptive-local/evidence-hashes.json",
+      "entries": 907,
+      "matched": true
+    },
+    {
+      "reference": "docs/evidence/milestone-e-a100/evidence-hashes.json",
+      "entries": 37,
+      "matched": true
+    },
+    {
+      "reference": "docs/evidence/milestone-e-a100-result/evidence-hashes.json",
+      "entries": 52,
+      "matched": true
+    },
+    {
+      "reference": "docs/evidence/milestone-e-a100-result/local-evidence-inventory.json",
+      "entries": 326,
+      "matched": true
+    },
+    {
+      "reference": "docs/evidence/a100-system-contract-fix/evidence-hashes.json",
+      "entries": 97,
+      "matched": true
+    }
+  ],
+  "main": "cf50e89c2ca2ad21d86fda5473f5ad6edc0c2623",
+  "main_unchanged": true,
+  "old_trial_quarantine_preserved": true,
+  "no_sealed_cases_created": true,
+  "no_candidate_frozen": true,
+  "pi_comparison_executed": false,
+  "implementation_changed": false,
+  "subsequent_development_started": false
+}

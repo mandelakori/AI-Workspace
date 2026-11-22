@@ -1,0 +1,935 @@
+{
+  "contract": {
+    "objective": "# ItsDangerous: duration-valued signature expiry\n\nImplement support for `datetime.timedelta` values in the `max_age` argument of\n`TimestampSigner.unsign`, `TimestampSigner.validate`, `TimedSerializer.loads` and\n`TimedSerializer.loads_unsafe`, including inherited URL-safe timed serializers.\nThis is an API convenience for applications whose expiry configuration already\nuses durations. Preserve integer-second and `None` behavior and the signed-token\nformat. No new runtime dependencies.\n\nDuration-valued limits must retain fractional seconds and accept negative and zero\ndurations with the same expiry rules as equivalent second-valued limits. An age\nequal to the limit is valid; an older age is expired. A future signature remains\ninvalid whenever a finite age limit is supplied. Preserve signature validation\nbefore age validation, exception classes, payload/date metadata, UTC timestamps,\nkey rotation, custom signers and unsafe-load return semantics. Do not broaden\nunrelated invalid-input acceptance or change cryptographic algorithms.\n\nUpdate all relevant public annotations (including overloads), docstrings and\n`docs/timed.rst`. Add meaningful regression tests in\n`tests/test_itsdangerous/test_timedelta_max_age.py`. Run the public cases, interface\nchecks and existing upstream suite. Inspect the authorized source yourself; the\ncontroller supplies requirements and public diagnostics, not implementation code.\n\nOnly these paths may change:\n\n- `src/itsdangerous/timed.py`\n- `docs/timed.rst`\n- `tests/test_itsdangerous/test_timedelta_max_age.py`\n\nAll other repository files and the frozen public verifier/cases are read-only.\nUse only the advertised scoped tools and approved check indices. Complete the\nactive implementation objective within the single worker session; no retry or\nmid-run operator implementation guidance is available. Final acceptance material\nis inaccessible to this session.\n",
+    "write_roots": [
+      "src/itsdangerous/timed.py",
+      "docs/timed.rst",
+      "tests/test_itsdangerous/test_timedelta_max_age.py"
+    ],
+    "public_checks": [
+      {
+        "argv": [
+          "python",
+          "_aiwork_checks.py",
+          "public"
+        ],
+        "timeout": 45,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      },
+      {
+        "argv": [
+          "python",
+          "_aiwork_checks.py",
+          "upstream"
+        ],
+        "timeout": 45,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      },
+      {
+        "argv": [
+          "python",
+          "_aiwork_checks.py",
+          "authored"
+        ],
+        "timeout": 45,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      },
+      {
+        "argv": [
+          "python",
+          "_aiwork_checks.py",
+          "interfaces"
+        ],
+        "timeout": 45,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      },
+      {
+        "argv": [
+          "python",
+          "_aiwork_checks.py",
+          "syntax"
+        ],
+        "timeout": 45,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      }
+    ],
+    "setup": [],
+    "deadline": 1795341804.7867367,
+    "policy": {
+      "operations": 96,
+      "edit_reserve": 8,
+      "verification_reserve": 8,
+      "model_requests": 64,
+      "compactions": 4,
+      "blocked_limit": 3
+    }
+  },
+  "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+  "epoch": 1,
+  "visible": [
+    "50e19c1355de0da4780eac199cdcb9ddfe0c87b611c2b8c051dbf067ff468eef",
+    "555887d14e91fab62c63b195400a7a90c98db0ae49187d728b7bceea644fad3a",
+    "8f83ab1611b3eeccbd0dda49136831143fc3345ae7a9deacd016664489205e85"
+  ],
+  "issued": {
+    "c873b60baf908cf6325373ce897d88a99cf483cff54ce69e2a3f54ff5a1274cb": {
+      "path": "src/itsdangerous/timed.py",
+      "sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "line": 22,
+      "next_line": 82
+    },
+    "65e540c9e114c8f21d01e20ef16764e3680f3985a495f290fef28ccdb03e92c4": {
+      "path": "src/itsdangerous/timed.py",
+      "sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "line": 170,
+      "next_line": null
+    },
+    "273e0977314d271f2acfd086261c4e97289a69e31f4b42e2750cbbb6153e3b5a": {
+      "path": "src/itsdangerous/timed.py",
+      "sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "line": 72,
+      "next_line": 132
+    },
+    "7571ec3b2758eda012cfd9048074fa6e97990e9650ceb600d23a443639a611eb": {
+      "path": "src/itsdangerous/timed.py",
+      "sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "line": 132,
+      "next_line": 192
+    },
+    "8e157dfc232ba0f93928ad526490823745feb00e93ad928bc273c78997a8de61": {
+      "path": "src/itsdangerous/url_safe.py",
+      "sha256": "4d7db7718099818b3ec71b700d8397e3b5ce12ee9dcb345885b77ade693fb1be",
+      "line": 79,
+      "next_line": null
+    },
+    "994a41a503317ec93055e74b7c015a39134d394df5fe4ff8e0e53396e75db79f": {
+      "path": "docs/timed.rst",
+      "sha256": "60d00c7576febb10ce60aa5f15e16200dcf22c045f24fd4b33985a2b5fc72369",
+      "line": 1,
+      "next_line": null
+    },
+    "4d428a708ef7f2b213efe80e6c1a626c70125076a83129277da14293b06f5ed2": {
+      "path": "tests/test_itsdangerous/test_timed.py",
+      "sha256": "42d2644a1b6526b263706e4d27a6ea55e09f45e01bffe97a1cf9d803362eb877",
+      "line": 1,
+      "next_line": 61
+    },
+    "555887d14e91fab62c63b195400a7a90c98db0ae49187d728b7bceea644fad3a": {
+      "path": "src/itsdangerous/timed.py",
+      "sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "line": 56,
+      "next_line": 116
+    },
+    "8f83ab1611b3eeccbd0dda49136831143fc3345ae7a9deacd016664489205e85": {
+      "path": "src/itsdangerous/timed.py",
+      "sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "line": 1,
+      "next_line": 61
+    },
+    "50e19c1355de0da4780eac199cdcb9ddfe0c87b611c2b8c051dbf067ff468eef": {
+      "path": "src/itsdangerous/timed.py",
+      "sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+      "line": 116,
+      "next_line": 176
+    }
+  },
+  "events": [
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 94,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 93,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 92,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 91,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 89,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 88,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 87,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 86,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 85,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 84,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 83,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 82,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 81,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 80,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 79,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "diff",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 78,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 77,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 76,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 75,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 74,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 73,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 72,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "check",
+      "category": "verification",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 71,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 70,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 69,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 68,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 67,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 66,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 65,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 64,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 63,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 62,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 61,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 60,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 59,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 58,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 57,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 56,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 55,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 54,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 53,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 52,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 51,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 50,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 49,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "compaction",
+      "epoch": 1,
+      "evicted": []
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "compaction",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 48,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 48,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 1,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 47,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 1,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 46,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 1,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "4ac3a4b38f6dd88f919e61cfb3657899c1b0d29673c397b6fa8cf50b1ca130c5",
+      "remaining_operations": 45,
+      "denied": ""
+    }
+  ],
+  "used": {
+    "inspection": 13,
+    "editing": 37,
+    "verification": 1,
+    "inference": 50,
+    "compaction": 1
+  },
+  "seconds": {
+    "inference": 644.3279999999795,
+    "inspection": 3.5019999999785796,
+    "editing": 5.8090000002412125,
+    "verification": 1.609000000054948,
+    "compaction": 29.39000000001397,
+    "cleanup": 0.015999999945051968
+  },
+  "blocked": 0,
+  "exhausted": ""
+}

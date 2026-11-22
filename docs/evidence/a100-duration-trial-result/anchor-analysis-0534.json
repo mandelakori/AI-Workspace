@@ -1,0 +1,512 @@
+{
+  "source_sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+  "source_CRLF": 228,
+  "analysis_only_no_edits_applied": true,
+  "edit_attempts": [
+    {
+      "call": 8,
+      "mode": "replace",
+      "code": "anchor_mismatch",
+      "anchor_characters": 595,
+      "LF": 21,
+      "CRLF": 0,
+      "exact_matches": 0,
+      "LF_normalized_source_matches": 1,
+      "CRLF_reencoded_anchor_matches": 1
+    },
+    {
+      "call": 9,
+      "mode": "replace",
+      "code": "anchor_mismatch",
+      "anchor_characters": 495,
+      "LF": 17,
+      "CRLF": 0,
+      "exact_matches": 0,
+      "LF_normalized_source_matches": 1,
+      "CRLF_reencoded_anchor_matches": 1
+    },
+    {
+      "call": 11,
+      "mode": "replace",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 35,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 12,
+      "mode": "replace",
+      "code": "anchor_mismatch",
+      "anchor_characters": 495,
+      "LF": 17,
+      "CRLF": 0,
+      "exact_matches": 0,
+      "LF_normalized_source_matches": 1,
+      "CRLF_reencoded_anchor_matches": 1
+    },
+    {
+      "call": 13,
+      "mode": "before",
+      "code": "invalid_anchor",
+      "anchor_characters": 0,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 0,
+      "LF_normalized_source_matches": 0,
+      "CRLF_reencoded_anchor_matches": 0
+    },
+    {
+      "call": 14,
+      "mode": "replace",
+      "code": "anchor_mismatch",
+      "anchor_characters": 207,
+      "LF": 6,
+      "CRLF": 0,
+      "exact_matches": 0,
+      "LF_normalized_source_matches": 1,
+      "CRLF_reencoded_anchor_matches": 1
+    },
+    {
+      "call": 15,
+      "mode": "replace",
+      "code": "anchor_mismatch",
+      "anchor_characters": 207,
+      "LF": 6,
+      "CRLF": 0,
+      "exact_matches": 0,
+      "LF_normalized_source_matches": 1,
+      "CRLF_reencoded_anchor_matches": 1
+    },
+    {
+      "call": 16,
+      "mode": "replace",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 35,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 17,
+      "mode": "replace",
+      "code": "anchor_mismatch",
+      "anchor_characters": 595,
+      "LF": 21,
+      "CRLF": 0,
+      "exact_matches": 0,
+      "LF_normalized_source_matches": 1,
+      "CRLF_reencoded_anchor_matches": 1
+    },
+    {
+      "call": 19,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 6,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 7,
+      "LF_normalized_source_matches": 7,
+      "CRLF_reencoded_anchor_matches": 7
+    },
+    {
+      "call": 20,
+      "mode": "replace",
+      "code": "anchor_mismatch",
+      "anchor_characters": 122,
+      "LF": 2,
+      "CRLF": 0,
+      "exact_matches": 0,
+      "LF_normalized_source_matches": 1,
+      "CRLF_reencoded_anchor_matches": 1
+    },
+    {
+      "call": 21,
+      "mode": "replace",
+      "code": "anchor_mismatch",
+      "anchor_characters": 132,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 0,
+      "LF_normalized_source_matches": 0,
+      "CRLF_reencoded_anchor_matches": 0
+    },
+    {
+      "call": 22,
+      "mode": "replace",
+      "code": "anchor_mismatch",
+      "anchor_characters": 1003,
+      "LF": 27,
+      "CRLF": 0,
+      "exact_matches": 0,
+      "LF_normalized_source_matches": 1,
+      "CRLF_reencoded_anchor_matches": 1
+    },
+    {
+      "call": 23,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 26,
+      "mode": "replace",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 35,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 27,
+      "mode": "replace",
+      "code": "anchor_mismatch",
+      "anchor_characters": 191,
+      "LF": 5,
+      "CRLF": 0,
+      "exact_matches": 0,
+      "LF_normalized_source_matches": 1,
+      "CRLF_reencoded_anchor_matches": 1
+    },
+    {
+      "call": 28,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 29,
+      "mode": "replace",
+      "code": "anchor_mismatch",
+      "anchor_characters": 191,
+      "LF": 5,
+      "CRLF": 0,
+      "exact_matches": 0,
+      "LF_normalized_source_matches": 1,
+      "CRLF_reencoded_anchor_matches": 1
+    },
+    {
+      "call": 30,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 31,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 32,
+      "mode": "replace",
+      "code": "anchor_mismatch",
+      "anchor_characters": 495,
+      "LF": 17,
+      "CRLF": 0,
+      "exact_matches": 0,
+      "LF_normalized_source_matches": 1,
+      "CRLF_reencoded_anchor_matches": 1
+    },
+    {
+      "call": 33,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 34,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 35,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 36,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 37,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 38,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 39,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 40,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 41,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 42,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 43,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 44,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 45,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 46,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 47,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    },
+    {
+      "call": 48,
+      "mode": "before",
+      "code": "ambiguous_anchor",
+      "anchor_characters": 18,
+      "LF": 0,
+      "CRLF": 0,
+      "exact_matches": 5,
+      "LF_normalized_source_matches": 5,
+      "CRLF_reencoded_anchor_matches": 5
+    }
+  ],
+  "focus": [
+    {
+      "call": 1,
+      "path": "src/itsdangerous/timed.py",
+      "source_LF": 60,
+      "source_CRLF": 60,
+      "line": 22,
+      "source_present": true
+    },
+    {
+      "call": 2,
+      "path": "src/itsdangerous/timed.py",
+      "source_LF": 59,
+      "source_CRLF": 59,
+      "line": 170,
+      "source_present": true
+    },
+    {
+      "call": 3,
+      "path": "src/itsdangerous/timed.py",
+      "source_LF": 60,
+      "source_CRLF": 60,
+      "line": 72,
+      "source_present": true
+    },
+    {
+      "call": 4,
+      "path": "src/itsdangerous/timed.py",
+      "source_LF": 60,
+      "source_CRLF": 60,
+      "line": 132,
+      "source_present": true
+    },
+    {
+      "call": 5,
+      "path": "src/itsdangerous/url_safe.py",
+      "source_LF": 5,
+      "source_CRLF": 5,
+      "line": 79,
+      "source_present": true
+    },
+    {
+      "call": 6,
+      "path": "docs/timed.rst",
+      "source_LF": 28,
+      "source_CRLF": 28,
+      "line": 1,
+      "source_present": true
+    },
+    {
+      "call": 7,
+      "path": "tests/test_itsdangerous/test_timed.py",
+      "source_LF": 60,
+      "source_CRLF": 60,
+      "line": 1,
+      "source_present": true
+    },
+    {
+      "call": 10,
+      "path": "src/itsdangerous/timed.py",
+      "source_LF": 60,
+      "source_CRLF": 60,
+      "line": 56,
+      "source_present": true
+    },
+    {
+      "call": 24,
+      "path": null,
+      "source_LF": 0,
+      "source_CRLF": 0,
+      "line": null,
+      "source_present": false
+    },
+    {
+      "call": 49,
+      "path": "src/itsdangerous/timed.py",
+      "source_LF": 60,
+      "source_CRLF": 60,
+      "line": 1,
+      "source_present": true
+    },
+    {
+      "call": 50,
+      "path": "src/itsdangerous/timed.py",
+      "source_LF": 60,
+      "source_CRLF": 60,
+      "line": 56,
+      "source_present": true
+    },
+    {
+      "call": 51,
+      "path": "src/itsdangerous/timed.py",
+      "source_LF": 60,
+      "source_CRLF": 60,
+      "line": 116,
+      "source_present": true
+    }
+  ]
+}

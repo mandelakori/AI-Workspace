@@ -1,0 +1,17 @@
+{
+  "approval_digest": "0534cc79d14abfe300f187b5ebf7a4728d89106558a925f16cce3d75fa214644",
+  "source_and_implementation_hashes_match": true,
+  "opencode_hash_matches": true,
+  "endpoint_identity_matches": true,
+  "slot_idle": true,
+  "owned_inspection_tunnel_closed": true,
+  "catalog_names": [
+    "check",
+    "diff",
+    "edit",
+    "focus"
+  ],
+  "python": "3.12.14 (main, Sep  1 2026, 14:17:39) [MSC v.1944 64 bit (AMD64)]",
+  "new_trial_unconsumed": true,
+  "generation_requests": 0
+}

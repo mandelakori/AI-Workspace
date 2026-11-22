@@ -6,9 +6,11 @@ Current position: **original Milestone E, experimental evaluation**. Prioritize
 [autonomous coding on the existing A100](docs/A100-ENGINEERING-READINESS.md), then
 the existing REA/Ghidra workbench, measured routing and final acceptance. The fresh
 ItsDangerous trial was approved and **quarantined before any model completion**.
-The [message-layout correction](docs/A100-SYSTEM-CONTRACT-FIX.md) passes 190
-regressions and a fresh trial is prepared for separate approval. Do not retry or
-resume the consumed trial. The Pi/OpenCode comparison remains unauthorized.
+The [message-layout correction](docs/A100-SYSTEM-CONTRACT-FIX.md) passed live
+inference and compaction, but the [approved follow-up trial](docs/A100-DURATION-TRIAL-RESULT.md)
+accepted no edits and timed out after repeated anchor failures. Both trials are
+quarantined and consumed; do not resume them. The Pi/OpenCode comparison remains
+unauthorized.
 
 ## Windows first run
 

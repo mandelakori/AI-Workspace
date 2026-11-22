@@ -1,0 +1,37 @@
+{
+  "at": 1795342102.3424127,
+  "owned_processes": [
+    {
+      "pid": 16120,
+      "running": false,
+      "open_process_error": 87
+    },
+    {
+      "pid": 18064,
+      "running": false,
+      "open_process_error": 87
+    },
+    {
+      "pid": 61360,
+      "running": false,
+      "open_process_error": 87
+    },
+    {
+      "pid": 43728,
+      "running": false,
+      "open_process_error": 87
+    }
+  ],
+  "forward_port_listening": false,
+  "worker_source_equals_input": true,
+  "input_matches": true,
+  "pristine_source_matches": true,
+  "candidate_frozen": false,
+  "sealed_directory_exists": false,
+  "post_backend_healthy": true,
+  "post_backend_idle": true,
+  "remote_cancellation_latency_measured": false,
+  "post_inspection_closed": true,
+  "grading_guard_rejected": true,
+  "grading_guard_reason": "engineering did not close cleanly; no grading"
+}
