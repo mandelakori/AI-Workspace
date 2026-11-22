@@ -1,0 +1,37 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 363B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/aiwork-discovery-dotenv:phase61
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/3] FROM docker.io/library/aiwork-discovery-dotenv:phase61@sha256:5c19bf11295cb95f58cdc0250c8f699292e453a05b9fdf3960346b3517fe1abf
+#4 resolve docker.io/library/aiwork-discovery-dotenv:phase61@sha256:5c19bf11295cb95f58cdc0250c8f699292e453a05b9fdf3960346b3517fe1abf 0.0s done
+#4 DONE 0.1s
+
+#5 [internal] load build context
+#5 transferring context: 222B done
+#5 DONE 0.0s
+
+#6 [2/3] COPY wheels /tmp/itsdangerous-wheels
+#6 CACHED
+
+#7 [3/3] RUN python -m pip install --no-index --no-cache-dir --find-links=/tmp/itsdangerous-wheels freezegun==1.5.5 python-dateutil==2.9.0.post0 six==1.17.0
+#7 CACHED
+
+#8 exporting to image
+#8 exporting layers done
+#8 exporting manifest sha256:937a54c5882cb6667813f12909fefe58b73ba2296214218282c5b976f24b3793 done
+#8 exporting config sha256:6c184b58052faac3b01872484e66be207d1e41ba35b9d3c137eb289d56643d28 done
+#8 exporting attestation manifest sha256:f07c855c6f8f946d29ff9b405bc378e366d424e1f620e21868553946ed873a00 0.0s done
+#8 exporting manifest list sha256:00d3d7e3d1e32064b5bf313cc788fb91945c0c5fa000856513f490f2c8087645
+#8 exporting manifest list sha256:00d3d7e3d1e32064b5bf313cc788fb91945c0c5fa000856513f490f2c8087645 0.0s done
+#8 naming to docker.io/library/aiwork-milestone-e-itsdangerous:20261122 done
+#8 unpacking to docker.io/library/aiwork-milestone-e-itsdangerous:20261122 0.0s done
+#8 DONE 0.2s

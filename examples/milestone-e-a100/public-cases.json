@@ -1,0 +1,14 @@
+[
+  {"id":"integer-compatible","api":"signer","age":4,"seconds":5,"expected":"accepted"},
+  {"id":"none-compatible","api":"signer","age":100,"unlimited":true,"expected":"accepted"},
+  {"id":"invalid-signature-first","api":"signer","age":4,"delta":{"seconds":5},"tamper":true,"expected":"bad-signature"},
+  {"id":"duration-active","api":"signer","age":4,"delta":{"seconds":5},"expected":"accepted"},
+  {"id":"duration-expired-metadata","api":"signer","age":6,"delta":{"seconds":5},"expected":"expired"},
+  {"id":"duration-exact-boundary","api":"signer","age":5,"delta":{"seconds":5},"expected":"accepted"},
+  {"id":"fraction-retained-accept","api":"signer","age":2,"delta":{"seconds":2,"microseconds":500000},"expected":"accepted"},
+  {"id":"fraction-retained-reject","api":"signer","age":2,"delta":{"seconds":1,"microseconds":500000},"expected":"expired"},
+  {"id":"negative-duration","api":"validate","age":0,"delta":{"microseconds":-1},"expected":"invalid"},
+  {"id":"future-timestamp","api":"signer","age":-1,"delta":{"seconds":5},"expected":"expired"},
+  {"id":"serializer-key-rotation-timestamp","api":"serializer","age":4,"delta":{"seconds":5},"rotation":true,"return_timestamp":true,"expected":"accepted"},
+  {"id":"urlsafe-unsafe-expired","api":"urlsafe-unsafe","age":6,"delta":{"seconds":5},"expected":"unsafe-expired"}
+]

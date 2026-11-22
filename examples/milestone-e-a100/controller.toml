@@ -1,0 +1,25 @@
+# Existing A100 endpoint only. This does not bootstrap or alter the remote server.
+state = "../../.aiwork/a100-engineering"
+execution_state = "../../.aiwork"
+local_slots = 1
+a100_slots = 1
+verification_image = "aiwork-milestone-e-itsdangerous:20261122"
+
+[ssh]
+alias = "aisak"
+remote_port = 18080
+
+[[profiles]]
+id = "a100-existing"
+engine = "llamacpp"
+harness = "opencode"
+location = "a100"
+endpoint = "http://127.0.0.1:18881/v1"
+model = "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf"
+context = 65536
+output_tokens = 4096
+temperature = 0
+seed = 1729
+quantization = "Q6_K"
+reasoning_effort = "none"
+managed = false

@@ -1,0 +1,76 @@
+{
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "approval_digest": "150b82b49ebf8235fb0482d70bbcb75d3e3e1556334dd44406f5af3d69fab4af",
+  "generation_requests": 0,
+  "workers_dispatched": 0,
+  "sealed_cases_created": 0,
+  "remote_mutations": false,
+  "new_cloud_instances": 0,
+  "service_restarts": 0,
+  "model_downloads": 0,
+  "baseline": {
+    "public_passed": 3,
+    "public_total": 12,
+    "upstream_passed": 297,
+    "upstream_skips": 0
+  },
+  "regressions": {
+    "baseline": 178,
+    "expanded_passed": 182,
+    "skips": 0,
+    "seconds": 162.239,
+    "final_focused_passed": 4
+  },
+  "source_commit": "672971d66a2ef9f85151e53283113f33d642dabd",
+  "source_files": 42,
+  "input_files": 45,
+  "model_identity": {
+    "model_path": "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf",
+    "model_ftype": "Q6_K",
+    "build_info": "b12063-2cbca389f",
+    "total_slots": 1,
+    "context": 131072,
+    "chat_template_sha256": "e84f32a23fdda27689f868aa4a1a5621f41133e51a48d7f3efcbea2839574259"
+  },
+  "profile": {
+    "id": "a100-existing",
+    "model": "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf",
+    "endpoint": "http://127.0.0.1:18881/v1",
+    "engine": "llamacpp",
+    "harness": "opencode",
+    "location": "a100",
+    "context": 65536,
+    "output_tokens": 4096,
+    "memory_mib": 0,
+    "quantization": "Q6_K",
+    "source": "",
+    "tools": true,
+    "api_key_env": "",
+    "managed": false,
+    "reasoning_effort": "none",
+    "seed": 1729,
+    "harness_turns": 0,
+    "temperature": 0,
+    "local_calibration": "",
+    "calibration_sha256": "",
+    "gpu_headroom_mib": 512,
+    "ram_headroom_mib": 2048,
+    "context_reserve_tokens": 512
+  },
+  "route": {
+    "profile": "a100-existing",
+    "reason": "operator override",
+    "local_fallback": false
+  },
+  "phase_limits": {
+    "warm": 20,
+    "work": 900,
+    "grade": 120
+  },
+  "draft_preparation": "trial is preserved unchanged but stale after guard review; only trial-final is proposed.",
+  "infrastructure_findings": [
+    "slots inventory is array-valued; isolated read-only helper preserves generic HTTP contract",
+    "direct entrypoint bound to source checkout to avoid stale installed controller wheel"
+  ],
+  "live_coding_independently_verified": false
+}

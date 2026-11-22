@@ -1,0 +1,36 @@
+{
+  "references": [
+    {
+      "reference": "docs/evidence/phase61/httpx-editing-pilot/evidence-hashes.json",
+      "entries_checked": 25,
+      "matched": true
+    },
+    {
+      "reference": "docs/evidence/phase61/discovery-result/evidence-hashes.json",
+      "entries_checked": 35,
+      "matched": true
+    },
+    {
+      "reference": "docs/evidence/phase61/discovery-result/local-evidence-inventory.json",
+      "entries_checked": 305,
+      "matched": true
+    },
+    {
+      "reference": ".aiwork/phase6/final-freeze.json",
+      "entries_checked": 142,
+      "matched": true
+    },
+    {
+      "reference": "docs/evidence/adaptive-local/evidence-hashes.json",
+      "entries_checked": 907,
+      "matched": true
+    }
+  ],
+  "main": "cf50e89c2ca2ad21d86fda5473f5ad6edc0c2623",
+  "main_unchanged": true,
+  "target_checkout_clean": true,
+  "all_pristine_source_hashes_match_input": true,
+  "operator_production_corrections": false,
+  "pi_comparison_status": "PREPARED_NOT_AUTHORIZED",
+  "pi_comparison_digest": "26c715e373551595dd655c09ecdf72bb96a3057fee9d12eeeafe69d721b2e8e2"
+}

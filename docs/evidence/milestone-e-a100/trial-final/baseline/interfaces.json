@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python",
+    "_aiwork_checks.py",
+    "interfaces"
+  ],
+  "cwd": "",
+  "runner": "sha256:00d3d7e3d1e32064b5bf313cc788fb91945c0c5fa000856513f490f2c8087645",
+  "code": 1,
+  "elapsed": 1.062000000034459,
+  "stdout": "[{\"function\": \"TimestampSigner.unsign\", \"duration_annotated\": false}, {\"function\": \"TimestampSigner.unsign\", \"duration_annotated\": false}, {\"function\": \"TimestampSigner.unsign\", \"duration_annotated\": false}, {\"function\": \"TimestampSigner.validate\", \"duration_annotated\": false}, {\"function\": \"TimedSerializer.loads\", \"duration_annotated\": false}, {\"function\": \"TimedSerializer.loads_unsafe\", \"duration_annotated\": false}]\n",
+  "stderr": "",
+  "timed_out": false,
+  "truncated": false,
+  "passed": false
+}

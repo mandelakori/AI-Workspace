@@ -1,6 +1,27 @@
 # Next steps
 
+## Current priority: original Milestone E, A100 autonomous coding
+
+The original Milestones A–E remain authoritative; historical phase labels below
+do not introduce a new roadmap. Read the [A100 readiness and exact trial review](A100-ENGINEERING-READINESS.md).
+The existing A100 is reachable with the expected Qwen3.6 35B-A3B Q6_K derivative,
+one idle 131072-token slot, and an owned SSH tunnel. No remote service change is needed.
+
+The fresh ItsDangerous duration-expiry feature is **PREPARED_NOT_AUTHORIZED** at
+`.aiwork/a100-readiness/trial-final`, digest
+`150b82b49ebf8235fb0482d70bbcb75d3e3e1556334dd44406f5af3d69fab4af`.
+Approve exactly `["a100-existing"]` only after reviewing its 20/900/120 phase
+reservations, 720-second single attempt, 96 tool operations, source scope and stop
+rules. No worker, model inference or sealed suite has run during preparation.
+
+After autonomous coding reliability: validate the existing REA/Ghidra workbench,
+then measured model/compute routing and original final acceptance. Do not begin a
+harness survey or unrelated integration. The prepared Pi/OpenCode comparison stays
+unauthorized; the earlier recommendation to run it next is superseded.
+
 ## Current handoff: adaptive local execution
+
+Historical checkpoint. Its proposed next comparison is deferred by the priority above.
 
 Read the [measured calibration and implementation report](ADAPTIVE-LOCAL-EXECUTION.md).
 8K, 16K and 32K are measured; 64K was conservatively withheld. The experimental

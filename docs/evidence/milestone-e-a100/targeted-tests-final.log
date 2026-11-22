@@ -1,0 +1,9 @@
+test_exact_approval_and_consumed_trial_guards_prevent_dispatch (test_a100_readiness.A100ReadinessTests.test_exact_approval_and_consumed_trial_guards_prevent_dispatch) ... ok
+test_explicit_a100_route_preserves_capacity_and_disabled_thinking (test_a100_readiness.A100ReadinessTests.test_explicit_a100_route_preserves_capacity_and_disabled_thinking) ... ok
+test_frozen_source_drift_and_managed_profiles_fail_closed (test_a100_readiness.A100ReadinessTests.test_frozen_source_drift_and_managed_profiles_fail_closed) ... ok
+test_inventory_accepts_slot_arrays_but_rejects_generation_routes (test_a100_readiness.A100ReadinessTests.test_inventory_accepts_slot_arrays_but_rejects_generation_routes) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.853s
+
+OK

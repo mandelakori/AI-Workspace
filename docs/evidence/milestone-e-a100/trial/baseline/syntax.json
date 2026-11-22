@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python",
+    "_aiwork_checks.py",
+    "syntax"
+  ],
+  "cwd": "",
+  "runner": "sha256:00d3d7e3d1e32064b5bf313cc788fb91945c0c5fa000856513f490f2c8087645",
+  "code": 0,
+  "elapsed": 0.9679999999934807,
+  "stdout": "Production syntax passes\n",
+  "stderr": "",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true
+}

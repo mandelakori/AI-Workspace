@@ -2,6 +2,12 @@
 
 AI Workspace runs manifests for software development, testing and bounded static-analysis jobs from a Windows controller. It stages inputs, selects an execution profile, runs OpenCode or a deterministic check, independently verifies the result and retains the work and evidence. The A100 can serve inference over the existing SSH connection while the harness and workspace stay on Windows.
 
+Current position: **original Milestone E, experimental evaluation**. Prioritize
+[autonomous coding on the existing A100](docs/A100-ENGINEERING-READINESS.md), then
+the existing REA/Ghidra workbench, measured routing and final acceptance. The fresh
+ItsDangerous trial is prepared for separate approval; no worker has been dispatched.
+The Pi/OpenCode comparison remains unauthorized.
+
 ## Windows first run
 
 Use PowerShell 7, Python 3.12 or newer, and Git. The bootstrap accepts a path to an existing Python executable and uses uv or the Python launcher when that path is omitted. Node.js 22+ and npm are needed only to install the harnesses through npm. Start your installed local inference service before running its profile.

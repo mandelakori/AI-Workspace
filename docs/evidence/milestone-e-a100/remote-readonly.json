@@ -1,0 +1,9 @@
+{
+  "ssh_alias": "aisak",
+  "code": 0,
+  "elapsed": 0.9839999999385327,
+  "stderr": "",
+  "remote_mutations": false,
+  "generation_requests": 0,
+  "profile": "a100-existing"
+}
