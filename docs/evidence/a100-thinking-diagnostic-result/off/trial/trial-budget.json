@@ -1,0 +1,73 @@
+{
+  "approval": "d463872c20fd451f06f088b7f69f287c1799b532f692318beac2b0d59687aa54",
+  "arm": "off",
+  "sessions": 1,
+  "planner_requests": 0,
+  "quotas": {
+    "sessions": 1,
+    "planner_requests": 0
+  },
+  "reviewed_phase_caps": {
+    "warm": 20,
+    "work": 270,
+    "grade": 90
+  },
+  "phases": {
+    "warm": {
+      "limit": 20,
+      "status": "FINISHED",
+      "started_utc": 1795435721.19362,
+      "deadline_utc": 1795435741.19362,
+      "deadline_monotonic": 19784.203,
+      "token_sha256": "96bbb8f296ef69d92090f7d428545670ac124d288bbf226d581aa6d7f71e416f",
+      "label": "aiwork-trial-312a8f835a9a42a9bb062c46ea64ba69",
+      "finished_utc": 1795435725.3589463,
+      "execution_elapsed_with_termination": 4.156,
+      "cancellation_cleanup_seconds": 0.0,
+      "error": "",
+      "timed_out": false,
+      "cleanup": {
+        "passed": true,
+        "not_applicable": "warm phase forbids verification containers"
+      }
+    },
+    "work": {
+      "limit": 270,
+      "status": "FINISHED",
+      "started_utc": 1795435725.3836722,
+      "deadline_utc": 1795435995.3836722,
+      "deadline_monotonic": 20038.39,
+      "token_sha256": "67de2c68a757ed5194e2af2d3d3d21c7c4b3439070abb47683812e5eab9ca2ed",
+      "label": "aiwork-trial-de626cad69b84fe3874c5ad41c6b7c64",
+      "finished_utc": 1795435776.642675,
+      "execution_elapsed_with_termination": 51.094,
+      "cancellation_cleanup_seconds": 0.156,
+      "error": "",
+      "timed_out": false,
+      "cleanup": {
+        "passed": true,
+        "removed": []
+      }
+    },
+    "grade": {
+      "limit": 90,
+      "status": "FINISHED",
+      "started_utc": 1795435921.0096786,
+      "deadline_utc": 1795436011.0096786,
+      "deadline_monotonic": 20054.015,
+      "token_sha256": "564db6a6ec7369abcd746c114658879b8819790845d58758a404ac7c229e67ec",
+      "label": "aiwork-trial-711523c99bd04834838e0ba45f7f29e9",
+      "finished_utc": 1795435929.0474212,
+      "execution_elapsed_with_termination": 7.875,
+      "cancellation_cleanup_seconds": 0.156,
+      "error": "",
+      "timed_out": false,
+      "cleanup": {
+        "passed": true,
+        "removed": []
+      }
+    }
+  },
+  "active": "grade",
+  "quarantined": false
+}

@@ -1,0 +1,119 @@
+{
+  "status": "failed",
+  "counts": {
+    "pass": 7,
+    "mismatch": 4,
+    "inconclusive": 1
+  },
+  "cases": [
+    {
+      "case": "fresh-01",
+      "group": "byte-indexing",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "fresh-02",
+      "group": "length-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "fresh-03",
+      "group": "length-rejection",
+      "verdict": "mismatch",
+      "differences": [
+        "code",
+        "stdout",
+        "stderr"
+      ]
+    },
+    {
+      "case": "fresh-04",
+      "group": "decimal-sign-and-whitespace",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "fresh-05",
+      "group": "decimal-trailing-whitespace",
+      "verdict": "mismatch",
+      "differences": [
+        "code",
+        "stdout",
+        "stderr"
+      ]
+    },
+    {
+      "case": "fresh-06",
+      "group": "negative-step",
+      "verdict": "mismatch",
+      "differences": [
+        "code",
+        "stdout",
+        "stderr"
+      ]
+    },
+    {
+      "case": "fresh-07",
+      "group": "decimal-overflow",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "fresh-08",
+      "group": "malformed-sign",
+      "verdict": "inconclusive",
+      "differences": [
+        "code",
+        "stdout",
+        "stderr"
+      ]
+    },
+    {
+      "case": "fresh-09",
+      "group": "literal-argv",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "fresh-10",
+      "group": "empty-text",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "fresh-11",
+      "group": "too-few-operands",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "fresh-12",
+      "group": "too-many-operands",
+      "verdict": "mismatch",
+      "differences": [
+        "code",
+        "stdout",
+        "stderr"
+      ]
+    }
+  ],
+  "seconds": 16.719,
+  "artifacts": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\a100-thinking-diagnostic\\pair\\on\\final\\21ef234b238b4cd487bb5b7255211a5e",
+  "image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+  "target": {
+    "reference.elf": {
+      "bytes": 16152,
+      "sha256": "787a07f328a2a393e9b271bacb266b0ac6a76e474d34af3e3f66e67e9ff0ec12"
+    }
+  },
+  "candidate": {
+    "candidate.c": {
+      "bytes": 465,
+      "sha256": "17e24e3b646b2bfc352244e92375d9ca4db41ca65c73459095f7275b7b74d939"
+    }
+  },
+  "audit_inventory": {},
+  "assurance": "Agreement on supplied invocations only. Unexercised inputs and environments remain unknown."
+}

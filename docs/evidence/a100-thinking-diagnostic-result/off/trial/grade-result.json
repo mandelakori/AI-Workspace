@@ -1,0 +1,99 @@
+{
+  "status": "verified",
+  "counts": {
+    "pass": 12,
+    "mismatch": 0,
+    "inconclusive": 0
+  },
+  "cases": [
+    {
+      "case": "fresh-01",
+      "group": "byte-indexing",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "fresh-02",
+      "group": "length-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "fresh-03",
+      "group": "length-rejection",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "fresh-04",
+      "group": "decimal-sign-and-whitespace",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "fresh-05",
+      "group": "decimal-trailing-whitespace",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "fresh-06",
+      "group": "negative-step",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "fresh-07",
+      "group": "decimal-overflow",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "fresh-08",
+      "group": "malformed-sign",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "fresh-09",
+      "group": "literal-argv",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "fresh-10",
+      "group": "empty-text",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "fresh-11",
+      "group": "too-few-operands",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "fresh-12",
+      "group": "too-many-operands",
+      "verdict": "pass",
+      "differences": []
+    }
+  ],
+  "seconds": 6.968,
+  "artifacts": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\a100-thinking-diagnostic\\pair\\off\\final\\6b848c18316d4aa394ee3f888d595ba7",
+  "image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+  "target": {
+    "reference.elf": {
+      "bytes": 16152,
+      "sha256": "787a07f328a2a393e9b271bacb266b0ac6a76e474d34af3e3f66e67e9ff0ec12"
+    }
+  },
+  "candidate": {
+    "candidate.c": {
+      "bytes": 585,
+      "sha256": "2fb2d073abd0c60a2aee339731c3bb246f9792bb56ff5b4887abeb20cd38206a"
+    }
+  },
+  "audit_inventory": {},
+  "assurance": "Agreement on supplied invocations only. Unexercised inputs and environments remain unknown."
+}

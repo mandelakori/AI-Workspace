@@ -1,0 +1,173 @@
+{
+  "both_arms_consumed": true,
+  "approved_arm_order": [
+    "off",
+    "on"
+  ],
+  "independent_suite_count": 12,
+  "independent_suite_sha256": "2af9014e0d23ae5480f557904a06edb4ee5e875225ad8e792d240e59d811440e",
+  "known_exclusions_checked": 53,
+  "excluded_overlap": 0,
+  "created_after_both_freezes": true,
+  "outcomes": {
+    "off": {
+      "public": 5,
+      "sealed_status": "verified",
+      "sealed_counts": {
+        "pass": 12,
+        "mismatch": 0,
+        "inconclusive": 0
+      },
+      "sealed_unknown_or_mismatch": [],
+      "grader_seconds": 6.968,
+      "grade_phase_seconds": 7.875,
+      "owned_cleanup_all_phases": true
+    },
+    "on": {
+      "public": 5,
+      "sealed_status": "failed",
+      "sealed_counts": {
+        "pass": 7,
+        "mismatch": 4,
+        "inconclusive": 1
+      },
+      "sealed_unknown_or_mismatch": [
+        {
+          "case": "fresh-03",
+          "group": "length-rejection",
+          "verdict": "mismatch",
+          "differences": [
+            "code",
+            "stdout",
+            "stderr"
+          ],
+          "reference": {
+            "code": 2,
+            "timed_out": false,
+            "truncated": false,
+            "elapsed": 1.1870000000017171,
+            "stdout_bytes": 0,
+            "stderr_bytes": 6
+          },
+          "candidate": {
+            "code": 0,
+            "timed_out": false,
+            "truncated": false,
+            "elapsed": 1.1090000000003783,
+            "stdout_bytes": 22,
+            "stderr_bytes": 0
+          }
+        },
+        {
+          "case": "fresh-05",
+          "group": "decimal-trailing-whitespace",
+          "verdict": "mismatch",
+          "differences": [
+            "code",
+            "stdout",
+            "stderr"
+          ],
+          "reference": {
+            "code": 3,
+            "timed_out": false,
+            "truncated": false,
+            "elapsed": 0.7970000000022992,
+            "stdout_bytes": 0,
+            "stderr_bytes": 5
+          },
+          "candidate": {
+            "code": 0,
+            "timed_out": false,
+            "truncated": false,
+            "elapsed": 0.7030000000013388,
+            "stdout_bytes": 6,
+            "stderr_bytes": 0
+          }
+        },
+        {
+          "case": "fresh-06",
+          "group": "negative-step",
+          "verdict": "mismatch",
+          "differences": [
+            "code",
+            "stdout",
+            "stderr"
+          ],
+          "reference": {
+            "code": 3,
+            "timed_out": false,
+            "truncated": false,
+            "elapsed": 0.875,
+            "stdout_bytes": 0,
+            "stderr_bytes": 5
+          },
+          "candidate": {
+            "code": 0,
+            "timed_out": false,
+            "truncated": false,
+            "elapsed": 0.7029999999977008,
+            "stdout_bytes": 2,
+            "stderr_bytes": 0
+          }
+        },
+        {
+          "case": "fresh-08",
+          "group": "malformed-sign",
+          "verdict": "inconclusive",
+          "differences": [
+            "code",
+            "stdout",
+            "stderr"
+          ],
+          "reference": {
+            "code": 3,
+            "timed_out": false,
+            "truncated": false,
+            "elapsed": 1.0310000000026776,
+            "stdout_bytes": 0,
+            "stderr_bytes": 5
+          },
+          "candidate": {
+            "code": 1,
+            "timed_out": true,
+            "truncated": true,
+            "elapsed": 12.03099999999904,
+            "stdout_bytes": 1048576,
+            "stderr_bytes": 0
+          }
+        },
+        {
+          "case": "fresh-12",
+          "group": "too-many-operands",
+          "verdict": "mismatch",
+          "differences": [
+            "code",
+            "stdout",
+            "stderr"
+          ],
+          "reference": {
+            "code": 2,
+            "timed_out": false,
+            "truncated": false,
+            "elapsed": 0.8440000000009604,
+            "stdout_bytes": 0,
+            "stderr_bytes": 6
+          },
+          "candidate": {
+            "code": 0,
+            "timed_out": false,
+            "truncated": false,
+            "elapsed": 0.7030000000013388,
+            "stdout_bytes": 3,
+            "stderr_bytes": 0
+          }
+        }
+      ],
+      "grader_seconds": 16.719,
+      "grade_phase_seconds": 17.7029999999977,
+      "owned_cleanup_all_phases": true
+    }
+  },
+  "private_material_tracked": false,
+  "no_resume_retry_guidance": true
+}

@@ -1,0 +1,269 @@
+{
+  "status": "verified",
+  "detail": "selected candidate passed the entire public corpus",
+  "public": {
+    "corpus_sha256": "0631f0a0b2ed0e660486f5f28454f6e661fe248fa17f1888ab486db3837e7e99",
+    "runner": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+    "policy_valid": true,
+    "compiled": true,
+    "missing": [],
+    "total": 5,
+    "passed_cases": 5,
+    "cases": [
+      {
+        "case": 1,
+        "verdict": "pass",
+        "duration": 0.719,
+        "name": "example-1"
+      },
+      {
+        "case": 2,
+        "verdict": "pass",
+        "duration": 0.734,
+        "name": "example-2"
+      },
+      {
+        "case": 3,
+        "verdict": "pass",
+        "duration": 0.672,
+        "name": "example-3"
+      },
+      {
+        "case": 4,
+        "verdict": "pass",
+        "duration": 0.735,
+        "name": "example-4"
+      },
+      {
+        "case": 5,
+        "verdict": "pass",
+        "duration": 0.719,
+        "name": "example-5"
+      }
+    ],
+    "discrepancies": [],
+    "public_passed": true,
+    "independent_verification": "not_run",
+    "kind": "public-regression",
+    "passed": true,
+    "classification": "pass"
+  },
+  "selection": {
+    "accepted": true,
+    "reason": "improved",
+    "lost_cases": [],
+    "gained_cases": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "previous": "baseline",
+    "selected": "attempt-001",
+    "rollback": false
+  },
+  "changed": [
+    "candidate.c"
+  ],
+  "patch": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\a100-thinking-diagnostic\\pair\\on\\state\\runs\\2e342c9f63e14d77811d7205e4b0d179\\attempt-001\\proposed.patch",
+  "patch_sha256": "90812dd02345646b679c6eab1f973ffe4f27f6b2db89fd6a66e5bd9367312910",
+  "elapsed": 47.641,
+  "agent": {
+    "tool_calls": {
+      "checks_focus": 3,
+      "checks_edit": 1,
+      "checks_check": 1
+    },
+    "tool_errors": 0,
+    "tokens": {
+      "input": 19340,
+      "output": 2288,
+      "reasoning": 0
+    },
+    "peak_reported_input_tokens": 9158,
+    "successful_public_mcp_checks": 1,
+    "execution": {
+      "schema": 1,
+      "adapter": "opencode",
+      "status": "completed",
+      "raw_exit_code": 0,
+      "elapsed": 33.06200000000172,
+      "timed_out": false,
+      "cleanup_passed": true,
+      "provider_gate_passed": true,
+      "independent_verification": "verified",
+      "exhaustion_reason": "",
+      "evidence": {
+        "limit_bytes": 67108864,
+        "headroom_bytes": 33554432,
+        "captured_bytes": 946541,
+        "reserved_bytes": 0,
+        "files": {
+          "provider-request-001.json": {
+            "bytes": 12445,
+            "sha256": "6824ceca36521f9fe3fe3d1242f7c36ff2b2fea3837472fdb254f237f99f8a8c",
+            "complete": true
+          },
+          "provider-forwarded-001.json": {
+            "bytes": 14502,
+            "sha256": "2991461a7a54ba2824208996d33eb17fcb8085c1fd9660ac322d36a42968d80d",
+            "complete": true
+          },
+          "provider-response-001.sse": {
+            "bytes": 46221,
+            "sha256": "248b57e68b16381b88922c14daffa995563889634ef30b59d86119ac4837a360",
+            "complete": true
+          },
+          "provider-request-002.json": {
+            "bytes": 21833,
+            "sha256": "f2e9856b67a23bb1f798aea0ad9c8a5be0176ec0fabe6a35a6f2e334be1e77e2",
+            "complete": true
+          },
+          "provider-forwarded-002.json": {
+            "bytes": 23942,
+            "sha256": "42196b6716892f746a74a0144b1e6aaec2b6999b33571fbd5a65884dd78c65fe",
+            "complete": true
+          },
+          "provider-response-002.sse": {
+            "bytes": 640595,
+            "sha256": "118e3ba1f27c71e6ee463d8b28b6982158e10cde456ca75f53b81babe5523f9c",
+            "complete": true
+          },
+          "provider-request-003.json": {
+            "bytes": 29771,
+            "sha256": "d7bdd4c1ae4141a060dc1e12d50bddb4848a43a88a530de5f05891c82c23e02d",
+            "complete": true
+          },
+          "provider-forwarded-003.json": {
+            "bytes": 31902,
+            "sha256": "6a3629b8382995302dfa8257fce00b1b6e0d59b1b77e78dac7d7487ef37f402c",
+            "complete": true
+          },
+          "provider-response-003.sse": {
+            "bytes": 18302,
+            "sha256": "b70c91720e4e750bfe8b5cae21dbac1999bfbc52145327773f118ffbc442e063",
+            "complete": true
+          },
+          "provider-request-004.json": {
+            "bytes": 31516,
+            "sha256": "7de606e63da04d1a489f2627ef2b728fe670ed0eeed78268c7981a173a6a6110",
+            "complete": true
+          },
+          "provider-forwarded-004.json": {
+            "bytes": 33669,
+            "sha256": "e2fe9c68898036f5b65c72df948ebccb6dfecc52cc3ccc26022770600e503e7a",
+            "complete": true
+          },
+          "provider-response-004.sse": {
+            "bytes": 41843,
+            "sha256": "1279fc0f5fcebc792351054e2a9b71f47206cf35a9babbc516a9ef5150fc0910",
+            "complete": true
+          }
+        }
+      },
+      "resources": {
+        "epoch": 0,
+        "remaining_operations": 19,
+        "used": {
+          "inspection": 3,
+          "editing": 1,
+          "verification": 1,
+          "inference": 4,
+          "compaction": 0
+        },
+        "exhausted": "",
+        "policy": {
+          "operations": 24,
+          "edit_reserve": 4,
+          "verification_reserve": 4,
+          "model_requests": 18,
+          "compactions": 1,
+          "blocked_limit": 3
+        },
+        "seconds": {
+          "inference": 28.952999999994063,
+          "inspection": 0.09500000000116415,
+          "editing": 0.030999999999039574,
+          "verification": 1.3440000000009604,
+          "cleanup": 0.01599999999962165
+        },
+        "contract_sha256": "9a72b027d55558d1c7a34a4b6e259b5004a0aaf204c74eb537d923a7365665e1"
+      },
+      "provider_usage": {
+        "reported": [
+          {
+            "request": 1,
+            "category": "inference",
+            "usage": {
+              "completion_tokens": 200,
+              "prompt_tokens": 3625,
+              "total_tokens": 3825,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            }
+          },
+          {
+            "request": 2,
+            "category": "inference",
+            "usage": {
+              "completion_tokens": 2012,
+              "prompt_tokens": 6557,
+              "total_tokens": 8569,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            }
+          },
+          {
+            "request": 3,
+            "category": "inference",
+            "usage": {
+              "completion_tokens": 76,
+              "prompt_tokens": 9158,
+              "total_tokens": 9234,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            }
+          },
+          {
+            "request": 4,
+            "category": "inference",
+            "usage": {
+              "completion_tokens": 132,
+              "prompt_tokens": 9673,
+              "total_tokens": 9805,
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              }
+            }
+          }
+        ],
+        "unreported_requests": []
+      }
+    },
+    "gpu_samples": {
+      "before": [
+        {
+          "name": "NVIDIA A100-SXM4-40GB",
+          "total_mib": 40960,
+          "free_mib": 10144
+        }
+      ],
+      "after": [
+        {
+          "name": "NVIDIA A100-SXM4-40GB",
+          "total_mib": 40960,
+          "free_mib": 10144
+        }
+      ]
+    },
+    "reported_context_fraction": 0.1397,
+    "effective_output_tokens_per_second": 69.136,
+    "inference_lanes": 1,
+    "lane_wait_seconds": 0.0,
+    "harness_seconds": 33.094
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "prior_evidence_verified": {
+    "native-workbench-validation": 44,
+    "native-ledger-a100-result": 82,
+    "a100-thinking-diagnostic": 83
+  },
+  "main_unchanged": true,
+  "frozen_code_unchanged": true
+}

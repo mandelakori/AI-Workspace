@@ -1,0 +1,12 @@
+{
+  "phase": "work",
+  "code": 0,
+  "elapsed": 48.93799999999828,
+  "timed_out": false,
+  "stdout": "{\"off\": \"d463872c20fd451f06f088b7f69f287c1799b532f692318beac2b0d59687aa54\", \"on\": \"919170e98baabcf70c597c3c1f052dcae64cb55ed82e02ed53d5a88956498c92\"}\r\n",
+  "stderr": "",
+  "cleanup": {
+    "passed": true,
+    "removed": []
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "contract": {
+    "objective": "Reconstruct the authorized byte-stride utility in candidate.c. Read ghidra.json and examples.json for its input limits, decimal-step handling, output and exit status. Inspect the starter source and replace its placeholder using a small hash-bound edit. Run approved command 0 to compile and check all five public observations. Command 1 only compiles. Preserve exact stdout and stderr. Use C11 and the standard library. Only candidate.c may change.",
+    "write_roots": [
+      "candidate.c"
+    ],
+    "public_checks": [
+      {
+        "argv": [
+          "{python}",
+          "native_feedback.py",
+          "{\"argv\": [\"gcc\", \"-std=c11\", \"-O2\", \"candidate.c\", \"-o\", \"candidate\"], \"timeout\": 30, \"stdout\": null, \"cwd\": \"\", \"oracle\": \"\"}",
+          "{\"argv\": [\"./candidate\"], \"timeout\": 12, \"stdout\": null, \"cwd\": \"\", \"oracle\": \"\"}"
+        ],
+        "timeout": 30,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      },
+      {
+        "argv": [
+          "gcc",
+          "-std=c11",
+          "-O2",
+          "candidate.c",
+          "-o",
+          "candidate"
+        ],
+        "timeout": 30,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      }
+    ],
+    "setup": [],
+    "deadline": 1795435714.8882678,
+    "policy": {
+      "operations": 24,
+      "edit_reserve": 4,
+      "verification_reserve": 4,
+      "model_requests": 18,
+      "compactions": 1,
+      "blocked_limit": 3
+    }
+  },
+  "contract_sha256": "78e61472085a48263a62fabac9b76a84bbdcdecaa700894dc7298c488796a16a",
+  "epoch": 0,
+  "visible": [],
+  "issued": {},
+  "events": [],
+  "used": {
+    "inspection": 0,
+    "editing": 0,
+    "verification": 0,
+    "inference": 0,
+    "compaction": 0
+  },
+  "seconds": {},
+  "blocked": 0,
+  "exhausted": ""
+}

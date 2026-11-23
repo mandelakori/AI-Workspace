@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "gcc",
+    "-std=c11",
+    "-O2",
+    "candidate.c",
+    "-o",
+    "candidate"
+  ],
+  "cwd": "",
+  "runner": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+  "code": 0,
+  "elapsed": 0.8290000000015425,
+  "stdout": "",
+  "stderr": "",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true
+}

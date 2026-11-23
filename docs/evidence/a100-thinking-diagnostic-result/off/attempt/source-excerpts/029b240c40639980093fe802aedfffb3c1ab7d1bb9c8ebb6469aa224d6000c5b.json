@@ -1,0 +1,11 @@
+{
+  "path": "ghidra.json",
+  "sha256": "8864a9fcf89db6e8109be75bc3d4d0419f3e5a96006285bd7e789424f025b7f9",
+  "line": 1,
+  "source": "{\r\n  \"binary\": \"reference.elf\",\r\n  \"header\": {\r\n    \"format\": \"ELF\",\r\n    \"class\": 64,\r\n    \"machine\": 62\r\n  },\r\n  \"strings\": [\r\n    \"Z|/lib64/ld-linux-x86-64.so.2\",\r\n    \"putchar\",\r\n    \"strtol\",\r\n    \"strlen\",\r\n    \"__libc_start_main\",\r\n    \"stderr\",\r\n    \"__cxa_finalize\",\r\n    \"fwrite\",\r\n    \"libc.so.6\",\r\n    \"GLIBC_2.34\",\r\n    \"GLIBC_2.2.5\",\r\n    \"_ITM_deregisterTMCloneTable\",\r\n    \"__gmon_start__\",\r\n    \"_ITM_registerTMCloneTable\",\r\n    \"GCC: (Debian 14.2.0-19) 14.2.0\",\r\n    \"Scrt1.o\",\r\n    \"__abi_tag\",\r\n    \"crtstuff.c\",\r\n    \"deregister_tm_clones\",\r\n    \"__do_global_dtors_aux\",\r\n    \"completed.0\",\r\n    \"__do_global_dtors_aux_fini_array_entry\",\r\n    \"frame_dummy\",\r\n    \"__frame_dummy_init_array_entry\",\r\n    \"reference.c\",\r\n    \"__FRAME_END__\",\r\n    \"_DYNAMIC\",\r\n    \"__GNU_EH_FRAME_HDR\",\r\n    \"_GLOBAL_OFFSET_TABLE_\",\r\n    \"putchar@GLIBC_2.2.5\",\r\n    \"__libc_start_main@GLIBC_2.34\",\r\n    \"_ITM_deregisterTMCloneTable\",\r\n    \"_edata\",\r\n    \"strlen@GLIBC_2.2.5\",\r\n    \"__data_start\",\r\n    \"__gmon_start__\",\r\n    \"strtol@GLIBC_2.2.5\",\r\n    \"__dso_handle\",\r\n    \"_IO_stdin_used\",\r\n    \"__bss_start\",\r\n    \"fwrite@GLIBC_2.2.5\",\r\n    \"__TMC_END__\",\r\n    \"_ITM_registerTMCloneTable\",\r\n    \"__cxa_finalize@GLIBC_2.2.5\",\r\n    \"stderr@GLIBC_2.2.5\",\r\n    \".symtab\",\r\n    \".strtab\",\r\n    \".shstrtab\",\r\n    \".note.gnu.property\",\r\n    \".note.gnu.build-id\",\r\n    \".interp\",\r\n    \".gnu.hash\",\r\n",
+  "next_line": 61,
+  "total_lines": 86,
+  "selected_symbol": "",
+  "symbols": [],
+  "symbols_truncated": false
+}

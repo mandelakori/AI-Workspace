@@ -1,11 +1,12 @@
 # Next steps
 
-## Current handoff: prepared A100 thinking diagnostic
+## Current handoff: completed A100 thinking diagnostic
 
-Review both immutable arm digests in the [thinking diagnostic](A100-THINKING-DIAGNOSTIC.md).
-Byte-stride is staged under `.aiwork/a100-thinking-diagnostic/pair` with a
-210-second attempt budget per arm. Each arm requires its separate grant and
-runs at most once in the frozen OFF → ON order. No live worker has run.
+The [matched diagnostic](A100-THINKING-DIAGNOSTIC-RESULT.md) completed once per
+arm. Both passed 5/5 public. OFF passed 12/12 independent, ON passed seven with
+four mismatches and one inconclusive. ON emitted reasoning, and the provider
+reported no separate reasoning-token counter in either arm. Both grants are
+consumed. Stop after this comparison.
 
 ## Historical handoff: consumed native ledger trial
 

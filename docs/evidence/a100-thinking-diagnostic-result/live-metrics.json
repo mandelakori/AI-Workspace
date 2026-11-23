@@ -1,0 +1,437 @@
+{
+  "off": {
+    "mode": "off",
+    "approval": "d463872c20fd451f06f088b7f69f287c1799b532f692318beac2b0d59687aa54",
+    "job": "fb4e04d4b9e64bacacc1fd5c05b8b7dc",
+    "hashes_verified": 15,
+    "capture_bytes": 583597,
+    "settings_verified_requests": 5,
+    "reasoning_emission_requests": 0,
+    "reasoning_payload_bytes": 0,
+    "reasoning_payload_deltas": 0,
+    "provider_reasoning_tokens": null,
+    "provider_reasoning_counter_receipts": 0,
+    "api_tokens": {
+      "prompt_tokens": 36534,
+      "completion_tokens": 1186,
+      "total_tokens": 37720
+    },
+    "cache_tokens": 0,
+    "cache_counter_receipts": 5,
+    "sdk_tokens": {
+      "input": 26933,
+      "output": 972,
+      "reasoning": 0
+    },
+    "gpu_samples": {
+      "before": [
+        {
+          "name": "NVIDIA A100-SXM4-40GB",
+          "total_mib": 40960,
+          "free_mib": 10144
+        }
+      ],
+      "after": [
+        {
+          "name": "NVIDIA A100-SXM4-40GB",
+          "total_mib": 40960,
+          "free_mib": 10144
+        }
+      ]
+    },
+    "operations": {
+      "focus": 4,
+      "edit": 1,
+      "check": 1
+    },
+    "operations_total": 6,
+    "accepted_edits": 1,
+    "rejected_edits": 0,
+    "tool_errors": 0,
+    "first_applied_edit": {
+      "operation": 5,
+      "model_request": 3,
+      "started_seconds": 35.051,
+      "completed_seconds": 37.918,
+      "passed": true
+    },
+    "first_public_check": {
+      "operation": 6,
+      "model_request": 4,
+      "started_seconds": 41.743,
+      "completed_seconds": 43.235,
+      "passed": true
+    },
+    "phase_limits": {
+      "warm": 20,
+      "work": 270,
+      "grade": 90
+    },
+    "worker": {
+      "status": "completed",
+      "elapsed": 28.125,
+      "raw_exit_code": 0,
+      "timed_out": false,
+      "cleanup_passed": true,
+      "provider_gate_passed": true
+    },
+    "resource_usage": {
+      "epoch": 0,
+      "remaining_operations": 18,
+      "used": {
+        "inspection": 4,
+        "editing": 1,
+        "verification": 1,
+        "inference": 5,
+        "compaction": 0
+      },
+      "exhausted": "",
+      "policy": {
+        "operations": 24,
+        "edit_reserve": 4,
+        "verification_reserve": 4,
+        "model_requests": 18,
+        "compactions": 1,
+        "blocked_limit": 3
+      },
+      "seconds": {
+        "inference": 23.59299999999712,
+        "inspection": 0.4059999999990396,
+        "editing": 0.2029999999977008,
+        "verification": 1.2809999999990396,
+        "cleanup": 0
+      },
+      "contract_sha256": "33de1555d134b51ba66bf7073d044ddf0b0be34eba8a242262617d1f834f3563"
+    },
+    "engineering_seconds": 55.508,
+    "peak_prompt": 9601,
+    "finish_reasons": {
+      "tool_calls": 4,
+      "stop": 1
+    },
+    "requests": [
+      {
+        "request": 1,
+        "finish": "tool_calls",
+        "tool_call_ids": [
+          "0cd3LM2rHODqWaOro1msBId90RxjwWKe",
+          "jLq01ghQTPzTnTrYn0eo5OtSsDF1NHls",
+          "AYRofGCUs6g3dx7zo8fxcLyE3gII2CnG"
+        ],
+        "seconds": 2.7189999999973224,
+        "reasoning_payload_bytes": 0,
+        "reasoning_payload_deltas": 0,
+        "inline_thinking_tags": false,
+        "reasoning_tokens": null,
+        "cache_tokens": 0,
+        "usage": {
+          "completion_tokens": 104,
+          "prompt_tokens": 3612,
+          "total_tokens": 3716,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "request": 2,
+        "finish": "tool_calls",
+        "tool_call_ids": [
+          "3jwtDYof0Z16RXZuVvugaY6Q46BQcVNI"
+        ],
+        "seconds": 2.9839999999967404,
+        "reasoning_payload_bytes": 0,
+        "reasoning_payload_deltas": 0,
+        "inline_thinking_tags": false,
+        "reasoning_tokens": null,
+        "cache_tokens": 0,
+        "usage": {
+          "completion_tokens": 57,
+          "prompt_tokens": 6417,
+          "total_tokens": 6474,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "request": 3,
+        "finish": "tool_calls",
+        "tool_call_ids": [
+          "SD8vFTdcnOusiHbHgiaEYq9AtlKsrGRN"
+        ],
+        "seconds": 8.5470000000023,
+        "reasoning_payload_bytes": 0,
+        "reasoning_payload_deltas": 0,
+        "inline_thinking_tags": false,
+        "reasoning_tokens": null,
+        "cache_tokens": 0,
+        "usage": {
+          "completion_tokens": 762,
+          "prompt_tokens": 7783,
+          "total_tokens": 8545,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "request": 4,
+        "finish": "tool_calls",
+        "tool_call_ids": [
+          "T5llVYdilDnp66Ci8JBdgh8VAmZwmk1t"
+        ],
+        "seconds": 3.9060000000026776,
+        "reasoning_payload_bytes": 0,
+        "reasoning_payload_deltas": 0,
+        "inline_thinking_tags": false,
+        "reasoning_tokens": null,
+        "cache_tokens": 0,
+        "usage": {
+          "completion_tokens": 49,
+          "prompt_tokens": 9121,
+          "total_tokens": 9170,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "request": 5,
+        "finish": "stop",
+        "tool_call_ids": [],
+        "seconds": 5.436999999998079,
+        "reasoning_payload_bytes": 0,
+        "reasoning_payload_deltas": 0,
+        "inline_thinking_tags": false,
+        "reasoning_tokens": null,
+        "cache_tokens": 0,
+        "usage": {
+          "completion_tokens": 214,
+          "prompt_tokens": 9601,
+          "total_tokens": 9815,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      }
+    ],
+    "controller_public_passed": 5,
+    "source": {
+      "candidate.c": {
+        "bytes": 585,
+        "sha256": "2fb2d073abd0c60a2aee339731c3bb246f9792bb56ff5b4887abeb20cd38206a"
+      }
+    },
+    "frozen": "116f1fbb952988c68209fbe0f3cbed030f70b9a763fdff7cea566c1674a5af43",
+    "warm_seconds": 4.15599999999904,
+    "work_seconds": 51.09400000000096
+  },
+  "on": {
+    "mode": "on",
+    "approval": "919170e98baabcf70c597c3c1f052dcae64cb55ed82e02ed53d5a88956498c92",
+    "job": "2e342c9f63e14d77811d7205e4b0d179",
+    "hashes_verified": 12,
+    "capture_bytes": 946541,
+    "settings_verified_requests": 4,
+    "reasoning_emission_requests": 4,
+    "reasoning_payload_bytes": 5280,
+    "reasoning_payload_deltas": 1586,
+    "provider_reasoning_tokens": null,
+    "provider_reasoning_counter_receipts": 0,
+    "api_tokens": {
+      "prompt_tokens": 29013,
+      "completion_tokens": 2420,
+      "total_tokens": 31433
+    },
+    "cache_tokens": 0,
+    "cache_counter_receipts": 4,
+    "sdk_tokens": {
+      "input": 19340,
+      "output": 2288,
+      "reasoning": 0
+    },
+    "gpu_samples": {
+      "before": [
+        {
+          "name": "NVIDIA A100-SXM4-40GB",
+          "total_mib": 40960,
+          "free_mib": 10144
+        }
+      ],
+      "after": [
+        {
+          "name": "NVIDIA A100-SXM4-40GB",
+          "total_mib": 40960,
+          "free_mib": 10144
+        }
+      ]
+    },
+    "operations": {
+      "focus": 3,
+      "edit": 1,
+      "check": 1
+    },
+    "operations_total": 5,
+    "accepted_edits": 1,
+    "rejected_edits": 0,
+    "tool_errors": 0,
+    "first_applied_edit": {
+      "operation": 4,
+      "model_request": 2,
+      "started_seconds": 34.754,
+      "completed_seconds": 36.995,
+      "passed": true
+    },
+    "first_public_check": {
+      "operation": 5,
+      "model_request": 3,
+      "started_seconds": 41.015,
+      "completed_seconds": 42.55,
+      "passed": true
+    },
+    "phase_limits": {
+      "warm": 20,
+      "work": 270,
+      "grade": 90
+    },
+    "worker": {
+      "status": "completed",
+      "elapsed": 33.06200000000172,
+      "raw_exit_code": 0,
+      "timed_out": false,
+      "cleanup_passed": true,
+      "provider_gate_passed": true
+    },
+    "resource_usage": {
+      "epoch": 0,
+      "remaining_operations": 19,
+      "used": {
+        "inspection": 3,
+        "editing": 1,
+        "verification": 1,
+        "inference": 4,
+        "compaction": 0
+      },
+      "exhausted": "",
+      "policy": {
+        "operations": 24,
+        "edit_reserve": 4,
+        "verification_reserve": 4,
+        "model_requests": 18,
+        "compactions": 1,
+        "blocked_limit": 3
+      },
+      "seconds": {
+        "inference": 28.952999999994063,
+        "inspection": 0.09500000000116415,
+        "editing": 0.030999999999039574,
+        "verification": 1.3440000000009604,
+        "cleanup": 0.01599999999962165
+      },
+      "contract_sha256": "9a72b027d55558d1c7a34a4b6e259b5004a0aaf204c74eb537d923a7365665e1"
+    },
+    "engineering_seconds": 54.227,
+    "peak_prompt": 9673,
+    "finish_reasons": {
+      "tool_calls": 3,
+      "stop": 1
+    },
+    "requests": [
+      {
+        "request": 1,
+        "finish": "tool_calls",
+        "tool_call_ids": [
+          "MAdIPQWeC9A8y8AHVGdG6AgYDzMTRCYt",
+          "k6tOHQSNcURQmLqWGgy6wocU0WMlCCEt",
+          "fcdi8h257fr0s18ObaLZszQ5wTQPKcwL"
+        ],
+        "seconds": 3.1409999999996217,
+        "reasoning_payload_bytes": 441,
+        "reasoning_payload_deltas": 92,
+        "inline_thinking_tags": false,
+        "reasoning_tokens": null,
+        "cache_tokens": 0,
+        "usage": {
+          "completion_tokens": 200,
+          "prompt_tokens": 3625,
+          "total_tokens": 3825,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "request": 2,
+        "finish": "tool_calls",
+        "tool_call_ids": [
+          "W2pqgfDjH70GEEcCx03xnu0WcDpcPaL5"
+        ],
+        "seconds": 16.937999999998283,
+        "reasoning_payload_bytes": 4675,
+        "reasoning_payload_deltas": 1458,
+        "inline_thinking_tags": false,
+        "reasoning_tokens": null,
+        "cache_tokens": 0,
+        "usage": {
+          "completion_tokens": 2012,
+          "prompt_tokens": 6557,
+          "total_tokens": 8569,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "request": 3,
+        "finish": "tool_calls",
+        "tool_call_ids": [
+          "E9IdJXsU2vRRwRgHHiUlhh4wlb33Huou"
+        ],
+        "seconds": 4.077999999997701,
+        "reasoning_payload_bytes": 113,
+        "reasoning_payload_deltas": 24,
+        "inline_thinking_tags": false,
+        "reasoning_tokens": null,
+        "cache_tokens": 0,
+        "usage": {
+          "completion_tokens": 76,
+          "prompt_tokens": 9158,
+          "total_tokens": 9234,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      },
+      {
+        "request": 4,
+        "finish": "stop",
+        "tool_call_ids": [],
+        "seconds": 4.7959999999984575,
+        "reasoning_payload_bytes": 51,
+        "reasoning_payload_deltas": 12,
+        "inline_thinking_tags": false,
+        "reasoning_tokens": null,
+        "cache_tokens": 0,
+        "usage": {
+          "completion_tokens": 132,
+          "prompt_tokens": 9673,
+          "total_tokens": 9805,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        }
+      }
+    ],
+    "controller_public_passed": 5,
+    "source": {
+      "candidate.c": {
+        "bytes": 465,
+        "sha256": "17e24e3b646b2bfc352244e92375d9ca4db41ca65c73459095f7275b7b74d939"
+      }
+    },
+    "frozen": "29b38c61528be9c8620525fcd3703b62d9f9eb9fa2afeeb2a33e743b01cc1b52",
+    "warm_seconds": 5.01600000000326,
+    "work_seconds": 48.93799999999828
+  }
+}

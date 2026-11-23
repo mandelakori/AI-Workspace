@@ -1,5 +1,8 @@
 # A100 thinking-mode diagnostic
 
+Both arms described below have run and their grants are consumed.
+[Execution result](A100-THINKING-DIAGNOSTIC-RESULT.md).
+
 **PREPARED_NOT_AUTHORIZED.** The installed Qwen3.6 template and llama.cpp server
 accept both explicit thinking modes. The paired diagnostic uses the existing
 byte-stride fixture. Each arm must inspect evidence, edit a small C starter and

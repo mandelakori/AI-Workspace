@@ -1,0 +1,152 @@
+{
+  "manifest": {
+    "objective": "Reconstruct the authorized byte-stride utility in candidate.c. Read ghidra.json and examples.json for its input limits, decimal-step handling, output and exit status. Inspect the starter source and replace its placeholder using a small hash-bound edit. Run approved command 0 to compile and check all five public observations. Command 1 only compiles. Preserve exact stdout and stderr. Use C11 and the standard library. Only candidate.c may change.",
+    "workspace": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\a100-thinking-diagnostic\\pair\\off\\input",
+    "kind": "agent",
+    "category": "native-stride-thinking",
+    "inputs": [],
+    "deliverables": [
+      "candidate.c"
+    ],
+    "checks": [
+      {
+        "argv": [
+          "gcc",
+          "-std=c11",
+          "-O2",
+          "candidate.c",
+          "-o",
+          "candidate"
+        ],
+        "timeout": 30,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      },
+      {
+        "argv": [
+          "./candidate"
+        ],
+        "timeout": 12,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      }
+    ],
+    "location": "auto",
+    "profile": "a100-existing",
+    "complexity": 1,
+    "timeout": 210,
+    "attempts": 1,
+    "agent_checks": false,
+    "specialist": "",
+    "verification_dir": null,
+    "mode": "engineering",
+    "write_roots": [
+      "candidate.c"
+    ],
+    "commands": [
+      {
+        "argv": [
+          "{python}",
+          "native_feedback.py",
+          "{\"argv\": [\"gcc\", \"-std=c11\", \"-O2\", \"candidate.c\", \"-o\", \"candidate\"], \"timeout\": 30, \"stdout\": null, \"cwd\": \"\", \"oracle\": \"\"}",
+          "{\"argv\": [\"./candidate\"], \"timeout\": 12, \"stdout\": null, \"cwd\": \"\", \"oracle\": \"\"}"
+        ],
+        "timeout": 30,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      },
+      {
+        "argv": [
+          "gcc",
+          "-std=c11",
+          "-O2",
+          "candidate.c",
+          "-o",
+          "candidate"
+        ],
+        "timeout": 30,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      }
+    ],
+    "setup": [],
+    "baseline_check": false,
+    "min_context": 65536,
+    "preferred_profile": "",
+    "rank_public": true,
+    "agent_role": "",
+    "source_context": [],
+    "source_patch": false,
+    "public_cases": "",
+    "attempt_limit": 0,
+    "tool_operations": 24,
+    "edit_reserve": 4,
+    "public_test_reserve": 4,
+    "model_requests": 18,
+    "compaction_limit": 1,
+    "context_input_tokens": 0
+  },
+  "inventory": {
+    "binary.json": {
+      "bytes": 1724,
+      "sha256": "4666be86f3223a0c31685b4b6335d2d4e390ae905894a3fa9a8ad73e6627af05"
+    },
+    "candidate.c": {
+      "bytes": 29,
+      "sha256": "7b4bb8e34d20c4ec426e4770c2c8e808fea9f4c78893f9190b02c55e9f75e88b"
+    },
+    "examples.json": {
+      "bytes": 927,
+      "sha256": "0631f0a0b2ed0e660486f5f28454f6e661fe248fa17f1888ab486db3837e7e99"
+    },
+    "ghidra.json": {
+      "bytes": 3014,
+      "sha256": "8864a9fcf89db6e8109be75bc3d4d0419f3e5a96006285bd7e789424f025b7f9"
+    },
+    "native_feedback.py": {
+      "bytes": 2235,
+      "sha256": "52a48248a03c48223adf274f4cc9cb47d4cd84aa101990e7e6e4ea8ecd162bc3"
+    }
+  },
+  "preprocessing": {
+    "files": 5,
+    "bytes": 7929,
+    "languages": [
+      "C",
+      "Python"
+    ],
+    "build_files": [],
+    "candidate_tests": [],
+    "binaries": {},
+    "python_symbols": {
+      "native_feedback.py": [
+        {
+          "name": "run_public_checks",
+          "line": 10,
+          "calls": [
+            "decode",
+            "dumps",
+            "encode",
+            "int",
+            "invoke",
+            "isinstance",
+            "items",
+            "len",
+            "loads",
+            "min",
+            "print",
+            "read_bytes",
+            "replace",
+            "run",
+            "text"
+          ]
+        }
+      ]
+    }
+  },
+  "private_inventory": {}
+}

@@ -1,0 +1,122 @@
+{
+  "hashes_verified": 83,
+  "arms": {
+    "off": {
+      "digest": "d463872c20fd451f06f088b7f69f287c1799b532f692318beac2b0d59687aa54",
+      "identity": {
+        "model_path": "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf",
+        "model_ftype": "Q6_K",
+        "build_info": "b12063-2cbca389f",
+        "total_slots": 1,
+        "slot_context": 131072,
+        "idle": true,
+        "generation_requests": 0,
+        "template_sha256": "e84f32a23fdda27689f868aa4a1a5621f41133e51a48d7f3efcbea2839574259"
+      },
+      "vectors": [
+        {
+          "vector": "initial-off",
+          "suffix": "\n<think>\n\n</think>\n\n",
+          "sha256": "536b7ee41865492eb865d4fcbd8596eb7145bfddcb0109e468e55ba425007216",
+          "tool_catalog_preserved": true,
+          "tool_history_preserved": true
+        },
+        {
+          "vector": "continuation-off",
+          "suffix": "\n<think>\n\n</think>\n\n",
+          "sha256": "313b2a2fe14937fc68ab7ddbcbd93cfce4ba971465659c57e38a334570e16b77",
+          "tool_catalog_preserved": true,
+          "tool_history_preserved": true
+        }
+      ],
+      "owned_forward_closed": true,
+      "limits": {
+        "warm": 20,
+        "work": 270,
+        "grade": 90
+      },
+      "worker": {
+        "timeout": 210,
+        "attempts": 1,
+        "min_context": 65536,
+        "tool_operations": 24,
+        "edit_reserve": 4,
+        "public_test_reserve": 4,
+        "model_requests": 18,
+        "compaction_limit": 1
+      },
+      "catalog": [
+        "check",
+        "focus",
+        "diff",
+        "edit"
+      ],
+      "generation": {
+        "temperature": 0,
+        "chat_template_kwargs": {
+          "enable_thinking": false
+        },
+        "seed": 1729
+      }
+    },
+    "on": {
+      "digest": "919170e98baabcf70c597c3c1f052dcae64cb55ed82e02ed53d5a88956498c92",
+      "identity": {
+        "model_path": "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf",
+        "model_ftype": "Q6_K",
+        "build_info": "b12063-2cbca389f",
+        "total_slots": 1,
+        "slot_context": 131072,
+        "idle": true,
+        "generation_requests": 0,
+        "template_sha256": "e84f32a23fdda27689f868aa4a1a5621f41133e51a48d7f3efcbea2839574259"
+      },
+      "vectors": [
+        {
+          "vector": "initial-on",
+          "suffix": "\n<think>\n",
+          "sha256": "fdfc9748dd4538110b8f8b355cb69589208e2f01673b997000384436f43e201a",
+          "tool_catalog_preserved": true,
+          "tool_history_preserved": true
+        },
+        {
+          "vector": "continuation-on",
+          "suffix": "\n<think>\n",
+          "sha256": "5cbf5d6d6dda87b8eff8b2cbefe5e902fb06fda63840513e219d8fa2368992d3",
+          "tool_catalog_preserved": true,
+          "tool_history_preserved": true
+        }
+      ],
+      "owned_forward_closed": true,
+      "limits": {
+        "warm": 20,
+        "work": 270,
+        "grade": 90
+      },
+      "worker": {
+        "timeout": 210,
+        "attempts": 1,
+        "min_context": 65536,
+        "tool_operations": 24,
+        "edit_reserve": 4,
+        "public_test_reserve": 4,
+        "model_requests": 18,
+        "compaction_limit": 1
+      },
+      "catalog": [
+        "check",
+        "focus",
+        "diff",
+        "edit"
+      ],
+      "generation": {
+        "temperature": 0,
+        "chat_template_kwargs": {
+          "enable_thinking": true
+        },
+        "seed": 1729
+      }
+    }
+  },
+  "generation_requests": 0
+}

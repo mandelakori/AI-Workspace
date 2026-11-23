@@ -1,0 +1,11 @@
+{
+  "configured_attempt_seconds": 210,
+  "remaining_attempt_seconds": 169.86,
+  "verification_reserve_seconds": 20,
+  "harness_allowance_seconds": 149.86,
+  "phase_limit": {
+    "label": "aiwork-trial-de626cad69b84fe3874c5ad41c6b7c64",
+    "deadline": 1795435995.3836722
+  },
+  "note": "Baseline/admission and staging consume the attempt; the outer phase also charges planning and final selection."
+}

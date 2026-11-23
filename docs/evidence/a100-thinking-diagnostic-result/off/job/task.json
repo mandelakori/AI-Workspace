@@ -1,0 +1,91 @@
+{
+  "objective": "Reconstruct the authorized byte-stride utility in candidate.c. Read ghidra.json and examples.json for its input limits, decimal-step handling, output and exit status. Inspect the starter source and replace its placeholder using a small hash-bound edit. Run approved command 0 to compile and check all five public observations. Command 1 only compiles. Preserve exact stdout and stderr. Use C11 and the standard library. Only candidate.c may change.",
+  "workspace": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\a100-thinking-diagnostic\\pair\\off\\input",
+  "kind": "agent",
+  "category": "native-stride-thinking",
+  "inputs": [],
+  "deliverables": [
+    "candidate.c"
+  ],
+  "checks": [
+    {
+      "argv": [
+        "gcc",
+        "-std=c11",
+        "-O2",
+        "candidate.c",
+        "-o",
+        "candidate"
+      ],
+      "timeout": 30,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    },
+    {
+      "argv": [
+        "./candidate"
+      ],
+      "timeout": 12,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    }
+  ],
+  "location": "auto",
+  "profile": "a100-existing",
+  "complexity": 1,
+  "timeout": 210,
+  "attempts": 1,
+  "agent_checks": false,
+  "specialist": "",
+  "verification_dir": null,
+  "mode": "engineering",
+  "write_roots": [
+    "candidate.c"
+  ],
+  "commands": [
+    {
+      "argv": [
+        "{python}",
+        "native_feedback.py",
+        "{\"argv\": [\"gcc\", \"-std=c11\", \"-O2\", \"candidate.c\", \"-o\", \"candidate\"], \"timeout\": 30, \"stdout\": null, \"cwd\": \"\", \"oracle\": \"\"}",
+        "{\"argv\": [\"./candidate\"], \"timeout\": 12, \"stdout\": null, \"cwd\": \"\", \"oracle\": \"\"}"
+      ],
+      "timeout": 30,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    },
+    {
+      "argv": [
+        "gcc",
+        "-std=c11",
+        "-O2",
+        "candidate.c",
+        "-o",
+        "candidate"
+      ],
+      "timeout": 30,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    }
+  ],
+  "setup": [],
+  "baseline_check": false,
+  "min_context": 65536,
+  "preferred_profile": "",
+  "rank_public": true,
+  "agent_role": "",
+  "source_context": [],
+  "source_patch": false,
+  "public_cases": "",
+  "attempt_limit": 0,
+  "tool_operations": 24,
+  "edit_reserve": 4,
+  "public_test_reserve": 4,
+  "model_requests": 18,
+  "compaction_limit": 1,
+  "context_input_tokens": 0
+}

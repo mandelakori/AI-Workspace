@@ -1,0 +1,11 @@
+{
+  "path": "candidate.c",
+  "sha256": "7b4bb8e34d20c4ec426e4770c2c8e808fea9f4c78893f9190b02c55e9f75e88b",
+  "line": 1,
+  "source": "int main(void) { return 1; }\n",
+  "next_line": null,
+  "total_lines": 1,
+  "selected_symbol": "",
+  "symbols": [],
+  "symbols_truncated": false
+}

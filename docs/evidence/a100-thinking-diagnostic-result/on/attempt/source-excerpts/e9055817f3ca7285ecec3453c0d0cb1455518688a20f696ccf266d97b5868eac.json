@@ -1,0 +1,11 @@
+{
+  "path": "examples.json",
+  "sha256": "0631f0a0b2ed0e660486f5f28454f6e661fe248fa17f1888ab486db3837e7e99",
+  "line": 1,
+  "source": "[\r\n  {\r\n    \"name\": \"example-1\",\r\n    \"group\": \"development\",\r\n    \"stdin\": \"\",\r\n    \"argv\": [\r\n      \"abcdef\",\r\n      \"2\"\r\n    ],\r\n    \"code\": 0,\r\n    \"stdout\": \"ace\\n\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"example-2\",\r\n    \"group\": \"development\",\r\n    \"stdin\": \"\",\r\n    \"argv\": [\r\n      \"hello\",\r\n      \"1\"\r\n    ],\r\n    \"code\": 0,\r\n    \"stdout\": \"hello\\n\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"example-3\",\r\n    \"group\": \"development\",\r\n    \"stdin\": \"\",\r\n    \"argv\": [\r\n      \"abcd\",\r\n      \"9\"\r\n    ],\r\n    \"code\": 3,\r\n    \"stdout\": \"\",\r\n    \"stderr\": \"step\\n\"\r\n  },\r\n  {\r\n    \"name\": \"example-4\",\r\n    \"group\": \"development\",\r\n    \"stdin\": \"\",\r\n    \"argv\": [],\r\n    \"code\": 2,\r\n    \"stdout\": \"\",\r\n    \"stderr\": \"usage\\n\"\r\n  },\r\n  {\r\n    \"name\": \"example-5\",\r\n    \"group\": \"development\",\r\n    \"stdin\": \"\",\r\n    \"argv\": [\r\n      \"\",\r\n      \"2\"\r\n    ],\r\n    \"code\": 0,\r\n    \"stdout\": \"\\n\",\r\n    \"stderr\": \"\"\r\n  }\r\n]",
+  "next_line": null,
+  "total_lines": 59,
+  "selected_symbol": "",
+  "symbols": [],
+  "symbols_truncated": false
+}

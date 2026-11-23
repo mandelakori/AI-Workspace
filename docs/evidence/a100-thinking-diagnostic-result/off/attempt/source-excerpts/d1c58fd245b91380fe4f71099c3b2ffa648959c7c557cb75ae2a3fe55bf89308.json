@@ -1,0 +1,11 @@
+{
+  "path": "ghidra.json",
+  "sha256": "8864a9fcf89db6e8109be75bc3d4d0419f3e5a96006285bd7e789424f025b7f9",
+  "line": 61,
+  "source": "    \".dynsym\",\r\n    \".dynstr\",\r\n    \".gnu.version\",\r\n    \".gnu.version_r\",\r\n    \".rela.dyn\",\r\n    \".rela.plt\",\r\n    \".plt.got\",\r\n    \".rodata\",\r\n    \".eh_frame_hdr\",\r\n    \".eh_frame\",\r\n    \".note.ABI-tag\",\r\n    \".init_array\",\r\n    \".fini_array\",\r\n    \".dynamic\",\r\n    \".got.plt\",\r\n    \".comment\"\r\n  ],\r\n  \"specialist\": \"ghidra\",\r\n  \"findings\": [\r\n    \"INFO  AiworkEvidence.java> AIWORK_FUNCTION 00101169 undefined main(void) (GhidraScript)  \",\r\n    \"INFO  AiworkEvidence.java> AIWORK_CALLS [fwrite, putchar, strlen, strtol] (GhidraScript)  \",\r\n    \"INFO  AiworkEvidence.java> AIWORK_DECOMPILE_BEGIN (GhidraScript)  \",\r\n    \"INFO  AiworkEvidence.java> AIWORK_DECOMPILE_END (GhidraScript)  \"\r\n  ],\r\n  \"decompilation\": \"(GhidraScript)  \\r\\nINFO  AiworkEvidence.java> \\r\\nundefined8 main(int param_1,long param_2)\\r\\n\\r\\n{\\r\\n  size_t sVar1;\\r\\n  char *local_20;\\r\\n  long local_18;\\r\\n  ulong local_10;\\r\\n  \\r\\n  if ((param_1 != 3) || (sVar1 = strlen(*(char **)(param_2 + 8)), 0x28 < sVar1)) {\\r\\n    fwrite(\\\"usage\\\\n\\\",1,6,stderr);\\r\\n    return 2;\\r\\n  }\\r\\n  local_18 = strtol(*(char **)(param_2 + 0x10),&local_20,10);\\r\\n  if ((*(char **)(param_2 + 0x10) != local_20) &&\\r\\n     (((*local_20 == '\\\\0' && (0 < local_18)) && (local_18 < 9)))) {\\r\\n    local_10 = 0;\\r\\n    while (sVar1 = strlen(*(char **)(param_2 + 8)), local_10 < sVar1) {\\r\\n      putchar((int)*(char *)(local_10 + *(long *)(param_2 + 8)));\\r\\n      local_10 = local_10 + local_18;\\r\\n    }\\r\\n    putchar(10);\\r\\n    return 0;\\r\\n  }\\r\\n  fwrite(\\\"step\\\\n\\\",1,5,stderr);\\r\\n  return 3;\\r\\n}\\r\\n\\r\\n (GhidraScript)  \\r\\nINFO  AiworkEvidence.java>\"\r\n}",
+  "next_line": null,
+  "total_lines": 86,
+  "selected_symbol": "",
+  "symbols": [],
+  "symbols_truncated": false
+}

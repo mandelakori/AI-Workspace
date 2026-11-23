@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | Explicit llama.cpp thinking switch | VERIFIED | [Diagnostic review](A100-THINKING-DIAGNOSTIC.md). Actual no-inference template route and offline Jinja verified OFF/ON tool histories. Installed inert OpenCode succeeded in both modes. Existing defaults preserved. |
 | Regression and fixture readiness | VERIFIED | 235/235, zero skips. Pinned stride ELF 5/5 public and identical compilable starter 0/5. Cross-arm approvals, source drift and early grading rejected. |
-| Reasoning and engineering comparison | UNTESTED | Two matched byte-stride arms, PREPARED_NOT_AUTHORIZED. Separate digests and 210-second one-attempt caps. No real generation or private cases. |
+| Reasoning and engineering comparison | VERIFIED | [Consumed comparison](A100-THINKING-DIAGNOSTIC-RESULT.md). ON reasoning emission in 4/4 streams. Both 5/5 public. OFF 12/12 independent, ON 7/12 with four mismatches and one inconclusive. One matched pair. |
 
 ## Native workbench validation
 
