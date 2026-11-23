@@ -1,0 +1,107 @@
+{
+  "approval": "8698eb97b2f06104dca2c14003848a30e664b03723e4c87777f638d94315510a",
+  "consumed": true,
+  "job": "dcb91076c1f844c99ba724a316e3f273",
+  "status": "FAIL_NO_CANDIDATE",
+  "worker_status": "completed",
+  "controller_detail": "proposal left the selected checkpoint unchanged",
+  "work_phase": "FAILED",
+  "quarantined": false,
+  "phase_diagnostic": "missing checkpoint receipt after unchanged proposal; work wrapper raised FileNotFoundError",
+  "reference_public": 18,
+  "baseline": {
+    "missing": "candidate.c",
+    "public_passes": 0,
+    "public_total": 18,
+    "observations_executed": 0
+  },
+  "candidate_produced": false,
+  "candidate_compiled": false,
+  "candidate_build_executed": false,
+  "candidate_public_grade": null,
+  "sealed_grade": null,
+  "private_cases_authored": 0,
+  "grade_guard": "engineering-closed.json absent",
+  "frozen_inputs_verified": true,
+  "source_inventory_unchanged": true,
+  "tools": {
+    "focus": 9,
+    "diff": 1
+  },
+  "tool_failures": [
+    {
+      "call": 1,
+      "tool": "focus",
+      "path": "candidate.c",
+      "error": "inspection requires a text file no larger than 256 KiB",
+      "arguments": {
+        "path": "candidate.c"
+      }
+    },
+    {
+      "call": 8,
+      "tool": "focus",
+      "path": "candidate.c",
+      "error": "inspection requires a text file no larger than 256 KiB",
+      "arguments": {
+        "path": "candidate.c",
+        "line": 1
+      }
+    },
+    {
+      "call": 10,
+      "tool": "focus",
+      "path": "candidate.c",
+      "error": "inspection requires a text file no larger than 256 KiB",
+      "arguments": {
+        "path": "candidate.c",
+        "line": 1,
+        "query": "main"
+      }
+    }
+  ],
+  "accepted_edits": 0,
+  "model_requests": 7,
+  "model_tokens": {
+    "prompt_tokens": 70242,
+    "completion_tokens": 4571,
+    "total_tokens": 74813
+  },
+  "compactions": 0,
+  "peak_prompt_tokens": 12828,
+  "resource_receipt": {
+    "epoch": 0,
+    "remaining_operations": 86,
+    "used": {
+      "inspection": 10,
+      "editing": 0,
+      "verification": 0,
+      "inference": 7,
+      "compaction": 0
+    },
+    "exhausted": "",
+    "policy": {
+      "operations": 96,
+      "edit_reserve": 8,
+      "verification_reserve": 8,
+      "model_requests": 64,
+      "compactions": 4,
+      "blocked_limit": 3
+    },
+    "seconds": {
+      "inference": 61.40599999999904,
+      "inspection": 1.7809999999990396,
+      "cleanup": 0
+    },
+    "contract_sha256": "12ac9919458a633d1cf3322fd54fe87465e359960779d32751e09cabe8710f04"
+  },
+  "seconds": {
+    "warm": 5.5,
+    "worker": 66.28099999999904,
+    "work": 72.34400000000096,
+    "total": 78.08626198768616
+  },
+  "owned_cleanup": true,
+  "main": "cf50e89c2ca2ad21d86fda5473f5ad6edc0c2623",
+  "no_additional_campaign": true
+}

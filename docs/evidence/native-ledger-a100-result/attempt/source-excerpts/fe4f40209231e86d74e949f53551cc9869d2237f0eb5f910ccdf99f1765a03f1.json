@@ -1,0 +1,11 @@
+{
+  "path": "examples.json",
+  "sha256": "f44b3158daab9723ac91cf2e287380be807a1b97d1e7d992b87dd19a8ffdcdb3",
+  "line": 121,
+  "source": "    \"group\": \"framing\",\r\n    \"stdin\": \"add 14\\nreset\",\r\n    \"argv\": [],\r\n    \"code\": 0,\r\n    \"stdout\": \"14\\n0\\n\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"tabbed-args\",\r\n    \"group\": \"whitespace\",\r\n    \"stdin\": \"\\tadd\\t+8  \\n\\tshow\\t\\n\",\r\n    \"argv\": [],\r\n    \"code\": 0,\r\n    \"stdout\": \"8\\n8\\n\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"range-and-state\",\r\n    \"group\": \"state\",\r\n    \"stdin\": \"add 1000\\ntake 1001\\nadd 1001\\ntake -1\\ntake 999\\nshow\\n\",\r\n    \"argv\": [],\r\n    \"code\": 0,\r\n    \"stdout\": \"1000\\nerror\\nerror\\nerror\\n1\\n1\\n\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"cap-and-state\",\r\n    \"group\": \"state\",\r\n    \"stdin\": \"add 1000\\nadd 1000\\nadd 1000\\nadd 1000\\nadd 1000\\nadd 1000\\nadd 1000\\nadd 1000\\nadd 1000\\nadd 1000\\nadd 1\\nshow\\nreset\\nshow\\n\",\r\n    \"argv\": [],\r\n    \"code\": 0,\r\n    \"stdout\": \"1000\\n2000\\n3000\\n4000\\n5000\\n6000\\n7000\\n8000\\n9000\\n10000\\ndenied\\n10000\\n0\\n0\\n\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"recovery\",\r\n    \"group\": \"state\",\r\n    \"stdin\": \"add 8\\nwrong\\nshow\\nreset\\nshow\\n\",\r\n    \"argv\": [],\r\n    \"code\": 0,\r\n    \"stdout\": \"8\\nerror\\n8\\n0\\n0\\n\",\r\n    \"stderr\": \"\"\r\n  }\r\n]",
+  "next_line": null,
+  "total_lines": 164,
+  "selected_symbol": "",
+  "symbols": [],
+  "symbols_truncated": false
+}

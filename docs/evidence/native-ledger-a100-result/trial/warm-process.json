@@ -1,0 +1,12 @@
+{
+  "phase": "warm",
+  "code": 0,
+  "elapsed": 5.5,
+  "timed_out": false,
+  "stdout": "{\"arm\": \"a100-existing\", \"approval_digest\": \"8698eb97b2f06104dca2c14003848a30e664b03723e4c87777f638d94315510a\", \"action\": \"_warm\"}\r\n",
+  "stderr": "",
+  "cleanup": {
+    "passed": true,
+    "not_applicable": "warm phase forbids verification containers"
+  }
+}

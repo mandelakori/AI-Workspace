@@ -1,0 +1,147 @@
+{
+  "manifest": {
+    "objective": "Reconstruct the approved line-oriented account ledger in candidate.c, from scratch. Read binary.json, ghidra.json and examples.json for the public evidence. Each process starts at balance zero and reads commands until EOF. Preserve framing, parsing, state transitions, and exact stdout, stderr and exit behavior. Use C11 and the standard library only. Run public command 0 to compile and compare all 18 approved observations. Command 1 compiles only. Work with small hash-bound edits. Only candidate.c may change. No external tools, alternate implementation inputs or post-freeze feedback are available.",
+    "workspace": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\a100-ledger\\input",
+    "kind": "agent",
+    "category": "native-ledger-a100",
+    "inputs": [],
+    "deliverables": [
+      "candidate.c"
+    ],
+    "checks": [
+      {
+        "argv": [
+          "gcc",
+          "-std=c11",
+          "-O2",
+          "candidate.c",
+          "-o",
+          "candidate"
+        ],
+        "timeout": 30,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      },
+      {
+        "argv": [
+          "./candidate"
+        ],
+        "timeout": 12,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      }
+    ],
+    "location": "auto",
+    "profile": "a100-existing",
+    "complexity": 1,
+    "timeout": 720,
+    "attempts": 1,
+    "agent_checks": false,
+    "specialist": "",
+    "verification_dir": null,
+    "mode": "engineering",
+    "write_roots": [
+      "candidate.c"
+    ],
+    "commands": [
+      {
+        "argv": [
+          "{python}",
+          "native_feedback.py",
+          "{\"argv\": [\"gcc\", \"-std=c11\", \"-O2\", \"candidate.c\", \"-o\", \"candidate\"], \"timeout\": 30, \"stdout\": null, \"cwd\": \"\", \"oracle\": \"\"}",
+          "{\"argv\": [\"./candidate\"], \"timeout\": 12, \"stdout\": null, \"cwd\": \"\", \"oracle\": \"\"}"
+        ],
+        "timeout": 30,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      },
+      {
+        "argv": [
+          "gcc",
+          "-std=c11",
+          "-O2",
+          "candidate.c",
+          "-o",
+          "candidate"
+        ],
+        "timeout": 30,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      }
+    ],
+    "setup": [],
+    "baseline_check": false,
+    "min_context": 65536,
+    "preferred_profile": "",
+    "rank_public": true,
+    "agent_role": "",
+    "source_context": [],
+    "source_patch": false,
+    "public_cases": "",
+    "attempt_limit": 0,
+    "tool_operations": 96,
+    "edit_reserve": 8,
+    "public_test_reserve": 8,
+    "model_requests": 64,
+    "compaction_limit": 4,
+    "context_input_tokens": 0
+  },
+  "inventory": {
+    "binary.json": {
+      "bytes": 1799,
+      "sha256": "f15a23914fcbc7f7f18557746d8d695284d62fa07da6e0ee962d59502f8b8b2f"
+    },
+    "examples.json": {
+      "bytes": 3770,
+      "sha256": "f44b3158daab9723ac91cf2e287380be807a1b97d1e7d992b87dd19a8ffdcdb3"
+    },
+    "ghidra.json": {
+      "bytes": 4143,
+      "sha256": "5ad21c979d8b407b3501caf5623775cdc5c31cb8635f644d3be9f3faf89c3335"
+    },
+    "native_feedback.py": {
+      "bytes": 2235,
+      "sha256": "52a48248a03c48223adf274f4cc9cb47d4cd84aa101990e7e6e4ea8ecd162bc3"
+    }
+  },
+  "preprocessing": {
+    "files": 4,
+    "bytes": 11947,
+    "languages": [
+      "Python"
+    ],
+    "build_files": [],
+    "candidate_tests": [],
+    "binaries": {},
+    "python_symbols": {
+      "native_feedback.py": [
+        {
+          "name": "run_public_checks",
+          "line": 10,
+          "calls": [
+            "decode",
+            "dumps",
+            "encode",
+            "int",
+            "invoke",
+            "isinstance",
+            "items",
+            "len",
+            "loads",
+            "min",
+            "print",
+            "read_bytes",
+            "replace",
+            "run",
+            "text"
+          ]
+        }
+      ]
+    }
+  },
+  "private_inventory": {}
+}

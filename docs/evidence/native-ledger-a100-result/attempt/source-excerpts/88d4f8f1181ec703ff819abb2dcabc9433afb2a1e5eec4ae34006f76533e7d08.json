@@ -1,0 +1,11 @@
+{
+  "path": "examples.json",
+  "sha256": "f44b3158daab9723ac91cf2e287380be807a1b97d1e7d992b87dd19a8ffdcdb3",
+  "line": 1,
+  "source": "[\r\n  {\r\n    \"name\": \"example-1\",\r\n    \"group\": \"development\",\r\n    \"stdin\": \"show\\nadd 8\\ntake 5\\nshow\\nreset\\n\",\r\n    \"argv\": [],\r\n    \"code\": 0,\r\n    \"stdout\": \"0\\n8\\n3\\n3\\n0\\n\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"example-2\",\r\n    \"group\": \"development\",\r\n    \"stdin\": \"take 1\\nadd -2\\nbad\\n\",\r\n    \"argv\": [],\r\n    \"code\": 0,\r\n    \"stdout\": \"denied\\nerror\\nerror\\n\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"example-3\",\r\n    \"group\": \"development\",\r\n    \"stdin\": \"add 1000\\nadd 1001\\nshow\\n\",\r\n    \"argv\": [],\r\n    \"code\": 0,\r\n    \"stdout\": \"1000\\nerror\\n1000\\n\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"blank-after-add\",\r\n    \"group\": \"whitespace\",\r\n    \"stdin\": \"add 3\\n\\nshow\\n\",\r\n    \"argv\": [],\r\n    \"code\": 0,\r\n    \"stdout\": \"3\\n3\\n\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"show-garbage\",\r\n    \"group\": \"arguments\",\r\n    \"stdin\": \"add 9\\nshow foo\\nshow\\n\",\r\n    \"argv\": [],\r\n    \"code\": 0,\r\n    \"stdout\": \"9\\nerror\\n9\\n\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"reset-garbage\",\r\n    \"group\": \"arguments\",\r\n    \"stdin\": \"add 4\\nreset late\\nshow\\n\",\r\n    \"argv\": [],\r\n    \"code\": 0,\r\n    \"stdout\": \"4\\nerror\\n4\\n\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"blank-whitespace\",\r\n    \"group\": \"whitespace\",\r\n    \"stdin\": \" \\t\\u000b\\f\\r\\nshow\",\r\n    \"argv\": [],\r\n",
+  "next_line": 61,
+  "total_lines": 164,
+  "selected_symbol": "",
+  "symbols": [],
+  "symbols_truncated": false
+}

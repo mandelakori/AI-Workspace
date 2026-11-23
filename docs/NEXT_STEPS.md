@@ -1,12 +1,12 @@
 # Next steps
 
-## Current handoff: review the prepared native ledger trial
+## Current handoff: consumed native ledger trial
 
-The [native workbench validation](NATIVE-WORKBENCH-VALIDATION.md) has executable
-local evidence for intake, Ghidra, the PE resource adapter, isolation and
-differential replay. Authorize the manifest digest separately to run the one
-clean-start ledger comparison against the pinned reference. Independent inputs
-may be authored only after a successful freeze. Stop after the approved trial.
+The [approved ledger trial](NATIVE-LEDGER-A100-RESULT.md) ran once and failed to
+produce a candidate. The final response reached its output ceiling before an
+edit or public check. The harness and owned cleanup completed, the engineering
+phase failed, and the approval is consumed. No freeze or independent grade.
+Stop for operator review. No further campaign is prepared.
 
 ## Historical handoff: final ItsDangerous trial failed acceptance
 

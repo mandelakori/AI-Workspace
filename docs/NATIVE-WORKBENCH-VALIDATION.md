@@ -1,5 +1,8 @@
 # Native workbench validation
 
+The prepared trial described below has since run. Its approval is consumed and
+the work phase failed without a candidate. [Execution result](NATIVE-LEDGER-A100-RESULT.md).
+
 The existing workbench reproduced four frozen ELF candidate results, including both
 ledger failures. Ghidra and the REA static adapter ran on the installed toolchain.
 One clean-start A100 ledger trial is **PREPARED_NOT_AUTHORIZED**. It targets the

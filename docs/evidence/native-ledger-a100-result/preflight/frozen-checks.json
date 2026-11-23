@@ -1,0 +1,46 @@
+{
+  "approval": "8698eb97b2f06104dca2c14003848a30e664b03723e4c87777f638d94315510a",
+  "commit": "43eb3c8",
+  "frozen_bindings_verified": true,
+  "previous_evidence_files_verified": 44,
+  "binary_header": {
+    "format": "ELF",
+    "class": 64,
+    "machine": 62
+  },
+  "worker": {
+    "timeout": 720,
+    "attempts": 1,
+    "min_context": 65536,
+    "tool_operations": 96,
+    "edit_reserve": 8,
+    "public_test_reserve": 8,
+    "model_requests": 64,
+    "compaction_limit": 4
+  },
+  "generation": {
+    "temperature": 0,
+    "reasoning_effort": "none",
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "seed": 1729
+  },
+  "limits": {
+    "warm": 20,
+    "work": 900,
+    "grade": 120
+  },
+  "capture": {
+    "limit_bytes": 67108864,
+    "headroom_bytes": 33554432
+  },
+  "private_exclusions": 298,
+  "catalog": [
+    "check",
+    "focus",
+    "diff",
+    "edit"
+  ],
+  "requests": 0
+}

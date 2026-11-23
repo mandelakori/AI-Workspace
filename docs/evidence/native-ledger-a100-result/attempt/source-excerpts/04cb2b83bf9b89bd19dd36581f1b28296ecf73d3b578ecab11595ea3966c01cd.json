@@ -1,0 +1,11 @@
+{
+  "path": "examples.json",
+  "sha256": "f44b3158daab9723ac91cf2e287380be807a1b97d1e7d992b87dd19a8ffdcdb3",
+  "line": 61,
+  "source": "    \"code\": 0,\r\n    \"stdout\": \"0\\n\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"split-at-buffer\",\r\n    \"group\": \"framing\",\r\n    \"stdin\": \"add 14\\n                                                                                             show\\nshow\\n\",\r\n    \"argv\": [],\r\n    \"code\": 0,\r\n    \"stdout\": \"14\\nerror\\nerror\\n14\\n\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"fits-buffer\",\r\n    \"group\": \"framing\",\r\n    \"stdin\": \"add 7\\n                                                                                          show\\n\",\r\n    \"argv\": [],\r\n    \"code\": 0,\r\n    \"stdout\": \"7\\n7\\n\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"show-eof\",\r\n    \"group\": \"framing\",\r\n    \"stdin\": \"add 7\\nshow\",\r\n    \"argv\": [],\r\n    \"code\": 0,\r\n    \"stdout\": \"7\\n7\\n\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"extra-after-add\",\r\n    \"group\": \"arguments\",\r\n    \"stdin\": \"add 5\\nadd 3 more\\nshow\\n\",\r\n    \"argv\": [],\r\n    \"code\": 0,\r\n    \"stdout\": \"5\\nerror\\n5\\n\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"extra-after-take\",\r\n    \"group\": \"arguments\",\r\n    \"stdin\": \"add 6\\ntake 1 tail\\nshow\\n\",\r\n    \"argv\": [],\r\n    \"code\": 0,\r\n    \"stdout\": \"6\\nerror\\n6\\n\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"empty\",\r\n    \"group\": \"framing\",\r\n    \"stdin\": \"\",\r\n    \"argv\": [],\r\n    \"code\": 0,\r\n    \"stdout\": \"\",\r\n    \"stderr\": \"\"\r\n  },\r\n  {\r\n    \"name\": \"no-newline-reset\",\r\n",
+  "next_line": 121,
+  "total_lines": 164,
+  "selected_symbol": "",
+  "symbols": [],
+  "symbols_truncated": false
+}

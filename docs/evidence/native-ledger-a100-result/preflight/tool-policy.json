@@ -1,0 +1,49 @@
+{
+  "checks": [
+    {
+      "argv": [
+        "{python}",
+        "native_feedback.py",
+        "{\"argv\": [\"gcc\", \"-std=c11\", \"-O2\", \"candidate.c\", \"-o\", \"candidate\"], \"timeout\": 30, \"stdout\": null, \"cwd\": \"\", \"oracle\": \"\"}",
+        "{\"argv\": [\"./candidate\"], \"timeout\": 12, \"stdout\": null, \"cwd\": \"\", \"oracle\": \"\"}"
+      ],
+      "timeout": 30,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    },
+    {
+      "argv": [
+        "gcc",
+        "-std=c11",
+        "-O2",
+        "candidate.c",
+        "-o",
+        "candidate"
+      ],
+      "timeout": 30,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    }
+  ],
+  "setup": [],
+  "engineering": true,
+  "write_roots": [
+    "candidate.c"
+  ],
+  "baseline": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\a100-ledger\\input",
+  "workspace": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\a100-ledger\\input",
+  "objective": "Reconstruct the approved line-oriented account ledger in candidate.c, from scratch. Read binary.json, ghidra.json and examples.json for the public evidence. Each process starts at balance zero and reads commands until EOF. Preserve framing, parsing, state transitions, and exact stdout, stderr and exit behavior. Use C11 and the standard library only. Run public command 0 to compile and compare all 18 approved observations. Command 1 compiles only. Work with small hash-bound edits. Only candidate.c may change. No external tools, alternate implementation inputs or post-freeze feedback are available.",
+  "resources": {
+    "operations": 96,
+    "edit_reserve": 8,
+    "verification_reserve": 8,
+    "model_requests": 64,
+    "compactions": 4
+  },
+  "trial": null,
+  "image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+  "stop": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\approved-ledger-preflight\\STOP",
+  "deadline": 1795433556.632474
+}

@@ -1,0 +1,9 @@
+{
+  "approved_digest": "8698eb97b2f06104dca2c14003848a30e664b03723e4c87777f638d94315510a",
+  "image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+  "free_bytes": 258064834560,
+  "reference_passed": 18,
+  "endpoint_matches": true,
+  "owned_forward_closed": true,
+  "generation_requests": 0
+}

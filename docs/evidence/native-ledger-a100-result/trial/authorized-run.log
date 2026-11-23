@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\examples\native\ledger_trial.py", line 301, in <module>
+    main()
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\examples\native\ledger_trial.py", line 281, in main
+    run(root, manifest, args.approval)
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\examples\native\ledger_trial.py", line 220, in run
+    phase(root, 'work')
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\examples\native\ledger_trial.py", line 235, in phase
+    raise RuntimeError(f'{name} did not close under the reviewed protocol')
+RuntimeError: work did not close under the reviewed protocol

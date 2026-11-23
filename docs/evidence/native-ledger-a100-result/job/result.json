@@ -1,0 +1,6 @@
+{
+  "job": "dcb91076c1f844c99ba724a316e3f273",
+  "status": "failed",
+  "detail": "proposal left the selected checkpoint unchanged",
+  "artifacts": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\a100-ledger\\state\\runs\\dcb91076c1f844c99ba724a316e3f273"
+}

@@ -1,0 +1,236 @@
+{
+  "contract": {
+    "objective": "Reconstruct the approved line-oriented account ledger in candidate.c, from scratch. Read binary.json, ghidra.json and examples.json for the public evidence. Each process starts at balance zero and reads commands until EOF. Preserve framing, parsing, state transitions, and exact stdout, stderr and exit behavior. Use C11 and the standard library only. Run public command 0 to compile and compare all 18 approved observations. Command 1 compiles only. Work with small hash-bound edits. Only candidate.c may change. No external tools, alternate implementation inputs or post-freeze feedback are available.",
+    "write_roots": [
+      "candidate.c"
+    ],
+    "public_checks": [
+      {
+        "argv": [
+          "{python}",
+          "native_feedback.py",
+          "{\"argv\": [\"gcc\", \"-std=c11\", \"-O2\", \"candidate.c\", \"-o\", \"candidate\"], \"timeout\": 30, \"stdout\": null, \"cwd\": \"\", \"oracle\": \"\"}",
+          "{\"argv\": [\"./candidate\"], \"timeout\": 12, \"stdout\": null, \"cwd\": \"\", \"oracle\": \"\"}"
+        ],
+        "timeout": 30,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      },
+      {
+        "argv": [
+          "gcc",
+          "-std=c11",
+          "-O2",
+          "candidate.c",
+          "-o",
+          "candidate"
+        ],
+        "timeout": 30,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      }
+    ],
+    "setup": [],
+    "deadline": 1795434267.1939607,
+    "policy": {
+      "operations": 96,
+      "edit_reserve": 8,
+      "verification_reserve": 8,
+      "model_requests": 64,
+      "compactions": 4,
+      "blocked_limit": 3
+    }
+  },
+  "contract_sha256": "12ac9919458a633d1cf3322fd54fe87465e359960779d32751e09cabe8710f04",
+  "epoch": 0,
+  "visible": [
+    "04cb2b83bf9b89bd19dd36581f1b28296ecf73d3b578ecab11595ea3966c01cd",
+    "88d4f8f1181ec703ff819abb2dcabc9433afb2a1e5eec4ae34006f76533e7d08",
+    "a9b21b3f29cf80aa13aed7440f89750fb24639053883fc6c68bf2aff4ed72024",
+    "bc39cd155ef176e105c18f41711c4ab58fa2ef31ecac098a208165bb54e06e61",
+    "e77fbc23c7769d1d36d187b98f1ea6a9f239639606769858c705e8746e0ede7e",
+    "fe4f40209231e86d74e949f53551cc9869d2237f0eb5f910ccdf99f1765a03f1"
+  ],
+  "issued": {
+    "88d4f8f1181ec703ff819abb2dcabc9433afb2a1e5eec4ae34006f76533e7d08": {
+      "path": "examples.json",
+      "sha256": "f44b3158daab9723ac91cf2e287380be807a1b97d1e7d992b87dd19a8ffdcdb3",
+      "line": 1,
+      "next_line": 61
+    },
+    "e77fbc23c7769d1d36d187b98f1ea6a9f239639606769858c705e8746e0ede7e": {
+      "path": "binary.json",
+      "sha256": "f15a23914fcbc7f7f18557746d8d695284d62fa07da6e0ee962d59502f8b8b2f",
+      "line": 1,
+      "next_line": 61
+    },
+    "a9b21b3f29cf80aa13aed7440f89750fb24639053883fc6c68bf2aff4ed72024": {
+      "path": "ghidra.json",
+      "sha256": "5ad21c979d8b407b3501caf5623775cdc5c31cb8635f644d3be9f3faf89c3335",
+      "line": 1,
+      "next_line": 61
+    },
+    "04cb2b83bf9b89bd19dd36581f1b28296ecf73d3b578ecab11595ea3966c01cd": {
+      "path": "examples.json",
+      "sha256": "f44b3158daab9723ac91cf2e287380be807a1b97d1e7d992b87dd19a8ffdcdb3",
+      "line": 61,
+      "next_line": 121
+    },
+    "bc39cd155ef176e105c18f41711c4ab58fa2ef31ecac098a208165bb54e06e61": {
+      "path": "ghidra.json",
+      "sha256": "5ad21c979d8b407b3501caf5623775cdc5c31cb8635f644d3be9f3faf89c3335",
+      "line": 61,
+      "next_line": null
+    },
+    "fe4f40209231e86d74e949f53551cc9869d2237f0eb5f910ccdf99f1765a03f1": {
+      "path": "examples.json",
+      "sha256": "f44b3158daab9723ac91cf2e287380be807a1b97d1e7d992b87dd19a8ffdcdb3",
+      "line": 121,
+      "next_line": null
+    }
+  },
+  "events": [
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "12ac9919458a633d1cf3322fd54fe87465e359960779d32751e09cabe8710f04",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "12ac9919458a633d1cf3322fd54fe87465e359960779d32751e09cabe8710f04",
+      "remaining_operations": 92,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "12ac9919458a633d1cf3322fd54fe87465e359960779d32751e09cabe8710f04",
+      "remaining_operations": 90,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "12ac9919458a633d1cf3322fd54fe87465e359960779d32751e09cabe8710f04",
+      "remaining_operations": 89,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "12ac9919458a633d1cf3322fd54fe87465e359960779d32751e09cabe8710f04",
+      "remaining_operations": 88,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "diff",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "12ac9919458a633d1cf3322fd54fe87465e359960779d32751e09cabe8710f04",
+      "remaining_operations": 87,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "12ac9919458a633d1cf3322fd54fe87465e359960779d32751e09cabe8710f04",
+      "remaining_operations": 86,
+      "denied": ""
+    }
+  ],
+  "used": {
+    "inspection": 10,
+    "editing": 0,
+    "verification": 0,
+    "inference": 7,
+    "compaction": 0
+  },
+  "seconds": {
+    "inference": 61.40599999999904,
+    "inspection": 1.7809999999990396,
+    "cleanup": 0
+  },
+  "blocked": 0,
+  "exhausted": ""
+}

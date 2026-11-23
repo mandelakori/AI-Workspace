@@ -1,0 +1,11 @@
+{
+  "path": "ghidra.json",
+  "sha256": "5ad21c979d8b407b3501caf5623775cdc5c31cb8635f644d3be9f3faf89c3335",
+  "line": 1,
+  "source": "{\r\n  \"binary\": \"reference.elf\",\r\n  \"header\": {\r\n    \"format\": \"ELF\",\r\n    \"class\": 64,\r\n    \"machine\": 62\r\n  },\r\n  \"strings\": [\r\n    \"/lib64/ld-linux-x86-64.so.2\",\r\n    \"__libc_start_main\",\r\n    \"__cxa_finalize\",\r\n    \"printf\",\r\n    \"__isoc99_sscanf\",\r\n    \"strcmp\",\r\n    \"libc.so.6\",\r\n    \"GLIBC_2.7\",\r\n    \"GLIBC_2.2.5\",\r\n    \"GLIBC_2.34\",\r\n    \"_ITM_deregisterTMCloneTable\",\r\n    \"__gmon_start__\",\r\n    \"_ITM_registerTMCloneTable\",\r\n    \" %19s %d %c\",\r\n    \"denied\",\r\n    \" %19s %c\",\r\n    \"GCC: (Debian 14.2.0-19) 14.2.0\",\r\n    \"Scrt1.o\",\r\n    \"__abi_tag\",\r\n    \"crtstuff.c\",\r\n    \"deregister_tm_clones\",\r\n    \"__do_global_dtors_aux\",\r\n    \"completed.0\",\r\n    \"__do_global_dtors_aux_fini_array_entry\",\r\n    \"frame_dummy\",\r\n    \"__frame_dummy_init_array_entry\",\r\n    \"reference.c\",\r\n    \"__FRAME_END__\",\r\n    \"_DYNAMIC\",\r\n    \"__GNU_EH_FRAME_HDR\",\r\n    \"_GLOBAL_OFFSET_TABLE_\",\r\n    \"__libc_start_main@GLIBC_2.34\",\r\n    \"_ITM_deregisterTMCloneTable\",\r\n    \"puts@GLIBC_2.2.5\",\r\n    \"stdin@GLIBC_2.2.5\",\r\n    \"_edata\",\r\n    \"printf@GLIBC_2.2.5\",\r\n    \"fgets@GLIBC_2.2.5\",\r\n    \"__data_start\",\r\n    \"strcmp@GLIBC_2.2.5\",\r\n    \"__gmon_start__\",\r\n    \"__dso_handle\",\r\n    \"_IO_stdin_used\",\r\n    \"__isoc99_sscanf@GLIBC_2.7\",\r\n    \"__bss_start\",\r\n    \"__TMC_END__\",\r\n    \"_ITM_registerTMCloneTable\",\r\n    \"__cxa_finalize@GLIBC_2.2.5\",\r\n    \".symtab\",\r\n    \".strtab\",\r\n    \".shstrtab\",\r\n    \".note.gnu.property\",\r\n",
+  "next_line": 61,
+  "total_lines": 89,
+  "selected_symbol": "",
+  "symbols": [],
+  "symbols_truncated": false
+}

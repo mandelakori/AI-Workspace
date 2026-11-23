@@ -1,0 +1,59 @@
+{
+  "approval": "8698eb97b2f06104dca2c14003848a30e664b03723e4c87777f638d94315510a",
+  "arm": "a100-existing",
+  "sessions": 1,
+  "planner_requests": 0,
+  "quotas": {
+    "sessions": 1,
+    "planner_requests": 0
+  },
+  "reviewed_phase_caps": {
+    "warm": 20,
+    "work": 900,
+    "grade": 120
+  },
+  "phases": {
+    "warm": {
+      "limit": 20,
+      "status": "FINISHED",
+      "started_utc": 1795433584.8726141,
+      "deadline_utc": 1795433604.8726141,
+      "deadline_monotonic": 17647.875,
+      "token_sha256": "a0c44789d3d5050cbce86bd9e2599bbe699213b7ad7cdc4f96c9ca6b8d932822",
+      "label": "aiwork-trial-36c1b7f3e9fd4680a6e55f70170552bc",
+      "finished_utc": 1795433590.3794365,
+      "execution_elapsed_with_termination": 5.5,
+      "cancellation_cleanup_seconds": 0.0,
+      "error": "",
+      "timed_out": false,
+      "cleanup": {
+        "passed": true,
+        "not_applicable": "warm phase forbids verification containers"
+      }
+    },
+    "work": {
+      "limit": 900,
+      "status": "FAILED",
+      "started_utc": 1795433590.4063962,
+      "deadline_utc": 1795434490.4063962,
+      "deadline_monotonic": 18533.406,
+      "token_sha256": "966ade3dad47ff211af21cb48fc04ce3bbdb278a05fb9f113f113d18a0b73dcc",
+      "label": "aiwork-trial-680c25f36b314f0a87bcce4c0efbafa4",
+      "finished_utc": 1795433662.9292786,
+      "execution_elapsed_with_termination": 72.359,
+      "cancellation_cleanup_seconds": 0.172,
+      "error": "",
+      "timed_out": false,
+      "cleanup": {
+        "passed": true,
+        "removed": []
+      }
+    },
+    "grade": {
+      "limit": 120,
+      "status": "PENDING"
+    }
+  },
+  "active": "work",
+  "quarantined": false
+}

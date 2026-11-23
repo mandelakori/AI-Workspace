@@ -1,0 +1,12 @@
+{
+  "phase": "work",
+  "code": 1,
+  "elapsed": 72.34400000000096,
+  "timed_out": false,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\r\n  File \"C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\examples\\native\\ledger_trial.py\", line 301, in <module>\r\n    main()\r\n  File \"C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\examples\\native\\ledger_trial.py\", line 296, in main\r\n    {'_work': work, '_grade': final_grade}[action](root, manifest)\r\n  File \"C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\examples\\native\\ledger_trial.py\", line 193, in work\r\n    checkpoint = read(attempt / 'checkpoint.json')\r\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\examples\\native\\ledger_trial.py\", line 52, in read\r\n    return json.loads(path.read_bytes())\r\n                      ^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\mande\\AISAK-Engineering\\runtime\\python\\cpython-3.12-windows-x86_64-none\\Lib\\pathlib.py\", line 1019, in read_bytes\r\n    with self.open(mode='rb') as f:\r\n         ^^^^^^^^^^^^^^^^^^^^\r\n  File \"C:\\Users\\mande\\AISAK-Engineering\\runtime\\python\\cpython-3.12-windows-x86_64-none\\Lib\\pathlib.py\", line 1013, in open\r\n    return io.open(self, mode, buffering, encoding, errors, newline)\r\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nFileNotFoundError: [Errno 2] No such file or directory: 'C:\\\\Users\\\\mande\\\\coding\\\\Final RSTP\\\\AI-Workspace\\\\.aiwork\\\\native-workbench-validation\\\\a100-ledger\\\\state\\\\runs\\\\dcb91076c1f844c99ba724a316e3f273\\\\attempt-001\\\\checkpoint.json'\r\n",
+  "cleanup": {
+    "passed": true,
+    "removed": []
+  }
+}
