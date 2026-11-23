@@ -1,0 +1,84 @@
+{
+  "path": "src/itsdangerous/timed.py",
+  "sha256": "4fab550338d97c65ba6ea124f0ac021fb1e4b50299a725d7d66f9924957f7fcf",
+  "line": 22,
+  "source": "class TimestampSigner(Signer):\r\n    \"\"\"Works like the regular :class:`.Signer` but also records the time\r\n    of the signing and can be used to expire signatures. The\r\n    :meth:`unsign` method can raise :exc:`.SignatureExpired` if the\r\n    unsigning failed because the signature is expired.\r\n    \"\"\"\r\n\r\n    def get_timestamp(self) -> int:\r\n        \"\"\"Returns the current timestamp. The function must return an\r\n        integer.\r\n        \"\"\"\r\n        return int(time.time())\r\n\r\n    def timestamp_to_datetime(self, ts: int) -> datetime:\r\n        \"\"\"Convert the timestamp from :meth:`get_timestamp` into an\r\n        aware :class`datetime.datetime` in UTC.\r\n\r\n        .. versionchanged:: 2.0\r\n            The timestamp is returned as a timezone-aware ``datetime``\r\n            in UTC rather than a naive ``datetime`` assumed to be UTC.\r\n        \"\"\"\r\n        return datetime.fromtimestamp(ts, tz=timezone.utc)\r\n\r\n    def sign(self, value: str | bytes) -> bytes:\r\n        \"\"\"Signs the given string and also attaches time information.\"\"\"\r\n        value = want_bytes(value)\r\n        timestamp = base64_encode(int_to_bytes(self.get_timestamp()))\r\n        sep = want_bytes(self.sep)\r\n        value = value + sep + timestamp\r\n        return value + sep + self.get_signature(value)\r\n\r\n    # Ignore overlapping signatures check, return_timestamp is the only\r\n    # parameter that affects the return type.\r\n\r\n    @t.overload\r\n    def unsign(  # pyright: ignore\r\n        self,\r\n        signed_value: str | bytes,\r\n        max_age: int | None = None,\r\n        return_timestamp: t.Literal[False] = False,\r\n    ) -> bytes: ...\r\n\r\n    @t.overload\r\n    def unsign(\r\n        self,\r\n        signed_value: str | bytes,\r\n        max_age: int | None = None,\r\n        return_timestamp: t.Literal[True] = True,\r\n    ) -> tuple[bytes, datetime]: ...\r\n\r\n    def unsign(\r\n        self,\r\n        signed_value: str | bytes,\r\n        max_age: int | None = None,\r\n        return_timestamp: bool = False,\r\n    ) -> tuple[bytes, datetime] | bytes:\r\n        \"\"\"Works like the regular :meth:`.Signer.unsign` but can also\r\n        validate the time. See the base docstring of the class for\r\n        the general behavior. If ``return_timestamp`` is ``True`` the\r\n        timestamp of the signature will be returned as an aware\r\n",
+  "next_line": 82,
+  "total_lines": 228,
+  "selected_symbol": "TimestampSigner",
+  "symbols": [
+    {
+      "symbol": "TimestampSigner",
+      "line": 22,
+      "end_line": 167,
+      "kind": "class"
+    },
+    {
+      "symbol": "TimedSerializer",
+      "line": 170,
+      "end_line": 228,
+      "kind": "class"
+    },
+    {
+      "symbol": "TimestampSigner.get_timestamp",
+      "line": 29,
+      "end_line": 33,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.timestamp_to_datetime",
+      "line": 35,
+      "end_line": 43,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.sign",
+      "line": 45,
+      "end_line": 51,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 56,
+      "end_line": 62,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 64,
+      "end_line": 70,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 72,
+      "end_line": 158,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.validate",
+      "line": 160,
+      "end_line": 167,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.iter_unsigners",
+      "line": 177,
+      "end_line": 180,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.loads",
+      "line": 185,
+      "end_line": 220,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.loads_unsafe",
+      "line": 222,
+      "end_line": 228,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": false
+}

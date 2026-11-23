@@ -1,25 +1,24 @@
 # Next steps
 
-## Current handoff: one final acceptance trial, unauthorized
+## Current handoff: final trial failed acceptance; stop for review
 
-Review [the final protocol](MILESTONE-E-FINAL-REVIEW.md), bundle
-`.aiwork/milestone-e-final/acceptance-trial`, digest
-`b6d7338aad1fa82343277ab37ac7c4afb946ec4da7353a6040e3abda977a71f6`.
-It is PREPARED_NOT_AUTHORIZED. Require separate approval for exactly
-`["a100-existing"]`, then recheck all immutable inputs, dependencies, tool catalog,
-model identity and idle slot. No live inference has run under this preparation.
+[Final result](MILESTONE-E-FINAL-RESULT.md): real autonomous coding and public
+repair, but incomplete acceptance. Original public 12/12, expanded 48/48 and
+upstream 297/297 pass for the retained production bytes. Authored-test gate failed,
+remaining gates and worker acceptance were not executed, and the single attempt
+deadline interrupted request 47. Owned cleanup passed; capture was not exhausted.
 
-Original baseline remains 3/12; expanded baseline is 22/48. Every public/upstream/
-authored/interface/documentation/syntax gate, a completed worker and acceptance
-tool call must pass before freeze. No incomplete candidate or baseline fallback
-is eligible for sealed grading. Create 24 fresh independent cases only afterwards,
-excluding public/diagnostic inputs and without worker feedback.
+Bundle `.aiwork/milestone-e-final/acceptance-trial` is quarantined; digest
+`b6d7338aad1fa82343277ab37ac7c4afb946ec4da7353a6040e3abda977a71f6`
+is consumed. No frozen candidate or sealed cases exist. Do not resume, retry,
+grade or reuse its grant. No new ItsDangerous trial is prepared.
 
-Keep 64K/4096 and the existing budgets; no evidence justifies raising output for
-oversized edits. Capture is unchanged and validated. After that one authorized
-trial, STOP and assess the model/harness against Milestone E. Do not automatically
-repeat ItsDangerous or begin another phase. Preserve all consumed/quarantined
-trials, main, original roadmap and the unauthorized Pi comparison.
+Milestone E autonomous acceptance remains BLOCKED. Review the retained model
+test mistakes, oversized edit attempts and incomplete acceptance workflow.
+No automatic harness modification, new campaign, REA work or next phase is
+authorized. Preserve main, the original roadmap, historical evidence, existing
+services and the unauthorized Pi comparison. Historical handoffs below do not
+authorize action.
 
 ## Current handoff: review capture correction and candidate defects
 

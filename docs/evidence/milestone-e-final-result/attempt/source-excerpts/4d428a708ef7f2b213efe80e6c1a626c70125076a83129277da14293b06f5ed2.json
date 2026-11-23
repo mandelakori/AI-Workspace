@@ -1,0 +1,84 @@
+{
+  "path": "tests/test_itsdangerous/test_timed.py",
+  "sha256": "42d2644a1b6526b263706e4d27a6ea55e09f45e01bffe97a1cf9d803362eb877",
+  "line": 1,
+  "source": "from datetime import datetime\r\nfrom datetime import timedelta\r\nfrom datetime import timezone\r\nfrom functools import partial\r\n\r\nimport pytest\r\nfrom freezegun import freeze_time\r\n\r\nfrom itsdangerous.exc import BadTimeSignature\r\nfrom itsdangerous.exc import SignatureExpired\r\nfrom itsdangerous.signer import Signer\r\nfrom itsdangerous.timed import TimedSerializer\r\nfrom itsdangerous.timed import TimestampSigner\r\nfrom test_itsdangerous.test_serializer import TestSerializer\r\nfrom test_itsdangerous.test_signer import TestSigner\r\n\r\n\r\nclass FreezeMixin:\r\n    @pytest.fixture()\r\n    def ts(self):\r\n        return datetime(2011, 6, 24, 0, 9, 5, tzinfo=timezone.utc)\r\n\r\n    @pytest.fixture(autouse=True)\r\n    def freeze(self, ts):\r\n        with freeze_time(ts) as ft:\r\n            yield ft\r\n\r\n\r\nclass TestTimestampSigner(FreezeMixin, TestSigner):\r\n    @pytest.fixture()\r\n    def signer_factory(self):\r\n        return partial(TimestampSigner, secret_key=\"secret-key\")\r\n\r\n    def test_max_age(self, signer, ts, freeze):\r\n        signed = signer.sign(\"value\")\r\n        freeze.tick()\r\n        assert signer.unsign(signed, max_age=10) == b\"value\"\r\n        freeze.tick(timedelta(seconds=10))\r\n\r\n        with pytest.raises(SignatureExpired) as exc_info:\r\n            signer.unsign(signed, max_age=10)\r\n\r\n        assert exc_info.value.date_signed == ts\r\n\r\n    def test_return_timestamp(self, signer, ts):\r\n        signed = signer.sign(\"value\")\r\n        assert signer.unsign(signed, return_timestamp=True) == (b\"value\", ts)\r\n\r\n    def test_timestamp_missing(self, signer):\r\n        other = Signer(\"secret-key\")\r\n        signed = other.sign(\"value\")\r\n\r\n        with pytest.raises(BadTimeSignature) as exc_info:\r\n            signer.unsign(signed)\r\n\r\n        assert \"missing\" in str(exc_info.value)\r\n        assert exc_info.value.date_signed is None\r\n\r\n    def test_malformed_timestamp(self, signer):\r\n        other = Signer(\"secret-key\")\r\n",
+  "next_line": 61,
+  "total_lines": 115,
+  "selected_symbol": "",
+  "symbols": [
+    {
+      "symbol": "FreezeMixin",
+      "line": 18,
+      "end_line": 26,
+      "kind": "class"
+    },
+    {
+      "symbol": "TestTimestampSigner",
+      "line": 29,
+      "end_line": 93,
+      "kind": "class"
+    },
+    {
+      "symbol": "TestTimedSerializer",
+      "line": 96,
+      "end_line": 115,
+      "kind": "class"
+    },
+    {
+      "symbol": "FreezeMixin.ts",
+      "line": 19,
+      "end_line": 21,
+      "kind": "function"
+    },
+    {
+      "symbol": "FreezeMixin.freeze",
+      "line": 23,
+      "end_line": 26,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSigner.signer_factory",
+      "line": 30,
+      "end_line": 32,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSigner.test_max_age",
+      "line": 34,
+      "end_line": 43,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSigner.test_return_timestamp",
+      "line": 45,
+      "end_line": 47,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSigner.test_timestamp_missing",
+      "line": 49,
+      "end_line": 57,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSigner.test_malformed_timestamp",
+      "line": 59,
+      "end_line": 67,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSigner.test_malformed_future_timestamp",
+      "line": 69,
+      "end_line": 76,
+      "kind": "function"
+    },
+    {
+      "symbol": "TestTimestampSigner.test_future_age",
+      "line": 78,
+      "end_line": 85,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": true
+}

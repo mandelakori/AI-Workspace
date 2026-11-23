@@ -1,0 +1,15 @@
+{
+  "approval_digest": "b6d7338aad1fa82343277ab37ac7c4afb946ec4da7353a6040e3abda977a71f6",
+  "frozen_files_verified": 152,
+  "manifest_implementation_and_assets_valid": true,
+  "permissions_unchanged": true,
+  "tool_catalog_unchanged": true,
+  "dependencies_unchanged": true,
+  "idle_context_slot_verified": true,
+  "endpoint_identity_matches": true,
+  "capture_limit": 67108864,
+  "disk_headroom": 33554432,
+  "disk_free": 262247563264,
+  "owned_forward_closed": true,
+  "generation_requests": 0
+}

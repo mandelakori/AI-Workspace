@@ -1,0 +1,599 @@
+[
+  {
+    "operation": 25,
+    "index": 0,
+    "passed": true,
+    "elapsed": 1.3440000000409782,
+    "workspace": "public-check-25",
+    "source_sha256": "9d790385cbf8aaf6f15688e614f3fac4304f155a3b61ad944ce56b2bcefb8c93",
+    "result": {
+      "passed": true,
+      "passed_cases": 12,
+      "total": 12,
+      "original_passed": 12,
+      "original_total": 12,
+      "cases": [
+        {
+          "id": "integer-compatible",
+          "passed": true
+        },
+        {
+          "id": "none-compatible",
+          "passed": true
+        },
+        {
+          "id": "invalid-signature-first",
+          "passed": true
+        },
+        {
+          "id": "duration-active",
+          "passed": true
+        },
+        {
+          "id": "duration-expired-metadata",
+          "passed": true
+        },
+        {
+          "id": "duration-exact-boundary",
+          "passed": true
+        },
+        {
+          "id": "fraction-retained-accept",
+          "passed": true
+        },
+        {
+          "id": "fraction-retained-reject",
+          "passed": true
+        },
+        {
+          "id": "negative-duration",
+          "passed": true
+        },
+        {
+          "id": "future-timestamp",
+          "passed": true
+        },
+        {
+          "id": "serializer-key-rotation-timestamp",
+          "passed": true
+        },
+        {
+          "id": "urlsafe-unsafe-expired",
+          "passed": true
+        }
+      ],
+      "summary": "Public 12/12; original 12/12. First discrepancies: []"
+    }
+  },
+  {
+    "operation": 26,
+    "index": 1,
+    "passed": false,
+    "elapsed": 1.2349999999860302,
+    "workspace": "public-check-26",
+    "source_sha256": "9d790385cbf8aaf6f15688e614f3fac4304f155a3b61ad944ce56b2bcefb8c93",
+    "result": {
+      "passed": false,
+      "passed_cases": 44,
+      "total": 48,
+      "original_passed": 12,
+      "original_total": 12,
+      "cases": [
+        {
+          "id": "integer-compatible",
+          "passed": true
+        },
+        {
+          "id": "none-compatible",
+          "passed": true
+        },
+        {
+          "id": "invalid-signature-first",
+          "passed": true
+        },
+        {
+          "id": "duration-active",
+          "passed": true
+        },
+        {
+          "id": "duration-expired-metadata",
+          "passed": true
+        },
+        {
+          "id": "duration-exact-boundary",
+          "passed": true
+        },
+        {
+          "id": "fraction-retained-accept",
+          "passed": true
+        },
+        {
+          "id": "fraction-retained-reject",
+          "passed": true
+        },
+        {
+          "id": "negative-duration",
+          "passed": true
+        },
+        {
+          "id": "future-timestamp",
+          "passed": true
+        },
+        {
+          "id": "serializer-key-rotation-timestamp",
+          "passed": true
+        },
+        {
+          "id": "urlsafe-unsafe-expired",
+          "passed": true
+        },
+        {
+          "id": "int-wide-equality",
+          "passed": false,
+          "observed": {
+            "result": "expired",
+            "metadata_ok": true
+          },
+          "expected": "accepted"
+        },
+        {
+          "id": "int-wide-expiry",
+          "passed": false,
+          "observed": {
+            "result": "accepted",
+            "payload_ok": true,
+            "timestamp_ok": true
+          },
+          "expected": "expired"
+        },
+        {
+          "id": "int-signed-boundary",
+          "passed": false,
+          "observed": {
+            "result": "accepted",
+            "payload_ok": true,
+            "timestamp_ok": true
+          },
+          "expected": "expired"
+        },
+        {
+          "id": "int-huge-equality",
+          "passed": true
+        },
+        {
+          "id": "int-unbounded-limit",
+          "passed": false,
+          "observed": {
+            "result": "OverflowError"
+          },
+          "expected": "accepted"
+        },
+        {
+          "id": "int-zero-equality",
+          "passed": true
+        },
+        {
+          "id": "int-negative",
+          "passed": true
+        },
+        {
+          "id": "none-future",
+          "passed": true
+        },
+        {
+          "id": "type-string",
+          "passed": true
+        },
+        {
+          "id": "type-bytes",
+          "passed": true
+        },
+        {
+          "id": "type-nan",
+          "passed": true
+        },
+        {
+          "id": "type-inf",
+          "passed": true
+        },
+        {
+          "id": "type-float-only",
+          "passed": true
+        },
+        {
+          "id": "type-list",
+          "passed": true
+        },
+        {
+          "id": "type-dict",
+          "passed": true
+        },
+        {
+          "id": "type-text",
+          "passed": true
+        },
+        {
+          "id": "delta-zero-equality",
+          "passed": true
+        },
+        {
+          "id": "delta-zero-older",
+          "passed": true
+        },
+        {
+          "id": "delta-zero-validate",
+          "passed": true
+        },
+        {
+          "id": "delta-negative",
+          "passed": true
+        },
+        {
+          "id": "delta-negative-fraction",
+          "passed": true
+        },
+        {
+          "id": "delta-zero-unsafe",
+          "passed": true
+        },
+        {
+          "id": "delta-subsecond-expired",
+          "passed": true
+        },
+        {
+          "id": "delta-fraction-active",
+          "passed": true
+        },
+        {
+          "id": "delta-equality-url",
+          "passed": true
+        },
+        {
+          "id": "delta-unsafe-expiry",
+          "passed": true
+        },
+        {
+          "id": "future-finite",
+          "passed": true
+        },
+        {
+          "id": "future-zero",
+          "passed": true
+        },
+        {
+          "id": "delta-subsecond-active",
+          "passed": true
+        },
+        {
+          "id": "delta-negative-validate",
+          "passed": true
+        },
+        {
+          "id": "future-unsafe",
+          "passed": true
+        },
+        {
+          "id": "none-serializer-future",
+          "passed": true
+        },
+        {
+          "id": "invalid-signature-type-order",
+          "passed": true
+        },
+        {
+          "id": "invalid-signature-duration-order",
+          "passed": true
+        },
+        {
+          "id": "rotating-keys-duration",
+          "passed": true
+        },
+        {
+          "id": "custom-separator-equality",
+          "passed": true
+        }
+      ],
+      "summary": "Public 44/48; original 12/12. First discrepancies: [{'id': 'int-wide-equality', 'passed': False, 'observed': {'result': 'expired', 'metadata_ok': True}, 'expected': 'accepted'}, {'id': 'int-wide-expiry', 'passed': False, 'observed': {'result': 'accepted', 'payload_ok': True, 'timestamp_ok': True}, 'expected': 'expired'}]"
+    }
+  },
+  {
+    "operation": 29,
+    "index": 1,
+    "passed": true,
+    "elapsed": 1.234000000054948,
+    "workspace": "public-check-29",
+    "source_sha256": "71df145085b3417aa167928273799477ac1a376f7dd8809f75e741cfe3ca9e4c",
+    "result": {
+      "passed": true,
+      "passed_cases": 48,
+      "total": 48,
+      "original_passed": 12,
+      "original_total": 12,
+      "cases": [
+        {
+          "id": "integer-compatible",
+          "passed": true
+        },
+        {
+          "id": "none-compatible",
+          "passed": true
+        },
+        {
+          "id": "invalid-signature-first",
+          "passed": true
+        },
+        {
+          "id": "duration-active",
+          "passed": true
+        },
+        {
+          "id": "duration-expired-metadata",
+          "passed": true
+        },
+        {
+          "id": "duration-exact-boundary",
+          "passed": true
+        },
+        {
+          "id": "fraction-retained-accept",
+          "passed": true
+        },
+        {
+          "id": "fraction-retained-reject",
+          "passed": true
+        },
+        {
+          "id": "negative-duration",
+          "passed": true
+        },
+        {
+          "id": "future-timestamp",
+          "passed": true
+        },
+        {
+          "id": "serializer-key-rotation-timestamp",
+          "passed": true
+        },
+        {
+          "id": "urlsafe-unsafe-expired",
+          "passed": true
+        },
+        {
+          "id": "int-wide-equality",
+          "passed": true
+        },
+        {
+          "id": "int-wide-expiry",
+          "passed": true
+        },
+        {
+          "id": "int-signed-boundary",
+          "passed": true
+        },
+        {
+          "id": "int-huge-equality",
+          "passed": true
+        },
+        {
+          "id": "int-unbounded-limit",
+          "passed": true
+        },
+        {
+          "id": "int-zero-equality",
+          "passed": true
+        },
+        {
+          "id": "int-negative",
+          "passed": true
+        },
+        {
+          "id": "none-future",
+          "passed": true
+        },
+        {
+          "id": "type-string",
+          "passed": true
+        },
+        {
+          "id": "type-bytes",
+          "passed": true
+        },
+        {
+          "id": "type-nan",
+          "passed": true
+        },
+        {
+          "id": "type-inf",
+          "passed": true
+        },
+        {
+          "id": "type-float-only",
+          "passed": true
+        },
+        {
+          "id": "type-list",
+          "passed": true
+        },
+        {
+          "id": "type-dict",
+          "passed": true
+        },
+        {
+          "id": "type-text",
+          "passed": true
+        },
+        {
+          "id": "delta-zero-equality",
+          "passed": true
+        },
+        {
+          "id": "delta-zero-older",
+          "passed": true
+        },
+        {
+          "id": "delta-zero-validate",
+          "passed": true
+        },
+        {
+          "id": "delta-negative",
+          "passed": true
+        },
+        {
+          "id": "delta-negative-fraction",
+          "passed": true
+        },
+        {
+          "id": "delta-zero-unsafe",
+          "passed": true
+        },
+        {
+          "id": "delta-subsecond-expired",
+          "passed": true
+        },
+        {
+          "id": "delta-fraction-active",
+          "passed": true
+        },
+        {
+          "id": "delta-equality-url",
+          "passed": true
+        },
+        {
+          "id": "delta-unsafe-expiry",
+          "passed": true
+        },
+        {
+          "id": "future-finite",
+          "passed": true
+        },
+        {
+          "id": "future-zero",
+          "passed": true
+        },
+        {
+          "id": "delta-subsecond-active",
+          "passed": true
+        },
+        {
+          "id": "delta-negative-validate",
+          "passed": true
+        },
+        {
+          "id": "future-unsafe",
+          "passed": true
+        },
+        {
+          "id": "none-serializer-future",
+          "passed": true
+        },
+        {
+          "id": "invalid-signature-type-order",
+          "passed": true
+        },
+        {
+          "id": "invalid-signature-duration-order",
+          "passed": true
+        },
+        {
+          "id": "rotating-keys-duration",
+          "passed": true
+        },
+        {
+          "id": "custom-separator-equality",
+          "passed": true
+        }
+      ],
+      "summary": "Public 48/48; original 12/12. First discrepancies: []"
+    }
+  },
+  {
+    "operation": 30,
+    "index": 2,
+    "passed": true,
+    "elapsed": 4.641000000061467,
+    "workspace": "public-check-30",
+    "source_sha256": "71df145085b3417aa167928273799477ac1a376f7dd8809f75e741cfe3ca9e4c",
+    "result": {
+      "passed": true,
+      "stdout": "........................................................................ [ 24%]\n........................................................................ [ 48%]\n........................................................................ [ 72%]\n........................................................................ [ 96%]\n.........                                                                [100%]\n297 passed in 2.61s\n",
+      "stderr": "",
+      "summary": "upstream: .............................................................. [ 72%]\n........................................................................ [ 96%]\n.........                                                                [100%]\n297 passed in 2.61s\n"
+    }
+  },
+  {
+    "operation": 42,
+    "index": 0,
+    "passed": true,
+    "elapsed": 1.234000000054948,
+    "workspace": "public-check-42",
+    "source_sha256": "71df145085b3417aa167928273799477ac1a376f7dd8809f75e741cfe3ca9e4c",
+    "result": {
+      "passed": true,
+      "passed_cases": 12,
+      "total": 12,
+      "original_passed": 12,
+      "original_total": 12,
+      "cases": [
+        {
+          "id": "integer-compatible",
+          "passed": true
+        },
+        {
+          "id": "none-compatible",
+          "passed": true
+        },
+        {
+          "id": "invalid-signature-first",
+          "passed": true
+        },
+        {
+          "id": "duration-active",
+          "passed": true
+        },
+        {
+          "id": "duration-expired-metadata",
+          "passed": true
+        },
+        {
+          "id": "duration-exact-boundary",
+          "passed": true
+        },
+        {
+          "id": "fraction-retained-accept",
+          "passed": true
+        },
+        {
+          "id": "fraction-retained-reject",
+          "passed": true
+        },
+        {
+          "id": "negative-duration",
+          "passed": true
+        },
+        {
+          "id": "future-timestamp",
+          "passed": true
+        },
+        {
+          "id": "serializer-key-rotation-timestamp",
+          "passed": true
+        },
+        {
+          "id": "urlsafe-unsafe-expired",
+          "passed": true
+        }
+      ],
+      "summary": "Public 12/12; original 12/12. First discrepancies: []"
+    }
+  },
+  {
+    "operation": 50,
+    "index": 3,
+    "passed": false,
+    "elapsed": 6.875,
+    "workspace": "public-check-50",
+    "source_sha256": "71df145085b3417aa167928273799477ac1a376f7dd8809f75e741cfe3ca9e4c",
+    "diagnostic_truncated": true,
+    "retained_stdout": " seconds\\\",\\n                    payload=value,\\n                    date_signed=self.timestamp_to_datetime(ts_int),\\n                )\\nE               itsdangerous.exc.SignatureExpired: Signature age -1933318406 < 0 seconds\\n\\nsrc/itsdangerous/timed.py:174: SignatureExpired\"}, {\"test\": \"tests/test_itsdangerous/test_timedelta_max_age.py::TestTimestampSignerTimedelta::test_timedelta_fractional_seconds\", \"message\": \"            raise SignatureExpired(\\n                    f\\\"Signature age {age} < 0 seconds\\\",\\n                    payload=value,\\n                    date_signed=self.timestamp_to_datetime(ts_int),\\n                )\\nE               itsdangerous.exc.SignatureExpired: Signature age -1933318408 < 0 seconds\\n\\nsrc/itsdangerous/timed.py:174: SignatureExpired\"}], \"summary\": \"sdangerous/test_timedelta_max_age.py::TestTimestampSignerTimedelta::test_timedelta_valid:             raise SignatureExpired(\\n                    f\\\"Signature age {age} < 0 seconds\\\",\\n                    payload=value,\\n                    date_signed=self.timestamp_to_datetime(ts_int),\\n                )\\nE               itsdangerous.exc.SignatureExpired: Signature age -1933318411 < 0 seconds\\n\\nsrc/itsdangerous/timed.py:174: SignatureExpired\"}, {\"passed\": false, \"tests_passed\": 5, \"tests_failed\": 10, \"skipped\": 0, \"observed\": {\"duration\": 8, \"int\": 2, \"none\": 1, \"unsupported\": 1, \"large_int\": 1}, \"failures\": [{\"test\": \"tests/test_itsdangerous/test_timedelta_max_age.py::TestTimestampSignerTimedelta::test_timedelta_valid\", \"message\": \"            raise SignatureExpired(\\n                    f\\\"Signature age {age} < 0 seconds\\\",\\n                    payload=value,\\n                    date_signed=self.timestamp_to_datetime(ts_int),\\n                )\\nE               itsdangerous.exc.SignatureExpired: Signature age -2044886438 < 0 seconds\\n\\nsrc/itsdangerous/timed.py:174: SignatureExpired\"}, {\"test\": \"tests/test_itsdangerous/test_timedelta_max_age.py::TestTimestampSignerTimedelta::test_timedelta_exact_boundary\", \"message\": \"            raise SignatureExpired(\\n                    f\\\"Signature age {age} < 0 seconds\\\",\\n                    payload=value,\\n                    date_signed=self.timestamp_to_datetime(ts_int),\\n                )\\nE               itsdangerous.exc.SignatureExpired: Signature age -2044886433 < 0 seconds\\n\\nsrc/itsdangerous/timed.py:174: SignatureExpired\"}, {\"test\": \"tests/test_itsdangerous/test_timedelta_max_age.py::TestTimestampSignerTimedelta::test_timedelta_fractional_seconds\", \"message\": \"            raise SignatureExpired(\\n                    f\\\"Signature age {age} < 0 seconds\\\",\\n                    payload=value,\\n                    date_signed=self.timestamp_to_datetime(ts_int),\\n                )\\nE               itsdangerous.exc.SignatureExpired: Signature age -2044886435 < 0 seconds\\n\\nsrc/itsdangerous/timed.py:174: SignatureExpired\"}], \"summary\": \"sdangerous/test_timedelta_max_age.py::TestTimestampSignerTimedelta::test_timedelta_valid:             raise SignatureExpired(\\n                    f\\\"Signature age {age} < 0 seconds\\\",\\n                    payload=value,\\n                    date_signed=self.timestamp_to_datetime(ts_int),\\n                )\\nE               itsdangerous.exc.SignatureExpired: Signature age -2044886438 < 0 seconds\\n\\nsrc/itsdangerous/timed.py:174: SignatureExpired\"}], \"summary\": \",\\n                )\\nE               itsdangerous.exc.SignatureExpired: Signature age -1933318411 < 0 seconds\\n\\nsrc/itsdangerous/timed.py:174: SignatureExpired | sdangerous/test_timedelta_max_age.py::TestTimestampSignerTimedelta::test_timedelta_valid:             raise SignatureExpired(\\n                    f\\\"Signature age {age} < 0 seconds\\\",\\n                    payload=value,\\n                    date_signed=self.timestamp_to_datetime(ts_int),\\n                )\\nE               itsdangerous.exc.SignatureExpired: Signature age -2044886438 < 0 seconds\\n\\nsrc/itsdangerous/timed.py:174: SignatureExpired\"}\n"
+  }
+]

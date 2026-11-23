@@ -1,0 +1,42 @@
+{
+  "path": "src/itsdangerous/url_safe.py",
+  "sha256": "4d7db7718099818b3ec71b700d8397e3b5ce12ee9dcb345885b77ade693fb1be",
+  "line": 79,
+  "source": "class URLSafeTimedSerializer(URLSafeSerializerMixin, TimedSerializer[str]):\r\n    \"\"\"Works like :class:`.TimedSerializer` but dumps and loads into a\r\n    URL safe string consisting of the upper and lowercase character of\r\n    the alphabet as well as ``'_'``, ``'-'`` and ``'.'``.\r\n    \"\"\"\r\n",
+  "next_line": null,
+  "total_lines": 83,
+  "selected_symbol": "URLSafeTimedSerializer",
+  "symbols": [
+    {
+      "symbol": "URLSafeSerializerMixin",
+      "line": 15,
+      "end_line": 69,
+      "kind": "class"
+    },
+    {
+      "symbol": "URLSafeSerializer",
+      "line": 72,
+      "end_line": 76,
+      "kind": "class"
+    },
+    {
+      "symbol": "URLSafeTimedSerializer",
+      "line": 79,
+      "end_line": 83,
+      "kind": "class"
+    },
+    {
+      "symbol": "URLSafeSerializerMixin.load_payload",
+      "line": 23,
+      "end_line": 53,
+      "kind": "function"
+    },
+    {
+      "symbol": "URLSafeSerializerMixin.dump_payload",
+      "line": 55,
+      "end_line": 69,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": false
+}

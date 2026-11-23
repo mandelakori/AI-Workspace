@@ -1,0 +1,84 @@
+{
+  "path": "src/itsdangerous/timed.py",
+  "sha256": "17f87bcb7266dac3a7d3574540322cedee55430da1d89ebdcb4abca372d3adf7",
+  "line": 55,
+  "source": "\r\n        .. versionchanged:: 2.0\r\n            The timestamp is returned as a timezone-aware ``datetime``\r\n            in UTC rather than a naive ``datetime`` assumed to be UTC.\r\n        \"\"\"\r\n        return datetime.fromtimestamp(ts, tz=timezone.utc)\r\n\r\n    def sign(self, value: str | bytes) -> bytes:\r\n        \"\"\"Signs the given string and also attaches time information.\"\"\"\r\n        value = want_bytes(value)\r\n        timestamp = base64_encode(int_to_bytes(self.get_timestamp()))\r\n        sep = want_bytes(self.sep)\r\n        value = value + sep + timestamp\r\n        return value + sep + self.get_signature(value)\r\n\r\n    # Ignore overlapping signatures check, return_timestamp is the only\r\n    # parameter that affects the return type.\r\n\r\n    @t.overload\r\n    def unsign(  # pyright: ignore\r\n        self,\r\n        signed_value: str | bytes,\r\n        max_age: int | None = None,\r\n        return_timestamp: t.Literal[False] = False,\r\n    ) -> bytes: ...\r\n\r\n    @t.overload\r\n    def unsign(\r\n        self,\r\n        signed_value: str | bytes,\r\n        max_age: int | None = None,\r\n        return_timestamp: t.Literal[True] = True,\r\n    ) -> tuple[bytes, datetime]: ...\r\n\r\n    def unsign(\r\n        self,\r\n        signed_value: str | bytes,\r\n        max_age: int | None = None,\r\n        return_timestamp: bool = False,\r\n    ) -> tuple[bytes, datetime] | bytes:\r\n        \"\"\"Works like the regular :meth:`.Signer.unsign` but can also\r\n        validate the time. See the base docstring of the class for\r\n        the general behavior. If ``return_timestamp`` is ``True`` the\r\n        timestamp of the signature will be returned as an aware\r\n        :class:`datetime.datetime` object in UTC.\r\n\r\n        .. versionchanged:: 2.0\r\n            The timestamp is returned as a timezone-aware ``datetime``\r\n            in UTC rather than a naive ``datetime`` assumed to be UTC.\r\n        \"\"\"\r\n        try:\r\n            result = super().unsign(signed_value)\r\n            sig_error = None\r\n        except BadSignature as e:\r\n            sig_error = e\r\n            result = e.payload or b\"\"\r\n\r\n        sep = want_bytes(self.sep)\r\n\r\n        # If there is no timestamp in the result there is something\r\n",
+  "next_line": 115,
+  "total_lines": 245,
+  "selected_symbol": "",
+  "symbols": [
+    {
+      "symbol": "TimestampSigner",
+      "line": 39,
+      "end_line": 184,
+      "kind": "class"
+    },
+    {
+      "symbol": "TimedSerializer",
+      "line": 187,
+      "end_line": 245,
+      "kind": "class"
+    },
+    {
+      "symbol": "_max_age_to_seconds",
+      "line": 24,
+      "end_line": 38,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.get_timestamp",
+      "line": 46,
+      "end_line": 50,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.timestamp_to_datetime",
+      "line": 52,
+      "end_line": 60,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.sign",
+      "line": 62,
+      "end_line": 68,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 73,
+      "end_line": 79,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 81,
+      "end_line": 87,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 89,
+      "end_line": 175,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.validate",
+      "line": 177,
+      "end_line": 184,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.iter_unsigners",
+      "line": 194,
+      "end_line": 197,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.loads",
+      "line": 202,
+      "end_line": 237,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": true
+}

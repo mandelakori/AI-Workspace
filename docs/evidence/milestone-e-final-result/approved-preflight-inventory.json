@@ -1,0 +1,30 @@
+{
+  "catalog.json": {
+    "bytes": 3674,
+    "sha256": "7e96aff5221123299083c6547bb7a7f2802c99416ee15044ff7c19fb057fe745"
+  },
+  "dependencies.json": {
+    "bytes": 661,
+    "sha256": "85c87bfc31e15dedc42555ed807e70d692cd2ad03ac7e5e5428a5353b97a930d"
+  },
+  "endpoint/endpoint.json": {
+    "bytes": 15310,
+    "sha256": "0c73a9ccd4b993bfca9f3261351f56aa461e8099376193c7782383ae930ad520"
+  },
+  "execution-context.json": {
+    "bytes": 6870,
+    "sha256": "55be47bbfef8081aa608bf00e8899a1773d315a670c4d42305d3de5a9a5425a0"
+  },
+  "execution-context.lock": {
+    "bytes": 1,
+    "sha256": "6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+  },
+  "tool.json": {
+    "bytes": 6652,
+    "sha256": "39fe7426d2fe7105516225233c0f3c56803dd4a98d592e28e0467a5297e1fe34"
+  },
+  "validation.json": {
+    "bytes": 498,
+    "sha256": "d717692dc17c71c1bbeedec7c8e7d49faf5b90e93696ee04e09f0a02481332fe"
+  }
+}

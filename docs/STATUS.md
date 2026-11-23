@@ -1,6 +1,18 @@
-# Status as of 2026-11-22
+# Status as of 2026-11-23
 
-## Milestone E: final stronger acceptance preparation
+## Milestone E: final acceptance trial closed, quarantined
+
+| Capability / outcome | Status | Evidence |
+| --- | --- | --- |
+| Autonomous implementation and public repair | VERIFIED | [Final outcome](MILESTONE-E-FINAL-RESULT.md): 16 accepted edits in three permitted files; original 3/12 to 12/12, expanded 22/48 to 48/48, upstream 297/297. The model repaired four integer precision/overflow failures without operator implementation guidance. |
+| Complete autonomous acceptance | BLOCKED | Authored gate failed (retained second run 5 pass/10 fail); two later test edits unverified. No interface/documentation/syntax gate or aggregate acceptance call; deadline interrupts request 47. Harness exit 1/interrupted, work FAILED/quarantined. No freeze or sealed cases. |
+| Contract, limits and cleanup | VERIFIED | 47 requests, one compaction, 53/96 MCP operations; all forwarded settings/single-system contracts checked. 46 complete usage receipts: 1,260,984 tokens; final usage unknown. 15,588,689 captured bytes/141 verified hashes; no capture exhaustion. Owned cleanup passed; unchanged A100 healthy/idle postflight. |
+| Preservation and stop | VERIFIED | 4,082 historical entries, 152 approved files and main unchanged. Digest `b6d7338a...` consumed. No retry, repairs, new preparation or subsequent phase. This trial does not satisfy Milestone E; stop for operator review. |
+
+The following preparation and execution sections are historical. Their original
+PREPARED states do not authorize reuse of consumed or quarantined trials.
+
+## Milestone E: historical final stronger acceptance preparation
 
 | Capability / outcome | Status | Evidence |
 | --- | --- | --- |

@@ -1,0 +1,12 @@
+{
+  "messages_outside_initial_system_unchanged": 47,
+  "accepted_source_hashes_match_arguments": 16,
+  "rejected_edits_unchanged": 7,
+  "authored_tests_statically_present": 15,
+  "credential_pattern_scan_files": 225,
+  "credential_pattern_hits": [],
+  "candidate_not_executed_after_quarantine": true,
+  "controller_implementation_changes": false,
+  "runtime_tests_rerun": false,
+  "prior_regressions": "231/231 at 389d192; historical, unchanged implementation"
+}

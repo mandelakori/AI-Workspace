@@ -1,0 +1,144 @@
+{
+  "assessment": "FAIL_PARTIAL_AUTONOMOUS_PROGRESS_QUARANTINED",
+  "job": "fe27597006e842629a39c8680c45dc3d",
+  "approval_digest": "b6d7338aad1fa82343277ab37ac7c4afb946ec4da7353a6040e3abda977a71f6",
+  "approval_consumed": true,
+  "worker_attempts": 1,
+  "operator_implementation_guidance": false,
+  "model_authored_candidate_only": true,
+  "promoted": false,
+  "sealed_created": 0,
+  "sealed_graded": false,
+  "capture_exhausted": false,
+  "failure": "single attempt deadline interrupted request 47; authored tests and final acceptance not completed",
+  "first_successes": {
+    "edit": {
+      "elapsed_seconds": 71.871,
+      "operation": 10
+    },
+    "public_test": {
+      "elapsed_seconds": 282.438,
+      "operation": 25
+    }
+  },
+  "mcp_operations": 53,
+  "mcp_counts": {
+    "focus": 23,
+    "edit": 23,
+    "check": 6,
+    "diff": 1
+  },
+  "accepted_edits": 16,
+  "accepted_edit_paths": {
+    "src/itsdangerous/timed.py": 10,
+    "docs/timed.rst": 1,
+    "tests/test_itsdangerous/test_timedelta_max_age.py": 5
+  },
+  "rejected_edits": {
+    "unsupported_newlines": 2,
+    "edit_too_large": 5
+  },
+  "accepted_inspected_locations": 0,
+  "accepted_newline_adaptations": 10,
+  "changed_files": {
+    "docs/timed.rst": {
+      "bytes": 1428,
+      "sha256": "e565bec618dd7e43caa5167d215c37d2063702818e1f8497edb364ec2d7d734e"
+    },
+    "src/itsdangerous/timed.py": {
+      "bytes": 10078,
+      "sha256": "71df145085b3417aa167928273799477ac1a376f7dd8809f75e741cfe3ca9e4c"
+    },
+    "tests/test_itsdangerous/test_timedelta_max_age.py": {
+      "bytes": 5561,
+      "sha256": "b7efda103598839832a45fa5b60a669cd14a9bfd9af3f3d082e2d460a7d239de"
+    }
+  },
+  "changed_outside_scope": false,
+  "original_public": {
+    "baseline": 3,
+    "last_verified": 12,
+    "total": 12
+  },
+  "expanded_public": {
+    "baseline": 22,
+    "initial_worker": 44,
+    "last_verified": 48,
+    "total": 48
+  },
+  "public_regressions": 0,
+  "upstream": {
+    "passed": 297,
+    "total": 297,
+    "operation": 30
+  },
+  "production_bytes_unchanged_since_public_and_upstream_pass": true,
+  "authored": {
+    "gate_passed": false,
+    "operation": 50,
+    "two_clock_runs": true,
+    "retained_counts_second_run": {
+      "passed": 5,
+      "failed": 10
+    },
+    "candidate_changed_after_last_check": true,
+    "final_candidate_not_retested": true
+  },
+  "other_gates": {
+    "interfaces": "not executed",
+    "documentation": "not executed; content changed",
+    "syntax": "no separate gate; Python edit syntax validation accepted",
+    "acceptance": "not called"
+  },
+  "worker_receipt_status": "interrupted",
+  "worker_exit_code": 1,
+  "worker_timed_out": true,
+  "cleanup_passed": true,
+  "reported_tokens": {
+    "prompt_tokens": 1240366,
+    "completion_tokens": 20618,
+    "total_tokens": 1260984
+  },
+  "reported_usage_calls": 46,
+  "model_requests": 47,
+  "compactions": 1,
+  "context_epoch": 1,
+  "peak_reported_prompt_tokens": 51131,
+  "resources": {
+    "epoch": 1,
+    "remaining_operations": 43,
+    "used": {
+      "inspection": 24,
+      "editing": 23,
+      "verification": 6,
+      "inference": 46,
+      "compaction": 1
+    },
+    "exhausted": "",
+    "policy": {
+      "operations": 96,
+      "edit_reserve": 8,
+      "verification_reserve": 8,
+      "model_requests": 64,
+      "compactions": 4,
+      "blocked_limit": 3
+    },
+    "seconds": {
+      "inference": 621.9709999997867,
+      "inspection": 6.719999999622814,
+      "editing": 6.438000000081956,
+      "verification": 20.57800000021234,
+      "compaction": 27.155999999959022,
+      "cleanup": 0.015999999945051968
+    },
+    "contract_sha256": "55f0ff6f901656b5f7cb3fd90ee9126adaadcea5bb4f9d53306773f362e64f40"
+  },
+  "timing": {
+    "warm_seconds": 4.827999999979511,
+    "work_seconds": 705.3429999999935,
+    "harness_seconds": 693.015999999945,
+    "trial_start_to_work_closure_seconds": 710.4578363895416,
+    "outer_work_timed_out": false
+  },
+  "scope": "one consumed final trial; no retry, sealed evaluation, new preparation, repairs or subsequent development"
+}

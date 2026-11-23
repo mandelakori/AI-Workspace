@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\examples\milestone-e-final\trial.py", line 348, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\examples\milestone-e-final\trial.py", line 334, in main
+    elif args.action=='run':run(root,args.approval);m=load(root)
+                            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\examples\milestone-e-final\trial.py", line 293, in run
+    raise RuntimeError('trial quarantined; no retry/resume')
+RuntimeError: trial quarantined; no retry/resume

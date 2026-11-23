@@ -1,0 +1,11 @@
+{
+  "path": "docs/timed.rst",
+  "sha256": "60d00c7576febb10ce60aa5f15e16200dcf22c045f24fd4b33985a2b5fc72369",
+  "line": 1,
+  "source": ".. module:: itsdangerous.timed\r\n\r\nSigning With Timestamps\r\n=======================\r\n\r\nIf you want to expire signatures you can use the\r\n:class:`TimestampSigner` class which adds timestamp information and\r\nsigns it. On unsigning you can validate that the timestamp is not older\r\nthan a given age.\r\n\r\n.. code-block:: python\r\n\r\n    from itsdangerous import TimestampSigner\r\n    s = TimestampSigner('secret-key')\r\n    string = s.sign('foo')\r\n\r\n.. code-block:: python\r\n\r\n    s.unsign(string, max_age=5)\r\n    Traceback (most recent call last):\r\n      ...\r\n    itsdangerous.exc.SignatureExpired: Signature age 15 > 5 seconds\r\n\r\n.. autoclass:: TimestampSigner\r\n    :members:\r\n\r\n.. autoclass:: TimedSerializer\r\n    :members:\r\n",
+  "next_line": null,
+  "total_lines": 28,
+  "selected_symbol": "",
+  "symbols": [],
+  "symbols_truncated": false
+}

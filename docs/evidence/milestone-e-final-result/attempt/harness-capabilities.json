@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "adapter": "opencode",
+  "required": [
+    "scoped_tools",
+    "exact_hash_editor",
+    "provider_catalog_gate",
+    "persistent_contract",
+    "context_visibility",
+    "durable_resource_limits",
+    "owned_cleanup"
+  ],
+  "declared": {
+    "scoped_tools": true,
+    "exact_hash_editor": true,
+    "provider_catalog_gate": true,
+    "persistent_contract": true,
+    "context_visibility": true,
+    "durable_resource_limits": true,
+    "owned_cleanup": true
+  },
+  "missing": [],
+  "admitted": true,
+  "verification": "declared; provider-facing gate and owned cleanup still required per session"
+}

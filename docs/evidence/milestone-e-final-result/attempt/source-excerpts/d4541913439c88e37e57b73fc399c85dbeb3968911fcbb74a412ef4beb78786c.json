@@ -1,0 +1,84 @@
+{
+  "path": "src/itsdangerous/timed.py",
+  "sha256": "9d790385cbf8aaf6f15688e614f3fac4304f155a3b61ad944ce56b2bcefb8c93",
+  "line": 24,
+  "source": "def _max_age_to_seconds(max_age: int | float | timedelta | None) -> float:\r\n    \"\"\"Convert max_age to seconds as a float.\r\n\r\n    Accepts ``int``, ``float``, or ``datetime.timedelta`` values.\r\n    Raises ``TypeError`` for unsupported types.\r\n    \"\"\"\r\n    if max_age is None:\r\n        return -1.0  # sentinel: no age check\r\n    if isinstance(max_age, timedelta):\r\n        return max_age.total_seconds()\r\n    if isinstance(max_age, (int, float)):\r\n        return float(max_age)\r\n    raise TypeError(\r\n        f\"max_age must be int, float, or timedelta, not {type(max_age).__name__}\"\r\n    )\r\nclass TimestampSigner(Signer):\r\n    \"\"\"Works like the regular :class:`.Signer` but also records the time\r\n    of the signing and can be used to expire signatures. The\r\n    :meth:`unsign` method can raise :exc:`.SignatureExpired` if the\r\n    unsigning failed because the signature is expired.\r\n    \"\"\"\r\n\r\n    def get_timestamp(self) -> int:\r\n        \"\"\"Returns the current timestamp. The function must return an\r\n        integer.\r\n        \"\"\"\r\n        return int(time.time())\r\n\r\n    def timestamp_to_datetime(self, ts: int) -> datetime:\r\n        \"\"\"Convert the timestamp from :meth:`get_timestamp` into an\r\n        aware :class`datetime.datetime` in UTC.\r\n\r\n        .. versionchanged:: 2.0\r\n            The timestamp is returned as a timezone-aware ``datetime``\r\n            in UTC rather than a naive ``datetime`` assumed to be UTC.\r\n        \"\"\"\r\n        return datetime.fromtimestamp(ts, tz=timezone.utc)\r\n\r\n    def sign(self, value: str | bytes) -> bytes:\r\n        \"\"\"Signs the given string and also attaches time information.\"\"\"\r\n        value = want_bytes(value)\r\n        timestamp = base64_encode(int_to_bytes(self.get_timestamp()))\r\n        sep = want_bytes(self.sep)\r\n        value = value + sep + timestamp\r\n        return value + sep + self.get_signature(value)\r\n\r\n    # Ignore overlapping signatures check, return_timestamp is the only\r\n    # parameter that affects the return type.\r\n\r\n    @t.overload\r\n    def unsign(  # pyright: ignore\r\n        self,\r\n        signed_value: str | bytes,\r\n        max_age: int | float | timedelta | None = None,\r\n        return_timestamp: t.Literal[False] = False,\r\n    ) -> bytes: ...\r\n\r\n    @t.overload\r\n    def unsign(\r\n        self,\r\n",
+  "next_line": 84,
+  "total_lines": 266,
+  "selected_symbol": "",
+  "symbols": [
+    {
+      "symbol": "TimestampSigner",
+      "line": 39,
+      "end_line": 193,
+      "kind": "class"
+    },
+    {
+      "symbol": "TimedSerializer",
+      "line": 196,
+      "end_line": 266,
+      "kind": "class"
+    },
+    {
+      "symbol": "_max_age_to_seconds",
+      "line": 24,
+      "end_line": 38,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.get_timestamp",
+      "line": 46,
+      "end_line": 50,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.timestamp_to_datetime",
+      "line": 52,
+      "end_line": 60,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.sign",
+      "line": 62,
+      "end_line": 68,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 73,
+      "end_line": 79,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 81,
+      "end_line": 87,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 89,
+      "end_line": 180,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.validate",
+      "line": 182,
+      "end_line": 193,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.iter_unsigners",
+      "line": 203,
+      "end_line": 206,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.loads",
+      "line": 211,
+      "end_line": 252,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": true
+}

@@ -1,0 +1,84 @@
+{
+  "path": "src/itsdangerous/timed.py",
+  "sha256": "2d716e7263789fa492b2f9a927eaf78fb72a1ffecfb526e223a86b3d54b86d98",
+  "line": 140,
+  "source": "        if sig_error is not None:\r\n            if ts_int is not None:\r\n                try:\r\n                    ts_dt = self.timestamp_to_datetime(ts_int)\r\n                except (ValueError, OSError, OverflowError) as exc:\r\n                    # Windows raises OSError\r\n                    # 32-bit raises OverflowError\r\n                    raise BadTimeSignature(\r\n                        \"Malformed timestamp\", payload=value\r\n                    ) from exc\r\n\r\n            raise BadTimeSignature(str(sig_error), payload=value, date_signed=ts_dt)\r\n\r\n        # Signature was okay but the timestamp is actually not there or\r\n        # malformed. Should not happen, but we handle it anyway.\r\n        if ts_int is None:\r\n            raise BadTimeSignature(\"Malformed timestamp\", payload=value)\r\n\r\n        # Check timestamp is not older than max_age\r\n        if max_age is not None:\r\n            age = self.get_timestamp() - ts_int\r\n\r\n            if age > max_age:\r\n                raise SignatureExpired(\r\n                    f\"Signature age {age} > {max_age} seconds\",\r\n                    payload=value,\r\n                    date_signed=self.timestamp_to_datetime(ts_int),\r\n                )\r\n\r\n            if age < 0:\r\n                raise SignatureExpired(\r\n                    f\"Signature age {age} < 0 seconds\",\r\n                    payload=value,\r\n                    date_signed=self.timestamp_to_datetime(ts_int),\r\n                )\r\n\r\n        if return_timestamp:\r\n            return value, self.timestamp_to_datetime(ts_int)\r\n\r\n        return value\r\n\r\n    def validate(self, signed_value: str | bytes, max_age: int | None = None) -> bool:\r\n        \"\"\"Only validates the given signed value. Returns ``True`` if\r\n        the signature exists and is valid.\"\"\"\r\n        try:\r\n            self.unsign(signed_value, max_age=max_age)\r\n            return True\r\n        except BadSignature:\r\n            return False\r\n\r\n\r\nclass TimedSerializer(Serializer[_TSerialized]):\r\n    \"\"\"Uses :class:`TimestampSigner` instead of the default\r\n    :class:`.Signer`.\r\n    \"\"\"\r\n\r\n    default_signer: type[TimestampSigner] = TimestampSigner  # pyright: ignore\r\n\r\n    def iter_unsigners(\r\n        self, salt: str | bytes | None = None\r\n",
+  "next_line": 200,
+  "total_lines": 249,
+  "selected_symbol": "",
+  "symbols": [
+    {
+      "symbol": "TimestampSigner",
+      "line": 39,
+      "end_line": 188,
+      "kind": "class"
+    },
+    {
+      "symbol": "TimedSerializer",
+      "line": 191,
+      "end_line": 249,
+      "kind": "class"
+    },
+    {
+      "symbol": "_max_age_to_seconds",
+      "line": 24,
+      "end_line": 38,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.get_timestamp",
+      "line": 46,
+      "end_line": 50,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.timestamp_to_datetime",
+      "line": 52,
+      "end_line": 60,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.sign",
+      "line": 62,
+      "end_line": 68,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 73,
+      "end_line": 79,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 81,
+      "end_line": 87,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 89,
+      "end_line": 179,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.validate",
+      "line": 181,
+      "end_line": 188,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.iter_unsigners",
+      "line": 198,
+      "end_line": 201,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.loads",
+      "line": 206,
+      "end_line": 241,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": true
+}

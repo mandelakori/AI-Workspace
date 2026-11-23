@@ -1,0 +1,84 @@
+{
+  "path": "src/itsdangerous/timed.py",
+  "sha256": "71df145085b3417aa167928273799477ac1a376f7dd8809f75e741cfe3ca9e4c",
+  "line": 92,
+  "source": "    def unsign(\r\n        self,\r\n        signed_value: str | bytes,\r\n        max_age: int | float | timedelta | None = None,\r\n        return_timestamp: bool = False,\r\n    ) -> tuple[bytes, datetime] | bytes:\r\n        \"\"\"Works like the regular :meth:`.Signer.unsign` but can also\r\n        validate the time. See the base docstring of the class for\r\n        the general behavior. If ``return_timestamp`` is ``True`` the\r\n        timestamp of the signature will be returned as an aware\r\n        :class:`datetime.datetime` object in UTC.\r\n\r\n        The ``max_age`` argument can be an integer or float number of\r\n        seconds, or a :class:`datetime.timedelta` object. A\r\n        :class:`datetime.timedelta` is converted to seconds via\r\n        :meth:`~datetime.timedelta.total_seconds`.\r\n\r\n        .. versionchanged:: 2.4\r\n            Added support for ``max_age`` as a :class:`datetime.timedelta`.\r\n        \"\"\"\r\n        try:\r\n            result = super().unsign(signed_value)\r\n            sig_error = None\r\n        except BadSignature as e:\r\n            sig_error = e\r\n            result = e.payload or b\"\"\r\n\r\n        sep = want_bytes(self.sep)\r\n\r\n        # If there is no timestamp in the result there is something\r\n        # seriously wrong. In case there was a signature error, we raise\r\n        # that one directly, otherwise we have a weird situation in\r\n        # which we shouldn't have come except someone uses a time-based\r\n        # serializer on non-timestamp data, so catch that.\r\n        if sep not in result:\r\n            if sig_error:\r\n                raise sig_error\r\n\r\n            raise BadTimeSignature(\"timestamp missing\", payload=result)\r\n\r\n        value, ts_bytes = result.rsplit(sep, 1)\r\n        ts_int: int | None = None\r\n        ts_dt: datetime | None = None\r\n\r\n        try:\r\n            ts_int = bytes_to_int(base64_decode(ts_bytes))\r\n        except Exception:\r\n            pass\r\n\r\n        # Signature is *not* okay. Raise a proper error now that we have\r\n        # split the value and the timestamp.\r\n        if sig_error is not None:\r\n            if ts_int is not None:\r\n                try:\r\n                    ts_dt = self.timestamp_to_datetime(ts_int)\r\n                except (ValueError, OSError, OverflowError) as exc:\r\n                    # Windows raises OSError\r\n                    # 32-bit raises OverflowError\r\n                    raise BadTimeSignature(\r\n                        \"Malformed timestamp\", payload=value\r\n",
+  "next_line": 152,
+  "total_lines": 269,
+  "selected_symbol": "",
+  "symbols": [
+    {
+      "symbol": "TimestampSigner",
+      "line": 42,
+      "end_line": 196,
+      "kind": "class"
+    },
+    {
+      "symbol": "TimedSerializer",
+      "line": 199,
+      "end_line": 269,
+      "kind": "class"
+    },
+    {
+      "symbol": "_max_age_to_seconds",
+      "line": 24,
+      "end_line": 41,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.get_timestamp",
+      "line": 49,
+      "end_line": 53,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.timestamp_to_datetime",
+      "line": 55,
+      "end_line": 63,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.sign",
+      "line": 65,
+      "end_line": 71,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 76,
+      "end_line": 82,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 84,
+      "end_line": 90,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.unsign",
+      "line": 92,
+      "end_line": 183,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimestampSigner.validate",
+      "line": 185,
+      "end_line": 196,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.iter_unsigners",
+      "line": 206,
+      "end_line": 209,
+      "kind": "function"
+    },
+    {
+      "symbol": "TimedSerializer.loads",
+      "line": 214,
+      "end_line": 255,
+      "kind": "function"
+    }
+  ],
+  "symbols_truncated": true
+}
