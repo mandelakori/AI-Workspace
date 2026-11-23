@@ -1,0 +1,8 @@
+data: {"id": "inert", "object": "chat.completion.chunk", "created": 1, "model": "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf", "choices": [{"index": 0, "delta": {"role": "assistant", "content": "Inert worker claims completion."}, "finish_reason": null}]}
+
+data: {"id": "inert", "object": "chat.completion.chunk", "created": 1, "model": "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf", "choices": [{"index": 0, "delta": {}, "finish_reason": "stop"}]}
+
+data: {"choices":[],"usage":{"prompt_tokens":110,"completion_tokens":11,"total_tokens":121}}
+
+data: [DONE]
+

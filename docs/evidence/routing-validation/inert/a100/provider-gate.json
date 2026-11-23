@@ -1,0 +1,257 @@
+{
+  "failed_closed": false,
+  "requests": [
+    {
+      "request": 1,
+      "forwarded": true,
+      "declared_request_bytes": 7465,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "body_sha256": "27dd12c84b8dc2ffab2a5e79a2e1df14ea8c48a5d86af5c9f2d6d1296003012f",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "563b5d49d77affa93d4cb780380050cc9e2d045137bc61b972612d1901ae4e07",
+      "remaining_operations": 48,
+      "contract_bytes": 943,
+      "forwarded_sha256": "d72cb753698199dee25edceeb5e8bca8dcd3b3e476fab420b7cc09a49617f3b9",
+      "upstream_status": 200,
+      "response_sha256": "e819b7b342b68e5427fd8448f6f7ac4ccf16c483283579b8a712fe7efdedce98",
+      "response_bytes": 770,
+      "response_complete": true,
+      "usage": {
+        "prompt_tokens": 110,
+        "completion_tokens": 11,
+        "total_tokens": 121
+      },
+      "elapsed": 0.0
+    },
+    {
+      "request": 2,
+      "forwarded": true,
+      "declared_request_bytes": 8770,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "body_sha256": "664c9eef78ff099f121dc6eff31acab6ecb50dab5105653ee1b62035f2695854",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "563b5d49d77affa93d4cb780380050cc9e2d045137bc61b972612d1901ae4e07",
+      "remaining_operations": 47,
+      "contract_bytes": 943,
+      "forwarded_sha256": "db7913e84a2c2258dc22b1a7125cc0083aca03cbcb31a0256ea4aa9c61473627",
+      "upstream_status": 200,
+      "response_sha256": "021b3d4e65588625aa91cee3c9eda326e70f8b8f6ef9b113fafce93cfac59556",
+      "response_bytes": 936,
+      "response_complete": true,
+      "usage": {
+        "prompt_tokens": 110,
+        "completion_tokens": 11,
+        "total_tokens": 121
+      },
+      "elapsed": 0.01600000000325963
+    },
+    {
+      "request": 3,
+      "forwarded": true,
+      "declared_request_bytes": 9939,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "body_sha256": "e207637bc008fd24acc35116744c53f43e3e4e38fbf0a3731efaff44e1127e06",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "563b5d49d77affa93d4cb780380050cc9e2d045137bc61b972612d1901ae4e07",
+      "remaining_operations": 46,
+      "contract_bytes": 943,
+      "forwarded_sha256": "f755909ce631729e6d52271a985fae83dc687bd259b271f80d133b8ee0a74509",
+      "upstream_status": 200,
+      "response_sha256": "9a9b8207e3efc700d8271bfd07d732cf265d0dffad338f34a8fa7e836f788efb",
+      "response_bytes": 931,
+      "response_complete": true,
+      "usage": {
+        "prompt_tokens": 110,
+        "completion_tokens": 11,
+        "total_tokens": 121
+      },
+      "elapsed": 0.0
+    },
+    {
+      "request": 4,
+      "forwarded": true,
+      "declared_request_bytes": 11406,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "body_sha256": "c112ef077d3caace9746d0c4acf4b0e88f907dbb713132eb332f7792dc826ae0",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "563b5d49d77affa93d4cb780380050cc9e2d045137bc61b972612d1901ae4e07",
+      "remaining_operations": 45,
+      "contract_bytes": 943,
+      "forwarded_sha256": "5aeaa4c85a24fe463e0fccdfddf7bb827a848fb37e8063cc481e4ef9c3853c8e",
+      "upstream_status": 200,
+      "response_sha256": "eb0779a7b9e775e088d3de40a9823d879f2b8f71ecbab93bce12738c1eea84ff",
+      "response_bytes": 760,
+      "response_complete": true,
+      "usage": {
+        "prompt_tokens": 110,
+        "completion_tokens": 11,
+        "total_tokens": 121
+      },
+      "elapsed": 0.0
+    },
+    {
+      "request": 5,
+      "forwarded": true,
+      "declared_request_bytes": 12428,
+      "offered": [
+        "checks_check",
+        "checks_diff",
+        "checks_edit",
+        "checks_focus"
+      ],
+      "missing": [],
+      "unexpected": [],
+      "passed": true,
+      "body_sha256": "2f8fb77429aa0a4c5281f6d50af32b01f1a1158e8e5430631703c4b094551081",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "563b5d49d77affa93d4cb780380050cc9e2d045137bc61b972612d1901ae4e07",
+      "remaining_operations": 44,
+      "contract_bytes": 943,
+      "forwarded_sha256": "04a297b71ae80c7a325f901d4c44aa68edbfd4a09cf01be66b4992234399e735",
+      "upstream_status": 200,
+      "response_sha256": "8ccfb1941442d64450d040845da667f8ffb2bb0e12db131d4c257dba09bf90f3",
+      "response_bytes": 659,
+      "response_complete": true,
+      "usage": {
+        "prompt_tokens": 110,
+        "completion_tokens": 11,
+        "total_tokens": 121
+      },
+      "elapsed": 0.01599999999598367
+    }
+  ],
+  "required": [
+    "checks_check",
+    "checks_diff",
+    "checks_edit",
+    "checks_focus"
+  ],
+  "request_rewriting": true,
+  "resource_exhausted": false,
+  "captured_bytes": 110127,
+  "evidence": {
+    "limit_bytes": 67108864,
+    "headroom_bytes": 33554432,
+    "captured_bytes": 110127,
+    "reserved_bytes": 0,
+    "files": {
+      "provider-request-001.json": {
+        "bytes": 7465,
+        "sha256": "27dd12c84b8dc2ffab2a5e79a2e1df14ea8c48a5d86af5c9f2d6d1296003012f",
+        "complete": true
+      },
+      "provider-forwarded-001.json": {
+        "bytes": 8636,
+        "sha256": "d72cb753698199dee25edceeb5e8bca8dcd3b3e476fab420b7cc09a49617f3b9",
+        "complete": true
+      },
+      "provider-response-001.sse": {
+        "bytes": 770,
+        "sha256": "e819b7b342b68e5427fd8448f6f7ac4ccf16c483283579b8a712fe7efdedce98",
+        "complete": true
+      },
+      "provider-request-002.json": {
+        "bytes": 8770,
+        "sha256": "664c9eef78ff099f121dc6eff31acab6ecb50dab5105653ee1b62035f2695854",
+        "complete": true
+      },
+      "provider-forwarded-002.json": {
+        "bytes": 9961,
+        "sha256": "db7913e84a2c2258dc22b1a7125cc0083aca03cbcb31a0256ea4aa9c61473627",
+        "complete": true
+      },
+      "provider-response-002.sse": {
+        "bytes": 936,
+        "sha256": "021b3d4e65588625aa91cee3c9eda326e70f8b8f6ef9b113fafce93cfac59556",
+        "complete": true
+      },
+      "provider-request-003.json": {
+        "bytes": 9939,
+        "sha256": "e207637bc008fd24acc35116744c53f43e3e4e38fbf0a3731efaff44e1127e06",
+        "complete": true
+      },
+      "provider-forwarded-003.json": {
+        "bytes": 11150,
+        "sha256": "f755909ce631729e6d52271a985fae83dc687bd259b271f80d133b8ee0a74509",
+        "complete": true
+      },
+      "provider-response-003.sse": {
+        "bytes": 931,
+        "sha256": "9a9b8207e3efc700d8271bfd07d732cf265d0dffad338f34a8fa7e836f788efb",
+        "complete": true
+      },
+      "provider-request-004.json": {
+        "bytes": 11406,
+        "sha256": "c112ef077d3caace9746d0c4acf4b0e88f907dbb713132eb332f7792dc826ae0",
+        "complete": true
+      },
+      "provider-forwarded-004.json": {
+        "bytes": 12637,
+        "sha256": "5aeaa4c85a24fe463e0fccdfddf7bb827a848fb37e8063cc481e4ef9c3853c8e",
+        "complete": true
+      },
+      "provider-response-004.sse": {
+        "bytes": 760,
+        "sha256": "eb0779a7b9e775e088d3de40a9823d879f2b8f71ecbab93bce12738c1eea84ff",
+        "complete": true
+      },
+      "provider-request-005.json": {
+        "bytes": 12428,
+        "sha256": "2f8fb77429aa0a4c5281f6d50af32b01f1a1158e8e5430631703c4b094551081",
+        "complete": true
+      },
+      "provider-forwarded-005.json": {
+        "bytes": 13679,
+        "sha256": "04a297b71ae80c7a325f901d4c44aa68edbfd4a09cf01be66b4992234399e735",
+        "complete": true
+      },
+      "provider-response-005.sse": {
+        "bytes": 659,
+        "sha256": "8ccfb1941442d64450d040845da667f8ffb2bb0e12db131d4c257dba09bf90f3",
+        "complete": true
+      }
+    }
+  },
+  "exhaustion_reason": "",
+  "failure_kind": "",
+  "request_limit": 1024,
+  "unadmitted_requests": 0,
+  "metadata_limit_bytes": 16777216
+}

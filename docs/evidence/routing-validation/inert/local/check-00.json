@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "{python}",
+    "-c",
+    "from units import value; assert value == 2"
+  ],
+  "cwd": "",
+  "runner": "aiwork-engineering:phase3",
+  "code": 0,
+  "elapsed": 0.625,
+  "stdout": "",
+  "stderr": "",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true,
+  "classification": "pass"
+}

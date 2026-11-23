@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "{python}",
+    "-c",
+    "from units import value; assert value == 2"
+  ],
+  "cwd": "",
+  "runner": "aiwork-engineering:phase3",
+  "code": 1,
+  "elapsed": 0.6569999999992433,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nAssertionError\n",
+  "timed_out": false,
+  "truncated": false,
+  "passed": false,
+  "classification": "tests"
+}

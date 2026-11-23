@@ -1,0 +1,9 @@
+{
+  "gpu": [],
+  "inference": null,
+  "minimum_free_mib": 0,
+  "profile_context": 131072,
+  "effective_context": 131072,
+  "minimum_context": 0,
+  "admitted": true
+}

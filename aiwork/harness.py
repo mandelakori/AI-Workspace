@@ -116,7 +116,7 @@ class OpenCode:
         if key:
             env["AIWORK_ENDPOINT_TOKEN"] = key
             settings["apiKey"] = "{env:AIWORK_ENDPOINT_TOKEN}"
-        body = request_options(profile)
+        body = opencode_request_options(profile)
         instructions = artifacts / "operator-task.md"
         instructions.write_text(
             "# Active implementation objective\n\n" + task.objective +
@@ -222,6 +222,14 @@ def request_options(profile: Profile) -> dict:
         options["chat_template_kwargs"] = {"enable_thinking": profile.enable_thinking}
     if profile.seed is not None:
         options["seed"] = profile.seed
+    return options
+
+
+def opencode_request_options(profile: Profile) -> dict:
+    options = request_options(profile)
+    if profile.engine == 'ollama':
+        # OpenCode sends max_completion_tokens; Ollama reads max_tokens.
+        options['max_tokens'] = profile.output_tokens
     return options
 
 

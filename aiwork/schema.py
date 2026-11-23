@@ -7,6 +7,8 @@ from dataclasses import dataclass, field
 from pathlib import Path, PureWindowsPath
 from urllib.parse import urlsplit
 
+MAX_LOCAL_SLOTS = 16
+
 
 def relative(value: str) -> str:
     parts = value.split("/")
@@ -314,6 +316,6 @@ class Config:
             d["execution_state"] = (path.parent / d["execution_state"]).resolve()
         if d.get('pi'):d['pi']=str((path.parent/d['pi']).resolve())
         cfg = cls((path.parent / d.pop("state", ".aiwork")).resolve(), profiles, **d)
-        bounded("local_slots", cfg.local_slots, 1, 16)
+        bounded("local_slots", cfg.local_slots, 1, MAX_LOCAL_SLOTS)
         bounded("a100_slots", cfg.a100_slots, 1, 1)
         return cfg

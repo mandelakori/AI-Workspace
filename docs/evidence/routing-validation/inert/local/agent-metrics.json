@@ -1,0 +1,221 @@
+{
+  "tool_calls": {
+    "checks_focus": 1,
+    "checks_edit": 2,
+    "checks_check": 1
+  },
+  "tool_errors": 1,
+  "tokens": {
+    "input": 440,
+    "output": 44,
+    "reasoning": 0
+  },
+  "peak_reported_input_tokens": 110,
+  "successful_public_mcp_checks": 1,
+  "execution": {
+    "schema": 1,
+    "adapter": "opencode",
+    "status": "completed",
+    "raw_exit_code": 0,
+    "elapsed": 3.5310000000026776,
+    "timed_out": false,
+    "cleanup_passed": true,
+    "provider_gate_passed": true,
+    "independent_verification": "verified",
+    "exhaustion_reason": "",
+    "evidence": {
+      "limit_bytes": 67108864,
+      "headroom_bytes": 33554432,
+      "captured_bytes": 106609,
+      "reserved_bytes": 0,
+      "files": {
+        "provider-request-001.json": {
+          "bytes": 7183,
+          "sha256": "689d44dca37f78f14826444cfcc13dd529517e60f4887f00a5ebbdf6e04936f1",
+          "complete": true
+        },
+        "provider-forwarded-001.json": {
+          "bytes": 8354,
+          "sha256": "7387b64e544a7b27435450909017eda5f2ef882299dc6ee8c4746ddfd134e9ce",
+          "complete": true
+        },
+        "provider-response-001.sse": {
+          "bytes": 602,
+          "sha256": "d3f270e1d8e1ae2cc65e1d9dac9626e03e3454cba257319bbc59ee01e5fb0e2a",
+          "complete": true
+        },
+        "provider-request-002.json": {
+          "bytes": 8505,
+          "sha256": "1683690d4e77d7065fcf71a82ba6550614abaad7bb1498ae3609c085cebf30d5",
+          "complete": true
+        },
+        "provider-forwarded-002.json": {
+          "bytes": 9696,
+          "sha256": "9276bb96791edde025f23ea07999a37d95344ea34a40921ae76a26964d7d06cc",
+          "complete": true
+        },
+        "provider-response-002.sse": {
+          "bytes": 768,
+          "sha256": "37a60c19e48d5743015cbf86f934bf7185d5ed81a665adc363d880c2e665b8d5",
+          "complete": true
+        },
+        "provider-request-003.json": {
+          "bytes": 9675,
+          "sha256": "069008cf67935f60824e97c835662e09bbf03e89a929b446028cbc29e797b9d4",
+          "complete": true
+        },
+        "provider-forwarded-003.json": {
+          "bytes": 10886,
+          "sha256": "f0e18c07c865024bfbc63118813f64682214f5f1f79bc027b556b3e7c8b504d0",
+          "complete": true
+        },
+        "provider-response-003.sse": {
+          "bytes": 763,
+          "sha256": "ae043b4507f37c927cd0ed705c6c78f58ea52a0e6540078a05be56732ba2399c",
+          "complete": true
+        },
+        "provider-request-004.json": {
+          "bytes": 11142,
+          "sha256": "9a37612f467179fb4a4a28f58343c0ce08835f9775ce453641c9a9a736f8808d",
+          "complete": true
+        },
+        "provider-forwarded-004.json": {
+          "bytes": 12373,
+          "sha256": "ddfc4b84dbd48279bbd4e0317479b67d634b9c62451f6405755b91f65bbfaee7",
+          "complete": true
+        },
+        "provider-response-004.sse": {
+          "bytes": 592,
+          "sha256": "d8d1842167b72cfc0b4b7421268c0e547a72583ce47cfbec3247b95c74998486",
+          "complete": true
+        },
+        "provider-request-005.json": {
+          "bytes": 12164,
+          "sha256": "59598477b94dc52cf846a2f0554b27ff1e2bba647dad9b51ff26b62d0ecd3a15",
+          "complete": true
+        },
+        "provider-forwarded-005.json": {
+          "bytes": 13415,
+          "sha256": "25f8447d832637eb2a505c6de1599a94612104434fb6b8553def3827e9385fd0",
+          "complete": true
+        },
+        "provider-response-005.sse": {
+          "bytes": 491,
+          "sha256": "57fc7c74c61f660f58ab3c495dd60a098766827dd838edcf67e8650280e69bc6",
+          "complete": true
+        }
+      }
+    },
+    "resources": {
+      "epoch": 0,
+      "remaining_operations": 44,
+      "used": {
+        "inspection": 1,
+        "editing": 2,
+        "verification": 1,
+        "inference": 5,
+        "compaction": 0
+      },
+      "exhausted": "",
+      "policy": {
+        "operations": 48,
+        "edit_reserve": 4,
+        "verification_reserve": 4,
+        "model_requests": 64,
+        "compactions": 4,
+        "blocked_limit": 3
+      },
+      "seconds": {
+        "inference": 0.031000000002677552,
+        "inspection": 0.030999999995401595,
+        "editing": 0.1880000000091968,
+        "verification": 0.8440000000045984,
+        "cleanup": 0.01599999999598367
+      },
+      "contract_sha256": "9ae2b7f6395810b6b4c6e76bcefc40ebd2d4e04bda36811827d16168aa60b7cc"
+    },
+    "provider_usage": {
+      "reported": [
+        {
+          "request": 1,
+          "category": "inference",
+          "usage": {
+            "prompt_tokens": 110,
+            "completion_tokens": 11,
+            "total_tokens": 121
+          }
+        },
+        {
+          "request": 2,
+          "category": "inference",
+          "usage": {
+            "prompt_tokens": 110,
+            "completion_tokens": 11,
+            "total_tokens": 121
+          }
+        },
+        {
+          "request": 3,
+          "category": "inference",
+          "usage": {
+            "prompt_tokens": 110,
+            "completion_tokens": 11,
+            "total_tokens": 121
+          }
+        },
+        {
+          "request": 4,
+          "category": "inference",
+          "usage": {
+            "prompt_tokens": 110,
+            "completion_tokens": 11,
+            "total_tokens": 121
+          }
+        },
+        {
+          "request": 5,
+          "category": "inference",
+          "usage": {
+            "prompt_tokens": 110,
+            "completion_tokens": 11,
+            "total_tokens": 121
+          }
+        }
+      ],
+      "unreported_requests": []
+    }
+  },
+  "gpu_samples": {
+    "before": [
+      {
+        "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+        "total_mib": 8151,
+        "free_mib": 7881
+      }
+    ],
+    "after": [
+      {
+        "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+        "total_mib": 8151,
+        "free_mib": 7881
+      }
+    ]
+  },
+  "inference_samples": {
+    "before": {
+      "resident": true,
+      "model_vram_mib": 4096,
+      "configured_server_context": 4096
+    },
+    "after": {
+      "resident": true,
+      "model_vram_mib": 4096,
+      "configured_server_context": 4096
+    }
+  },
+  "reported_context_fraction": 0.0269,
+  "effective_output_tokens_per_second": 12.405,
+  "inference_lanes": 1,
+  "lane_wait_seconds": 0.0,
+  "harness_seconds": 3.547
+}

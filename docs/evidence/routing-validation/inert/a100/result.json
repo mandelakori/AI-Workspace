@@ -1,0 +1,6 @@
+{
+  "job": "a0b9c6120456449fab1656c3e0c81446",
+  "status": "failed",
+  "detail": "check 0 failed (tests)\n\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nAssertionError\n",
+  "artifacts": "C:\\Users\\mande\\AppData\\Local\\Temp\\tmp0d_mrepk\\a100-inert\\runs\\a0b9c6120456449fab1656c3e0c81446"
+}

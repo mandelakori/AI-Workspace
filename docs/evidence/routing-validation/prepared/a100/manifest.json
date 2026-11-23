@@ -1,0 +1,183 @@
+{
+  "arm": "a100",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "objective": "Fix the Fahrenheit to Celsius conversion in units.py using the standard formula. Inspect units.py and test_units.py, preserve the existing interface and execute public check 0. Only units.py may change.",
+  "profile": {
+    "id": "a100-existing",
+    "model": "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf",
+    "endpoint": "http://127.0.0.1:18881/v1",
+    "engine": "llamacpp",
+    "harness": "opencode",
+    "location": "a100",
+    "context": 16384,
+    "output_tokens": 1536,
+    "memory_mib": 0,
+    "quantization": "Q6_K",
+    "source": "",
+    "tools": true,
+    "api_key_env": "",
+    "managed": false,
+    "reasoning_effort": "none",
+    "seed": 1729,
+    "harness_turns": 0,
+    "temperature": 0,
+    "local_calibration": "",
+    "calibration_sha256": "",
+    "gpu_headroom_mib": 512,
+    "ram_headroom_mib": 2048,
+    "context_reserve_tokens": 512,
+    "enable_thinking": false
+  },
+  "generation": {
+    "temperature": 0,
+    "reasoning_effort": "none",
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "seed": 1729
+  },
+  "image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+  "opencode": {
+    "path": "C:\\Users\\mande\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+    "sha256": "d7b7a9fbc8c358d940fed638dde500820f8a1c967ff855b8619d3763345f5832"
+  },
+  "ssh": {
+    "alias": "aisak",
+    "remote_port": 18080
+  },
+  "execution_state": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork",
+  "limits": {
+    "warm": 20,
+    "work": 265,
+    "grade": 45
+  },
+  "worker": {
+    "timeout": 240,
+    "attempts": 1,
+    "min_context": 8192,
+    "context_input_tokens": 7440,
+    "tool_operations": 20,
+    "edit_reserve": 4,
+    "public_test_reserve": 4,
+    "model_requests": 12,
+    "compaction_limit": 1
+  },
+  "write_roots": [
+    "units.py"
+  ],
+  "checks": {
+    "public": {
+      "argv": [
+        "{python}",
+        "-m",
+        "unittest",
+        "-v",
+        "test_units"
+      ],
+      "timeout": 15,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    },
+    "private": {
+      "argv": [
+        "{python}",
+        "-c",
+        "from units import fahrenheit_to_celsius; print(format(fahrenheit_to_celsius(float(input())), \".6f\"))"
+      ],
+      "timeout": 35,
+      "stdout": null,
+      "cwd": "",
+      "oracle": "cases.json"
+    }
+  },
+  "capture": {
+    "limit_bytes": 67108864,
+    "headroom_bytes": 33554432
+  },
+  "bindings": {
+    "input": {
+      "test_units.py": {
+        "bytes": 521,
+        "sha256": "3270b12ed8619445d9ebfbe9e28959b0cce69c708db667568b9684e176847c29"
+      },
+      "units.py": {
+        "bytes": 82,
+        "sha256": "48786c09aadf7af914431917c5dc840071b544d1a47fa288289d209c859927a0"
+      }
+    },
+    "oracle": {
+      "cases.json": {
+        "bytes": 563,
+        "sha256": "8cef5a8d8416a43ddea8ca38829abb039640c0c859e81ca329c6fdc52ee7ad7c"
+      }
+    },
+    "controller": {
+      "__init__.py": "674dd2810ed1aa3fa82bafbb3daf7cd6ba9f7a0bc6ee1146683e588cad2ed741",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "adaptive.py": "10c0071bb9934c28ca2c95cbd4cc09b151dcaf35a9213572c2b9e646d06e04f8",
+      "benchmark.py": "cd44d2e8cbc137649334ff681b2671d202229b3c2c6e9f8bc2909747554f2e48",
+      "campaign.py": "74dc146871dd5657d18bda62867020b89c55a278b94e4ad694389a04ce77a255",
+      "changes.py": "2cb70357f7d3020100f7fc758d7a08382e40279c1608637a40d2f7ace3fdebeb",
+      "cli.py": "9cb1259fbc1d490df7b4fe87771b8322be1d2b221ce8378d1fa12518e9406f5f",
+      "cloud.py": "e2ba30954bcec14fb091a49d2b3bb7c6ef48b241a5fbd6b724f57f64798a97ec",
+      "component_source.py": "11b55f5198785ccab5d10dfe7cfabe2e61d69e3f83f5322dcc2f47c3115b8165",
+      "context_planning.py": "800b949f3a2f9569e921d7ae78ba10eac95fef97020b50eb3c37403b6e6b3be2",
+      "controller.py": "8a3d477f10f9e3bd2a24c86599169c2297f3f8bf5e02d44993e2b09d36c8ee9f",
+      "discovery_benchmark.py": "b772ea3cd9b54dd45f6be5ebc40feb36f6319df8172bf544d83175d55d6dfb0a",
+      "draft.py": "82e8cabf9894026bc01bf702d0d5eee0d9c9c3500605e5ae4ee079a9fb149d6e",
+      "evidence_capture.py": "d3f6d4840a343133cf6f6b48ceddeb2d62cecb0d2c2ffd3381f91936587e9739",
+      "execution_context.py": "9e3180c60a72c9c533b5a57f4fd0d090ac33e2ed35a41dc655379af0a7386a19",
+      "function_repair.py": "9e3a02bd749b2e364871d01fe6e7d4add1197b167cecf5f99410b6007dbdea4d",
+      "harness.py": "d7f929cd4b5485d90915175645480abce4055fd59515753fe750c4697bb183a3",
+      "harness_comparison.py": "8ca80991c185256e9cab76fab7309b67a66d3c59b52113cc75cc8ab88c0ea244",
+      "harness_contracts.py": "5ecf388732cb879b6707436492f2a743bcf338ba00235b7dc4ca2ee82c6ef072",
+      "hierarchy.py": "cb9dc37984e73268e964b4e4b660c3ca1eaa9feb5e398cff6481bb9afe74f453",
+      "http.py": "904eb91b3b4830aae36d959411394f08b397dc291adb1e5cccec6fe11d114e7d",
+      "httpx_benchmark.py": "d870a8d329acefdf4ce4ff314b7c05879084452041ace0d1529d55494fccd586",
+      "index.py": "0f23e8686fb498bc16874d6f46b07a5d8744ea22a7bee3a0db53d701db0528be",
+      "inference.py": "e4508799f6d910010b05b23899a714eba0d68caf273b76fea97c0bb84292ca42",
+      "local_calibration.py": "3a94acbb128ddce387aad0d188f8c20e1d22ce95a58b082c261b92e8cdb61f91",
+      "local_runtime.py": "14cc02d06edc569ab4578145f860912529f6e931f69a4ac41b1823d33b1fedd6",
+      "lock.py": "28a360f7b479f004bd363d6b57db5e6f2d798f50a7f3b21e23df423eaca622a8",
+      "mcp.py": "b135457bde38c7f4846369a0fcac06e5e240540f640bdf552c5db302725dddae",
+      "metrics.py": "f32d3ffd2ca18ba36f8af654f3604d8f34abf400fb1aecf1ff4d406db6b9d937",
+      "native.py": "778d35f01e391207650532909e68a226149b91b23162d4ac75a0f81766ef850e",
+      "native_feedback.py": "52a48248a03c48223adf274f4cc9cb47d4cd84aa101990e7e6e4ea8ecd162bc3",
+      "native_recovery.py": "cb23bb7aa7157e1e858d0ddd08ccee54488b7fe3655f3f2829a851838c0d2990",
+      "oracle.py": "cf0b5d022b47ee959ed4779318867cec73ea03b8858597b343ccb3afdbb17036",
+      "pi_harness.py": "11aecac6ac4a6e7d0d4fa2e3ff644f52bb007879d003c8fca996a544b6dcd3ae",
+      "planner.py": "f0620f1842a62649bdb4fc8c95f63b4886ae90457e0be1ae450ef3d34799d8c5",
+      "process.py": "77dd2612aa9e7c898c033bbb876385fa1b86869f4f81a71c0282faf879ea45c2",
+      "project.py": "7d306b1e07270f2dbc2e5dd0632fa0c551e07f50d5fcd9e255a9bdf4a673bb12",
+      "provider_gate.py": "d5a10119c1349749a011a4c1bc43f731198a58413a05e62b712a7670466d39ba",
+      "rea_selection.py": "e9d1c516bfcc8a1e97c9cfd8a2dcf7a3e0a753ea05e8174e844f3ab1df22f8f8",
+      "remote.py": "167daef6d96ba6a122399268f22b033d0984be196aaaa87e7e4c546f37034647",
+      "repair_benchmark.py": "e7093c36be091a237becde36eca5b09275a95fd4b9b5ba677bba45aa39960e63",
+      "router.py": "3205192d32f95c15fd67060b0bf151713da9a137fca3bfdff40f538b6b6203a7",
+      "schema.py": "10ac846b6a9413d1737f63ea88d862e25bc5d633d03f134437ae1c9b6db09f21",
+      "selection.py": "3fd108028c45095ecfc06f6648c075fb58815ae8a6760541c047f94f819630d0",
+      "selfdev.py": "dadd0f87bdba508512fe6a115b65b4b8248c9bd058b92337b065737f60857954",
+      "source_edit.py": "2778a3efbbfa36627dead74bb97e32fe7218ec39941d7b3cdb13ae9f0bf6b7f5",
+      "specialists.py": "474aef1e714fd392acf130298d169323dd3c9644491c64b645b5059ac9c6f094",
+      "state.py": "70a3e5c517126d7479065b2d86ade82b53decfd8ebf161d2e4debb334410427a",
+      "trial_budget.py": "f3cf26626e58ddf4b617a0fb49db0bbf2abe56b2e0d4e1b1df49774a958ca4d6",
+      "verify.py": "1350209bc5e02c774925a21e11d6a30414136fd458a4d486d4242c9c344c37e0",
+      "windows_job.py": "389c3a0eefa204985aaace091fda91b45db146fbde525b92fb37612a06d2cfcc",
+      "workflow.py": "20c833465a5fb67f6380004f881adbd79da5d3d2855aab4de7224a6eb344caec",
+      "workspace.py": "95157f8c652c08b0c775222e8c92f53de6bdcba7801f29be0b4997d14a3225a4"
+    },
+    "runner": "6f6686cbf03a1983cf3ec4e44b7b1631b0456426ce1f30d95c8f7abb779eeb39",
+    "a100_probe": "66fdce7223d6b000c0634180776814ce067490101003f8f5426c21ac3bc607fe"
+  },
+  "identity": {
+    "model_path": "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf",
+    "model_ftype": "Q6_K",
+    "build_info": "b12063-2cbca389f",
+    "total_slots": 1,
+    "slot_context": 131072,
+    "idle": true,
+    "generation_requests": 0,
+    "template_sha256": "e84f32a23fdda27689f868aa4a1a5621f41133e51a48d7f3efcbea2839574259"
+  }
+}

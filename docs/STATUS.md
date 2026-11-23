@@ -1,5 +1,13 @@
 # Status as of 2026-11-23
 
+## Local and A100 routing validation
+
+| Capability / outcome | Status | Evidence |
+| --- | --- | --- |
+| Eligibility, ranking, admission and shared lane locks | VERIFIED | [Routing validation](ROUTING-VALIDATION.md). Isolated local/A100 selection, conflicting history and complexity, overrides, current capacity gates, busy and unavailable lanes, and retry boundaries. Fixed exclusive lock overlap, missing VRAM telemetry admission, and acceptance after failed cleanup. |
+| Scoped execution and independent acceptance | VERIFIED | Both installed inert OpenCode paths completed four scoped operations and five scripted requests. An edit outside the stage was rejected in both. Independent verification rejected the deliberately wrong candidate despite its passing public check. Ollama now receives its supported output-ceiling field. |
+| Live cross-plane check | UNTESTED | Frozen local and A100 arms are `PREPARED_NOT_AUTHORIZED` under separate digests. Pristine fixture scored 1/4 public and 0/6 independent. Read-only model and resource preflight passed. Neither live arm was dispatched. |
+
 ## A100 thinking-mode diagnostic
 
 | Capability / outcome | Status | Evidence |

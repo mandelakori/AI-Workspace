@@ -1,0 +1,74 @@
+{
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "digests": {
+    "local": "104261027ac6cb375643266f1f58ba0fefc3c832a8a166b086a36b4798296568",
+    "a100": "38e4cbbc7d1cd5d1b01696c0858a1858e06dcd94948fdbdfd0eb101b9cf2d3de"
+  },
+  "matched_frozen_inputs_and_protocol": true,
+  "invalid_grants_rejected": 6,
+  "altered_source_rejected": true,
+  "no_execution_state": true,
+  "public_baseline": {
+    "passed": 1,
+    "total": 4,
+    "receipt": {
+      "argv": [
+        "{python}",
+        "-m",
+        "unittest",
+        "-v",
+        "test_units"
+      ],
+      "cwd": "",
+      "runner": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+      "code": 1,
+      "elapsed": 0.9059999999954016,
+      "stdout": "",
+      "stderr": "test_boiling (test_units.ConversionTests.test_boiling) ... FAIL\ntest_fraction (test_units.ConversionTests.test_fraction) ... FAIL\ntest_freezing (test_units.ConversionTests.test_freezing) ... ok\ntest_negative (test_units.ConversionTests.test_negative) ... FAIL\n\n======================================================================\nFAIL: test_boiling (test_units.ConversionTests.test_boiling)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/work/test_units.py\", line 11, in test_boiling\n    self.assertAlmostEqual(fahrenheit_to_celsius(212), 100)\nAssertionError: 180 != 100 within 7 places (80 difference)\n\n======================================================================\nFAIL: test_fraction (test_units.ConversionTests.test_fraction)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/work/test_units.py\", line 17, in test_fraction\n    self.assertAlmostEqual(fahrenheit_to_celsius(98.6), 37)\nAssertionError: 66.6 != 37 within 7 places (29.599999999999994 difference)\n\n======================================================================\nFAIL: test_negative (test_units.ConversionTests.test_negative)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/work/test_units.py\", line 14, in test_negative\n    self.assertAlmostEqual(fahrenheit_to_celsius(-40), -40)\nAssertionError: -72 != -40 within 7 places (32 difference)\n\n----------------------------------------------------------------------\nRan 4 tests in 0.009s\n\nFAILED (failures=3)\n",
+      "timed_out": false,
+      "truncated": false,
+      "passed": false
+    }
+  },
+  "private_baseline": {
+    "runner": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+    "kind": "sealed-black-box",
+    "passed": false,
+    "total": 6,
+    "passed_cases": 0,
+    "cases": [
+      {
+        "case": 1,
+        "verdict": "stdout",
+        "duration": 0.609
+      },
+      {
+        "case": 2,
+        "verdict": "stdout",
+        "duration": 0.641
+      },
+      {
+        "case": 3,
+        "verdict": "stdout",
+        "duration": 0.625
+      },
+      {
+        "case": 4,
+        "verdict": "stdout",
+        "duration": 0.656
+      },
+      {
+        "case": 5,
+        "verdict": "stdout",
+        "duration": 0.641
+      },
+      {
+        "case": 6,
+        "verdict": "stdout",
+        "duration": 0.641
+      }
+    ],
+    "classification": "sealed_mismatch"
+  },
+  "generation_requests": 0
+}

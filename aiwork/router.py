@@ -7,7 +7,7 @@ from time import monotonic, sleep
 
 from .process import environment, executable, run
 from .lock import file_lock
-from .schema import Profile, Task
+from .schema import MAX_LOCAL_SLOTS, Profile, Task
 
 
 @dataclass(frozen=True)
@@ -71,14 +71,20 @@ class Plane:
     def reserve(self, profile: Profile, timeout: float):
         deadline = monotonic() + timeout
         exclusive = profile.memory_mib > 0 or profile.engine == "ollama" or self.location == "a100"
-        with ExitStack() as locks:
-            while monotonic() < deadline and not (self.state / "STOP").exists():
-                for slot in range(1 if exclusive else self.slots):
+        while monotonic() < deadline and not (self.state / "STOP").exists():
+            if exclusive:
+                # Peer controllers can expose more local slots under the same lock root.
+                candidates = (range(MAX_LOCAL_SLOTS if self.location == "local" else 1),)
+            else:
+                candidates = ((slot,) for slot in range(self.slots))
+            for slots in candidates:
+                with ExitStack() as locks:
                     try:
-                        locks.enter_context(file_lock(self.execution_state / f"{self.location}-{slot}.lock"))
+                        for slot in slots:
+                            locks.enter_context(file_lock(self.execution_state / f"{self.location}-{slot}.lock"))
                     except TimeoutError:
                         continue
                     yield
                     return
-                sleep(0.2)
+            sleep(min(0.2, max(0, deadline - monotonic())))
         raise TimeoutError(f"{self.location} worker queue timed out or was stopped")

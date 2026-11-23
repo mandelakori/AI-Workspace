@@ -1,0 +1,29 @@
+{
+  "profile": {
+    "id": "a100-existing",
+    "model": "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf",
+    "endpoint": "http://127.0.0.1:61632/v1",
+    "engine": "llamacpp",
+    "harness": "opencode",
+    "location": "a100",
+    "context": 131072,
+    "output_tokens": 3072,
+    "memory_mib": 0,
+    "quantization": "Q6_K",
+    "source": "",
+    "tools": true,
+    "api_key_env": "",
+    "managed": false,
+    "reasoning_effort": "none",
+    "seed": null,
+    "harness_turns": 0,
+    "temperature": null,
+    "local_calibration": "",
+    "calibration_sha256": "",
+    "gpu_headroom_mib": 512,
+    "ram_headroom_mib": 2048,
+    "context_reserve_tokens": 512,
+    "enable_thinking": null
+  },
+  "reason": "operator override"
+}

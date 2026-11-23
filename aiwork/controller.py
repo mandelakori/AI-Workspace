@@ -32,6 +32,14 @@ def write_json(path: Path, data) -> None:
     tmp.replace(path)
 
 
+def owned_cleanup_failed(attempt: Path) -> bool:
+    for name in ('execution-receipt.json', 'local-inference/ownership.json'):
+        path = attempt / name
+        if path.is_file() and json.loads(path.read_bytes()).get('cleanup_passed') is False:
+            return True
+    return False
+
+
 class Controller:
     def __init__(self, config: Config, *, initial_context: str = ""):
         if not isinstance(initial_context, str) or len(initial_context.encode('utf-8')) > 8192:
@@ -285,8 +293,13 @@ class Controller:
                 evidence = {"status": "blocked", "detail": str(exc)}
             evidence["elapsed"] = round(monotonic() - started, 3)
             receipt_path = attempt / 'execution-receipt.json'
+            cleanup_failed = owned_cleanup_failed(attempt)
+            if cleanup_failed:
+                evidence.update(status='blocked', detail='owned execution cleanup failed', classification='cleanup_failure')
             if receipt_path.exists():
                 receipt = json.loads(receipt_path.read_bytes())
+                if cleanup_failed:
+                    receipt.update(status='cleanup_failure', cleanup_passed=False)
                 receipt['independent_verification'] = evidence['status']
                 write_json(receipt_path, receipt)
             metrics = attempt / "agent-metrics.json"
@@ -324,7 +337,7 @@ class Controller:
                 previous = "The previous proposal left every source byte unchanged. Address the public discrepancy."
             elif task.source_patch and status == "blocked":
                 previous = f"The previous patch could not be applied: {detail[:600]}"
-            if status == "verified":
+            if status == "verified" or cleanup_failed:
                 break
         return self._finish(row["id"], root, status, detail)
 
@@ -378,6 +391,8 @@ class Controller:
                 if not engineering or not (attempt / "agent-process.json").exists():
                     raise
                 execution_error = str(exc)
+            if owned_cleanup_failed(attempt):
+                return {"status": "blocked", "detail": "owned execution cleanup failed", "classification": "cleanup_failure"}
         after = inventory(work)
         changed = delta(before, after)
         if engineering:
@@ -570,15 +585,17 @@ class Controller:
                 resident = bool(inference and inference["resident"])
                 reported_context = inference.get("configured_server_context") if resident else None
                 effective_context = min(profile.context, reported_context) if reported_context else profile.context
-                below_budget = bool(profile.location == "local" and profile.memory_mib and readings
-                                    and max(row["free_mib"] for row in readings) < profile.memory_mib
-                                    and not resident)
+                need_gpu_reading = profile.location == "local" and profile.memory_mib > 0 and not resident
+                gpu_unknown = need_gpu_reading and not readings
+                below_budget = need_gpu_reading and bool(readings) and max(row["free_mib"] for row in readings) < profile.memory_mib
                 below_context = effective_context < max(task.min_context, 1024)
                 write_json(attempt / "admission.json", {
                     "gpu": readings, "inference": inference, "minimum_free_mib": profile.memory_mib,
                     "profile_context": profile.context, "effective_context": effective_context,
-                    "minimum_context": task.min_context, "admitted": not (below_budget or below_context),
+                    "minimum_context": task.min_context, "admitted": not (gpu_unknown or below_budget or below_context),
                 })
+                if gpu_unknown:
+                    raise ValueError(f"GPU telemetry unavailable for the configured memory minimum of {profile.id}")
                 if below_budget:
                     raise ValueError(f"GPU free memory below {profile.memory_mib} MiB for {profile.id}")
                 if below_context:

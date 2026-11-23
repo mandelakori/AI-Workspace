@@ -1,0 +1,16 @@
+test_a100_unavailable_falls_back_only_within_explicit_eligibility (test_routing_validation.RoutingValidationTests.test_a100_unavailable_falls_back_only_within_explicit_eligibility) ... ok
+test_both_controller_lanes_use_scoped_tools_and_independent_verification (test_routing_validation.RoutingValidationTests.test_both_controller_lanes_use_scoped_tools_and_independent_verification) ... ok
+test_busy_a100_lane_is_bounded_and_other_plane_is_independent (test_routing_validation.RoutingValidationTests.test_busy_a100_lane_is_bounded_and_other_plane_is_independent) ... ok
+test_configured_harness_without_required_capability_cannot_dispatch (test_routing_validation.RoutingValidationTests.test_configured_harness_without_required_capability_cannot_dispatch) ... ok
+test_exclusive_local_worker_blocks_other_controller_slot_and_recovers (test_routing_validation.RoutingValidationTests.test_exclusive_local_worker_blocks_other_controller_slot_and_recovers) ... ok
+test_explicit_vram_requirement_fails_closed_without_telemetry (test_routing_validation.RoutingValidationTests.test_explicit_vram_requirement_fails_closed_without_telemetry) ... ok
+test_failed_cleanup_preserves_source_and_stops_promotion_and_fallback (test_routing_validation.RoutingValidationTests.test_failed_cleanup_preserves_source_and_stops_promotion_and_fallback) ... ok
+test_history_is_category_local_and_excludes_blocked_attempts (test_routing_validation.RoutingValidationTests.test_history_is_category_local_and_excludes_blocked_attempts) ... ok
+test_ranking_tie_history_and_overrides (test_routing_validation.RoutingValidationTests.test_ranking_tie_history_and_overrides) ... ok
+test_real_calibration_rejects_unmeasured_capacity_ram_vram_and_deadline (test_routing_validation.RoutingValidationTests.test_real_calibration_rejects_unmeasured_capacity_ram_vram_and_deadline) ... ok
+test_resident_context_can_disqualify_an_eligible_local_profile (test_routing_validation.RoutingValidationTests.test_resident_context_can_disqualify_an_eligible_local_profile) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 15.095s
+
+OK

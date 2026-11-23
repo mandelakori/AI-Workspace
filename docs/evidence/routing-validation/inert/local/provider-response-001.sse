@@ -1,0 +1,8 @@
+data: {"id": "inert", "object": "chat.completion.chunk", "created": 1, "model": "qwen3.5:9b", "choices": [{"index": 0, "delta": {"role": "assistant", "tool_calls": [{"index": 0, "id": "route_tool_0", "type": "function", "function": {"name": "checks_focus", "arguments": "{\"path\": \"units.py\"}"}}]}, "finish_reason": null}]}
+
+data: {"id": "inert", "object": "chat.completion.chunk", "created": 1, "model": "qwen3.5:9b", "choices": [{"index": 0, "delta": {}, "finish_reason": "tool_calls"}]}
+
+data: {"choices":[],"usage":{"prompt_tokens":110,"completion_tokens":11,"total_tokens":121}}
+
+data: [DONE]
+

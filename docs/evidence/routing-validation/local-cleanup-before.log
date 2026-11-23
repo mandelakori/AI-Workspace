@@ -1,0 +1,18 @@
+test_failed_cleanup_preserves_source_and_stops_promotion_and_fallback (test_routing_validation.RoutingValidationTests.test_failed_cleanup_preserves_source_and_stops_promotion_and_fallback) ... 
+  test_failed_cleanup_preserves_source_and_stops_promotion_and_fallback (test_routing_validation.RoutingValidationTests.test_failed_cleanup_preserves_source_and_stops_promotion_and_fallback) (failed_owner='local inference') ... FAIL
+
+======================================================================
+FAIL: test_failed_cleanup_preserves_source_and_stops_promotion_and_fallback (test_routing_validation.RoutingValidationTests.test_failed_cleanup_preserves_source_and_stops_promotion_and_fallback) (failed_owner='local inference')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\tests\test_routing_validation.py", line 218, in test_failed_cleanup_preserves_source_and_stops_promotion_and_fallback
+    self.assertEqual(result['status'], 'blocked')
+AssertionError: 'verified' != 'blocked'
+- verified
++ blocked
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.749s
+
+FAILED (failures=1)
