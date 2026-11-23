@@ -1,0 +1,319 @@
+{
+  "status": "verified",
+  "counts": {
+    "pass": 48,
+    "mismatch": 0,
+    "inconclusive": 0
+  },
+  "cases": [
+    {
+      "case": "bucket-repair-holdout-01",
+      "group": "whitespace-only",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-02",
+      "group": "whitespace-only",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-03",
+      "group": "whitespace-only",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-04",
+      "group": "whitespace-only",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-05",
+      "group": "whitespace-only",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-06",
+      "group": "whitespace-only",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-07",
+      "group": "malformed",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-08",
+      "group": "malformed",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-09",
+      "group": "malformed",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-10",
+      "group": "malformed",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-11",
+      "group": "malformed",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-12",
+      "group": "malformed",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-13",
+      "group": "malformed",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-14",
+      "group": "malformed",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-15",
+      "group": "malformed",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-16",
+      "group": "malformed",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-17",
+      "group": "malformed",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-18",
+      "group": "malformed",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-19",
+      "group": "malformed",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-20",
+      "group": "integer-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-21",
+      "group": "integer-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-22",
+      "group": "integer-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-23",
+      "group": "integer-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-24",
+      "group": "integer-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-25",
+      "group": "integer-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-26",
+      "group": "integer-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-27",
+      "group": "integer-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-28",
+      "group": "integer-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-29",
+      "group": "integer-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-30",
+      "group": "integer-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-31",
+      "group": "integer-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-32",
+      "group": "integer-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-33",
+      "group": "integer-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-34",
+      "group": "integer-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-35",
+      "group": "valid-eof-or-whitespace",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-36",
+      "group": "valid-eof-or-whitespace",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-37",
+      "group": "valid-eof-or-whitespace",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-38",
+      "group": "valid-eof-or-whitespace",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-39",
+      "group": "valid-eof-or-whitespace",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-40",
+      "group": "valid-eof-or-whitespace",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-41",
+      "group": "valid-eof-or-whitespace",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-42",
+      "group": "valid-eof-or-whitespace",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-43",
+      "group": "valid-eof-or-whitespace",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-44",
+      "group": "valid-eof-or-whitespace",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-45",
+      "group": "valid-eof-or-whitespace",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-46",
+      "group": "valid-eof-or-whitespace",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-47",
+      "group": "valid-eof-or-whitespace",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "bucket-repair-holdout-48",
+      "group": "valid-eof-or-whitespace",
+      "verdict": "pass",
+      "differences": []
+    }
+  ],
+  "seconds": 25.187,
+  "artifacts": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\replays\\classifier-repair\\final\\727b8bab36b6408b9d90924ebf5b9e16",
+  "image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+  "target": {
+    "reference.elf": {
+      "bytes": 16184,
+      "sha256": "999edf4fd6fd14c1253bb86b3f5f01fa34fd648f025a80e001c561ef65c03d5a"
+    }
+  },
+  "candidate": {
+    "candidate.c": {
+      "bytes": 751,
+      "sha256": "1bb7eeedee3b439b6a68a763900bf62d52c6418ca505d908bd409d1907ec2133"
+    },
+    "score.c": {
+      "bytes": 389,
+      "sha256": "cd0611f878be2fd4f18819332695471d9c95ef013c97cc0304e2bf8ed4b41047"
+    }
+  },
+  "audit_inventory": {},
+  "assurance": "Agreement on supplied invocations only. Unexercised inputs and environments remain unknown."
+}

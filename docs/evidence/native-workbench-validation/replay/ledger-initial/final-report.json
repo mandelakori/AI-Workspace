@@ -1,0 +1,317 @@
+{
+  "status": "failed",
+  "counts": {
+    "pass": 47,
+    "mismatch": 1,
+    "inconclusive": 0
+  },
+  "cases": [
+    {
+      "case": "ledger-001",
+      "group": "boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-002",
+      "group": "boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-003",
+      "group": "boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-004",
+      "group": "boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-005",
+      "group": "boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-006",
+      "group": "boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-007",
+      "group": "boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-008",
+      "group": "malformed",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-009",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-010",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-011",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-012",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-013",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-014",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-015",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-016",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-017",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-018",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-019",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-020",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-021",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-022",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-023",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-024",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-025",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-026",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-027",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-028",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-029",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-030",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-031",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-032",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-033",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-034",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-035",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-036",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-037",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-038",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-039",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-040",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-041",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-042",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-043",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-044",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-045",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-046",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-047",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-048",
+      "group": "stateful-random",
+      "verdict": "pass",
+      "differences": []
+    }
+  ],
+  "seconds": 24.469,
+  "artifacts": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\replays\\ledger-initial\\final\\5d4216be247f4d0a9fd6a4d1d2d8309b",
+  "image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+  "target": {
+    "reference.elf": {
+      "bytes": 16208,
+      "sha256": "27b217da0301b0c7d28479b8163d73e6c5a2191c854d1acaff86cb0d124ddd1d"
+    }
+  },
+  "candidate": {
+    "candidate.c": {
+      "bytes": 1801,
+      "sha256": "ae43155f417a76533436aaa144bba90a117034bc82d3bb0cabd9037d87fdc827"
+    }
+  },
+  "audit_inventory": {},
+  "assurance": "Agreement on supplied invocations only. Unexercised inputs and environments remain unknown."
+}

@@ -1,0 +1,315 @@
+{
+  "status": "verified",
+  "counts": {
+    "pass": 48,
+    "mismatch": 0,
+    "inconclusive": 0
+  },
+  "cases": [
+    {
+      "case": "stride-001",
+      "group": "boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-002",
+      "group": "boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-003",
+      "group": "boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-004",
+      "group": "boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-005",
+      "group": "boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-006",
+      "group": "boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-007",
+      "group": "boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-008",
+      "group": "boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-009",
+      "group": "boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-010",
+      "group": "parsing",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-011",
+      "group": "parsing",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-012",
+      "group": "parsing",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-013",
+      "group": "parsing",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-014",
+      "group": "parsing",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-015",
+      "group": "parsing",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-016",
+      "group": "parsing",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-017",
+      "group": "parsing",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-018",
+      "group": "arity",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-019",
+      "group": "arity",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-020",
+      "group": "literal",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-021",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-022",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-023",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-024",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-025",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-026",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-027",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-028",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-029",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-030",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-031",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-032",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-033",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-034",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-035",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-036",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-037",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-038",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-039",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-040",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-041",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-042",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-043",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-044",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-045",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-046",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-047",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "stride-048",
+      "group": "random",
+      "verdict": "pass",
+      "differences": []
+    }
+  ],
+  "seconds": 24.547,
+  "artifacts": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\replays\\stride\\final\\01835f0fa517446bbca8e8019cc3d416",
+  "image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+  "target": {
+    "reference.elf": {
+      "bytes": 16152,
+      "sha256": "787a07f328a2a393e9b271bacb266b0ac6a76e474d34af3e3f66e67e9ff0ec12"
+    }
+  },
+  "candidate": {
+    "candidate.c": {
+      "bytes": 609,
+      "sha256": "976cb307c5e6787b32482199039edcca3d815016c4e204027e26bdc9a0e66795"
+    }
+  },
+  "audit_inventory": {},
+  "assurance": "Agreement on supplied invocations only. Unexercised inputs and environments remain unknown."
+}

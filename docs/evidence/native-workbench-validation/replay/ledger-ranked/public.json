@@ -1,0 +1,226 @@
+{
+  "corpus_sha256": "a28a1562731012ba41557c9fc7f0216ef1aa7a29d06a8f972d318ac1e20c7858",
+  "runner": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+  "policy_valid": true,
+  "compiled": true,
+  "missing": [],
+  "total": 18,
+  "passed_cases": 13,
+  "cases": [
+    {
+      "case": 1,
+      "verdict": "pass",
+      "duration": 0.688,
+      "name": "1"
+    },
+    {
+      "case": 2,
+      "verdict": "pass",
+      "duration": 0.671,
+      "name": "2"
+    },
+    {
+      "case": 3,
+      "verdict": "pass",
+      "duration": 0.719,
+      "name": "3"
+    },
+    {
+      "case": 4,
+      "verdict": "stdout",
+      "duration": 0.703,
+      "name": "4"
+    },
+    {
+      "case": 5,
+      "verdict": "stdout",
+      "duration": 0.687,
+      "name": "5"
+    },
+    {
+      "case": 6,
+      "verdict": "stdout",
+      "duration": 0.687,
+      "name": "6"
+    },
+    {
+      "case": 7,
+      "verdict": "stdout",
+      "duration": 0.687,
+      "name": "7"
+    },
+    {
+      "case": 8,
+      "verdict": "stdout",
+      "duration": 0.656,
+      "name": "8"
+    },
+    {
+      "case": 9,
+      "verdict": "pass",
+      "duration": 0.687,
+      "name": "9"
+    },
+    {
+      "case": 10,
+      "verdict": "pass",
+      "duration": 0.687,
+      "name": "10"
+    },
+    {
+      "case": 11,
+      "verdict": "pass",
+      "duration": 0.703,
+      "name": "11"
+    },
+    {
+      "case": 12,
+      "verdict": "pass",
+      "duration": 0.672,
+      "name": "12"
+    },
+    {
+      "case": 13,
+      "verdict": "pass",
+      "duration": 0.719,
+      "name": "13"
+    },
+    {
+      "case": 14,
+      "verdict": "pass",
+      "duration": 0.672,
+      "name": "14"
+    },
+    {
+      "case": 15,
+      "verdict": "pass",
+      "duration": 0.672,
+      "name": "15"
+    },
+    {
+      "case": 16,
+      "verdict": "pass",
+      "duration": 0.64,
+      "name": "16"
+    },
+    {
+      "case": 17,
+      "verdict": "pass",
+      "duration": 0.703,
+      "name": "17"
+    },
+    {
+      "case": 18,
+      "verdict": "pass",
+      "duration": 0.672,
+      "name": "18"
+    }
+  ],
+  "discrepancies": [
+    {
+      "case": 4,
+      "index": 4,
+      "differences": [
+        "stdout"
+      ],
+      "stdin": "add 3\n\nshow\n",
+      "argv": [],
+      "classification": "stdout",
+      "expected": {
+        "code": 0,
+        "stdout": "3\n3\n",
+        "stderr": ""
+      },
+      "observed": {
+        "code": 0,
+        "stdout": "3\nerror\n3\n",
+        "stderr": ""
+      }
+    },
+    {
+      "case": 5,
+      "index": 5,
+      "differences": [
+        "stdout"
+      ],
+      "stdin": "add 9\nshow foo\nshow\n",
+      "argv": [],
+      "classification": "stdout",
+      "expected": {
+        "code": 0,
+        "stdout": "9\nerror\n9\n",
+        "stderr": ""
+      },
+      "observed": {
+        "code": 0,
+        "stdout": "9\n9\n9\n",
+        "stderr": ""
+      }
+    },
+    {
+      "case": 6,
+      "index": 6,
+      "differences": [
+        "stdout"
+      ],
+      "stdin": "add 4\nreset late\nshow\n",
+      "argv": [],
+      "classification": "stdout",
+      "expected": {
+        "code": 0,
+        "stdout": "4\nerror\n4\n",
+        "stderr": ""
+      },
+      "observed": {
+        "code": 0,
+        "stdout": "4\n0\n0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "case": 7,
+      "index": 7,
+      "differences": [
+        "stdout"
+      ],
+      "stdin": " \t\u000b\f\r\nshow",
+      "argv": [],
+      "classification": "stdout",
+      "expected": {
+        "code": 0,
+        "stdout": "0\n",
+        "stderr": ""
+      },
+      "observed": {
+        "code": 0,
+        "stdout": "error\n0\n",
+        "stderr": ""
+      }
+    },
+    {
+      "case": 8,
+      "index": 8,
+      "differences": [
+        "stdout"
+      ],
+      "stdin": "add 14\n                                                                                             show\nshow\n",
+      "argv": [],
+      "classification": "stdout",
+      "expected": {
+        "code": 0,
+        "stdout": "14\nerror\nerror\n14\n",
+        "stderr": ""
+      },
+      "observed": {
+        "code": 0,
+        "stdout": "14\n14\n14\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "public_passed": false,
+  "independent_verification": "not_run",
+  "kind": "public-regression",
+  "passed": false,
+  "classification": "public_mismatch"
+}

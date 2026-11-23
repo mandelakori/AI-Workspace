@@ -1,0 +1,35 @@
+{
+  "false_approval": "exact separate approval required",
+  "grade_without_freeze": "blocked before grader or case authoring",
+  "tamper_input/examples.json": "reviewed ledger trial inputs, profile or implementation changed",
+  "tamper_target/reference.elf": "reviewed ledger trial inputs, profile or implementation changed",
+  "tamper_exclusions.json": "reviewed ledger trial inputs, profile or implementation changed",
+  "positive_pe_resource": {
+    "type": 10,
+    "id": 101,
+    "language": 1033,
+    "bytes": 4,
+    "sha256_matched": true
+  },
+  "readonly_endpoint": {
+    "model_path": "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf",
+    "model_ftype": "Q6_K",
+    "build_info": "b12063-2cbca389f",
+    "total_slots": 1,
+    "slot_context": 131072,
+    "idle": true,
+    "generation_requests": 0,
+    "template_sha256": "e84f32a23fdda27689f868aa4a1a5621f41133e51a48d7f3efcbea2839574259"
+  },
+  "public_exclusions_count": 298,
+  "approval_digest": "8698eb97b2f06104dca2c14003848a30e664b03723e4c87777f638d94315510a",
+  "approved_worker_files": [
+    "binary.json",
+    "examples.json",
+    "ghidra.json",
+    "native_feedback.py"
+  ],
+  "no_trial_dispatched": true,
+  "no_private_cases_authored": true,
+  "main": "cf50e89c2ca2ad21d86fda5473f5ad6edc0c2623"
+}

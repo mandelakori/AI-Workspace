@@ -1,0 +1,38 @@
+{
+  "bad_proposal": {
+    "candidate.c": {
+      "bytes": 2910,
+      "sha256": "19273731a5b4aea8864b5f0ad96f84eddd196a8db888832a3ea175950f03ec37"
+    }
+  },
+  "compiled": false,
+  "low_level_classification": "command",
+  "build_diagnostic": "candidate.c: In function \u2018main\u2019:\ncandidate.c:117:9: error: duplicate case value\n  117 |         case 'p':\n      |         ^~~~\ncandidate.c:86:9: note: previously used here\n   86 |         case 'p':\n      |         ^~~~\n",
+  "prior_public_passes": 13,
+  "retained": {
+    "candidate.c": {
+      "bytes": 1801,
+      "sha256": "ae43155f417a76533436aaa144bba90a117034bc82d3bb0cabd9037d87fdc827"
+    }
+  },
+  "decision": {
+    "accepted": false,
+    "reason": "build_regression",
+    "lost_cases": [
+      1,
+      2,
+      3,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "gained_cases": []
+  }
+}

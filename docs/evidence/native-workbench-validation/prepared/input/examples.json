@@ -1,0 +1,164 @@
+[
+  {
+    "name": "example-1",
+    "group": "development",
+    "stdin": "show\nadd 8\ntake 5\nshow\nreset\n",
+    "argv": [],
+    "code": 0,
+    "stdout": "0\n8\n3\n3\n0\n",
+    "stderr": ""
+  },
+  {
+    "name": "example-2",
+    "group": "development",
+    "stdin": "take 1\nadd -2\nbad\n",
+    "argv": [],
+    "code": 0,
+    "stdout": "denied\nerror\nerror\n",
+    "stderr": ""
+  },
+  {
+    "name": "example-3",
+    "group": "development",
+    "stdin": "add 1000\nadd 1001\nshow\n",
+    "argv": [],
+    "code": 0,
+    "stdout": "1000\nerror\n1000\n",
+    "stderr": ""
+  },
+  {
+    "name": "blank-after-add",
+    "group": "whitespace",
+    "stdin": "add 3\n\nshow\n",
+    "argv": [],
+    "code": 0,
+    "stdout": "3\n3\n",
+    "stderr": ""
+  },
+  {
+    "name": "show-garbage",
+    "group": "arguments",
+    "stdin": "add 9\nshow foo\nshow\n",
+    "argv": [],
+    "code": 0,
+    "stdout": "9\nerror\n9\n",
+    "stderr": ""
+  },
+  {
+    "name": "reset-garbage",
+    "group": "arguments",
+    "stdin": "add 4\nreset late\nshow\n",
+    "argv": [],
+    "code": 0,
+    "stdout": "4\nerror\n4\n",
+    "stderr": ""
+  },
+  {
+    "name": "blank-whitespace",
+    "group": "whitespace",
+    "stdin": " \t\u000b\f\r\nshow",
+    "argv": [],
+    "code": 0,
+    "stdout": "0\n",
+    "stderr": ""
+  },
+  {
+    "name": "split-at-buffer",
+    "group": "framing",
+    "stdin": "add 14\n                                                                                             show\nshow\n",
+    "argv": [],
+    "code": 0,
+    "stdout": "14\nerror\nerror\n14\n",
+    "stderr": ""
+  },
+  {
+    "name": "fits-buffer",
+    "group": "framing",
+    "stdin": "add 7\n                                                                                          show\n",
+    "argv": [],
+    "code": 0,
+    "stdout": "7\n7\n",
+    "stderr": ""
+  },
+  {
+    "name": "show-eof",
+    "group": "framing",
+    "stdin": "add 7\nshow",
+    "argv": [],
+    "code": 0,
+    "stdout": "7\n7\n",
+    "stderr": ""
+  },
+  {
+    "name": "extra-after-add",
+    "group": "arguments",
+    "stdin": "add 5\nadd 3 more\nshow\n",
+    "argv": [],
+    "code": 0,
+    "stdout": "5\nerror\n5\n",
+    "stderr": ""
+  },
+  {
+    "name": "extra-after-take",
+    "group": "arguments",
+    "stdin": "add 6\ntake 1 tail\nshow\n",
+    "argv": [],
+    "code": 0,
+    "stdout": "6\nerror\n6\n",
+    "stderr": ""
+  },
+  {
+    "name": "empty",
+    "group": "framing",
+    "stdin": "",
+    "argv": [],
+    "code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "name": "no-newline-reset",
+    "group": "framing",
+    "stdin": "add 14\nreset",
+    "argv": [],
+    "code": 0,
+    "stdout": "14\n0\n",
+    "stderr": ""
+  },
+  {
+    "name": "tabbed-args",
+    "group": "whitespace",
+    "stdin": "\tadd\t+8  \n\tshow\t\n",
+    "argv": [],
+    "code": 0,
+    "stdout": "8\n8\n",
+    "stderr": ""
+  },
+  {
+    "name": "range-and-state",
+    "group": "state",
+    "stdin": "add 1000\ntake 1001\nadd 1001\ntake -1\ntake 999\nshow\n",
+    "argv": [],
+    "code": 0,
+    "stdout": "1000\nerror\nerror\nerror\n1\n1\n",
+    "stderr": ""
+  },
+  {
+    "name": "cap-and-state",
+    "group": "state",
+    "stdin": "add 1000\nadd 1000\nadd 1000\nadd 1000\nadd 1000\nadd 1000\nadd 1000\nadd 1000\nadd 1000\nadd 1000\nadd 1\nshow\nreset\nshow\n",
+    "argv": [],
+    "code": 0,
+    "stdout": "1000\n2000\n3000\n4000\n5000\n6000\n7000\n8000\n9000\n10000\ndenied\n10000\n0\n0\n",
+    "stderr": ""
+  },
+  {
+    "name": "recovery",
+    "group": "state",
+    "stdin": "add 8\nwrong\nshow\nreset\nshow\n",
+    "argv": [],
+    "code": 0,
+    "stdout": "8\nerror\n8\n0\n0\n",
+    "stderr": ""
+  }
+]

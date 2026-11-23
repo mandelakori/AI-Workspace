@@ -1,0 +1,9 @@
+test_missing_required_provider_tool_fails_before_inert_backend (test_edit_harness.EditHarnessTests.test_missing_required_provider_tool_fails_before_inert_backend) ... ok
+test_only_advertised_tools_are_used_and_scoped_edit_recovers (test_edit_harness.EditHarnessTests.test_only_advertised_tools_are_used_and_scoped_edit_recovers) ... ok
+test_inspect_eol_edit_ambiguous_recovery_location_edit_public_test (test_editor_recovery_harness.EditorRecoveryHarnessTests.test_inspect_eol_edit_ambiguous_recovery_location_edit_public_test) ... ok
+test_repeated_edit_exhaustion_stops_inert_provider_before_next_request (test_editor_recovery_harness.EditorRecoveryHarnessTests.test_repeated_edit_exhaustion_stops_inert_provider_before_next_request) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 17.484s
+
+OK

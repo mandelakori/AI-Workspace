@@ -1,0 +1,131 @@
+{
+  "controller_result": {
+    "job": "46682402ec024eca86b78c4ae0b980b1",
+    "status": "verified",
+    "detail": "all independent checks passed",
+    "artifacts": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\resource-probe\\state\\runs\\46682402ec024eca86b78c4ae0b980b1"
+  },
+  "trust_guard": "configure a verification image or use --trusted for a reviewed task",
+  "analysis_path": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\resource-probe\\state\\runs\\46682402ec024eca86b78c4ae0b980b1\\attempt-001\\analysis.json",
+  "process_path": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\resource-probe\\state\\runs\\46682402ec024eca86b78c4ae0b980b1\\attempt-001\\specialist-process.json",
+  "target": {
+    "reference.exe": {
+      "bytes": 142848,
+      "sha256": "fa473d9674160b926db8029ef9bb128ae7e5d1e6fb7c08c014652c3f9a9057c6"
+    }
+  },
+  "normalized": {
+    "artifact": {
+      "path": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\resource-probe\\state\\runs\\46682402ec024eca86b78c4ae0b980b1\\attempt-001\\workspace\\reference.exe",
+      "sha256": "fa473d9674160b926db8029ef9bb128ae7e5d1e6fb7c08c014652c3f9a9057c6",
+      "bytes": 142848
+    },
+    "format": "pe32-plus",
+    "machine": 34404,
+    "directory": {
+      "rva": 159744,
+      "location": {
+        "offset": 140288,
+        "bytes": 104
+      },
+      "data_directory_location": {
+        "offset": 408,
+        "bytes": 8
+      }
+    },
+    "directories": [
+      {
+        "location": {
+          "offset": 140288,
+          "bytes": 24
+        },
+        "characteristics": 0,
+        "timestamp": 0,
+        "major_version": 0,
+        "minor_version": 0,
+        "named_entries": 0,
+        "id_entries": 1
+      },
+      {
+        "location": {
+          "offset": 140312,
+          "bytes": 24
+        },
+        "characteristics": 0,
+        "timestamp": 0,
+        "major_version": 0,
+        "minor_version": 0,
+        "named_entries": 0,
+        "id_entries": 1
+      },
+      {
+        "location": {
+          "offset": 140336,
+          "bytes": 24
+        },
+        "characteristics": 0,
+        "timestamp": 0,
+        "major_version": 0,
+        "minor_version": 0,
+        "named_entries": 0,
+        "id_entries": 1
+      }
+    ],
+    "resources": [
+      {
+        "index": 0,
+        "type": {
+          "kind": "id",
+          "id": 10
+        },
+        "name": {
+          "kind": "id",
+          "id": 101
+        },
+        "language": {
+          "kind": "id",
+          "id": 1033
+        },
+        "entry_locations": [
+          {
+            "offset": 140304,
+            "bytes": 8
+          },
+          {
+            "offset": 140328,
+            "bytes": 8
+          },
+          {
+            "offset": 140352,
+            "bytes": 8
+          }
+        ],
+        "data_entry_location": {
+          "offset": 140360,
+          "bytes": 16
+        },
+        "code_page": 0,
+        "reserved": 0,
+        "payload": {
+          "rva": 159840,
+          "location": {
+            "offset": 140384,
+            "bytes": 4
+          },
+          "sha256": "2e0f5102be7b10596b272fd8df2cb288a304bd6f8a1b9c7603d13494cd13a024"
+        }
+      }
+    ],
+    "icon_groups": [],
+    "coverage": {
+      "status": "complete",
+      "examined_entries": 3,
+      "resources": 1
+    },
+    "limitations": [
+      "Static PE32/PE32+ type/name/language resource inventory; payloads other than RT_GROUP_ICON remain opaque.",
+      "Icon candidates are resource-table relationships. Language fallback, image decoding and actual shell/window loading are not observed.",
+      "Exact shared byte ranges are retained; non-identical overlapping resource structures or payloads are rejected."
+    ]
+  }
+}

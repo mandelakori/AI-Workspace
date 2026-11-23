@@ -1,0 +1,83 @@
+{
+  "pe-metadata": {
+    "passed": true,
+    "header": {
+      "format": "PE",
+      "machine": 34404
+    },
+    "has_decompilation": false,
+    "strings": 80,
+    "target_sha256": "1a6e5b1cbdce8193eed91e84ff81cc9f23d039990393f5424a9c08cd80a98d96",
+    "target_unchanged": true,
+    "owned_ghidra_projects_remaining": 0
+  },
+  "elf-metadata": {
+    "passed": true,
+    "header": {
+      "format": "ELF",
+      "class": 64,
+      "machine": 62
+    },
+    "has_decompilation": false,
+    "strings": 71,
+    "target_sha256": "27b217da0301b0c7d28479b8163d73e6c5a2191c854d1acaff86cb0d124ddd1d",
+    "target_unchanged": true,
+    "owned_ghidra_projects_remaining": 0
+  },
+  "pe-ghidra": {
+    "passed": true,
+    "header": {
+      "format": "PE",
+      "machine": 34404
+    },
+    "has_decompilation": true,
+    "strings": 80,
+    "target_sha256": "1a6e5b1cbdce8193eed91e84ff81cc9f23d039990393f5424a9c08cd80a98d96",
+    "target_unchanged": true,
+    "owned_ghidra_projects_remaining": 0
+  },
+  "elf-ghidra": {
+    "passed": true,
+    "header": {
+      "format": "ELF",
+      "class": 64,
+      "machine": 62
+    },
+    "has_decompilation": true,
+    "strings": 71,
+    "target_sha256": "27b217da0301b0c7d28479b8163d73e6c5a2191c854d1acaff86cb0d124ddd1d",
+    "target_unchanged": true,
+    "owned_ghidra_projects_remaining": 0
+  },
+  "pe-rea": {
+    "passed": true,
+    "header": {
+      "format": "PE",
+      "machine": 34404
+    },
+    "has_decompilation": false,
+    "strings": 80,
+    "fields": [
+      "evidence_id",
+      "subject",
+      "provider",
+      "analysis_profile",
+      "predicate_type",
+      "operation",
+      "parameters",
+      "raw_result",
+      "normalized_result",
+      "confidence",
+      "authority",
+      "environment",
+      "limitations",
+      "relationship_coverage",
+      "locations",
+      "evidence_links"
+    ],
+    "package_version": "6.7.0",
+    "target_sha256": "1a6e5b1cbdce8193eed91e84ff81cc9f23d039990393f5424a9c08cd80a98d96",
+    "target_unchanged": true,
+    "owned_ghidra_projects_remaining": 0
+  }
+}

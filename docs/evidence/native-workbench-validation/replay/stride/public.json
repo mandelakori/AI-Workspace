@@ -1,0 +1,47 @@
+{
+  "corpus_sha256": "2e6ba47d49f12f987c4a5b65ce59056e8af35cbdb602d05b0ac15067f33281a2",
+  "runner": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+  "policy_valid": true,
+  "compiled": true,
+  "missing": [],
+  "total": 5,
+  "passed_cases": 5,
+  "cases": [
+    {
+      "case": 1,
+      "verdict": "pass",
+      "duration": 0.641,
+      "name": "1"
+    },
+    {
+      "case": 2,
+      "verdict": "pass",
+      "duration": 0.609,
+      "name": "2"
+    },
+    {
+      "case": 3,
+      "verdict": "pass",
+      "duration": 0.609,
+      "name": "3"
+    },
+    {
+      "case": 4,
+      "verdict": "pass",
+      "duration": 0.672,
+      "name": "4"
+    },
+    {
+      "case": 5,
+      "verdict": "pass",
+      "duration": 0.672,
+      "name": "5"
+    }
+  ],
+  "discrepancies": [],
+  "public_passed": true,
+  "independent_verification": "not_run",
+  "kind": "public-regression",
+  "passed": true,
+  "classification": "pass"
+}

@@ -1,5 +1,14 @@
 # Status as of 2026-11-23
 
+## Native workbench validation
+
+| Capability / outcome | Status | Evidence |
+| --- | --- | --- |
+| Installed static analysis | VERIFIED | [Native audit](NATIVE-WORKBENCH-VALIDATION.md). x86-64 PE/ELF intake, two Ghidra decompilations and REA 6.7.0 PE resource inventory. The known resource payload matched the raw PE bytes and SHA-256. |
+| Compilation, grading and isolation | VERIFIED | 54/54 targeted tests and 4/4 installed scoped catalog/editor tests, zero skips. Byte-identical reference rebuild, four candidates recompiled, 192 historical case verdicts reproduced, zero inconclusive cases. |
+| Whole-program ledger reconstruction | BLOCKED | Reproduced historical 47/48 and 10/48 on distinct final suites. Reproduced the historical compiler failure and retention of the stronger 13/18 public checkpoint. |
+| Fresh A100 ledger trial | UNTESTED | PREPARED_NOT_AUTHORIZED. Exact bundle and digest in the [review](NATIVE-WORKBENCH-VALIDATION.md#prepared-a100-validation). One idle slot observed read-only. Reference reproduced 18/18 public. No worker or private cases. |
+
 ## Milestone E: final acceptance trial closed, quarantined
 
 | Capability / outcome | Status | Evidence |

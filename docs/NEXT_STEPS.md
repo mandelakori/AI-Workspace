@@ -1,6 +1,14 @@
 # Next steps
 
-## Current handoff: final trial failed acceptance; stop for review
+## Current handoff: review the prepared native ledger trial
+
+The [native workbench validation](NATIVE-WORKBENCH-VALIDATION.md) has executable
+local evidence for intake, Ghidra, the PE resource adapter, isolation and
+differential replay. Authorize the manifest digest separately to run the one
+clean-start ledger comparison against the pinned reference. Independent inputs
+may be authored only after a successful freeze. Stop after the approved trial.
+
+## Historical handoff: final ItsDangerous trial failed acceptance
 
 [Final result](MILESTONE-E-FINAL-RESULT.md): real autonomous coding and public
 repair, but incomplete acceptance. Original public 12/12, expanded 48/48 and

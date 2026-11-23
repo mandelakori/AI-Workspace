@@ -1,0 +1,391 @@
+{
+  "status": "failed",
+  "counts": {
+    "pass": 10,
+    "mismatch": 38,
+    "inconclusive": 0
+  },
+  "cases": [
+    {
+      "case": "ledger-repair-holdout-01",
+      "group": "chunk-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-repair-holdout-02",
+      "group": "chunk-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-repair-holdout-03",
+      "group": "chunk-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-repair-holdout-04",
+      "group": "chunk-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-repair-holdout-05",
+      "group": "chunk-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-repair-holdout-06",
+      "group": "chunk-boundary",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-07",
+      "group": "chunk-boundary",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-08",
+      "group": "chunk-boundary",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-09",
+      "group": "chunk-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-repair-holdout-10",
+      "group": "chunk-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-repair-holdout-11",
+      "group": "chunk-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-repair-holdout-12",
+      "group": "chunk-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-repair-holdout-13",
+      "group": "chunk-boundary",
+      "verdict": "pass",
+      "differences": []
+    },
+    {
+      "case": "ledger-repair-holdout-14",
+      "group": "state-preservation",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-15",
+      "group": "state-preservation",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-16",
+      "group": "state-preservation",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-17",
+      "group": "state-preservation",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-18",
+      "group": "state-preservation",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-19",
+      "group": "state-preservation",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-20",
+      "group": "state-preservation",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-21",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-22",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-23",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-24",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-25",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-26",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-27",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-28",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-29",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-30",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-31",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-32",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-33",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-34",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-35",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-36",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-37",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-38",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-39",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-40",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-41",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-42",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-43",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-44",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-45",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-46",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-47",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    },
+    {
+      "case": "ledger-repair-holdout-48",
+      "group": "stateful-sequence",
+      "verdict": "mismatch",
+      "differences": [
+        "stdout"
+      ]
+    }
+  ],
+  "seconds": 24.344,
+  "artifacts": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\replays\\ledger-ranked\\final\\a9eb11eb9627437899248b330b506d98",
+  "image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+  "target": {
+    "reference.elf": {
+      "bytes": 16208,
+      "sha256": "27b217da0301b0c7d28479b8163d73e6c5a2191c854d1acaff86cb0d124ddd1d"
+    }
+  },
+  "candidate": {
+    "candidate.c": {
+      "bytes": 1801,
+      "sha256": "ae43155f417a76533436aaa144bba90a117034bc82d3bb0cabd9037d87fdc827"
+    }
+  },
+  "audit_inventory": {},
+  "assurance": "Agreement on supplied invocations only. Unexercised inputs and environments remain unknown."
+}

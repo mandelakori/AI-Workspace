@@ -1,0 +1,31 @@
+{
+  "historical_indexes": [
+    "docs/evidence/phase61/httpx-editing-pilot/evidence-hashes.json",
+    "docs/evidence/phase61/discovery-result/evidence-hashes.json",
+    "docs/evidence/phase61/discovery-result/local-evidence-inventory.json",
+    "docs/evidence/adaptive-local/evidence-hashes.json",
+    "docs/evidence/milestone-e-a100/evidence-hashes.json",
+    "docs/evidence/milestone-e-a100-result/evidence-hashes.json",
+    "docs/evidence/milestone-e-a100-result/local-evidence-inventory.json",
+    "docs/evidence/a100-system-contract-fix/evidence-hashes.json",
+    "docs/evidence/a100-duration-trial-result/evidence-hashes.json",
+    "docs/evidence/a100-duration-trial-result/local-evidence-inventory.json",
+    ".aiwork/phase6/final-freeze.json:inventory",
+    "docs/evidence/editor-recovery/evidence-hashes.json",
+    "docs/evidence/a100-editor-preparation/evidence-hashes.json",
+    "docs/evidence/a100-editor-trial-result/evidence-hashes.json",
+    "docs/evidence/a100-editor-trial-result/local-evidence-inventory.json",
+    "docs/evidence/evidence-capture-recovery/evidence-hashes.json",
+    "docs/evidence/milestone-e-final/evidence-hashes.json",
+    "docs/evidence/milestone-e-final-result/evidence-hashes.json"
+  ],
+  "historical_indexed_entries_verified": 4307,
+  "main": "cf50e89c2ca2ad21d86fda5473f5ad6edc0c2623",
+  "worker_attempts": 0,
+  "generation_requests": 0,
+  "new_sealed_cases": 0,
+  "frozen_worker_input": {
+    "bytes": 9643,
+    "sha256": "3701bde664e609de2e52968a6905625b2ec5ed7a687982a00f6bdefd24d5c69f"
+  }
+}

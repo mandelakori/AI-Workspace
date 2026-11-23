@@ -1,0 +1,28 @@
+{
+  "submitted_disposable_copy": true,
+  "rank_public": true,
+  "profile": "a100-existing",
+  "baseline_inventory": {
+    "binary.json": {
+      "bytes": 1799,
+      "sha256": "f15a23914fcbc7f7f18557746d8d695284d62fa07da6e0ee962d59502f8b8b2f"
+    },
+    "examples.json": {
+      "bytes": 3770,
+      "sha256": "f44b3158daab9723ac91cf2e287380be807a1b97d1e7d992b87dd19a8ffdcdb3"
+    },
+    "ghidra.json": {
+      "bytes": 4143,
+      "sha256": "5ad21c979d8b407b3501caf5623775cdc5c31cb8635f644d3be9f3faf89c3335"
+    },
+    "native_feedback.py": {
+      "bytes": 2235,
+      "sha256": "52a48248a03c48223adf274f4cc9cb47d4cd84aa101990e7e6e4ea8ecd162bc3"
+    }
+  },
+  "write_roots": [
+    "candidate.c"
+  ],
+  "verification_dir": null,
+  "attempts_launched": 0
+}

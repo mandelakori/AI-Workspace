@@ -1,0 +1,149 @@
+{
+  "corpus_sha256": "44ae6ed91882b576b163026363a10dd9f6f5f3415fb8b630d81b45fc50d1dd67",
+  "runner": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+  "policy_valid": true,
+  "compiled": true,
+  "missing": [],
+  "total": 22,
+  "passed_cases": 22,
+  "cases": [
+    {
+      "case": 1,
+      "verdict": "pass",
+      "duration": 0.672,
+      "name": "1"
+    },
+    {
+      "case": 2,
+      "verdict": "pass",
+      "duration": 0.687,
+      "name": "2"
+    },
+    {
+      "case": 3,
+      "verdict": "pass",
+      "duration": 0.656,
+      "name": "3"
+    },
+    {
+      "case": 4,
+      "verdict": "pass",
+      "duration": 0.656,
+      "name": "4"
+    },
+    {
+      "case": 5,
+      "verdict": "pass",
+      "duration": 0.657,
+      "name": "5"
+    },
+    {
+      "case": 6,
+      "verdict": "pass",
+      "duration": 0.672,
+      "name": "6"
+    },
+    {
+      "case": 7,
+      "verdict": "pass",
+      "duration": 0.672,
+      "name": "7"
+    },
+    {
+      "case": 8,
+      "verdict": "pass",
+      "duration": 0.657,
+      "name": "8"
+    },
+    {
+      "case": 9,
+      "verdict": "pass",
+      "duration": 0.703,
+      "name": "9"
+    },
+    {
+      "case": 10,
+      "verdict": "pass",
+      "duration": 0.672,
+      "name": "10"
+    },
+    {
+      "case": 11,
+      "verdict": "pass",
+      "duration": 0.719,
+      "name": "11"
+    },
+    {
+      "case": 12,
+      "verdict": "pass",
+      "duration": 0.64,
+      "name": "12"
+    },
+    {
+      "case": 13,
+      "verdict": "pass",
+      "duration": 0.672,
+      "name": "13"
+    },
+    {
+      "case": 14,
+      "verdict": "pass",
+      "duration": 0.641,
+      "name": "14"
+    },
+    {
+      "case": 15,
+      "verdict": "pass",
+      "duration": 0.703,
+      "name": "15"
+    },
+    {
+      "case": 16,
+      "verdict": "pass",
+      "duration": 0.687,
+      "name": "16"
+    },
+    {
+      "case": 17,
+      "verdict": "pass",
+      "duration": 0.703,
+      "name": "17"
+    },
+    {
+      "case": 18,
+      "verdict": "pass",
+      "duration": 0.625,
+      "name": "18"
+    },
+    {
+      "case": 19,
+      "verdict": "pass",
+      "duration": 0.656,
+      "name": "19"
+    },
+    {
+      "case": 20,
+      "verdict": "pass",
+      "duration": 0.609,
+      "name": "20"
+    },
+    {
+      "case": 21,
+      "verdict": "pass",
+      "duration": 0.656,
+      "name": "21"
+    },
+    {
+      "case": 22,
+      "verdict": "pass",
+      "duration": 0.625,
+      "name": "22"
+    }
+  ],
+  "discrepancies": [],
+  "public_passed": true,
+  "independent_verification": "not_run",
+  "kind": "public-regression",
+  "passed": true,
+  "classification": "pass"
+}

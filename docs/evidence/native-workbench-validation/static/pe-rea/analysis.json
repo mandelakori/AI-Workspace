@@ -1,0 +1,155 @@
+{
+  "binary": "reference.exe",
+  "header": {
+    "format": "PE",
+    "machine": 34404
+  },
+  "strings": [
+    "!This program cannot be run in DOS mode.",
+    "`.rdata",
+    "@.data",
+    ".pdata",
+    "@.fptable",
+    ".reloc",
+    "L$ SVWH",
+    "L$HH1D$ ",
+    "D$ H3L$ H3",
+    "u3HcH<",
+    "@VWAVH",
+    "L$ SUVWATAUAVAWH",
+    "HA_A^A]A\\_^][",
+    "UVWAVAWH",
+    " A_A^_^]",
+    "VWATAVAWH",
+    " A_A^A\\_^",
+    " A_A^A\\_^",
+    "@SUVWATAVH",
+    "8A^A\\_^][",
+    "H;xXu5",
+    "@SUVWH",
+    "\\$ IcX",
+    "@SVWAVAWH",
+    "0A_A^_^[",
+    "0A_A^_^[",
+    "@SUVWAUAVAWH",
+    "L9`8t:",
+    "A_A^A]_^][",
+    "VAUAVAWH",
+    "t:=RCC",
+    "A_A^A]^",
+    "@SUWAVH",
+    "t$PHcw",
+    "(A^_][",
+    "(A^_][",
+    "(A^_][",
+    "@SUVWAVAWH",
+    "XA_A^_^][",
+    "XA_A^_^][",
+    "@SVWATAUAVAWH",
+    "A_A^A]A\\_^[",
+    "B(I9A(u",
+    "SVWATAUAVAWH",
+    "|$$Hc^",
+    "@A_A^A]A\\_^[",
+    "@A_A^A]A\\_^[",
+    "|$hD9:",
+    "@SUVWH",
+    "WATAUAVAWH",
+    "0A_A^A]A\\_",
+    "S(HcS0",
+    "S(HcS0",
+    "S(HcS0",
+    "x UAVAWH",
+    "D$@H;F",
+    "sL@8w(u",
+    "<htl<jt\\<lt4<tt$<wt",
+    "UATAUAVAWH",
+    "{,D+{HD+",
+    "D9k |j",
+    "A_A^A]A\\]",
+    "WAVAWH",
+    "~,*u?I",
+    " A_A^_",
+    "WATAUAVAWH",
+    "0A_A^A]A\\_",
+    "x ATAVAWH",
+    " A_A^A\\",
+    "UVWAVAWH",
+    "0A_A^_^]",
+    "u3HcH<H",
+    "WAVAWH",
+    " A_A^_",
+    "WAVAWH",
+    " A_A^_",
+    "D$0@8{",
+    "t$ WATAUAVAWH",
+    " A_A^A]A\\_",
+    "L$ VWAVH"
+  ],
+  "specialist": "rea",
+  "findings": {
+    "evidence_id": "ev_d9b89016fbdccc93d28f3c991ee6fc2ddddaf6ba6c2a0ef3b0d2df338f4b621f",
+    "subject": {
+      "name": "reference.exe",
+      "digest": {
+        "sha256": "1a6e5b1cbdce8193eed91e84ff81cc9f23d039990393f5424a9c08cd80a98d96"
+      },
+      "local_path": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\checks\\pe-rea\\target\\reference.exe",
+      "format": "pe",
+      "architecture": "x86_64"
+    },
+    "provider": {
+      "id": "rea-pe-resources",
+      "name": "REA PE resource parser",
+      "version": "1"
+    },
+    "analysis_profile": null,
+    "predicate_type": "rea.analysis",
+    "operation": "inspect_pe_resources",
+    "parameters": {
+      "path": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\checks\\pe-rea\\target\\reference.exe",
+      "max_file_bytes": 67108864,
+      "max_entries": 256
+    },
+    "raw_result": null,
+    "normalized_result": {
+      "artifact": {
+        "path": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\checks\\pe-rea\\target\\reference.exe",
+        "sha256": "1a6e5b1cbdce8193eed91e84ff81cc9f23d039990393f5424a9c08cd80a98d96",
+        "bytes": 142336
+      },
+      "format": "pe32-plus",
+      "machine": 34404,
+      "directory": null,
+      "directories": [],
+      "resources": [],
+      "icon_groups": [],
+      "coverage": {
+        "status": "complete",
+        "examined_entries": 0,
+        "resources": 0
+      },
+      "limitations": [
+        "Static PE32/PE32+ type/name/language resource inventory; payloads other than RT_GROUP_ICON remain opaque.",
+        "Icon candidates are resource-table relationships. Language fallback, image decoding and actual shell/window loading are not observed.",
+        "Exact shared byte ranges are retained; non-identical overlapping resource structures or payloads are rejected."
+      ]
+    },
+    "confidence": "observed",
+    "authority": "shipped-artifact",
+    "environment": null,
+    "limitations": [
+      "Static PE32/PE32+ type/name/language resource inventory; payloads other than RT_GROUP_ICON remain opaque.",
+      "Icon candidates are resource-table relationships. Language fallback, image decoding and actual shell/window loading are not observed.",
+      "Exact shared byte ranges are retained; non-identical overlapping resource structures or payloads are rejected."
+    ],
+    "relationship_coverage": null,
+    "locations": [
+      {
+        "kind": "artifact-path",
+        "path": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\checks\\pe-rea\\target\\reference.exe"
+      }
+    ],
+    "evidence_links": []
+  }
+}

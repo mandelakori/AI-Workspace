@@ -1,0 +1,151 @@
+{
+  "replays": {
+    "stride": {
+      "run": "316b157df27c459e93b5b171bc1df38d",
+      "historical_final": "6f6dc8aa669d40509875002fd5e41ff1",
+      "compiled": true,
+      "public": {
+        "passed": 5,
+        "total": 5
+      },
+      "historical_replay": {
+        "pass": 48,
+        "mismatch": 0,
+        "inconclusive": 0
+      },
+      "artifacts": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\replays\\stride\\final\\01835f0fa517446bbca8e8019cc3d416",
+      "image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+      "target": {
+        "reference.elf": {
+          "bytes": 16152,
+          "sha256": "787a07f328a2a393e9b271bacb266b0ac6a76e474d34af3e3f66e67e9ff0ec12"
+        }
+      },
+      "source": {
+        "candidate.c": {
+          "bytes": 609,
+          "sha256": "976cb307c5e6787b32482199039edcca3d815016c4e204027e26bdc9a0e66795"
+        }
+      },
+      "input_inventory": {
+        "bytes": 6292,
+        "sha256": "2c9a69fde2a5d54bc9609a4ce7eb079cf957f81095795e48e6affae97ec2ce77"
+      },
+      "case_verdicts_and_differences_match": true,
+      "seconds": 24.547,
+      "hashes_unchanged": true
+    },
+    "classifier-repair": {
+      "run": "738521c26f7e468491455c7db85d9b7b",
+      "historical_final": "92c4dbbd3c9f4cb7ad8a3f603661ebf3",
+      "compiled": true,
+      "public": {
+        "passed": 22,
+        "total": 22
+      },
+      "historical_replay": {
+        "pass": 48,
+        "mismatch": 0,
+        "inconclusive": 0
+      },
+      "artifacts": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\replays\\classifier-repair\\final\\727b8bab36b6408b9d90924ebf5b9e16",
+      "image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+      "target": {
+        "reference.elf": {
+          "bytes": 16184,
+          "sha256": "999edf4fd6fd14c1253bb86b3f5f01fa34fd648f025a80e001c561ef65c03d5a"
+        }
+      },
+      "source": {
+        "candidate.c": {
+          "bytes": 751,
+          "sha256": "1bb7eeedee3b439b6a68a763900bf62d52c6418ca505d908bd409d1907ec2133"
+        },
+        "score.c": {
+          "bytes": 389,
+          "sha256": "cd0611f878be2fd4f18819332695471d9c95ef013c97cc0304e2bf8ed4b41047"
+        }
+      },
+      "input_inventory": {
+        "bytes": 5511,
+        "sha256": "324da74afd8118289405af1a54529b067b70a56b8e97208b3ef2636971d2f5f2"
+      },
+      "case_verdicts_and_differences_match": true,
+      "seconds": 25.187,
+      "hashes_unchanged": true
+    },
+    "ledger-initial": {
+      "run": "f540f4381804475f9bdfc76093968bd9",
+      "historical_final": "eb4968b2fe32425aa7a8f41e7e830d44",
+      "compiled": true,
+      "public": {
+        "passed": 3,
+        "total": 3
+      },
+      "historical_replay": {
+        "pass": 47,
+        "mismatch": 1,
+        "inconclusive": 0
+      },
+      "artifacts": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\replays\\ledger-initial\\final\\5d4216be247f4d0a9fd6a4d1d2d8309b",
+      "image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+      "target": {
+        "reference.elf": {
+          "bytes": 16208,
+          "sha256": "27b217da0301b0c7d28479b8163d73e6c5a2191c854d1acaff86cb0d124ddd1d"
+        }
+      },
+      "source": {
+        "candidate.c": {
+          "bytes": 1801,
+          "sha256": "ae43155f417a76533436aaa144bba90a117034bc82d3bb0cabd9037d87fdc827"
+        }
+      },
+      "input_inventory": {
+        "bytes": 11909,
+        "sha256": "cc755254003222af38e2b2d63f9d4121eeabef920d8683d6366d3280fa718311"
+      },
+      "case_verdicts_and_differences_match": true,
+      "seconds": 24.469,
+      "hashes_unchanged": true
+    },
+    "ledger-ranked": {
+      "run": "635e56972ecf44b2a4166734ebbad2db",
+      "historical_final": "2e5209ccd6b44d9082ca103b5d8c025a",
+      "compiled": true,
+      "public": {
+        "passed": 13,
+        "total": 18
+      },
+      "historical_replay": {
+        "pass": 10,
+        "mismatch": 38,
+        "inconclusive": 0
+      },
+      "artifacts": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\native-workbench-validation\\replays\\ledger-ranked\\final\\a9eb11eb9627437899248b330b506d98",
+      "image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+      "target": {
+        "reference.elf": {
+          "bytes": 16208,
+          "sha256": "27b217da0301b0c7d28479b8163d73e6c5a2191c854d1acaff86cb0d124ddd1d"
+        }
+      },
+      "source": {
+        "candidate.c": {
+          "bytes": 1801,
+          "sha256": "ae43155f417a76533436aaa144bba90a117034bc82d3bb0cabd9037d87fdc827"
+        }
+      },
+      "input_inventory": {
+        "bytes": 12090,
+        "sha256": "32e478a32d0c6aee003d7b3310649f9c036748e8db023f1a67d28ce8eab0dcc4"
+      },
+      "case_verdicts_and_differences_match": true,
+      "seconds": 24.344,
+      "hashes_unchanged": true
+    }
+  },
+  "reference_rebuild_byte_identical": true,
+  "new_check_containers_remaining": [],
+  "generation_requests": 0
+}
