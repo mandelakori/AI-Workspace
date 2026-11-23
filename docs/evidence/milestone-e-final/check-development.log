@@ -1,0 +1,15 @@
+{
+  "original": 3,
+  "combined": 22,
+  "gates": {
+    "public_original": false,
+    "public_expanded": false,
+    "upstream": true,
+    "authored": false,
+    "interfaces": false,
+    "documentation": false,
+    "syntax": true
+  },
+  "seconds": 13.25,
+  "summary": "Mandatory gates: public_original FAIL, public_expanded FAIL, upstream PASS, authored FAIL, interfaces FAIL, documentation FAIL, syntax PASS; Public 22/48; original 3/12. First discrepancies: [{'id': 'duration-active', 'passed': False, 'observed': {'result': 'error', 'error': 'TypeError', 'detail': \"'>' not supported bet"
+}

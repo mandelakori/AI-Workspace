@@ -1,0 +1,6 @@
+{
+  "passed": false,
+  "stdout": "[{\"function\": \"TimestampSigner.unsign\", \"duration_annotated\": false}, {\"function\": \"TimestampSigner.unsign\", \"duration_annotated\": false}, {\"function\": \"TimestampSigner.unsign\", \"duration_annotated\": false}, {\"function\": \"TimestampSigner.validate\", \"duration_annotated\": false}, {\"function\": \"TimedSerializer.loads\", \"duration_annotated\": false}, {\"function\": \"TimedSerializer.loads_unsafe\", \"duration_annotated\": false}]\n",
+  "stderr": "",
+  "summary": "interfaces: ign\", \"duration_annotated\": false}, {\"function\": \"TimestampSigner.validate\", \"duration_annotated\": false}, {\"function\": \"TimedSerializer.loads\", \"duration_annotated\": false}, {\"function\": \"TimedSerializer.loads_unsafe\", \"duration_annotated\": false}]\n"
+}

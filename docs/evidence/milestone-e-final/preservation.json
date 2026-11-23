@@ -1,0 +1,93 @@
+{
+  "historical_indexes": [
+    {
+      "index": "docs/evidence/phase61/httpx-editing-pilot/evidence-hashes.json",
+      "entries": 25,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/phase61/discovery-result/evidence-hashes.json",
+      "entries": 35,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/phase61/discovery-result/local-evidence-inventory.json",
+      "entries": 305,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/adaptive-local/evidence-hashes.json",
+      "entries": 907,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/milestone-e-a100/evidence-hashes.json",
+      "entries": 37,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/milestone-e-a100-result/evidence-hashes.json",
+      "entries": 52,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/milestone-e-a100-result/local-evidence-inventory.json",
+      "entries": 326,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/a100-system-contract-fix/evidence-hashes.json",
+      "entries": 97,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/a100-duration-trial-result/evidence-hashes.json",
+      "entries": 209,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/a100-duration-trial-result/local-evidence-inventory.json",
+      "entries": 540,
+      "mismatches": []
+    },
+    {
+      "index": ".aiwork/phase6/final-freeze.json:inventory",
+      "entries": 142,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/editor-recovery/evidence-hashes.json",
+      "entries": 91,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/a100-editor-preparation/evidence-hashes.json",
+      "entries": 106,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/a100-editor-trial-result/evidence-hashes.json",
+      "entries": 219,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/a100-editor-trial-result/local-evidence-inventory.json",
+      "entries": 911,
+      "mismatches": []
+    },
+    {
+      "index": "docs/evidence/evidence-capture-recovery/evidence-hashes.json",
+      "entries": 29,
+      "mismatches": []
+    }
+  ],
+  "entries_checked": 4031,
+  "all_preserved": true,
+  "main_commit": "cf50e89c2ca2ad21d86fda5473f5ad6edc0c2623",
+  "core_capture_editor_harness_unchanged": true,
+  "original_trial_assets_unchanged": true,
+  "model_requests": 0,
+  "live_workers_dispatched": 0,
+  "sealed_cases_created": 0,
+  "new_bundle_state": "PREPARED_NOT_AUTHORIZED"
+}

@@ -1,0 +1,26 @@
+test_approval_and_resource_input_drift_fail_before_dispatch (test_final_acceptance.FinalAcceptanceTests.test_approval_and_resource_input_drift_fail_before_dispatch) ... ok
+test_authored_verifier_accepts_parametrized_pristine_unit_fixture_and_rejects_sleeps (test_final_acceptance.FinalAcceptanceTests.test_authored_verifier_accepts_parametrized_pristine_unit_fixture_and_rejects_sleeps) ... ok
+test_every_gate_and_completed_worker_required_for_freeze (test_final_acceptance.FinalAcceptanceTests.test_every_gate_and_completed_worker_required_for_freeze) ... ok
+test_freshness_keys_ignore_cosmetic_fields_and_equivalent_durations (test_final_acceptance.FinalAcceptanceTests.test_freshness_keys_ignore_cosmetic_fields_and_equivalent_durations) ... ok
+test_incomplete_work_is_retained_without_freeze_or_grade (test_final_acceptance.FinalAcceptanceTests.test_incomplete_work_is_retained_without_freeze_or_grade) ... ok
+test_original_feature_cases_and_verifier_are_byte_identical (test_final_acceptance.FinalAcceptanceTests.test_original_feature_cases_and_verifier_are_byte_identical) ... ok
+test_real_clean_source_reproduces_separate_original_and_expanded_baselines (test_final_acceptance.FinalAcceptanceTests.test_real_clean_source_reproduces_separate_original_and_expanded_baselines) ... ok
+test_task_retains_limits_and_presents_active_contract (test_final_acceptance.FinalAcceptanceTests.test_task_retains_limits_and_presents_active_contract) ... ok
+test_64k_final_contract_and_acceptance_index_are_available_before_inference (test_final_harness.FinalHarnessTests.test_64k_final_contract_and_acceptance_index_are_available_before_inference) ... ERROR
+
+======================================================================
+ERROR: test_64k_final_contract_and_acceptance_index_are_available_before_inference (test_final_harness.FinalHarnessTests.test_64k_final_contract_and_acceptance_index_are_available_before_inference)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\tests\test_final_harness.py", line 46, in test_64k_final_contract_and_acceptance_index_are_available_before_inference
+    self.assertTrue(all(body['max_tokens']==4096 and body['temperature']==0 and body['seed']==1729 and body['chat_template_kwargs']=={'enable_thinking':False} for body in requests))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\tests\test_final_harness.py", line 46, in <genexpr>
+    self.assertTrue(all(body['max_tokens']==4096 and body['temperature']==0 and body['seed']==1729 and body['chat_template_kwargs']=={'enable_thinking':False} for body in requests))
+                        ~~~~^^^^^^^^^^^^^^
+KeyError: 'max_tokens'
+
+----------------------------------------------------------------------
+Ran 9 tests in 30.489s
+
+FAILED (errors=1)

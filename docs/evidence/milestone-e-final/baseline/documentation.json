@@ -1,0 +1,19 @@
+{
+  "passed": false,
+  "rules": {
+    "changed": false,
+    "word_count": true,
+    "max_age": true,
+    "timedelta": false,
+    "seconds": true,
+    "fraction": false,
+    "zero": false,
+    "negative": false,
+    "equality": false,
+    "TimestampSigner.unsign_docstring": false,
+    "TimestampSigner.validate_docstring": false,
+    "TimedSerializer.loads_docstring": false,
+    "TimedSerializer.loads_unsafe_docstring": false
+  },
+  "summary": "Documentation failed rules: ['changed', 'timedelta', 'fraction', 'zero', 'negative', 'equality', 'TimestampSigner.unsign_docstring', 'TimestampSigner.validate_docstring', 'TimedSerializer.loads_docstring', 'TimedSerializer.loads_unsafe_docstring']"
+}

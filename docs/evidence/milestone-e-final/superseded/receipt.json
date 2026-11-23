@@ -1,0 +1,8 @@
+{
+  "status": "SUPERSEDED NEVER AUTHORIZED; current loader rejects stale assets",
+  "reason": "Preserve bounded per-case assertion diagnostics before final freeze",
+  "digest": "2b12792eba6c83ca0fe91ed963274253bccce47e83351b9494605d4315039014",
+  "source_assets_retained": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\milestone-e-final\\prepared-v1-assets",
+  "worker_dispatches": 0,
+  "model_requests": 0
+}

@@ -1,0 +1,137 @@
+{
+  "gate": {
+    "failed_closed": false,
+    "requests": [
+      {
+        "request": 1,
+        "forwarded": true,
+        "declared_request_bytes": 462,
+        "offered": [
+          "checks_check",
+          "checks_diff",
+          "checks_edit",
+          "checks_focus"
+        ],
+        "missing": [],
+        "unexpected": [],
+        "passed": true,
+        "body_sha256": "7938126f0290ddd3d2ca468e65382e4b19899f66cc9ab61e88299d44626915cc",
+        "epoch": 0,
+        "category": "inference",
+        "contract_sha256": "2aa76921fb2c12dee1f3e3da2e9a88bc99b3698faced20eaec05d0c6140766df",
+        "remaining_operations": 48,
+        "contract_bytes": 788,
+        "forwarded_sha256": "a84b41f23c09ecfac9568d9966d59286f5d7b58624ce7a93f211f9dce01ff50d",
+        "upstream_status": 200,
+        "resource_exhausted": "provider evidence byte limit or disk headroom exhausted",
+        "error_class": "controller_evidence_exhausted",
+        "response_sha256": "338dea67afce7281e8ee657ddd6a68cea1b37c7891b70800e2fa7582d03c71e0",
+        "response_bytes": 2306,
+        "response_complete": false,
+        "elapsed": 0.015999999945051968
+      }
+    ],
+    "required": [
+      "checks_check",
+      "checks_diff",
+      "checks_edit",
+      "checks_focus"
+    ],
+    "request_rewriting": true,
+    "resource_exhausted": true,
+    "captured_bytes": 4096,
+    "evidence": {
+      "limit_bytes": 4096,
+      "headroom_bytes": 0,
+      "captured_bytes": 4096,
+      "reserved_bytes": 0,
+      "files": {
+        "provider-request-001.json": {
+          "bytes": 462,
+          "sha256": "7938126f0290ddd3d2ca468e65382e4b19899f66cc9ab61e88299d44626915cc",
+          "complete": true
+        },
+        "provider-forwarded-001.json": {
+          "bytes": 1328,
+          "sha256": "a84b41f23c09ecfac9568d9966d59286f5d7b58624ce7a93f211f9dce01ff50d",
+          "complete": true
+        },
+        "provider-response-001.sse": {
+          "bytes": 2306,
+          "sha256": "338dea67afce7281e8ee657ddd6a68cea1b37c7891b70800e2fa7582d03c71e0",
+          "complete": false
+        }
+      }
+    },
+    "exhaustion_reason": "provider evidence byte limit or disk headroom exhausted",
+    "failure_kind": "",
+    "request_limit": 1024,
+    "unadmitted_requests": 1,
+    "metadata_limit_bytes": 16777216
+  },
+  "execution": {
+    "schema": 1,
+    "adapter": "inert",
+    "status": "resource_exhausted",
+    "raw_exit_code": 1,
+    "elapsed": 0.0,
+    "timed_out": false,
+    "cleanup_passed": true,
+    "provider_gate_passed": true,
+    "independent_verification": "pending",
+    "exhaustion_reason": "provider evidence byte limit or disk headroom exhausted",
+    "evidence": {
+      "limit_bytes": 4096,
+      "headroom_bytes": 0,
+      "captured_bytes": 4096,
+      "reserved_bytes": 0,
+      "files": {
+        "provider-request-001.json": {
+          "bytes": 462,
+          "sha256": "7938126f0290ddd3d2ca468e65382e4b19899f66cc9ab61e88299d44626915cc",
+          "complete": true
+        },
+        "provider-forwarded-001.json": {
+          "bytes": 1328,
+          "sha256": "a84b41f23c09ecfac9568d9966d59286f5d7b58624ce7a93f211f9dce01ff50d",
+          "complete": true
+        },
+        "provider-response-001.sse": {
+          "bytes": 2306,
+          "sha256": "338dea67afce7281e8ee657ddd6a68cea1b37c7891b70800e2fa7582d03c71e0",
+          "complete": false
+        }
+      }
+    },
+    "resources": {
+      "epoch": 0,
+      "remaining_operations": 48,
+      "used": {
+        "inspection": 0,
+        "editing": 0,
+        "verification": 0,
+        "inference": 1,
+        "compaction": 0
+      },
+      "exhausted": "provider evidence byte limit or disk headroom exhausted",
+      "policy": {
+        "operations": 48,
+        "edit_reserve": 4,
+        "verification_reserve": 4,
+        "model_requests": 128,
+        "compactions": 4,
+        "blocked_limit": 3
+      },
+      "seconds": {
+        "inference": 0.015999999945051968
+      },
+      "contract_sha256": "2aa76921fb2c12dee1f3e3da2e9a88bc99b3698faced20eaec05d0c6140766df"
+    },
+    "provider_usage": {
+      "reported": [],
+      "unreported_requests": [
+        1
+      ]
+    }
+  }
+}

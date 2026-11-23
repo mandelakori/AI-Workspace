@@ -1,0 +1,12 @@
+test_approval_and_resource_input_drift_fail_before_dispatch (test_final_acceptance.FinalAcceptanceTests.test_approval_and_resource_input_drift_fail_before_dispatch) ... ok
+test_every_gate_and_completed_worker_required_for_freeze (test_final_acceptance.FinalAcceptanceTests.test_every_gate_and_completed_worker_required_for_freeze) ... ok
+test_freshness_keys_ignore_cosmetic_fields_and_equivalent_durations (test_final_acceptance.FinalAcceptanceTests.test_freshness_keys_ignore_cosmetic_fields_and_equivalent_durations) ... ok
+test_incomplete_work_is_retained_without_freeze_or_grade (test_final_acceptance.FinalAcceptanceTests.test_incomplete_work_is_retained_without_freeze_or_grade) ... ok
+test_original_feature_cases_and_verifier_are_byte_identical (test_final_acceptance.FinalAcceptanceTests.test_original_feature_cases_and_verifier_are_byte_identical) ... ok
+test_real_clean_source_reproduces_separate_original_and_expanded_baselines (test_final_acceptance.FinalAcceptanceTests.test_real_clean_source_reproduces_separate_original_and_expanded_baselines) ... ok
+test_task_retains_limits_and_presents_active_contract (test_final_acceptance.FinalAcceptanceTests.test_task_retains_limits_and_presents_active_contract) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 10.146s
+
+OK

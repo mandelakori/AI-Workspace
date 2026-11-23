@@ -1,0 +1,14 @@
+{
+  "passed": false,
+  "runs": [
+    {
+      "passed": false,
+      "summary": "Required authored test file missing"
+    },
+    {
+      "passed": false,
+      "summary": "Required authored test file missing"
+    }
+  ],
+  "summary": "Required authored test file missing | Required authored test file missing"
+}

@@ -1,5 +1,15 @@
 # Status as of 2026-11-22
 
+## Milestone E: final stronger acceptance preparation
+
+| Capability / outcome | Status | Evidence |
+| --- | --- | --- |
+| Expanded public verification | VERIFIED | [Final review](MILESTONE-E-FINAL-REVIEW.md): original spec/12 cases unchanged; 36 new public cases, baseline 3/12 original and 22/48 combined (19/36 additional), upstream 297/297. Deterministic authored, interfaces, docs and syntax are mandatory gates. |
+| Closure and independence | VERIFIED | No freeze/grade for incomplete gates, quota exhaustion or failed worker closure; source edit and successful worker acceptance call required. 83 controller-only public/diagnostic semantic exclusions, no sealed cases authored. |
+| Existing resources and capture | VERIFIED | Same A100/OpenCode/64K/4096 profile and limits; output truncation prefixes 4980/7100 bytes already exceed edit cap, so no increase. 64 inert padded requests archive 25215306 bytes, all 192 hashes checked under unchanged 64 MiB/32 MiB policy. |
+| Regression / preparation | VERIFIED | 231/231, zero skips, 213.292 s; installed inert harness passes. Bundle `.aiwork/milestone-e-final/acceptance-trial`, digest `b6d7338aad1fa82343277ab37ac7c4afb946ec4da7353a6040e3abda977a71f6`, PREPARED_NOT_AUTHORIZED. 4031 historical entries/main unchanged. |
+| Live final acceptance | UNTESTED | No model tokens or live worker dispatch. Separate exact approval required. After the next authorized single trial, stop and assess Milestone E; no automatic ItsDangerous repetition. |
+
 ## Milestone E: evidence capture correction and offline diagnosis
 
 | Capability / outcome | Status | Evidence |

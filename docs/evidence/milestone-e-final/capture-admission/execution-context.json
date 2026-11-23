@@ -1,0 +1,622 @@
+{
+  "contract": {
+    "objective": "# ItsDangerous: duration-valued signature expiry\n\nImplement support for `datetime.timedelta` values in the `max_age` argument of\n`TimestampSigner.unsign`, `TimestampSigner.validate`, `TimedSerializer.loads` and\n`TimedSerializer.loads_unsafe`, including inherited URL-safe timed serializers.\nThis is an API convenience for applications whose expiry configuration already\nuses durations. Preserve integer-second and `None` behavior and the signed-token\nformat. No new runtime dependencies.\n\nDuration-valued limits must retain fractional seconds and accept negative and zero\ndurations with the same expiry rules as equivalent second-valued limits. An age\nequal to the limit is valid; an older age is expired. A future signature remains\ninvalid whenever a finite age limit is supplied. Preserve signature validation\nbefore age validation, exception classes, payload/date metadata, UTC timestamps,\nkey rotation, custom signers and unsafe-load return semantics. Do not broaden\nunrelated invalid-input acceptance or change cryptographic algorithms.\n\nUpdate all relevant public annotations (including overloads), docstrings and\n`docs/timed.rst`. Add meaningful regression tests in\n`tests/test_itsdangerous/test_timedelta_max_age.py`. Run the public cases, interface\nchecks and existing upstream suite. Inspect the authorized source yourself; the\ncontroller supplies requirements and public diagnostics, not implementation code.\n\nOnly these paths may change:\n\n- `src/itsdangerous/timed.py`\n- `docs/timed.rst`\n- `tests/test_itsdangerous/test_timedelta_max_age.py`\n\nAll other repository files and the frozen public verifier/cases are read-only.\nUse only the advertised scoped tools and approved check indices. Complete the\nactive implementation objective within the single worker session; no retry or\nmid-run operator implementation guidance is available. Final acceptance material\nis inaccessible to this session.\n\n\n# Public acceptance contract\n\nFEATURE.md is unchanged. These checks make its existing requirements executable;\nthey are public development material, not independent evaluation or solutions.\n\nCommand indices: 0 original 12 cases; 1 expanded public behavior (original 12 plus\n36 additional cases); 2 upstream; 3 authored tests; 4 interfaces; 5 documentation;\n6 syntax; 7 acceptance (all seven checks in one offline container invocation).\nOriginal and expanded scores are always reported separately.\n\nPreserve arbitrary Python integer limits, including exact equality and strict\nexpiry above floating-point exactness. Preserve None and previously accepted\nnumeric seconds. Unsupported types that the pristine API rejects must still be\nrejected, including conversion-capable nonnumeric types. Signature validation\nprecedes age/type handling. Duration checks cover negative, zero, equality,\nfractional seconds, finite future timestamps, UTC metadata, unsafe payloads,\ncustom separators and key rotation. Read the public corpus for precise inputs.\n\nUpdate docs/timed.rst meaningfully: explain max_age/timedelta, seconds and\nfractional durations, inclusive expiry equality, zero and negative limits. Public\ndoc checks require changed content, at least 30 words and these concepts; they\nare a bounded structural check, not a claim of complete semantic prose review.\nRelevant public docstrings and all max_age annotations/overloads must mention\nor support timedelta.\n\nAuthor tests in the permitted test file. They must collect at least six passing\ntests with assertions/pytest.raises, no skips or xfails, and no wall-clock sleeps\n(including imported aliases). Do not call encode on a bytes separator. The public\nauthored-test verifier runs the unchanged suite twice under different frozen UTC\nclocks, forbids sleep at runtime and checks that both runs exercise timedelta,\ninteger and None limits, at least one unsupported type, and an integer above\n2**53. Tests may use their own deterministic clocks, monkeypatches or freezegun\nticks. An assertion passing at age zero does not establish another boundary.\n\nBefore declaring completion, run command 7 and resolve its public diagnostics.\nSuccessful engineering closure requires completed/clean harness execution,\nmodel-authored edits, a successful worker acceptance call, all controller gates\npassing, no lost public passes and no scope changes. Missing/failed gates cannot\nbe bypassed by a higher behavior score. Partial work is retained without a freeze\nor independent grade. No retry or mid-run implementation guidance is available.\n\nUse the exact hash editor. A new-text field is at most 3000 UTF-8 bytes; anchors\nare at most 1200 bytes. Use small verified replacements/insertions or inspected\nlocations. The 4096-token output ceiling does not permit oversized file rewrites.\nNo historical attempted solution, diagnostic driver or correction is supplied.\nAfter this one authorized trial, stop for milestone assessment; do not repeat it.\n",
+    "write_roots": [
+      "src/itsdangerous/timed.py",
+      "docs/timed.rst",
+      "tests/test_itsdangerous/test_timedelta_max_age.py"
+    ],
+    "public_checks": [
+      {
+        "argv": [
+          "python",
+          "_aiwork_checks.py",
+          "public_original"
+        ],
+        "timeout": 45
+      },
+      {
+        "argv": [
+          "python",
+          "_aiwork_checks.py",
+          "public_expanded"
+        ],
+        "timeout": 45
+      },
+      {
+        "argv": [
+          "python",
+          "_aiwork_checks.py",
+          "upstream"
+        ],
+        "timeout": 45
+      },
+      {
+        "argv": [
+          "python",
+          "_aiwork_checks.py",
+          "authored"
+        ],
+        "timeout": 45
+      },
+      {
+        "argv": [
+          "python",
+          "_aiwork_checks.py",
+          "interfaces"
+        ],
+        "timeout": 45
+      },
+      {
+        "argv": [
+          "python",
+          "_aiwork_checks.py",
+          "documentation"
+        ],
+        "timeout": 45
+      },
+      {
+        "argv": [
+          "python",
+          "_aiwork_checks.py",
+          "syntax"
+        ],
+        "timeout": 45
+      },
+      {
+        "argv": [
+          "python",
+          "_aiwork_checks.py",
+          "acceptance"
+        ],
+        "timeout": 45
+      }
+    ],
+    "setup": [],
+    "deadline": null,
+    "policy": {
+      "operations": 96,
+      "edit_reserve": 8,
+      "verification_reserve": 8,
+      "model_requests": 64,
+      "compactions": 4,
+      "blocked_limit": 3
+    }
+  },
+  "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+  "epoch": 1,
+  "visible": [],
+  "issued": {},
+  "events": [
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "compaction",
+      "epoch": 1,
+      "evicted": []
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "compaction",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 1,
+      "category": "inference",
+      "contract_sha256": "300bcabb2408206a2d724ccba7a0ef27e1e0423ac2d97fa12e98d900c189e06b",
+      "remaining_operations": 96,
+      "denied": ""
+    }
+  ],
+  "used": {
+    "inspection": 0,
+    "editing": 0,
+    "verification": 0,
+    "inference": 63,
+    "compaction": 1
+  },
+  "seconds": {
+    "inference": 0.4359999999869615,
+    "compaction": 0.0
+  },
+  "blocked": 0,
+  "exhausted": ""
+}
