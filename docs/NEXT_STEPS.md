@@ -1,6 +1,13 @@
 # Next steps
 
-## Current handoff: consumed native ledger trial
+## Current handoff: prepared A100 thinking diagnostic
+
+Review both immutable arm digests in the [thinking diagnostic](A100-THINKING-DIAGNOSTIC.md).
+Byte-stride is staged under `.aiwork/a100-thinking-diagnostic/pair` with a
+210-second attempt budget per arm. Each arm requires its separate grant and
+runs at most once in the frozen OFF → ON order. No live worker has run.
+
+## Historical handoff: consumed native ledger trial
 
 The [approved ledger trial](NATIVE-LEDGER-A100-RESULT.md) ran once and failed to
 produce a candidate. The final response reached its output ceiling before an

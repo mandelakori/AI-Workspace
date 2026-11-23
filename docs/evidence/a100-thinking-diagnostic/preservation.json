@@ -1,0 +1,8 @@
+{
+  "prior_ledger_committed_entries": 82,
+  "prior_ledger_local_entries": 104,
+  "all_match": true,
+  "main_unchanged": true,
+  "no_approved_arms": true,
+  "live_generations": 0
+}

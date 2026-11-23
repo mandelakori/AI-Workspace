@@ -234,6 +234,7 @@ class Profile:
     gpu_headroom_mib: int = 512
     ram_headroom_mib: int = 2048
     context_reserve_tokens: int = 512
+    enable_thinking: bool | None = None
 
     def validate(self) -> None:
         if self.temperature is not None and (type(self.temperature) not in (int,float)
@@ -266,6 +267,10 @@ class Profile:
             raise ValueError("invalid tools capability or credential environment variable name")
         if self.reasoning_effort and not re.fullmatch(r"[A-Za-z0-9_-]{1,30}", self.reasoning_effort):
             raise ValueError("invalid reasoning effort")
+        if self.enable_thinking is not None and (type(self.enable_thinking) is not bool or self.engine != "llamacpp"):
+            raise ValueError("enable_thinking requires a Boolean llama.cpp template switch")
+        if self.enable_thinking is True and self.reasoning_effort == "none":
+            raise ValueError("reasoning_effort='none' conflicts with enable_thinking=true")
         if self.seed is not None:
             bounded("seed", self.seed, 0, 2**31 - 1)
         bounded("harness_turns", self.harness_turns, 0, 64)

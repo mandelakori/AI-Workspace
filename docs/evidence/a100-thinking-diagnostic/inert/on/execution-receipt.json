@@ -1,0 +1,161 @@
+{
+  "schema": 1,
+  "adapter": "opencode",
+  "status": "completed",
+  "raw_exit_code": 0,
+  "elapsed": 2.860000000000582,
+  "timed_out": false,
+  "cleanup_passed": true,
+  "provider_gate_passed": true,
+  "independent_verification": "pending",
+  "exhaustion_reason": "",
+  "evidence": {
+    "limit_bytes": 67108864,
+    "headroom_bytes": 33554432,
+    "captured_bytes": 59737,
+    "reserved_bytes": 0,
+    "files": {
+      "provider-request-001.json": {
+        "bytes": 4421,
+        "sha256": "c59c1a1f223b18ecc51300e82e02ad0de99bf35dc8b0291eea0f59aa98e37324",
+        "complete": true
+      },
+      "provider-forwarded-001.json": {
+        "bytes": 5528,
+        "sha256": "a54346605ed65e9d845869b34fdcb42d929d15932dbfb2fc359fafa50ed55223",
+        "complete": true
+      },
+      "provider-response-001.sse": {
+        "bytes": 869,
+        "sha256": "393dbb67c9cb081c8ab83239a2adddc36a2c49c6998c3949f011f25621879089",
+        "complete": true
+      },
+      "provider-request-002.json": {
+        "bytes": 5778,
+        "sha256": "1c62dd2bd8fa6ebf83758e545641a557d395b520208ff804be1e7c27729db604",
+        "complete": true
+      },
+      "provider-forwarded-002.json": {
+        "bytes": 6907,
+        "sha256": "8f13018c503fffb40d7da1a8c53cff1130f6e735802a90092f2cc7f26982d476",
+        "complete": true
+      },
+      "provider-response-002.sse": {
+        "bytes": 1030,
+        "sha256": "5aab1fb21ba89d84f21049e9ee2b8ee030af27c439b92c2f62f4684c4550d108",
+        "complete": true
+      },
+      "provider-request-003.json": {
+        "bytes": 7281,
+        "sha256": "ca9f084ef6d49543ac030f556dfbefd248cf7a9b5757016bc8f85f265cd6daa0",
+        "complete": true
+      },
+      "provider-forwarded-003.json": {
+        "bytes": 8432,
+        "sha256": "447169ffc95a78e4741d7ab0143492b9806833df3c8045304ead46a080ccdd06",
+        "complete": true
+      },
+      "provider-response-003.sse": {
+        "bytes": 858,
+        "sha256": "74ae0c73b0623c8f095896ca32dd11fc69fc3a3691a16c8b3b2549313227026f",
+        "complete": true
+      },
+      "provider-request-004.json": {
+        "bytes": 8354,
+        "sha256": "92aca6c260f676276b968c77cedcdf999b28315ddc2fa528895c84c6f0f6e477",
+        "complete": true
+      },
+      "provider-forwarded-004.json": {
+        "bytes": 9527,
+        "sha256": "3c8d3d23ea44c2ae0379190f8674d729c2101f774a9f191d9ee8615e3a29c979",
+        "complete": true
+      },
+      "provider-response-004.sse": {
+        "bytes": 752,
+        "sha256": "8b90a35fec3fdcf63904848329c816b751bb46732cd13c081db15fbf84668e67",
+        "complete": true
+      }
+    }
+  },
+  "resources": {
+    "epoch": 0,
+    "remaining_operations": 21,
+    "used": {
+      "inspection": 1,
+      "editing": 1,
+      "verification": 1,
+      "inference": 4,
+      "compaction": 0
+    },
+    "exhausted": "",
+    "policy": {
+      "operations": 24,
+      "edit_reserve": 4,
+      "verification_reserve": 4,
+      "model_requests": 18,
+      "compactions": 1,
+      "blocked_limit": 3
+    },
+    "seconds": {
+      "inference": 0.03200000000651926,
+      "inspection": 0.0319999999992433,
+      "editing": 0.01599999999962165,
+      "verification": 0.14099999999962165,
+      "cleanup": 0.01599999999962165
+    },
+    "contract_sha256": "59cac80b128189121267604c0964b340eef8cd4a42d17d0da14b56f1a18a72f3"
+  },
+  "provider_usage": {
+    "reported": [
+      {
+        "request": 1,
+        "category": "inference",
+        "usage": {
+          "prompt_tokens": 20,
+          "completion_tokens": 10,
+          "total_tokens": 30,
+          "completion_tokens_details": {
+            "reasoning_tokens": 2
+          }
+        }
+      },
+      {
+        "request": 2,
+        "category": "inference",
+        "usage": {
+          "prompt_tokens": 20,
+          "completion_tokens": 10,
+          "total_tokens": 30,
+          "completion_tokens_details": {
+            "reasoning_tokens": 2
+          }
+        }
+      },
+      {
+        "request": 3,
+        "category": "inference",
+        "usage": {
+          "prompt_tokens": 20,
+          "completion_tokens": 10,
+          "total_tokens": 30,
+          "completion_tokens_details": {
+            "reasoning_tokens": 2
+          }
+        }
+      },
+      {
+        "request": 4,
+        "category": "inference",
+        "usage": {
+          "prompt_tokens": 20,
+          "completion_tokens": 10,
+          "total_tokens": 30,
+          "completion_tokens_details": {
+            "reasoning_tokens": 2
+          }
+        }
+      }
+    ],
+    "unreported_requests": []
+  }
+}

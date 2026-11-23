@@ -1,0 +1,35 @@
+{
+  "input_files": 5,
+  "target": {
+    "reference.elf": {
+      "bytes": 16152,
+      "sha256": "787a07f328a2a393e9b271bacb266b0ac6a76e474d34af3e3f66e67e9ff0ec12"
+    }
+  },
+  "matching_except_mode": true,
+  "controls": {
+    "timeout": 210,
+    "attempts": 1,
+    "min_context": 65536,
+    "tool_operations": 24,
+    "edit_reserve": 4,
+    "public_test_reserve": 4,
+    "model_requests": 18,
+    "compaction_limit": 1
+  },
+  "digests": {
+    "off": "d463872c20fd451f06f088b7f69f287c1799b532f692318beac2b0d59687aa54",
+    "on": "919170e98baabcf70c597c3c1f052dcae64cb55ed82e02ed53d5a88956498c92"
+  },
+  "excluded_stimuli": 53,
+  "offline_reference_score": 5,
+  "baseline_score": 0,
+  "approval_negative_checks": [
+    "off",
+    "on"
+  ],
+  "generations": 0,
+  "grade_before_close_rejected": true,
+  "starting_hash_drift_rejected": true,
+  "main": "cf50e89c2ca2ad21d86fda5473f5ad6edc0c2623"
+}

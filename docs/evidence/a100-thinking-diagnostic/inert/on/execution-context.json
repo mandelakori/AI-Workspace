@@ -1,0 +1,111 @@
+{
+  "contract": {
+    "objective": "Set the inert fixture value to two and check it.",
+    "write_roots": [
+      "answer.py"
+    ],
+    "public_checks": [
+      {
+        "argv": [
+          "{python}",
+          "-c",
+          "from answer import value; assert value == 2"
+        ]
+      }
+    ],
+    "setup": [],
+    "deadline": null,
+    "policy": {
+      "operations": 24,
+      "edit_reserve": 4,
+      "verification_reserve": 4,
+      "model_requests": 18,
+      "compactions": 1,
+      "blocked_limit": 3
+    }
+  },
+  "contract_sha256": "59cac80b128189121267604c0964b340eef8cd4a42d17d0da14b56f1a18a72f3",
+  "epoch": 0,
+  "visible": [
+    "970e36068cbc4236713f546ad117d923b20b1a413744f841131c069cb6e71520"
+  ],
+  "issued": {
+    "970e36068cbc4236713f546ad117d923b20b1a413744f841131c069cb6e71520": {
+      "path": "answer.py",
+      "sha256": "585c93666fcb046b7b264d3fa73202aa2a38254ae82a4b3ba19e873c2d5a9886",
+      "line": 1,
+      "next_line": null
+    }
+  },
+  "events": [
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "59cac80b128189121267604c0964b340eef8cd4a42d17d0da14b56f1a18a72f3",
+      "remaining_operations": 24,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "59cac80b128189121267604c0964b340eef8cd4a42d17d0da14b56f1a18a72f3",
+      "remaining_operations": 23,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "59cac80b128189121267604c0964b340eef8cd4a42d17d0da14b56f1a18a72f3",
+      "remaining_operations": 22,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "check",
+      "category": "verification",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "59cac80b128189121267604c0964b340eef8cd4a42d17d0da14b56f1a18a72f3",
+      "remaining_operations": 21,
+      "denied": ""
+    }
+  ],
+  "used": {
+    "inspection": 1,
+    "editing": 1,
+    "verification": 1,
+    "inference": 4,
+    "compaction": 0
+  },
+  "seconds": {
+    "inference": 0.03200000000651926,
+    "inspection": 0.0319999999992433,
+    "editing": 0.01599999999962165,
+    "verification": 0.14099999999962165,
+    "cleanup": 0.01599999999962165
+  },
+  "blocked": 0,
+  "exhausted": ""
+}

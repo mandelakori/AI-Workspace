@@ -1,0 +1,59 @@
+[
+  {
+    "name": "example-1",
+    "group": "development",
+    "stdin": "",
+    "argv": [
+      "abcdef",
+      "2"
+    ],
+    "code": 0,
+    "stdout": "ace\n",
+    "stderr": ""
+  },
+  {
+    "name": "example-2",
+    "group": "development",
+    "stdin": "",
+    "argv": [
+      "hello",
+      "1"
+    ],
+    "code": 0,
+    "stdout": "hello\n",
+    "stderr": ""
+  },
+  {
+    "name": "example-3",
+    "group": "development",
+    "stdin": "",
+    "argv": [
+      "abcd",
+      "9"
+    ],
+    "code": 3,
+    "stdout": "",
+    "stderr": "step\n"
+  },
+  {
+    "name": "example-4",
+    "group": "development",
+    "stdin": "",
+    "argv": [],
+    "code": 2,
+    "stdout": "",
+    "stderr": "usage\n"
+  },
+  {
+    "name": "example-5",
+    "group": "development",
+    "stdin": "",
+    "argv": [
+      "",
+      "2"
+    ],
+    "code": 0,
+    "stdout": "\n",
+    "stderr": ""
+  }
+]

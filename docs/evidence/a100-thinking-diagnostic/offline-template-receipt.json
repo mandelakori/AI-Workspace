@@ -1,0 +1,15 @@
+{
+  "argv": [
+    "python",
+    "render.py"
+  ],
+  "cwd": "",
+  "runner": "sha256:fc1854e6885153904be89d67c701cd012fd68e57523566405d184ce2a4fe05e1",
+  "code": 0,
+  "elapsed": 0.7819999999992433,
+  "stdout": "{\"jinja\": \"3.1.6\", \"template_sha256\": \"e84f32a23fdda27689f868aa4a1a5621f41133e51a48d7f3efcbea2839574259\", \"results\": {\"continuation-off-request\": {\"enabled\": false, \"suffix\": \"\\n<think>\\n\\n</think>\\n\\n\", \"tool_schema_and_continuation_valid\": true}, \"continuation-on-request\": {\"enabled\": true, \"suffix\": \"\\n<think>\\n\", \"tool_schema_and_continuation_valid\": true}, \"initial-off-request\": {\"enabled\": false, \"suffix\": \"\\n<think>\\n\\n</think>\\n\\n\", \"tool_schema_and_continuation_valid\": true}, \"initial-on-request\": {\"enabled\": true, \"suffix\": \"\\n<think>\\n\", \"tool_schema_and_continuation_valid\": true}}, \"generation_requests\": 0}\n",
+  "stderr": "",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true
+}

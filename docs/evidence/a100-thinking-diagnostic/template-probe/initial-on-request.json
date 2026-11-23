@@ -1,0 +1,150 @@
+{
+  "model": "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Deterministic template check. No inference."
+    },
+    {
+      "role": "user",
+      "content": "Inspect authorized fixture."
+    }
+  ],
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "checks_check",
+        "description": "Run an approved public command by index in a disposable copy.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "index": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "required": [
+            "index"
+          ],
+          "additionalProperties": false
+        },
+        "strict": false
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "checks_diff",
+        "description": "Review a Git diff of current workspace edits.",
+        "parameters": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        },
+        "strict": false
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "checks_edit",
+        "description": "Apply a SHORT source edit with current SHA-256 from focus. replace consumes old and inserts new. before/after KEEP old; new is ONLY the insertion. old must match uniquely; uniform LF/CRLF is adapted to source endings, never fuzzy matched. For repeated anchors supply location={evidence_key: focus.evidence_key, line: inspected line, end_line: optional inclusive last line}; old must match exactly once within those inspected lines. Stale hashes/locations fail. After three equivalent failures use a DIFFERENT unique anchor or inspected location; another equivalent failure stops inference, even after reinspection. create requires expected_sha256=absent and old empty. Python results must parse.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "expected_sha256": {
+              "type": "string"
+            },
+            "old": {
+              "type": "string"
+            },
+            "new": {
+              "type": "string"
+            },
+            "mode": {
+              "type": "string",
+              "enum": [
+                "replace",
+                "before",
+                "after",
+                "create"
+              ]
+            },
+            "location": {
+              "type": "object",
+              "properties": {
+                "evidence_key": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "line": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "end_line": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "required": [
+                "evidence_key",
+                "line"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "path",
+            "expected_sha256",
+            "old",
+            "new",
+            "mode"
+          ],
+          "additionalProperties": false
+        },
+        "strict": false
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "checks_focus",
+        "description": "Discover qualified symbols and read bounded source (60 lines, 3000 UTF-8 bytes). query is a case-insensitive literal substring of a qualified symbol or source line. Use symbol=Class.method for exact lookup. Follow next_line; unchanged repeated excerpts are suppressed.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "line": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "symbol": {
+              "type": "string"
+            },
+            "query": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "path"
+          ],
+          "additionalProperties": false
+        },
+        "strict": false
+      }
+    }
+  ],
+  "temperature": 0,
+  "seed": 1729,
+  "max_completion_tokens": 4096,
+  "chat_template_kwargs": {
+    "enable_thinking": true
+  }
+}

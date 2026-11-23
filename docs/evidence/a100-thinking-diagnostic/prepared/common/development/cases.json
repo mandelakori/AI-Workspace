@@ -1,0 +1,49 @@
+[
+  {
+    "stdin": "",
+    "argv": [
+      "abcdef",
+      "2"
+    ],
+    "code": 0,
+    "stdout": "ace\n",
+    "stderr": ""
+  },
+  {
+    "stdin": "",
+    "argv": [
+      "hello",
+      "1"
+    ],
+    "code": 0,
+    "stdout": "hello\n",
+    "stderr": ""
+  },
+  {
+    "stdin": "",
+    "argv": [
+      "abcd",
+      "9"
+    ],
+    "code": 3,
+    "stdout": "",
+    "stderr": "step\n"
+  },
+  {
+    "stdin": "",
+    "argv": [],
+    "code": 2,
+    "stdout": "",
+    "stderr": "usage\n"
+  },
+  {
+    "stdin": "",
+    "argv": [
+      "",
+      "2"
+    ],
+    "code": 0,
+    "stdout": "\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "off": {
+    "requests": 4,
+    "tools": [
+      "focus",
+      "edit",
+      "check"
+    ],
+    "accepted_edit": true,
+    "passed_check": true,
+    "cleanup": true,
+    "catalog_gate": true,
+    "reported_reasoning_tokens": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "capture_files_verified": 12,
+    "real_model_tokens": 0
+  },
+  "on": {
+    "requests": 4,
+    "tools": [
+      "focus",
+      "edit",
+      "check"
+    ],
+    "accepted_edit": true,
+    "passed_check": true,
+    "cleanup": true,
+    "catalog_gate": true,
+    "reported_reasoning_tokens": [
+      2,
+      2,
+      2,
+      2
+    ],
+    "capture_files_verified": 12,
+    "real_model_tokens": 0
+  }
+}

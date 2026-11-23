@@ -1,0 +1,7 @@
+test_git_patch_includes_added_modified_and_deleted_files (test_engineering.EngineeringTests.test_git_patch_includes_added_modified_and_deleted_files) ... ok
+test_external_files_are_denied_and_staged_edits_survive (test_harness_boundary.OpenCodeBoundaryTests.test_external_files_are_denied_and_staged_edits_survive) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 3.346s
+
+OK

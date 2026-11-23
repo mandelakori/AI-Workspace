@@ -218,6 +218,8 @@ def request_options(profile: Profile) -> dict:
         options["reasoning_effort"] = profile.reasoning_effort
         if profile.engine == "llamacpp" and profile.reasoning_effort == "none":
             options["chat_template_kwargs"] = {"enable_thinking": False}
+    if profile.enable_thinking is not None:
+        options["chat_template_kwargs"] = {"enable_thinking": profile.enable_thinking}
     if profile.seed is not None:
         options["seed"] = profile.seed
     return options

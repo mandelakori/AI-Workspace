@@ -1,0 +1,59 @@
+{
+  "endpoint": {
+    "model_path": "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf",
+    "model_ftype": "Q6_K",
+    "build_info": "b12063-2cbca389f",
+    "total_slots": 1,
+    "slot_context": 131072,
+    "idle": true,
+    "generation_requests": 0,
+    "template_sha256": "e84f32a23fdda27689f868aa4a1a5621f41133e51a48d7f3efcbea2839574259"
+  },
+  "generation_requests": 0,
+  "route": "POST /apply-template",
+  "server_properties": {
+    "chat_template_caps": {
+      "supports_object_arguments": true,
+      "supports_parallel_tool_calls": true,
+      "supports_preserve_reasoning": true,
+      "supports_reasoning_effort": false,
+      "supports_string_content": true,
+      "supports_system_role": true,
+      "supports_tool_calls": true,
+      "supports_tools": true,
+      "supports_typed_content": true,
+      "reasoning_effort_levels": []
+    }
+  },
+  "owned_forward_closed": true,
+  "vectors": [
+    {
+      "vector": "initial-off",
+      "suffix": "\n<think>\n\n</think>\n\n",
+      "sha256": "536b7ee41865492eb865d4fcbd8596eb7145bfddcb0109e468e55ba425007216",
+      "tool_catalog_preserved": true,
+      "tool_history_preserved": true
+    },
+    {
+      "vector": "initial-on",
+      "suffix": "\n<think>\n",
+      "sha256": "fdfc9748dd4538110b8f8b355cb69589208e2f01673b997000384436f43e201a",
+      "tool_catalog_preserved": true,
+      "tool_history_preserved": true
+    },
+    {
+      "vector": "continuation-off",
+      "suffix": "\n<think>\n\n</think>\n\n",
+      "sha256": "313b2a2fe14937fc68ab7ddbcbd93cfce4ba971465659c57e38a334570e16b77",
+      "tool_catalog_preserved": true,
+      "tool_history_preserved": true
+    },
+    {
+      "vector": "continuation-on",
+      "suffix": "\n<think>\n",
+      "sha256": "5cbf5d6d6dda87b8eff8b2cbefe5e902fb06fda63840513e219d8fa2368992d3",
+      "tool_catalog_preserved": true,
+      "tool_history_preserved": true
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+data: {"id": "inert", "object": "chat.completion.chunk", "created": 1, "model": "inert", "choices": [{"index": 0, "delta": {"role": "assistant", "content": "Inert fixture complete."}, "finish_reason": null}]}
+
+data: {"id": "inert", "object": "chat.completion.chunk", "created": 1, "model": "inert", "choices": [{"index": 0, "delta": {}, "finish_reason": "stop"}]}
+
+data: {"choices": [], "usage": {"prompt_tokens": 20, "completion_tokens": 10, "total_tokens": 30}}
+
+data: [DONE]
+
