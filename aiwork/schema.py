@@ -281,6 +281,26 @@ class Profile:
 
 
 @dataclass(frozen=True)
+class IdleOllama:
+    endpoint: str
+    model: str
+    model_sha256: str
+    executable: str
+    executable_sha256: str
+
+    def validate(self) -> None:
+        match = re.fullmatch(r'http://127\.0\.0\.1:([1-9][0-9]{0,4})', self.endpoint)
+        if not match or int(match[1]) > 65535:
+            raise ValueError('idle_ollama requires an explicit IPv4 loopback endpoint without /v1')
+        if not re.fullmatch(r'[a-zA-Z0-9_.-]{1,100}:[a-zA-Z0-9_.-]{1,100}', self.model):
+            raise ValueError('idle_ollama requires an exact local model and tag')
+        if not all(re.fullmatch(r'[a-f0-9]{64}', value) for value in (self.model_sha256, self.executable_sha256)):
+            raise ValueError('idle_ollama requires exact model and executable SHA-256 hashes')
+        if not Path(self.executable).is_absolute() or Path(self.executable).name.casefold() != 'ollama.exe':
+            raise ValueError('idle_ollama requires the absolute path of the reviewed ollama.exe')
+
+
+@dataclass(frozen=True)
 class Config:
     state: Path
     profiles: tuple[Profile, ...] = ()
@@ -294,6 +314,7 @@ class Config:
     verification_image: str = ""
     execution_state: Path | None = None
     pi: str = ''
+    idle_ollama: IdleOllama | None = None
 
     @classmethod
     def load(cls, path: Path) -> Config:
@@ -315,6 +336,10 @@ class Config:
         if d.get("execution_state"):
             d["execution_state"] = (path.parent / d["execution_state"]).resolve()
         if d.get('pi'):d['pi']=str((path.parent/d['pi']).resolve())
+        if 'idle_ollama' in d:
+            policy = IdleOllama(**d['idle_ollama'])
+            policy.validate()
+            d['idle_ollama'] = policy
         cfg = cls((path.parent / d.pop("state", ".aiwork")).resolve(), profiles, **d)
         bounded("local_slots", cfg.local_slots, 1, MAX_LOCAL_SLOTS)
         bounded("a100_slots", cfg.a100_slots, 1, 1)

@@ -14,7 +14,7 @@ from types import SimpleNamespace
 
 from aiwork.local_runtime import MIB, admit_context, copy_model, calibrated_runtime, isolated_ollama, load_model, startup_budget
 from aiwork.process import Result
-from aiwork.schema import Profile,Task
+from aiwork.schema import IdleOllama,Profile,Task
 from aiwork.local_calibration import capacity64
 
 
@@ -52,6 +52,19 @@ class LocalExecutionTests(unittest.TestCase):
                 self.assertEqual(launched.call_count,1)
                 with self.assertRaisesRegex(ValueError,'hash changed'):
                     with calibrated_runtime(replace(profile,calibration_sha256='0'*64),task,artifacts,monotonic()+300):pass
+                reclaimed=root/'reclaimed-attempt';reclaimed.mkdir()
+                policy=IdleOllama('http://127.0.0.1:11434','idle:fixture','a'*64,str(root/'ollama.exe'),'b'*64)
+                before={'gpu_free_bytes':5000*MIB,'ram_available_bytes':1000*MIB}
+                after={'gpu_free_bytes':7500*MIB,'ram_available_bytes':8000*MIB}
+                with (patch('aiwork.local_runtime.memory_snapshot',side_effect=[before,after]) as sampler,
+                      patch('aiwork.local_reclaim.reclaim_local_memory',return_value=True) as unload):
+                    with calibrated_runtime(profile,task,reclaimed,monotonic()+300,idle_ollama=policy) as selected:
+                        self.assertEqual(selected.context,16384)
+                    self.assertEqual(sampler.call_count,2)
+                    unload.assert_called_once()
+                evidence=self.receipt(reclaimed,'local-context-admission')
+                self.assertTrue(evidence['reclamation_rechecked'])
+                self.assertEqual(evidence['memory'],after)
                 preload.side_effect = TimeoutError('inert load did not reach readiness')
                 failed = root/'failed-attempt'
                 failed.mkdir()

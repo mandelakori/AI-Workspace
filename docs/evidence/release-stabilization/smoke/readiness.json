@@ -1,0 +1,40 @@
+{
+  "selected": 16384,
+  "demand": 9488,
+  "observed_input_tokens": 7440,
+  "memory": {
+    "at": 66146.312,
+    "ram_total_bytes": 33413771264,
+    "ram_available_bytes": 11264008192,
+    "gpu_total_bytes": 8546942976,
+    "gpu_free_bytes": 8274313216,
+    "gpu_used_bytes": 0
+  },
+  "deadline_seconds": 220,
+  "candidates": [
+    {
+      "context": 8192,
+      "rejected": [
+        "observed task demand"
+      ],
+      "estimated_request_seconds": 155.36063822367782,
+      "required_ram_bytes": 1471844186
+    },
+    {
+      "context": 16384,
+      "rejected": [],
+      "estimated_request_seconds": 171.92319298020607,
+      "required_ram_bytes": 5435547648
+    },
+    {
+      "context": 32768,
+      "rejected": [
+        "operator context maximum"
+      ],
+      "estimated_request_seconds": 168.86924873272397,
+      "required_ram_bytes": 5435547648
+    }
+  ],
+  "gpu_headroom_mib": 512,
+  "ram_headroom_mib": 2048
+}

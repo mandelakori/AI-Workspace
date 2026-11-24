@@ -1,5 +1,12 @@
 # Status as of 2026-11-24
 
+## Final integration and stabilization
+
+| Capability / outcome | Status | Evidence |
+| --- | --- | --- |
+| Ownership-aware local admission and reclamation | VERIFIED | [Release handoff](RELEASE-STABILIZATION.md). Deterministic coverage for ownership, graceful unload, deadline, shared locking, measured recheck and eligible fallback. |
+| Live scoped local engineering after corrected startup | UNTESTED | Separate smoke is `PREPARED_NOT_AUTHORIZED`. The pristine fixture was graded offline and no worker was dispatched. |
+
 ## Cross-plane live execution check
 
 | Capability / outcome | Status | Evidence |

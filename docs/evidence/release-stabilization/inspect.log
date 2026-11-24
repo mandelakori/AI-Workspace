@@ -1,0 +1,43 @@
+{
+  "objective": "Fix the Fahrenheit to Celsius conversion in units.py using the standard formula. Inspect units.py and test_units.py first. Run the approved public test after editing.",
+  "workspace": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\examples\\project",
+  "kind": "agent",
+  "category": "python-bugfix",
+  "inputs": [
+    "units.py",
+    "test_units.py"
+  ],
+  "deliverables": [
+    "units.py"
+  ],
+  "checks": [
+    "Check(argv=('{python}', '-m', 'unittest', '-v', 'test_units'), timeout=25, stdout=None, cwd='', oracle='')"
+  ],
+  "location": "auto",
+  "profile": "",
+  "complexity": 1,
+  "timeout": 240,
+  "attempts": 1,
+  "agent_checks": true,
+  "specialist": "",
+  "verification_dir": null,
+  "mode": "restricted",
+  "write_roots": [],
+  "commands": [],
+  "setup": [],
+  "baseline_check": false,
+  "min_context": 0,
+  "preferred_profile": "",
+  "rank_public": false,
+  "agent_role": "",
+  "source_context": [],
+  "source_patch": false,
+  "public_cases": "",
+  "attempt_limit": 0,
+  "tool_operations": 48,
+  "edit_reserve": 4,
+  "public_test_reserve": 4,
+  "model_requests": 64,
+  "compaction_limit": 4,
+  "context_input_tokens": 0
+}

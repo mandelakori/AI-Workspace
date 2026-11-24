@@ -1,0 +1,14 @@
+Looking in links: c:\Users\mande\coding\Final RSTP\AI-Workspace\.aiwork\phase61-discovery\image\wheels
+Processing c:\users\mande\coding\final rstp\ai-workspace
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: ai-workspace
+  Building wheel for ai-workspace (pyproject.toml): started
+  Building wheel for ai-workspace (pyproject.toml): finished with status 'done'
+  Created wheel for ai-workspace: filename=ai_workspace-0.3.0-py3-none-any.whl size=193424 sha256=178b3cf21c11df0a6a196050558124e5e5287a6b1c7608ac9950361bbe264150
+  Stored in directory: c:\users\mande\appdata\local\pip\cache\wheels\9d\dd\b0\3008003fe34bf2d9b61e528d3099daa781dcf89a8c6898aa24
+Successfully built ai-workspace

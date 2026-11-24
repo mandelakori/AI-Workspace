@@ -1,0 +1,90 @@
+{
+  ".gitattributes": {
+    "bytes": 20,
+    "sha256": "e97602ab9cac70102245345c5ab0fc9830df8b17f1072b188265a662a3a547ae"
+  },
+  "baseline.log": {
+    "bytes": 42478,
+    "sha256": "2341a3ef2d0d52075fbdd5051b7f78e97ae2d144b7f5b1a9a349523814ca3d2a"
+  },
+  "direct.log": {
+    "bytes": 275,
+    "sha256": "8ff3fa7fd792f9dc1fafa69f797dcd6c7d6b7b0672076ffef1a5988563082e7e"
+  },
+  "doctor.log": {
+    "bytes": 885,
+    "sha256": "a8ee187062a80be996a9842b4ed1fd4b03854f6cd709f4376937795435ef3835"
+  },
+  "final.log": {
+    "bytes": 43430,
+    "sha256": "0b50cba2e5832ff22f9122d912fe7b801f7dee5111002526833dce866ecde688"
+  },
+  "focused.log": {
+    "bytes": 6377,
+    "sha256": "24510b828ac7261ec402d8332810fa9e0ec0b5964a7cd0500355fbd60f2e4fa1"
+  },
+  "help.log": {
+    "bytes": 2552,
+    "sha256": "f4024601ddbc12177f90549729936b2d71f1030c70276052425fc136b7fe7366"
+  },
+  "inspect.log": {
+    "bytes": 1202,
+    "sha256": "da12627906266d71308dc969db2800e191970309bde3f38d800e035cfb5a6807"
+  },
+  "install-offline.log": {
+    "bytes": 216,
+    "sha256": "06e5a25e9a63b9a24c55c32ecdd869389f8e9e906cbf8f0007c71ebb777bfc18"
+  },
+  "installed-version.log": {
+    "bytes": 14,
+    "sha256": "aaf210be259630c97b036ce20627a030f10b516bb335e164c24f335a532a9d72"
+  },
+  "invalid-config.log": {
+    "bytes": 83,
+    "sha256": "19cde6d8a847cf0a3761250409f5192751c9caccc8afd87350685584ba0ec3ac"
+  },
+  "queued.log": {
+    "bytes": 76,
+    "sha256": "7bc973efd399e7bbf301f046a4342954dcd6f3506853815bff272ed3dbb8c845"
+  },
+  "README.md": {
+    "bytes": 836,
+    "sha256": "35bace85750c83765fd8381abbcc8b5f77fe8f30294b9d7fe3a4d61bca903738"
+  },
+  "run-detail.log": {
+    "bytes": 802,
+    "sha256": "fc4df04f7790954c34b29dbf28e21f6f9124f54aeb42891413f27122bad6589b"
+  },
+  "smoke/manifest.json": {
+    "bytes": 10072,
+    "sha256": "9e69312d926a9da36406093508f2b7da66089b6e933153d3bc4beec0cef6de63"
+  },
+  "smoke/manifest.sha256": {
+    "bytes": 66,
+    "sha256": "09eea871de0accba0644a4fc5e55355e4e1fb3cbde76af8739bf9df7d3bf720b"
+  },
+  "smoke/readiness.json": {
+    "bytes": 925,
+    "sha256": "b3cdc95e355608784262b132a6e776162a8541344f3d75fbca461caafa9e5293"
+  },
+  "smoke/validation.json": {
+    "bytes": 3189,
+    "sha256": "a13594df1c765b4bcc5238a82220dfbd968773d30e677651b2eecf65d45f0564"
+  },
+  "version.log": {
+    "bytes": 14,
+    "sha256": "aaf210be259630c97b036ce20627a030f10b516bb335e164c24f335a532a9d72"
+  },
+  "wheel-offline.log": {
+    "bytes": 1021,
+    "sha256": "1130f342404e1df44d62a159a216bc2e28452f99214ee6238707380e47c5ba81"
+  },
+  "wheel.log": {
+    "bytes": 5354,
+    "sha256": "6272805738c23c38c7cf41f540ad9a11320ee929b7a93d6b081d3798bd691553"
+  },
+  "worker.log": {
+    "bytes": 275,
+    "sha256": "0ee3de3d2ba123b5bbf1ae8c4096c111d8ed4510cfb05b6c010214f63821d58e"
+  }
+}

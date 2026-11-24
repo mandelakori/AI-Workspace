@@ -283,7 +283,7 @@ def admit_context(report: dict, *, input_tokens: int, output_tokens: int, reserv
 
 
 @contextmanager
-def calibrated_runtime(profile, task, artifacts: Path, deadline: float):
+def calibrated_runtime(profile, task, artifacts: Path, deadline: float, *, idle_ollama=None, stop: Path | None = None):
     """Opt-in calibrated profiles use their own inference server, never shared Ollama."""
     path=Path(profile.local_calibration).resolve(strict=True);raw=path.read_bytes()
     if hashlib.sha256(raw).hexdigest()!=profile.calibration_sha256:
@@ -296,11 +296,30 @@ def calibrated_runtime(profile, task, artifacts: Path, deadline: float):
     observed=max(task.context_input_tokens,max(0,task.min_context-profile.output_tokens-profile.context_reserve_tokens))
     execution_deadline = deadline - min(20, max(4, task.timeout//5))
     memory = memory_snapshot()
-    admission=admit_context(report,input_tokens=observed,output_tokens=profile.output_tokens,
-            reserve_tokens=profile.context_reserve_tokens,maximum=profile.context,memory=memory,
-            deadline_seconds=max(.001,execution_deadline-monotonic()),
-            gpu_headroom_mib=profile.gpu_headroom_mib,ram_headroom_mib=profile.ram_headroom_mib)
-    write(artifacts/'local-context-admission.json',admission|{'calibration_sha256':profile.calibration_sha256})
+
+    def assess(readings):
+        return admit_context(report,input_tokens=observed,output_tokens=profile.output_tokens,
+                reserve_tokens=profile.context_reserve_tokens,maximum=profile.context,memory=readings,
+                deadline_seconds=max(.001,execution_deadline-monotonic()),
+                gpu_headroom_mib=profile.gpu_headroom_mib,ram_headroom_mib=profile.ram_headroom_mib)
+
+    admission = assess(memory)
+    memory_only = {'GPU headroom', 'RAM headroom'}
+    low_memory = (any(row['rejected'] and set(row['rejected']) <= memory_only for row in admission['candidates'])
+                  if admission['selected'] is None else memory['gpu_free_bytes'] < profile.memory_mib*MIB)
+    rechecked = False
+    if idle_ollama is not None and low_memory:
+        from .local_reclaim import reclaim_local_memory
+        # Retain enough time for a measured context, independent of whether unload helps.
+        feasible = [row['estimated_request_seconds'] for row in admission['candidates']
+                    if not set(row['rejected']) - memory_only]
+        if feasible:
+            rechecked = reclaim_local_memory(idle_ollama, artifacts, execution_deadline-min(feasible), stop)
+        if rechecked:
+            memory = memory_snapshot()
+            admission = assess(memory)
+    write(artifacts/'local-context-admission.json',admission|{'calibration_sha256':profile.calibration_sha256,
+                                                             'reclamation_rechecked':rechecked})
     if admission['selected'] is None:raise ValueError('no measured context satisfies demand, memory and deadline')
     if memory['gpu_free_bytes'] < profile.memory_mib*MIB:
         raise ValueError(f'GPU free memory below {profile.memory_mib} MiB for {profile.id}')

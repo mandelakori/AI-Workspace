@@ -575,7 +575,8 @@ class Controller:
                 if profile.location == "a100" else nullcontext()
             )
             from .local_runtime import calibrated_runtime
-            runtime=(calibrated_runtime(profile,task,attempt,deadline) if profile.local_calibration
+            stop = self.config.state / 'STOP'
+            runtime=(calibrated_runtime(profile,task,attempt,deadline,idle_ollama=self.config.idle_ollama,stop=stop) if profile.local_calibration
                      else nullcontext(profile))
             with connection, runtime as selected_profile:
                 profile=selected_profile
@@ -589,10 +590,19 @@ class Controller:
                 gpu_unknown = need_gpu_reading and not readings
                 below_budget = need_gpu_reading and bool(readings) and max(row["free_mib"] for row in readings) < profile.memory_mib
                 below_context = effective_context < max(task.min_context, 1024)
+                rechecked = False
+                if self.config.idle_ollama is not None and below_budget and not below_context and not profile.local_calibration:
+                    from .local_reclaim import reclaim_local_memory
+                    rechecked = reclaim_local_memory(self.config.idle_ollama, attempt, deadline, stop)
+                    if rechecked:
+                        readings = self.gpu_sample(profile)
+                        gpu_unknown = not readings
+                        below_budget = bool(readings) and max(row["free_mib"] for row in readings) < profile.memory_mib
                 write_json(attempt / "admission.json", {
                     "gpu": readings, "inference": inference, "minimum_free_mib": profile.memory_mib,
                     "profile_context": profile.context, "effective_context": effective_context,
                     "minimum_context": task.min_context, "admitted": not (gpu_unknown or below_budget or below_context),
+                    "reclamation_rechecked": rechecked,
                 })
                 if gpu_unknown:
                     raise ValueError(f"GPU telemetry unavailable for the configured memory minimum of {profile.id}")

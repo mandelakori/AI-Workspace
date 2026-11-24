@@ -2,19 +2,14 @@
 
 AI Workspace runs manifests for software development, testing and bounded static-analysis jobs from a Windows controller. It stages inputs, selects an execution profile, runs OpenCode or a deterministic check, independently verifies the result and retains the work and evidence. The A100 can serve inference over the existing SSH connection while the harness and workspace stay on Windows.
 
-Current position: **original Milestone E, experimental evaluation**. Prioritize
-[autonomous coding on the existing A100](docs/A100-ENGINEERING-READINESS.md), then
-the existing REA/Ghidra workbench, measured routing and final acceptance. The fresh
-ItsDangerous trial was approved and **quarantined before any model completion**.
-The [message-layout correction](docs/A100-SYSTEM-CONTRACT-FIX.md) passed live
-inference and compaction, but the [approved follow-up trial](docs/A100-DURATION-TRIAL-RESULT.md)
-accepted no edits and timed out after repeated anchor failures. Both trials are
-quarantined and consumed; do not resume them. The Pi/OpenCode comparison remains
-unauthorized.
+The project is in **final integration and stabilization** on the original
+roadmap. The [release handoff](docs/RELEASE-STABILIZATION.md) describes the
+verified workflow, remaining limitations and separately authorized local
+smoke test. [Status](docs/STATUS.md) retains the historical trial outcomes.
 
 ## Windows first run
 
-Use PowerShell 7, Python 3.12 or newer, and Git. The bootstrap accepts a path to an existing Python executable and uses uv or the Python launcher when that path is omitted. Node.js 22+ and npm are needed only to install the harnesses through npm. Start your installed local inference service before running its profile.
+Use PowerShell 7, Python 3.12 or newer, and Git. The bootstrap accepts a path to an existing Python executable and uses uv or the Python launcher when that path is omitted. Node.js 22+ and npm are needed for optional npm installations. Bootstrap may use package indexes. For an offline setup, install the built wheel with `pip install --no-index --no-deps <wheel>`, copy `aiwork.example.toml` to `aiwork.local.toml`, and configure installed binaries. Building offline requires the pinned `setuptools` wheel from `pyproject.toml` in a local wheelhouse.
 
 ```powershell
 Set-Location 'C:\Users\mande\coding\Final RSTP\AI-Workspace'
@@ -23,12 +18,10 @@ $ai = '.\.venv\Scripts\aiwork.exe'
 & $ai --help
 & $ai doctor
 & $ai harnesses
-& $ai models
 & $ai task run examples/direct.toml --trusted
-.\scripts\Smoke.ps1 -Profile laptop-ollama
 ```
 
-Add `-InstallOpenCode` to bootstrap if OpenCode 2.0.27 is missing. Bootstrap creates `aiwork.local.toml` from the example on first use. Review the loopback ports and exact model IDs shown by `aiwork models`. Set `opencode` at the top level for a custom executable. `--trusted` authorizes the named fixture’s checks to run on this computer.
+Add `-InstallOpenCode` to bootstrap if OpenCode 2.0.27 is missing. Bootstrap creates `aiwork.local.toml` from the example on first use. Set `opencode` at the top level for a custom executable. `aiwork models` probes the configured services, including SSH for an A100 profile. Shared-service profiles expect the installed model endpoint to be available. A calibrated local profile starts its own isolated service after admission. Scoped engineering and sealed checks need Docker Desktop in Linux mode and the configured offline image already installed. `--trusted` authorizes the named host checks. The separately reviewed local smoke launches a live worker only after its own approval.
 
 ## Submit work and retrieve results
 
@@ -44,7 +37,7 @@ The [Phase 3 engineering guide](docs/ENGINEERING.md#phase-3-operator-workflow) c
 
 Create a TOML manifest modeled on [examples/coding.toml](examples/coding.toml). Keep the objective and input paths specific. Use `deliverables` to declare the files the harness may edit and `[[checks]]` for fixed arguments and exit-code or exact-output criteria. `{python}` uses the controller interpreter, or the image’s Python in Docker. Put private checks in a sibling directory named by `verification_dir` and address it with `{verification}` in check arguments. Each agent check gets a disposable copy. The independent verification phase uses a separate copy of the candidate and runs its checks in order.
 
-Use `--profile <id>` for a hard override, or set `location` to `auto`, `local` or `a100` in the manifest. After a failed or interrupted run, `aiwork task resume <job-id>` requeues it from its frozen baseline and preserves earlier attempts. Add `--interrupted` for a stale running job after the original worker exits. The verified deliverables are under `.aiwork/runs/<job-id>/attempt-*/workspace` for model jobs and `verification` for direct jobs. Review and integrate them into your project using your normal Git workflow.
+Use `--profile <id>` for a hard override, or set `location` to `auto`, `local` or `a100` in the manifest. For ordinary jobs, `aiwork task resume <job-id>` preserves earlier attempts and can reuse a checkpoint. Add `--reset` for a clean baseline or `--interrupted` for a stale running job after the original worker exits. One-shot measured trials have their own protocol. Open the returned `artifacts` directory and use its verification receipts to identify the verified attempt. Review the candidate in `attempt-*/workspace` for model jobs or `attempt-*/verification` for direct jobs.
 
 ### Controller and A100
 

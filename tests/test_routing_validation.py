@@ -18,7 +18,7 @@ from unittest.mock import patch
 from aiwork.controller import Controller, write_json
 from aiwork.local_runtime import MIB, admit_context
 from aiwork.router import Plane, routes
-from aiwork.schema import Check, Config, Task
+from aiwork.schema import Check, Config, IdleOllama, Task
 
 
 CONFIG = Path(__file__).resolve().parents[1] / 'config/phase3.example.toml'
@@ -134,6 +134,46 @@ class RoutingValidationTests(unittest.TestCase):
         self.assertEqual(result['status'], 'blocked')
         self.assertIn('serving context 2048', result['detail'])
         worker.assert_not_called()
+
+    def test_memory_recheck_under_local_lane_preserves_override_and_fallback(self):
+        from aiwork.process import Result
+
+        local=replace(self.local,memory_mib=2048)
+        policy=IdleOllama('http://127.0.0.1:11434','idle:fixture','a'*64,str(self.root/'ollama.exe'),'b'*64)
+        ctl=Controller(Config(self.root/'reclamation',(local,self.remote),execution_state=self.locks,idle_ollama=policy))
+
+        def reclaim(*args):
+            with self.assertRaises(TimeoutError):
+                with Plane('local',2,self.root/'peer',self.locks).reserve(local,.04):
+                    self.fail('another worker acquired the reclamation lane')
+            return True
+
+        def execute(profile, task, work, attempt, *_):
+            (work/'units.py').write_bytes(b'value = 2\n')
+            return Result(0,.02,'','',False,False)
+
+        with (patch('aiwork.remote.a100_session',return_value=nullcontext()) as remote,
+              patch('aiwork.controller.opencode_path',return_value='inert'),
+              patch('aiwork.controller.Inference.ready'),
+              patch('aiwork.controller.ollama_residency',return_value={'resident':False}),
+              patch('aiwork.local_reclaim.reclaim_local_memory',side_effect=reclaim) as recovery,
+              patch('aiwork.controller.OpenCode.execute',side_effect=execute) as worker):
+            for low_after, selected in ((4096,local.id),(1024,self.remote.id)):
+                with self.subTest(selected=selected), patch.object(ctl,'gpu_sample',side_effect=[
+                    [{'free_mib':1024}],[{'free_mib':low_after}],[],[],[],[]]):
+                    job=ctl.submit_task(replace(self.task,attempts=2,category=f'reclamation-{selected}'),True)
+                    result=ctl.run_submitted(job)
+                    self.assertEqual(result['status'],'verified',result)
+                    self.assertEqual(worker.call_args.args[0].id,selected)
+                    admission=json.loads((Path(result['artifacts'])/'attempt-001/admission.json').read_bytes())
+                    self.assertTrue(admission['reclamation_rechecked'])
+                    self.assertEqual(admission['admitted'],selected==local.id)
+            self.assertEqual(remote.call_count,1)
+            with patch.object(ctl,'gpu_sample',return_value=[{'free_mib':1024}]):
+                job=ctl.submit_task(replace(self.task,attempts=1),True,profile_id=local.id)
+                self.assertEqual(ctl.run_submitted(job)['status'],'blocked')
+            self.assertEqual(remote.call_count,1)
+            self.assertEqual(recovery.call_count,3)
 
     def test_configured_harness_without_required_capability_cannot_dispatch(self):
         profile = replace(self.local, harness='qwen')

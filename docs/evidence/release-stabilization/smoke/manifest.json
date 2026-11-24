@@ -1,0 +1,210 @@
+{
+  "arm": "local",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "objective": "Fix the Fahrenheit to Celsius conversion in units.py using the standard formula. Inspect units.py and test_units.py, preserve the existing interface and execute public check 0. Only units.py may change.",
+  "profile": {
+    "id": "measured-opencode",
+    "model": "qwen3.5:9b",
+    "endpoint": "http://127.0.0.1:11434/v1",
+    "engine": "ollama",
+    "harness": "opencode",
+    "location": "local",
+    "context": 16384,
+    "output_tokens": 1536,
+    "memory_mib": 0,
+    "quantization": "Q4_K_M",
+    "source": "",
+    "tools": true,
+    "api_key_env": "",
+    "managed": false,
+    "reasoning_effort": "none",
+    "seed": 1729,
+    "harness_turns": 0,
+    "temperature": 0,
+    "local_calibration": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\adaptive-local\\calibration\\calibration.json",
+    "calibration_sha256": "7594e3150c4be3f8f380fa1e8a0b722692b0dedbbd2994aae331c66538fa797b",
+    "gpu_headroom_mib": 512,
+    "ram_headroom_mib": 2048,
+    "context_reserve_tokens": 512,
+    "enable_thinking": null
+  },
+  "generation": {
+    "temperature": 0,
+    "reasoning_effort": "none",
+    "seed": 1729,
+    "max_tokens": 1536
+  },
+  "image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+  "opencode": {
+    "path": "C:\\Users\\mande\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+    "sha256": "d7b7a9fbc8c358d940fed638dde500820f8a1c967ff855b8619d3763345f5832"
+  },
+  "ssh": {},
+  "execution_state": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork",
+  "limits": {
+    "warm": 20,
+    "work": 265,
+    "grade": 45
+  },
+  "worker": {
+    "timeout": 240,
+    "attempts": 1,
+    "min_context": 8192,
+    "context_input_tokens": 7440,
+    "tool_operations": 20,
+    "edit_reserve": 4,
+    "public_test_reserve": 4,
+    "model_requests": 12,
+    "compaction_limit": 1
+  },
+  "write_roots": [
+    "units.py"
+  ],
+  "checks": {
+    "public": {
+      "argv": [
+        "{python}",
+        "-m",
+        "unittest",
+        "-v",
+        "test_units"
+      ],
+      "timeout": 15,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    },
+    "private": {
+      "argv": [
+        "{python}",
+        "-c",
+        "from units import fahrenheit_to_celsius; print(format(fahrenheit_to_celsius(float(input())), \".6f\"))"
+      ],
+      "timeout": 35,
+      "stdout": null,
+      "cwd": "",
+      "oracle": "cases.json"
+    }
+  },
+  "capture": {
+    "limit_bytes": 67108864,
+    "headroom_bytes": 33554432
+  },
+  "bindings": {
+    "input": {
+      "test_units.py": {
+        "bytes": 521,
+        "sha256": "3270b12ed8619445d9ebfbe9e28959b0cce69c708db667568b9684e176847c29"
+      },
+      "units.py": {
+        "bytes": 82,
+        "sha256": "48786c09aadf7af914431917c5dc840071b544d1a47fa288289d209c859927a0"
+      }
+    },
+    "oracle": {
+      "cases.json": {
+        "bytes": 557,
+        "sha256": "fb142b96794dcc5d8079e43a5d4539c976293b4f781d304b1cc671da2f0341d3"
+      }
+    },
+    "controller": {
+      "__init__.py": "674dd2810ed1aa3fa82bafbb3daf7cd6ba9f7a0bc6ee1146683e588cad2ed741",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "adaptive.py": "10c0071bb9934c28ca2c95cbd4cc09b151dcaf35a9213572c2b9e646d06e04f8",
+      "benchmark.py": "cd44d2e8cbc137649334ff681b2671d202229b3c2c6e9f8bc2909747554f2e48",
+      "campaign.py": "74dc146871dd5657d18bda62867020b89c55a278b94e4ad694389a04ce77a255",
+      "changes.py": "2cb70357f7d3020100f7fc758d7a08382e40279c1608637a40d2f7ace3fdebeb",
+      "cli.py": "9cb1259fbc1d490df7b4fe87771b8322be1d2b221ce8378d1fa12518e9406f5f",
+      "cloud.py": "e2ba30954bcec14fb091a49d2b3bb7c6ef48b241a5fbd6b724f57f64798a97ec",
+      "component_source.py": "11b55f5198785ccab5d10dfe7cfabe2e61d69e3f83f5322dcc2f47c3115b8165",
+      "context_planning.py": "800b949f3a2f9569e921d7ae78ba10eac95fef97020b50eb3c37403b6e6b3be2",
+      "controller.py": "51797bda7eaaad23d283c38d1b50704c5fd4f5cfe2275dbf5d1390bd38ba7b8a",
+      "discovery_benchmark.py": "b772ea3cd9b54dd45f6be5ebc40feb36f6319df8172bf544d83175d55d6dfb0a",
+      "draft.py": "82e8cabf9894026bc01bf702d0d5eee0d9c9c3500605e5ae4ee079a9fb149d6e",
+      "evidence_capture.py": "d3f6d4840a343133cf6f6b48ceddeb2d62cecb0d2c2ffd3381f91936587e9739",
+      "execution_context.py": "9e3180c60a72c9c533b5a57f4fd0d090ac33e2ed35a41dc655379af0a7386a19",
+      "function_repair.py": "9e3a02bd749b2e364871d01fe6e7d4add1197b167cecf5f99410b6007dbdea4d",
+      "harness.py": "d7f929cd4b5485d90915175645480abce4055fd59515753fe750c4697bb183a3",
+      "harness_comparison.py": "8ca80991c185256e9cab76fab7309b67a66d3c59b52113cc75cc8ab88c0ea244",
+      "harness_contracts.py": "5ecf388732cb879b6707436492f2a743bcf338ba00235b7dc4ca2ee82c6ef072",
+      "hierarchy.py": "cb9dc37984e73268e964b4e4b660c3ca1eaa9feb5e398cff6481bb9afe74f453",
+      "http.py": "904eb91b3b4830aae36d959411394f08b397dc291adb1e5cccec6fe11d114e7d",
+      "httpx_benchmark.py": "d870a8d329acefdf4ce4ff314b7c05879084452041ace0d1529d55494fccd586",
+      "index.py": "0f23e8686fb498bc16874d6f46b07a5d8744ea22a7bee3a0db53d701db0528be",
+      "inference.py": "e4508799f6d910010b05b23899a714eba0d68caf273b76fea97c0bb84292ca42",
+      "local_calibration.py": "ebddeb5f13bd09ade8e6dcedcf87bd296f5447f2e6f8c2be634adbf8494e572f",
+      "local_reclaim.py": "388c3cdec300e8bc0762134907390de791d03cb4146bcf2d2a8930506af92326",
+      "local_runtime.py": "8829aa32c4076250173b2d4ae56c0a32a35cd1f1091b504b07f627d535b16262",
+      "lock.py": "28a360f7b479f004bd363d6b57db5e6f2d798f50a7f3b21e23df423eaca622a8",
+      "mcp.py": "b135457bde38c7f4846369a0fcac06e5e240540f640bdf552c5db302725dddae",
+      "metrics.py": "f32d3ffd2ca18ba36f8af654f3604d8f34abf400fb1aecf1ff4d406db6b9d937",
+      "native.py": "778d35f01e391207650532909e68a226149b91b23162d4ac75a0f81766ef850e",
+      "native_feedback.py": "52a48248a03c48223adf274f4cc9cb47d4cd84aa101990e7e6e4ea8ecd162bc3",
+      "native_recovery.py": "cb23bb7aa7157e1e858d0ddd08ccee54488b7fe3655f3f2829a851838c0d2990",
+      "oracle.py": "cf0b5d022b47ee959ed4779318867cec73ea03b8858597b343ccb3afdbb17036",
+      "pi_harness.py": "11aecac6ac4a6e7d0d4fa2e3ff644f52bb007879d003c8fca996a544b6dcd3ae",
+      "planner.py": "f0620f1842a62649bdb4fc8c95f63b4886ae90457e0be1ae450ef3d34799d8c5",
+      "process.py": "77dd2612aa9e7c898c033bbb876385fa1b86869f4f81a71c0282faf879ea45c2",
+      "project.py": "7d306b1e07270f2dbc2e5dd0632fa0c551e07f50d5fcd9e255a9bdf4a673bb12",
+      "provider_gate.py": "d5a10119c1349749a011a4c1bc43f731198a58413a05e62b712a7670466d39ba",
+      "rea_selection.py": "e9d1c516bfcc8a1e97c9cfd8a2dcf7a3e0a753ea05e8174e844f3ab1df22f8f8",
+      "remote.py": "167daef6d96ba6a122399268f22b033d0984be196aaaa87e7e4c546f37034647",
+      "repair_benchmark.py": "e7093c36be091a237becde36eca5b09275a95fd4b9b5ba677bba45aa39960e63",
+      "router.py": "3205192d32f95c15fd67060b0bf151713da9a137fca3bfdff40f538b6b6203a7",
+      "schema.py": "768a4633a4b4346df80e2efbceda5cd26faa33c2e65790d4b6d6866fe88e3182",
+      "selection.py": "3fd108028c45095ecfc06f6648c075fb58815ae8a6760541c047f94f819630d0",
+      "selfdev.py": "dadd0f87bdba508512fe6a115b65b4b8248c9bd058b92337b065737f60857954",
+      "source_edit.py": "2778a3efbbfa36627dead74bb97e32fe7218ec39941d7b3cdb13ae9f0bf6b7f5",
+      "specialists.py": "474aef1e714fd392acf130298d169323dd3c9644491c64b645b5059ac9c6f094",
+      "state.py": "70a3e5c517126d7479065b2d86ade82b53decfd8ebf161d2e4debb334410427a",
+      "trial_budget.py": "f3cf26626e58ddf4b617a0fb49db0bbf2abe56b2e0d4e1b1df49774a958ca4d6",
+      "verify.py": "1350209bc5e02c774925a21e11d6a30414136fd458a4d486d4242c9c344c37e0",
+      "windows_job.py": "389c3a0eefa204985aaace091fda91b45db146fbde525b92fb37612a06d2cfcc",
+      "workflow.py": "20c833465a5fb67f6380004f881adbd79da5d3d2855aab4de7224a6eb344caec",
+      "workspace.py": "95157f8c652c08b0c775222e8c92f53de6bdcba7801f29be0b4997d14a3225a4"
+    },
+    "runner": "a2d5ad2a347b1839a8b617596904f510aa0c4659f2950672792158660065cc88",
+    "a100_probe": "66fdce7223d6b000c0634180776814ce067490101003f8f5426c21ac3bc607fe"
+  },
+  "identity": {
+    "ollama": {
+      "path": "C:\\Users\\mande\\AppData\\Local\\Programs\\Ollama\\ollama.EXE",
+      "sha256": "929941de0cd0ef8fb95f9f2c7fe8f9645897942a6492539915a5383066b47207"
+    },
+    "manifest_sha256": "85879493124988ce76ff36a6ac583504cc8d893727db6a0c4f9992a079e6ca49",
+    "blobs": {
+      "sha256:08f9698c1116d2ba3d2c1751f6e98919823e13bb28ff5eb7451c7bc9b40907c5": {
+        "bytes": 177,
+        "sha256": "08f9698c1116d2ba3d2c1751f6e98919823e13bb28ff5eb7451c7bc9b40907c5"
+      },
+      "sha256:f836f08f921193f4d6b6a6952dba0a6fb116759d26a757bcb395d570d73976ca": {
+        "bytes": 921704832,
+        "sha256": "f836f08f921193f4d6b6a6952dba0a6fb116759d26a757bcb395d570d73976ca"
+      },
+      "sha256:02d45dc1cf451ba2475ac33b301c2dd8f985abe4c182ce04a1f2f5bf0260278d": {
+        "bytes": 5629109120,
+        "sha256": "02d45dc1cf451ba2475ac33b301c2dd8f985abe4c182ce04a1f2f5bf0260278d"
+      },
+      "sha256:b507b9c2f6ca642bffcd06665ea7c91f235fd32daeefdf875a0f938db05fb315": {
+        "bytes": 13,
+        "sha256": "b507b9c2f6ca642bffcd06665ea7c91f235fd32daeefdf875a0f938db05fb315"
+      },
+      "sha256:50cbab8a892c5f2993b8c7351a99182507472def3b1374558308605d99b86b32": {
+        "bytes": 11343,
+        "sha256": "50cbab8a892c5f2993b8c7351a99182507472def3b1374558308605d99b86b32"
+      },
+      "sha256:9371364b27a52acac9d87f88bd93c9db1174d8d6ec57f6888925cdc1788871ff": {
+        "bytes": 65,
+        "sha256": "9371364b27a52acac9d87f88bd93c9db1174d8d6ec57f6888925cdc1788871ff"
+      },
+      "sha256:fdf5fd4cd409881fac86077d7be23e1cb1a4d1c0083108ff81ad557b3dfd7b01": {
+        "bytes": 470,
+        "sha256": "fdf5fd4cd409881fac86077d7be23e1cb1a4d1c0083108ff81ad557b3dfd7b01"
+      },
+      "sha256:56671c2ab9385f9cfcb404638e32cd62d88e3501d44822208363c010179a3c90": {
+        "bytes": 1088,
+        "sha256": "56671c2ab9385f9cfcb404638e32cd62d88e3501d44822208363c010179a3c90"
+      }
+    }
+  }
+}
