@@ -1,0 +1,12 @@
+{
+  "phase": "work",
+  "code": 0,
+  "elapsed": 62.75,
+  "timed_out": false,
+  "stdout": "",
+  "stderr": "",
+  "cleanup": {
+    "passed": true,
+    "not_used": true
+  }
+}

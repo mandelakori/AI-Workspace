@@ -1,0 +1,62 @@
+{
+  ".gitattributes": {
+    "bytes": 21,
+    "sha256": "ffe82f3c5b968ed009c2577fa38f32c83be167799ee565d40a18e3440c57b342"
+  },
+  "local-context-admission.json": {
+    "bytes": 1032,
+    "sha256": "bc0c9c0da73df7af75712fb97e30fea35004a70758743cec0b6879608e2874d5"
+  },
+  "local-inference/load-readiness.json": {
+    "bytes": 991,
+    "sha256": "49541fa22fa2cc6145973f7060ba488dc8c86a55764454f8bac3a54d4a852981"
+  },
+  "local-inference/ownership.json": {
+    "bytes": 568,
+    "sha256": "b314cc4d045f8913f5943ff5b2f79c7bba2bcd293eee5461e4ae260a4a8b36e1"
+  },
+  "local-inference/resident-after.json": {
+    "bytes": 581,
+    "sha256": "609cb5e276fa0e6014c234b547ba2f20df83ef1b043fcff81a0f9883ec3aa5f0"
+  },
+  "local-inference/server.log": {
+    "bytes": 28205,
+    "sha256": "e42ff1d8b9788325034d68111176af2f65e1cae3599e9e418b51a020ccdad1bb"
+  },
+  "local-startup-budget.json": {
+    "bytes": 179,
+    "sha256": "d8b8c35488669aaf1a94335c9231b9b60cbd5a43d535d3479233d1f5adc39bc1"
+  },
+  "memory.jsonl": {
+    "bytes": 8362,
+    "sha256": "a5fb8d2cb44167534b9849aaf2f16f30400cda9efba8474251ab61a87eb03ebb"
+  },
+  "preflight.json": {
+    "bytes": 925,
+    "sha256": "8615f473ebd024c9115ca76cfd81e2b2181f4c9d5c9b6e419d1e7a4d70f340cf"
+  },
+  "result.json": {
+    "bytes": 933,
+    "sha256": "0bfafb601709c9a0b693eb5d6863e5e517bb2bef89da93178b53b77baabebfd6"
+  },
+  "runner-result.json": {
+    "bytes": 57,
+    "sha256": "bd9966f8935977e4f37a2bdf44fd97c1c24c12c225c1c9058727b92dbbb9ea4d"
+  },
+  "runner.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "state/trial-budget.json": {
+    "bytes": 1684,
+    "sha256": "e495daf425e6ad8270c1c4b26dbf8f1e0cb95c6c0c9f4bc073372e1e8d82470d"
+  },
+  "warm-process.json": {
+    "bytes": 227,
+    "sha256": "6016faaf655d99805439ac82959bd42afddbe47e67d64d8d34fd7606673293e8"
+  },
+  "work-process.json": {
+    "bytes": 169,
+    "sha256": "20bb39faed3178407591b47a164eec157c37dada1932d87f1940bfccb82d65ad"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "verdict": "passed",
+  "approval_digest": "7fcb818fade7d18fcca517c800642dd61a975302dda2301af64f627201925a5b",
+  "grant_consumed": true,
+  "load_only_requests": 1,
+  "generation_requests": 0,
+  "harness_sessions": 0,
+  "context": 16384,
+  "model_digest": "85879493124988ce76ff36a6ac583504cc8d893727db6a0c4f9992a079e6ca49",
+  "model_size_bytes": 6681756956,
+  "model_vram_bytes": 5392417422,
+  "load_and_residency_seconds": 49.48500000000058,
+  "runner_wall_seconds": 69.12499999999272,
+  "startup_budget_seconds": 96.9988070197859,
+  "load_stall_seconds": 75,
+  "owned_cleanup_passed": true,
+  "listener_closed": true,
+  "memory": {
+    "count": 35,
+    "work_samples": 30,
+    "baseline_available_ram_bytes": 13875826688,
+    "minimum_available_ram_bytes": 11652739072,
+    "baseline_free_gpu_bytes": 8274313216,
+    "minimum_free_gpu_bytes": 2080374784,
+    "maximum_gpu_used_bytes": 6194987008
+  }
+}

@@ -5,7 +5,7 @@
 | Capability / outcome | Status | Evidence |
 | --- | --- | --- |
 | Calibrated Ollama startup and error reporting | VERIFIED | [Cold-start correction](OLLAMA-COLD-START.md). Deterministic tests distinguish listener readiness from model residency, enforce the startup deadline and owned cleanup, and preserve the primary failure when the transcript is absent. |
-| Owned load-only validation on the laptop | UNTESTED | Separate frozen protocol is `PREPARED_NOT_AUTHORIZED`. No live load, model tokens or shared service changes. |
+| Owned load-only validation on the laptop | VERIFIED | [Load-only result](OLLAMA-LOAD-ONLY-RESULT.md). One authorized request reached exact 16,384-token residency in 49.485 s. Zero generation requests or harness sessions. Owned cleanup passed and the grant is consumed. |
 | Authorized repeat preflight and local cold start | BLOCKED | [Execution result](ROUTING-CROSS-PLANE-EXECUTION.md). Both preflights passed. The first local request failed with an Ollama runner startup timeout, the provider resend was blocked, and owned cleanup passed. No candidate was graded. The local grant is consumed and the A100 grant is unused. |
 | Approved local-first comparison | BLOCKED | [Preflight result](ROUTING-CROSS-PLANE-RESULT.md). The pinned verifier and both model identities matched. The laptop failed the frozen 16K GPU and RAM requirements. A100 was healthy and idle but the local-first gate held it. Zero worker sessions or model requests. Both authorizations remain unused. |
 
