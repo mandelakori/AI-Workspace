@@ -1,0 +1,41 @@
+{
+  "arm": "local",
+  "complete": true,
+  "runner_exit": 1,
+  "poll_seconds": 0.1,
+  "events": {
+    "command_start": {
+      "utc_seconds": 1795516916.709987
+    },
+    "warm_cleanup_receipt": {
+      "utc_seconds": 1795516925.908382
+    },
+    "calibrated_admission": {
+      "utc_seconds": 1795516926.9204278
+    },
+    "ollama_ownership_receipt": {
+      "utc_seconds": 1795516927.0227518
+    },
+    "ollama_listener_ready": {
+      "utc_seconds": 1795516945.2543929
+    },
+    "admission_receipt": {
+      "utc_seconds": 1795516945.5608907
+    },
+    "first_forwarded_request": {
+      "utc_seconds": 1795516948.5102215
+    },
+    "first_response_bytes": {
+      "utc_seconds": 1795517000.0150306
+    },
+    "harness_process_receipt": {
+      "utc_seconds": 1795517003.0060365
+    },
+    "work_cleanup_receipt": {
+      "utc_seconds": 1795517012.2636719
+    },
+    "command_end": {
+      "utc_seconds": 1795517012.2646995
+    }
+  }
+}

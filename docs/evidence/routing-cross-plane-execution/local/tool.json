@@ -1,0 +1,39 @@
+{
+  "checks": [
+    {
+      "argv": [
+        "{python}",
+        "-m",
+        "unittest",
+        "-v",
+        "test_units"
+      ],
+      "timeout": 15,
+      "stdout": null,
+      "cwd": "",
+      "oracle": ""
+    }
+  ],
+  "setup": [],
+  "engineering": true,
+  "write_roots": [
+    "units.py"
+  ],
+  "baseline": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\routing-validation\\cross-plane-final\\local\\state\\runs\\76e2a67a152348d3bfc9ad8b8ea32ab7\\baseline",
+  "objective": "Fix the Fahrenheit to Celsius conversion in units.py using the standard formula. Inspect units.py and test_units.py, preserve the existing interface and execute public check 0. Only units.py may change.",
+  "resources": {
+    "operations": 20,
+    "edit_reserve": 4,
+    "verification_reserve": 4,
+    "model_requests": 12,
+    "compactions": 1
+  },
+  "trial": {
+    "label": "aiwork-trial-48eea0d6681a4ddd814c56f22f5020ca",
+    "deadline": 1795517190.8282344
+  },
+  "workspace": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\routing-validation\\cross-plane-final\\local\\state\\runs\\76e2a67a152348d3bfc9ad8b8ea32ab7\\attempt-001\\workspace",
+  "image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+  "stop": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\routing-validation\\cross-plane-final\\local\\state\\STOP",
+  "deadline": 1795517166.6917357
+}

@@ -1,0 +1,6 @@
+{
+  "job": "76e2a67a152348d3bfc9ad8b8ea32ab7",
+  "status": "blocked",
+  "detail": "harness failed or exceeded limits; see attempt logs",
+  "artifacts": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\routing-validation\\cross-plane-final\\local\\state\\runs\\76e2a67a152348d3bfc9ad8b8ea32ab7"
+}

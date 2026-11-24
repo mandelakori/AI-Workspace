@@ -1,0 +1,107 @@
+{
+  "tool_calls": {},
+  "tool_errors": 0,
+  "tokens": null,
+  "peak_reported_input_tokens": null,
+  "successful_public_mcp_checks": 0,
+  "execution": {
+    "schema": 1,
+    "adapter": "opencode",
+    "status": "provider_failure",
+    "raw_exit_code": 1,
+    "elapsed": 56.95300000000134,
+    "timed_out": false,
+    "cleanup_passed": true,
+    "provider_gate_passed": false,
+    "independent_verification": "blocked",
+    "exhaustion_reason": "",
+    "evidence": {
+      "limit_bytes": 67108864,
+      "headroom_bytes": 33554432,
+      "captured_bytes": 25432,
+      "reserved_bytes": 0,
+      "files": {
+        "provider-request-001.json": {
+          "bytes": 7995,
+          "sha256": "096bace5191a97e85a93329487afaa3b7ca4db852e4b81ccf115339b6b6ded4a",
+          "complete": true
+        },
+        "provider-forwarded-001.json": {
+          "bytes": 9327,
+          "sha256": "9afd147dd4cea430fb20761542e203f52da7b31c0c4de2ec8824bf9837a1d8c8",
+          "complete": true
+        },
+        "provider-response-001.sse": {
+          "bytes": 115,
+          "sha256": "38e7a8eedb8f807f56ed9582470f7b07103d3b4e96145930ae9c5c83ba23506f",
+          "complete": true
+        },
+        "provider-request-002.json": {
+          "bytes": 7995,
+          "sha256": "096bace5191a97e85a93329487afaa3b7ca4db852e4b81ccf115339b6b6ded4a",
+          "complete": true
+        }
+      }
+    },
+    "resources": {
+      "epoch": 0,
+      "remaining_operations": 20,
+      "used": {
+        "inspection": 0,
+        "editing": 0,
+        "verification": 0,
+        "inference": 1,
+        "compaction": 0
+      },
+      "exhausted": "",
+      "policy": {
+        "operations": 20,
+        "edit_reserve": 4,
+        "verification_reserve": 4,
+        "model_requests": 12,
+        "compactions": 1,
+        "blocked_limit": 3
+      },
+      "seconds": {
+        "inference": 51.59400000000096,
+        "cleanup": 0
+      },
+      "contract_sha256": "8b4e9cb89adc55fa3a43ac9bb375cc7c744b6c2dc80583eff68eae7ea147f381"
+    },
+    "provider_usage": {
+      "reported": [],
+      "unreported_requests": [
+        1
+      ]
+    }
+  },
+  "gpu_samples": {
+    "before": [
+      {
+        "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+        "total_mib": 8151,
+        "free_mib": 7891
+      }
+    ],
+    "after": [
+      {
+        "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+        "total_mib": 8151,
+        "free_mib": 7891
+      }
+    ]
+  },
+  "inference_samples": {
+    "before": {
+      "resident": false
+    },
+    "after": {
+      "resident": false
+    }
+  },
+  "reported_context_fraction": null,
+  "effective_output_tokens_per_second": null,
+  "inference_lanes": 1,
+  "lane_wait_seconds": 0.016,
+  "harness_seconds": 56.984
+}

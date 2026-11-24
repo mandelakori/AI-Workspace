@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\examples\native\cross_plane_trial.py", line 216, in <module>
+    main()
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\examples\native\cross_plane_trial.py", line 204, in main
+    run(root, manifest, args.asset)
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\examples\native\cross_plane_trial.py", line 179, in run
+    raise RuntimeError(f'{name} did not close under the reviewed protocol')
+RuntimeError: work did not close under the reviewed protocol

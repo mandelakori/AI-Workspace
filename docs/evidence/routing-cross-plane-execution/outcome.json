@@ -1,0 +1,44 @@
+{
+  "comparison_complete": false,
+  "local": {
+    "status": "provider_failure_cold_load_timeout",
+    "secondary_report_error": "absent MCP transcript after zero operations",
+    "approval_consumed": true,
+    "provider_requests": 1,
+    "blocked_resends": 1,
+    "prompt_and_completion_tokens": null,
+    "model_response": false,
+    "public_correctness": null,
+    "independent_correctness": null,
+    "scope_changes": [],
+    "resource_usage": {
+      "inspection": 0,
+      "editing": 0,
+      "verification": 0,
+      "inference": 1,
+      "compaction": 0
+    },
+    "local_runtime_cleanup": true,
+    "provider_cleanup": true,
+    "container_cleanup": true,
+    "phase_seconds": {
+      "warm": 1.829,
+      "work": 77.703,
+      "work_cleanup": 8.64
+    },
+    "queue_seconds": 0.016,
+    "harness_seconds": 56.984,
+    "provider_error_response_seconds": 51.594,
+    "observed_ollama_listener_startup_seconds": 18.232,
+    "observed_admission_from_work_start_seconds": 19.733,
+    "observed_error_response_from_work_start_seconds": 74.187,
+    "observed_command_seconds": 95.555
+  },
+  "a100": {
+    "status": "held_local_work_failed",
+    "approval_consumed": false,
+    "provider_requests": 0,
+    "public_correctness": null,
+    "independent_correctness": null
+  }
+}

@@ -1,0 +1,10 @@
+server listening on http://127.0.0.1:52810
+server password [REDACTED]
+[05:42:27.684] INFO (#657): spawning process {
+  command: "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.venv\\Scripts\\python.exe",
+  args: [ "-B", "-c", "import sys; from pathlib import Path; sys.path.insert(0, sys.argv[1]); from aiwork.mcp import serve; serve(Path(sys.argv[2]))",
+    "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace", "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\routing-validation\\cross-plane-final\\local\\state\\runs\\76e2a67a152348d3bfc9ad8b8ea32ab7\\attempt-001\\opencode-tool.json"
+  ],
+  cwd: "C:\\Users\\mande\\AppData\\Local\\Temp\\aiwork-trial-48eea0d6681a4ddd814c56f22f5020ca-opencode-t6gsdr_u\\workspace",
+}
+Client.listPrompts() called but server does not advertise prompts capability - returning empty list

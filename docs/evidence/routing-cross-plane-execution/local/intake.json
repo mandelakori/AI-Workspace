@@ -1,0 +1,115 @@
+{
+  "manifest": {
+    "objective": "Fix the Fahrenheit to Celsius conversion in units.py using the standard formula. Inspect units.py and test_units.py, preserve the existing interface and execute public check 0. Only units.py may change.",
+    "workspace": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\routing-validation\\cross-plane-final\\local\\input",
+    "kind": "agent",
+    "category": "cross-plane-routing-smoke",
+    "inputs": [
+      "units.py",
+      "test_units.py"
+    ],
+    "deliverables": [
+      "units.py"
+    ],
+    "checks": [
+      {
+        "argv": [
+          "{python}",
+          "-m",
+          "unittest",
+          "-v",
+          "test_units"
+        ],
+        "timeout": 15,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      }
+    ],
+    "location": "local",
+    "profile": "measured-opencode",
+    "complexity": 1,
+    "timeout": 240,
+    "attempts": 1,
+    "agent_checks": false,
+    "specialist": "",
+    "verification_dir": null,
+    "mode": "engineering",
+    "write_roots": [
+      "units.py"
+    ],
+    "commands": [
+      {
+        "argv": [
+          "{python}",
+          "-m",
+          "unittest",
+          "-v",
+          "test_units"
+        ],
+        "timeout": 15,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      }
+    ],
+    "setup": [],
+    "baseline_check": false,
+    "min_context": 8192,
+    "preferred_profile": "",
+    "rank_public": false,
+    "agent_role": "",
+    "source_context": [],
+    "source_patch": false,
+    "public_cases": "",
+    "attempt_limit": 0,
+    "tool_operations": 20,
+    "edit_reserve": 4,
+    "public_test_reserve": 4,
+    "model_requests": 12,
+    "compaction_limit": 1,
+    "context_input_tokens": 7440
+  },
+  "inventory": {
+    "test_units.py": {
+      "bytes": 521,
+      "sha256": "3270b12ed8619445d9ebfbe9e28959b0cce69c708db667568b9684e176847c29"
+    },
+    "units.py": {
+      "bytes": 82,
+      "sha256": "48786c09aadf7af914431917c5dc840071b544d1a47fa288289d209c859927a0"
+    }
+  },
+  "preprocessing": {
+    "files": 2,
+    "bytes": 603,
+    "languages": [
+      "Python"
+    ],
+    "build_files": [],
+    "candidate_tests": [
+      "test_units.py"
+    ],
+    "binaries": {},
+    "python_symbols": {
+      "test_units.py": [
+        {
+          "name": "ConversionTests",
+          "line": 6,
+          "calls": [
+            "assertAlmostEqual",
+            "fahrenheit_to_celsius"
+          ]
+        }
+      ],
+      "units.py": [
+        {
+          "name": "fahrenheit_to_celsius",
+          "line": 1,
+          "calls": []
+        }
+      ]
+    }
+  },
+  "private_inventory": {}
+}

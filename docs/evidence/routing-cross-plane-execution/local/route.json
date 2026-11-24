@@ -1,0 +1,29 @@
+{
+  "profile": {
+    "id": "measured-opencode",
+    "model": "qwen3.5:9b",
+    "endpoint": "http://127.0.0.1:11434/v1",
+    "engine": "ollama",
+    "harness": "opencode",
+    "location": "local",
+    "context": 16384,
+    "output_tokens": 1536,
+    "memory_mib": 0,
+    "quantization": "Q4_K_M",
+    "source": "",
+    "tools": true,
+    "api_key_env": "",
+    "managed": false,
+    "reasoning_effort": "none",
+    "seed": 1729,
+    "harness_turns": 0,
+    "temperature": 0,
+    "local_calibration": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\adaptive-local\\calibration\\calibration.json",
+    "calibration_sha256": "7594e3150c4be3f8f380fa1e8a0b722692b0dedbbd2994aae331c66538fa797b",
+    "gpu_headroom_mib": 512,
+    "ram_headroom_mib": 2048,
+    "context_reserve_tokens": 512,
+    "enable_thinking": null
+  },
+  "reason": "operator override"
+}

@@ -1,0 +1,60 @@
+{
+  "contract": {
+    "objective": "Fix the Fahrenheit to Celsius conversion in units.py using the standard formula. Inspect units.py and test_units.py, preserve the existing interface and execute public check 0. Only units.py may change.",
+    "write_roots": [
+      "units.py"
+    ],
+    "public_checks": [
+      {
+        "argv": [
+          "{python}",
+          "-m",
+          "unittest",
+          "-v",
+          "test_units"
+        ],
+        "timeout": 15,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      }
+    ],
+    "setup": [],
+    "deadline": 1795517166.6917357,
+    "policy": {
+      "operations": 20,
+      "edit_reserve": 4,
+      "verification_reserve": 4,
+      "model_requests": 12,
+      "compactions": 1,
+      "blocked_limit": 3
+    }
+  },
+  "contract_sha256": "8b4e9cb89adc55fa3a43ac9bb375cc7c744b6c2dc80583eff68eae7ea147f381",
+  "epoch": 0,
+  "visible": [],
+  "issued": {},
+  "events": [
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "8b4e9cb89adc55fa3a43ac9bb375cc7c744b6c2dc80583eff68eae7ea147f381",
+      "remaining_operations": 20,
+      "denied": ""
+    }
+  ],
+  "used": {
+    "inspection": 0,
+    "editing": 0,
+    "verification": 0,
+    "inference": 1,
+    "compaction": 0
+  },
+  "seconds": {
+    "inference": 51.59400000000096,
+    "cleanup": 0
+  },
+  "blocked": 0,
+  "exhausted": ""
+}
