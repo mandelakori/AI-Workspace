@@ -3,9 +3,9 @@
 ## Current handoff: final integration and stabilization
 
 Review the [release handoff](RELEASE-STABILIZATION.md) for installation,
-ownership-aware memory admission, remaining release limits and the exact
-unsigned local smoke protocol. The original milestones and historical evidence
-remain below. The smoke requires separate approval.
+ownership-aware memory admission and remaining release limits. The separate
+[local smoke](LOCAL-ENGINEERING-SMOKE-RESULT.md) passed and its grant is consumed.
+The original milestones and historical evidence remain below.
 
 ## Current handoff: completed A100 thinking diagnostic
 

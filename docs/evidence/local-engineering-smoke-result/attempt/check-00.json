@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "{python}",
+    "-m",
+    "unittest",
+    "-v",
+    "test_units"
+  ],
+  "cwd": "",
+  "runner": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+  "code": 0,
+  "elapsed": 0.8120000000053551,
+  "stdout": "",
+  "stderr": "test_boiling (test_units.ConversionTests.test_boiling) ... ok\ntest_fraction (test_units.ConversionTests.test_fraction) ... ok\ntest_freezing (test_units.ConversionTests.test_freezing) ... ok\ntest_negative (test_units.ConversionTests.test_negative) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK\n",
+  "timed_out": false,
+  "truncated": false,
+  "passed": true,
+  "classification": "pass"
+}

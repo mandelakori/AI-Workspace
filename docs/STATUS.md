@@ -5,7 +5,7 @@
 | Capability / outcome | Status | Evidence |
 | --- | --- | --- |
 | Ownership-aware local admission and reclamation | VERIFIED | [Release handoff](RELEASE-STABILIZATION.md). Deterministic coverage for ownership, graceful unload, deadline, shared locking, measured recheck and eligible fallback. |
-| Live scoped local engineering after corrected startup | UNTESTED | Separate smoke is `PREPARED_NOT_AUTHORIZED`. The pristine fixture was graded offline and no worker was dispatched. |
+| Live scoped local engineering after corrected startup | VERIFIED | [Consumed smoke](LOCAL-ENGINEERING-SMOKE-RESULT.md). Verified residency, one accepted edit, 4/4 public and 6/6 independent. Four generation requests, no retries, and clean owned cleanup. |
 
 ## Cross-plane live execution check
 

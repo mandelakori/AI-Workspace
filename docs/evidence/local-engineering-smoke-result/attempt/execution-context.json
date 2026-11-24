@@ -1,0 +1,131 @@
+{
+  "contract": {
+    "objective": "Fix the Fahrenheit to Celsius conversion in units.py using the standard formula. Inspect units.py and test_units.py, preserve the existing interface and execute public check 0. Only units.py may change.",
+    "write_roots": [
+      "units.py"
+    ],
+    "public_checks": [
+      {
+        "argv": [
+          "{python}",
+          "-m",
+          "unittest",
+          "-v",
+          "test_units"
+        ],
+        "timeout": 15,
+        "stdout": null,
+        "cwd": "",
+        "oracle": ""
+      }
+    ],
+    "setup": [],
+    "deadline": 1795560111.8517635,
+    "policy": {
+      "operations": 20,
+      "edit_reserve": 4,
+      "verification_reserve": 4,
+      "model_requests": 12,
+      "compactions": 1,
+      "blocked_limit": 3
+    }
+  },
+  "contract_sha256": "69b6151f04e54adb135c45413a0c26991f0c5f155a70a45a03295abf5f86861f",
+  "epoch": 0,
+  "visible": [
+    "58d36d3961f2159b901f4edca7267817f58f7d0d6a9135a13d77a3633a8b5f6b",
+    "f692071e1e349971fe075b07a9a5c81ceadcd6f5ed1e1e07356ec7650c61782c"
+  ],
+  "issued": {
+    "58d36d3961f2159b901f4edca7267817f58f7d0d6a9135a13d77a3633a8b5f6b": {
+      "path": "units.py",
+      "sha256": "48786c09aadf7af914431917c5dc840071b544d1a47fa288289d209c859927a0",
+      "line": 1,
+      "next_line": null
+    },
+    "f692071e1e349971fe075b07a9a5c81ceadcd6f5ed1e1e07356ec7650c61782c": {
+      "path": "test_units.py",
+      "sha256": "3270b12ed8619445d9ebfbe9e28959b0cce69c708db667568b9684e176847c29",
+      "line": 1,
+      "next_line": null
+    }
+  },
+  "events": [
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "69b6151f04e54adb135c45413a0c26991f0c5f155a70a45a03295abf5f86861f",
+      "remaining_operations": 20,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "focus",
+      "category": "inspection",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "69b6151f04e54adb135c45413a0c26991f0c5f155a70a45a03295abf5f86861f",
+      "remaining_operations": 18,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "edit",
+      "category": "editing",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "69b6151f04e54adb135c45413a0c26991f0c5f155a70a45a03295abf5f86861f",
+      "remaining_operations": 17,
+      "denied": ""
+    },
+    {
+      "event": "tool",
+      "tool": "check",
+      "category": "verification",
+      "epoch": 0,
+      "denied": ""
+    },
+    {
+      "event": "provider",
+      "epoch": 0,
+      "category": "inference",
+      "contract_sha256": "69b6151f04e54adb135c45413a0c26991f0c5f155a70a45a03295abf5f86861f",
+      "remaining_operations": 16,
+      "denied": ""
+    }
+  ],
+  "used": {
+    "inspection": 2,
+    "editing": 1,
+    "verification": 1,
+    "inference": 4,
+    "compaction": 0
+  },
+  "seconds": {
+    "inference": 68.82600000001548,
+    "inspection": 0.07799999999406282,
+    "editing": 0.17200000000593718,
+    "verification": 7.077999999994063,
+    "cleanup": 0
+  },
+  "blocked": 0,
+  "exhausted": ""
+}

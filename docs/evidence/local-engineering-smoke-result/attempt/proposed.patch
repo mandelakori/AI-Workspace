@@ -1,0 +1,8 @@
+diff --git a/units.py b/units.py
+index db745e9d92b7a766b2579c623a2ba024c6e9184a..66b72f86c013454d4a9f57b8ddc50ff01b49ce48 100644
+--- a/units.py
++++ b/units.py
+@@ -1,2 +1,2 @@
+ def fahrenheit_to_celsius(fahrenheit: float) -> float:
+-    return fahrenheit - 32
++    return (fahrenheit - 32) * 5 / 9

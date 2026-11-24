@@ -1,0 +1,12 @@
+{
+  "phase": "grade",
+  "code": 0,
+  "elapsed": 3.9680000000080327,
+  "timed_out": false,
+  "stdout": "",
+  "stderr": "",
+  "cleanup": {
+    "passed": true,
+    "removed": []
+  }
+}

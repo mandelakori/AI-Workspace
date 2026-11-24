@@ -1,0 +1,40 @@
+{
+  "runner": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+  "kind": "sealed-black-box",
+  "passed": true,
+  "total": 6,
+  "passed_cases": 6,
+  "cases": [
+    {
+      "case": 1,
+      "verdict": "pass",
+      "duration": 0.594
+    },
+    {
+      "case": 2,
+      "verdict": "pass",
+      "duration": 0.516
+    },
+    {
+      "case": 3,
+      "verdict": "pass",
+      "duration": 0.547
+    },
+    {
+      "case": 4,
+      "verdict": "pass",
+      "duration": 0.531
+    },
+    {
+      "case": 5,
+      "verdict": "pass",
+      "duration": 0.547
+    },
+    {
+      "case": 6,
+      "verdict": "pass",
+      "duration": 0.578
+    }
+  ],
+  "classification": "pass"
+}

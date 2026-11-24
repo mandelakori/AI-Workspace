@@ -1,0 +1,20 @@
+{
+  "endpoint": "http://127.0.0.1:63769",
+  "context": 16384,
+  "store": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\adaptive-local\\calibration\\model-store",
+  "owned": true,
+  "gpu_headroom_mib": 512,
+  "flash_attention": true,
+  "kv_cache_type": "f16",
+  "parallel": 1,
+  "ready": true,
+  "readiness_kind": "http_listener",
+  "load_stall_seconds": 75,
+  "pid": 12608,
+  "executable": "C:\\Users\\mande\\AppData\\Local\\Programs\\Ollama\\ollama.exe",
+  "version": {
+    "version": "0.40.17"
+  },
+  "listener_pid": 12608,
+  "cleanup_passed": true
+}

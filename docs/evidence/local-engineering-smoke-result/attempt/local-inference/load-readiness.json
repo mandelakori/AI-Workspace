@@ -1,0 +1,40 @@
+{
+  "ready": true,
+  "model": "qwen3.5:9b",
+  "context": 16384,
+  "listener_pid": 12608,
+  "budget_seconds": 87.96680701979494,
+  "load_requests": 1,
+  "load": {
+    "model": "qwen3.5:9b",
+    "created_at": "2026-11-24T22:38:48.7260019Z",
+    "response": "",
+    "done": true,
+    "done_reason": "load"
+  },
+  "resident": {
+    "models": [
+      {
+        "name": "qwen3.5:9b",
+        "model": "qwen3.5:9b",
+        "size": 6681756956,
+        "digest": "85879493124988ce76ff36a6ac583504cc8d893727db6a0c4f9992a079e6ca49",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen35",
+          "families": [
+            "qwen35"
+          ],
+          "parameter_size": "9.0B",
+          "quantization_level": "Q4_K_M"
+        },
+        "expires_at": "2026-11-24T17:41:48.7260019-05:00",
+        "size_vram": 5392417422,
+        "context_length": 16384,
+        "runner": "llamacpp"
+      }
+    ]
+  },
+  "elapsed_seconds": 47.40700000000652
+}

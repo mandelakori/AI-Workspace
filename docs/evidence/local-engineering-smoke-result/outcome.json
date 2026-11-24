@@ -1,0 +1,27 @@
+{
+  "status": "verified",
+  "grant_consumed": true,
+  "approval_digest": "ce3bf3c489e129f05325084be56363f80411384ca9010d895df9a166a6eb6d45",
+  "load_only_requests": 1,
+  "load_and_residency_seconds": 47.40700000000652,
+  "model_server_starts": 1,
+  "context": 16384,
+  "generation_requests": 4,
+  "accepted_edits": 1,
+  "first_edit_operation": 3,
+  "first_public_test_operation": 4,
+  "public_correctness": "4/4",
+  "independent_correctness": "6/6",
+  "owned_cleanup_passed": true,
+  "listener_closed": true,
+  "captured_provider_bytes": 184114,
+  "captured_provider_files": 12,
+  "usage": {
+    "prompt_tokens": 16044,
+    "completion_tokens": 655,
+    "total_tokens": 16699
+  },
+  "compactions": 0,
+  "runner_wall_seconds": 149.0418585,
+  "frozen_units_sha256": "db1bdd7f631a2f1b9c9e632f0e57fb1854b234160670a85cea00a82569a31d7f"
+}

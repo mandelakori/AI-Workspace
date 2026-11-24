@@ -1,0 +1,20 @@
+{
+  "gpu": [
+    {
+      "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+      "total_mib": 8151,
+      "free_mib": 1732
+    }
+  ],
+  "inference": {
+    "resident": true,
+    "model_vram_mib": 5143,
+    "configured_server_context": 16384
+  },
+  "minimum_free_mib": 0,
+  "profile_context": 16384,
+  "effective_context": 16384,
+  "minimum_context": 8192,
+  "admitted": true,
+  "reclamation_rechecked": false
+}

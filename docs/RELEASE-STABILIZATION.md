@@ -58,10 +58,14 @@ inert harness and Docker checks. The focused run passed 33 tests with one
 installed boundary test deferred to the full run. The wheel was installed
 into an isolated directory using the existing offline build dependency.
 
-## One local end-to-end smoke for review
+## Reviewed local end-to-end smoke
 
-The new local-only bundle is `.aiwork/release-validation/engineering-smoke/local`
-and remains `PREPARED_NOT_AUTHORIZED`. It reuses the existing frozen runner and
+The subsequent [authorized run](LOCAL-ENGINEERING-SMOKE-RESULT.md) passed. The
+preparation protocol below records the reviewed inputs and limits. Its grant is
+consumed.
+
+The local-only bundle at `.aiwork/release-validation/engineering-smoke/local`
+was prepared as `PREPARED_NOT_AUTHORIZED`. It reuses the existing frozen runner and
 the pristine two-file temperature conversion fixture. Only `units.py` is
 writable. Reclamation is disabled in this smoke's configuration. The pinned
 Qwen3.5 9B Q4_K_M model and OpenCode use 16,384 context, thinking OFF and a
@@ -85,14 +89,14 @@ $smoke = '.aiwork/release-validation/engineering-smoke/local'
 The approval digest is
 `ce3bf3c489e129f05325084be56363f80411384ca9010d895df9a166a6eb6d45`.
 Only after separate approval, use `run <bundle/arm> <approval.json>` with that
-digest, `"authorize": ["local"]` and `"operator_approved": true`. Live dispatch
-is still pending. The old cross-plane and load-only grants retain their own
+digest, `"authorize": ["local"]` and `"operator_approved": true`. The old
+cross-plane and load-only grants retain their own
 protocols. [Evidence and exact smoke manifest](evidence/release-stabilization/README.md)
 
 ## Release limits
 
-The load-only initialization passed on hardware. Its transition into a new
-OpenCode engineering session remains unverified. External unload behavior is
+The load-only initialization and its transition into scoped OpenCode engineering
+passed on the bounded conversion fixture. External unload behavior is
 covered by deterministic tests and the reviewed Ollama version source. No live
 external service was unloaded during this work. Other providers and Ollama
 versions are outside the reviewed unload scope.
