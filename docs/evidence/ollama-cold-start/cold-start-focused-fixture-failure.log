@@ -1,0 +1,40 @@
+test_64k_requires_both_measured_contexts_and_resource_margin (test_local_execution.LocalExecutionTests.test_64k_requires_both_measured_contexts_and_resource_margin) ... ok
+test_calibrated_runtime_binds_hash_store_context_and_owned_endpoint (test_local_execution.LocalExecutionTests.test_calibrated_runtime_binds_hash_store_context_and_owned_endpoint) ... ERROR
+test_calibrated_startup_retains_measured_work_and_absolute_limits (test_local_execution.LocalExecutionTests.test_calibrated_startup_retains_measured_work_and_absolute_limits) ... ok
+test_cold_prefill_and_masked_ram_cannot_evade_admission (test_local_execution.LocalExecutionTests.test_cold_prefill_and_masked_ram_cannot_evade_admission) ... ok
+test_cross_plane_does_not_hide_provider_failure_or_qualify_without_mcp (test_local_execution.LocalExecutionTests.test_cross_plane_does_not_hide_provider_failure_or_qualify_without_mcp) ... ok
+test_http_failure_closes_owned_process_and_failed_cleanup_is_reported (test_local_execution.LocalExecutionTests.test_http_failure_closes_owned_process_and_failed_cleanup_is_reported) ... ok
+test_http_readiness_and_owned_cleanup_are_independent_of_model_load (test_local_execution.LocalExecutionTests.test_http_readiness_and_owned_cleanup_are_independent_of_model_load) ... ok
+test_local_initialization_protocol_requires_a_separate_grant (test_local_execution.LocalExecutionTests.test_local_initialization_protocol_requires_a_separate_grant) ... ok
+test_model_copy_verifies_blobs_and_keeps_original_independent (test_local_execution.LocalExecutionTests.test_model_copy_verifies_blobs_and_keeps_original_independent) ... ok
+test_model_load_deadline_fails_closed_with_no_retry_or_late_release (test_local_execution.LocalExecutionTests.test_model_load_deadline_fails_closed_with_no_retry_or_late_release) ... ok
+test_owned_client_enforces_deadline_on_stalled_load_only_http_response (test_local_execution.LocalExecutionTests.test_owned_client_enforces_deadline_on_stalled_load_only_http_response) ... ok
+test_slow_load_only_readiness_requires_exact_residency_and_charges_deadline (test_local_execution.LocalExecutionTests.test_slow_load_only_readiness_requires_exact_residency_and_charges_deadline) ... ok
+test_smallest_measured_window_demand_headroom_and_deadline (test_local_execution.LocalExecutionTests.test_smallest_measured_window_demand_headroom_and_deadline) ... ok
+
+======================================================================
+ERROR: test_calibrated_runtime_binds_hash_store_context_and_owned_endpoint (test_local_execution.LocalExecutionTests.test_calibrated_runtime_binds_hash_store_context_and_owned_endpoint)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\tests\test_local_execution.py", line 57, in test_calibrated_runtime_binds_hash_store_context_and_owned_endpoint
+    with calibrated_runtime(profile,task,artifacts,monotonic()+300):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mande\AISAK-Engineering\runtime\python\cpython-3.12-windows-x86_64-none\Lib\contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\aiwork\local_runtime.py", line 322, in calibrated_runtime
+    with isolated_ollama(binary,store,context,target,started+startup,load_stall_seconds=stall,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mande\AISAK-Engineering\runtime\python\cpython-3.12-windows-x86_64-none\Lib\contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "C:\Users\mande\coding\Final RSTP\AI-Workspace\tests\test_local_execution.py", line 35, in isolated
+    args[3].mkdir(parents=True)
+  File "C:\Users\mande\AISAK-Engineering\runtime\python\cpython-3.12-windows-x86_64-none\Lib\pathlib.py", line 1311, in mkdir
+    os.mkdir(self, mode)
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'C:\\Users\\mande\\AppData\\Local\\Temp\\tmp08eqjd56\\artifacts\\local-inference'
+
+----------------------------------------------------------------------
+Ran 13 tests in 2.064s
+
+FAILED (errors=1)

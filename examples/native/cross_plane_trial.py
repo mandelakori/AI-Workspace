@@ -143,10 +143,17 @@ def work(root: Path, manifest: dict) -> None:
     result = controller.run_submitted(controller.submit_task(task(root, cfg.profiles[0])))
     write(root / 'engineering-result.json', result)
     attempt, = Path(result['artifacts']).glob('attempt-*')
-    receipt = read(attempt / 'execution-receipt.json')
-    calls = [json.loads(line) for line in (attempt / 'mcp.jsonl').read_text(encoding='utf-8').splitlines()]
-    if (result['status'] != 'verified' or receipt['status'] != 'completed' or not receipt['cleanup_passed']
-            or not any(call['tool'] == 'edit' and call.get('applied') for call in calls)
+    receipt_path = attempt / 'execution-receipt.json'
+    receipt = read(receipt_path) if receipt_path.is_file() else {}
+    if (result['status'] != 'verified' or receipt.get('status') != 'completed'
+            or receipt.get('cleanup_passed') is not True):
+        status = receipt.get('status') or result['status']
+        raise RuntimeError(f"worker did not qualify ({status}): {result['detail']}")
+    transcript = attempt / 'mcp.jsonl'
+    if not transcript.is_file():
+        raise RuntimeError('mandatory MCP edit and public check transcript is absent')
+    calls = [json.loads(line) for line in transcript.read_text(encoding='utf-8').splitlines()]
+    if (not any(call['tool'] == 'edit' and call.get('applied') for call in calls)
             or not any(call['tool'] == 'check' and call['index'] == 0 and call['passed'] for call in calls)):
         raise RuntimeError('mandatory scope, edit, public and worker closure checks did not pass')
     write(root / 'qualified.json', {'path': str(attempt / 'workspace'), 'inventory': read(attempt / 'output-inventory.json')})

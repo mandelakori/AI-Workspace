@@ -141,8 +141,10 @@ def calibrate(binary: str, source: Path, manifest: str, model: str, root: Path) 
         try:
             if baseline.get('ram_available_bytes',0)<3072*MIB or baseline.get('gpu_free_bytes',0)<1024*MIB:
                 raise ValueError('insufficient baseline RAM/GPU headroom')
-            with isolated_ollama(binary,root/'model-store',size,target,
-                                 min(210,max(.01,deadline-monotonic()))) as (endpoint,limit,pid):
+            limit = min(monotonic()+DEFAULT_PLAN['context_seconds'],deadline)
+            stall = max(1,min(DEFAULT_PLAN['request_seconds'],int(limit-monotonic())))
+            with isolated_ollama(binary,root/'model-store',size,target,limit,
+                                 load_stall_seconds=stall) as (endpoint,limit,pid):
                 worker=Thread(target=sample,daemon=True);worker.start()
                 write(target/'load-request.json',{'model':model,'keep_alive':'3m','options':{'num_ctx':size}})
                 load=local_json(endpoint,'api/generate',{'model':model,'keep_alive':'3m','options':{'num_ctx':size}},

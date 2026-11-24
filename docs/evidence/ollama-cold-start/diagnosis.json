@@ -1,0 +1,21 @@
+{
+  "ollama_version": "0.40.17",
+  "historical_git_commit": "1dda905",
+  "historical_provider_http_status": 500,
+  "historical_forwarded_request_seconds": 51.594,
+  "historical_load_timeout_seconds": 45,
+  "historical_16k_calibrated_http_load_seconds": 49.39,
+  "example_startup_budget_seconds": 97.46680701979393,
+  "example_load_stall_seconds": 75,
+  "library_sources": {
+    "stall_settings": "https://github.com/ollama/ollama/blob/v0.40.17/envconfig/config.go#L136-L152",
+    "stall_and_cancel_branches": "https://github.com/ollama/ollama/blob/v0.40.17/llm/llama_server.go#L1291-L1368",
+    "empty_prompt_load_only": "https://github.com/ollama/ollama/blob/v0.40.17/server/routes.go#L512-L531"
+  },
+  "verified_historical_evidence_files": 45,
+  "consumed_local_trial_unchanged": true,
+  "unused_a100_arm_has_no_execution_state": true,
+  "live_model_loads_this_session": 0,
+  "live_generation_requests_this_session": 0,
+  "original_manifest_digests_and_input_hashes_verified": true
+}

@@ -11,16 +11,19 @@ import re
 import shutil
 import socket
 import subprocess
+import sys
 import math
 from dataclasses import replace
 from time import monotonic, sleep
 from urllib.request import Request, build_opener, ProxyHandler
 
 from .http import NoRedirect
-from .process import environment, executable, owned_process
+from .process import environment, executable, owned_process, run
 from .trial_budget import write
 
 MIB = 1024**2
+MAX_STARTUP_SECONDS = 120
+LISTENER_ALLOWANCE_SECONDS = 25
 
 
 def listener_owner(port: int) -> int:
@@ -111,10 +114,14 @@ def copy_model(source: Path, destination: Path, manifest: str, *, deadline: floa
 
 @contextmanager
 def isolated_ollama(binary: str, store: Path, context: int, artifacts: Path,
-                    timeout: float, *, gpu_headroom_mib: int = 512):
+                    deadline: float, *, load_stall_seconds: int, gpu_headroom_mib: int = 512):
     """No existing listener is touched. The Windows job owns server and runners."""
-    if not 1024<=context<=262144 or timeout<=0 or not 0<=gpu_headroom_mib<=8192:
+    if (not 1024 <= context <= 262144 or not math.isfinite(deadline)
+            or type(load_stall_seconds) is not int or not 1 <= load_stall_seconds <= MAX_STARTUP_SECONDS
+            or not 0 <= gpu_headroom_mib <= 8192):
         raise ValueError('invalid isolated inference bounds')
+    if deadline <= monotonic():
+        raise TimeoutError('isolated Ollama startup deadline exhausted')
     artifacts.mkdir(parents=True,exist_ok=True)
     with socket.socket() as probe:
         probe.bind(('127.0.0.1',0));port=probe.getsockname()[1]
@@ -124,12 +131,12 @@ def isolated_ollama(binary: str, store: Path, context: int, artifacts: Path,
     env.update(OLLAMA_HOST=f'127.0.0.1:{port}',OLLAMA_MODELS=str(store.resolve()),
                OLLAMA_CONTEXT_LENGTH=str(context),OLLAMA_NUM_PARALLEL='1',OLLAMA_MAX_LOADED_MODELS='1',
                OLLAMA_NO_CLOUD='1',OLLAMA_NOPRUNE='1',OLLAMA_KEEP_ALIVE='3m',
-               OLLAMA_LOAD_TIMEOUT='45s',OLLAMA_FLASH_ATTENTION='1',OLLAMA_KV_CACHE_TYPE='f16',
+               OLLAMA_LOAD_TIMEOUT=f'{load_stall_seconds}s',OLLAMA_FLASH_ATTENTION='1',OLLAMA_KV_CACHE_TYPE='f16',
                OLLAMA_GPU_OVERHEAD=str(gpu_headroom_mib*MIB))
-    deadline=monotonic()+timeout
     receipt={'endpoint':endpoint,'context':context,'store':str(store.resolve()),'owned':True,
              'gpu_headroom_mib':gpu_headroom_mib,'flash_attention':True,'kv_cache_type':'f16',
-             'parallel':1,'ready':False}
+             'parallel':1,'ready':False,'readiness_kind':'http_listener',
+             'load_stall_seconds':load_stall_seconds}
     child=None
     with (artifacts/'server.log').open('wb') as log:
         try:
@@ -140,11 +147,16 @@ def isolated_ollama(binary: str, store: Path, context: int, artifacts: Path,
                 while monotonic()<deadline:
                     if child.poll() is not None:raise RuntimeError('isolated Ollama exited before readiness')
                     try:
-                        version=local_json(endpoint,'api/version',timeout=min(1,max(.01,deadline-monotonic())))
+                        version=local_json(endpoint,'api/version',timeout=min(1,deadline-monotonic()))
+                    except OSError:
+                        sleep(min(.1,max(0,deadline-monotonic())))
+                        continue
+                    else:
+                        if monotonic()>=deadline:
+                            raise TimeoutError('isolated Ollama readiness deadline')
                         if listener_owner(port)!=child.pid:
                             raise RuntimeError('private inference listener is not owned by this process')
                         receipt.update(ready=True,version=version,listener_pid=child.pid);break
-                    except OSError:sleep(.1)
                 else:raise TimeoutError('isolated Ollama readiness deadline')
                 write(artifacts/'ownership.json',receipt)
                 yield endpoint,deadline,child.pid
@@ -153,6 +165,82 @@ def isolated_ollama(binary: str, store: Path, context: int, artifacts: Path,
             write(artifacts/'ownership.json',receipt)
             if child is not None and not receipt['cleanup_passed']:
                 raise RuntimeError('owned local inference cleanup failed')
+
+
+def startup_budget(measured_load: float, cold_estimate: float, remaining: float) -> tuple[float, int]:
+    """Return the absolute-startup allocation and Ollama's independent stall limit."""
+    if (not all(math.isfinite(v) for v in (measured_load, cold_estimate, remaining))
+            or not 0 < measured_load <= cold_estimate):
+        raise ValueError('invalid calibrated model loading measurement')
+    with_margin = math.ceil(1.5 * measured_load)
+    startup = min(MAX_STARTUP_SECONDS, LISTENER_ALLOWANCE_SECONDS + with_margin,
+                  remaining - (cold_estimate - measured_load))
+    if startup < max(1, measured_load):
+        raise TimeoutError('insufficient deadline for calibrated model startup')
+    return startup, min(with_margin, math.floor(startup))
+
+
+# An owned client process gives the load and residency requests a joint absolute
+# deadline even if a socket peer makes partial progress before each read timeout.
+LOAD_CLIENT = """\
+import json
+import sys
+from aiwork.local_runtime import local_json
+endpoint, model, context, timeout = sys.argv[1:]
+load = local_json(endpoint, 'api/generate', {'model': model, 'stream': False,
+    'keep_alive': '3m', 'options': {'num_ctx': int(context)}}, timeout=float(timeout))
+resident = local_json(endpoint, 'api/ps', timeout=min(3, float(timeout)))
+print(json.dumps({'load': load, 'resident': resident}))
+"""
+
+
+def load_model(endpoint: str, model: str, context: int, digest: str, owner: int, artifacts: Path,
+               deadline: float, measured_load: float) -> None:
+    env = environment(artifacts / 'load-client-home')
+    started = monotonic()
+    remaining = deadline - started
+    receipt = {'ready': False, 'model': model, 'context': context, 'listener_pid': owner,
+               'budget_seconds': max(0, remaining), 'load_requests': 0}
+    try:
+        if remaining < measured_load:
+            raise TimeoutError('remaining startup window is below the measured model load')
+        if listener_owner(int(endpoint.rsplit(':', 1)[1])) != owner:
+            raise RuntimeError('model-load listener ownership changed')
+        remaining = deadline - monotonic()
+        if remaining < measured_load:
+            raise TimeoutError('remaining startup window is below the measured model load')
+        receipt['load_requests'] = 1
+        result = run([sys.executable, '-c', LOAD_CLIENT, endpoint, model, str(context), str(remaining)],
+                     Path(__file__).resolve().parents[1], remaining, env, output_limit=64*1024)
+        if result.timed_out or monotonic() >= deadline:
+            raise TimeoutError('isolated Ollama model readiness deadline')
+        if result.code or result.truncated:
+            receipt['client_error'] = result.stderr[-500:]
+            raise RuntimeError('isolated Ollama load-only request failed')
+        data = json.loads(result.stdout)
+        if not isinstance(data, dict) or not all(isinstance(data.get(k), dict) for k in ('load', 'resident')):
+            raise RuntimeError('invalid Ollama readiness receipt')
+        load, resident = data['load'], data['resident']
+        receipt.update(load=load, resident=resident)
+        if (load.get('model') != model or load.get('done') is not True or load.get('done_reason') != 'load'
+                or any(load.get(key) for key in ('response', 'thinking', 'prompt_eval_count', 'eval_count'))):
+            raise RuntimeError('Ollama did not confirm a load-only response')
+        models = resident.get('models')
+        if not isinstance(models, list) or any(not isinstance(row, dict) for row in models):
+            raise RuntimeError('invalid Ollama residency inventory')
+        matches = [row for row in models if row.get('name') == model]
+        if len(matches) != 1 or matches[0].get('digest') != digest or matches[0].get('context_length') != context:
+            raise RuntimeError('resident Ollama model identity or context differs from admission')
+        if listener_owner(int(endpoint.rsplit(':', 1)[1])) != owner:
+            raise RuntimeError('model-load listener ownership changed')
+        if monotonic() >= deadline:
+            raise TimeoutError('isolated Ollama model readiness deadline')
+        receipt['ready'] = True
+    except (OSError, ValueError, RuntimeError) as error:
+        receipt['error'] = str(error)
+        raise
+    finally:
+        write(artifacts / 'load-readiness.json', receipt | {'elapsed_seconds': monotonic() - started})
 
 
 def admit_context(report: dict, *, input_tokens: int, output_tokens: int, reserve_tokens: int,
@@ -206,12 +294,16 @@ def calibrated_runtime(profile, task, artifacts: Path, deadline: float):
     if not task.context_input_tokens:
         raise ValueError('calibrated admission requires observed context_input_tokens')
     observed=max(task.context_input_tokens,max(0,task.min_context-profile.output_tokens-profile.context_reserve_tokens))
+    execution_deadline = deadline - min(20, max(4, task.timeout//5))
+    memory = memory_snapshot()
     admission=admit_context(report,input_tokens=observed,output_tokens=profile.output_tokens,
-            reserve_tokens=profile.context_reserve_tokens,maximum=profile.context,memory=memory_snapshot(),
-            deadline_seconds=max(.001,deadline-monotonic()-min(20,max(4,task.timeout//5))),
+            reserve_tokens=profile.context_reserve_tokens,maximum=profile.context,memory=memory,
+            deadline_seconds=max(.001,execution_deadline-monotonic()),
             gpu_headroom_mib=profile.gpu_headroom_mib,ram_headroom_mib=profile.ram_headroom_mib)
     write(artifacts/'local-context-admission.json',admission|{'calibration_sha256':profile.calibration_sha256})
     if admission['selected'] is None:raise ValueError('no measured context satisfies demand, memory and deadline')
+    if memory['gpu_free_bytes'] < profile.memory_mib*MIB:
+        raise ValueError(f'GPU free memory below {profile.memory_mib} MiB for {profile.id}')
     copy=report['model_copy'];store=Path(copy['destination']).resolve(strict=True)
     if store!=path.parent/'model-store':raise ValueError('calibration model store is outside its owned bundle')
     manifest=store/'manifests'/copy['manifest']
@@ -219,8 +311,18 @@ def calibrated_runtime(profile, task, artifacts: Path, deadline: float):
         raise ValueError('isolated model manifest changed')
     binary=executable('ollama')
     if not binary:raise ValueError('installed Ollama executable unavailable')
-    with isolated_ollama(binary,store,admission['selected'],artifacts/'local-inference',
-                         max(.001,deadline-monotonic()),gpu_headroom_mib=report['plan']['gpu_headroom_mib']) as (endpoint,_,_):
+    context = admission['selected']
+    measured = next(row['load_seconds'] for row in report['contexts'] if row['context'] == context)
+    estimate = next(row['estimated_request_seconds'] for row in admission['candidates'] if row['context'] == context)
+    started = monotonic()
+    startup, stall = startup_budget(measured, estimate, execution_deadline-started)
+    target = artifacts/'local-inference'
+    write(artifacts/'local-startup-budget.json', {'context':context, 'measured_load_seconds':measured,
+          'estimated_cold_request_seconds':estimate, 'startup_seconds':startup, 'load_stall_seconds':stall})
+    with isolated_ollama(binary,store,context,target,started+startup,load_stall_seconds=stall,
+                         gpu_headroom_mib=report['plan']['gpu_headroom_mib']) as (endpoint,limit,owner):
+        load_model(endpoint, model=profile.model, context=context, digest=copy['manifest_sha256'], owner=owner,
+                   artifacts=target, deadline=limit, measured_load=measured)
         try:
             yield replace(profile,endpoint=endpoint+'/v1',context=admission['selected'])
         finally:
