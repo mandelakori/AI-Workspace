@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ai-workspace"
-version = "1.0.0rc1"
+version = "1.0.0rc2.dev0"
 description = "Windows-first controller for verified engineering jobs"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -17,4 +17,4 @@ aiwork = "aiwork.cli:main"
 include = ["aiwork*"]
 
 [tool.setuptools.package-data]
-aiwork = ["ghidra/*.java", "pi/*.mjs"]
+aiwork = ["ghidra/*.java", "pi/*.mjs", "web_assets/*.html", "web_assets/*.css", "web_assets/*.js"]

@@ -84,6 +84,8 @@ class Plane:
                             locks.enter_context(file_lock(self.execution_state / f"{self.location}-{slot}.lock"))
                     except TimeoutError:
                         continue
+                    if self.location == 'a100' and (self.execution_state / 'A100_PERCEPTION_UNCERTAIN').exists():
+                        raise RuntimeError('A100 perception cleanup is unconfirmed; inspect the peer before clearing its lane marker')
                     yield
                     return
             sleep(min(0.2, max(0, deadline - monotonic())))

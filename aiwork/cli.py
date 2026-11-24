@@ -100,6 +100,15 @@ def parser() -> argparse.ArgumentParser:
     commands.add_parser("doctor", help="show Python, GPU and executable inventory")
     commands.add_parser("models", help="discover configured endpoints and model inventory")
     commands.add_parser("harnesses", help="show harness executable inventory")
+    web = commands.add_parser("web", help="open a localhost operator console")
+    web.add_argument("--project-root", type=Path, required=True)
+    web.add_argument("--verification-root", type=Path)
+    web.add_argument("--perception-config", type=Path)
+    web.add_argument("--port", type=int, default=8765)
+    perception = commands.add_parser("perception-bench", help="measure one explicit local OmniParser screenshot")
+    perception.add_argument("screenshot", type=Path)
+    perception.add_argument("--perception-config", type=Path, required=True)
+    perception.add_argument("--apply", action="store_true")
     context_plan = commands.add_parser('context-plan', help='plan bounded context from measurements; no inference or service changes')
     context_plan.add_argument('configuration', type=Path, help='JSON with measurements and policy objects')
     calibration=commands.add_parser('local-calibrate',help='bounded private Ollama calibration; dry run unless --apply')
@@ -227,8 +236,20 @@ def main(argv: list[str] | None = None) -> int:
                 print_json(seal_report(args.output))
             return 0
         cfg = Config.load(args.config or Path("aiwork.local.toml"))
+        if args.command == 'web':
+            from .perception import PerceptionConfig
+            from .schema import bounded
+            from .web import serve
+            bounded('web port', args.port, 1024, 65535)
+            serve(cfg, args.project_root, args.verification_root, PerceptionConfig.load(args.perception_config), args.port)
+            return 0
         controller = Controller(cfg)
-        if args.command == "project":
+        if args.command == "perception-bench":
+            from .perception import Perception, PerceptionConfig, benchmark
+            backend = Perception(controller, PerceptionConfig.load(args.perception_config))
+            print_json(benchmark(backend,args.screenshot) if args.apply else
+                       {'status':'DRY_RUN','requests':1,'location':'local','timeout_seconds':backend.settings.timeout})
+        elif args.command == "project":
             from .project import ProjectStore
             from .schema import bounded, relative
             bounded("limit", args.limit, 1, 128)

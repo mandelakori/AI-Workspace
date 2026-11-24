@@ -32,3 +32,6 @@ and whole-program stateful reconstruction are incomplete. The matched live
 cross-plane comparison remains untested as a completed pair.
 
 [Architecture](docs/ARCHITECTURE.md) · [Engineering recipes](docs/ENGINEERING.md) · [Security](docs/SECURITY.md) · [Next steps](docs/NEXT_STEPS.md)
+
+The development branch adds a [localhost operator console and optional
+OmniParser V2 screen interpretation](docs/OPERATOR-WEB.md).

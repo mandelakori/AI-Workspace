@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="operator-session" content="OPERATOR_SESSION_TOKEN">
+  <title>AI-Workspace Operator</title>
+  <link rel="stylesheet" href="/app.css">
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <header>
+    <div><h1>AI-Workspace</h1><p>Local operator console</p></div>
+    <nav aria-label="Sections">
+      <a href="#compose">Compose</a><a href="#queue">Queue</a><a href="#resources">Models</a><a href="#screen">Screen</a>
+    </nav>
+  </header>
+  <main>
+    <p id="notice" role="status" aria-live="polite"></p>
+    <section id="compose">
+      <h2>Compose an engineering task</h2>
+      <form id="task">
+        <label>Objective<textarea name="objective" required maxlength="8000" rows="4" placeholder="Describe the change and how to verify it."></textarea></label>
+        <div class="grid">
+          <label>Project directory<input name="workspace" value="." required><small>Relative to the project root used to start this console.</small></label>
+          <label>Compute<select name="location"><option value="auto">Automatic</option><option value="local">Laptop</option><option value="a100">Existing A100</option></select></label>
+          <label>Timeout (seconds)<input name="timeout" type="number" value="300" min="5" max="3600" required></label>
+          <label>Complexity<select name="complexity"><option value="1">1 · Simple</option><option value="2" selected>2 · Bounded</option><option value="3">3 · Moderate</option><option value="4">4 · Complex</option><option value="5">5 · Demanding</option></select></label>
+          <label>Minimum context (tokens)<input name="min_context" type="number" value="0" min="0" max="2000000" required></label>
+          <label>Private verification directory<input name="verification_directory" placeholder="Optional"><small>Relative to the separate verification root. Use a dot for its root.</small></label>
+        </div>
+        <div class="grid">
+          <label>Readable paths<textarea name="inputs" rows="3" required placeholder="src/example.py"></textarea></label>
+          <label>Writable paths<textarea name="write_roots" rows="3" required placeholder="src/example.py"></textarea></label>
+          <label>Required outputs<textarea name="deliverables" rows="3" placeholder="src/example.py"></textarea></label>
+        </div>
+        <small>Enter one project-relative path per line. Use forward slashes.</small>
+        <div class="grid two">
+          <label>Public commands (JSON)<textarea name="commands" rows="4" required placeholder='[{"argv":["{python}","tests/public_check.py"],"timeout":30}]'></textarea></label>
+          <label>Independent checks (JSON)<textarea name="checks" rows="4" required placeholder='[{"argv":["{python}","{verification}/accept.py"],"timeout":30}]'></textarea></label>
+        </div>
+        <div class="actions"><button type="submit">Review settings</button><button id="submit" type="button" disabled>Approve &amp; queue</button></div>
+      </form>
+      <pre id="review" hidden></pre>
+    </section>
+    <section id="queue">
+      <div class="heading"><h2>Task queue</h2><button id="refresh" type="button">Refresh</button></div>
+      <div class="table"><table><thead><tr><th>Job</th><th>Status</th><th>Updated</th><th>Actions</th></tr></thead><tbody id="jobs"></tbody></table></div>
+      <div id="detail"></div>
+    </section>
+    <section id="resources">
+      <div class="heading"><h2>Models and memory</h2><button id="refresh-models" type="button">Refresh status</button></div>
+      <div id="models" class="actions"></div>
+      <pre id="memory">Loading status…</pre>
+      <div class="actions">
+        <label class="inline"><input id="permit-reclaim" type="checkbox"> Authorize unload of the enrolled idle model</label>
+        <button id="reclaim" type="button" disabled>Reclaim local memory</button>
+      </div>
+      <pre id="reclamation" hidden></pre>
+    </section>
+    <section id="screen">
+      <h2>Screen interpretation</h2>
+      <div class="actions">
+        <button id="capture" type="button">Capture primary screen</button>
+        <label class="inline">Or choose a PNG <input id="image-file" type="file" accept="image/png"></label>
+        <label class="inline">Backend <select id="perception-lane"><option value="local">RTX 5070 laptop</option><option value="a100">A100 SSH peer</option></select></label>
+        <button id="interpret" type="button" disabled>Interpret screenshot</button>
+      </div>
+      <label id="consent" class="inline" hidden><input id="share" type="checkbox"> Send this screenshot to the configured A100 peer</label>
+      <p id="screen-status"></p>
+      <div class="screen"><canvas id="preview" aria-label="Screenshot with detected element outlines" hidden></canvas><ol id="elements"></ol></div>
+      <details><summary>Structured observations</summary><pre id="observation"></pre></details>
+    </section>
+  </main>
+</body>
+</html>
