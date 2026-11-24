@@ -1,0 +1,52 @@
+{
+  "opencode": "C:\\Users\\mande\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+  "qwen": null,
+  "pi": null,
+  "declared_capabilities": {
+    "opencode": {
+      "scoped_tools": true,
+      "exact_hash_editor": true,
+      "provider_catalog_gate": true,
+      "persistent_contract": true,
+      "context_visibility": true,
+      "durable_resource_limits": true,
+      "owned_cleanup": true
+    },
+    "qwen": {
+      "scoped_tools": true,
+      "exact_hash_editor": false,
+      "provider_catalog_gate": false,
+      "persistent_contract": false,
+      "context_visibility": false,
+      "durable_resource_limits": false,
+      "owned_cleanup": true
+    },
+    "pi": {
+      "scoped_tools": true,
+      "exact_hash_editor": true,
+      "provider_catalog_gate": true,
+      "persistent_contract": true,
+      "context_visibility": true,
+      "durable_resource_limits": true,
+      "owned_cleanup": true
+    },
+    "mini-swe-agent": {
+      "scoped_tools": false,
+      "exact_hash_editor": false,
+      "provider_catalog_gate": false,
+      "persistent_contract": false,
+      "context_visibility": false,
+      "durable_resource_limits": false,
+      "owned_cleanup": false
+    },
+    "deepseek-harness": {
+      "scoped_tools": false,
+      "exact_hash_editor": false,
+      "provider_catalog_gate": false,
+      "persistent_contract": false,
+      "context_visibility": false,
+      "durable_resource_limits": false,
+      "owned_cleanup": false
+    }
+  }
+}

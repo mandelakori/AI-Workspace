@@ -1,0 +1,30 @@
+{
+  "python": "3.12.14 (main, Sep  1 2026, 14:17:39) [MSC v.1944 64 bit (AMD64)]",
+  "state": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\rc-package\\audit-state",
+  "gpus": [
+    {
+      "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+      "total_mib": 8151,
+      "free_mib": 7891
+    }
+  ],
+  "tools": {
+    "ssh": "C:\\Windows\\System32\\OpenSSH\\ssh.EXE",
+    "docker": "C:\\Users\\mande\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.EXE",
+    "git": "C:\\Program Files\\Git\\cmd\\git.EXE"
+  },
+  "qwen": null,
+  "opencode": "C:\\Users\\mande\\AppData\\Roaming\\npm\\node_modules\\@opencode\\cli\\bin\\opencode.exe",
+  "profiles": [
+    "measured-opencode",
+    "a100-existing"
+  ],
+  "verification_runner": {
+    "available": true,
+    "server": "linux 29.9.3",
+    "image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+    "image_present": true,
+    "image_id": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+    "diagnostic": ""
+  }
+}

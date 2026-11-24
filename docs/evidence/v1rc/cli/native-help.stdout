@@ -1,0 +1,11 @@
+usage: aiwork native [-h] {run,grade,rea-select} ...
+
+positional arguments:
+  {run,grade,rea-select}
+    run                 run a configurable native development campaign
+    grade               compare a frozen candidate against unseen inputs
+    rea-select          score exported REA-Next rounds on a native public
+                        corpus
+
+options:
+  -h, --help            show this help message and exit

@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0rc1",
+  "wheel": "ai_workspace-1.0.0rc1-py3-none-any.whl",
+  "wheel_sha256": "5e2111e936de977e8fd9a9b51059d3255d8e01843f8fa084795e8783103f92bb",
+  "wheel_bytes": 194473,
+  "direct_verified_job": "35d5352f5eb94686ba116305d2868959",
+  "approved_profile_submissions_dispatched": false,
+  "queued_offline_only": {
+    "measured-opencode": "472495ca858a4c2f81e8c84a8b394005",
+    "a100-existing": "0a38f9f1d081456fb75ef036b98df9ad"
+  },
+  "pinned_image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+  "external_inference_requests": 0,
+  "model_downloads": 0,
+  "import_resolved_to_isolated_wheel_venv": true,
+  "version_checked_outside_checkout": true
+}

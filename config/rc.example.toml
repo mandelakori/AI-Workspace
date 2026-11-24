@@ -1,0 +1,45 @@
+# Existing laptop and A100 profiles. Keep a copied operator file in config/.
+state = "../.aiwork/rc"
+execution_state = "../.aiwork"
+local_slots = 1
+a100_slots = 1
+verification_image = "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b"
+
+[ssh]
+alias = "aisak"
+remote_port = 18080
+
+[[profiles]]
+id = "measured-opencode"
+location = "local"
+harness = "opencode"
+engine = "ollama"
+endpoint = "http://127.0.0.1:11434/v1" # The calibrated runtime replaces this with its owned endpoint.
+model = "qwen3.5:9b"
+quantization = "Q4_K_M"
+context = 32768 # Admission chooses the smallest qualifying measured window.
+output_tokens = 1536
+temperature = 0
+seed = 1729
+reasoning_effort = "none"
+local_calibration = "../.aiwork/adaptive-local/calibration/calibration.json"
+calibration_sha256 = "7594e3150c4be3f8f380fa1e8a0b722692b0dedbbd2994aae331c66538fa797b"
+gpu_headroom_mib = 512
+ram_headroom_mib = 2048
+context_reserve_tokens = 512
+
+[[profiles]]
+id = "a100-existing"
+location = "a100"
+harness = "opencode"
+engine = "llamacpp"
+endpoint = "http://127.0.0.1:18881/v1"
+model = "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf"
+quantization = "Q6_K"
+context = 65536
+output_tokens = 4096
+temperature = 0
+seed = 1729
+reasoning_effort = "none"
+enable_thinking = false
+managed = false

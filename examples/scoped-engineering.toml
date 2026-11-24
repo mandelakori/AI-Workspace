@@ -1,0 +1,27 @@
+# Editable example for ordinary jobs. This is separate from the consumed smoke.
+objective = "Correct Fahrenheit-to-Celsius conversion in units.py. Preserve the public signature and run public command 0."
+workspace = "project"
+kind = "agent"
+mode = "engineering"
+category = "python-bugfix"
+inputs = ["units.py", "test_units.py"]
+write_roots = ["units.py"]
+deliverables = ["units.py"]
+complexity = 1
+attempts = 1
+timeout = 240
+min_context = 8192
+context_input_tokens = 7440 # Observed envelope from the bounded local fixture.
+tool_operations = 20
+edit_reserve = 4
+public_test_reserve = 4
+model_requests = 12
+compaction_limit = 1
+
+[[commands]]
+argv = ["{python}", "-m", "unittest", "-v", "test_units"]
+timeout = 15
+
+[[checks]]
+argv = ["{python}", "-m", "unittest", "-v", "test_units"]
+timeout = 15

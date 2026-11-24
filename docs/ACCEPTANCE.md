@@ -1,0 +1,28 @@
+# v1 release candidate acceptance matrix
+
+Scope is `1.0.0rc1` on the development branch. This matrix uses the original
+A–E labels from `git show baf9e9f:docs/STATUS.md` and applies later evidence to
+those gates. **Verified** means observed within the cited scope. **Partial**
+means a supported subset passed. **Blocked** and **untested** leave the gate open.
+
+| Original milestone | Acceptance at this candidate | Recorded evidence and remaining gate |
+| --- | --- | --- |
+| **A — Controller and local install** | **Verified** for Windows operation | Wheel install, CLI, direct jobs, durable queue and attempt receipts, cooperative stop and owned process handling. The Windows and Ubuntu CI repair passed at `fc7e8e4`. The installed offline suite passed 260 tests at `e716250`. The RC wheel is verified separately in the release evidence. [Architecture](ARCHITECTURE.md), [stabilization](RELEASE-STABILIZATION.md), [RC notes](RELEASE-NOTES-1.0.0rc1.md). |
+| **B — Laptop OpenCode** | **Verified** for one-shot, scoped engineering | Pinned Qwen3.5 9B at 16K became resident in 47.407 s and reused the same owned service for four inference requests. A model-authored edit passed 4/4 public and 6/6 independent cases with owned cleanup. Optional external-model unload is tested deterministically and remains untested live. [Local smoke](LOCAL-ENGINEERING-SMOKE-RESULT.md), [load-only validation](OLLAMA-LOAD-ONLY-RESULT.md), [admission](RELEASE-STABILIZATION.md#memory-admission-and-cleanup). |
+| **C — Existing A100 and Lambda lifecycle** | **Partial** | The existing `aisak` lane served real scoped coding and native work and was verified over an owned SSH forward. Forced interruption/recovery of the owned forward was demonstrated. Managed Lambda launch and termination were tested with doubles. Live provisioning, bootstrap, and persistent-volume recovery remain blocked on separately authorized configuration and validation. The RC did not contact the endpoint. [Recorded benchmarks](BENCHMARKS.md), [SSH recovery](PHASE4.md), [managed prerequisites](NEXT-STEPS-HISTORY.md#lambda-managed-profile). |
+| **D — Native reconstruction and specialist adapters** | **Partial** | The original function fixture matched 182 finite observations. PE/ELF intake, Ghidra, REA PE resources, REA-Next artifact handling and independent ELF grading were verified. Ranked classifier repair reached 22/22 public and 48/48 independent cases. Whole-program ledger reconstruction remains incomplete. Its clean-start A100 attempt froze no candidate. [Workbench audit](NATIVE-WORKBENCH-VALIDATION.md), [ledger result](NATIVE-LEDGER-A100-RESULT.md). |
+| **E — Real benchmarks and autonomous engineering acceptance** | **Partial; final acceptance blocked** | Historical small jobs and the current local smoke passed. Click passed 31/31 public and 32/32 sealed with operator-assisted recovery. PyPA passed 32/32 with an operator-assisted patch and a fresh suite; the contaminated suite is excluded. The final ItsDangerous attempt passed 48/48 expanded public and 297/297 upstream, but authored tests and final closure failed. HTTPX and source-discovery trials did not qualify for independent grading. General unassisted feature completion remains unaccepted. The matched live cross-plane comparison remains untested as a pair. [Click](PHASE6-REPORT.md), [PyPA](PHASE4.md), [incident](PHASE4-INCIDENT.md), [ItsDangerous](MILESTONE-E-FINAL-RESULT.md), [source discovery](DISCOVERY-EXPERIMENT-RESULT.md), [cross-plane](ROUTING-CROSS-PLANE-EXECUTION.md). |
+
+## Operating capability and limits
+
+| Capability | Release verdict | Boundary |
+| --- | --- | --- |
+| Scoped editing, command permissions, context persistence and budgets | **Verified** | Installed OpenCode conformance and bounded live use. The controller stages allowlisted files and preserves exact edit hashes, context epochs, request limits and failure latches. [Execution foundation](EXECUTION-FOUNDATION.md), [local smoke](LOCAL-ENGINEERING-SMOKE-RESULT.md). |
+| Routing, memory checks and ownership | **Verified** for deterministic and observed scoped paths | Ordinary jobs may use only eligible profiles under the existing retry budget. Calibrated Ollama startup and owned cleanup passed on hardware. External unload is opt-in for one reviewed local Ollama model and untested live. End-to-end speed and correctness of the matched local/A100 pair remain untested. [Routing](ROUTING-VALIDATION.md), [reclamation](RELEASE-STABILIZATION.md). |
+| Public verification, sealed grading and checkpoints | **Verified** | Tests run independently of the worker; private differential inputs and expectations are runner-side. Ranked rollback selects on public evidence. Finite passing suites establish the tested behavior. [Engineering contracts](ENGINEERING.md), [native replay](NATIVE-WORKBENCH-VALIDATION.md). |
+| Reviewed planning and component integration | **Verified** on bounded fixtures | Scoped handoffs and integration worked. The evidence does not establish a hierarchy advantage on unfamiliar repositories. [Phase 5 handoff](PHASE5-HANDOFF.md), [Click report](PHASE6-REPORT.md). |
+| Alternate harnesses | **Partial / experimental** | OpenCode is the scoped engineering reference. Historical Qwen Code restricted jobs passed, but current engineering admission blocks that adapter. Experimental Pi passed inert conformance; its paired live comparison remains unauthorized. [Harness review](HARNESS-COMPATIBILITY.md). |
+
+The historical [status ledger](STATUS-HISTORY.md) retains earlier measurements
+and verdicts. The [current status and grant disposition](STATUS.md) governs
+operator review of this candidate.

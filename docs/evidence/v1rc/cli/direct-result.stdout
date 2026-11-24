@@ -1,0 +1,24 @@
+{
+  "jobs": [
+    {
+      "id": "35d5352f5eb94686ba116305d2868959",
+      "spec": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\rc-package\\audit-state\\runs\\35d5352f5eb94686ba116305d2868959\\task.toml",
+      "category": "python-check",
+      "status": "verified",
+      "trusted": 0,
+      "created": "2026-11-24 22:52:38",
+      "updated": "2026-11-24 22:52:45",
+      "detail": "all independent checks passed"
+    }
+  ],
+  "attempts": [
+    {
+      "job": "35d5352f5eb94686ba116305d2868959",
+      "n": 1,
+      "profile": "direct",
+      "status": "verified",
+      "elapsed": 6.14,
+      "evidence": "{\"status\": \"verified\", \"detail\": \"all independent checks passed\", \"changed\": [], \"checks\": [true], \"elapsed\": 6.14}"
+    }
+  ]
+}

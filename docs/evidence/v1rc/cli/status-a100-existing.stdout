@@ -1,0 +1,15 @@
+{
+  "jobs": [
+    {
+      "id": "0a38f9f1d081456fb75ef036b98df9ad",
+      "spec": "C:\\Users\\mande\\coding\\Final RSTP\\AI-Workspace\\.aiwork\\rc-package\\audit-state\\runs\\0a38f9f1d081456fb75ef036b98df9ad\\task.toml",
+      "category": "python-bugfix",
+      "status": "queued",
+      "trusted": 0,
+      "created": "2026-11-24 22:52:47",
+      "updated": "2026-11-24 22:52:47",
+      "detail": ""
+    }
+  ],
+  "attempts": []
+}

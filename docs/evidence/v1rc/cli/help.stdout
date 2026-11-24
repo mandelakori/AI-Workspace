@@ -1,0 +1,42 @@
+usage: aiwork [-h] [--version] [--config CONFIG]
+              {project,hierarchy,draft,campaign,campaign-recover,native,doctor,models,harnesses,context-plan,local-calibrate,tools,a100,benchmark,workflow,plan,patch,self,task,worker,runs,control}
+              ...
+
+Run and independently verify engineering jobs.
+
+positional arguments:
+  {project,hierarchy,draft,campaign,campaign-recover,native,doctor,models,harnesses,context-plan,local-calibrate,tools,a100,benchmark,workflow,plan,patch,self,task,worker,runs,control}
+    project             index repositories and retrieve scoped context or
+                        evidence
+    hierarchy           register and run reviewed, nested engineering plans
+    draft               propose an execution policy for operator review
+    campaign            dispatch an authorized self-authored REA-Next fixture
+    campaign-recover    verify a reconstruction from static evidence
+    native              reconstruct or independently grade an authorized
+                        native target
+    doctor              show Python, GPU and executable inventory
+    models              discover configured endpoints and model inventory
+    harnesses           show harness executable inventory
+    context-plan        plan bounded context from measurements; no inference
+                        or service changes
+    local-calibrate     bounded private Ollama calibration; dry run unless
+                        --apply
+    tools               list built-in tools and configured specialist adapters
+    a100                inspect SSH and manage scoped Lambda lifecycle
+    benchmark           compare explicit profiles on frozen engineering
+                        fixtures
+    workflow            run or resume a deterministic dependency graph
+    plan                plan, run and integrate an engineering objective
+    patch               inspect the verified patch and optionally check a Git
+                        checkout
+    self                propose a read-only index improvement from a committed
+                        checkout
+    task                submit, inspect, or resume a job
+    worker              consume the persistent queue
+    runs                list jobs or inspect one job
+    control             pause new work or resume queue dispatch
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  --config CONFIG       operator TOML file, defaults to aiwork.local.toml

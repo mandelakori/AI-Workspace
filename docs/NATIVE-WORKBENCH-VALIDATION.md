@@ -3,10 +3,9 @@
 The prepared trial described below has since run. Its approval is consumed and
 the work phase failed without a candidate. [Execution result](NATIVE-LEDGER-A100-RESULT.md).
 
-The existing workbench reproduced four frozen ELF candidate results, including both
-ledger failures. Ghidra and the REA static adapter ran on the installed toolchain.
-One clean-start A100 ledger trial is **PREPARED_NOT_AUTHORIZED**. It targets the
-remaining whole-program reconstruction gap. ItsDangerous remains closed.
+The existing workbench reproduced four frozen ELF candidate results, including
+both ledger failures. Ghidra and the REA static adapter ran on the installed
+toolchain. The original preparation is retained for historical review.
 
 | Capability | Status | Demonstrated scope |
 | --- | --- | --- |
@@ -18,7 +17,7 @@ remaining whole-program reconstruction gap. ItsDangerous remains closed.
 | Stateful reconstruction | Partially verified | Historical meter, debt and water integrations from reviewed component contracts passed finite suites. Monolithic ledger reconstruction and the window-counter trials showed unresolved framing, parsing and transition failures. |
 | Candidate repair and rollback | Verified | The original classifier repair gained nine public passes. The archived ledger GCC failure was reproduced and the selector retained the 13/18 incumbent. |
 | Independent differential verification | Verified | Pinned Linux Docker; isolated reference/candidate runs, exact final streams and exit status, and separate post-freeze grading. Replayed historical suites retain their original evidence status. |
-| A100 OpenCode native execution | Implemented | Existing controller, catalog and bounded host-local tools. This trial's model, template and idle context slot were checked read-only. The proposed native worker run awaits approval. |
+| A100 OpenCode native execution | Partial | The controller and bounded tools ran an authorized clean-start ledger trial. It produced no candidate. [Execution result](NATIVE-LEDGER-A100-RESULT.md). |
 | General executable equivalence | Unsupported | Evidence covers finite invocations on the pinned fixture and runner. Arbitrary programs, PE differential execution in the Linux runner, persistent side effects and other environments are outside this proof. |
 
 ## Local validation
@@ -86,13 +85,12 @@ Those were partial components. Integration did not qualify. Historical model
 and harness limits include unchanged proposals, truncated responses and no
 candidate delivery. They are separate from the reproduced behavioral mismatches.
 
-## Prepared A100 validation
+## Historical A100 validation preparation
 
 Bundle `.aiwork/native-workbench-validation/a100-ledger`.
 Approval digest `8698eb97b2f06104dca2c14003848a30e664b03723e4c87777f638d94315510a`.
-Authorize exactly `["a100-existing"]` in a separate approval. The workbench is
-ready to proceed directly with this protocol once approved. No core correction
-is needed. The review script binds the existing controller and verifier to the
+The historical grant was for exactly `["a100-existing"]` and has been consumed.
+The review script binds the existing controller and verifier to the
 digest, enforces one-shot phases and requires clean public closure before export.
 The plain historical `native run` path can freeze a compiled partial candidate.
 

@@ -1,5 +1,8 @@
 # Cross-plane execution result
 
+This is the first, pre-dispatch observation. The later
+[execution record](ROUTING-CROSS-PLANE-EXECUTION.md) supersedes its grant state.
+
 On 2026-11-24, the approved comparison from `442cb06` stopped at local
 admission. Both frozen manifests, the scoped permissions, the implementation
 and input hashes, the pinned OpenCode and offline Docker verifier, and the
