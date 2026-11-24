@@ -1,0 +1,20 @@
+{
+  "query": "read-only Windows process inventory and nvidia-smi",
+  "gpu": {
+    "name": "NVIDIA GeForce RTX 5070 Laptop GPU",
+    "total_mib": 8151,
+    "used_mib": 6500,
+    "free_mib": 1392
+  },
+  "compute_process_names": [
+    "EpicGamesLauncher.exe",
+    "steam.exe",
+    "llama-server.exe (LocalAI)"
+  ],
+  "per_process_vram_reported": false,
+  "top_windows_ram_sample_mib": {
+    "Memory Compression": 14581,
+    "vmmemWSL": 1877
+  },
+  "processes_stopped": 0
+}

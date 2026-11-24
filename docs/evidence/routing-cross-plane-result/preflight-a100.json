@@ -1,0 +1,33 @@
+{
+  "arm": "a100",
+  "approval_digest": "38e4cbbc7d1cd5d1b01696c0858a1858e06dcd94948fdbdfd0eb101b9cf2d3de",
+  "runner": {
+    "available": true,
+    "server": "linux 29.9.3",
+    "image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+    "image_present": true,
+    "image_id": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+    "diagnostic": ""
+  },
+  "free_disk_bytes": 250270621696,
+  "readiness": {
+    "model_path": "/models/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K/Qwen3.6-35B-A3B-Abliterated-Heretic-Q6_K.gguf",
+    "model_ftype": "Q6_K",
+    "build_info": "b12063-2cbca389f",
+    "total_slots": 1,
+    "slot_context": 131072,
+    "idle": true,
+    "generation_requests": 0,
+    "template_sha256": "e84f32a23fdda27689f868aa4a1a5621f41133e51a48d7f3efcbea2839574259"
+  },
+  "ready_for_execution": true,
+  "readiness_seconds": 7.543373,
+  "total_preflight_seconds": 9.409479,
+  "generation_requests": 0,
+  "permissions_match": true,
+  "input_and_implementation_hashes_match": true,
+  "model_identity_matches": true,
+  "authorization_consumed": false,
+  "worker_sessions": 0,
+  "python_version": "3.12.14"
+}

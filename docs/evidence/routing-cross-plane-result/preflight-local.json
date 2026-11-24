@@ -1,0 +1,74 @@
+{
+  "arm": "local",
+  "approval_digest": "104261027ac6cb375643266f1f58ba0fefc3c832a8a166b086a36b4798296568",
+  "runner": {
+    "available": true,
+    "server": "linux 29.9.3",
+    "image": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+    "image_present": true,
+    "image_id": "sha256:1b5e1619d2da515d953428d37729da1e25d2fa18946c1289780f3b7d65e3bd9b",
+    "diagnostic": ""
+  },
+  "free_disk_bytes": 250271285248,
+  "readiness": {
+    "selected": null,
+    "demand": 9488,
+    "observed_input_tokens": 7440,
+    "memory": {
+      "at": 10169.875,
+      "ram_total_bytes": 33413771264,
+      "ram_available_bytes": 1519689728,
+      "gpu_total_bytes": 8546942976,
+      "gpu_free_bytes": 1459617792,
+      "gpu_used_bytes": 6815744000
+    },
+    "deadline_seconds": 220,
+    "candidates": [
+      {
+        "context": 8192,
+        "rejected": [
+          "observed task demand",
+          "GPU headroom",
+          "RAM headroom"
+        ],
+        "estimated_request_seconds": 155.36063822367782,
+        "required_ram_bytes": 1471844186
+      },
+      {
+        "context": 16384,
+        "rejected": [
+          "GPU headroom",
+          "RAM headroom"
+        ],
+        "estimated_request_seconds": 171.92319298020607,
+        "required_ram_bytes": 5435547648
+      },
+      {
+        "context": 32768,
+        "rejected": [
+          "operator context maximum",
+          "GPU headroom",
+          "RAM headroom"
+        ],
+        "estimated_request_seconds": 168.86924873272397,
+        "required_ram_bytes": 5435547648
+      }
+    ],
+    "gpu_headroom_mib": 512,
+    "ram_headroom_mib": 2048,
+    "required_free_bytes_at_16384": {
+      "ram": 7583031296,
+      "gpu": 7118782464
+    }
+  },
+  "ready_for_execution": false,
+  "readiness_seconds": 0.161972,
+  "total_preflight_seconds": 7.577229,
+  "generation_requests": 0,
+  "permissions_match": true,
+  "input_and_implementation_hashes_match": true,
+  "model_identity_matches": true,
+  "authorization_consumed": false,
+  "worker_sessions": 0,
+  "python_version": "3.12.14"
+}

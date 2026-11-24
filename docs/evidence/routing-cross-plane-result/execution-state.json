@@ -1,0 +1,35 @@
+{
+  "base_commit": "442cb06387e33d9aeb7a9fafdfebecad4664d9b9",
+  "status": "BLOCKED_BEFORE_DISPATCH",
+  "arms": {
+    "local": {
+      "approval_digest": "104261027ac6cb375643266f1f58ba0fefc3c832a8a166b086a36b4798296568",
+      "disposition": "blocked_resource_admission",
+      "worker_sessions": 0,
+      "requests": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "candidate": null,
+      "public": null,
+      "independent": null,
+      "controller_state_exists": false,
+      "grant_consumed": false,
+      "immutable_inputs_reverified": true
+    },
+    "a100": {
+      "approval_digest": "38e4cbbc7d1cd5d1b01696c0858a1858e06dcd94948fdbdfd0eb101b9cf2d3de",
+      "disposition": "held_local_first",
+      "worker_sessions": 0,
+      "requests": 0,
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "candidate": null,
+      "public": null,
+      "independent": null,
+      "controller_state_exists": false,
+      "grant_consumed": false,
+      "immutable_inputs_reverified": true
+    }
+  },
+  "automatic_fallback": false
+}

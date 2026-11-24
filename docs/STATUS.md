@@ -1,4 +1,10 @@
-# Status as of 2026-11-23
+# Status as of 2026-11-24
+
+## Cross-plane live execution check
+
+| Capability / outcome | Status | Evidence |
+| --- | --- | --- |
+| Approved local-first comparison | BLOCKED | [Preflight result](ROUTING-CROSS-PLANE-RESULT.md). The pinned verifier and both model identities matched. The laptop failed the frozen 16K GPU and RAM requirements. A100 was healthy and idle but the local-first gate held it. Zero worker sessions or model requests. Both authorizations remain unused. |
 
 ## Local and A100 routing validation
 

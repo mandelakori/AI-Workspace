@@ -1,0 +1,34 @@
+{
+  ".gitattributes": {
+    "bytes": 20,
+    "sha256": "e97602ab9cac70102245345c5ab0fc9830df8b17f1072b188265a662a3a547ae"
+  },
+  "dependency-recovery.json": {
+    "bytes": 296,
+    "sha256": "32c21b3a1b8cc5c29a76826d4adb6dd6b76be0353bedfaac0b627e8f4e5e0063"
+  },
+  "execution-state.json": {
+    "bytes": 1054,
+    "sha256": "8a8eaf9eab2529f2606b465822c4e1f3a011de2c8d39697a158099f94a33b295"
+  },
+  "local-resource-diagnosis.json": {
+    "bytes": 1082,
+    "sha256": "8037cb52902b2253cde3ed29a67c321fa841b9176278129c945ff0af0710a232"
+  },
+  "preflight-a100.json": {
+    "bytes": 1166,
+    "sha256": "e2805f93c64370d206134cceda40df9f7012059a6a2738e9839ec51991ca6428"
+  },
+  "preflight-local.json": {
+    "bytes": 2062,
+    "sha256": "e16b9ee1dffa94807f8c98e40139f992ff6670aeb0eaadb79b24d0aea0dda9ba"
+  },
+  "process-observation.json": {
+    "bytes": 469,
+    "sha256": "dd01c1012cee9b6a440c27fc17e30f2ffec98d4c212b931401b8567848cfac45"
+  },
+  "README.md": {
+    "bytes": 861,
+    "sha256": "eb2259a0ae0590c7029545c96fb6f7803f3aab38028b8668f01f59ea1d15a35e"
+  }
+}
