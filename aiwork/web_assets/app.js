@@ -178,6 +178,7 @@ function updateScreenControls() {
   el("screen-status").textContent = processing ? "Processing screenshot…" : enabled ? ""
     : "The selected perception backend is not configured.";
   el("interpret").disabled = processing || !frame || !enabled || (remote && !el("share").checked);
+  el("export-observation").disabled = processing || observation?.location !== "local";
   el("capture").disabled = processing;
   el("image-file").disabled = processing;
 }
@@ -259,6 +260,15 @@ el("perception-lane").onchange = () => {
   updateScreenControls();
 };
 el("share").onchange = updateScreenControls;
+el("export-observation").onclick = () => {
+  if (observation?.location !== "local" || processing) return;
+  const url = URL.createObjectURL(new Blob([pretty(observation) + "\n"], {type:"application/json"}));
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "reviewed-screen.json";
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+};
 el("interpret").onclick = () => act(async () => {
   const shareRemote = el("share").checked;
   const location = el("perception-lane").value;

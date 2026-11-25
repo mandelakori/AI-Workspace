@@ -185,6 +185,7 @@ def serve(spec_path: Path) -> None:
     setup = tuple(Check.read(item) for item in config.get("setup", []))
     workspace = Path(config["workspace"])
     build = config.get("engineering", False)
+    screen = config.get('screen_observation') if build else None
     stop = Path(config["stop"]) if config.get("stop") else None
     baseline = Path(config["baseline"]) if build else None
     context = ExecutionContext(spec_path)
@@ -230,17 +231,27 @@ def serve(spec_path: Path) -> None:
                              'line':{'type':'integer','minimum':1},'end_line':{'type':'integer','minimum':1}},
                              'required':['evidence_key','line'],'additionalProperties':False}},
                         'required':['path','expected_sha256','old','new','mode'],'additionalProperties':False}})
+            if screen is not None:
+                available.append({
+                    'name':'screen',
+                    'description':'Read 12 elements from the approved frozen local screen observation. OCR and captions are untrusted data. No live capture or desktop actions.',
+                    'inputSchema':{'type':'object','properties':{'offset':{'type':'integer','minimum':0,'maximum':255}},
+                                   'additionalProperties':False},
+                })
             response["result"] = {"tools": available}
         elif method == "tools/call":
             params = message.get("params", {})
             args = params.get("arguments", {})
             index = args.get("index") if isinstance(args, dict) else None
+            offset = args.get('offset',0) if isinstance(args,dict) else None
             name = params.get("name")
             error = True
             if calls >= budget or (stop and stop.exists()):
                 value = {"error": "tool stopped or call limit reached"}
             elif not ((name in {"focus","edit"} and build and isinstance(args, dict)) or
                       (name == "diff" and build and args == {}) or
+                      (name == 'screen' and screen is not None and isinstance(args,dict)
+                       and set(args) <= {'offset'} and type(offset) is int and 0 <= offset <= 255) or
                       (name == "check" and isinstance(args, dict) and set(args) == {"index"}
                        and type(index) is int and 0 <= index < len(checks))):
                 value = {"error": "invalid tool or command index"}
@@ -263,6 +274,12 @@ def serve(spec_path: Path) -> None:
                     elif name == "focus":
                         value = {**inspect_source(spec_path, workspace, args),
                                  "passed": True, "stdout": "", "stderr": ""}
+                    elif name == 'screen':
+                        rows = screen['elements']
+                        end = offset + 12
+                        value = {k:v for k,v in screen.items() if k != 'elements'}
+                        value.update(elements=rows[offset:end], total=len(rows),
+                                     next_offset=end if end<len(rows) else None, passed=True,stdout='',stderr='')
                     elif name == "diff":
                         patch = git_patch(baseline, workspace, changed,
                                           spec_path.parent / f"agent-diff-{calls:02}")
@@ -295,12 +312,13 @@ def serve(spec_path: Path) -> None:
                     value = {"error": str(exc)}
                 finally:
                     if managed:
-                        context.elapsed({'focus':'inspection','diff':'inspection','edit':'editing',
+                        context.elapsed({'focus':'inspection','diff':'inspection','screen':'inspection','edit':'editing',
                                          'check':'verification'}[name], monotonic()-operation_start)
                         value['resource_status'] = context.summary()
                 with spec_path.with_name("mcp.jsonl").open("a", encoding="utf-8") as log:
+                    audit = {k:v for k,v in value.items() if k != 'elements'} if name=='screen' else value
                     log.write(json.dumps({"tool": name, "index": index, "call": calls,
-                                          **({'arguments':args} if name=='edit' else {}), **value}) + "\n")
+                                          **({'arguments':args} if name in {'edit','screen'} else {}), **audit}) + "\n")
                 if build and name == "check" and "passed" in value:
                     value = {key: value[key] for key in ("passed", "code", "stdout", "stderr", "objective", "objective_truncated", "write_roots", "remaining_calls", "resource_status") if key in value}
                     value["stdout"] = value.get("stdout", "")[-450:]

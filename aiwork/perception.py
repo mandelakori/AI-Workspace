@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import base64
 from dataclasses import dataclass, replace
+import hashlib
 import json
 import math
 import os
@@ -35,16 +36,16 @@ def png_size(frame: bytes) -> tuple[int, int]:
     if not 33 <= len(frame) <= MAX_IMAGE or frame[:16] != b'\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR':
         raise ValueError('expected a PNG of at most 4 MiB')
     w, h = struct.unpack('!II', frame[16:24])
-    if not 0 < w <= 4096 or not 0 < h <= 4096 or w*h > 4096*2160:
-        raise ValueError('screenshot dimensions exceed the interpretation limit')
+    check_dimensions(w, h)
     return w, h
 
 
-def observations(frame: bytes, result: dict, location: str, elapsed: float) -> dict:
-    w, h = png_size(frame)
-    if not isinstance(result, dict) or result.get('pins') != PINS or result.get('cleanup') is not True:
-        raise ValueError('unverified perception backend version or cleanup')
-    rows = result.get('elements')
+def check_dimensions(w: int, h: int) -> None:
+    if type(w) is not int or type(h) is not int or not 0 < w <= 4096 or not 0 < h <= 4096 or w*h > 4096*2160:
+        raise ValueError('screenshot dimensions exceed the interpretation limit')
+
+
+def normalize_elements(rows) -> list[dict]:
     if not isinstance(rows, list) or len(rows) > 256:
         raise ValueError('invalid perception elements')
     elements = []
@@ -57,11 +58,38 @@ def observations(frame: bytes, result: dict, location: str, elapsed: float) -> d
                 or box[0] >= box[2] or box[1] >= box[3]):
             raise ValueError('invalid normalized screenshot coordinates')
         elements.append({'id':len(elements)+1, 'kind':row['kind'], 'bbox':box, 'description':row['description'][:512]})
+    return elements
+
+
+def approved_observation(path: Path, sha256: str) -> tuple[bytes, dict]:
+    """Read only operator-approved, bounded JSON from a completed local parse."""
+    with path.open('rb') as stream:
+        raw = stream.read(512*1024+1)
+    if len(raw) > 512*1024 or hashlib.sha256(raw).hexdigest() != sha256:
+        raise ValueError('screen observation hash mismatch or size limit exceeded')
+    result = json.loads(raw)
+    if (type(result) is not dict or type(result.get('schema')) is not int or result['schema'] != 1
+            or result.get('pins') != PINS or result.get('backend') != MODEL or result.get('location') != 'local'
+            or result.get('cleanup_passed') is not True or result.get('untrusted_screen_content') is not True
+            or result.get('coordinate_system') != 'normalized_xyxy_image'):
+        raise ValueError('screen inspection requires a completed local OmniParser observation')
+    w,h = result.get('width'),result.get('height')
+    check_dimensions(w,h)
+    return raw, {'sha256':sha256, 'width':w,'height':h,'coordinate_system':result['coordinate_system'],
+                 'untrusted_screen_content':True,'elements':normalize_elements(result.get('elements'))}
+
+
+def observations(frame: bytes, result: dict, location: str, elapsed: float) -> dict:
+    w, h = png_size(frame)
+    if not isinstance(result, dict) or result.get('pins') != PINS or result.get('cleanup') is not True:
+        raise ValueError('unverified perception backend version or cleanup')
+    elements = normalize_elements(result.get('elements'))
     measured = result.get('metrics', {})
     if not isinstance(measured, dict):
         raise ValueError('invalid perception resource metrics')
     metrics = {k:v for k,v in measured.items() if k in {
-        'server_seconds','peak_cuda_bytes','available_ram_before','available_ram_after','free_vram_before','free_vram_after'}
+        'server_seconds','initialization_seconds','inference_seconds','peak_cuda_bytes',
+        'available_ram_before','available_ram_after','free_vram_before','free_vram_after'}
         and type(v) in (int,float) and 0 <= v < 10**14}
     return {'schema':1, 'backend':MODEL, 'location':location, 'width':w, 'height':h, 'pins':PINS,
             'coordinate_system':'normalized_xyxy_image', 'elements':elements,
@@ -220,6 +248,7 @@ def benchmark(backend: Perception, path: Path) -> dict:
     png_size(frame)
     stopped = Event()
     samples = []
+    before = memory_snapshot()
 
     def measure():
         while not stopped.is_set():
@@ -240,5 +269,8 @@ def benchmark(backend: Perception, path: Path) -> dict:
     memory_keys = ('ram_available_bytes','gpu_free_bytes')
     minima = {key:min((r[key] for r in samples if key in r),default=None) for key in memory_keys}
     return {'pins':result['pins'],'elements':len(result['elements']),
+            'element_counts':{kind:sum(row['kind']==kind for row in result['elements']) for kind in ('text','icon')},
+            'observations':result['elements'],
             'width':result['width'],'height':result['height'],'metrics':metric,
+            'cleanup_passed':result['cleanup_passed'],'memory_before':before,'memory_after_cleanup':memory_snapshot(),
             'system_memory_samples':len(samples),'sampled_minimum_free_bytes':minima}

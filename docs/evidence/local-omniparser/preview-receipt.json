@@ -1,0 +1,8 @@
+{
+  "browser": "Codex in-app browser",
+  "status": "verified",
+  "observed": "Verified synthetic preview, 15 elements, selection highlight and local JSON export enabled.",
+  "elements": 15,
+  "synthetic_benchmark_replay": true,
+  "extra_inference_requests": 0
+}

@@ -69,7 +69,10 @@
       <label id="consent" class="inline" hidden><input id="share" type="checkbox"> Send this screenshot to the configured A100 peer</label>
       <p id="screen-status"></p>
       <div class="screen"><canvas id="preview" aria-label="Screenshot with detected element outlines" hidden></canvas><ol id="elements"></ol></div>
-      <details><summary>Structured observations</summary><pre id="observation"></pre></details>
+      <details><summary>Structured observations</summary>
+        <button id="export-observation" type="button" disabled>Save local observation JSON</button>
+        <pre id="observation"></pre>
+      </details>
     </section>
   </main>
 </body>

@@ -86,11 +86,12 @@ from aiwork.perception import PINS
 root = Path(sys.argv[1])
 cache = root / 'models'
 snapshot_download('microsoft/OmniParser-v2.0', revision=PINS['weights'], cache_dir=cache,
-    allow_patterns=['icon_detect_v3/model.pt', 'icon_detect_v3/LICENSE', 'icon_caption/*'])
+    allow_patterns=['icon_detect_v3/model.pt', 'icon_detect_v3/LICENSE', 'icon_caption/*'],
+    token=False, max_workers=1)
 snapshot_download('microsoft/Florence-2-base', revision=PINS['florence_processor'], cache_dir=cache,
-    allow_patterns=['*.json', '*.txt', '*.py', 'LICENSE'])
+    allow_patterns=['*.json', '*.txt', '*.py', 'LICENSE'], token=False, max_workers=1)
 snapshot_download('microsoft/Florence-2-base-ft', revision=PINS['florence_code'], cache_dir=cache,
-    allow_patterns=['*.py', 'LICENSE'])
+    allow_patterns=['*.py', 'LICENSE'], token=False, max_workers=1)
 Reader(['en'], gpu=False, model_storage_directory=str(root / 'ocr'))
 '@
 $modelSetup | & $omniPython - $omni
@@ -149,23 +150,42 @@ closes. If completion is uncertain, verify the peer is idle and its parser
 and SSH forward are gone before clearing `A100_PERCEPTION_UNCERTAIN` in the
 configured shared execution state.
 
+## Give OpenCode a reviewed screen observation
+
+After interpreting a screenshot locally, expand **Structured observations**.
+Review the OCR text, descriptions and boxes, then use **Save local observation
+JSON**. Save the file outside the project workspace. For the engineering task,
+set `location = "local"` and choose its explicit calibrated, controller-owned
+Ollama/OpenCode profile. Approve the hash for that exact file when submitting.
+
+```powershell
+$screen = 'C:\work\reviewed-screen.json'
+$hash = (Get-FileHash -LiteralPath $screen -Algorithm SHA256).Hash
+& $python -m aiwork --config $cfg task run C:\work\engineering.toml --profile measured-opencode --screen-observation $screen --screen-sha256 $hash
+```
+
+The job freezes the reviewed JSON outside the staged workspace. The optional
+`checks_screen` tool returns up to 12 elements per call and uses existing
+inspection budget. It accepts an optional offset. It has no live capture,
+screenshot bytes, arbitrary file reads or desktop control. Remote, automatic,
+and unowned profiles cannot receive the data. The approved JSON and tool
+responses are retained in local job evidence. The worker treats screen text
+as untrusted data.
+
 ## Separate perception benchmark
 
 Use a synthetic PNG without sensitive data. Omit `--apply` to preview the
-one-request local run. An applied run records normalized element count,
-latency including process startup, CUDA peak allocated bytes, and sampled
-system free RAM and VRAM. Concurrent unrelated activity can affect those
-system measurements.
+one-request local run. An applied run records detected elements and their
+descriptions, initialization and inference times, total latency, CUDA peak
+allocated bytes, and sampled system free RAM and VRAM through cleanup.
+Concurrent unrelated activity can affect those system measurements.
 
 ```powershell
 & $python -m aiwork --config $cfg perception-bench C:\work\synthetic-ui.png --perception-config .aiwork/omni/perception.toml
 & $python -m aiwork --config $cfg perception-bench C:\work\synthetic-ui.png --perception-config .aiwork/omni/perception.toml --apply
 ```
 
-Synthetic tests cover the observation and permission contracts, local memory
-admission and lane contention, and receipt/cleanup handling through an inert
-remote peer. The controller suite ran 271 tests with 244 passes and 27 skips.
-The development wheel built offline and served its assets and queue API
-from an isolated installation. Actual CUDA inference, interactive Windows
-capture, and a live A100 perception peer still require hardware validation.
-There are no measured OmniParser performance results for this implementation.
+The [local validation record](OMNIPARSER-LOCAL-VALIDATION.md) gives the
+measured RTX 5070 timings, memory and cleanup, interactive Windows capture,
+browser preview, and restored test coverage. The optional A100 peer remains
+unverified on live hardware.

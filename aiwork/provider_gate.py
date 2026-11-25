@@ -76,13 +76,15 @@ class ResponseSocket:
 
 
 def catalog(body: dict, allow_read: bool = False, scoped_only: bool = False,
-            maintenance: bool = False) -> dict:
+            maintenance: bool = False, screen_inspection: bool = False) -> dict:
     tools = body.get('tools', [])
     if not isinstance(tools, list):
         tools = []
     names = [t.get('function', {}).get('name') for t in tools if isinstance(t, dict)]
     required = frozenset() if maintenance else REQUIRED
-    allowed = frozenset() if maintenance else REQUIRED if scoped_only else REQUIRED | NATIVE | ({'read'} if allow_read else set())
+    if screen_inspection and not maintenance:
+        required |= {'checks_screen'}
+    allowed = required if maintenance or scoped_only else required | NATIVE | ({'read'} if allow_read else set())
     valid = (all(isinstance(n, str) for n in names) and len(names) == len(tools)
              and len(names) == len(set(names)))
     offered = {n for n in names if isinstance(n, str)}
@@ -95,7 +97,8 @@ class ProviderGate:
     def __init__(self, endpoint: str, model: str, key: str, artifacts: Path,
                  deadline: float, allow_read: bool = False,
                  context: ExecutionContext | None = None, pi_compaction: bool = False,
-                 capture_limit: int | None = None, disk_headroom: int = DEFAULT_HEADROOM_BYTES):
+                 capture_limit: int | None = None, disk_headroom: int = DEFAULT_HEADROOM_BYTES,
+                 *, screen_inspection: bool = False):
         self.upstream = urlsplit(endpoint.rstrip('/'))
         if (self.upstream.scheme not in {'http', 'https'} or not self.upstream.hostname
                 or self.upstream.username or self.upstream.password
@@ -105,6 +108,8 @@ class ProviderGate:
         self.deadline, self.allow_read = deadline, allow_read
         self.context = context
         self.pi_compaction = pi_compaction
+        self.screen_inspection = screen_inspection
+        self.required = REQUIRED | ({'checks_screen'} if screen_inspection else set())
         self.primary_admitted = False
         self.exhausted = Event()
         self.stopping = Event()
@@ -124,7 +129,7 @@ class ProviderGate:
         capture=self.capture.summary()
         ledger={
             'failed_closed': self.failed.is_set(), 'requests': self.receipts,
-            'required': sorted(REQUIRED), 'request_rewriting': bool(self.context),
+            'required': sorted(self.required), 'request_rewriting': bool(self.context),
             'resource_exhausted': self.exhausted.is_set(),
             'captured_bytes': capture['captured_bytes'], 'evidence':capture,
             'exhaustion_reason':self.exhaustion_reason,'failure_kind':self.failure_kind,
@@ -206,14 +211,14 @@ class ProviderGate:
                         body = json.loads(raw)
                         phase = self.headers.get('X-AIWORK-Phase', '')
                         maintenance = gate.pi_compaction and phase == 'compaction'
-                        check = catalog(body, gate.allow_read, bool(gate.context), maintenance)
+                        check = catalog(body, gate.allow_read, bool(gate.context), maintenance, gate.screen_inspection)
                         if gate.pi_compaction and (phase not in {'engineering','compaction'}
                                                    or maintenance and not gate.primary_admitted):
                             check['passed'] = False
                         admitted = (check['passed'] and body.get('model') == gate.model
                                     and not gate.failed.is_set() and monotonic() < gate.deadline)
                     except (ValueError, AttributeError):
-                        check = {'passed': False, 'offered': [], 'missing': sorted(REQUIRED)}
+                        check = {'passed': False, 'offered': [], 'missing': sorted(gate.required)}
                         admitted = False
                     # Full catalogs remain in captured bodies; bound metadata on malformed input.
                     metadata={k:([str(n).encode('ascii','backslashreplace')[:80].decode('ascii') for n in v[:16]] if isinstance(v,list) else v) for k,v in check.items()}
@@ -440,7 +445,9 @@ def _guarded_run(binary, profile, work, artifacts, env, config, prompt, timeout,
     context = ExecutionContext(spec)
     if not context.path.exists():
         raise ValueError('engineering execution requires its persistent context ledger')
-    with ProviderGate(profile.endpoint, profile.model, key, artifacts, deadline, profile.context > 8192, context) as gate:
+    screen = 'screen_observation' in json.loads(spec.read_bytes())
+    with ProviderGate(profile.endpoint, profile.model, key, artifacts, deadline, profile.context > 8192, context,
+                      screen_inspection=screen) as gate:
         provider = config['providers']['aiwork']
         provider['settings']['baseURL'] = gate.endpoint
         provider['settings']['apiKey'] = '{env:AIWORK_CATALOG_TOKEN}'

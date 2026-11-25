@@ -71,6 +71,8 @@ def parse(frame: bytes, source: Path, cache: Path, ocr: Path) -> dict:
         raise ValueError('pinned Florence-2 code did not load the complete caption checkpoint')
     caption = caption.to('cuda').eval()
     reader = easyocr.Reader(['en'],gpu=False,model_storage_directory=str(ocr),download_enabled=False)
+    torch.cuda.synchronize()
+    ready = monotonic()
     rows = []
 
     def add(kind, box, description):
@@ -93,8 +95,11 @@ def parse(frame: bytes, source: Path, cache: Path, ocr: Path) -> dict:
                                       max_new_tokens=20,num_beams=1,do_sample=False)
         for box, description in zip(boxes,processor.batch_decode(output,skip_special_tokens=True)):
             add('icon',box,description.strip())
+    torch.cuda.synchronize()
+    completed = monotonic()
     after = memory()
     return {'pins':PINS,'elements':rows,'metrics':{'server_seconds':monotonic()-started,
+        'initialization_seconds':ready-started,'inference_seconds':completed-ready,
         'peak_cuda_bytes':torch.cuda.max_memory_allocated(),'available_ram_before':before.get('ram_available_bytes'),
         'available_ram_after':after.get('ram_available_bytes'),'free_vram_before':before.get('gpu_free_bytes'),
         'free_vram_after':after.get('gpu_free_bytes')}}

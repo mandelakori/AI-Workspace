@@ -166,6 +166,8 @@ def parser() -> argparse.ArgumentParser:
         command.add_argument("manifest", type=Path)
         if name != "inspect":
             command.add_argument("--profile", default="")
+            command.add_argument("--screen-observation", type=Path, help="reviewed local OmniParser JSON")
+            command.add_argument("--screen-sha256", help="approve the exact reviewed observation SHA-256")
             command.add_argument("--trusted", action="store_true",
                                  help="allow reviewed source and checks to execute on the host")
     resume = actions.add_parser("resume")
@@ -427,7 +429,11 @@ def main(argv: list[str] | None = None) -> int:
                 print_json(result)
                 return 0 if result["status"] == "verified" else 1
             else:
-                job = controller.submit(args.manifest, args.trusted, profile_id=args.profile)
+                if bool(args.screen_observation) != bool(args.screen_sha256):
+                    raise ValueError('screen inspection requires both --screen-observation and --screen-sha256')
+                screen = (args.screen_observation,args.screen_sha256.lower()) if args.screen_observation else None
+                job = controller.submit(args.manifest, args.trusted, profile_id=args.profile,
+                                        **({'screen':screen} if screen else {}))
                 result = controller.run_submitted(job) if args.action == "run" else None
                 print_json(result or {"job": job, "status": "queued"})
                 return 0 if not result or result["status"] == "verified" else 1

@@ -1,0 +1,215 @@
+{
+  "pins": {
+    "source": "354021201345a96178360b28733573e27269f2de",
+    "weights": "f55d0750e5b94db2125ef0b45b0fa4a85ddc59b4",
+    "florence_processor": "5ca5edf5bd017b9919c05d08aebef5e4c7ac3bac",
+    "florence_code": "f6c1a25888ffc1d945ee8a1a77ac833c7303d46e"
+  },
+  "elements": 15,
+  "element_counts": {
+    "text": 6,
+    "icon": 9
+  },
+  "observations": [
+    {
+      "id": 1,
+      "kind": "text",
+      "bbox": [
+        0.05714285714285714,
+        0.08615384615384615,
+        0.34285714285714286,
+        0.16
+      ],
+      "description": "Project dashboard"
+    },
+    {
+      "id": 2,
+      "kind": "text",
+      "bbox": [
+        0.06857142857142857,
+        0.23076923076923078,
+        0.34285714285714286,
+        0.3046153846153846
+      ],
+      "description": "Workspace settings"
+    },
+    {
+      "id": 3,
+      "kind": "text",
+      "bbox": [
+        0.07047619047619047,
+        0.3446153846153846,
+        0.21142857142857144,
+        0.39384615384615385
+      ],
+      "description": "Display name"
+    },
+    {
+      "id": 4,
+      "kind": "text",
+      "bbox": [
+        0.08190476190476191,
+        0.41846153846153844,
+        0.2723809523809524,
+        0.48307692307692307
+      ],
+      "description": "Example project"
+    },
+    {
+      "id": 5,
+      "kind": "text",
+      "bbox": [
+        0.11047619047619048,
+        0.68,
+        0.17333333333333334,
+        0.7292307692307692
+      ],
+      "description": "Save"
+    },
+    {
+      "id": 6,
+      "kind": "text",
+      "bbox": [
+        0.31047619047619046,
+        0.683076923076923,
+        0.38857142857142857,
+        0.7230769230769231
+      ],
+      "description": "Cancel"
+    },
+    {
+      "id": 7,
+      "kind": "icon",
+      "bbox": [
+        0.7716796293712798,
+        0.2280902334359976,
+        0.8215453520275298,
+        0.3132568124624399
+      ],
+      "description": "a task or confirmation."
+    },
+    {
+      "id": 8,
+      "kind": "icon",
+      "bbox": [
+        0.8917235746837797,
+        0.22787332388070913,
+        0.9415038481212797,
+        0.3130596219576322
+      ],
+      "description": "the close or delete function."
+    },
+    {
+      "id": 9,
+      "kind": "icon",
+      "bbox": [
+        0.2782714553106399,
+        0.6525822096604568,
+        0.4627929396856399,
+        0.750822519155649
+      ],
+      "description": "Cancel"
+    },
+    {
+      "id": 10,
+      "kind": "icon",
+      "bbox": [
+        0.06840819585890998,
+        0.653331533578726,
+        0.2536132521856399,
+        0.7520155217097356
+      ],
+      "description": "Save"
+    },
+    {
+      "id": 11,
+      "kind": "icon",
+      "bbox": [
+        0.8314696684337798,
+        0.22810995248647836,
+        0.8816527739025297,
+        0.3131779362605168
+      ],
+      "description": "search functionality."
+    },
+    {
+      "id": 12,
+      "kind": "icon",
+      "bbox": [
+        0.23398436046781995,
+        0.398009267953726,
+        0.7134765043712797,
+        0.49852712777944713
+      ],
+      "description": "Increase"
+    },
+    {
+      "id": 13,
+      "kind": "icon",
+      "bbox": [
+        0.06347655523390996,
+        0.08871600224421575,
+        0.3370116896856399,
+        0.1512845435509315
+      ],
+      "description": "Properties dashboard"
+    },
+    {
+      "id": 14,
+      "kind": "icon",
+      "bbox": [
+        0.039746090116954985,
+        0.050046944251427285,
+        0.33935543968563986,
+        0.1739614516038161
+      ],
+      "description": "Project dashboard"
+    },
+    {
+      "id": 15,
+      "kind": "icon",
+      "bbox": [
+        0.4816405959356399,
+        0.046458079998309795,
+        0.9693358793712797,
+        0.17739256638746995
+      ],
+      "description": "M0,0L9,0 4.5,5z"
+    }
+  ],
+  "width": 1050,
+  "height": 650,
+  "metrics": {
+    "server_seconds": 14.5,
+    "initialization_seconds": 11.531000000002678,
+    "inference_seconds": 2.8909999999887077,
+    "peak_cuda_bytes": 2141293056,
+    "available_ram_before": 12031070208,
+    "available_ram_after": 9786617856,
+    "free_vram_before": 8274313216,
+    "free_vram_after": 5716836352,
+    "elapsed_seconds": 16.187
+  },
+  "cleanup_passed": true,
+  "memory_before": {
+    "at": 112746.468,
+    "ram_total_bytes": 33413771264,
+    "ram_available_bytes": 12737056768,
+    "gpu_total_bytes": 8546942976,
+    "gpu_free_bytes": 8274313216,
+    "gpu_used_bytes": 0
+  },
+  "memory_after_cleanup": {
+    "at": 112762.718,
+    "ram_total_bytes": 33413771264,
+    "ram_available_bytes": 12777885696,
+    "gpu_total_bytes": 8546942976,
+    "gpu_free_bytes": 8274313216,
+    "gpu_used_bytes": 0
+  },
+  "system_memory_samples": 29,
+  "sampled_minimum_free_bytes": {
+    "ram_available_bytes": 9823518720,
+    "gpu_free_bytes": 5716836352
+  }
+}

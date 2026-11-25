@@ -86,7 +86,7 @@ class ExecutionContext:
         return ''
 
     def charge_tool(self, name: str) -> int:
-        category = {'focus': 'inspection', 'diff': 'inspection', 'edit': 'editing',
+        category = {'focus': 'inspection', 'diff': 'inspection', 'screen':'inspection', 'edit': 'editing',
                     'check': 'verification'}[name]
         reason = ''
         with self.state() as s:

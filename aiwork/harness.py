@@ -164,6 +164,8 @@ class OpenCode:
                 permissions.append(rule("checks_diff"))
                 permissions.append(rule("checks_focus"))
                 permissions.append(rule("checks_edit"))
+                if 'screen_observation' in policy:
+                    permissions.append(rule('checks_screen'))
                 catalog=mcp_catalog(tool_spec,artifacts/'catalog-home',min(3,max(0,timeout-(monotonic()-started))),stop)
                 (artifacts/'mcp-catalog.json').write_text(json.dumps(catalog),encoding='utf-8')
         env.update({
@@ -203,6 +205,8 @@ def mcp_catalog(spec: Path, home: Path, timeout: float, stop: Path | None) -> di
     tools=next((r['result']['tools'] for r in rows if r.get('id')==2),'')
     config=json.loads(spec.read_bytes())
     expected=({'check'} if config['checks'] else set()) | ({'focus','diff','edit'} if config.get('engineering') else set())
+    if config.get('engineering') and 'screen_observation' in config:
+        expected.add('screen')
     if (result.code or result.timed_out or result.truncated or not isinstance(tools,list)
             or {t['name'] for t in tools}!=expected):
         raise RuntimeError('Scoped MCP catalog preflight failed; no inference session started')
