@@ -58,6 +58,24 @@ def fields(root: Path, file: str, *keys) -> dict:
         return {}
 
 
+def tail_rows(path: Path) -> list[dict]:
+    if not path.is_file() or path.resolve()!=path:
+        return []
+    with path.open('rb') as stream:
+        length = stream.seek(0,2)
+        stream.seek(max(0,length-65536))
+        lines = stream.read(65536).splitlines()[-48:]
+    rows = []
+    for line in lines:
+        try:
+            row = json.loads(line)
+            if isinstance(row,dict):
+                rows.append(row)
+        except (ValueError,TypeError):
+            continue
+    return rows
+
+
 class Operator:
     def __init__(self, config: Config, project: Path, private: Path | None, perception: PerceptionConfig,
                  *, screen_backend: ScreenBackend | None = None):
@@ -82,7 +100,7 @@ class Operator:
     def task(self, body: dict) -> Task:
         if not self.controller.config.verification_image:
             raise ValueError('configure an offline Docker verification image for web submissions')
-        source = scoped(self.project, body.get('workspace', '.'))
+        source = self.workspace(body)
         private = body.get('verification_directory', '')
         if private and not self.private:
             raise ValueError('start the interface with --verification-root to use private verification')
@@ -109,12 +127,20 @@ class Operator:
             raise ValueError('approve at least one public command the worker can execute')
         task = Task(objective=body['objective'], workspace=source, kind='agent', category='operator-web',
                     inputs=inputs, deliverables=paths('deliverables'), checks=checks('checks'),
-                    location=body.get('location', 'auto'), mode='engineering', write_roots=paths('write_roots'),
-                    commands=commands, agent_checks=True, attempts=1, timeout=body.get('timeout',300),
+                    location=body.get('location', 'auto'), profile=body.get('profile',''),
+                    mode='engineering', write_roots=paths('write_roots'),
+                    commands=commands, agent_checks=True, attempts=self.attempts(body), timeout=body.get('timeout',300),
                     complexity=body.get('complexity',2), min_context=body.get('min_context',0),
+                    context_input_tokens=body.get('context_input_tokens',0),
                     verification_dir=scoped(self.private,private) if private else None)
         task.validate()
         return task
+
+    def workspace(self, body: dict) -> Path:
+        return scoped(self.project, body.get('workspace', '.'))
+
+    def attempts(self, body: dict) -> int:
+        return 1
 
     def policy(self, body: dict):
         task = self.task(body)
@@ -143,9 +169,12 @@ class Operator:
             if type(token) is not str or self.reviews.get(token) != digest:
                 raise ValueError('review the current task permissions before queueing')
             del self.reviews[token]
-        job = self.controller.submit_task(task)
+        job = self.submit_reviewed(task, body)
         self.pending.add(job)
         return {'job': job}
+
+    def submit_reviewed(self, task: Task, body: dict) -> str:
+        return self.controller.submit_task(task)
 
     def run(self, body: dict) -> dict:
         job = body.get('job')
@@ -206,6 +235,12 @@ class Operator:
                 'admission':fields(attempt,'admission.json','gpu','inference','minimum_free_mib','admitted',
                                    'effective_context','reclamation_rechecked'),
                 'verification':verification,
+                'activity':[{k:row[k] for k in ('tool','call','passed','code','index') if k in row}
+                            for row in tail_rows(attempt/'mcp.jsonl')[-24:]],
+                'answer':next((row['part']['text'][:2500] for row in reversed(tail_rows(attempt/'agent-live.jsonl'))
+                               if row.get('type')=='text' and isinstance(row.get('part'),dict)
+                               and isinstance(row['part'].get('text'),str)), ''),
+                'analysis':fields(attempt,'analysis.json','binary','header','strings','findings','decompilation'),
                 'patch':artifact(attempt,'proposed.patch')})
         return {'job':job,'status':rows[0]['status'],'detail':rows[0]['detail'],'attempts':attempts,
                 'records':[{k: row[k] for k in ('n','profile','status','elapsed')} for row in state]}
@@ -267,6 +302,11 @@ class Operator:
             raise ValueError('unknown operator action')
         return actions[path](body)
 
+    def get(self, path: str) -> dict | None:
+        return None
+
+    assets = ASSETS
+
 
 def bind(operator: Operator, port: int) -> ThreadingHTTPServer:
     class Handler(BaseHTTPRequestHandler):
@@ -305,8 +345,8 @@ def bind(operator: Operator, port: int) -> ThreadingHTTPServer:
             if not self.local():
                 return
             try:
-                if self.path in ASSETS:
-                    name, mime = ASSETS[self.path]
+                if self.path in operator.assets:
+                    name, mime = operator.assets[self.path]
                     raw = files('aiwork').joinpath('web_assets', name).read_bytes()
                     self.respond(raw.replace(b'OPERATOR_SESSION_TOKEN', operator.session.encode())
                                  if self.path=='/' else raw, mime)
@@ -317,7 +357,8 @@ def bind(operator: Operator, port: int) -> ThreadingHTTPServer:
                 elif self.path=='/api/status':
                     self.reply(operator.status())
                 else:
-                    self.reply({'error':'unknown page'},404)
+                    data = operator.get(self.path)
+                    self.reply(data if data is not None else {'error':'unknown page'},200 if data is not None else 404)
             except (ValueError, OSError, RuntimeError, TypeError, KeyError) as error:
                 self.reply({'error':str(error)},400)
 

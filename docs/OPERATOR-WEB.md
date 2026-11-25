@@ -1,5 +1,47 @@
 # Local operator console and screen interpretation
 
+## Windows desktop application
+
+Open **AI-Workspace** from the Windows Desktop. Select a project and model,
+enter an engineering request, then review and approve the proposed scope and
+verification. The laptop model is selected initially. **Automatic** allows
+the reviewed request to use either configured execution plane. The application
+does not provision cloud resources.
+
+The application starts the installed Docker verifier if needed and uses the
+controller's owned model startup, SSH connections, calibrated context and
+memory admission. The initial laptop context estimate starts with the previous
+7,440-token local fixture envelope and adds room for larger requests or an
+attached screen. The app initializes OmniParser when you ask it to interpret a
+preview. It sends approved screen observations only to the owned laptop model.
+
+Projects, conversations, and job evidence are saved under `.aiwork/desktop`.
+Inspect a run for tool activity, source diffs, and independent verifier results.
+Save a proposed patch from the result. Follow-up requests include recent
+conversation context and stage the current project files. They do not apply
+older patches to the project. The **Native analysis** menu offers PE/ELF metadata
+and available configured analyzers such as Ghidra.
+
+Default verification covers Python unittest and Node test projects, with a
+syntax-only alternative for Python, JavaScript, and C. For other build systems,
+set the project command in the permission review. Verification runs offline
+against the existing pinned image, so repositories requiring additional
+dependencies need those dependencies staged or present in the verifier.
+
+To recreate the shortcut on this installation, run
+`scripts/Install-Desktop.ps1 -Launch` from the checkout. Ordinary use begins
+from the desktop shortcut.
+
+Functional validation used one disposable Python project with the installed
+laptop Qwen model. OpenCode inspected the source, applied a scoped edit, and
+passed its public test. The separate Docker verifier confirmed the result,
+and controller-owned cleanup passed. The native analysis menu was exercised
+on an existing ELF fixture with both metadata and installed Ghidra. The
+desktop window reported the offline verifier ready and discovered the local
+OmniParser installation. A100 appeared in the model menu and was left idle.
+
+## Detailed operator console
+
 The console is an optional addition to the controller after the validated
 release candidate at `be627c6`. The development wheel identifies itself
 as `1.0.0rc2.dev0`. It uses the same SQLite queue, execution

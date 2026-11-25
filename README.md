@@ -8,6 +8,10 @@ A100 over SSH.
 
 ## Use the release candidate
 
+On Windows, open **AI-Workspace** from the desktop shortcut. Choose a project
+and model, type an engineering request, and review the proposed permissions.
+[Desktop workflow and installation](docs/OPERATOR-WEB.md#windows-desktop-application).
+
 - [Operator guide](docs/OPERATOR-GUIDE.md) covers install, the exact laptop and A100 commands, memory admission, native analysis, and verification.
 - [Existing hardware config](config/rc.example.toml) and [scoped engineering manifest](examples/scoped-engineering.toml) are editable operator examples. They are separate from frozen trial bundles.
 - [Acceptance matrix](docs/ACCEPTANCE.md), [current status and grants](docs/STATUS.md), and [release notes](docs/RELEASE-NOTES-1.0.0rc1.md) state what the evidence supports.

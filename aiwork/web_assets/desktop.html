@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="operator-session" content="OPERATOR_SESSION_TOKEN">
+  <title>AI-Workspace</title>
+  <link rel="stylesheet" href="/desk.css">
+  <script defer src="/desk.js"></script>
+</head>
+<body>
+  <aside>
+    <div class="brand">AI<span>●</span>Workspace</div>
+    <div class="project">
+      <label for="projects">Project</label>
+      <select id="projects"></select>
+      <button id="pick" class="secondary">Choose folder…</button>
+    </div>
+    <div class="side-heading"><h2>Conversations</h2><button id="new" aria-label="New conversation" title="New conversation">+</button></div>
+    <div id="threads"></div>
+    <button id="history-tab" class="secondary history-button">Execution history</button>
+    <p id="runtime" role="status"></p>
+  </aside>
+  <main>
+    <header>
+      <div><h1 id="title">New conversation</h1><p id="project-path"></p></div>
+      <label class="model-label">Model<select id="models"></select></label>
+    </header>
+    <div class="tools" aria-label="Workspace tools">
+      <button id="screen-tab" class="secondary">Screen</button>
+      <label for="native-mode">Native analysis</label>
+      <select id="native-mode"><option value="binary">PE / ELF metadata</option></select>
+      <button id="native" class="secondary">Choose binary…</button>
+    </div>
+    <p id="notice" role="status" aria-live="polite"></p>
+    <div id="conversation" aria-live="polite"></div>
+    <section id="history" hidden><h2>Execution history</h2><div id="job-list"></div></section>
+    <section id="screen" hidden>
+      <h2>Local screen inspection</h2>
+      <p>Preview the capture before running OmniParser. Only attach observations you want the laptop model to read.</p>
+      <div class="tools">
+        <button id="capture" class="secondary">Capture primary screen</button>
+        <label class="upload">Choose PNG<input id="png" type="file" accept="image/png"></label>
+        <button id="interpret" disabled>Interpret screenshot</button>
+        <button id="attach" class="secondary" disabled>Attach observations</button>
+      </div>
+      <div class="screen-grid"><canvas id="preview" hidden aria-label="Annotated screenshot"></canvas><div id="elements"></div></div>
+    </section>
+    <section id="review" hidden>
+      <h2>Review task permissions</h2>
+      <p id="route"></p><p id="read-note"></p><p id="verification-note"></p>
+      <details><summary>Edit permitted paths and verification command</summary>
+        <label>Readable paths<textarea id="read-scope" rows="3"></textarea></label>
+        <label>Writable paths<textarea id="write-scope" rows="3"></textarea></label>
+        <label>Verification command<input id="check" type="text"></label>
+      </details>
+      <div class="tools">
+        <button id="approve">Approve and run</button>
+        <button id="cancel" class="secondary">Cancel</button>
+      </div>
+    </section>
+    <form id="composer">
+      <div id="attachment" hidden>Local screen observations attached <button type="button" id="detach" class="secondary">Remove</button></div>
+      <label class="sr-only" for="prompt">Engineering request</label>
+      <textarea id="prompt" rows="3" maxlength="6000" placeholder="Describe the change you want, or ask the agent to investigate an engineering problem." required autofocus></textarea>
+      <div class="compose-actions"><small>Changes are staged for review. Choose Automatic to allow both configured compute planes.</small><button type="submit">Send</button></div>
+    </form>
+  </main>
+</body>
+</html>
